@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pokemon Codenames</title>
+<meta name="description" content="A Pokedex-flavored spin on Codenames — deal a board of Pokemon, give one-word clues, and clear your team's set before the other side finds the assassin." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="app-shell">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">No. 001</span>
+      <span class="brand-name">Pokemon Codenames</span>
+    </div>
+    <div class="room-pill hidden" id="room-pill">
+      Room <strong id="room-pill-code">----</strong>
+    </div>
+  </header>
+
+  <!-- ==================================================================
+       LANDING SCREEN
+       ================================================================== -->
+  <section class="screen active" id="screen-landing">
+    <div class="hero">
+      <div class="hero-eyebrow">Identify. Deduce. Don't touch the assassin.</div>
+      <h1>A field guide to your friends' terrible clues</h1>
+      <p>Two teams, one Pokedex-flavored board. Spymasters give one-word clues to guide their operatives to their own Pokemon — without landing on the other team's, a bystander, or the assassin.</p>
+    </div>
+
+    <div class="panel-grid">
+      <form class="dex-card" id="create-room-form">
+        <h2>Start a room</h2>
+        <div class="sub">You'll be the host and pick the settings.</div>
+
+        <div class="field">
+          <label for="create-nickname">Your nickname</label>
+          <input type="text" id="create-nickname" maxlength="24" placeholder="e.g. Ash" required />
+        </div>
+
+        <div class="field">
+          <label>Play mode</label>
+          <div class="radio-row">
+            <label class="radio-chip checked" data-role="mode">
+              <input type="radio" name="mode" value="online" checked />
+              Online
+            </label>
+            <label class="radio-chip" data-role="mode">
+              <input type="radio" name="mode" value="in_person" />
+              In person
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Generations in the pool</label>
+          <div class="gen-grid">
+            <label class="gen-chip checked"><input type="checkbox" value="1" checked />Gen I</label>
+            <label class="gen-chip"><input type="checkbox" value="2" />Gen II</label>
+            <label class="gen-chip"><input type="checkbox" value="3" />Gen III</label>
+            <label class="gen-chip"><input type="checkbox" value="4" />Gen IV</label>
+            <label class="gen-chip"><input type="checkbox" value="5" />Gen V</label>
+            <label class="gen-chip"><input type="checkbox" value="6" />Gen VI</label>
+            <label class="gen-chip"><input type="checkbox" value="7" />Gen VII</label>
+            <label class="gen-chip"><input type="checkbox" value="8" />Gen VIII</label>
+            <label class="gen-chip"><input type="checkbox" value="9" />Gen IX</label>
+          </div>
+        </div>
+
+        <div class="field toggle-row">
+          <span class="field-label">Well-known Pokemon only</span>
+          <label class="switch">
+            <input type="checkbox" id="well-known-toggle" />
+            <span class="track"></span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="create-room-btn">Create room</button>
+        <div class="error-text" id="create-error"></div>
+      </form>
+
+      <form class="dex-card" id="join-room-form">
+        <h2>Join a room</h2>
+        <div class="sub">Got a code from a friend? Enter it below.</div>
+
+        <div class="field">
+          <label for="join-nickname">Your nickname</label>
+          <input type="text" id="join-nickname" maxlength="24" placeholder="e.g. Misty" required />
+        </div>
+
+        <div class="field">
+          <label for="join-code">Room code</label>
+          <input type="text" id="join-code" class="code-input" maxlength="4" placeholder="XXXX" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="join-room-btn">Join room</button>
+        <div class="error-text" id="join-error"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       LOBBY SCREEN
+       ================================================================== -->
+  <section class="screen" id="screen-lobby">
+    <div class="lobby-wrap">
+
+      <div class="dex-ticket">
+        <div>
+          <div class="ticket-label">Room code — share this to invite</div>
+          <div class="ticket-code" id="lobby-room-code">----</div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-ghost" id="copy-code-btn">Copy invite link</button>
+          <button class="btn btn-ghost" id="leave-room-btn">Leave</button>
+        </div>
+      </div>
+
+      <div class="teams-grid">
+        <div class="team-col team-red">
+          <h3>Red team</h3>
+          <div id="team-red-list"></div>
+        </div>
+        <div class="team-col team-blue">
+          <h3>Blue team</h3>
+          <div id="team-blue-list"></div>
+        </div>
+      </div>
+
+      <div id="seat-picker" class="teams-grid"></div>
+
+      <div class="host-panel hidden" id="host-panel">
+        <h3>Host controls</h3>
+        <button class="btn btn-primary" id="start-game-btn" disabled>Deal the board</button>
+        <div class="waiting-inline" id="start-game-hint">Each team needs a spymaster before you can start.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       GAME SCREEN
+       ================================================================== -->
+  <section class="screen" id="screen-game">
+    <div class="game-wrap">
+
+      <div class="spy-banner hidden" id="spy-banner"></div>
+
+      <div class="turn-banner" id="turn-banner">
+        <div>
+          <div class="turn-label">Current turn</div>
+          <div class="turn-value" id="turn-team-value">—</div>
+        </div>
+        <div class="clue-readout hidden" id="clue-readout">
+          <div class="clue-word" id="clue-word-value"></div>
+          <div class="clue-count" id="clue-count-value"></div>
+        </div>
+      </div>
+
+      <form class="clue-form hidden" id="clue-form">
+        <div class="field">
+          <label for="clue-word">Your clue</label>
+          <input type="text" id="clue-word" maxlength="40" placeholder="One word" required />
+        </div>
+        <div class="field num-field">
+          <label for="clue-number">Number</label>
+          <input type="number" id="clue-number" min="0" max="9" value="1" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-clue-btn">Give clue</button>
+      </form>
+
+      <div class="waiting-inline hidden" id="waiting-for-clue"></div>
+
+      <div class="tile-count-row">
+        <span>Red left: <strong class="count-red" id="count-red">—</strong></span>
+        <span>Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
+      </div>
+
+      <div class="board" id="board"></div>
+
+      <div class="game-actions">
+        <button class="btn btn-ghost hidden" id="end-turn-btn">Pass / end turn</button>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="win-overlay hidden" id="win-overlay">
+    <div class="win-card" id="win-card">
+      <div class="win-label">Game over</div>
+      <h2 id="win-title">— TEAM WINS</h2>
+      <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast-stack" id="toast-stack"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
