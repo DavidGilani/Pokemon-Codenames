@@ -281,9 +281,12 @@ async function fetchCardKeyIfSpymaster() {
   state.cardKey = map;
 }
 
+let reconnectTimer = null;
+
 function subscribeToRoom() {
   if (state.channel) {
     sb.removeChannel(state.channel);
+    state.channel = null;
   }
   state.channel = sb
     .channel(`room-${state.roomId}`)
@@ -313,7 +316,45 @@ function subscribeToRoom() {
         render(payload.new ? payload.new.position : null);
       }
     )
-    .subscribe();
+    .subscribe((status) => {
+      if (status === "SUBSCRIBED") {
+        // Freshly (re)connected — pull the latest state in case anything
+        // changed while we were disconnected, then clear any pending retry.
+        if (reconnectTimer) {
+          clearTimeout(reconnectTimer);
+          reconnectTimer = null;
+        }
+        resyncRoom();
+      } else if (status === "CHANNEL_ERROR" || status === "TIMED_OUT" || status === "CLOSED") {
+        // The websocket dropped (common on mobile networks / backgrounded
+        // tabs). Retry after a short delay rather than leaving the client
+        // silently stale until the person manually refreshes.
+        if (!reconnectTimer && state.roomId) {
+          reconnectTimer = setTimeout(() => {
+            reconnectTimer = null;
+            subscribeToRoom();
+          }, 2000);
+        }
+      }
+    });
+}
+
+// Re-fetch everything for the current room and re-render. Used whenever we
+// regain a realtime connection or the tab becomes visible again, so a
+// missed update never leaves the screen stale.
+async function resyncRoom() {
+  if (!state.roomId) return;
+  try {
+    await fetchRoom();
+    await fetchPlayers();
+    if (state.room && state.room.status !== "lobby") {
+      await fetchCards();
+    }
+    await fetchCardKeyIfSpymaster();
+    render();
+  } catch (err) {
+    console.error("Resync failed:", err);
+  }
 }
 
 async function enterRoom() {
@@ -500,6 +541,10 @@ async function handleStartGame() {
 function initGameScreen() {
   $("#clue-form").addEventListener("submit", handleSubmitClue);
   $("#end-turn-btn").addEventListener("click", handleEndTurn);
+  $("#leave-game-btn").addEventListener("click", () => {
+    clearSession();
+    showScreen("landing");
+  });
   $("#new-game-btn").addEventListener("click", () => {
     clearSession();
     showScreen("landing");
@@ -628,6 +673,7 @@ function renderBoard(changedPosition) {
   const board = $("#board");
   board.innerHTML = "";
   const allowClick = canReveal();
+  const peekLabel = { red: "R", blue: "B", neutral: "N", assassin: "A" };
 
   state.cards.forEach((card) => {
     const tile = document.createElement("div");
@@ -645,7 +691,12 @@ function renderBoard(changedPosition) {
     if (!revealed && !allowClick) tile.classList.add("locked");
     if (card.position === changedPosition && revealed) tile.classList.add("scan-sweep");
 
+    const badgeHtml = peekColour
+      ? `<div class="peek-badge">${peekLabel[peekColour]}</div>`
+      : "";
+
     tile.innerHTML = `
+      ${badgeHtml}
       <div class="tile-img-wrap"><img src="${card.sprite_url}" alt="${escapeHtml(card.name)}" loading="lazy" /></div>
       <div class="tile-name">${escapeHtml(card.name)}</div>
     `;
@@ -723,6 +774,14 @@ async function boot() {
   initGameScreen();
 
   await ensureAuth();
+
+  // Backstop for flaky mobile connections: whenever the tab regains focus
+  // or becomes visible again, pull fresh state. Realtime's own reconnect
+  // (above) should usually cover this, but this catches anything it misses.
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") resyncRoom();
+  });
+  window.addEventListener("focus", () => resyncRoom());
 
   const saved = loadSession();
   if (saved && saved.roomId && saved.playerId) {

@@ -626,6 +626,7 @@ a { color: var(--accent); }
 
 .clue-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   background: var(--panel);
   border: 1px solid var(--panel-border);
@@ -634,9 +635,17 @@ a { color: var(--accent); }
   align-items: flex-end;
 }
 
-.clue-form .field { flex: 1; margin-bottom: 0; }
-.clue-form .num-field { max-width: 90px; }
+.clue-form .field { flex: 1 1 200px; min-width: 0; margin-bottom: 0; }
+.clue-form .num-field { flex: 0 0 80px; }
 .clue-form .num-field input { text-align: center; }
+.clue-form button[type="submit"] { flex: 0 0 auto; white-space: nowrap; }
+
+@media (max-width: 560px) {
+  .clue-form { flex-direction: column; align-items: stretch; }
+  .clue-form .field,
+  .clue-form .num-field,
+  .clue-form button[type="submit"] { flex: 1 1 auto; width: 100%; }
+}
 
 .board {
   display: grid;
@@ -697,10 +706,32 @@ a { color: var(--accent); }
   text-overflow: ellipsis;
 }
 
-.tile[data-peek="red"] { box-shadow: inset 0 0 0 2px var(--red-glow); }
-.tile[data-peek="blue"] { box-shadow: inset 0 0 0 2px var(--blue-glow); }
-.tile[data-peek="neutral"] { box-shadow: inset 0 0 0 2px rgba(201, 184, 150, 0.25); }
-.tile[data-peek="assassin"] { box-shadow: inset 0 0 0 2px var(--assassin); }
+.tile[data-peek="red"] { border: 3px solid var(--red); background: linear-gradient(180deg, var(--red-dim), var(--panel-2) 70%); }
+.tile[data-peek="blue"] { border: 3px solid var(--blue); background: linear-gradient(180deg, var(--blue-dim), var(--panel-2) 70%); }
+.tile[data-peek="neutral"] { border: 3px solid var(--neutral); background: linear-gradient(180deg, var(--neutral-dim), var(--panel-2) 70%); }
+.tile[data-peek="assassin"] { border: 3px solid var(--assassin); background: linear-gradient(180deg, var(--assassin-dim), var(--panel-2) 70%); }
+
+.peek-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bg);
+  z-index: 3;
+}
+
+.tile[data-peek="red"] .peek-badge { background: var(--red); }
+.tile[data-peek="blue"] .peek-badge { background: var(--blue); }
+.tile[data-peek="neutral"] .peek-badge { background: var(--neutral); }
+.tile[data-peek="assassin"] .peek-badge { background: var(--assassin); color: var(--text); }
 
 .tile.revealed .tile-name { color: rgba(255,255,255,0.75); }
 
