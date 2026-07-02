@@ -659,7 +659,7 @@ a { color: var(--accent); }
 
 .tile {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   background: var(--panel-2);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-sm);
@@ -832,4 +832,24 @@ a { color: var(--accent); }
   font-size: 13px;
   font-family: var(--font-mono);
   padding: 10px;
+}
+
+/* ==========================================================================
+   Disclaimer footer
+   ========================================================================== */
+
+.disclaimer-footer {
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.6;
+  border-top: 1px solid var(--panel-border);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.disclaimer-footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
 }

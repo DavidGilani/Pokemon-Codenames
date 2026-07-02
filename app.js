@@ -439,8 +439,8 @@ function initLobbyScreen() {
 function seatButtonsHtml(team) {
   return `
     <div class="seat-btns">
-      <button class="btn btn-ghost" data-action="claim" data-team="${team}" data-role="operative">Join as operative</button>
-      <button class="btn btn-ghost" data-action="claim" data-team="${team}" data-role="spymaster">Be spymaster</button>
+      <button class="btn btn-ghost" data-action="claim" data-team="${team}" data-role="operative">Join as clue receiver</button>
+      <button class="btn btn-ghost" data-action="claim" data-team="${team}" data-role="spymaster">Be clue giver</button>
     </div>`;
 }
 
@@ -450,15 +450,15 @@ function renderTeamColumn(team) {
   const spymaster = teamPlayers.find((p) => p.role === "spymaster");
   const operatives = teamPlayers.filter((p) => p.role === "operative");
 
-  let html = `<div class="role-slot">Spymaster</div>`;
+  let html = `<div class="role-slot">Clue giver</div>`;
   html += spymaster
     ? playerChipHtml(spymaster)
     : `<div class="empty-slot">Open seat</div>`;
 
-  html += `<div class="role-slot">Operatives</div>`;
+  html += `<div class="role-slot">Clue receivers</div>`;
   html += operatives.length
     ? operatives.map(playerChipHtml).join("")
-    : `<div class="empty-slot">No operatives yet</div>`;
+    : `<div class="empty-slot">No clue receivers yet</div>`;
 
   col.innerHTML = html;
 }
@@ -477,7 +477,8 @@ function renderLobby() {
 
   const seatArea = $("#seat-picker");
   if (state.me && state.me.team) {
-    seatArea.innerHTML = `<div class="waiting-note">You're set as <strong>${state.me.role}</strong> on <strong>${state.me.team}</strong>. Waiting for the host to start the game.</div>`;
+    const roleLabel = state.me.role === 'spymaster' ? 'clue giver' : 'clue receiver';
+    seatArea.innerHTML = `<div class="waiting-note">You're set as <strong>${roleLabel}</strong> on <strong>${state.me.team}</strong>. Waiting for the host to start the game.</div>`;
   } else {
     seatArea.innerHTML = `
       <div class="team-col team-red">${seatButtonsHtml("red")}</div>
@@ -612,7 +613,7 @@ function renderGame(changedPosition) {
   const spyBanner = $("#spy-banner");
   if (state.me && state.me.role === "spymaster") {
     spyBanner.classList.remove("hidden");
-    spyBanner.textContent = "Spymaster view — only you can see the key";
+    spyBanner.textContent = "Clue giver view — only you can see the key";
   } else {
     spyBanner.classList.add("hidden");
   }
@@ -627,7 +628,7 @@ function renderGame(changedPosition) {
   const waitingForClue = $("#waiting-for-clue");
   if (room.status === "in_progress" && !room.current_clue && !canGiveClue()) {
     waitingForClue.classList.remove("hidden");
-    waitingForClue.textContent = `Waiting for the ${room.current_team} spymaster's clue...`;
+    waitingForClue.textContent = `Waiting for the ${room.current_team} clue giver...`;
   } else {
     waitingForClue.classList.add("hidden");
   }
