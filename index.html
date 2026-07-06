@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pokemon Codenames</title>
+<title>Pokémon Codenames</title>
 <meta name="description" content="A Pokedex-flavored spin on Codenames — deal a board of Pokemon, give one-word clues, and clear your team's set before the other side finds the assassin." />
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +20,20 @@
 
   <header class="app-header">
     <div class="brand">
-      <span class="brand-mark">No. 001</span>
-      <span class="brand-name">Pokemon Codenames</span>
+      <svg class="brand-ball" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="#f4f4f4" stroke="#12151f" stroke-width="5"/>
+        <path d="M3 50a47 47 0 0 1 94 0Z" fill="#e0453c"/>
+        <rect x="3" y="45.5" width="94" height="9" fill="#12151f"/>
+        <circle cx="50" cy="50" r="15" fill="#f4f4f4" stroke="#12151f" stroke-width="5"/>
+        <circle cx="50" cy="50" r="6.5" fill="#f4f4f4" stroke="#12151f" stroke-width="3.5"/>
+      </svg>
+      <span class="brand-name">Pokémon Codenames</span>
     </div>
-    <div class="room-pill hidden" id="room-pill">
-      Room <strong id="room-pill-code">----</strong>
+    <div class="header-right">
+      <button class="btn btn-ghost btn-mini hidden" id="refresh-btn">↻ Refresh</button>
+      <div class="room-pill hidden" id="room-pill">
+        Room <strong id="room-pill-code">----</strong>
+      </div>
     </div>
   </header>
 
@@ -32,8 +43,8 @@
   <section class="screen active" id="screen-landing">
     <div class="hero">
       <div class="hero-eyebrow">Identify. Deduce. Don't touch the assassin.</div>
-      <h1>A field guide to your friends' terrible clues</h1>
-      <p>Two teams, one Pokedex-flavored board. Spymasters give one-word clues to guide their operatives to their own Pokemon — without landing on the other team's, a bystander, or the assassin.</p>
+      <h1>Pokémon Codenames</h1>
+      <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon — without landing on the other team's, a bystander, or the assassin.</p>
     </div>
 
     <div class="panel-grid">
@@ -57,6 +68,10 @@
               <input type="radio" name="mode" value="in_person" />
               In person
             </label>
+            <label class="radio-chip" data-role="mode">
+              <input type="radio" name="mode" value="two_player" />
+              2 players
+            </label>
           </div>
         </div>
 
@@ -76,9 +91,17 @@
         </div>
 
         <div class="field toggle-row">
-          <span class="field-label">Well-known Pokemon only</span>
+          <span class="field-label">Well-known Pokémon only</span>
           <label class="switch">
             <input type="checkbox" id="well-known-toggle" />
+            <span class="track"></span>
+          </label>
+        </div>
+
+        <div class="field toggle-row">
+          <span class="field-label">Show Pokémon images on tiles</span>
+          <label class="switch">
+            <input type="checkbox" id="show-images-toggle" checked />
             <span class="track"></span>
           </label>
         </div>
@@ -124,12 +147,16 @@
         </div>
       </div>
 
+      <div class="lobby-info hidden" id="lobby-info"></div>
+
+      <div class="board lobby-board" id="lobby-board"></div>
+
       <div class="teams-grid">
-        <div class="team-col team-red">
-          <h3>Red team</h3>
+        <div class="team-col team-red" id="lobby-red-col">
+          <h3 id="lobby-red-title">Red team</h3>
           <div id="team-red-list"></div>
         </div>
-        <div class="team-col team-blue">
+        <div class="team-col team-blue" id="lobby-blue-col">
           <h3>Blue team</h3>
           <div id="team-blue-list"></div>
         </div>
@@ -139,8 +166,8 @@
 
       <div class="host-panel hidden" id="host-panel">
         <h3>Host controls</h3>
-        <button class="btn btn-primary" id="start-game-btn" disabled>Deal the board</button>
-        <div class="waiting-inline" id="start-game-hint">Each team needs a spymaster before you can start.</div>
+        <button class="btn btn-primary" id="start-game-btn" disabled>Start game</button>
+        <div class="waiting-inline" id="start-game-hint">Each team needs a clue giver before you can start.</div>
       </div>
 
     </div>
@@ -181,7 +208,8 @@
 
       <div class="tile-count-row">
         <span>Red left: <strong class="count-red" id="count-red">—</strong></span>
-        <span>Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
+        <span id="count-blue-wrap">Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
+        <span id="round-wrap" class="hidden">Round: <strong id="round-count">0</strong></span>
       </div>
 
       <div class="board" id="board"></div>

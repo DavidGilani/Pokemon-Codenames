@@ -102,24 +102,27 @@ a { color: var(--accent); }
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
 }
 
-.brand-mark {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--bg);
-  background: var(--accent);
-  padding: 2px 6px;
-  border-radius: 4px;
-  letter-spacing: 0.05em;
+.brand-ball {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
 }
 
 .brand-name {
   font-family: var(--font-display);
   font-size: 18px;
   letter-spacing: -0.02em;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .room-pill {
@@ -259,7 +262,8 @@ a { color: var(--accent); }
   letter-spacing: 0.03em;
 }
 
-.field input[type="text"] {
+.field input[type="text"],
+.field input[type="number"] {
   width: 100%;
   background: var(--bg-grid);
   border: 1px solid var(--panel-border);
@@ -269,7 +273,8 @@ a { color: var(--accent); }
   font-size: 14px;
 }
 
-.field input[type="text"]:focus { border-color: var(--accent); }
+.field input[type="text"]:focus,
+.field input[type="number"]:focus { border-color: var(--accent); }
 
 .field input.code-input {
   font-family: var(--font-mono);
@@ -282,10 +287,11 @@ a { color: var(--accent); }
 .radio-row {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .radio-chip {
-  flex: 1;
+  flex: 1 1 90px;
   text-align: center;
   padding: 9px 8px;
   border: 1px solid var(--panel-border);
@@ -410,6 +416,8 @@ a { color: var(--accent); }
 
 .btn-ghost:hover { border-color: var(--text-dim); color: var(--text); }
 
+.btn-mini { padding: 6px 10px; font-size: 12px; }
+
 .btn-red { background: var(--red); color: #fff; }
 .btn-blue { background: var(--blue); color: #fff; }
 
@@ -468,6 +476,19 @@ a { color: var(--accent); }
   letter-spacing: 0.15em;
   color: var(--accent);
 }
+
+.lobby-info {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.lobby-info strong { color: var(--text); }
 
 .teams-grid {
   display: grid;
@@ -653,13 +674,14 @@ a { color: var(--accent); }
   gap: 8px;
 }
 
+.lobby-board { opacity: 0.98; }
+
 @media (max-width: 560px) {
   .board { gap: 5px; }
 }
 
 .tile {
   position: relative;
-  aspect-ratio: 2 / 3;
   background: var(--panel-2);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius-sm);
@@ -677,8 +699,11 @@ a { color: var(--accent); }
 
 .tile.locked { cursor: default; }
 
+/* Compact, fixed-height image area so all five rows fit on a desktop screen.
+   Mobile keeps a slightly taller image; desktop is shorter. */
 .tile .tile-img-wrap {
-  flex: 1;
+  flex: none;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -686,11 +711,24 @@ a { color: var(--accent); }
   padding: 4px;
 }
 
+@media (min-width: 561px) {
+  .tile .tile-img-wrap { height: 66px; }
+}
+
 .tile img {
   max-width: 100%;
   max-height: 100%;
   image-rendering: pixelated;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Names-only mode: hide the image area and let the name fill a short tile. */
+.board.no-images .tile-img-wrap { display: none; }
+.board.no-images .tile { min-height: 46px; justify-content: center; }
+.board.no-images .tile-name {
+  white-space: normal;
+  font-size: 11px;
+  padding: 10px 4px;
 }
 
 .tile .tile-name {
@@ -769,6 +807,7 @@ a { color: var(--accent); }
 
 .tile-count-row .count-red { color: var(--red); }
 .tile-count-row .count-blue { color: var(--blue); }
+.tile-count-row #round-count { color: var(--accent); }
 
 .game-actions {
   display: flex;
