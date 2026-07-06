@@ -721,7 +721,7 @@ function renderGame(changedPosition) {
   const clueReadout = $("#clue-readout");
   if (room.current_clue) {
     clueReadout.classList.remove("hidden");
-    $("#clue-word-value").textContent = room.current_clue.word;
+    $("#clue-word-value").textContent = `${room.current_clue.word}, ${room.current_clue.number}`;
     $("#clue-count-value").textContent = `${room.guesses_remaining} guess${
       room.guesses_remaining === 1 ? "" : "es"
     } left`;

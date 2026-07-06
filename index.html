@@ -42,7 +42,6 @@
        ================================================================== -->
   <section class="screen active" id="screen-landing">
     <div class="hero">
-      <div class="hero-eyebrow">Identify. Deduce. Don't touch the assassin.</div>
       <h1>Pokémon Codenames</h1>
       <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon — without landing on the other team's, a bystander, or the assassin.</p>
     </div>
@@ -210,6 +209,13 @@
         <span>Red left: <strong class="count-red" id="count-red">—</strong></span>
         <span id="count-blue-wrap">Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
         <span id="round-wrap" class="hidden">Round: <strong id="round-count">0</strong></span>
+      </div>
+
+      <div class="board-legend">
+        <span><i class="lk lk-red"></i>Red team</span>
+        <span><i class="lk lk-blue"></i>Blue team</span>
+        <span><i class="lk lk-neutral"></i>Bystander</span>
+        <span><i class="lk lk-assassin"></i>Assassin</span>
       </div>
 
       <div class="board" id="board"></div>
