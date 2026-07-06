@@ -100,6 +100,8 @@ function clearSession() {
     state.channel = null;
   }
   setRoomPill(null);
+  const overlay = document.getElementById("win-overlay");
+  if (overlay) overlay.classList.add("hidden");
 }
 
 // ----------------------------------------------------------------------------
@@ -459,7 +461,7 @@ function makeTile(card, { interactive, changedPosition }) {
 
   tile.innerHTML = `
     ${badgeHtml}
-    <div class="tile-img-wrap"><img src="${card.sprite_url}" alt="${escapeHtml(card.name)}" loading="lazy" /></div>
+    <div class="tile-img-wrap"><img src="${card.sprite_url}" alt="${escapeHtml(card.name)}" decoding="async" /></div>
     <div class="tile-name">${escapeHtml(card.name)}</div>
   `;
 
@@ -470,8 +472,22 @@ function makeTile(card, { interactive, changedPosition }) {
 }
 
 function renderBoardInto(el, opts) {
-  el.innerHTML = "";
   const showImages = state.room?.settings?.show_images !== false;
+  const clickable = opts.interactive && canReveal();
+  const sig =
+    state.cards
+      .map((c) => {
+        const peek = !c.revealed && state.cardKey ? state.cardKey[c.position] : "";
+        return `${c.position}:${c.revealed ? c.revealed_colour : "?"}:${peek}`;
+      })
+      .join(",") + `|${showImages ? "img" : "noimg"}|${clickable ? "click" : "lock"}`;
+
+  // If nothing that affects the board has changed, leave the existing tiles
+  // (and their already-loaded images) untouched instead of rebuilding.
+  if (el.dataset.sig === sig) return;
+  el.dataset.sig = sig;
+
+  el.innerHTML = "";
   el.classList.toggle("no-images", !showImages);
   state.cards.forEach((card) => el.appendChild(makeTile(card, opts)));
 }
@@ -754,6 +770,10 @@ function renderGame(changedPosition) {
 
   // End turn button
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
+
+  // Colour key — only the clue giver needs it
+  const legend = $(".board-legend");
+  if (legend) legend.classList.toggle("hidden", !(state.me && state.me.role === "spymaster"));
 
   // Board
   renderBoardInto($("#board"), { interactive: true, changedPosition });
