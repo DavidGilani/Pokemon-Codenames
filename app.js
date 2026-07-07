@@ -34,6 +34,23 @@ const state = {
 
 let lastSignature = null;   // used by the poll to avoid needless re-renders
 let statsRequested = false; // record the two-player result only once
+let serverOffsetMs = 0;     // (server clock) - (this device's clock)
+
+// Measure the gap between the Supabase server clock and this device's clock so
+// every device shows the same elapsed time no matter how wrong its own clock is.
+async function syncServerClock() {
+  try {
+    const { data, error } = await sb.rpc("server_now");
+    if (error) throw error;
+    serverOffsetMs = new Date(data).getTime() - Date.now();
+  } catch (err) {
+    serverOffsetMs = 0;
+  }
+}
+
+function serverNow() {
+  return Date.now() + serverOffsetMs;
+}
 
 // ----------------------------------------------------------------------------
 // Small DOM helpers
@@ -467,7 +484,7 @@ function renderBoardInto(el, opts) {
     state.cards
       .map((c) => {
         const peek = !c.revealed && state.cardKey ? state.cardKey[c.position] : "";
-        return `${c.position}:${c.revealed ? c.revealed_colour : "?"}:${peek}`;
+        return `${c.position}:${c.pokemon_id}:${c.revealed ? c.revealed_colour : "?"}:${peek}`;
       })
       .join(",") + `|${showImages ? "img" : "noimg"}|${clickable ? "click" : "lock"}`;
 
@@ -865,15 +882,15 @@ function renderTimer() {
 
   if (room.status === "in_progress") {
     if (room.mode === "two_player") {
-      const start = room.started_at ? new Date(room.started_at).getTime() : Date.now();
-      el.textContent = `Total time: ${formatDuration(Date.now() - start)}`;
+      const start = room.started_at ? new Date(room.started_at).getTime() : serverNow();
+      el.textContent = `Total time: ${formatDuration(serverNow() - start)}`;
     } else {
-      const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : Date.now();
-      el.textContent = `This turn: ${formatDuration(Date.now() - start)}`;
+      const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : serverNow();
+      el.textContent = `This turn: ${formatDuration(serverNow() - start)}`;
     }
   } else if (room.status === "finished" && room.mode === "two_player") {
     const start = room.started_at ? new Date(room.started_at).getTime() : 0;
-    const end = room.finished_at ? new Date(room.finished_at).getTime() : Date.now();
+    const end = room.finished_at ? new Date(room.finished_at).getTime() : serverNow();
     el.textContent = `Total time: ${formatDuration(end - start)}`;
   } else {
     el.textContent = "";
@@ -1007,6 +1024,7 @@ async function boot() {
 
   await ensureAuth();
   await syncRealtimeAuth();
+  await syncServerClock();
   sb.auth.onAuthStateChange(() => syncRealtimeAuth());
 
   // Self-healing: on focus/visibility, on a steady background interval, and a
