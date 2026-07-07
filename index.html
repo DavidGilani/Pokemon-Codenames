@@ -156,7 +156,7 @@
           <div id="team-red-list"></div>
         </div>
         <div class="team-col team-blue" id="lobby-blue-col">
-          <h3>Blue team</h3>
+          <h3 id="lobby-blue-title">Blue team</h3>
           <div id="team-blue-list"></div>
         </div>
       </div>
@@ -184,6 +184,7 @@
         <div>
           <div class="turn-label">Current turn</div>
           <div class="turn-value" id="turn-team-value">—</div>
+          <div class="turn-timer" id="turn-timer"></div>
         </div>
         <div class="clue-readout hidden" id="clue-readout">
           <div class="clue-word" id="clue-word-value"></div>
@@ -206,19 +207,24 @@
       <div class="waiting-inline hidden" id="waiting-for-clue"></div>
 
       <div class="tile-count-row">
-        <span>Red left: <strong class="count-red" id="count-red">—</strong></span>
+        <span id="count-red-wrap">Red left: <strong class="count-red" id="count-red">—</strong></span>
         <span id="count-blue-wrap">Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
         <span id="round-wrap" class="hidden">Round: <strong id="round-count">0</strong></span>
       </div>
 
-      <div class="board-legend">
-        <span><i class="lk lk-red"></i>Red team</span>
-        <span><i class="lk lk-blue"></i>Blue team</span>
+      <div class="board-legend hidden" id="board-legend">
+        <span id="legend-red"><i class="lk lk-red"></i>Red team</span>
+        <span id="legend-blue"><i class="lk lk-blue"></i>Blue team</span>
         <span><i class="lk lk-neutral"></i>Bystander</span>
         <span><i class="lk lk-assassin"></i>Assassin</span>
       </div>
 
       <div class="board" id="board"></div>
+
+      <div class="clue-log hidden" id="clue-log">
+        <div class="clue-log-title">Clue log</div>
+        <div id="clue-log-list"></div>
+      </div>
 
       <div class="game-actions">
         <button class="btn btn-ghost" id="leave-game-btn">Leave game</button>
@@ -232,6 +238,7 @@
     <div class="win-card" id="win-card">
       <div class="win-label">Game over</div>
       <h2 id="win-title">— TEAM WINS</h2>
+      <div class="win-subtitle" id="win-subtitle"></div>
       <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
     </div>
   </div>

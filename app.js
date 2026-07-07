@@ -12,6 +12,10 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const STORAGE_KEY = "pc_session";
 const POLL_MS = 2500; // background self-heal poll interval
 
+// Reliable CDN for Pokemon artwork (jsDelivr mirror of the PokeAPI sprites).
+const ART_BASE = "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon/other/official-artwork";
+const SPRITE_BASE = "https://cdn.jsdelivr.net/gh/PokeAPI/sprites@master/sprites/pokemon";
+
 // ----------------------------------------------------------------------------
 // App state
 // ----------------------------------------------------------------------------
@@ -28,7 +32,8 @@ const state = {
   me: null, // players row for the current user
 };
 
-let lastSignature = null; // used by the poll to avoid needless re-renders
+let lastSignature = null;   // used by the poll to avoid needless re-renders
+let statsRequested = false; // record the two-player result only once
 
 // ----------------------------------------------------------------------------
 // Small DOM helpers
@@ -69,11 +74,7 @@ function setRoomPill(code) {
 function saveSession() {
   localStorage.setItem(
     STORAGE_KEY,
-    JSON.stringify({
-      roomId: state.roomId,
-      playerId: state.playerId,
-      nickname: state.nickname,
-    })
+    JSON.stringify({ roomId: state.roomId, playerId: state.playerId, nickname: state.nickname })
   );
 }
 
@@ -95,6 +96,7 @@ function clearSession() {
   state.cardKey = null;
   state.me = null;
   lastSignature = null;
+  statsRequested = false;
   if (state.channel) {
     sb.removeChannel(state.channel);
     state.channel = null;
@@ -122,10 +124,9 @@ async function ensureAuth() {
   state.user = signInData.user;
 }
 
-// Push the current auth token onto the realtime socket. This is essential:
-// our tables are protected by row-level security scoped to authenticated
-// users, so if the realtime connection isn't carrying the token, live
-// database-change events get filtered out and never arrive.
+// Push the current auth token onto the realtime socket. Essential: our tables
+// use row-level security scoped to authenticated users, so without the token
+// live database-change events get filtered out and never arrive.
 async function syncRealtimeAuth() {
   const { data } = await sb.auth.getSession();
   if (data.session?.access_token) {
@@ -157,9 +158,7 @@ function initLandingScreen() {
 
   const params = new URLSearchParams(window.location.search);
   const codeParam = params.get("code");
-  if (codeParam) {
-    $("#join-code").value = codeParam.toUpperCase();
-  }
+  if (codeParam) $("#join-code").value = codeParam.toUpperCase();
 }
 
 function collectSettings() {
@@ -222,10 +221,7 @@ async function handleJoinRoom(e) {
   btn.disabled = true;
   try {
     await ensureAuth();
-    const { data, error } = await sb.rpc("join_room", {
-      p_code: code,
-      p_nickname: nickname,
-    });
+    const { data, error } = await sb.rpc("join_room", { p_code: code, p_nickname: nickname });
     if (error) throw error;
     const row = data[0];
     state.nickname = nickname;
@@ -246,20 +242,13 @@ async function handleJoinRoom(e) {
 // ============================================================================
 
 async function fetchRoom() {
-  const { data, error } = await sb
-    .from("rooms")
-    .select("*")
-    .eq("id", state.roomId)
-    .single();
+  const { data, error } = await sb.from("rooms").select("*").eq("id", state.roomId).single();
   if (error) throw error;
   state.room = data;
 }
 
 async function fetchPlayers() {
-  const { data, error } = await sb
-    .from("players")
-    .select("*")
-    .eq("room_id", state.roomId);
+  const { data, error } = await sb.from("players").select("*").eq("room_id", state.roomId);
   if (error) throw error;
   state.players = data || [];
   state.me = state.players.find((p) => p.id === state.playerId) || null;
@@ -278,22 +267,22 @@ async function fetchCards() {
 async function fetchCardKeyIfSpymaster() {
   state.cardKey = null;
   if (!state.me || state.me.role !== "spymaster") return;
-  const { data, error } = await sb
-    .from("card_key")
-    .select("*")
-    .eq("room_id", state.roomId);
+  const { data, error } = await sb.from("card_key").select("*").eq("room_id", state.roomId);
   if (error) return; // RLS may not allow it yet — fine
   const map = {};
   (data || []).forEach((row) => (map[row.position] = row.colour));
   state.cardKey = map;
 }
 
-// A cheap fingerprint of everything that affects the display. The poll uses
-// it to decide whether anything actually changed since the last render.
+// A cheap fingerprint of everything that affects the display.
 function computeStateSignature() {
   const r = state.room;
   const roomSig = r
-    ? [r.status, r.mode, r.current_team, r.winner, r.guesses_remaining, r.clue_count, JSON.stringify(r.current_clue)].join("|")
+    ? [
+        r.status, r.mode, r.current_team, r.winner, r.guesses_remaining,
+        r.clue_count, JSON.stringify(r.current_clue),
+        Array.isArray(r.clue_log) ? r.clue_log.length : 0,
+      ].join("|")
     : "no-room";
   const playersSig = state.players
     .map((p) => `${p.id}:${p.team}:${p.role}:${p.nickname}`)
@@ -359,8 +348,8 @@ function subscribeToRoom() {
     });
 }
 
-// Re-fetch everything and re-render. Used after our own actions (instant
-// local feedback), on reconnect, on tab focus, and by the manual refresh.
+// Re-fetch everything and re-render. Used after our own actions (instant local
+// feedback), on reconnect, on tab focus, and by the manual refresh.
 async function resyncRoom() {
   if (!state.roomId) return;
   try {
@@ -375,8 +364,7 @@ async function resyncRoom() {
 }
 
 // Background safety net: every couple of seconds, quietly pull state and
-// re-render only if something changed. This guarantees every device converges
-// within POLL_MS even if a live event is ever missed.
+// re-render only if something changed.
 async function pollTick() {
   if (!state.roomId || document.hidden) return;
   try {
@@ -384,11 +372,9 @@ async function pollTick() {
     await fetchPlayers();
     await fetchCards();
     await fetchCardKeyIfSpymaster();
-    if (computeStateSignature() !== lastSignature) {
-      await render();
-    }
+    if (computeStateSignature() !== lastSignature) await render();
   } catch (err) {
-    /* transient — the next tick will retry */
+    /* transient — next tick retries */
   }
 }
 
@@ -459,15 +445,18 @@ function makeTile(card, { interactive, changedPosition }) {
   const peekLabel = { red: "R", blue: "B", neutral: "N", assassin: "A" };
   const badgeHtml = peekColour ? `<div class="peek-badge">${peekLabel[peekColour]}</div>` : "";
 
+  // Reliable artwork via jsDelivr, with a fallback to the smaller default
+  // sprite if the artwork PNG is ever missing, so tiles never stay blank.
+  const artUrl = `${ART_BASE}/${card.pokemon_id}.png`;
+  const fallbackUrl = `${SPRITE_BASE}/${card.pokemon_id}.png`;
+
   tile.innerHTML = `
     ${badgeHtml}
-    <div class="tile-img-wrap"><img src="${card.sprite_url}" alt="${escapeHtml(card.name)}" decoding="async" /></div>
+    <div class="tile-img-wrap"><img src="${artUrl}" alt="${escapeHtml(card.name)}" decoding="async" onerror="this.onerror=null;this.src='${fallbackUrl}'" /></div>
     <div class="tile-name">${escapeHtml(card.name)}</div>
   `;
 
-  if (allowClick) {
-    tile.addEventListener("click", () => handleRevealCard(card.position));
-  }
+  if (allowClick) tile.addEventListener("click", () => handleRevealCard(card.position));
   return tile;
 }
 
@@ -543,9 +532,14 @@ function renderTeamColumn(team) {
 }
 
 function playerChipHtml(p) {
-  return `<div class="player-chip"><span>${escapeHtml(p.nickname)}</span>${
+  const canRemove =
+    state.me && state.me.is_host && state.room && state.room.status === "lobby" && p.team;
+  const removeBtn = canRemove
+    ? `<button class="remove-seat" data-remove="${p.id}" title="Remove from role">×</button>`
+    : "";
+  return `<div class="player-chip"><span>${escapeHtml(p.nickname)}</span><span class="chip-right">${
     p.is_host ? `<span class="host-badge">HOST</span>` : ""
-  }</div>`;
+  }${removeBtn}</span></div>`;
 }
 
 function renderLobby() {
@@ -570,14 +564,18 @@ function renderLobby() {
   renderBoardInto($("#lobby-board"), { interactive: false });
 
   // Team columns
+  const redCol = $("#lobby-red-col");
   const blueCol = $("#lobby-blue-col");
   if (is2p) {
-    blueCol.classList.add("hidden");
-    $("#lobby-red-title").textContent = "Players";
-    renderTeamColumn("red");
+    redCol.classList.add("hidden");
+    blueCol.classList.remove("hidden");
+    $("#lobby-blue-title").textContent = "Players";
+    renderTeamColumn("blue");
   } else {
+    redCol.classList.remove("hidden");
     blueCol.classList.remove("hidden");
     $("#lobby-red-title").textContent = "Red team";
+    $("#lobby-blue-title").textContent = "Blue team";
     renderTeamColumn("red");
     renderTeamColumn("blue");
   }
@@ -594,8 +592,8 @@ function renderLobby() {
     seatArea.innerHTML = `
       <div class="team-col">
         <div class="seat-btns">
-          <button class="btn btn-ghost" data-action="claim" data-team="red" data-role="spymaster">Be clue giver</button>
-          <button class="btn btn-ghost" data-action="claim" data-team="red" data-role="operative">Be clue receiver</button>
+          <button class="btn btn-ghost" data-action="claim" data-team="blue" data-role="spymaster">Be clue giver</button>
+          <button class="btn btn-ghost" data-action="claim" data-team="blue" data-role="operative">Be clue receiver</button>
         </div>
       </div>`;
   } else {
@@ -609,6 +607,11 @@ function renderLobby() {
     btn.addEventListener("click", () => handleClaimSeat(btn.dataset.team, btn.dataset.role));
   });
 
+  // Host remove-seat controls (× on player chips)
+  $all("[data-remove]").forEach((btn) => {
+    btn.addEventListener("click", () => handleClearSeat(btn.dataset.remove));
+  });
+
   // Host controls
   const hostPanel = $("#host-panel");
   const isHost = state.me && state.me.is_host;
@@ -616,7 +619,7 @@ function renderLobby() {
   if (isHost) {
     let ready, hint;
     if (is2p) {
-      const hasGiver = state.players.some((p) => p.role === "spymaster");
+      const hasGiver = state.players.some((p) => p.role === "spymaster" && p.team);
       const hasReceiver = state.players.some((p) => p.role === "operative" && p.team);
       ready = hasGiver && hasReceiver;
       hint = ready ? "Ready to start." : "Need a clue giver and a clue receiver.";
@@ -645,6 +648,20 @@ async function handleClaimSeat(team, role) {
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't claim that seat.");
+  }
+}
+
+async function handleClearSeat(targetPlayerId) {
+  try {
+    const { error } = await sb.rpc("clear_seat", {
+      p_room_id: state.roomId,
+      p_target_player_id: targetPlayerId,
+    });
+    if (error) throw error;
+    await resyncRoom();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || "Couldn't clear that seat.");
   }
 }
 
@@ -679,16 +696,11 @@ function initGameScreen() {
   });
 }
 
-function otherTeam(team) {
-  return team === "red" ? "blue" : "red";
-}
-
 function canReveal() {
   const room = state.room;
   const me = state.me;
   if (!room || !me) return false;
-  if (room.status !== "in_progress") return false;
-  if (!room.current_clue) return false;
+  if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "online" || room.mode === "two_player") {
     return me.team === room.current_team && me.role === "operative";
   }
@@ -724,16 +736,17 @@ function renderGame(changedPosition) {
   banner.classList.remove("team-red", "team-blue");
   if (room.status === "in_progress") {
     banner.classList.add(`team-${room.current_team}`);
-    if (is2p) {
-      $("#turn-team-value").textContent = room.current_clue ? "GUESSING" : "CLUE GIVER'S TURN";
-    } else {
-      $("#turn-team-value").textContent = `${room.current_team.toUpperCase()} TEAM'S TURN`;
-    }
+    $("#turn-team-value").textContent = is2p
+      ? room.current_clue ? "GUESSING" : "CLUE GIVER'S TURN"
+      : `${room.current_team.toUpperCase()} TEAM'S TURN`;
   } else {
     $("#turn-team-value").textContent = room.status === "finished" ? "Game over" : "—";
   }
 
-  // Clue readout
+  // Timer
+  renderTimer();
+
+  // Clue readout (word + number)
   const clueReadout = $("#clue-readout");
   if (room.current_clue) {
     clueReadout.classList.remove("hidden");
@@ -745,14 +758,18 @@ function renderGame(changedPosition) {
     clueReadout.classList.add("hidden");
   }
 
-  // Clue giver banner
+  // Clue giver banner + colour key (givers only)
   const spyBanner = $("#spy-banner");
-  if (state.me && state.me.role === "spymaster") {
+  const isGiver = state.me && state.me.role === "spymaster";
+  if (isGiver) {
     spyBanner.classList.remove("hidden");
     spyBanner.textContent = "Clue giver view — only you can see the key";
   } else {
     spyBanner.classList.add("hidden");
   }
+  const legend = $("#board-legend");
+  legend.classList.toggle("hidden", !isGiver);
+  $("#legend-red").classList.toggle("hidden", is2p); // no red team in two-player
 
   // Clue form
   $("#clue-form").classList.toggle("hidden", !canGiveClue());
@@ -771,24 +788,26 @@ function renderGame(changedPosition) {
   // End turn button
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
 
-  // Colour key — only the clue giver needs it
-  const legend = $(".board-legend");
-  if (legend) legend.classList.toggle("hidden", !(state.me && state.me.role === "spymaster"));
-
   // Board
   renderBoardInto($("#board"), { interactive: true, changedPosition });
 
+  // Clue log
+  renderClueLog(room);
+
   // Counts / rounds
   const redLeft = countRemaining(room, "red");
-  $("#count-red").textContent = redLeft === null ? "—" : redLeft;
+  const blueLeft = countRemaining(room, "blue");
   if (is2p) {
-    $("#count-blue-wrap").classList.add("hidden");
+    $("#count-red-wrap").classList.add("hidden");
+    $("#count-blue-wrap").classList.remove("hidden");
+    $("#count-blue").textContent = blueLeft === null ? "—" : blueLeft;
     $("#round-wrap").classList.remove("hidden");
     $("#round-count").textContent = room.clue_count ?? 0;
   } else {
+    $("#count-red-wrap").classList.remove("hidden");
     $("#count-blue-wrap").classList.remove("hidden");
     $("#round-wrap").classList.add("hidden");
-    const blueLeft = countRemaining(room, "blue");
+    $("#count-red").textContent = redLeft === null ? "—" : redLeft;
     $("#count-blue").textContent = blueLeft === null ? "—" : blueLeft;
   }
 
@@ -799,15 +818,23 @@ function renderGame(changedPosition) {
     const card = $("#win-card");
     card.classList.remove("win-red", "win-blue");
     if (is2p) {
-      if (room.winner === "red") {
-        card.classList.add("win-red");
-        $("#win-title").textContent = `Cleared in ${room.clue_count} round${room.clue_count === 1 ? "" : "s"}!`;
+      if (room.winner === "blue") {
+        card.classList.add("win-blue");
+        $("#win-title").textContent = `Cleared in ${room.clue_count} round${
+          room.clue_count === 1 ? "" : "s"
+        }!`;
+        if (!statsRequested) {
+          $("#win-subtitle").textContent = twoPlayerMessage(room.clue_count);
+          fetchTwoPlayerStats(room.clue_count);
+        }
       } else {
         $("#win-title").textContent = "You hit the assassin!";
+        $("#win-subtitle").textContent = "The assassin got you — better luck next time.";
       }
     } else {
       card.classList.add(`win-${room.winner}`);
       $("#win-title").textContent = `${(room.winner || "").toUpperCase()} TEAM WINS`;
+      $("#win-subtitle").textContent = "";
     }
   } else {
     winOverlay.classList.add("hidden");
@@ -817,12 +844,98 @@ function renderGame(changedPosition) {
 function countRemaining(room, team) {
   if (!room.starting_team) return null;
   const total = team === room.starting_team ? 9 : 8;
-  const revealed = state.cards.filter(
-    (c) => c.revealed && c.revealed_colour === team
-  ).length;
+  const revealed = state.cards.filter((c) => c.revealed && c.revealed_colour === team).length;
   return total - revealed;
 }
 
+// ----------------------------------------------------------------------------
+// Timer
+// ----------------------------------------------------------------------------
+function formatDuration(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const m = Math.floor(s / 60);
+  const ss = s % 60;
+  return `${m}:${String(ss).padStart(2, "0")}`;
+}
+
+function renderTimer() {
+  const el = $("#turn-timer");
+  const room = state.room;
+  if (!el || !room) return;
+
+  if (room.status === "in_progress") {
+    if (room.mode === "two_player") {
+      const start = room.started_at ? new Date(room.started_at).getTime() : Date.now();
+      el.textContent = `Total time: ${formatDuration(Date.now() - start)}`;
+    } else {
+      const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : Date.now();
+      el.textContent = `This turn: ${formatDuration(Date.now() - start)}`;
+    }
+  } else if (room.status === "finished" && room.mode === "two_player") {
+    const start = room.started_at ? new Date(room.started_at).getTime() : 0;
+    const end = room.finished_at ? new Date(room.finished_at).getTime() : Date.now();
+    el.textContent = `Total time: ${formatDuration(end - start)}`;
+  } else {
+    el.textContent = "";
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Clue log
+// ----------------------------------------------------------------------------
+function renderClueLog(room) {
+  const panel = $("#clue-log");
+  const list = $("#clue-log-list");
+  const log = Array.isArray(room.clue_log) ? room.clue_log : [];
+  if (log.length === 0) {
+    panel.classList.add("hidden");
+    return;
+  }
+  panel.classList.remove("hidden");
+  list.innerHTML = log
+    .map((c) => {
+      const teamClass = c.team === "red" ? "cl-red" : "cl-blue";
+      return `<div class="clue-log-row"><span class="cl-dot ${teamClass}"></span><span class="cl-word">${escapeHtml(
+        c.word
+      )}</span><span class="cl-num">${c.number}</span></div>`;
+    })
+    .join("");
+}
+
+// ----------------------------------------------------------------------------
+// Two-player result messages + stats
+// ----------------------------------------------------------------------------
+function twoPlayerMessage(turns) {
+  if (turns <= 1) return "*Pikachu surprised face*";
+  if (turns === 2) return "Okay... that's ridiculous! You've played this game too much";
+  if (turns === 3) return "Amazing! How did you manage that!?";
+  if (turns === 4) return "Wow! Now that's some impressive team chemistry!";
+  if (turns === 5) return "Nice play! That's a solid score";
+  if (turns === 6) return "Okay, that's not too bad";
+  return "You can do better than that.";
+}
+
+async function fetchTwoPlayerStats() {
+  if (statsRequested) return;
+  statsRequested = true;
+  try {
+    const { data, error } = await sb.rpc("record_two_player_result", { p_room_id: state.roomId });
+    if (error) throw error;
+    const row = data[0];
+    const msg = twoPlayerMessage(row.your_turns);
+    const statLine =
+      row.total_games > 1
+        ? `<br>You finished faster than ${row.faster_pct}% of players.`
+        : `<br>You're the first to finish — a record to beat!`;
+    $("#win-subtitle").innerHTML = `${escapeHtml(msg)}${statLine}`;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Game actions
+// ----------------------------------------------------------------------------
 async function handleSubmitClue(e) {
   e.preventDefault();
   const word = $("#clue-word").value.trim();
@@ -850,10 +963,7 @@ async function handleSubmitClue(e) {
 
 async function handleRevealCard(position) {
   try {
-    const { error } = await sb.rpc("reveal_card", {
-      p_room_id: state.roomId,
-      p_position: position,
-    });
+    const { error } = await sb.rpc("reveal_card", { p_room_id: state.roomId, p_position: position });
     if (error) throw error;
     await resyncRoom();
   } catch (err) {
@@ -899,12 +1009,16 @@ async function boot() {
   await syncRealtimeAuth();
   sb.auth.onAuthStateChange(() => syncRealtimeAuth());
 
-  // Self-healing: on focus/visibility, and on a steady background interval.
+  // Self-healing: on focus/visibility, on a steady background interval, and a
+  // once-a-second tick just to keep the timer display moving.
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") resyncRoom();
   });
   window.addEventListener("focus", () => resyncRoom());
   setInterval(pollTick, POLL_MS);
+  setInterval(() => {
+    if (state.room && $("#screen-game").classList.contains("active")) renderTimer();
+  }, 1000);
 
   const saved = loadSession();
   if (saved && saved.roomId && saved.playerId) {
