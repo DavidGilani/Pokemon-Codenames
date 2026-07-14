@@ -702,6 +702,7 @@ async function handleStartGame() {
 
 function initGameScreen() {
   $("#clue-form").addEventListener("submit", handleSubmitClue);
+  $("#clue-number").addEventListener("focus", function() { this.select(); });
   $("#end-turn-btn").addEventListener("click", handleEndTurn);
   $("#leave-game-btn").addEventListener("click", () => {
     clearSession();

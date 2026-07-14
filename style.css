@@ -435,7 +435,7 @@ a { color: var(--accent); }
   .tile .tile-img-wrap { height: 60px; }
   .tile .tile-name {
     white-space: normal;
-    font-size: 8.5px;
+    font-size: 7.5px;
     line-height: 1.15;
     letter-spacing: 0;
     padding: 3px 2px 4px;
