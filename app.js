@@ -714,6 +714,10 @@ function initGameScreen() {
   });
 }
 
+function isObserver() {
+  return !!(state.me && !state.me.team && !state.me.role && state.room?.status === "in_progress");
+}
+
 function canReveal() {
   const room = state.room;
   const me = state.me;
@@ -776,15 +780,14 @@ function renderGame(changedPosition) {
     clueReadout.classList.add("hidden");
   }
 
-  // Clue giver banner + colour key (givers only)
+  // Observer / spy banners (mutually exclusive)
   const spyBanner = $("#spy-banner");
+  const observerBanner = $("#observer-banner");
   const isGiver = state.me && state.me.role === "spymaster";
-  if (isGiver) {
-    spyBanner.classList.remove("hidden");
-    spyBanner.textContent = "Clue giver view — only you can see the key";
-  } else {
-    spyBanner.classList.add("hidden");
-  }
+  const observer = isObserver();
+  spyBanner.classList.toggle("hidden", !isGiver);
+  observerBanner.classList.toggle("hidden", !observer);
+  if (isGiver) spyBanner.textContent = "Clue giver view — only you can see the key";
   const legend = $("#board-legend");
   legend.classList.toggle("hidden", !isGiver);
   $("#legend-red").classList.toggle("hidden", is2p); // no red team in two-player
@@ -808,6 +811,9 @@ function renderGame(changedPosition) {
 
   // Board
   renderBoardInto($("#board"), { interactive: true, changedPosition });
+
+  // In-game team roster (always visible so players know who's who)
+  renderGameTeams(room);
 
   // Clue log
   renderClueLog(room);
@@ -895,6 +901,37 @@ function renderTimer() {
     el.textContent = `Total time: ${formatDuration(end - start)}`;
   } else {
     el.textContent = "";
+  }
+}
+
+// ----------------------------------------------------------------------------
+// In-game team roster
+// ----------------------------------------------------------------------------
+function renderGameTeams(room) {
+  const el = $("#game-teams");
+  const is2p = room.mode === "two_player";
+
+  const playerRow = (p) => {
+    const roleLabel = p.role === "spymaster" ? "clue giver" : p.role === "operative" ? "receiver" : "";
+    const meTag = p.id === state.playerId ? " (you)" : "";
+    return `<div class="gt-player"><span>${escapeHtml(p.nickname)}${escapeHtml(meTag)}</span>${
+      roleLabel ? `<span class="gt-role">${roleLabel}</span>` : ""
+    }</div>`;
+  };
+
+  if (is2p) {
+    const bluePlayers = state.players.filter((p) => p.team === "blue");
+    if (bluePlayers.length === 0) { el.classList.add("hidden"); return; }
+    el.classList.remove("hidden");
+    el.innerHTML = `<div class="gt-col gt-single"><div class="gt-title">Players</div>${bluePlayers.map(playerRow).join("")}</div>`;
+  } else {
+    const red = state.players.filter((p) => p.team === "red");
+    const blue = state.players.filter((p) => p.team === "blue");
+    if (red.length === 0 && blue.length === 0) { el.classList.add("hidden"); return; }
+    el.classList.remove("hidden");
+    el.innerHTML = `
+      <div class="gt-col gt-red"><div class="gt-title">Red team</div>${red.length ? red.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
+      <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>`;
   }
 }
 
