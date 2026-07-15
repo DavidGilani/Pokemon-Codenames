@@ -47,6 +47,24 @@
     </div>
 
     <div class="panel-grid">
+      <form class="dex-card" id="join-room-form">
+        <h2>Join a room</h2>
+        <div class="sub">Got a code from a friend? Enter it below.</div>
+
+        <div class="field">
+          <label for="join-nickname">Your nickname</label>
+          <input type="text" id="join-nickname" maxlength="24" placeholder="e.g. Misty" required />
+        </div>
+
+        <div class="field">
+          <label for="join-code">Room code</label>
+          <input type="text" id="join-code" class="code-input" maxlength="4" placeholder="XXXX" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="join-room-btn">Join room</button>
+        <div class="error-text" id="join-error"></div>
+      </form>
+
       <form class="dex-card" id="create-room-form">
         <h2>Start a room</h2>
         <div class="sub">You'll be the host and pick the settings.</div>
@@ -108,24 +126,6 @@
         <button type="submit" class="btn btn-primary" id="create-room-btn">Create room</button>
         <div class="error-text" id="create-error"></div>
       </form>
-
-      <form class="dex-card" id="join-room-form">
-        <h2>Join a room</h2>
-        <div class="sub">Got a code from a friend? Enter it below.</div>
-
-        <div class="field">
-          <label for="join-nickname">Your nickname</label>
-          <input type="text" id="join-nickname" maxlength="24" placeholder="e.g. Misty" required />
-        </div>
-
-        <div class="field">
-          <label for="join-code">Room code</label>
-          <input type="text" id="join-code" class="code-input" maxlength="4" placeholder="XXXX" required />
-        </div>
-
-        <button type="submit" class="btn btn-primary" id="join-room-btn">Join room</button>
-        <div class="error-text" id="join-error"></div>
-      </form>
     </div>
   </section>
 
@@ -179,6 +179,7 @@
     <div class="game-wrap">
 
       <div class="spy-banner hidden" id="spy-banner"></div>
+      <div class="observer-banner hidden" id="observer-banner">👀 You're watching as an observer — enjoy the game!</div>
 
       <div class="turn-banner" id="turn-banner">
         <div>
@@ -220,6 +221,8 @@
       </div>
 
       <div class="board" id="board"></div>
+
+      <div class="game-teams hidden" id="game-teams"></div>
 
       <div class="clue-log hidden" id="clue-log">
         <div class="clue-log-title">Clue log</div>
