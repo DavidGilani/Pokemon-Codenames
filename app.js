@@ -991,11 +991,28 @@ async function fetchTwoPlayerStats() {
 // ----------------------------------------------------------------------------
 // Game actions
 // ----------------------------------------------------------------------------
+function clueOverlapsPokemon(clue) {
+  const norm = (s) => s.toLowerCase().replace(/[^a-z]/g, "");
+  const clueNorm = norm(clue);
+  if (!clueNorm) return null;
+  for (const card of (state.cards || [])) {
+    const name = norm(card.name);
+    if (!name) continue;
+    if (name.includes(clueNorm) || clueNorm.includes(name)) return card.name;
+  }
+  return null;
+}
+
 async function handleSubmitClue(e) {
   e.preventDefault();
   const word = $("#clue-word").value.trim();
   const number = Number($("#clue-number").value);
   if (!word) return;
+  const overlap = clueOverlapsPokemon(word);
+  if (overlap) {
+    toast(`"${word}" overlaps with "${overlap}" on the board. Pick a different clue.`);
+    return;
+  }
   const btn = $("#submit-clue-btn");
   btn.disabled = true;
   try {
