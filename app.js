@@ -998,7 +998,7 @@ function clueOverlapsPokemon(clue) {
   for (const card of (state.cards || [])) {
     const name = norm(card.name);
     if (!name) continue;
-    if ((name.includes(clueNorm) && clueNorm.length >= 3) || (clueNorm.includes(name) && name.length >= 3)) return card.name;
+    if ((name.includes(clueNorm) && clueNorm.length > 3) || (clueNorm.includes(name) && name.length > 3)) return card.name;
   }
   return null;
 }
