@@ -704,6 +704,8 @@ function initGameScreen() {
   $("#clue-form").addEventListener("submit", handleSubmitClue);
   $("#clue-number").addEventListener("focus", function() { this.select(); });
   $("#end-turn-btn").addEventListener("click", handleEndTurn);
+  $("#share-clue-btn").addEventListener("click", handleShareClue);
+  $("#share-board-btn").addEventListener("click", handleShareBoard);
   $("#leave-game-btn").addEventListener("click", () => {
     clearSession();
     showScreen("landing");
@@ -808,6 +810,13 @@ function renderGame(changedPosition) {
 
   // End turn button
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
+
+  // Share clue — visible to everyone when a clue is active
+  const hasClue = !!(room.status === "in_progress" && room.current_clue);
+  $("#share-clue-row").classList.toggle("hidden", !hasClue);
+
+  // Share board — visible to everyone during the game (not when a clue is active, to avoid confusion)
+  $("#share-board-row").classList.toggle("hidden", !(room.status === "in_progress" && !room.current_clue));
 
   // Board
   renderBoardInto($("#board"), { interactive: true, changedPosition });
@@ -986,6 +995,104 @@ async function fetchTwoPlayerStats() {
   } catch (err) {
     console.error(err);
   }
+}
+
+// ----------------------------------------------------------------------------
+// Share helpers
+// ----------------------------------------------------------------------------
+function roomUrl() {
+  const code = state.room?.code;
+  if (!code) return window.location.href;
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.hash = "";
+  url.searchParams.set("code", code);
+  return url.toString();
+}
+
+async function nativeShare(payload) {
+  if (navigator.share) {
+    try { await navigator.share(payload); return; } catch (_) { /* user cancelled or not supported */ }
+  }
+  // Fallback: copy text to clipboard
+  const text = [payload.title, payload.text, payload.url].filter(Boolean).join("\n");
+  await navigator.clipboard.writeText(text);
+  toast("Copied to clipboard!");
+}
+
+async function handleShareClue() {
+  const clue = state.room?.current_clue;
+  if (!clue) return;
+  const word = clue.word;
+  const number = clue.number;
+  const url = roomUrl();
+  await nativeShare({
+    title: "Pokémon Codenames — clue",
+    text: `Clue: ${word} × ${number}\nYour turn — tap to open the board:`,
+    url,
+  });
+}
+
+function buildBoardImage() {
+  const COLS = 5, ROWS = 5, CELL = 48, GAP = 6, PAD = 10;
+  const W = COLS * CELL + (COLS - 1) * GAP + PAD * 2;
+  const H = ROWS * CELL + (ROWS - 1) * GAP + PAD * 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+
+  const COLOURS = {
+    red: "#e0453c",
+    blue: "#3b82f6",
+    neutral: "#6b7280",
+    assassin: "#1a1a2e",
+    unrevealed: "#2d3148",
+  };
+
+  const sorted = [...state.cards].sort((a, b) => a.position - b.position);
+  sorted.forEach((card, i) => {
+    const col = i % COLS;
+    const row = Math.floor(i / COLS);
+    const x = PAD + col * (CELL + GAP);
+    const y = PAD + row * (CELL + GAP);
+    let colour;
+    if (card.revealed) {
+      colour = COLOURS[card.revealed_colour] ?? COLOURS.neutral;
+    } else {
+      colour = COLOURS.unrevealed;
+    }
+    ctx.fillStyle = colour;
+    ctx.beginPath();
+    ctx.roundRect(x, y, CELL, CELL, 6);
+    ctx.fill();
+  });
+
+  return canvas;
+}
+
+async function handleShareBoard() {
+  const canvas = buildBoardImage();
+  const url = roomUrl();
+  const revealed = state.cards.filter((c) => c.revealed).length;
+  const total = state.cards.length;
+
+  const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
+  const file = new File([blob], "pokemon-codenames-board.png", { type: "image/png" });
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try {
+      await navigator.share({
+        title: "Pokémon Codenames — board update",
+        text: `${revealed}/${total} tiles revealed — your turn:\n${url}`,
+        files: [file],
+      });
+      return;
+    } catch (_) { /* user cancelled or fell through */ }
+  }
+  // Fallback: copy URL to clipboard (image sharing not supported on this browser)
+  await navigator.clipboard.writeText(`Pokémon Codenames — ${revealed}/${total} tiles revealed\n${url}`);
+  toast("Link copied to clipboard!");
 }
 
 // ----------------------------------------------------------------------------

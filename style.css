@@ -565,6 +565,17 @@ a { color: var(--accent); }
 .clue-log-row .cl-word { text-transform: uppercase; letter-spacing: 0.04em; }
 .clue-log-row .cl-num { color: var(--text-faint); }
 
+.share-row { display: flex; justify-content: center; }
+.btn-share {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 22px; border-radius: var(--radius-sm);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer;
+  border: 1.5px solid var(--blue); color: var(--blue); background: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-share:hover { background: var(--blue); color: #fff; }
+
 .game-actions { display: flex; justify-content: center; gap: 10px; }
 
 .spy-banner {
