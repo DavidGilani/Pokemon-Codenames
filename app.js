@@ -1131,7 +1131,7 @@ async function handleShareBoard() {
   const wrong = thisRoundCards.filter((c) => c.revealed_colour !== myTeam).length;
 
   // Remaining team tiles — read from room columns, visible to everyone
-  const remaining = is2p ? room.remaining_red : (myTeam === "red" ? room.remaining_red : room.remaining_blue);
+  const remaining = is2p ? room.remaining_blue : (myTeam === "red" ? room.remaining_red : room.remaining_blue);
 
   const grid = buildEmojiGrid();
 
