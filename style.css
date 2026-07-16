@@ -568,6 +568,7 @@ a { color: var(--accent); }
 .clue-log-row .cl-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
 .clue-log-row .cl-red { background: var(--red); }
 .clue-log-row .cl-blue { background: var(--blue); }
+.clue-log-row .cl-turn { font-size: 11px; color: var(--text-faint); min-width: 46px; }
 .clue-log-row .cl-word { text-transform: uppercase; letter-spacing: 0.04em; }
 .clue-log-row .cl-num { color: var(--text-faint); }
 

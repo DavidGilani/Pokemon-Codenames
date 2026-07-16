@@ -1032,12 +1032,14 @@ function renderClueLog(room) {
     return;
   }
   panel.classList.remove("hidden");
+  const is2p = isTwoPlayer(room);
   list.innerHTML = log
-    .map((c) => {
+    .map((c, i) => {
+      if (is2p) {
+        return `<div class="clue-log-row"><span class="cl-turn">Turn ${i + 1}</span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
+      }
       const teamClass = c.team === "red" ? "cl-red" : "cl-blue";
-      return `<div class="clue-log-row"><span class="cl-dot ${teamClass}"></span><span class="cl-word">${escapeHtml(
-        c.word
-      )}</span><span class="cl-num">${c.number}</span></div>`;
+      return `<div class="clue-log-row"><span class="cl-dot ${teamClass}"></span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
     })
     .join("");
 }
