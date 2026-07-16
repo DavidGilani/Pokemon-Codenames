@@ -315,10 +315,11 @@ async function fetchCards() {
 }
 
 async function fetchCardKeyIfSpymaster() {
-  state.cardKey = null;
-  if (!state.me || state.me.role !== "spymaster") return;
+  const isSpymaster = state.me?.role === "spymaster";
+  const isFinished = state.room?.status === "finished";
+  if (!isSpymaster && !isFinished) { state.cardKey = null; return; }
   const { data, error } = await sb.from("card_key").select("*").eq("room_id", state.roomId);
-  if (error) return; // RLS may not allow it yet — fine
+  if (error) { state.cardKey = null; return; }
   const map = {};
   (data || []).forEach((row) => (map[row.position] = row.colour));
   state.cardKey = map;
@@ -595,7 +596,7 @@ function playerChipHtml(p) {
 function renderLobby() {
   if (!state.room) return;
   const room = state.room;
-  const is2p = room.mode === "two_player";
+  const is2p = isTwoPlayer(room);
   $("#lobby-room-code").textContent = room.code;
 
   // Mode instructions
@@ -747,6 +748,17 @@ function initGameScreen() {
     clearSession();
     showScreen("landing");
   });
+  $("#see-board-btn").addEventListener("click", () => {
+    $("#win-overlay").classList.add("hidden");
+  });
+}
+
+function isTwoPlayer(room) {
+  return room?.mode === "two_player" || room?.mode === "turn_by_turn";
+}
+
+function isAsyncMode(room) {
+  return room?.mode === "turn_by_turn";
 }
 
 function isObserver() {
@@ -758,10 +770,8 @@ function canReveal() {
   const me = state.me;
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
-  if (room.mode === "online" || room.mode === "two_player") {
-    return me.team === room.current_team && me.role === "operative";
-  }
-  return me.is_host || me.team === room.current_team; // in_person
+  if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
+  return me.team === room.current_team && me.role === "operative";
 }
 
 function canPass() {
@@ -769,10 +779,8 @@ function canPass() {
   const me = state.me;
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
-  if (room.mode === "online" || room.mode === "two_player") {
-    return me.team === room.current_team && me.role === "operative";
-  }
-  return me.is_host || me.team === room.current_team; // in_person
+  if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
+  return me.team === room.current_team && me.role === "operative";
 }
 
 function canGiveClue() {
@@ -786,7 +794,15 @@ function canGiveClue() {
 function renderGame(changedPosition) {
   const room = state.room;
   if (!room) return;
-  const is2p = room.mode === "two_player";
+  const is2p = isTwoPlayer(room);
+  const isAsync = isAsyncMode(room);
+
+  // Detect turn ending (clue cleared) to auto-share in async mode
+  const prevClue = state._prevClue;
+  state._prevClue = room.current_clue ?? null;
+  if (prevClue && !room.current_clue && isAsync && state.me?.role === "operative" && room.status === "in_progress") {
+    handleShareBoard();
+  }
 
   // Turn banner
   const banner = $("#turn-banner");
@@ -927,11 +943,22 @@ function countRemaining(room, team) {
 // ----------------------------------------------------------------------------
 // Timer
 // ----------------------------------------------------------------------------
-function formatDuration(ms) {
+function formatDuration(ms, long = false) {
   const s = Math.max(0, Math.floor(ms / 1000));
-  const m = Math.floor(s / 60);
+  if (!long) {
+    const m = Math.floor(s / 60);
+    return `${m}:${String(s % 60).padStart(2, "0")}`;
+  }
+  const d = Math.floor(s / 86400);
+  const h = Math.floor((s % 86400) / 3600);
+  const m = Math.floor((s % 3600) / 60);
   const ss = s % 60;
-  return `${m}:${String(ss).padStart(2, "0")}`;
+  const parts = [];
+  if (d) parts.push(`${d}d`);
+  if (h || d) parts.push(`${h}h`);
+  parts.push(`${m}m`);
+  parts.push(`${String(ss).padStart(2, "0")}s`);
+  return parts.join(" ");
 }
 
 function renderTimer() {
@@ -939,18 +966,21 @@ function renderTimer() {
   const room = state.room;
   if (!el || !room) return;
 
+  const is2p = isTwoPlayer(room);
+  const isAsync = isAsyncMode(room);
+
   if (room.status === "in_progress") {
-    if (room.mode === "two_player") {
+    if (is2p) {
       const start = room.started_at ? new Date(room.started_at).getTime() : serverNow();
-      el.textContent = `Total time: ${formatDuration(serverNow() - start)}`;
+      el.textContent = `Time elapsed: ${formatDuration(serverNow() - start, isAsync)}`;
     } else {
       const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : serverNow();
       el.textContent = `This turn: ${formatDuration(serverNow() - start)}`;
     }
-  } else if (room.status === "finished" && room.mode === "two_player") {
+  } else if (room.status === "finished" && is2p) {
     const start = room.started_at ? new Date(room.started_at).getTime() : 0;
     const end = room.finished_at ? new Date(room.finished_at).getTime() : serverNow();
-    el.textContent = `Total time: ${formatDuration(end - start)}`;
+    el.textContent = `Total time: ${formatDuration(end - start, isAsync)}`;
   } else {
     el.textContent = "";
   }
@@ -961,7 +991,7 @@ function renderTimer() {
 // ----------------------------------------------------------------------------
 function renderGameTeams(room) {
   const el = $("#game-teams");
-  const is2p = room.mode === "two_player";
+  const is2p = isTwoPlayer(room);
 
   const playerRow = (p) => {
     const roleLabel = p.role === "spymaster" ? "clue giver" : p.role === "operative" ? "receiver" : "";
@@ -1089,7 +1119,7 @@ function buildEmojiGrid() {
 async function handleShareBoard() {
   const url = roomUrl();
   const room = state.room;
-  const is2p = room?.mode === "two_player";
+  const is2p = isTwoPlayer(room);
   const myTeam = is2p ? "blue" : state.me?.team;
 
   // Work out what was guessed this turn using the snapshot taken when the clue arrived
@@ -1156,6 +1186,7 @@ async function handleSubmitClue(e) {
     $("#clue-word").value = "";
     $("#clue-number").value = "1";
     await resyncRoom();
+    if (isAsyncMode(state.room)) await handleShareClue();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't submit that clue.");
@@ -1180,6 +1211,7 @@ async function handleEndTurn() {
     const { error } = await sb.rpc("end_turn", { p_room_id: state.roomId });
     if (error) throw error;
     await resyncRoom();
+    if (isAsyncMode(state.room)) await handleShareBoard();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't pass the turn.");

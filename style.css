@@ -663,6 +663,7 @@ a { color: var(--accent); }
 .win-card.win-blue h2 { color: var(--blue); }
 
 .win-subtitle { color: var(--text-dim); font-size: 14px; line-height: 1.5; margin-bottom: 22px; }
+.win-card .btn + .btn { margin-top: 10px; }
 
 .waiting-inline {
   text-align: center; color: var(--text-faint); font-size: 13px;
