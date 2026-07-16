@@ -771,6 +771,7 @@ function canReveal() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
+  if (isTwoPlayer(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -780,6 +781,7 @@ function canPass() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
+  if (isTwoPlayer(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -788,6 +790,7 @@ function canGiveClue() {
   const me = state.me;
   if (!room || !me) return false;
   if (room.status !== "in_progress" || room.current_clue) return false;
+  if (isTwoPlayer(room)) return me.role === "spymaster";
   return me.role === "spymaster" && me.team === room.current_team;
 }
 
