@@ -1099,14 +1099,19 @@ async function nativeShare(payload) {
 async function handleShareClue() {
   const clue = state.room?.current_clue;
   if (!clue) return;
-  const word = clue.word;
-  const number = clue.number;
   const url = roomUrl();
-  await nativeShare({
-    title: "Pokémon Codenames — clue",
-    text: `Clue: ${word} × ${number}\nYour turn — tap to open the board:`,
-    url,
-  });
+  const room = state.room;
+  const remaining = room?.remaining_blue;
+  const grid = buildEmojiGrid();
+  const remainLine = remaining != null ? `${remaining} blue tile${remaining === 1 ? "" : "s"} left to find` : "";
+  const text = [
+    `Pokémon Codenames`,
+    `Clue: ${clue.word} × ${clue.number}`,
+    grid,
+    remainLine,
+    `Your turn:`,
+  ].filter(Boolean).join("\n");
+  await nativeShare({ title: "Pokémon Codenames — clue", text, url });
 }
 
 function buildEmojiGrid() {
