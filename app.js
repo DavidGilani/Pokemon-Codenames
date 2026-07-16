@@ -1066,7 +1066,7 @@ async function handleShareClue() {
 }
 
 function buildEmojiGrid() {
-  const EMOJI = { red: "🟥", blue: "🟦", neutral: "⬜", assassin: "⬛", unrevealed: "🔲" };
+  const EMOJI = { red: "🟥", blue: "🟦", neutral: "🟨", assassin: "⬛", unrevealed: "⬜" };
   const sorted = [...state.cards].sort((a, b) => a.position - b.position);
   const rows = [];
   for (let r = 0; r < 5; r++) {
