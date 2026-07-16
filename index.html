@@ -76,23 +76,33 @@
 
         <div class="field">
           <label>Play mode</label>
-          <div class="radio-row">
-            <label class="radio-chip checked" data-role="mode">
-              <input type="radio" name="mode" value="online" checked />
-              Online
-            </label>
-            <label class="radio-chip" data-role="mode">
-              <input type="radio" name="mode" value="in_person" />
-              In person
-            </label>
-            <label class="radio-chip" data-role="mode">
-              <input type="radio" name="mode" value="two_player" />
-              2 player live
-            </label>
-            <label class="radio-chip" data-role="mode">
-              <input type="radio" name="mode" value="turn_by_turn" />
-              2 player async
-            </label>
+          <div class="mode-groups">
+            <div class="mode-group">
+              <div class="mode-group-label">Classic</div>
+              <div class="radio-row">
+                <label class="radio-chip checked" data-role="mode">
+                  <input type="radio" name="mode" value="online" checked />
+                  Online
+                </label>
+                <label class="radio-chip" data-role="mode">
+                  <input type="radio" name="mode" value="in_person" />
+                  In person
+                </label>
+              </div>
+            </div>
+            <div class="mode-group">
+              <div class="mode-group-label">2 player</div>
+              <div class="radio-row">
+                <label class="radio-chip" data-role="mode">
+                  <input type="radio" name="mode" value="two_player" />
+                  Live
+                </label>
+                <label class="radio-chip" data-role="mode">
+                  <input type="radio" name="mode" value="turn_by_turn" />
+                  Async
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 

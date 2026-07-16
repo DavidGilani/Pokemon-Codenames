@@ -959,8 +959,8 @@ function formatDuration(ms, long = false) {
   const parts = [];
   if (d) parts.push(`${d}d`);
   if (h || d) parts.push(`${h}h`);
-  parts.push(`${m}m`);
-  parts.push(`${String(ss).padStart(2, "0")}s`);
+  if (m || h || d) parts.push(`${m}m`);
+  parts.push(`${ss}s`);
   return parts.join(" ");
 }
 
