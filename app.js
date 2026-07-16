@@ -330,7 +330,7 @@ function computeStateSignature() {
   const roomSig = r
     ? [
         r.status, r.mode, r.current_team, r.winner, r.guesses_remaining,
-        r.clue_count, JSON.stringify(r.current_clue),
+        r.clue_count, r.remaining_red, r.remaining_blue, JSON.stringify(r.current_clue),
         Array.isArray(r.clue_log) ? r.clue_log.length : 0,
       ].join("|")
     : "no-room";
@@ -1097,10 +1097,8 @@ async function handleShareBoard() {
   const correct = thisRoundCards.filter((c) => c.revealed_colour === myTeam).length;
   const wrong = thisRoundCards.filter((c) => c.revealed_colour !== myTeam).length;
 
-  // Remaining team tiles (only accurate if we have the card key; otherwise omit)
-  const remaining = state.cardKey
-    ? state.cards.filter((c) => !c.revealed && state.cardKey[c.position] === myTeam).length
-    : null;
+  // Remaining team tiles — read from room columns, visible to everyone
+  const remaining = is2p ? room.remaining_red : (myTeam === "red" ? room.remaining_red : room.remaining_blue);
 
   const grid = buildEmojiGrid();
 
@@ -1108,7 +1106,8 @@ async function handleShareBoard() {
   if (correct > 0) turnSummary.push(`${correct} correct`);
   if (wrong > 0) turnSummary.push(`${wrong} wrong`);
   const turnLine = turnSummary.length ? `This turn: ${turnSummary.join(", ")}` : "";
-  const remainLine = remaining !== null ? `${remaining} blue tile${remaining === 1 ? "" : "s"} left to find` : "";
+  const teamColour = is2p ? "blue" : myTeam;
+  const remainLine = remaining != null ? `${remaining} ${teamColour} tile${remaining === 1 ? "" : "s"} left to find` : "";
 
   const text = [
     `Pokémon Codenames`,
