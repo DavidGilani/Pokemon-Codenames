@@ -1096,21 +1096,11 @@ async function nativeShare(payload) {
   toast("Copied to clipboard!");
 }
 
-async function handleShareClue() {
-  const clue = state.room?.current_clue;
+async function handleShareClue(word, number) {
+  const clue = word != null ? { word, number } : state.room?.current_clue;
   if (!clue) return;
   const url = roomUrl();
-  const room = state.room;
-  const remaining = room?.remaining_blue;
-  const grid = buildEmojiGrid();
-  const remainLine = remaining != null ? `${remaining} blue tile${remaining === 1 ? "" : "s"} left to find` : "";
-  const text = [
-    `Pokémon Codenames`,
-    `Clue: ${clue.word} × ${clue.number}`,
-    grid,
-    remainLine,
-    `Your turn:`,
-  ].filter(Boolean).join("\n");
+  const text = `Pokémon Codenames\nClue: ${clue.word} × ${clue.number}\nYour turn:`;
   await nativeShare({ title: "Pokémon Codenames — clue", text, url });
 }
 
@@ -1191,10 +1181,10 @@ async function handleSubmitClue(e) {
       p_number: number,
     });
     if (error) throw error;
+    await resyncRoom();
+    if (isAsyncMode(state.room)) await handleShareClue(word, number);
     $("#clue-word").value = "";
     $("#clue-number").value = "1";
-    await resyncRoom();
-    if (isAsyncMode(state.room)) await handleShareClue();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't submit that clue.");
