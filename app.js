@@ -176,6 +176,35 @@ function initLandingScreen() {
   const params = new URLSearchParams(window.location.search);
   const codeParam = params.get("code");
   if (codeParam) $("#join-code").value = codeParam.toUpperCase();
+
+  // Quick-join modal
+  $("#quick-join-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errEl = $("#quick-join-error");
+    errEl.textContent = "";
+    const nickname = $("#quick-join-nickname").value.trim();
+    if (!nickname) return;
+    const code = $("#quick-join-code").dataset.code;
+    const btn = e.submitter;
+    btn.disabled = true;
+    try {
+      await ensureAuth();
+      const { data, error } = await sb.rpc("join_room", { p_code: code, p_nickname: nickname });
+      if (error) throw error;
+      const row = data[0];
+      state.nickname = nickname;
+      state.roomId = row.room_id;
+      state.playerId = row.player_id;
+      saveSession();
+      $("#quick-join-overlay").classList.add("hidden");
+      await enterRoom();
+    } catch (err) {
+      console.error(err);
+      errEl.textContent = err.message || "Couldn't join — check the link and try again.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
 }
 
 function collectSettings() {
@@ -811,12 +840,15 @@ function renderGame(changedPosition) {
   // End turn button
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
 
-  // Share clue — visible to everyone when a clue is active
-  const hasClue = !!(room.status === "in_progress" && room.current_clue);
-  $("#share-clue-row").classList.toggle("hidden", !hasClue);
+  // Share clue — only for the clue giver, and only while a clue is active
+  const isSpymaster = state.me?.role === "spymaster";
+  const hasClue = room.status === "in_progress" && !!room.current_clue;
+  $("#share-clue-row").classList.toggle("hidden", !(isSpymaster && hasClue));
 
-  // Share board — visible to everyone during the game (not when a clue is active, to avoid confusion)
-  $("#share-board-row").classList.toggle("hidden", !(room.status === "in_progress" && !room.current_clue));
+  // Share board — only for operatives (clue receivers), only between turns (no active clue)
+  const isOperative = state.me?.role === "operative";
+  const betweenTurns = room.status === "in_progress" && !room.current_clue;
+  $("#share-board-row").classList.toggle("hidden", !(isOperative && betweenTurns));
 
   // Board
   renderBoardInto($("#board"), { interactive: true, changedPosition });
@@ -1033,66 +1065,39 @@ async function handleShareClue() {
   });
 }
 
-function buildBoardImage() {
-  const COLS = 5, ROWS = 5, CELL = 48, GAP = 6, PAD = 10;
-  const W = COLS * CELL + (COLS - 1) * GAP + PAD * 2;
-  const H = ROWS * CELL + (ROWS - 1) * GAP + PAD * 2;
-  const canvas = document.createElement("canvas");
-  canvas.width = W;
-  canvas.height = H;
-  const ctx = canvas.getContext("2d");
-
-  const COLOURS = {
-    red: "#e0453c",
-    blue: "#3b82f6",
-    neutral: "#6b7280",
-    assassin: "#1a1a2e",
-    unrevealed: "#2d3148",
-  };
-
+function buildEmojiGrid() {
+  const EMOJI = { red: "🟥", blue: "🟦", neutral: "⬜", assassin: "⬛", unrevealed: "🔲" };
   const sorted = [...state.cards].sort((a, b) => a.position - b.position);
-  sorted.forEach((card, i) => {
-    const col = i % COLS;
-    const row = Math.floor(i / COLS);
-    const x = PAD + col * (CELL + GAP);
-    const y = PAD + row * (CELL + GAP);
-    let colour;
-    if (card.revealed) {
-      colour = COLOURS[card.revealed_colour] ?? COLOURS.neutral;
-    } else {
-      colour = COLOURS.unrevealed;
-    }
-    ctx.fillStyle = colour;
-    ctx.beginPath();
-    ctx.roundRect(x, y, CELL, CELL, 6);
-    ctx.fill();
-  });
-
-  return canvas;
+  const rows = [];
+  for (let r = 0; r < 5; r++) {
+    rows.push(sorted.slice(r * 5, r * 5 + 5).map((c) => c.revealed ? (EMOJI[c.revealed_colour] ?? EMOJI.neutral) : EMOJI.unrevealed).join(""));
+  }
+  return rows.join("\n");
 }
 
 async function handleShareBoard() {
-  const canvas = buildBoardImage();
   const url = roomUrl();
+  const room = state.room;
+  const is2p = room?.mode === "two_player";
   const revealed = state.cards.filter((c) => c.revealed).length;
   const total = state.cards.length;
 
-  const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
-  const file = new File([blob], "pokemon-codenames-board.png", { type: "image/png" });
+  // Remaining tiles for the current team (blue in 2-player, current_team otherwise)
+  const myTeam = is2p ? "blue" : room?.current_team;
+  const teamRemaining = state.cards.filter((c) => !c.revealed && (state.cardKey?.[c.position] === myTeam)).length;
+  const teamLabel = is2p ? "blue" : myTeam;
 
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    try {
-      await navigator.share({
-        title: "Pokémon Codenames — board update",
-        text: `${revealed}/${total} tiles revealed — your turn:\n${url}`,
-        files: [file],
-      });
-      return;
-    } catch (_) { /* user cancelled or fell through */ }
-  }
-  // Fallback: copy URL to clipboard (image sharing not supported on this browser)
-  await navigator.clipboard.writeText(`Pokémon Codenames — ${revealed}/${total} tiles revealed\n${url}`);
-  toast("Link copied to clipboard!");
+  const grid = buildEmojiGrid();
+  const teamLine = teamRemaining > 0
+    ? `${teamRemaining} ${teamLabel} tile${teamRemaining === 1 ? "" : "s"} still to find`
+    : "";
+  const text = [
+    `Pokémon Codenames`,
+    grid,
+    `${revealed}/${total} tiles revealed${teamLine ? ` · ${teamLine}` : ""} — your turn:`,
+  ].join("\n");
+
+  await nativeShare({ title: "Pokémon Codenames — board update", text, url });
 }
 
 // ----------------------------------------------------------------------------
@@ -1213,6 +1218,17 @@ async function boot() {
       clearSession();
     }
   }
+
+  // If arriving via a ?code= invite link (and no live session), show the quick-join overlay
+  const inviteCode = new URLSearchParams(window.location.search).get("code");
+  if (inviteCode) {
+    const el = $("#quick-join-code");
+    el.textContent = inviteCode.toUpperCase();
+    el.dataset.code = inviteCode.toUpperCase();
+    $("#quick-join-overlay").classList.remove("hidden");
+    return;
+  }
+
   showScreen("landing");
 }
 
