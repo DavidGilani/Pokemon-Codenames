@@ -205,6 +205,10 @@
         <button type="submit" class="btn btn-primary" id="submit-clue-btn">Give clue</button>
       </form>
 
+      <div class="share-row hidden" id="share-clue-row">
+        <button class="btn btn-share" id="share-clue-btn">↗ Share clue</button>
+      </div>
+
       <div class="waiting-inline hidden" id="waiting-for-clue"></div>
 
       <div class="tile-count-row">
@@ -229,10 +233,6 @@
         <div id="clue-log-list"></div>
       </div>
 
-      <div class="share-row hidden" id="share-clue-row">
-        <button class="btn btn-share" id="share-clue-btn">↗ Share clue</button>
-      </div>
-
       <div class="share-row hidden" id="share-board-row">
         <button class="btn btn-share" id="share-board-btn">↗ Share board</button>
       </div>
@@ -253,6 +253,23 @@
       <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
     </div>
   </div>
+
+<!-- Quick-join overlay: shown when arriving via ?code= link -->
+<div class="quick-join-overlay hidden" id="quick-join-overlay">
+  <div class="quick-join-card">
+    <div class="quick-join-code" id="quick-join-code"></div>
+    <h2>You've been invited!</h2>
+    <p>Enter a nickname to jump straight into the game.</p>
+    <form id="quick-join-form">
+      <div class="field">
+        <label for="quick-join-nickname">Your nickname</label>
+        <input type="text" id="quick-join-nickname" maxlength="24" placeholder="e.g. Misty" required autofocus />
+      </div>
+      <button type="submit" class="btn btn-primary">Join game</button>
+      <div class="error-text" id="quick-join-error"></div>
+    </form>
+  </div>
+</div>
 
 </div>
 

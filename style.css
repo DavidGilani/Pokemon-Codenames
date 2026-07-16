@@ -20,8 +20,8 @@
   --neutral: #c9b896;
   --neutral-dim: #3a3628;
 
-  --assassin: #6b4c93;
-  --assassin-dim: #2a1f3a;
+  --assassin: #111118;
+  --assassin-dim: #1e1e28;
 
   --accent: #f2c14e;
   --accent-dim: #4a3a17;
@@ -622,6 +622,25 @@ a { color: var(--accent); }
   font-family: var(--font-mono); font-size: 9px; color: var(--text-faint);
   text-transform: uppercase; letter-spacing: 0.05em;
 }
+
+.quick-join-overlay {
+  position: fixed; inset: 0; background: rgba(10, 12, 18, 0.92);
+  display: flex; align-items: center; justify-content: center; z-index: 60;
+  backdrop-filter: blur(4px); padding: 20px;
+}
+.quick-join-card {
+  background: var(--panel); border: 1px solid var(--panel-border);
+  border-radius: var(--radius); padding: 36px 40px; text-align: center;
+  max-width: 360px; width: 100%;
+}
+.quick-join-code {
+  font-family: var(--font-mono); font-size: 28px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px;
+}
+.quick-join-card h2 { margin: 0 0 6px; }
+.quick-join-card p { color: var(--text-dim); font-size: 14px; margin: 0 0 20px; }
+.quick-join-card .field { text-align: left; }
+.quick-join-card .btn { width: 100%; margin-top: 12px; }
 
 .win-overlay {
   position: fixed; inset: 0; background: rgba(10, 12, 18, 0.85);
