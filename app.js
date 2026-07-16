@@ -1096,17 +1096,12 @@ async function nativeShare(payload) {
   toast("Copied to clipboard!");
 }
 
-async function handleShareClue() {
-  const clue = state.room?.current_clue;
+async function handleShareClue(word, number) {
+  const clue = word != null ? { word, number } : state.room?.current_clue;
   if (!clue) return;
-  const word = clue.word;
-  const number = clue.number;
   const url = roomUrl();
-  await nativeShare({
-    title: "Pokémon Codenames — clue",
-    text: `Clue: ${word} × ${number}\nYour turn — tap to open the board:`,
-    url,
-  });
+  const text = `Pokémon Codenames\nClue: ${clue.word} × ${clue.number}\nYour turn:`;
+  await nativeShare({ title: "Pokémon Codenames — clue", text, url });
 }
 
 function buildEmojiGrid() {
@@ -1186,10 +1181,10 @@ async function handleSubmitClue(e) {
       p_number: number,
     });
     if (error) throw error;
+    await resyncRoom();
+    if (isAsyncMode(state.room)) await handleShareClue(word, number);
     $("#clue-word").value = "";
     $("#clue-number").value = "1";
-    await resyncRoom();
-    if (isAsyncMode(state.room)) await handleShareClue();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't submit that clue.");
