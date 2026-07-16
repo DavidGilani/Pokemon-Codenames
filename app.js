@@ -30,6 +30,8 @@ const state = {
   cardKey: null, // map position -> colour, only populated for clue givers
   channel: null,
   me: null, // players row for the current user
+  turnStartRevealed: new Set(), // positions already revealed when this turn's clue arrived
+  lastClueWord: null, // tracks clue identity so we snapshot exactly once per clue
 };
 
 let lastSignature = null;   // used by the poll to avoid needless re-renders
@@ -112,6 +114,8 @@ function clearSession() {
   state.cards = [];
   state.cardKey = null;
   state.me = null;
+  state.turnStartRevealed = new Set();
+  state.lastClueWord = null;
   lastSignature = null;
   statsRequested = false;
   if (state.channel) {
@@ -326,7 +330,7 @@ function computeStateSignature() {
   const roomSig = r
     ? [
         r.status, r.mode, r.current_team, r.winner, r.guesses_remaining,
-        r.clue_count, JSON.stringify(r.current_clue),
+        r.clue_count, r.remaining_red, r.remaining_blue, JSON.stringify(r.current_clue),
         Array.isArray(r.clue_log) ? r.clue_log.length : 0,
       ].join("|")
     : "no-room";
@@ -807,6 +811,13 @@ function renderGame(changedPosition) {
     $("#clue-count-value").textContent = `${room.guesses_remaining} guess${
       room.guesses_remaining === 1 ? "" : "es"
     } left`;
+    // Snapshot which tiles are already revealed when this clue first appears,
+    // so we can tell the operative what they guessed when they share the board.
+    const clueId = `${room.current_clue.word}:${room.current_clue.number}:${room.clue_count}`;
+    if (state.lastClueWord !== clueId) {
+      state.lastClueWord = clueId;
+      state.turnStartRevealed = new Set(state.cards.filter((c) => c.revealed).map((c) => c.position));
+    }
   } else {
     clueReadout.classList.add("hidden");
   }
@@ -1079,23 +1090,31 @@ async function handleShareBoard() {
   const url = roomUrl();
   const room = state.room;
   const is2p = room?.mode === "two_player";
-  const revealed = state.cards.filter((c) => c.revealed).length;
-  const total = state.cards.length;
+  const myTeam = is2p ? "blue" : state.me?.team;
 
-  // Remaining tiles for the current team (blue in 2-player, current_team otherwise)
-  const myTeam = is2p ? "blue" : room?.current_team;
-  const teamRemaining = state.cards.filter((c) => !c.revealed && (state.cardKey?.[c.position] === myTeam)).length;
-  const teamLabel = is2p ? "blue" : myTeam;
+  // Work out what was guessed this turn using the snapshot taken when the clue arrived
+  const thisRoundCards = state.cards.filter((c) => c.revealed && !state.turnStartRevealed.has(c.position));
+  const correct = thisRoundCards.filter((c) => c.revealed_colour === myTeam).length;
+  const wrong = thisRoundCards.filter((c) => c.revealed_colour !== myTeam).length;
+
+  // Remaining team tiles — read from room columns, visible to everyone
+  const remaining = is2p ? room.remaining_red : (myTeam === "red" ? room.remaining_red : room.remaining_blue);
 
   const grid = buildEmojiGrid();
-  const teamLine = teamRemaining > 0
-    ? `${teamRemaining} ${teamLabel} tile${teamRemaining === 1 ? "" : "s"} still to find`
-    : "";
+
+  const turnSummary = [];
+  if (correct > 0) turnSummary.push(`${correct} correct`);
+  if (wrong > 0) turnSummary.push(`${wrong} wrong`);
+  const turnLine = turnSummary.length ? `This turn: ${turnSummary.join(", ")}` : "";
+  const teamColour = is2p ? "blue" : myTeam;
+  const remainLine = remaining != null ? `${remaining} ${teamColour} tile${remaining === 1 ? "" : "s"} left to find` : "";
+
   const text = [
     `Pokémon Codenames`,
     grid,
-    `${revealed}/${total} tiles revealed${teamLine ? ` · ${teamLine}` : ""} — your turn:`,
-  ].join("\n");
+    [turnLine, remainLine].filter(Boolean).join(" · "),
+    `Your turn:`,
+  ].filter(Boolean).join("\n");
 
   await nativeShare({ title: "Pokémon Codenames — board update", text, url });
 }

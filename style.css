@@ -507,7 +507,7 @@ a { color: var(--accent); }
 .tile.revealed[data-colour="red"] { background: var(--red); border-color: var(--red); }
 .tile.revealed[data-colour="blue"] { background: var(--blue); border-color: var(--blue); }
 .tile.revealed[data-colour="neutral"] { background: var(--neutral-dim); border-color: var(--neutral); }
-.tile.revealed[data-colour="assassin"] { background: var(--assassin); border-color: var(--assassin); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.25); }
+.tile.revealed[data-colour="assassin"] { background: var(--assassin); border-color: rgba(255,255,255,0.35); }
 
 .tile.revealed .tile-img-wrap { background: rgba(0,0,0,0.25); }
 .tile.revealed img { opacity: 0.55; }
