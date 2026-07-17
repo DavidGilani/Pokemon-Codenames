@@ -827,9 +827,8 @@ function renderGame(changedPosition) {
   if (room.current_clue) {
     clueReadout.classList.remove("hidden");
     $("#clue-word-value").textContent = `${room.current_clue.word}, ${room.current_clue.number}`;
-    $("#clue-count-value").textContent = `${room.guesses_remaining} guess${
-      room.guesses_remaining === 1 ? "" : "es"
-    } left`;
+    const guessesLeft = room.guesses_remaining >= 99 ? "∞" : room.guesses_remaining;
+    $("#clue-count-value").textContent = `${guessesLeft} guess${room.guesses_remaining === 1 ? "" : "es"} left`;
     // Snapshot which tiles are already revealed when this clue first appears,
     // so we can tell the operative what they guessed when they share the board.
     const clueId = `${room.current_clue.word}:${room.current_clue.number}:${room.clue_count}`;
@@ -1195,7 +1194,10 @@ async function handleSubmitClue(e) {
   }
 }
 
+let _revealInProgress = false;
 async function handleRevealCard(position) {
+  if (_revealInProgress) return;
+  _revealInProgress = true;
   try {
     const { error } = await sb.rpc("reveal_card", { p_room_id: state.roomId, p_position: position });
     if (error) throw error;
@@ -1203,6 +1205,8 @@ async function handleRevealCard(position) {
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't reveal that tile.");
+  } finally {
+    _revealInProgress = false;
   }
 }
 
