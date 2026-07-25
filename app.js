@@ -367,6 +367,7 @@ function computeStateSignature() {
         r.status, r.mode, r.current_team, r.winner, r.guesses_remaining,
         r.clue_count, r.remaining_red, r.remaining_blue, JSON.stringify(r.current_clue),
         Array.isArray(r.clue_log) ? r.clue_log.length : 0,
+        Array.isArray(r.guess_log) ? r.guess_log.length : 0,
       ].join("|")
     : "no-room";
   const playersSig = state.players
@@ -477,6 +478,9 @@ async function enterRoom() {
   subscribeToRoom();
   setRoomPill(state.room.code);
   await render();
+  if (isObserver()) {
+    toast("All seats are taken — you've joined as an observer.");
+  }
 }
 
 // ----------------------------------------------------------------------------
@@ -1052,19 +1056,25 @@ function renderGameTeams(room) {
     }</div>`;
   };
 
+  const observers = state.players.filter((p) => !p.team && !p.role);
+  const observersHtml = observers.length
+    ? `<div class="gt-col gt-observers"><div class="gt-title">Observers</div>${observers.map(playerRow).join("")}</div>`
+    : "";
+
   if (is2p) {
     const bluePlayers = state.players.filter((p) => p.team === "blue");
-    if (bluePlayers.length === 0) { el.classList.add("hidden"); return; }
+    if (bluePlayers.length === 0 && observers.length === 0) { el.classList.add("hidden"); return; }
     el.classList.remove("hidden");
-    el.innerHTML = `<div class="gt-col gt-single"><div class="gt-title">Players</div>${bluePlayers.map(playerRow).join("")}</div>`;
+    el.innerHTML = `<div class="gt-col gt-single"><div class="gt-title">Players</div>${bluePlayers.map(playerRow).join("")}</div>${observersHtml}`;
   } else {
     const red = state.players.filter((p) => p.team === "red");
     const blue = state.players.filter((p) => p.team === "blue");
-    if (red.length === 0 && blue.length === 0) { el.classList.add("hidden"); return; }
+    if (red.length === 0 && blue.length === 0 && observers.length === 0) { el.classList.add("hidden"); return; }
     el.classList.remove("hidden");
     el.innerHTML = `
       <div class="gt-col gt-red"><div class="gt-title">Red team</div>${red.length ? red.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
-      <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>`;
+      <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
+      ${observersHtml}`;
   }
 }
 
@@ -1074,20 +1084,32 @@ function renderGameTeams(room) {
 function renderClueLog(room) {
   const panel = $("#clue-log");
   const list = $("#clue-log-list");
-  const log = Array.isArray(room.clue_log) ? room.clue_log : [];
-  if (log.length === 0) {
+  const clueLog = Array.isArray(room.clue_log) ? room.clue_log : [];
+  const guessLog = Array.isArray(room.guess_log) ? room.guess_log : [];
+  if (clueLog.length === 0) {
     panel.classList.add("hidden");
     return;
   }
   panel.classList.remove("hidden");
   const is2p = isTwoPlayer(room);
-  list.innerHTML = log
+  list.innerHTML = clueLog
     .map((c, i) => {
+      let headerHtml;
       if (is2p) {
-        return `<div class="clue-log-row"><span class="cl-turn">Turn ${i + 1}</span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
+        headerHtml = `<div class="clue-log-row"><span class="cl-turn">Turn ${i + 1}</span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
+      } else {
+        const teamClass = c.team === "red" ? "cl-red" : "cl-blue";
+        headerHtml = `<div class="clue-log-row"><span class="cl-dot ${teamClass}"></span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
       }
-      const teamClass = c.team === "red" ? "cl-red" : "cl-blue";
-      return `<div class="clue-log-row"><span class="cl-dot ${teamClass}"></span><span class="cl-word">${escapeHtml(c.word)}</span><span class="cl-num">× ${c.number}</span></div>`;
+      const guesses = guessLog.filter((g) => g.clue_index === i);
+      const guessesHtml = guesses
+        .map((g) => {
+          const iconClass = g.correct ? "cl-correct" : "cl-wrong";
+          const icon = g.correct ? "✓" : "✗";
+          return `<div class="clue-log-row clue-guess"><span class="${iconClass}">${icon}</span><span class="cl-guess-name">${escapeHtml(g.name)}</span><span class="cl-colour-${g.colour}">${g.colour}</span></div>`;
+        })
+        .join("");
+      return headerHtml + guessesHtml;
     })
     .join("");
 }
