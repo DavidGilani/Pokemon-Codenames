@@ -572,6 +572,15 @@ a { color: var(--accent); }
 .clue-log-row .cl-word { text-transform: uppercase; letter-spacing: 0.04em; }
 .clue-log-row .cl-num { color: var(--text-faint); }
 
+.clue-log-row.clue-guess { padding-left: 18px; font-size: 12px; opacity: 0.85; }
+.cl-correct { color: #2cbe4e; font-weight: 700; min-width: 14px; }
+.cl-wrong   { color: #e05c5c; font-weight: 700; min-width: 14px; }
+.cl-guess-name { flex: 1; }
+.cl-colour-red     { color: var(--red); font-size: 11px; }
+.cl-colour-blue    { color: var(--blue); font-size: 11px; }
+.cl-colour-neutral { color: var(--text-faint); font-size: 11px; }
+.cl-colour-assassin{ color: #7c3aed; font-size: 11px; }
+
 .share-row { display: flex; justify-content: center; }
 .btn-share {
   display: inline-flex; align-items: center; gap: 6px;
