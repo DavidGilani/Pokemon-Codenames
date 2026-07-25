@@ -672,8 +672,12 @@ function renderLobby() {
   if (state.me && state.me.team) {
     const roleLabel = state.me.role === "spymaster" ? "clue giver" : "clue receiver";
     const teamLabel = is2p ? "" : ` on <strong>${state.me.team}</strong>`;
+    const isAsync = isAsyncMode(room);
+    const waitNote = (isAsync && state.me.role === "spymaster")
+      ? "You're set as <strong>clue giver</strong>. Start the game to deal the board, then share your first clue to invite the other player."
+      : `You're set as <strong>${roleLabel}</strong>${teamLabel}. Waiting for the host to start.`;
     seatArea.className = "";
-    seatArea.innerHTML = `<div class="waiting-note">You're set as <strong>${roleLabel}</strong>${teamLabel}. Waiting for the host to start.</div>`;
+    seatArea.innerHTML = `<div class="waiting-note">${waitNote}</div>`;
   } else if (is2p) {
     seatArea.className = "";
     seatArea.innerHTML = `
@@ -708,8 +712,15 @@ function renderLobby() {
     if (is2p) {
       const hasGiver = state.players.some((p) => p.role === "spymaster" && p.team);
       const hasReceiver = state.players.some((p) => p.role === "operative" && p.team);
-      ready = hasGiver && hasReceiver;
-      hint = ready ? "Ready to start." : "Need a clue giver and a clue receiver.";
+      if (isAsyncMode(room)) {
+        ready = hasGiver;
+        hint = ready
+          ? "Ready — start to deal the board, then share your first clue to invite the other player."
+          : "Claim the clue giver role to start.";
+      } else {
+        ready = hasGiver && hasReceiver;
+        hint = ready ? "Ready to start." : "Need a clue giver and a clue receiver.";
+      }
     } else {
       const redReady = state.players.some((p) => p.team === "red" && p.role === "spymaster");
       const blueReady = state.players.some((p) => p.team === "blue" && p.role === "spymaster");
@@ -1139,8 +1150,8 @@ async function handleShareClue(word, number) {
   const clue = word != null ? { word, number } : state.room?.current_clue;
   if (!clue) return;
   const url = roomUrl();
-  const text = `Pokémon Codenames\nClue: ${clue.word} × ${clue.number}\nYour turn:`;
-  await nativeShare({ title: "Pokémon Codenames — clue", text, url });
+  const text = `Clue: ${clue.word} × ${clue.number}\nIt's your turn to guess!`;
+  await nativeShare({ title: "Pokémon Codenames", text, url });
 }
 
 function buildEmojiGrid() {
