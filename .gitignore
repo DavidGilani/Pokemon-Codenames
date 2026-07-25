@@ -2,3 +2,5 @@
 venv/
 __pycache__/
 *.pyc
+finance/migrate/migration-data.json
+finance/migrate/extra-incomes-patch.json
