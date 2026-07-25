@@ -436,14 +436,14 @@ function subscribeToRoom() {
 
 // Re-fetch everything and re-render. Used after our own actions (instant local
 // feedback), on reconnect, on tab focus, and by the manual refresh.
-async function resyncRoom() {
+async function resyncRoom(changedPosition) {
   if (!state.roomId) return;
   try {
     await fetchRoom();
     await fetchPlayers();
     await fetchCards();
     await fetchCardKeyIfSpymaster();
-    await render();
+    await render(changedPosition);
   } catch (err) {
     console.error("Resync failed:", err);
   }
@@ -563,7 +563,9 @@ function renderBoardInto(el, opts) {
 
   // If nothing that affects the board has changed, leave the existing tiles
   // (and their already-loaded images) untouched instead of rebuilding.
-  if (el.dataset.sig === sig) return;
+  // Exception: always rebuild when changedPosition is set so the scan-sweep
+  // animation plays on the newly revealed tile.
+  if (el.dataset.sig === sig && opts.changedPosition == null) return;
   el.dataset.sig = sig;
 
   el.innerHTML = "";
@@ -1272,7 +1274,7 @@ async function handleRevealCard(position) {
   try {
     const { error } = await sb.rpc("reveal_card", { p_room_id: state.roomId, p_position: position });
     if (error) throw error;
-    await resyncRoom();
+    await resyncRoom(position);
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't reveal that tile.");
