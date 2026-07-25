@@ -606,7 +606,8 @@ function renderLobby() {
     info.innerHTML = `<strong>In-person mode.</strong> Share this screen so everyone can see the board. Each clue giver should join separately on their own phone using the room code, so they can privately see which Pokémon belong to their team. Everyone else can watch and call out guesses from this shared screen.`;
   } else if (is2p) {
     info.classList.remove("hidden");
-    info.innerHTML = `<strong>Two-player mode.</strong> One of you is the clue giver, the other the clue receiver. Work together to reveal all of your team's Pokémon in as few rounds as possible — and never touch the assassin.`;
+    const modeLabel = isAsyncMode(room) ? "Turn-by-turn mode" : "Two-player mode";
+    info.innerHTML = `<strong>${modeLabel}.</strong> One of you is the clue giver, the other the clue receiver. Work together to reveal all of your team's Pokémon in as few rounds as possible — and never touch the assassin.`;
   } else {
     info.classList.add("hidden");
   }
@@ -738,7 +739,7 @@ function initGameScreen() {
   $("#clue-form").addEventListener("submit", handleSubmitClue);
   $("#clue-number").addEventListener("focus", function() { this.select(); });
   $("#end-turn-btn").addEventListener("click", handleEndTurn);
-  $("#share-clue-btn").addEventListener("click", handleShareClue);
+  $("#share-clue-btn").addEventListener("click", () => handleShareClue());
   $("#share-board-btn").addEventListener("click", handleShareBoard);
   $("#leave-game-btn").addEventListener("click", () => {
     clearSession();
