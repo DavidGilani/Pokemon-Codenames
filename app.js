@@ -9,7 +9,7 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const STORAGE_KEY = "pc_session";
+const SESSIONS_KEY = "pc_sessions"; // map of roomId → session
 const POLL_MS = 2500; // background self-heal poll interval
 
 // Reliable CDN for Pokemon artwork (jsDelivr mirror of the PokeAPI sprites).
@@ -88,25 +88,59 @@ function setRoomPill(code) {
 }
 
 // ----------------------------------------------------------------------------
-// Local persistence — just enough to survive a refresh
+// Local persistence — multi-room session map so users can juggle several games
 // ----------------------------------------------------------------------------
-function saveSession() {
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({ roomId: state.roomId, playerId: state.playerId, nickname: state.nickname })
-  );
+function _loadSessionMap() {
+  try { return JSON.parse(localStorage.getItem(SESSIONS_KEY) || "{}"); } catch { return {}; }
 }
 
-function loadSession() {
+function saveSession() {
+  if (!state.roomId) return;
+  const map = _loadSessionMap();
+  map[state.roomId] = {
+    roomId: state.roomId,
+    playerId: state.playerId,
+    nickname: state.nickname,
+    code: state.room?.code || map[state.roomId]?.code || null,
+    lastVisited: Date.now(),
+  };
+  localStorage.setItem(SESSIONS_KEY, JSON.stringify(map));
+}
+
+function _removeSession(roomId) {
+  const map = _loadSessionMap();
+  delete map[roomId];
+  localStorage.setItem(SESSIONS_KEY, JSON.stringify(map));
+}
+
+function _findSessionForCode(code) {
+  if (!code) return null;
+  const upper = code.toUpperCase();
+  return Object.values(_loadSessionMap()).find((s) => s.code === upper) || null;
+}
+
+function _findLastSession() {
+  const sessions = Object.values(_loadSessionMap());
+  if (!sessions.length) return null;
+  return sessions.sort((a, b) => (b.lastVisited || 0) - (a.lastVisited || 0))[0];
+}
+
+function _migrateOldSession() {
+  const old = localStorage.getItem("pc_session");
+  if (!old) return;
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-  } catch {
-    return null;
-  }
+    const parsed = JSON.parse(old);
+    if (parsed?.roomId) {
+      const map = _loadSessionMap();
+      map[parsed.roomId] = { ...parsed, lastVisited: Date.now() };
+      localStorage.setItem(SESSIONS_KEY, JSON.stringify(map));
+    }
+  } catch {}
+  localStorage.removeItem("pc_session");
 }
 
 function clearSession() {
-  localStorage.removeItem(STORAGE_KEY);
+  if (state.roomId) _removeSession(state.roomId);
   state.roomId = null;
   state.playerId = null;
   state.room = null;
@@ -431,6 +465,7 @@ async function pollTick() {
 
 async function enterRoom() {
   await fetchRoom();
+  saveSession(); // update code in session map now that room is loaded
   await fetchPlayers();
   if (!state.me) {
     clearSession();
@@ -739,6 +774,8 @@ function initGameScreen() {
   $("#clue-form").addEventListener("submit", handleSubmitClue);
   $("#clue-number").addEventListener("focus", function() { this.select(); });
   $("#end-turn-btn").addEventListener("click", handleEndTurn);
+  $("#end-turn-btn-top").addEventListener("click", handleEndTurn);
+  $("#leave-game-btn-top").addEventListener("click", () => { clearSession(); showScreen("landing"); });
   $("#share-clue-btn").addEventListener("click", () => handleShareClue());
   $("#share-board-btn").addEventListener("click", handleShareBoard);
   $("#leave-game-btn").addEventListener("click", () => {
@@ -846,9 +883,8 @@ function renderGame(changedPosition) {
   const observerBanner = $("#observer-banner");
   const isGiver = state.me && state.me.role === "spymaster";
   const observer = isObserver();
-  spyBanner.classList.toggle("hidden", !isGiver);
+  spyBanner.classList.add("hidden"); // removed — not useful to display
   observerBanner.classList.toggle("hidden", !observer);
-  if (isGiver) spyBanner.textContent = "Clue giver view — only you can see the key";
   const legend = $("#board-legend");
   legend.classList.toggle("hidden", !isGiver);
   $("#legend-red").classList.toggle("hidden", is2p); // no red team in two-player
@@ -867,8 +903,9 @@ function renderGame(changedPosition) {
     waiting.classList.add("hidden");
   }
 
-  // End turn button
+  // End turn buttons (top + bottom)
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
+  $("#end-turn-btn-top").classList.toggle("hidden", !canPass());
 
   // Share clue — only for the clue giver, and only while a clue is active
   const isSpymaster = state.me?.role === "spymaster";
@@ -1261,28 +1298,46 @@ async function boot() {
     if (state.room && $("#screen-game").classList.contains("active")) renderTimer();
   }, 1000);
 
-  const saved = loadSession();
-  if (saved && saved.roomId && saved.playerId) {
-    state.roomId = saved.roomId;
-    state.playerId = saved.playerId;
-    state.nickname = saved.nickname || "";
-    try {
-      await enterRoom();
-      return;
-    } catch (err) {
-      console.error(err);
-      clearSession();
-    }
-  }
+  _migrateOldSession(); // one-time migration from old single-session key
 
-  // If arriving via a ?code= invite link (and no live session), show the quick-join overlay
   const inviteCode = new URLSearchParams(window.location.search).get("code");
   if (inviteCode) {
+    // If we already have a session for this room code, jump straight in
+    const saved = _findSessionForCode(inviteCode);
+    if (saved) {
+      state.roomId = saved.roomId;
+      state.playerId = saved.playerId;
+      state.nickname = saved.nickname || "";
+      try {
+        await enterRoom();
+        return;
+      } catch (err) {
+        console.error(err);
+        _removeSession(saved.roomId);
+        // fall through to quick-join overlay
+      }
+    }
+    // No saved session for this code — show quick-join overlay
     const el = $("#quick-join-code");
     el.textContent = inviteCode.toUpperCase();
     el.dataset.code = inviteCode.toUpperCase();
     $("#quick-join-overlay").classList.remove("hidden");
     return;
+  }
+
+  // No invite code — restore the most recently visited game (if any)
+  const last = _findLastSession();
+  if (last) {
+    state.roomId = last.roomId;
+    state.playerId = last.playerId;
+    state.nickname = last.nickname || "";
+    try {
+      await enterRoom();
+      return;
+    } catch (err) {
+      console.error(err);
+      _removeSession(last.roomId);
+    }
   }
 
   showScreen("landing");
