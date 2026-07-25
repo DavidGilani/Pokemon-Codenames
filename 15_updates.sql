@@ -100,7 +100,7 @@ begin
   -- Already in this room? Update nickname and return existing record.
   select * into v_player
   from players
-  where room_id = v_room.id and user_id = auth.uid();
+  where players.room_id = v_room.id and players.user_id = auth.uid();
 
   if found then
     update players set nickname = p_nickname where id = v_player.id;
@@ -119,7 +119,7 @@ begin
     -- is still open.
     if exists (
       select 1 from players
-      where room_id = v_room.id and role = 'operative'
+      where players.room_id = v_room.id and players.role = 'operative'
     ) then
       raise exception 'The guessing seat is already taken in this game';
     end if;
