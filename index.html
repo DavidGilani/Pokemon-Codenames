@@ -30,6 +30,7 @@
       <span class="brand-name">Pokémon Codenames</span>
     </div>
     <div class="header-right">
+      <button class="btn btn-ghost btn-mini" id="sound-toggle" title="Sound effects" aria-label="Toggle sound effects">🔊</button>
       <button class="btn btn-ghost btn-mini hidden" id="refresh-btn">↻ Refresh</button>
       <div class="room-pill hidden" id="room-pill">
         Room <strong id="room-pill-code">----</strong>
@@ -101,9 +102,32 @@
                   <input type="radio" name="mode" value="turn_by_turn" />
                   Turn-by-turn
                 </label>
+                <label class="radio-chip" data-role="mode">
+                  <input type="radio" name="mode" value="two_player_ai" />
+                  vs AI
+                </label>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="field hidden" id="ai-difficulty-field">
+          <label>AI difficulty</label>
+          <div class="radio-row">
+            <label class="radio-chip checked" data-role="difficulty">
+              <input type="radio" name="ai_difficulty" value="easy" checked />
+              Easy
+            </label>
+            <label class="radio-chip" data-role="difficulty">
+              <input type="radio" name="ai_difficulty" value="medium" />
+              Medium
+            </label>
+            <label class="radio-chip" data-role="difficulty">
+              <input type="radio" name="ai_difficulty" value="hard" />
+              Hard
+            </label>
+          </div>
+          <div class="sub">The AI reveals its own tiles each turn — 1 on Easy, 1–2 on Medium, 2–3 on Hard. Clear all your blue Pokémon before it clears its red ones.</div>
         </div>
 
         <div class="field">
@@ -270,6 +294,7 @@
       <h2 id="win-title">— TEAM WINS</h2>
       <div class="win-subtitle" id="win-subtitle"></div>
       <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
+      <button class="btn btn-share" id="share-result-btn">↗ Share result</button>
       <button class="btn btn-ghost" id="see-board-btn">See the board</button>
     </div>
   </div>

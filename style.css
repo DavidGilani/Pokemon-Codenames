@@ -272,6 +272,9 @@ a { color: var(--accent); }
 .btn-red { background: var(--red); color: #fff; }
 .btn-blue { background: var(--blue); color: #fff; }
 
+#sound-toggle { font-size: 15px; line-height: 1; padding: 6px 9px; }
+#sound-toggle.sound-off { opacity: 0.5; }
+
 .error-text { color: var(--red); font-size: 12px; margin-top: 8px; min-height: 16px; }
 
 /* ==========================================================================
@@ -521,7 +524,8 @@ a { color: var(--accent); }
 .tile.scan-sweep::before {
   content: ""; position: absolute; top: 0; bottom: 0; left: -30%; width: 30%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-  animation: scan-sweep 0.55s ease-out; z-index: 2;
+  animation: scan-sweep 0.55s ease-out both;
+  animation-delay: var(--sweep-delay, 0s); z-index: 2;
 }
 
 @keyframes scan-sweep { from { left: -30%; } to { left: 100%; } }

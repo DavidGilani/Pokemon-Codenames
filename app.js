@@ -32,6 +32,9 @@ const state = {
   me: null, // players row for the current user
   turnStartRevealed: new Set(), // positions already revealed when this turn's clue arrived
   lastClueWord: null, // tracks clue identity so we snapshot exactly once per clue
+  revealedSnapshot: null, // Set of revealed positions from the last render (for reveal animation + sounds)
+  _prevClueCount: null, // last seen clue_count (to detect new clues → sound)
+  _prevStatus: null, // last seen room.status (to detect game-over → sound)
 };
 
 let lastSignature = null;   // used by the poll to avoid needless re-renders
@@ -85,6 +88,88 @@ function setRoomPill(code) {
     pill.classList.add("hidden");
     refresh.classList.add("hidden");
   }
+}
+
+// ----------------------------------------------------------------------------
+// Sound effects — synthesized with the Web Audio API (no asset files needed,
+// works offline). Controlled by a header toggle, preference saved locally.
+// ----------------------------------------------------------------------------
+let audioCtx = null;
+let soundOn = localStorage.getItem("pc_sound") !== "off"; // default on
+
+function ensureAudio() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch { audioCtx = null; }
+  }
+  return audioCtx;
+}
+
+function _tone(freq, dur, type = "sine", gain = 0.15, when = 0) {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  const t = ctx.currentTime + when;
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, t);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(gain, t + 0.012);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  osc.connect(g);
+  g.connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + dur + 0.03);
+}
+
+function playSound(name) {
+  if (!soundOn) return;
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  if (ctx.state === "suspended") ctx.resume();
+  switch (name) {
+    case "clue":    _tone(523, 0.12, "triangle", 0.12); _tone(784, 0.13, "triangle", 0.12, 0.1); break;
+    case "correct": _tone(659, 0.1, "sine", 0.17); _tone(988, 0.15, "sine", 0.17, 0.09); break;
+    case "wrong":   _tone(311, 0.24, "sawtooth", 0.12); break;
+    case "assassin":_tone(196, 0.5, "sawtooth", 0.18); _tone(147, 0.6, "sawtooth", 0.15, 0.08); break;
+    case "ai":      _tone(440, 0.09, "square", 0.07); _tone(370, 0.12, "square", 0.07, 0.08); break;
+    case "win":     [523, 659, 784, 1047].forEach((f, i) => _tone(f, 0.17, "triangle", 0.16, i * 0.12)); break;
+    case "lose":    [392, 330, 262].forEach((f, i) => _tone(f, 0.22, "sawtooth", 0.14, i * 0.14)); break;
+  }
+}
+
+function updateSoundToggle() {
+  const btn = $("#sound-toggle");
+  if (!btn) return;
+  btn.textContent = soundOn ? "🔊" : "🔇";
+  btn.classList.toggle("sound-off", !soundOn);
+}
+
+function initSoundToggle() {
+  updateSoundToggle();
+  $("#sound-toggle").addEventListener("click", () => {
+    soundOn = !soundOn;
+    localStorage.setItem("pc_sound", soundOn ? "on" : "off");
+    updateSoundToggle();
+    if (soundOn) playSound("clue"); // little confirmation blip
+  });
+}
+
+// ----------------------------------------------------------------------------
+// Win-overlay dismissal — remember when a player chose "See the board" so the
+// overlay doesn't pop back up when they switch tabs / apps and return.
+// ----------------------------------------------------------------------------
+const WIN_DISMISS_KEY = "pc_win_dismissed";
+function _loadDismissed() {
+  try { return new Set(JSON.parse(localStorage.getItem(WIN_DISMISS_KEY) || "[]")); } catch { return new Set(); }
+}
+function dismissWin(roomId) {
+  if (!roomId) return;
+  const s = _loadDismissed();
+  s.add(roomId);
+  localStorage.setItem(WIN_DISMISS_KEY, JSON.stringify([...s]));
+}
+function isWinDismissed(roomId) {
+  return !!roomId && _loadDismissed().has(roomId);
 }
 
 // ----------------------------------------------------------------------------
@@ -150,6 +235,10 @@ function clearSession() {
   state.me = null;
   state.turnStartRevealed = new Set();
   state.lastClueWord = null;
+  state.revealedSnapshot = null;
+  state._prevClueCount = null;
+  state._prevStatus = null;
+  state._prevClue = null;
   lastSignature = null;
   statsRequested = false;
   if (state.channel) {
@@ -197,6 +286,16 @@ function initLandingScreen() {
   $all('input[name="mode"]').forEach((input) => {
     input.addEventListener("change", () => {
       $all(".radio-chip[data-role='mode']").forEach((chip) =>
+        chip.classList.toggle("checked", chip.querySelector("input").checked)
+      );
+      const vsAi = $('input[name="mode"]:checked')?.value === "two_player_ai";
+      $("#ai-difficulty-field").classList.toggle("hidden", !vsAi);
+    });
+  });
+
+  $all('input[name="ai_difficulty"]').forEach((input) => {
+    input.addEventListener("change", () => {
+      $all(".radio-chip[data-role='difficulty']").forEach((chip) =>
         chip.classList.toggle("checked", chip.querySelector("input").checked)
       );
     });
@@ -251,6 +350,7 @@ function collectSettings() {
     generations: generations.length ? generations : [1],
     well_known_only: $("#well-known-toggle").checked,
     show_images: $("#show-images-toggle").checked,
+    ai_difficulty: $('input[name="ai_difficulty"]:checked')?.value || "easy",
   };
 }
 
@@ -513,7 +613,7 @@ function renderInner(changedPosition) {
 // ----------------------------------------------------------------------------
 // Board rendering (shared by the lobby preview and the game)
 // ----------------------------------------------------------------------------
-function makeTile(card, { interactive, changedPosition }) {
+function makeTile(card, { interactive, animatePositions }) {
   const tile = document.createElement("div");
   tile.className = "tile";
   const revealed = card.revealed;
@@ -528,8 +628,12 @@ function makeTile(card, { interactive, changedPosition }) {
 
   const allowClick = interactive && canReveal() && !revealed;
   if (!revealed && !allowClick) tile.classList.add("locked");
-  if (changedPosition != null && card.position === changedPosition && revealed) {
+  // Scan-sweep animation for newly revealed tiles. When several reveal at once
+  // (e.g. the AI's turn) stagger them so they colour in one after another.
+  const animIdx = animatePositions ? animatePositions.indexOf(card.position) : -1;
+  if (revealed && animIdx >= 0) {
     tile.classList.add("scan-sweep");
+    if (animIdx > 0) tile.style.setProperty("--sweep-delay", `${animIdx * 0.22}s`);
   }
 
   const peekLabel = { red: "R", blue: "B", neutral: "N", assassin: "A" };
@@ -563,9 +667,10 @@ function renderBoardInto(el, opts) {
 
   // If nothing that affects the board has changed, leave the existing tiles
   // (and their already-loaded images) untouched instead of rebuilding.
-  // Exception: always rebuild when changedPosition is set so the scan-sweep
-  // animation plays on the newly revealed tile.
-  if (el.dataset.sig === sig && opts.changedPosition == null) return;
+  // Exception: always rebuild when there are tiles to animate so the
+  // scan-sweep plays on each newly revealed tile.
+  const hasAnim = opts.animatePositions && opts.animatePositions.length > 0;
+  if (el.dataset.sig === sig && !hasAnim) return;
   el.dataset.sig = sig;
 
   el.innerHTML = "";
@@ -638,6 +743,8 @@ function renderLobby() {
   if (!state.room) return;
   const room = state.room;
   const is2p = isTwoPlayer(room);
+  const isAi = isVsAI(room);
+  const coop = is2p || isAi; // humans share the blue side, pick giver/receiver
   $("#lobby-room-code").textContent = room.code;
 
   // Mode instructions
@@ -645,10 +752,13 @@ function renderLobby() {
   if (room.mode === "in_person") {
     info.classList.remove("hidden");
     info.innerHTML = `<strong>In-person mode.</strong> Share this screen so everyone can see the board. Each clue giver should join separately on their own phone using the room code, so they can privately see which Pokémon belong to their team. Everyone else can watch and call out guesses from this shared screen.`;
+  } else if (isAi) {
+    info.classList.remove("hidden");
+    info.innerHTML = `<strong>Two-player vs AI (${escapeHtml(room.settings?.ai_difficulty || "easy")}).</strong> You're the blue team — one clue giver, one clue receiver. Claim clue giver to begin. After each of your turns the AI reveals some of its own red tiles, so race to clear all your blue Pokémon first — and never touch the assassin.`;
   } else if (is2p) {
     info.classList.remove("hidden");
     const modeLabel = isAsyncMode(room) ? "Turn-by-turn mode" : "Two-player mode";
-    info.innerHTML = `<strong>${modeLabel}.</strong> One of you is the clue giver, the other the clue receiver. Work together to reveal all of your team's Pokémon in as few rounds as possible — and never touch the assassin.`;
+    info.innerHTML = `<strong>${modeLabel}.</strong> One of you is the clue giver, the other the clue receiver. Claim clue giver to begin. Work together to reveal all of your team's Pokémon in as few rounds as possible — and never touch the assassin.`;
   } else {
     info.classList.add("hidden");
   }
@@ -659,10 +769,10 @@ function renderLobby() {
   // Team columns
   const redCol = $("#lobby-red-col");
   const blueCol = $("#lobby-blue-col");
-  if (is2p) {
+  if (coop) {
     redCol.classList.add("hidden");
     blueCol.classList.remove("hidden");
-    $("#lobby-blue-title").textContent = "Players";
+    $("#lobby-blue-title").textContent = isAi ? "Your team (vs AI)" : "Players";
     renderTeamColumn("blue");
   } else {
     redCol.classList.remove("hidden");
@@ -677,14 +787,13 @@ function renderLobby() {
   const seatArea = $("#seat-picker");
   if (state.me && state.me.team) {
     const roleLabel = state.me.role === "spymaster" ? "clue giver" : "clue receiver";
-    const teamLabel = is2p ? "" : ` on <strong>${state.me.team}</strong>`;
-    const isAsync = isAsyncMode(room);
-    const waitNote = (isAsync && state.me.role === "spymaster")
-      ? "You're set as <strong>clue giver</strong>. Start the game to deal the board, then share your first clue to invite the other player."
-      : `You're set as <strong>${roleLabel}</strong>${teamLabel}. Waiting for the host to start.`;
+    const teamLabel = coop ? "" : ` on <strong>${state.me.team}</strong>`;
+    const waitNote = (coop && state.me.role === "operative")
+      ? `You're set as <strong>clue receiver</strong>. Waiting for the clue giver to start and send the first clue.`
+      : `You're set as <strong>${roleLabel}</strong>${teamLabel}. ${coop ? "" : "Waiting for the host to start."}`;
     seatArea.className = "";
     seatArea.innerHTML = `<div class="waiting-note">${waitNote}</div>`;
-  } else if (is2p) {
+  } else if (coop) {
     seatArea.className = "";
     seatArea.innerHTML = `
       <div class="team-col">
@@ -709,32 +818,18 @@ function renderLobby() {
     btn.addEventListener("click", () => handleClearSeat(btn.dataset.remove));
   });
 
-  // Host controls
+  // Host controls. Co-op / vs-AI modes auto-start when a clue giver is claimed,
+  // so there's no manual "Start game" step — hide the panel entirely.
   const hostPanel = $("#host-panel");
   const isHost = state.me && state.me.is_host;
-  hostPanel.classList.toggle("hidden", !isHost);
-  if (isHost) {
-    let ready, hint;
-    if (is2p) {
-      const hasGiver = state.players.some((p) => p.role === "spymaster" && p.team);
-      const hasReceiver = state.players.some((p) => p.role === "operative" && p.team);
-      if (isAsyncMode(room)) {
-        ready = hasGiver;
-        hint = ready
-          ? "Ready — start to deal the board, then share your first clue to invite the other player."
-          : "Claim the clue giver role to start.";
-      } else {
-        ready = hasGiver && hasReceiver;
-        hint = ready ? "Ready to start." : "Need a clue giver and a clue receiver.";
-      }
-    } else {
-      const redReady = state.players.some((p) => p.team === "red" && p.role === "spymaster");
-      const blueReady = state.players.some((p) => p.team === "blue" && p.role === "spymaster");
-      ready = redReady && blueReady;
-      hint = ready
-        ? "Both teams have a clue giver — ready to start."
-        : "Each team needs a clue giver before you can start.";
-    }
+  hostPanel.classList.toggle("hidden", !isHost || coop);
+  if (isHost && !coop) {
+    const redReady = state.players.some((p) => p.team === "red" && p.role === "spymaster");
+    const blueReady = state.players.some((p) => p.team === "blue" && p.role === "spymaster");
+    const ready = redReady && blueReady;
+    const hint = ready
+      ? "Both teams have a clue giver — ready to start."
+      : "Each team needs a clue giver before you can start.";
     $("#start-game-btn").disabled = !ready;
     $("#start-game-hint").textContent = hint;
   }
@@ -803,7 +898,9 @@ function initGameScreen() {
     clearSession();
     showScreen("landing");
   });
+  $("#share-result-btn").addEventListener("click", handleShareResult);
   $("#see-board-btn").addEventListener("click", () => {
+    dismissWin(state.roomId); // remember this choice so the overlay stays closed
     $("#win-overlay").classList.add("hidden");
   });
 }
@@ -816,6 +913,16 @@ function isAsyncMode(room) {
   return room?.mode === "turn_by_turn";
 }
 
+function isVsAI(room) {
+  return room?.mode === "two_player_ai";
+}
+
+// Any mode where two humans share the blue side and pick clue-giver / receiver
+// (co-op two-player, turn-by-turn, or vs-AI).
+function isBlueTeamMode(room) {
+  return isTwoPlayer(room) || isVsAI(room);
+}
+
 function isObserver() {
   return !!(state.me && !state.me.team && !state.me.role && state.room?.status === "in_progress");
 }
@@ -826,7 +933,7 @@ function canReveal() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
-  if (isTwoPlayer(room)) return me.role === "operative";
+  if (isBlueTeamMode(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -836,7 +943,7 @@ function canPass() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
-  if (isTwoPlayer(room)) return me.role === "operative";
+  if (isBlueTeamMode(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -845,7 +952,7 @@ function canGiveClue() {
   const me = state.me;
   if (!room || !me) return false;
   if (room.status !== "in_progress" || room.current_clue) return false;
-  if (isTwoPlayer(room)) return me.role === "spymaster";
+  if (isBlueTeamMode(room)) return me.role === "spymaster";
   return me.role === "spymaster" && me.team === room.current_team;
 }
 
@@ -854,6 +961,49 @@ function renderGame(changedPosition) {
   if (!room) return;
   const is2p = isTwoPlayer(room);
   const isAsync = isAsyncMode(room);
+  const isAi = isVsAI(room);
+  const coop = is2p || isAi; // two humans share the blue side
+
+  // --- Detect newly revealed tiles for animation + sound effects -----------
+  const revealedNow = new Set(state.cards.filter((c) => c.revealed).map((c) => c.position));
+  let newlyRevealed = [];
+  if (state.revealedSnapshot === null) {
+    state.revealedSnapshot = revealedNow; // first render for this room — seed, don't animate
+  } else {
+    newlyRevealed = [...revealedNow].filter((p) => !state.revealedSnapshot.has(p));
+    // Put the tile the local player just clicked first so it animates before AI tiles.
+    if (changedPosition != null && newlyRevealed.includes(changedPosition)) {
+      newlyRevealed = [changedPosition, ...newlyRevealed.filter((p) => p !== changedPosition)];
+    }
+    state.revealedSnapshot = revealedNow;
+  }
+
+  // Sound: reveal outcomes
+  if (newlyRevealed.length) {
+    const byPos = Object.fromEntries(state.cards.map((c) => [c.position, c]));
+    const cols = newlyRevealed.map((p) => byPos[p]?.revealed_colour);
+    const myTeam = coop ? "blue" : (state.me?.team || room.current_team);
+    if (cols.includes("assassin")) playSound("assassin");
+    else if (isAi) {
+      if (cols.includes("neutral")) playSound("wrong");
+      else if (cols.includes("red")) playSound("ai");
+      else if (cols.includes("blue")) playSound("correct");
+    } else if (cols.some((c) => c && c !== myTeam)) playSound("wrong");
+    else if (cols.some((c) => c === myTeam)) playSound("correct");
+  }
+
+  // Sound: a new clue was submitted
+  const cc = room.clue_count ?? 0;
+  if (state._prevClueCount != null && cc > state._prevClueCount) playSound("clue");
+  state._prevClueCount = cc;
+
+  // Sound: game just ended
+  if (state._prevStatus && state._prevStatus !== "finished" && room.status === "finished") {
+    if (room.winner === null) { /* assassin sound already played on the reveal */ }
+    else if (isAi) playSound(room.winner === "blue" ? "win" : "lose");
+    else playSound("win");
+  }
+  state._prevStatus = room.status;
 
   // Detect turn ending (clue cleared) to auto-share in async mode
   const prevClue = state._prevClue;
@@ -867,7 +1017,7 @@ function renderGame(changedPosition) {
   banner.classList.remove("team-red", "team-blue");
   if (room.status === "in_progress") {
     banner.classList.add(`team-${room.current_team}`);
-    $("#turn-team-value").textContent = is2p
+    $("#turn-team-value").textContent = coop
       ? room.current_clue ? "GUESSING" : "CLUE GIVER'S TURN"
       : `${room.current_team.toUpperCase()} TEAM'S TURN`;
   } else {
@@ -904,7 +1054,7 @@ function renderGame(changedPosition) {
   observerBanner.classList.toggle("hidden", !observer);
   const legend = $("#board-legend");
   legend.classList.toggle("hidden", !isGiver);
-  $("#legend-red").classList.toggle("hidden", is2p); // no red team in two-player
+  $("#legend-red").classList.toggle("hidden", is2p); // co-op two-player has no red team (vs-AI does)
 
   // Clue form
   $("#clue-form").classList.toggle("hidden", !canGiveClue());
@@ -913,7 +1063,7 @@ function renderGame(changedPosition) {
   const waiting = $("#waiting-for-clue");
   if (room.status === "in_progress" && !room.current_clue && !canGiveClue()) {
     waiting.classList.remove("hidden");
-    waiting.textContent = is2p
+    waiting.textContent = coop
       ? "Waiting for the clue giver's clue..."
       : `Waiting for the ${room.current_team} clue giver's clue...`;
   } else {
@@ -929,13 +1079,17 @@ function renderGame(changedPosition) {
   const hasClue = room.status === "in_progress" && !!room.current_clue;
   $("#share-clue-row").classList.toggle("hidden", !(isSpymaster && hasClue));
 
-  // Share board — only for operatives (clue receivers), only between turns (no active clue)
+  // Share board — for operatives between turns; and for everyone once the game
+  // is over (so the final board + summary can be shared).
   const isOperative = state.me?.role === "operative";
   const betweenTurns = room.status === "in_progress" && !room.current_clue;
-  $("#share-board-row").classList.toggle("hidden", !(isOperative && betweenTurns));
+  const finished = room.status === "finished";
+  const shareBtn = $("#share-board-btn");
+  if (shareBtn) shareBtn.textContent = finished ? "↗ Share result" : "↗ Share board";
+  $("#share-board-row").classList.toggle("hidden", !((isOperative && betweenTurns) || finished));
 
   // Board
-  renderBoardInto($("#board"), { interactive: true, changedPosition });
+  renderBoardInto($("#board"), { interactive: true, animatePositions: newlyRevealed });
 
   // In-game team roster (always visible so players know who's who)
   renderGameTeams(room);
@@ -960,13 +1114,27 @@ function renderGame(changedPosition) {
     $("#count-blue").textContent = blueLeft === null ? "—" : blueLeft;
   }
 
-  // Win / lose overlay
+  // Win / lose overlay — but respect a prior "See the board" dismissal so the
+  // overlay doesn't pop back up when the player returns to the tab/app.
   const winOverlay = $("#win-overlay");
-  if (room.status === "finished") {
+  if (room.status === "finished" && !isWinDismissed(state.roomId)) {
     winOverlay.classList.remove("hidden");
     const card = $("#win-card");
     card.classList.remove("win-red", "win-blue");
-    if (is2p) {
+    if (isAi) {
+      if (room.winner === "blue") {
+        card.classList.add("win-blue");
+        $("#win-title").textContent = `You beat the AI in ${room.clue_count} round${room.clue_count === 1 ? "" : "s"}!`;
+        $("#win-subtitle").textContent = "Great teamwork — you cleared your Pokémon first.";
+      } else if (room.winner === "red") {
+        card.classList.add("win-red");
+        $("#win-title").textContent = "The AI won!";
+        $("#win-subtitle").textContent = "The AI cleared its tiles first — try an easier setting or a sharper clue.";
+      } else {
+        $("#win-title").textContent = "You hit the assassin!";
+        $("#win-subtitle").textContent = "The assassin got you — better luck next time.";
+      }
+    } else if (is2p) {
       if (room.winner === "blue") {
         card.classList.add("win-blue");
         $("#win-title").textContent = `Cleared in ${room.clue_count} round${
@@ -1023,21 +1191,24 @@ function renderTimer() {
   const room = state.room;
   if (!el || !room) return;
 
-  const is2p = isTwoPlayer(room);
   const isAsync = isAsyncMode(room);
+  const coop = isTwoPlayer(room) || isVsAI(room); // elapsed-time modes (timer starts on first clue)
 
   if (room.status === "in_progress") {
-    if (is2p) {
-      const start = room.started_at ? new Date(room.started_at).getTime() : serverNow();
+    if (coop) {
+      // started_at is stamped on the first clue, so the timer only runs once
+      // the game is actually underway.
+      if (!room.started_at) { el.textContent = "Time elapsed: 0:00"; return; }
+      const start = new Date(room.started_at).getTime();
       el.textContent = `Time elapsed: ${formatDuration(serverNow() - start, isAsync)}`;
     } else {
       const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : serverNow();
       el.textContent = `This turn: ${formatDuration(serverNow() - start)}`;
     }
-  } else if (room.status === "finished" && is2p) {
+  } else if (room.status === "finished" && coop) {
     const start = room.started_at ? new Date(room.started_at).getTime() : 0;
     const end = room.finished_at ? new Date(room.finished_at).getTime() : serverNow();
-    el.textContent = `Total time: ${formatDuration(end - start, isAsync)}`;
+    el.textContent = start ? `Total time: ${formatDuration(end - start, isAsync)}` : "";
   } else {
     el.textContent = "";
   }
@@ -1049,6 +1220,7 @@ function renderTimer() {
 function renderGameTeams(room) {
   const el = $("#game-teams");
   const is2p = isTwoPlayer(room);
+  const isAi = isVsAI(room);
 
   const playerRow = (p) => {
     const roleLabel = p.role === "spymaster" ? "clue giver" : p.role === "operative" ? "receiver" : "";
@@ -1063,7 +1235,15 @@ function renderGameTeams(room) {
     ? `<div class="gt-col gt-observers"><div class="gt-title">Observers</div>${observers.map(playerRow).join("")}</div>`
     : "";
 
-  if (is2p) {
+  if (isAi) {
+    // Humans are blue; the opponent is the AI (red).
+    const blue = state.players.filter((p) => p.team === "blue");
+    el.classList.remove("hidden");
+    el.innerHTML = `
+      <div class="gt-col gt-blue"><div class="gt-title">Your team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
+      <div class="gt-col gt-red"><div class="gt-title">AI opponent</div><div class="gt-player"><span>🤖 Computer</span><span class="gt-role">${escapeHtml(room.settings?.ai_difficulty || "easy")}</span></div></div>
+      ${observersHtml}`;
+  } else if (is2p) {
     const bluePlayers = state.players.filter((p) => p.team === "blue");
     if (bluePlayers.length === 0 && observers.length === 0) { el.classList.add("hidden"); return; }
     el.classList.remove("hidden");
@@ -1188,10 +1368,50 @@ function buildEmojiGrid() {
   return rows.join("\n");
 }
 
+// Full end-of-game recap: final grid + every clue with its guesses (✅/❌),
+// plus the outcome headline.
+function buildResultShareText() {
+  const room = state.room;
+  const grid = buildEmojiGrid();
+  const clueLog = Array.isArray(room.clue_log) ? room.clue_log : [];
+  const guessLog = Array.isArray(room.guess_log) ? room.guess_log : [];
+
+  let outcome;
+  if (isVsAI(room)) {
+    outcome = room.winner === "blue" ? `Beat the AI (${room.settings?.ai_difficulty || "easy"}) in ${room.clue_count} rounds!`
+            : room.winner === "red" ? `Lost to the AI (${room.settings?.ai_difficulty || "easy"}).`
+            : `Hit the assassin! 💀`;
+  } else if (isTwoPlayer(room)) {
+    outcome = room.winner === "blue" ? `Cleared the board in ${room.clue_count} rounds!` : `Hit the assassin! 💀`;
+  } else {
+    outcome = `${(room.winner || "").toUpperCase()} team wins!`;
+  }
+
+  const lines = [`Pokémon Codenames`, outcome, grid, ""];
+  clueLog.forEach((c, i) => {
+    lines.push(`${i + 1}. "${c.word}" ×${c.number}`);
+    guessLog.filter((g) => g.clue_index === i).forEach((g) => {
+      lines.push(`   ${g.correct ? "✅" : "❌"} ${g.name}`);
+    });
+  });
+  return lines.join("\n");
+}
+
+async function handleShareResult() {
+  await nativeShare({
+    title: "Pokémon Codenames — result",
+    text: buildResultShareText(),
+    url: roomUrl(),
+  });
+}
+
 async function handleShareBoard() {
+  // Once the game is finished, "Share board" becomes a full result recap.
+  if (state.room?.status === "finished") return handleShareResult();
+
   const url = roomUrl();
   const room = state.room;
-  const is2p = isTwoPlayer(room);
+  const is2p = isTwoPlayer(room) || isVsAI(room);
   const myTeam = is2p ? "blue" : state.me?.team;
 
   // Work out what was guessed this turn using the snapshot taken when the clue arrived
@@ -1199,8 +1419,8 @@ async function handleShareBoard() {
   const correct = thisRoundCards.filter((c) => c.revealed_colour === myTeam).length;
   const wrong = thisRoundCards.filter((c) => c.revealed_colour !== myTeam).length;
 
-  // Remaining team tiles — read from room columns, visible to everyone
-  const remaining = is2p ? room.remaining_blue : (myTeam === "red" ? room.remaining_red : room.remaining_blue);
+  // Remaining team tiles — computed from the revealed cards so it's accurate.
+  const remaining = countRemaining(room, is2p ? "blue" : myTeam);
 
   const grid = buildEmojiGrid();
 
@@ -1311,6 +1531,7 @@ async function boot() {
   initLandingScreen();
   initLobbyScreen();
   initGameScreen();
+  initSoundToggle();
 
   $("#refresh-btn").addEventListener("click", async () => {
     await resyncRoom();
