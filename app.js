@@ -1,7 +1,7 @@
 // ============================================================================
-// Pokemon Codenames — app.js
+// Pokemon Codenames – app.js
 // Shared Supabase setup, auth, realtime, and logic for all three screens
-// (landing / lobby / game). Plain JS, no build step — runs in the browser.
+// (landing / lobby / game). Plain JS, no build step – runs in the browser.
 // ============================================================================
 
 const SUPABASE_URL = "https://fjhijkszcugwxtmlbudz.supabase.co";
@@ -92,7 +92,7 @@ function setRoomPill(code) {
 }
 
 // ----------------------------------------------------------------------------
-// Sound effects — synthesized with the Web Audio API (no asset files needed,
+// Sound effects – synthesized with the Web Audio API (no asset files needed,
 // works offline). Controlled by a header toggle, preference saved locally.
 // ----------------------------------------------------------------------------
 let audioCtx = null;
@@ -156,7 +156,7 @@ function initSoundToggle() {
 }
 
 // ----------------------------------------------------------------------------
-// Win-overlay dismissal — remember when a player chose "See the board" so the
+// Win-overlay dismissal – remember when a player chose "See the board" so the
 // overlay doesn't pop back up when they switch tabs / apps and return.
 // ----------------------------------------------------------------------------
 const WIN_DISMISS_KEY = "pc_win_dismissed";
@@ -174,7 +174,7 @@ function isWinDismissed(roomId) {
 }
 
 // ----------------------------------------------------------------------------
-// Local persistence — multi-room session map so users can juggle several games
+// Local persistence – multi-room session map so users can juggle several games
 // ----------------------------------------------------------------------------
 function _loadSessionMap() {
   try { return JSON.parse(localStorage.getItem(SESSIONS_KEY) || "{}"); } catch { return {}; }
@@ -252,7 +252,7 @@ function clearSession() {
 }
 
 // ----------------------------------------------------------------------------
-// Auth — anonymous sign-in, persisted by supabase-js itself
+// Auth – anonymous sign-in, persisted by supabase-js itself
 // ----------------------------------------------------------------------------
 async function ensureAuth() {
   const { data } = await sb.auth.getSession();
@@ -338,7 +338,7 @@ function initLandingScreen() {
       await enterRoom();
     } catch (err) {
       console.error(err);
-      errEl.textContent = err.message || "Couldn't join — check the link and try again.";
+      errEl.textContent = err.message || "Couldn't join – check the link and try again.";
     } finally {
       btn.disabled = false;
     }
@@ -561,7 +561,7 @@ async function pollTick() {
     await fetchCardKeyIfSpymaster();
     if (computeStateSignature() !== lastSignature) await render();
   } catch (err) {
-    /* transient — next tick retries */
+    /* transient – next tick retries */
   }
 }
 
@@ -580,12 +580,12 @@ async function enterRoom() {
   setRoomPill(state.room.code);
   await render();
   if (isObserver()) {
-    toast("All seats are taken — you've joined as an observer.");
+    toast("All seats are taken – you've joined as an observer.");
   }
 }
 
 // ----------------------------------------------------------------------------
-// Rendering — single entry point that routes to lobby or game
+// Rendering – single entry point that routes to lobby or game
 // ----------------------------------------------------------------------------
 async function render(changedPosition) {
   if (!state.room) return;
@@ -755,11 +755,11 @@ function renderLobby() {
     info.innerHTML = `<strong>In-person mode.</strong> Share this screen so everyone can see the board. Each clue giver should join separately on their own phone using the room code, so they can privately see which Pokémon belong to their team. Everyone else can watch and call out guesses from this shared screen.`;
   } else if (isAi) {
     info.classList.remove("hidden");
-    info.innerHTML = `<strong>Two-player vs AI (${escapeHtml(room.settings?.ai_difficulty || "easy")}).</strong> You're the blue team — one clue giver, one clue receiver. Claim clue giver to begin. After each of your turns the AI reveals some of its own red tiles, so race to clear all your blue Pokémon first — and never touch the assassin.`;
+    info.innerHTML = `<strong>Two-player vs AI (${escapeHtml(room.settings?.ai_difficulty || "easy")}).</strong> You're the blue team – one clue giver, one clue receiver. Claim clue giver to begin. After each of your turns the AI reveals some of its own red tiles, so race to clear all your blue Pokémon first – and never touch the assassin.`;
   } else if (is2p) {
     info.classList.remove("hidden");
     const modeLabel = isAsyncMode(room) ? "Turn-by-turn mode" : "Two-player mode";
-    info.innerHTML = `<strong>${modeLabel}.</strong> One of you is the clue giver, the other the clue receiver. Claim clue giver to begin. Work together to reveal all of your team's Pokémon in as few rounds as possible — and never touch the assassin.`;
+    info.innerHTML = `<strong>${modeLabel}.</strong> One of you is the clue giver, the other the clue receiver. Claim clue giver to begin. Work together to reveal all of your team's Pokémon in as few rounds as possible – and never touch the assassin.`;
   } else {
     info.classList.add("hidden");
   }
@@ -820,7 +820,7 @@ function renderLobby() {
   });
 
   // Host controls. Co-op / vs-AI modes auto-start when a clue giver is claimed,
-  // so there's no manual "Start game" step — hide the panel entirely.
+  // so there's no manual "Start game" step – hide the panel entirely.
   const hostPanel = $("#host-panel");
   const isHost = state.me && state.me.is_host;
   hostPanel.classList.toggle("hidden", !isHost || coop);
@@ -829,7 +829,7 @@ function renderLobby() {
     const blueReady = state.players.some((p) => p.team === "blue" && p.role === "spymaster");
     const ready = redReady && blueReady;
     const hint = ready
-      ? "Both teams have a clue giver — ready to start."
+      ? "Both teams have a clue giver – ready to start."
       : "Each team needs a clue giver before you can start.";
     $("#start-game-btn").disabled = !ready;
     $("#start-game-hint").textContent = hint;
@@ -975,7 +975,7 @@ function renderGame(changedPosition) {
   const revealedNow = new Set(state.cards.filter((c) => c.revealed).map((c) => c.position));
   let newlyRevealed = [];
   if (state.revealedSnapshot === null) {
-    state.revealedSnapshot = revealedNow; // first render for this room — seed, don't animate
+    state.revealedSnapshot = revealedNow; // first render for this room – seed, don't animate
   } else {
     newlyRevealed = [...revealedNow].filter((p) => !state.revealedSnapshot.has(p));
     // Put the tile the local player just clicked first so it animates before AI tiles.
@@ -1028,7 +1028,7 @@ function renderGame(changedPosition) {
       ? room.current_clue ? "GUESSING" : "CLUE GIVER'S TURN"
       : `${room.current_team.toUpperCase()} TEAM'S TURN`;
   } else {
-    $("#turn-team-value").textContent = room.status === "finished" ? "Game over" : "—";
+    $("#turn-team-value").textContent = room.status === "finished" ? "Game over" : "–";
   }
 
   // vs-AI: show the AI's turn and, once, trigger its reveal after a short pause
@@ -1076,7 +1076,7 @@ function renderGame(changedPosition) {
   const observerBanner = $("#observer-banner");
   const isGiver = state.me && state.me.role === "spymaster";
   const observer = isObserver();
-  spyBanner.classList.add("hidden"); // removed — not useful to display
+  spyBanner.classList.add("hidden"); // removed – not useful to display
   observerBanner.classList.toggle("hidden", !observer);
   const legend = $("#board-legend");
   legend.classList.toggle("hidden", !isGiver);
@@ -1103,12 +1103,12 @@ function renderGame(changedPosition) {
   $("#end-turn-btn").classList.toggle("hidden", !canPass());
   $("#end-turn-btn-top").classList.toggle("hidden", !canPass());
 
-  // Share clue — only for the clue giver, and only while a clue is active
+  // Share clue – only for the clue giver, and only while a clue is active
   const isSpymaster = state.me?.role === "spymaster";
   const hasClue = room.status === "in_progress" && !!room.current_clue;
   $("#share-clue-row").classList.toggle("hidden", !(isSpymaster && hasClue));
 
-  // Share board — for operatives between turns; and for everyone once the game
+  // Share board – for operatives between turns; and for everyone once the game
   // is over (so the final board + summary can be shared).
   const isOperative = state.me?.role === "operative";
   const betweenTurns = room.status === "in_progress" && !room.current_clue;
@@ -1135,18 +1135,18 @@ function renderGame(changedPosition) {
   if (is2p) {
     $("#count-red-wrap").classList.add("hidden");
     $("#count-blue-wrap").classList.remove("hidden");
-    $("#count-blue").textContent = blueLeft === null ? "—" : blueLeft;
+    $("#count-blue").textContent = blueLeft === null ? "–" : blueLeft;
     $("#round-wrap").classList.remove("hidden");
     $("#round-count").textContent = room.clue_count ?? 0;
   } else {
     $("#count-red-wrap").classList.remove("hidden");
     $("#count-blue-wrap").classList.remove("hidden");
     $("#round-wrap").classList.add("hidden");
-    $("#count-red").textContent = redLeft === null ? "—" : redLeft;
-    $("#count-blue").textContent = blueLeft === null ? "—" : blueLeft;
+    $("#count-red").textContent = redLeft === null ? "–" : redLeft;
+    $("#count-blue").textContent = blueLeft === null ? "–" : blueLeft;
   }
 
-  // Win / lose overlay — but respect a prior "See the board" dismissal so the
+  // Win / lose overlay – but respect a prior "See the board" dismissal so the
   // overlay doesn't pop back up when the player returns to the tab/app.
   const winOverlay = $("#win-overlay");
   if (room.status === "finished" && !isWinDismissed(state.roomId)) {
@@ -1157,14 +1157,14 @@ function renderGame(changedPosition) {
       if (room.winner === "blue") {
         card.classList.add("win-blue");
         $("#win-title").textContent = `You beat the AI in ${room.clue_count} round${room.clue_count === 1 ? "" : "s"}!`;
-        $("#win-subtitle").textContent = "Great teamwork — you cleared your Pokémon first.";
+        $("#win-subtitle").textContent = "Great teamwork – you cleared your Pokémon first.";
       } else if (room.winner === "red") {
         card.classList.add("win-red");
         $("#win-title").textContent = "The AI won!";
-        $("#win-subtitle").textContent = "The AI cleared its tiles first — try an easier setting or a sharper clue.";
+        $("#win-subtitle").textContent = "The AI cleared its tiles first – try an easier setting or a sharper clue.";
       } else {
         $("#win-title").textContent = "You hit the assassin!";
-        $("#win-subtitle").textContent = "The assassin got you — better luck next time.";
+        $("#win-subtitle").textContent = "The assassin got you – better luck next time.";
       }
     } else if (is2p) {
       if (room.winner === "blue") {
@@ -1178,7 +1178,7 @@ function renderGame(changedPosition) {
         }
       } else {
         $("#win-title").textContent = "You hit the assassin!";
-        $("#win-subtitle").textContent = "The assassin got you — better luck next time.";
+        $("#win-subtitle").textContent = "The assassin got you – better luck next time.";
       }
     } else {
       card.classList.add(`win-${room.winner}`);
@@ -1272,7 +1272,7 @@ function renderGameTeams(room) {
     const blue = state.players.filter((p) => p.team === "blue");
     el.classList.remove("hidden");
     el.innerHTML = `
-      <div class="gt-col gt-blue"><div class="gt-title">Your team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
+      <div class="gt-col gt-blue"><div class="gt-title">Your team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">–</div>'}</div>
       <div class="gt-col gt-red"><div class="gt-title">AI opponent</div><div class="gt-player"><span>🤖 Computer</span><span class="gt-role">${escapeHtml(room.settings?.ai_difficulty || "easy")}</span></div></div>
       ${observersHtml}`;
   } else if (is2p) {
@@ -1286,21 +1286,21 @@ function renderGameTeams(room) {
     if (red.length === 0 && blue.length === 0 && observers.length === 0) { el.classList.add("hidden"); return; }
     el.classList.remove("hidden");
     el.innerHTML = `
-      <div class="gt-col gt-red"><div class="gt-title">Red team</div>${red.length ? red.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
-      <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
+      <div class="gt-col gt-red"><div class="gt-title">Red team</div>${red.length ? red.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">–</div>'}</div>
+      <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">–</div>'}</div>
       ${observersHtml}`;
   }
 }
 
 // ----------------------------------------------------------------------------
-// How-to-play banner — a short reminder of the mode's dynamic, under the log
+// How-to-play banner – a short reminder of the mode's dynamic, under the log
 // ----------------------------------------------------------------------------
 const MODE_EXPLAINERS = {
-  online: "<strong>Classic online.</strong> Two teams race to find their own Pokémon. Each team's clue giver gives a one-word clue and a number; guessers tap tiles — find your team's, avoid the other team's, the neutrals, and never the assassin.",
+  online: "<strong>Classic online.</strong> Two teams race to find their own Pokémon. Each team's clue giver gives a one-word clue and a number; guessers tap tiles – find your team's, avoid the other team's, the neutrals, and never the assassin.",
   in_person: "<strong>In person.</strong> This screen shows the board for everyone. Each team's clue giver peeks at the key privately on their own phone and gives one-word clues; the group guesses on this shared screen.",
   two_player: "<strong>Two-player co-op.</strong> Work together to reveal all 9 of your blue Pokémon in as few rounds as possible. One gives clues, the other guesses. Hit the assassin and it's game over.",
   turn_by_turn: "<strong>Turn-by-turn co-op.</strong> Same as two-player, played at your own pace: the clue giver sends a clue, then shares the link so the guesser can take their turn whenever they like.",
-  two_player_ai: "<strong>Two-player vs AI.</strong> You're the blue team — clear all 9 of your blue Pokémon before the AI reveals all 8 of its red ones. After each of your turns the AI flips over some red tiles. Avoid the assassin!",
+  two_player_ai: "<strong>Two-player vs AI.</strong> You're the blue team – clear all 9 of your blue Pokémon before the AI reveals all 8 of its red ones. After each of your turns the AI flips over some red tiles. Avoid the assassin!",
 };
 
 function renderModeExplainer(room) {
@@ -1376,7 +1376,7 @@ async function fetchTwoPlayerStats() {
     const statLine =
       row.total_games > 1
         ? `<br>You finished faster than ${row.faster_pct}% of players.`
-        : `<br>You're the first to finish — a record to beat!`;
+        : `<br>You're the first to finish – a record to beat!`;
     $("#win-subtitle").innerHTML = `${escapeHtml(msg)}${statLine}`;
   } catch (err) {
     console.error(err);
@@ -1455,7 +1455,7 @@ function buildResultShareText() {
 
 async function handleShareResult() {
   await nativeShare({
-    title: "Pokémon Codenames — result",
+    title: "Pokémon Codenames – result",
     text: buildResultShareText(),
     url: roomUrl(),
   });
@@ -1475,7 +1475,7 @@ async function handleShareBoard() {
   const correct = thisRoundCards.filter((c) => c.revealed_colour === myTeam).length;
   const wrong = thisRoundCards.filter((c) => c.revealed_colour !== myTeam).length;
 
-  // Remaining team tiles — computed from the revealed cards so it's accurate.
+  // Remaining team tiles – computed from the revealed cards so it's accurate.
   const remaining = countRemaining(room, is2p ? "blue" : myTeam);
 
   const grid = buildEmojiGrid();
@@ -1494,7 +1494,7 @@ async function handleShareBoard() {
     `Your turn:`,
   ].filter(Boolean).join("\n");
 
-  await nativeShare({ title: "Pokémon Codenames — board update", text, url });
+  await nativeShare({ title: "Pokémon Codenames – board update", text, url });
 }
 
 // ----------------------------------------------------------------------------
@@ -1617,7 +1617,7 @@ async function startDaily(pool) {
     const { data, error } = await sb.rpc("get_daily_puzzle", { p_pool: pool });
     if (error) throw error;
     const row = data && data[0];
-    if (!row) { toast("No daily puzzle available yet — check back soon."); return; }
+    if (!row) { toast("No daily puzzle available yet – check back soon."); return; }
     _dailyReset();
     daily.pool = pool;
     daily.date = row.puzzle_date;
@@ -1640,16 +1640,16 @@ async function startDaily(pool) {
 }
 
 function _clueChip(c) {
-  // Note: c.cat (difficulty 1-5) is a back-end categorisation only — not shown.
+  // Note: c.cat (difficulty 1-5) is a back-end categorisation only – not shown.
   if (c.anti) {
-    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span><span class="dc-anti-tag">none are this</span></div>`;
+    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span></div>`;
   }
   return `<div class="daily-clue"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× ${c.number}</span></div>`;
 }
 
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
-  $("#daily-play-title").textContent = `Daily puzzle — ${poolLabel}`;
+  $("#daily-play-title").textContent = `Daily puzzle – ${poolLabel}`;
   $("#daily-play-sub").textContent = daily.date
     ? `Find all 9 blue Pokémon. 3 strikes and you're out.` : "";
 
@@ -1796,7 +1796,7 @@ function renderDailyResult() {
   let title;
   if (daily.outcome === "win") title = `Solved it! 9/9 🎉`;
   else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
-  else title = `Out of guesses — ${daily.bluesFound}/9 found`;
+  else title = `Out of guesses – ${daily.bluesFound}/9 found`;
   const ratings = [
     ["way_too_easy", "Way too easy"],
     ["slightly_easy", "Slightly easy"],
@@ -1850,12 +1850,12 @@ function dailyShare() {
   const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const text = [
-    `Pokémon Codenames — Daily (${poolLabel})`,
+    `Pokémon Codenames – Daily (${poolLabel})`,
     rows.join("\n"),
     `${daily.bluesFound}/9 · ${daily.mistakes} mistakes · ${daily.hintsUsed} hints · ${time}`,
   ].join("\n");
   const url = `${window.location.origin}${window.location.pathname}`;
-  nativeShare({ title: "Pokémon Codenames — Daily", text, url });
+  nativeShare({ title: "Pokémon Codenames – Daily", text, url });
 }
 
 // ============================================================================
@@ -1915,7 +1915,7 @@ async function boot() {
         // fall through to quick-join overlay
       }
     }
-    // No saved session for this code — show quick-join overlay
+    // No saved session for this code – show quick-join overlay
     const el = $("#quick-join-code");
     el.textContent = inviteCode.toUpperCase();
     el.dataset.code = inviteCode.toUpperCase();
@@ -1923,7 +1923,7 @@ async function boot() {
     return;
   }
 
-  // No invite code — restore the most recently visited game (if any)
+  // No invite code – restore the most recently visited game (if any)
   const last = _findLastSession();
   if (last) {
     state.roomId = last.roomId;

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pokémon Codenames</title>
-<meta name="description" content="A Pokedex-flavored spin on Codenames — deal a board of Pokemon, give one-word clues, and clear your team's set before the other side finds the assassin." />
+<meta name="description" content="A Pokedex-flavored spin on Codenames – deal a board of Pokemon, give one-word clues, and clear your team's set before the other side finds the assassin." />
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
@@ -44,13 +44,13 @@
   <section class="screen active" id="screen-landing">
     <div class="hero">
       <h1>Pokémon Codenames</h1>
-      <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon — without landing on the other team's, a neutral, or the assassin.</p>
+      <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon – without landing on the other team's, a neutral, or the assassin.</p>
     </div>
 
     <div class="daily-cta">
       <div class="daily-cta-text">
         <h2>🧩 Daily puzzle <span class="daily-badge">1 player</span></h2>
-        <div class="sub">Crack today's board from 5 clues in one turn — 2 mistakes allowed. New puzzles daily.</div>
+        <div class="sub">Crack today's board from 5 clues in one turn – 2 mistakes allowed. New puzzles daily.</div>
       </div>
       <div class="daily-cta-btns">
         <button class="btn btn-primary" id="daily-gen1-btn">Gen I</button>
@@ -138,7 +138,7 @@
               Hard
             </label>
           </div>
-          <div class="sub">The AI reveals its own tiles each turn — 1 on Easy, 1–2 on Medium, 2–3 on Hard. Clear all your blue Pokémon before it clears its red ones.</div>
+          <div class="sub">The AI reveals its own tiles each turn – 1 on Easy, 1–2 on Medium, 2–3 on Hard. Clear all your blue Pokémon before it clears its red ones.</div>
         </div>
 
         <div class="field">
@@ -186,7 +186,7 @@
 
       <div class="dex-ticket">
         <div>
-          <div class="ticket-label">Room code — share this to invite</div>
+          <div class="ticket-label">Room code – share this to invite</div>
           <div class="ticket-code" id="lobby-room-code">----</div>
         </div>
         <div style="display:flex; gap:8px;">
@@ -228,12 +228,12 @@
     <div class="game-wrap">
 
       <div class="spy-banner hidden" id="spy-banner"></div>
-      <div class="observer-banner hidden" id="observer-banner">👀 You're watching as an observer — enjoy the game!</div>
+      <div class="observer-banner hidden" id="observer-banner">👀 You're watching as an observer – enjoy the game!</div>
 
       <div class="turn-banner" id="turn-banner">
         <div>
           <div class="turn-label">Current turn</div>
-          <div class="turn-value" id="turn-team-value">—</div>
+          <div class="turn-value" id="turn-team-value">–</div>
           <div class="turn-timer" id="turn-timer"></div>
         </div>
         <div class="clue-readout hidden" id="clue-readout">
@@ -261,8 +261,8 @@
       <div class="waiting-inline hidden" id="waiting-for-clue"></div>
 
       <div class="tile-count-row">
-        <span id="count-red-wrap">Red left: <strong class="count-red" id="count-red">—</strong></span>
-        <span id="count-blue-wrap">Blue left: <strong class="count-blue" id="count-blue">—</strong></span>
+        <span id="count-red-wrap">Red left: <strong class="count-red" id="count-red">–</strong></span>
+        <span id="count-blue-wrap">Blue left: <strong class="count-blue" id="count-blue">–</strong></span>
         <span id="round-wrap" class="hidden">Round: <strong id="round-count">0</strong></span>
       </div>
 
@@ -331,7 +331,7 @@
   <div class="win-overlay hidden" id="win-overlay">
     <div class="win-card" id="win-card">
       <div class="win-label">Game over</div>
-      <h2 id="win-title">— TEAM WINS</h2>
+      <h2 id="win-title">– TEAM WINS</h2>
       <div class="win-subtitle" id="win-subtitle"></div>
       <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
       <button class="btn btn-share" id="share-result-btn">↗ Share result</button>
