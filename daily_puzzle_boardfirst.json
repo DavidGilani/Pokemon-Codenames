@@ -1,0 +1,86 @@
+{
+  "_comment": "Board-FIRST puzzles: the 25 tiles were dealt randomly (9 blue / 15 neutral / 1 assassin, seed=42) and only THEN did I write clues for whatever blues came up. Because the board isn't curated, neutrals often share a type/colour with the blues, so clues have to be more creative/narrow and some carry real risk. 'risk' lists the neutrals a clue might tempt you toward (the inherent difficulty). Every clue is checked to NOT point at the assassin. Clue words are never a Pokemon on the board.",
+  "counts": { "blue": 9, "neutral": 15, "assassin": 1 },
+  "puzzles": [
+    {
+      "day": "bf-1",
+      "clues": [
+        { "word": "GROUND",    "number": 2, "covers": ["Sandshrew", "Nidoqueen"], "risk": "clean — no other Ground types on the board" },
+        { "word": "PSYCHIC",   "number": 2, "covers": ["Abra", "Lugia"], "risk": "Alakazam (neutral) is the strong decoy" },
+        { "word": "BALL",       "number": 2, "covers": ["Pineco", "Clefairy"], "risk": "roundish — no clear ball-shaped neutral" },
+        { "word": "PRIZE",      "number": 2, "covers": ["Porygon", "Dratini"], "risk": "lore link — both were Game Corner prizes in R/B/Y; clean" },
+        { "word": "TANK",       "number": 1, "covers": ["Blastoise"], "risk": "Tyranitar (neutral) also reads as a 'tank'" }
+      ],
+      "board": [
+        { "name": "Sandshrew", "colour": "blue" }, { "name": "Porygon", "colour": "blue" },
+        { "name": "Abra", "colour": "blue" }, { "name": "Pineco", "colour": "blue" },
+        { "name": "Lugia", "colour": "blue" }, { "name": "Nidoqueen", "colour": "blue" },
+        { "name": "Blastoise", "colour": "blue" }, { "name": "Clefairy", "colour": "blue" },
+        { "name": "Dratini", "colour": "blue" },
+        { "name": "Squirtle", "colour": "neutral" }, { "name": "Rapidash", "colour": "neutral" },
+        { "name": "Horsea", "colour": "neutral" }, { "name": "Bayleef", "colour": "neutral" },
+        { "name": "Tyranitar", "colour": "neutral" }, { "name": "Weepinbell", "colour": "neutral" },
+        { "name": "Aipom", "colour": "neutral" }, { "name": "Corsola", "colour": "neutral" },
+        { "name": "Sentret", "colour": "neutral" }, { "name": "Golbat", "colour": "neutral" },
+        { "name": "Raichu", "colour": "neutral" }, { "name": "Wartortle", "colour": "neutral" },
+        { "name": "Machoke", "colour": "neutral" }, { "name": "Noctowl", "colour": "neutral" },
+        { "name": "Alakazam", "colour": "neutral" },
+        { "name": "Remoraid", "colour": "assassin" }
+      ]
+    },
+    {
+      "day": "bf-2",
+      "clues": [
+        { "word": "POISON",    "number": 3, "covers": ["Nidoran", "Arbok", "Weedle"], "risk": "clean — no other Poison types on the board" },
+        { "word": "LEGENDARY", "number": 2, "covers": ["Zapdos", "Hooh"], "risk": "Entei (neutral) is also a legendary" },
+        { "word": "CROW",      "number": 1, "covers": ["Murkrow"], "risk": "Spearow (neutral) is a small bird" },
+        { "word": "STARTER",   "number": 1, "covers": ["Typhlosion"], "risk": "clean — no other starter line on the board" },
+        { "word": "TOUGH",     "number": 2, "covers": ["Machoke", "Larvitar"], "risk": "Machop & Mankey (neutrals) read as fighters" }
+      ],
+      "board": [
+        { "name": "Larvitar", "colour": "blue" }, { "name": "Typhlosion", "colour": "blue" },
+        { "name": "Murkrow", "colour": "blue" }, { "name": "Weedle", "colour": "blue" },
+        { "name": "Zapdos", "colour": "blue" }, { "name": "Machoke", "colour": "blue" },
+        { "name": "Nidoran", "colour": "blue" }, { "name": "Hooh", "colour": "blue" },
+        { "name": "Arbok", "colour": "blue" },
+        { "name": "Electabuzz", "colour": "neutral" }, { "name": "Spearow", "colour": "neutral" },
+        { "name": "Shuckle", "colour": "neutral" }, { "name": "Politoed", "colour": "neutral" },
+        { "name": "Farfetchd", "colour": "neutral" }, { "name": "Magcargo", "colour": "neutral" },
+        { "name": "Marowak", "colour": "neutral" }, { "name": "Cubone", "colour": "neutral" },
+        { "name": "Machop", "colour": "neutral" }, { "name": "Entei", "colour": "neutral" },
+        { "name": "Ninetales", "colour": "neutral" }, { "name": "Azumarill", "colour": "neutral" },
+        { "name": "Magneton", "colour": "neutral" }, { "name": "Mankey", "colour": "neutral" },
+        { "name": "Dragonite", "colour": "neutral" },
+        { "name": "Voltorb", "colour": "assassin" }
+      ]
+    },
+    {
+      "day": "bf-3",
+      "note": "This board resisted a clean 5-clue solve, so it uses 6. Useful signal on how random boards behave.",
+      "clues": [
+        { "word": "GRASS",  "number": 3, "covers": ["Bayleef", "Victreebel", "Oddish"], "risk": "clean — no other Grass types on the board" },
+        { "word": "ROCK",   "number": 2, "covers": ["Graveler", "Larvitar"], "risk": "Golem (neutral, same evo line as Graveler!) & Donphan are the decoys" },
+        { "word": "CHOP",   "number": 1, "covers": ["Machop"], "risk": "name-pun on purpose — a 'fighting' clue would point at the assassin Poliwrath, so we avoid it" },
+        { "word": "SPARK",  "number": 1, "covers": ["Jolteon"], "risk": "Electabuzz (neutral) is Electric" },
+        { "word": "RAT",    "number": 1, "covers": ["Raticate"], "risk": "clean" },
+        { "word": "SLUDGE", "number": 1, "covers": ["Grimer"], "risk": "Weezing & Koffing (neutrals) are Poison, but read as gas not sludge" }
+      ],
+      "board": [
+        { "name": "Graveler", "colour": "blue" }, { "name": "Bayleef", "colour": "blue" },
+        { "name": "Raticate", "colour": "blue" }, { "name": "Larvitar", "colour": "blue" },
+        { "name": "Jolteon", "colour": "blue" }, { "name": "Victreebel", "colour": "blue" },
+        { "name": "Machop", "colour": "blue" }, { "name": "Oddish", "colour": "blue" },
+        { "name": "Grimer", "colour": "blue" },
+        { "name": "Pidgeot", "colour": "neutral" }, { "name": "Miltank", "colour": "neutral" },
+        { "name": "Kingdra", "colour": "neutral" }, { "name": "Electabuzz", "colour": "neutral" },
+        { "name": "Donphan", "colour": "neutral" }, { "name": "Espeon", "colour": "neutral" },
+        { "name": "Blastoise", "colour": "neutral" }, { "name": "Weezing", "colour": "neutral" },
+        { "name": "Cyndaquil", "colour": "neutral" }, { "name": "Teddiursa", "colour": "neutral" },
+        { "name": "Golbat", "colour": "neutral" }, { "name": "Suicune", "colour": "neutral" },
+        { "name": "Yanma", "colour": "neutral" }, { "name": "Golem", "colour": "neutral" },
+        { "name": "Koffing", "colour": "neutral" },
+        { "name": "Poliwrath", "colour": "assassin" }
+      ]
+    }
+  ]
+}
