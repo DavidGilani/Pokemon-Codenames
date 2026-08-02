@@ -363,7 +363,7 @@ a { color: var(--accent); }
   padding: 7px 13px; font-size: 14px;
 }
 .daily-clue .dc-word { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-.daily-clue .dc-num { color: var(--text-faint); font-family: var(--font-mono); }
+.daily-clue .dc-num { color: var(--text); font-family: var(--font-mono); font-weight: 600; }
 .daily-clue.daily-anti { border-style: dashed; opacity: 0.9; }
 .daily-clue .dc-anti-tag { font-size: 11px; color: var(--text-faint); }
 .clue-lvl { font-size: 10px; color: var(--text-faint); background: var(--accent-dim); border-radius: 999px; padding: 1px 6px; }
@@ -379,6 +379,9 @@ a { color: var(--accent); }
 .daily-result-title { font-size: 20px; font-weight: 700; }
 .daily-result-line { font-family: var(--font-mono); font-size: 13px; color: var(--text-dim); }
 .daily-result-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.daily-rate-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+.daily-rate-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.daily-rate.chosen { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
 .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 

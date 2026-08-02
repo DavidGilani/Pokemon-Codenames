@@ -158,11 +158,25 @@ easy anchors, some sophisticated ones — so it's achievable but has bite.
 Guidance: try for roughly **1–2 Category-1 anchors + a couple of 2–3 + at least
 one 4–5** per puzzle. Never make all five Category 1.
 
+**Skew harder (playtest feedback):** the first live puzzles played **too easy**.
+The main lever is not just *which* categories but *how the hard ones group*:
+
+- **Make higher-category clues cover MULTIPLE blues, not single tiles.** A
+  Category-4/5 clue that links 3–4 blues (e.g. a shared Pokédex trait, a
+  base-stat standout like *highest Special Attack*, or a subtle lore theme) is
+  far more challenging — and more satisfying — than five easy 1-tile clues.
+- Avoid puzzles that are mostly "one clue → one obvious Pokémon". Those solve
+  themselves. Prefer fewer, richer, multi-tile clues at the harder tiers.
+- Use the `daily_attempts` data (times, mistakes, ratings) to calibrate: if
+  win-rates and speeds are high and ratings skew "too easy", push more
+  Category-4/5 grouped clues.
+
 ## Generation scope
 
 - **Gen I daily:** draw only from Gen I (Pokédex 1–151).
-- **Mixed daily:** draw from **all generations, Gen I–IX**. (Earlier drafts
-  sampled only Gen I–III; the mixed puzzle should span the full national dex.)
+- **Mixed daily:** draw from **all generations, Gen I–IX**. The Supabase
+  `pokemon` table contains **every Pokémon from all 9 generations**, so any
+  national-dex name resolves to a sprite — use the full dex for the mixed pool.
 
 ## Clue-word restriction rule (IMPORTANT — must match the live site)
 

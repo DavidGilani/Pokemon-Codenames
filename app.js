@@ -1594,6 +1594,7 @@ const daily = {
   revealed: {}, // position -> colour
   bluesFound: 0, bluesTotal: 9, mistakes: 0, maxMistakes: 3, hintsUsed: 0, maxHints: 3,
   startedAt: null, finished: false, outcome: null, solution: null,
+  taps: [], attemptId: null, rating: null,
 };
 
 function initDaily() {
@@ -1607,6 +1608,7 @@ function _dailyReset() {
   daily.tiles = []; daily.clues = []; daily.revealedHints = [];
   daily.revealed = {}; daily.bluesFound = 0; daily.mistakes = 0; daily.hintsUsed = 0;
   daily.startedAt = null; daily.finished = false; daily.outcome = null; daily.solution = null;
+  daily.taps = []; daily.attemptId = null; daily.rating = null;
 }
 
 async function startDaily(pool) {
@@ -1622,9 +1624,15 @@ async function startDaily(pool) {
     daily.clues = row.clues || [];
     daily.tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
     daily.bluesTotal = 9;
+    daily.startedAt = Date.now(); // timer starts as soon as the puzzle loads
     setRoomPill(null);
     showScreen("daily");
     renderDaily();
+    // Log the start of this attempt (best-effort).
+    try {
+      const { data: aid } = await sb.rpc("daily_start_attempt", { p_date: daily.date, p_pool: pool });
+      daily.attemptId = aid || null;
+    } catch (err) { console.error(err); }
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't load the daily puzzle.");
@@ -1632,25 +1640,25 @@ async function startDaily(pool) {
 }
 
 function _clueChip(c) {
-  const lvl = c.cat ? `<span class="clue-lvl" title="Difficulty ${c.cat} of 5">Lv${c.cat}</span>` : "";
+  // Note: c.cat (difficulty 1-5) is a back-end categorisation only — not shown.
   if (c.anti) {
-    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span><span class="dc-anti-tag">none are this</span>${lvl}</div>`;
+    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span><span class="dc-anti-tag">none are this</span></div>`;
   }
-  return `<div class="daily-clue"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× ${c.number}</span>${lvl}</div>`;
+  return `<div class="daily-clue"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× ${c.number}</span></div>`;
 }
 
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   $("#daily-play-title").textContent = `Daily puzzle — ${poolLabel}`;
   $("#daily-play-sub").textContent = daily.date
-    ? `Find all 9 blue Pokémon. ${daily.maxMistakes - 1} mistakes allowed.` : "";
+    ? `Find all 9 blue Pokémon. 3 strikes and you're out.` : "";
 
   // Stat bar
   const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
   const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   $("#daily-statbar").innerHTML =
     `<span>🔵 <strong>${daily.bluesFound}</strong>/9 found</span>` +
-    `<span>✗ <strong>${daily.mistakes}</strong>/${daily.maxMistakes} mistakes</span>` +
+    `<span>✗ <strong>${daily.mistakes}</strong>/${daily.maxMistakes} strikes</span>` +
     `<span>💡 <strong>${daily.hintsUsed}</strong>/${daily.maxHints} hints</span>` +
     `<span>⏱ <strong id="daily-timer">${time}</strong></span>`;
 
@@ -1714,8 +1722,9 @@ async function dailyRevealTile(position) {
     });
     if (error) throw error;
     const colour = data;
-    if (daily.startedAt === null) daily.startedAt = Date.now();
     daily.revealed[position] = colour;
+    const tile = daily.tiles.find((t) => t.position === position);
+    daily.taps.push({ position, name: tile ? tile.name : null, colour });
 
     if (colour === "assassin") {
       playSound("assassin");
@@ -1762,10 +1771,21 @@ async function dailyFinish(outcome) {
   daily.outcome = outcome;
   if (outcome === "win") playSound("win");
   else if (outcome === "lose") playSound("lose");
+  const duration = daily.startedAt ? Date.now() - daily.startedAt : 0;
   try {
     const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
     if (!error && data) daily.solution = data;
   } catch (err) { console.error(err); }
+  // Log the finished attempt (best-effort).
+  if (daily.attemptId) {
+    try {
+      await sb.rpc("daily_finish_attempt", {
+        p_id: daily.attemptId, p_outcome: outcome, p_blues: daily.bluesFound,
+        p_mistakes: daily.mistakes, p_hints: daily.hintsUsed, p_duration: duration,
+        p_taps: daily.taps,
+      });
+    } catch (err) { console.error(err); }
+  }
   renderDaily();
 }
 
@@ -1777,9 +1797,21 @@ function renderDailyResult() {
   if (daily.outcome === "win") title = `Solved it! 9/9 🎉`;
   else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
   else title = `Out of guesses — ${daily.bluesFound}/9 found`;
+  const ratings = [
+    ["way_too_easy", "Way too easy"],
+    ["slightly_easy", "Slightly easy"],
+    ["just_right", "Just right"],
+    ["slightly_hard", "Slightly hard"],
+    ["way_too_hard", "Way too hard"],
+  ];
+  const rateBtns = ratings
+    .map(([v, label]) => `<button class="btn btn-ghost btn-mini daily-rate ${daily.rating === v ? "chosen" : ""}" data-rate="${v}">${label}</button>`)
+    .join("");
   el.innerHTML = `
     <div class="daily-result-title">${title}</div>
-    <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} mistakes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+    <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+    <div class="daily-rate-label">${daily.rating ? "Thanks for the feedback!" : "How was the difficulty?"}</div>
+    <div class="daily-rate-row">${rateBtns}</div>
     <div class="daily-result-btns">
       <button class="btn btn-share" id="daily-share-btn">↗ Share result</button>
       <button class="btn btn-ghost" id="daily-other-btn">Play the ${daily.pool === "gen1" ? "All-gens" : "Gen I"} puzzle</button>
@@ -1788,6 +1820,16 @@ function renderDailyResult() {
   $("#daily-share-btn").addEventListener("click", dailyShare);
   $("#daily-other-btn").addEventListener("click", () => startDaily(daily.pool === "gen1" ? "mixed" : "gen1"));
   $("#daily-home-btn").addEventListener("click", () => showScreen("landing"));
+  $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => dailyRate(b.dataset.rate)));
+}
+
+async function dailyRate(rating) {
+  daily.rating = rating;
+  renderDailyResult();
+  if (daily.attemptId) {
+    try { await sb.rpc("daily_rate_attempt", { p_id: daily.attemptId, p_rating: rating }); }
+    catch (err) { console.error(err); }
+  }
 }
 
 function dailyShare() {

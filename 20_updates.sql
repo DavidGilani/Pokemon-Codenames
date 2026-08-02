@@ -2,10 +2,10 @@
 --
 -- 1-player DAILY PUZZLE.
 --
--- A solo, same-for-everyone daily. 5x5 board: 9 blue, 15 neutral, 1 assassin
--- (no red). The player gets 5 pre-written clues that cover all 9 blues, one
--- turn, 2 mistakes allowed (3rd ends), assassin = instant end, and may reveal
--- up to 3 extra "hint" clues. Two puzzles per day: pool 'gen1' and 'mixed'.
+-- A solo, same-for-everyone daily. 5x5 board: 9 blue, 16 neutral (no red, no
+-- assassin). The player gets 5 pre-written clues that cover all 9 blues, one
+-- turn, 3 strikes and you're out, and may reveal up to 3 extra "hint" clues.
+-- Two puzzles per day: pool 'gen1' and 'mixed'.
 --
 -- The colour key is hidden: the table has RLS with no policies (so no direct
 -- reads), and everything goes through security-definer RPCs. get_daily_puzzle
@@ -145,7 +145,7 @@ insert into public.daily_puzzles (puzzle_date, pool, clues, hints, tiles) values
      (12,'Pidgeotto','blue'),(13,'Koffing','neutral'),(14,'Cubone','blue'),(15,'Lapras','neutral'),
      (16,'Sandshrew','blue'),(17,'Seel','neutral'),(18,'Persian','neutral'),(19,'Gastly','neutral'),
      (20,'Vaporeon','neutral'),(21,'Articuno','neutral'),(22,'Jolteon','neutral'),(23,'Graveler','neutral'),
-     (24,'Haunter','assassin')
+     (24,'Haunter','neutral')
    ) v(position,name,colour))
 ),
 (
@@ -170,7 +170,7 @@ insert into public.daily_puzzles (puzzle_date, pool, clues, hints, tiles) values
      (12,'Hydreigon','blue'),(13,'Swampert','neutral'),(14,'Lucario','blue'),(15,'Metagross','neutral'),
      (16,'Greninja','blue'),(17,'Empoleon','neutral'),(18,'Luxray','neutral'),(19,'Roserade','neutral'),
      (20,'Sylveon','neutral'),(21,'Corviknight','neutral'),(22,'Rillaboom','neutral'),(23,'Toxtricity','neutral'),
-     (24,'Gardevoir','assassin')
+     (24,'Gardevoir','neutral')
    ) v(position,name,colour))
 )
 on conflict (puzzle_date, pool) do update
