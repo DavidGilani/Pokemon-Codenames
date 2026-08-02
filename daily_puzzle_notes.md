@@ -25,10 +25,23 @@ worked example puzzles, and how we can learn from real player data.
 
 - **Board:** 9 blue + 15 neutral + **1 assassin**. **No red tiles** — a red
   tile would play identically to a neutral for a solo player, so it's removed.
-- **Scoring (rule "B′"):** you may keep tapping until you either find all 9
-  blue (win) or make your **3rd mistake** (i.e. 2 mistakes allowed; the 3rd
-  ends the game). On finish, reveal the full board and show a **share button**.
-  Score = blues found / 9, plus neutrals hit and time taken.
+- **Scoring:** you may keep tapping until you either find all 9 blue (win) or
+  make your **5th mistake** (i.e. 4 mistakes allowed; the 5th ends the game —
+  loosened from 3 so players get a bit more rope). On finish, reveal the full
+  board, show **which Pokémon each clue was pointing to**, and show a **share
+  button**. Score = blues found / 9, plus neutrals hit and time taken.
+- **Share text carries NO board grid** — that would hand the answers to whoever
+  you share with. Share only: outcome (all 9 or not), mistakes, guesses, time,
+  and the difficulty label.
+- **Difficulty badge (shown to the player):** derived from the clue-category
+  spread — `highs`(cat≥4)≥4 → Evil, ≥3 → Brutal; else by count of cat-1 clues:
+  0 → Hard, 1 → Challenging, 2 → Medium, 3+ → Easy.
+- **Extra clues are conditional + unlimited.** Hints carry hidden target
+  positions; `daily_hint_next` serves the un-shown hint covering the most
+  STILL-UNREVEALED blues (tie-break: easier category first). So **every blue
+  must be covered by at least one hint** (grouped is fine), and hints should be
+  **easier** than the base clues. The player can keep asking until no helpful
+  clue remains.
 - **Assassin:** kept, but instant-end on tap. It's safe because we author the
   clues *after* seeing the whole board and verify no clue leans toward the
   assassin before locking it. When a blue shares the assassin's obvious theme

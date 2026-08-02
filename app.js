@@ -1592,10 +1592,26 @@ function escapeHtml(str) {
 const daily = {
   pool: null, date: null, tiles: [], clues: [], revealedHints: [],
   revealed: {}, // position -> colour
-  bluesFound: 0, bluesTotal: 9, mistakes: 0, maxMistakes: 3, hintsUsed: 0, maxHints: 3,
-  startedAt: null, finished: false, outcome: null, solution: null,
+  bluesFound: 0, bluesTotal: 9, mistakes: 0, maxMistakes: 5, hintsUsed: 0,
+  shownHintIdx: [], noMoreHints: false,
+  startedAt: null, finished: false, outcome: null, solution: null, solutionClues: null,
   taps: [], attemptId: null, rating: null,
 };
+
+// Difficulty label derived from the puzzle's clue-category spread (change #2).
+// More Category-1 (easy type/colour) clues => easier; more Category-4/5
+// (lore/stat/anti) clues => harder.
+function dailyDifficulty(clues) {
+  const cats = (clues || []).map((c) => c.cat || 1);
+  const ones = cats.filter((c) => c === 1).length;
+  const highs = cats.filter((c) => c >= 4).length;
+  if (highs >= 4) return { label: "Evil", cls: "evil" };
+  if (highs >= 3) return { label: "Brutal", cls: "brutal" };
+  if (ones === 0) return { label: "Hard", cls: "hard" };
+  if (ones === 1) return { label: "Challenging", cls: "challenging" };
+  if (ones === 2) return { label: "Medium", cls: "medium" };
+  return { label: "Easy", cls: "easy" };
+}
 
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
@@ -1607,7 +1623,9 @@ function initDaily() {
 function _dailyReset() {
   daily.tiles = []; daily.clues = []; daily.revealedHints = [];
   daily.revealed = {}; daily.bluesFound = 0; daily.mistakes = 0; daily.hintsUsed = 0;
-  daily.startedAt = null; daily.finished = false; daily.outcome = null; daily.solution = null;
+  daily.shownHintIdx = []; daily.noMoreHints = false;
+  daily.startedAt = null; daily.finished = false; daily.outcome = null;
+  daily.solution = null; daily.solutionClues = null;
   daily.taps = []; daily.attemptId = null; daily.rating = null;
 }
 
@@ -1649,9 +1667,11 @@ function _clueChip(c) {
 
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
-  $("#daily-play-title").textContent = `Daily puzzle – ${poolLabel}`;
+  const diff = dailyDifficulty(daily.clues);
+  $("#daily-play-title").innerHTML =
+    `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
   $("#daily-play-sub").textContent = daily.date
-    ? `Find all 9 blue Pokémon. 3 strikes and you're out.` : "";
+    ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "";
 
   // Stat bar
   const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
@@ -1659,7 +1679,7 @@ function renderDaily() {
   $("#daily-statbar").innerHTML =
     `<span>🔵 <strong>${daily.bluesFound}</strong>/9 found</span>` +
     `<span>✗ <strong>${daily.mistakes}</strong>/${daily.maxMistakes} strikes</span>` +
-    `<span>💡 <strong>${daily.hintsUsed}</strong>/${daily.maxHints} hints</span>` +
+    `<span>💡 <strong>${daily.hintsUsed}</strong> hints</span>` +
     `<span>⏱ <strong id="daily-timer">${time}</strong></span>`;
 
   // Clues (base + revealed hints)
@@ -1669,11 +1689,13 @@ function renderDaily() {
     : "";
   $("#daily-clues").innerHTML = cluesHtml + hintsHtml;
 
-  // Hint button
+  // Hint button – extra clues are now unlimited and chosen to match the tiles
+  // you still have left, so it stays available until no helpful clue remains.
   const hintBtn = $("#daily-hint-btn");
-  const hintsLeft = daily.maxHints - daily.hintsUsed;
-  hintBtn.textContent = `💡 Reveal an extra clue (${daily.hintsUsed}/${daily.maxHints})`;
-  hintBtn.disabled = daily.finished || hintsLeft <= 0;
+  hintBtn.textContent = daily.hintsUsed
+    ? `💡 Reveal another clue (${daily.hintsUsed} shown)`
+    : `💡 Reveal an extra clue`;
+  hintBtn.disabled = daily.finished || daily.noMoreHints;
   hintBtn.classList.toggle("hidden", daily.finished);
 
   // Board
@@ -1750,19 +1772,40 @@ async function dailyRevealTile(position) {
 }
 
 async function dailyRequestHint() {
-  if (daily.finished || daily.hintsUsed >= daily.maxHints) return;
+  if (daily.finished || daily.noMoreHints) return;
+  // Ask the server for the next clue that helps with a tile we HAVEN'T revealed
+  // yet (change #4). It picks from clues covering the most still-missing blues,
+  // so late-game hints naturally narrow to the specific tiles left.
+  const revealed = Object.keys(daily.revealed).map(Number);
   try {
-    const { data, error } = await sb.rpc("daily_hint", {
-      p_date: daily.date, p_pool: daily.pool, p_index: daily.hintsUsed,
+    const { data, error } = await sb.rpc("daily_hint_next", {
+      p_date: daily.date, p_pool: daily.pool,
+      p_revealed: revealed, p_shown: daily.shownHintIdx,
     });
     if (error) throw error;
-    if (!data) { toast("No more extra clues for this puzzle."); daily.hintsUsed = daily.maxHints; renderDaily(); return; }
+    if (!data) { daily.noMoreHints = true; toast("No more helpful clues right now."); renderDaily(); return; }
     daily.revealedHints.push(data);
+    if (typeof data.idx === "number") daily.shownHintIdx.push(data.idx);
     daily.hintsUsed += 1;
     renderDaily();
   } catch (err) {
+    // Fallback for older puzzles/DBs without the conditional-hint RPC: serve
+    // the flat hint list by index (old behaviour, capped at 3).
     console.error(err);
-    toast("Couldn't get an extra clue.");
+    try {
+      if (daily.hintsUsed >= 3) { daily.noMoreHints = true; renderDaily(); return; }
+      const { data, error } = await sb.rpc("daily_hint", {
+        p_date: daily.date, p_pool: daily.pool, p_index: daily.hintsUsed,
+      });
+      if (error) throw error;
+      if (!data) { daily.noMoreHints = true; toast("No more extra clues for this puzzle."); renderDaily(); return; }
+      daily.revealedHints.push(data);
+      daily.hintsUsed += 1;
+      renderDaily();
+    } catch (err2) {
+      console.error(err2);
+      toast("Couldn't get an extra clue.");
+    }
   }
 }
 
@@ -1774,7 +1817,11 @@ async function dailyFinish(outcome) {
   const duration = daily.startedAt ? Date.now() - daily.startedAt : 0;
   try {
     const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
-    if (!error && data) daily.solution = data;
+    if (!error && data) {
+      // New shape: { tiles, clues (with targets) }. Old shape: a bare tiles array.
+      if (Array.isArray(data)) { daily.solution = data; daily.solutionClues = null; }
+      else { daily.solution = data.tiles || []; daily.solutionClues = data.clues || null; }
+    }
   } catch (err) { console.error(err); }
   // Log the finished attempt (best-effort).
   if (daily.attemptId) {
@@ -1797,6 +1844,22 @@ function renderDailyResult() {
   if (daily.outcome === "win") title = `Solved it! 9/9 🎉`;
   else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
   else title = `Out of guesses – ${daily.bluesFound}/9 found`;
+
+  // Show what each clue was pointing to (change #5), now the board's revealed.
+  let answersHtml = "";
+  if (daily.solutionClues && daily.solution) {
+    const nameAt = {};
+    daily.solution.forEach((t) => (nameAt[t.position] = t.name));
+    const rows = daily.solutionClues.map((c) => {
+      const num = c.anti ? "× 0" : `× ${c.number}`;
+      const names = c.anti
+        ? "anti-clue – none of your Pokémon"
+        : (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
+      return `<div class="daily-answer-row"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">${num}</span></span><span class="da-names">${names}</span></div>`;
+    }).join("");
+    answersHtml = `<div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${rows}</div>`;
+  }
+
   const ratings = [
     ["way_too_easy", "Way too easy"],
     ["slightly_easy", "Slightly easy"],
@@ -1810,6 +1873,7 @@ function renderDailyResult() {
   el.innerHTML = `
     <div class="daily-result-title">${title}</div>
     <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+    ${answersHtml}
     <div class="daily-rate-label">${daily.rating ? "Thanks for the feedback!" : "How was the difficulty?"}</div>
     <div class="daily-rate-row">${rateBtns}</div>
     <div class="daily-result-btns">
@@ -1833,26 +1897,21 @@ async function dailyRate(rating) {
 }
 
 function dailyShare() {
-  const EMOJI = { blue: "🟦", neutral: "🟨", assassin: "💀" };
-  const byPos = {};
-  daily.tiles.forEach((t) => (byPos[t.position] = true));
-  const rows = [];
-  for (let r = 0; r < 5; r++) {
-    let row = "";
-    for (let c = 0; c < 5; c++) {
-      const pos = r * 5 + c;
-      const col = daily.revealed[pos];
-      row += col ? (EMOJI[col] || "🟨") : "⬜";
-    }
-    rows.push(row);
-  }
+  // No board grid – that would reveal the answers to whoever you share with
+  // (change #3). Share only the outcome, mistakes, guesses and time.
   const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
   const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
+  const diff = dailyDifficulty(daily.clues);
+  const guesses = daily.taps.length;
+  const outcome = daily.outcome === "win"
+    ? `✅ Solved it – all 9 found!`
+    : `❌ ${daily.bluesFound}/9 found`;
   const text = [
-    `Pokémon Codenames – Daily (${poolLabel})`,
-    rows.join("\n"),
-    `${daily.bluesFound}/9 · ${daily.mistakes} mistakes · ${daily.hintsUsed} hints · ${time}`,
+    `Pokémon Codenames – Daily (${poolLabel} · ${diff.label})`,
+    outcome,
+    `✗ ${daily.mistakes} mistakes · 👆 ${guesses} guesses · ⏱ ${time}`,
+    `Can you beat it?`,
   ].join("\n");
   const url = `${window.location.origin}${window.location.pathname}`;
   nativeShare({ title: "Pokémon Codenames – Daily", text, url });

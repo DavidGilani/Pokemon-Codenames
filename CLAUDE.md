@@ -70,12 +70,21 @@ Chosen on the landing page when creating a room. `mode` values:
 - **`daily`** (Daily puzzle → 1 player): a solo, same-for-everyone daily. 5×5
   board (9 blue, 16 neutral — no red, no assassin). The player is given **5
   pre-written clues** covering all 9 blue tiles and has **one turn**: keep
-  tapping until all 9 blue are found (win) or **3 strikes** (wrong taps) ends it.
-  They may request **up to 3 extra clues** (hints). Timer runs from puzzle load
-  and is in the shareable result. **Two puzzles per day**: one **Gen I only**,
+  tapping until all 9 blue are found (win) or **5 strikes** (wrong taps) ends it.
+  A **difficulty badge** (Easy → Evil) is shown, derived from the clue-category
+  spread (more Cat-1 clues = easier; more Cat-4/5 = harder). They may request
+  **unlimited extra clues** (hints): each hint is **conditional** — the server
+  serves the clue that helps most with the tiles still UNREVEALED
+  (`daily_hint_next`), and every blue is covered by at least one hint. Timer
+  runs from puzzle load and is in the shareable result — which is **text only
+  (outcome / mistakes / guesses / time), no board grid** so it doesn't leak the
+  answers. On finish the board reveals and the result shows **which Pokémon each
+  clue was pointing to**. **Two puzzles per day**: one **Gen I only**,
   one **mixed (Gen I–IX; the `pokemon` table has all 9 gens)**. Puzzles live in
   the `daily_puzzles` table with the colour key hidden behind RPCs
-  (`get_daily_puzzle`, `daily_reveal`, `daily_hint`, `daily_solution`); every
+  (`get_daily_puzzle`, `daily_reveal`, `daily_hint_next`, `daily_solution`);
+  base clues and hints carry hidden target positions (`t`), stripped by
+  `get_daily_puzzle` and only revealed by `daily_solution` at the end. Every
   attempt (taps, time, hints, mistakes, difficulty rating) is logged to
   `daily_attempts`. Board-first generation: deal randomly, then write clues,
   re-dealing until the 9 blues cluster into ≤5 clean clues. **Skew difficulty

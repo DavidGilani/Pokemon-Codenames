@@ -383,6 +383,37 @@ a { color: var(--accent); }
 .daily-rate-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .daily-rate.chosen { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
+/* Difficulty badge (derived from the clue-category spread) */
+.daily-diff {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
+  border-radius: 999px; padding: 2px 10px; margin-left: 8px; vertical-align: middle;
+  color: #fff;
+}
+.daily-diff.diff-easy        { background: #2e9e5b; }
+.daily-diff.diff-medium      { background: #3f8fd0; }
+.daily-diff.diff-challenging { background: #c58a1c; }
+.daily-diff.diff-hard        { background: #d1622b; }
+.daily-diff.diff-brutal      { background: #c23b3b; }
+.daily-diff.diff-evil        { background: #7d2fb8; }
+
+/* End-of-game "what each clue meant" reveal */
+.daily-answers {
+  width: 100%; text-align: left; background: var(--bg, rgba(0,0,0,0.15));
+  border: 1px solid var(--panel-border); border-radius: var(--radius-sm);
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 6px;
+}
+.daily-answers-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-faint); margin-bottom: 2px;
+}
+.daily-answer-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; font-size: 13px; }
+.daily-answer-row .da-clue {
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;
+  font-weight: 600; min-width: 120px; color: var(--text);
+}
+.daily-answer-row .da-num { color: var(--text-faint); }
+.daily-answer-row .da-names { color: var(--text-dim); }
+
 .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .team-col {
