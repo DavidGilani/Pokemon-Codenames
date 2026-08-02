@@ -5,11 +5,11 @@
     {
       "id": "g1-A", "pool": "Gen I",
       "clues": [
-        { "word": "BUG",    "number": 3, "covers": ["Scyther", "Beedrill", "Parasect"], "kind": "type", "decoys": "none — no other bug on the board" },
-        { "word": "PUPA",   "number": 1, "covers": ["Kakuna"], "kind": "sprite", "decoys": "none — Kakuna's sprite is the pupa/cocoon stage" },
-        { "word": "BIRD",   "number": 3, "covers": ["Farfetch'd", "Fearow", "Pidgeotto"], "kind": "type", "decoys": "Articuno (neutral) is also a bird" },
-        { "word": "SKULL",  "number": 1, "covers": ["Cubone"], "kind": "sprite", "decoys": "none — Cubone wears a skull helmet" },
-        { "word": "DIGGER", "number": 1, "covers": ["Sandshrew"], "kind": "trait", "decoys": "none" }
+        { "word": "BUG",       "number": 4, "covers": ["Scyther", "Beedrill", "Parasect", "Kakuna"], "kind": "type", "decoys": "none — no other bug on the board (Kakuna the pupa is a bug too, so include it here)" },
+        { "word": "BIRD",      "number": 3, "covers": ["Farfetch'd", "Fearow", "Pidgeotto"], "kind": "type", "decoys": "Articuno (neutral) is a bird — but the anti-clue below rules it out" },
+        { "word": "LEGENDARY", "number": 0, "covers": [], "anti": true, "kind": "anti-clue", "decoys": "ANTI-CLUE: number 0 means NONE of your blues are legendary, so Articuno (the only legendary on the board) is NOT yours — disambiguates the BIRD clue" },
+        { "word": "SKULL",     "number": 1, "covers": ["Cubone"], "kind": "sprite", "decoys": "none — Cubone wears a skull helmet" },
+        { "word": "DIGGER",    "number": 1, "covers": ["Sandshrew"], "kind": "trait", "decoys": "none" }
       ],
       "board": [
         {"name":"Scyther","colour":"blue"},{"name":"Beedrill","colour":"blue"},{"name":"Farfetch'd","colour":"blue"},
@@ -26,9 +26,9 @@
     {
       "id": "g1-B", "pool": "Gen I",
       "clues": [
-        { "word": "ROSY",    "number": 3, "covers": ["Clefairy", "Mr. Mime", "Lickitung"], "kind": "colour", "decoys": "Mew (neutral) is pinkish. (Note: 'PINK' is illegal here — it shares 'pin' with Weepinbell on the board.)" },
-        { "word": "PITCHER", "number": 2, "covers": ["Victreebel", "Weepinbell"], "kind": "sprite", "decoys": "none — both sprites are carnivorous pitcher-plants" },
-        { "word": "SIX",     "number": 1, "covers": ["Exeggcute"], "kind": "sprite", "decoys": "none — Exeggcute's sprite is a cluster of six eggs" },
+        { "word": "PLANT",   "number": 3, "covers": ["Exeggcute", "Victreebel", "Weepinbell"], "kind": "type", "decoys": "none — no other Grass type. (Note: 'GRASS' is illegal here — it shares 'ras' with Lapras on the board.)" },
+        { "word": "PITCHER", "number": 2, "covers": ["Victreebel", "Weepinbell"], "kind": "sprite", "decoys": "OVERLAP with PLANT — both sprites are carnivorous pitcher-plants; tells you 2 of the 3 plants share this trait" },
+        { "word": "ROSY",    "number": 3, "covers": ["Clefairy", "Mr. Mime", "Lickitung"], "kind": "colour", "decoys": "Mew (neutral) is pinkish. ('PINK' is illegal — it shares 'pin' with Weepinbell.)" },
         { "word": "GROUND",  "number": 2, "covers": ["Diglett", "Dugtrio"], "kind": "type", "decoys": "none" },
         { "word": "SLUDGE",  "number": 1, "covers": ["Grimer"], "kind": "sprite", "decoys": "Ekans is Poison but reads as a snake, not sludge" }
       ],

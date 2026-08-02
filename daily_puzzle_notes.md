@@ -35,10 +35,18 @@ worked example puzzles, and how we can learn from real player data.
   (e.g. a blue Fighting type with a Fighting assassin), we must clue that blue
   by a DIFFERENT handle (name-pun/sprite/colour), never the shared theme.
 - **Clues:** all **5 shown at once**. Single words.
-  - **Overlap is good, but never duplicate a set:** a blue may appear in more
-    than one clue (numbers can sum to >9), which adds nice "which tile is
-    double-clued?" depth — but **no two clues may cover the *exact same* set**
+  - **Group generously:** a clue can cover as many blues as genuinely fit
+    (2, 3, 4, even more) — don't split a clean group into singletons. If BUG
+    covers 4 blues, make it `BUG × 4`.
+  - **Overlap is GOOD and preferred where achievable:** a blue may appear in
+    more than one clue (numbers can sum to >9), which adds a nice "which tile is
+    double-clued?" layer — but **no two clues may cover the *exact same* set**
     of blues.
+  - **Anti-clues (number 0):** a clue may state a category with `× 0`, meaning
+    **none of your blues are in it**. Use it to eliminate a tempting neutral —
+    e.g. `LEGENDARY × 0` tells the player the legendary bird Articuno is NOT
+    theirs, disambiguating a `BIRD` clue. Anti-clues count as one of the 5 and
+    cover no tiles.
   - **Not traps:** clues are our best attempt to lead the player to all 9 blues
     and away from neutrals; we do NOT plant neutral collisions on purpose. Some
     residual risk is fine (and unavoidable on a random board) — note it, don't
@@ -171,9 +179,12 @@ Hard rules for our solo clues (helpers, never traps):
    not "WATER" when non-turtle Water neutrals are about).
 3. **Mix the clue kinds** across the 5 — don't lean on types alone; on a random
    board a type is usually shared by a neutral/assassin.
-4. Overlap is good, but **no two clues share the identical set** of blues.
+4. **Group generously** (a clue can cover 4+ blues) and **favour overlap** —
+   reuse a blue across clues for depth — but **no two clues share the identical
+   set** of blues.
 5. Obey the **letter rule** (no 3+ consecutive letters of any board name).
 6. Consider the **sprite** for niche clues.
+7. Consider an **anti-clue** (`× 0`) to fence off a dangerous neutral.
 
 ## Still open
 
