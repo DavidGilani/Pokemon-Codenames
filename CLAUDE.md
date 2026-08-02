@@ -67,6 +67,19 @@ Chosen on the landing page when creating a room. `mode` values:
   clearing all red (or if a human hits the assassin).
   **Difficulty** (`settings.ai_difficulty`): `easy` reveals 1 red/turn,
   `medium` 1–2, `hard` 2–3.
+- **`daily`** (Daily puzzle → 1 player): a solo, same-for-everyone daily. 5×5
+  board (9 blue, 15 neutral, 1 assassin — no red). The player is given **5
+  pre-written clues** covering all 9 blue tiles and has **one turn**: keep
+  tapping until all 9 blue are found (win) or the **3rd mistake** ends it (2
+  mistakes allowed; the assassin is an instant end). They may request **up to 3
+  extra clues** (hints). Timer runs from the first tap and is in the shareable
+  result. **Two puzzles per day**: one **Gen I only**, one **mixed (Gen I–IX)**.
+  Puzzles live in the `daily_puzzles` table with the colour key hidden behind
+  RPCs (`get_daily_puzzle`, `daily_reveal`, `daily_hint`, `daily_solution`).
+  Board-first generation: deal randomly, then write clues, re-dealing until the
+  9 blues cluster into ≤5 clean clues. **The deep spec for building puzzles —
+  the clue-correctness rule and the 1–5 clue-difficulty categories — lives in
+  `daily_puzzle_notes.md`; read it before authoring any puzzle.**
 
 ### Role / turn model
 - Internally roles are stored as `role = 'spymaster'` (clue giver) and

@@ -113,6 +113,57 @@ limit 500;
 
 (If `created_at` doesn't exist on `rooms`, drop the `order by` line.)
 
+## Rule 0 — every clue must be CORRECT (non-negotiable)
+
+A clue is **incorrect** if the property it names is true of **any tile that is
+not one of your blues** (a neutral or the assassin). It doesn't matter that the
+player *might* still guess right — the clue itself is wrong if it links tiles
+that aren't all blue.
+
+- ❌ `PSYCHIC × 2` when a neutral (or the assassin) is also Psychic-type.
+- ❌ `BLUE × 3` when there are blue-coloured neutrals on the board (dense boards
+  make colour clues frequently illegal — check every tile).
+- ✅ Correct means: the clue's property holds for **exactly** its listed blues
+  and for **no other tile** on the board.
+
+This is why the generator is board-first + re-deal: on a random board most
+type/colour words are *incorrect* (shared by a neutral), so we lean on narrower
+handles (sprite/lore/pun/stats) or re-deal. Always verify correctness against
+all 25 tiles before locking a clue. `WYRM × 3` for the dragons is fine only if
+no neutral/assassin is Dragon-type (note: a dragon-*looking* Gyarados is
+Water/Flying, so it is correctly excluded — that nuance is fair difficulty).
+
+## Clue-difficulty categories (aim for a spread of 1–5)
+
+Tag every clue with a difficulty category. A good puzzle **mixes** them — some
+easy anchors, some sophisticated ones — so it's achievable but has bite.
+
+- **Category 1 — Type / Colour.** The simplest: `FIRE`, `GHOST`, `WATER`,
+  `PINK`, `YELLOW`. Easiest to read, but on a dense board they're often
+  *incorrect* (see Rule 0) — use only when the property is unique to the blues.
+- **Category 2 — Sprite / visual.** Something you can see in the on-tile image:
+  `SKULL` (Cubone), `PUPA` (Kakuna), `FROG` (Greninja), `HEADS` (Hydreigon),
+  `SIX` (Exeggcute). A step up because you read the picture, not a label.
+- **Category 3 — Trait / behaviour.** How it acts or what it does: `DIGGER`,
+  `KICK` (Blaziken), `NINJA`, `SLEEP`.
+- **Category 4 — Lore / Pokédex flavour / pun.** Dex nicknames and wordplay:
+  `AURA` (Lucario, the Aura Pokémon), `ORPHAN` (Cubone), `KING`→Nido**king**,
+  `LAND-SHARK` (Garchomp).
+- **Category 5 — Stats / deep Pokédex / anti-clue.** The most sophisticated:
+  base-stat standouts (**highest Special Attack**, **huge HP**, **fastest**,
+  **heaviest**), obscure dex facts, and **anti-clues** (`LEGENDARY × 0` = none
+  of your blues are legendary — used to fence off a tempting neutral). These
+  link tiles that share nothing visible, so they're the hardest to spot.
+
+Guidance: try for roughly **1–2 Category-1 anchors + a couple of 2–3 + at least
+one 4–5** per puzzle. Never make all five Category 1.
+
+## Generation scope
+
+- **Gen I daily:** draw only from Gen I (Pokédex 1–151).
+- **Mixed daily:** draw from **all generations, Gen I–IX**. (Earlier drafts
+  sampled only Gen I–III; the mixed puzzle should span the full national dex.)
+
 ## Clue-word restriction rule (IMPORTANT — must match the live site)
 
 The live site (`clueOverlapsPokemon` in `app.js`) rejects a clue that shares a
@@ -186,11 +237,27 @@ Hard rules for our solo clues (helpers, never traps):
 6. Consider the **sprite** for niche clues.
 7. Consider an **anti-clue** (`× 0`) to fence off a dangerous neutral.
 
-## Still open
+## Status — mode is now BUILT (v1 live on `main`)
 
-1. Do the `batch_v2` puzzles feel right in difficulty/tone? Any clue to reword?
-2. Once happy, I'll (a) wire in the mode behind a `daily` route with the two
-   dailies (Gen I + mixed), the 2-mistakes-then-end rule, the timer, and the
-   up-to-3-extra-clues help; (b) add a `daily_puzzles` table + RLS so the key is
-   hidden until you finish, plus an easy edit path for you to tweak clues/leave
-   feedback in Supabase; (c) generate a reviewable batch before launch.
+- `20_updates.sql` creates the `daily_puzzles` table (RLS on, no direct reads)
+  and the key-hiding RPCs: `get_daily_puzzle` (board without colours),
+  `daily_reveal` (one tile's colour), `daily_hint` (one extra clue on request),
+  `daily_solution` (full board for the end reveal). It seeds **two puzzles for
+  today** — a Gen I board and a mixed (Gen I–VIII sample) board — each with
+  `cat` difficulty tags and 3 hint clues.
+- Client: a "Daily puzzle" card on the landing page (Gen I / All gens), a solo
+  play screen with the 5 clues (+ Lv difficulty badges, anti-clues shown as
+  `× 0`), tap-to-reveal via RPC, hearts/mistakes, hint button (up to 3), a timer
+  that starts on the first tap, and a shareable emoji-grid result.
+
+### Editing / adding puzzles in Supabase (the owner's edit path)
+`daily_puzzles` rows are plain jsonb — edit `clues`, `hints`, or `tiles`
+directly in the Supabase table editor, or `insert` a new `(puzzle_date, pool)`
+row. `get_daily_puzzle` serves the latest row with `puzzle_date <= today`, so to
+schedule ahead just insert future-dated rows.
+
+### Next
+1. Feedback on the two seeded puzzles (difficulty/tone/clue mix)?
+2. Generate a reviewable multi-day batch (proper Gen I–IX for the mixed pool).
+3. Optional hardening: enforce "finished" server-side before `daily_solution`
+   can be called (v1 trusts the client).

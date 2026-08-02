@@ -47,6 +47,17 @@
       <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon — without landing on the other team's, a neutral, or the assassin.</p>
     </div>
 
+    <div class="daily-cta">
+      <div class="daily-cta-text">
+        <h2>🧩 Daily puzzle <span class="daily-badge">1 player</span></h2>
+        <div class="sub">Crack today's board from 5 clues in one turn — 2 mistakes allowed. New puzzles daily.</div>
+      </div>
+      <div class="daily-cta-btns">
+        <button class="btn btn-primary" id="daily-gen1-btn">Gen I</button>
+        <button class="btn btn-ghost" id="daily-mixed-btn">All gens</button>
+      </div>
+    </div>
+
     <div class="panel-grid">
       <form class="dex-card" id="join-room-form">
         <h2>Join a room</h2>
@@ -287,6 +298,33 @@
         <button class="btn btn-ghost hidden" id="end-turn-btn">Pass / end turn</button>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       DAILY PUZZLE SCREEN (1 player)
+       ================================================================== -->
+  <section class="screen" id="screen-daily">
+    <div class="daily-play-wrap">
+      <div class="daily-play-header">
+        <div>
+          <div class="daily-play-title" id="daily-play-title">Daily puzzle</div>
+          <div class="daily-play-sub" id="daily-play-sub"></div>
+        </div>
+        <button class="btn btn-ghost btn-mini" id="daily-exit-btn">Exit</button>
+      </div>
+
+      <div class="daily-statbar" id="daily-statbar"></div>
+
+      <div class="daily-clues" id="daily-clues"></div>
+
+      <div class="daily-hint-row">
+        <button class="btn btn-ghost" id="daily-hint-btn">💡 Reveal an extra clue</button>
+      </div>
+
+      <div class="board" id="daily-board"></div>
+
+      <div class="daily-result hidden" id="daily-result"></div>
     </div>
   </section>
 

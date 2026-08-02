@@ -1587,6 +1587,236 @@ function escapeHtml(str) {
 }
 
 // ============================================================================
+// DAILY PUZZLE (1 player)
+// ============================================================================
+const daily = {
+  pool: null, date: null, tiles: [], clues: [], revealedHints: [],
+  revealed: {}, // position -> colour
+  bluesFound: 0, bluesTotal: 9, mistakes: 0, maxMistakes: 3, hintsUsed: 0, maxHints: 3,
+  startedAt: null, finished: false, outcome: null, solution: null,
+};
+
+function initDaily() {
+  $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
+  $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
+  $("#daily-exit-btn").addEventListener("click", () => { showScreen("landing"); });
+  $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
+}
+
+function _dailyReset() {
+  daily.tiles = []; daily.clues = []; daily.revealedHints = [];
+  daily.revealed = {}; daily.bluesFound = 0; daily.mistakes = 0; daily.hintsUsed = 0;
+  daily.startedAt = null; daily.finished = false; daily.outcome = null; daily.solution = null;
+}
+
+async function startDaily(pool) {
+  try {
+    await ensureAuth();
+    const { data, error } = await sb.rpc("get_daily_puzzle", { p_pool: pool });
+    if (error) throw error;
+    const row = data && data[0];
+    if (!row) { toast("No daily puzzle available yet — check back soon."); return; }
+    _dailyReset();
+    daily.pool = pool;
+    daily.date = row.puzzle_date;
+    daily.clues = row.clues || [];
+    daily.tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+    daily.bluesTotal = 9;
+    setRoomPill(null);
+    showScreen("daily");
+    renderDaily();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || "Couldn't load the daily puzzle.");
+  }
+}
+
+function _clueChip(c) {
+  const lvl = c.cat ? `<span class="clue-lvl" title="Difficulty ${c.cat} of 5">Lv${c.cat}</span>` : "";
+  if (c.anti) {
+    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span><span class="dc-anti-tag">none are this</span>${lvl}</div>`;
+  }
+  return `<div class="daily-clue"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× ${c.number}</span>${lvl}</div>`;
+}
+
+function renderDaily() {
+  const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
+  $("#daily-play-title").textContent = `Daily puzzle — ${poolLabel}`;
+  $("#daily-play-sub").textContent = daily.date
+    ? `Find all 9 blue Pokémon. ${daily.maxMistakes - 1} mistakes allowed.` : "";
+
+  // Stat bar
+  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
+  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  $("#daily-statbar").innerHTML =
+    `<span>🔵 <strong>${daily.bluesFound}</strong>/9 found</span>` +
+    `<span>✗ <strong>${daily.mistakes}</strong>/${daily.maxMistakes} mistakes</span>` +
+    `<span>💡 <strong>${daily.hintsUsed}</strong>/${daily.maxHints} hints</span>` +
+    `<span>⏱ <strong id="daily-timer">${time}</strong></span>`;
+
+  // Clues (base + revealed hints)
+  const cluesHtml = daily.clues.map(_clueChip).join("");
+  const hintsHtml = daily.revealedHints.length
+    ? `<div class="daily-hints-label">Extra clues</div>` + daily.revealedHints.map(_clueChip).join("")
+    : "";
+  $("#daily-clues").innerHTML = cluesHtml + hintsHtml;
+
+  // Hint button
+  const hintBtn = $("#daily-hint-btn");
+  const hintsLeft = daily.maxHints - daily.hintsUsed;
+  hintBtn.textContent = `💡 Reveal an extra clue (${daily.hintsUsed}/${daily.maxHints})`;
+  hintBtn.disabled = daily.finished || hintsLeft <= 0;
+  hintBtn.classList.toggle("hidden", daily.finished);
+
+  // Board
+  renderDailyBoard();
+
+  // Result
+  const result = $("#daily-result");
+  if (daily.finished) { result.classList.remove("hidden"); renderDailyResult(); }
+  else result.classList.add("hidden");
+}
+
+function dailyMakeTile(tile) {
+  const el = document.createElement("div");
+  el.className = "tile";
+  const colour = daily.revealed[tile.position] || (daily.finished && daily.solution
+    ? (daily.solution.find((s) => s.position === tile.position) || {}).colour : null);
+  const revealedByPlayer = !!daily.revealed[tile.position];
+  if (colour) { el.classList.add("revealed"); el.dataset.colour = colour; }
+  if (daily.finished && colour && !revealedByPlayer) el.classList.add("daily-unpicked");
+
+  const clickable = !daily.finished && !daily.revealed[tile.position];
+  if (!clickable && !colour) el.classList.add("locked");
+
+  const art = tile.sprite_url || (tile.pokemon_id ? `${ART_BASE}/${tile.pokemon_id}.png` : "");
+  const fallback = tile.pokemon_id ? `${SPRITE_BASE}/${tile.pokemon_id}.png` : "";
+  el.innerHTML = `
+    <div class="tile-img-wrap"><img src="${art}" alt="${escapeHtml(tile.name)}" decoding="async" ${fallback ? `onerror="this.onerror=null;this.src='${fallback}'"` : ""} /></div>
+    <div class="tile-name">${escapeHtml(tile.name)}</div>`;
+  if (clickable) el.addEventListener("click", () => dailyRevealTile(tile.position));
+  return el;
+}
+
+function renderDailyBoard() {
+  const board = $("#daily-board");
+  board.innerHTML = "";
+  daily.tiles.forEach((t) => board.appendChild(dailyMakeTile(t)));
+}
+
+let _dailyRevealBusy = false;
+async function dailyRevealTile(position) {
+  if (daily.finished || daily.revealed[position] || _dailyRevealBusy) return;
+  _dailyRevealBusy = true;
+  try {
+    const { data, error } = await sb.rpc("daily_reveal", {
+      p_date: daily.date, p_pool: daily.pool, p_position: position,
+    });
+    if (error) throw error;
+    const colour = data;
+    if (daily.startedAt === null) daily.startedAt = Date.now();
+    daily.revealed[position] = colour;
+
+    if (colour === "assassin") {
+      playSound("assassin");
+      renderDaily();
+      dailyFinish("assassin");
+    } else if (colour === "blue") {
+      daily.bluesFound += 1;
+      playSound("correct");
+      if (daily.bluesFound >= daily.bluesTotal) { renderDaily(); dailyFinish("win"); }
+      else renderDaily();
+    } else {
+      daily.mistakes += 1;
+      playSound("wrong");
+      if (daily.mistakes >= daily.maxMistakes) { renderDaily(); dailyFinish("lose"); }
+      else renderDaily();
+    }
+  } catch (err) {
+    console.error(err);
+    toast("Couldn't reveal that tile.");
+  } finally {
+    _dailyRevealBusy = false;
+  }
+}
+
+async function dailyRequestHint() {
+  if (daily.finished || daily.hintsUsed >= daily.maxHints) return;
+  try {
+    const { data, error } = await sb.rpc("daily_hint", {
+      p_date: daily.date, p_pool: daily.pool, p_index: daily.hintsUsed,
+    });
+    if (error) throw error;
+    if (!data) { toast("No more extra clues for this puzzle."); daily.hintsUsed = daily.maxHints; renderDaily(); return; }
+    daily.revealedHints.push(data);
+    daily.hintsUsed += 1;
+    renderDaily();
+  } catch (err) {
+    console.error(err);
+    toast("Couldn't get an extra clue.");
+  }
+}
+
+async function dailyFinish(outcome) {
+  daily.finished = true;
+  daily.outcome = outcome;
+  if (outcome === "win") playSound("win");
+  else if (outcome === "lose") playSound("lose");
+  try {
+    const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
+    if (!error && data) daily.solution = data;
+  } catch (err) { console.error(err); }
+  renderDaily();
+}
+
+function renderDailyResult() {
+  const el = $("#daily-result");
+  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
+  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  let title;
+  if (daily.outcome === "win") title = `Solved it! 9/9 🎉`;
+  else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
+  else title = `Out of guesses — ${daily.bluesFound}/9 found`;
+  el.innerHTML = `
+    <div class="daily-result-title">${title}</div>
+    <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} mistakes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+    <div class="daily-result-btns">
+      <button class="btn btn-share" id="daily-share-btn">↗ Share result</button>
+      <button class="btn btn-ghost" id="daily-other-btn">Play the ${daily.pool === "gen1" ? "All-gens" : "Gen I"} puzzle</button>
+      <button class="btn btn-ghost" id="daily-home-btn">Home</button>
+    </div>`;
+  $("#daily-share-btn").addEventListener("click", dailyShare);
+  $("#daily-other-btn").addEventListener("click", () => startDaily(daily.pool === "gen1" ? "mixed" : "gen1"));
+  $("#daily-home-btn").addEventListener("click", () => showScreen("landing"));
+}
+
+function dailyShare() {
+  const EMOJI = { blue: "🟦", neutral: "🟨", assassin: "💀" };
+  const byPos = {};
+  daily.tiles.forEach((t) => (byPos[t.position] = true));
+  const rows = [];
+  for (let r = 0; r < 5; r++) {
+    let row = "";
+    for (let c = 0; c < 5; c++) {
+      const pos = r * 5 + c;
+      const col = daily.revealed[pos];
+      row += col ? (EMOJI[col] || "🟨") : "⬜";
+    }
+    rows.push(row);
+  }
+  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
+  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
+  const text = [
+    `Pokémon Codenames — Daily (${poolLabel})`,
+    rows.join("\n"),
+    `${daily.bluesFound}/9 · ${daily.mistakes} mistakes · ${daily.hintsUsed} hints · ${time}`,
+  ].join("\n");
+  const url = `${window.location.origin}${window.location.pathname}`;
+  nativeShare({ title: "Pokémon Codenames — Daily", text, url });
+}
+
+// ============================================================================
 // Boot
 // ============================================================================
 async function boot() {
@@ -1594,6 +1824,7 @@ async function boot() {
   initLobbyScreen();
   initGameScreen();
   initSoundToggle();
+  initDaily();
 
   $("#refresh-btn").addEventListener("click", async () => {
     await resyncRoom();
@@ -1614,6 +1845,13 @@ async function boot() {
   setInterval(pollTick, POLL_MS);
   setInterval(() => {
     if (state.room && $("#screen-game").classList.contains("active")) renderTimer();
+    if ($("#screen-daily").classList.contains("active") && daily.startedAt && !daily.finished) {
+      const el = $("#daily-timer");
+      if (el) {
+        const secs = Math.floor((Date.now() - daily.startedAt) / 1000);
+        el.textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+      }
+    }
   }, 1000);
 
   _migrateOldSession(); // one-time migration from old single-session key
