@@ -14,21 +14,25 @@ worked example puzzles, and how we can learn from real player data.
 - The player gets **one turn** to find all 9 blue tiles. Success = all 9 found.
 - Same puzzle for everyone that day (a "Wordle-style" daily), shareable result.
 
-## The one real design decision: scoring / fail rule
+## Locked decisions (from owner feedback)
 
-Three options — I'd recommend starting with **B** and A/B-testing later:
-
-- **A — Sudden death.** First non-blue tile ends the day. Score = blues found
-  before the mistake. Tense, but can feel harsh (one slip = low score).
-- **B — Limited mistakes (recommended).** You may reveal tiles until you either
-  find all 9 blue (win) or make **3 mistakes** (neutral/red). Score = blues
-  found / 9. The assassin is an instant end (0 or a special "💀" result).
-  Forgiving enough to be fun daily, still rewards precision.
-- **C — Fixed guess budget.** e.g. 12 taps total; score by how many of the 9
-  blues you found. Simpler but less dramatic than mistake-based.
-
-All three share the same data model, so we can ship one and switch the rule
-with a settings flag while testing.
+- **Board:** 9 blue + 15 neutral + **1 assassin**. **No red tiles** — a red
+  tile would play identically to a neutral for a solo player, so it's removed.
+- **Scoring (rule "B′"):** you may keep tapping until you either find all 9
+  blue (win) or make your **3rd mistake** (i.e. 2 mistakes allowed; the 3rd
+  ends the game). On finish, reveal the full board and show a **share button**.
+  Score = blues found / 9, plus neutrals hit and time taken.
+- **Assassin:** kept, but instant-end on tap. It's safe because we author the
+  clues *after* seeing the whole board and verify no clue leans toward the
+  assassin (or any neutral) before locking it — see the `avoids` notes in the
+  examples.
+- **Clues:** all **5 shown at once**. Single words. Overlap encouraged (a blue
+  can appear in multiple clues; numbers may sum to >9). A clue word is **never**
+  the name of a Pokémon on the board.
+- **Timer:** runs for the attempt and is included in the shareable result.
+- **Stats:** show blues found, neutrals hit, and time. **Streaks:** deferred —
+  they'd rely on browser cache (`localStorage`), which breaks across devices
+  without login, so not worth it for v1.
 
 ## Where the clues come from — my recommendation
 
@@ -93,10 +97,29 @@ the blue tiles it's meant to link, and the neutrals are chosen as deliberate
 *traps* (e.g. a water clue with a non-blue water Pokémon on the board) so the
 puzzle actually tests judgement. These are the format a generator would emit.
 
-## Open questions for you
+## Clue-writing principles (learned from the exported player data)
 
-1. Scoring rule to launch with — A, B (my rec), or C?
-2. Assassin: instant fail, or just "counts as a mistake"?
-3. Should the 5 clues be shown all at once, or revealed one at a time as you
-   clear each cluster?
-4. Streaks / stats (like Wordle) — worth it for v1, or later?
+Strong human clues in the export were single words of a few kinds — this is the
+register the generator should target:
+- **Type:** Bird, Water, Poison, Ghost, Dragon, Psychic.
+- **Colour:** Blue, Pink.
+- **Shape/trait:** Round, Pointy, Legless.
+- **Lore / pun:** Pearl→Shellder, Otter→Buizel, Ruff→(dog), King→Nido**king**,
+  Cerulean→(water city), Shell→shelled mons.
+
+Hard rules for our solo clues (they are helpers, never traps):
+1. Every clue points only at blue tiles; before locking it, confirm no neutral
+   and **especially not the assassin** plausibly matches.
+2. Prefer the **narrowest** word that still links the intended blues, so it
+   doesn't accidentally sweep in a neutral (e.g. "TURTLE" not "WATER" when
+   there are non-turtle Water neutrals about).
+3. Overlap is good — reuse a blue across clues to add duplicate-spotting depth.
+4. Never use a word that is a Pokémon's name on the board.
+
+## Still open
+
+1. Do the three example puzzles feel right in difficulty/tone? Any clue you'd
+   cut or reword?
+2. Once happy, I'll (a) wire the mode in behind a `daily` route, (b) add a
+   `daily_puzzles` table + RLS so the key is hidden until you finish, and
+   (c) generate a first batch (e.g. 30 days) for you to review before launch.
