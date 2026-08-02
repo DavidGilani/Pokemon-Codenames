@@ -40,6 +40,7 @@ const state = {
 let lastSignature = null;   // used by the poll to avoid needless re-renders
 let statsRequested = false; // record the two-player result only once
 let serverOffsetMs = 0;     // (server clock) - (this device's clock)
+let aiTurnTimer = null;     // pending "AI is thinking" timeout (vs-AI mode)
 
 // Measure the gap between the Supabase server clock and this device's clock so
 // every device shows the same elapsed time no matter how wrong its own clock is.
@@ -933,7 +934,8 @@ function canReveal() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
-  if (isBlueTeamMode(room)) return me.role === "operative";
+  if (isVsAI(room)) return me.role === "operative" && room.current_team === "blue";
+  if (isTwoPlayer(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -943,7 +945,8 @@ function canPass() {
   if (!room || !me) return false;
   if (room.status !== "in_progress" || !room.current_clue) return false;
   if (room.mode === "in_person") return me.is_host || me.team === room.current_team;
-  if (isBlueTeamMode(room)) return me.role === "operative";
+  if (isVsAI(room)) return me.role === "operative" && room.current_team === "blue";
+  if (isTwoPlayer(room)) return me.role === "operative";
   return me.team === room.current_team && me.role === "operative";
 }
 
@@ -952,7 +955,8 @@ function canGiveClue() {
   const me = state.me;
   if (!room || !me) return false;
   if (room.status !== "in_progress" || room.current_clue) return false;
-  if (isBlueTeamMode(room)) return me.role === "spymaster";
+  if (isVsAI(room)) return me.role === "spymaster" && room.current_team === "blue";
+  if (isTwoPlayer(room)) return me.role === "spymaster";
   return me.role === "spymaster" && me.team === room.current_team;
 }
 
@@ -963,6 +967,9 @@ function renderGame(changedPosition) {
   const isAsync = isAsyncMode(room);
   const isAi = isVsAI(room);
   const coop = is2p || isAi; // two humans share the blue side
+  // vs-AI: current_team === 'red' means the AI's turn is pending (waiting for the
+  // client to trigger its reveal after a short "thinking" pause).
+  const aiThinking = isAi && room.status === "in_progress" && room.current_team === "red";
 
   // --- Detect newly revealed tiles for animation + sound effects -----------
   const revealedNow = new Set(state.cards.filter((c) => c.revealed).map((c) => c.position));
@@ -1024,6 +1031,25 @@ function renderGame(changedPosition) {
     $("#turn-team-value").textContent = room.status === "finished" ? "Game over" : "—";
   }
 
+  // vs-AI: show the AI's turn and, once, trigger its reveal after a short pause
+  // so the AI feels deliberate. Only the clue receiver's client triggers it.
+  if (aiThinking) {
+    $("#turn-team-value").textContent = "🤖 AI'S TURN";
+    if (state.me?.role === "operative" && !aiTurnTimer) {
+      aiTurnTimer = setTimeout(async () => {
+        aiTurnTimer = null;
+        try {
+          const { error } = await sb.rpc("ai_take_turn", { p_room_id: state.roomId });
+          if (error) throw error;
+          await resyncRoom();
+        } catch (err) { console.error(err); }
+      }, 2500);
+    }
+  } else if (aiTurnTimer) {
+    clearTimeout(aiTurnTimer);
+    aiTurnTimer = null;
+  }
+
   // Timer
   renderTimer();
 
@@ -1061,7 +1087,10 @@ function renderGame(changedPosition) {
 
   // Waiting-for-clue line
   const waiting = $("#waiting-for-clue");
-  if (room.status === "in_progress" && !room.current_clue && !canGiveClue()) {
+  if (aiThinking) {
+    waiting.classList.remove("hidden");
+    waiting.textContent = "🤖 The AI is choosing its tiles…";
+  } else if (room.status === "in_progress" && !room.current_clue && !canGiveClue()) {
     waiting.classList.remove("hidden");
     waiting.textContent = coop
       ? "Waiting for the clue giver's clue..."
@@ -1309,6 +1338,10 @@ function renderClueLog(room) {
       const guesses = guessLog.filter((g) => g.clue_index === i);
       const guessesHtml = guesses
         .map((g) => {
+          if (g.ai) {
+            // The AI revealing one of its own red tiles on its turn.
+            return `<div class="clue-log-row clue-guess"><span class="cl-ai">🤖</span><span class="cl-guess-name">${escapeHtml(g.name)}</span><span class="cl-colour-red">red</span></div>`;
+          }
           const iconClass = g.correct ? "cl-correct" : "cl-wrong";
           const icon = g.correct ? "✓" : "✗";
           return `<div class="clue-log-row clue-guess"><span class="${iconClass}">${icon}</span><span class="cl-guess-name">${escapeHtml(g.name)}</span><span class="cl-colour-${g.colour}">${g.colour}</span></div>`;
@@ -1514,10 +1547,16 @@ let _revealInProgress = false;
 async function handleRevealCard(position) {
   if (_revealInProgress) return;
   _revealInProgress = true;
+  const hadClue = !!state.room?.current_clue;
   try {
     const { error } = await sb.rpc("reveal_card", { p_room_id: state.roomId, p_position: position });
     if (error) throw error;
     await resyncRoom(position);
+    // vs-AI: if that guess ended the turn, auto-open the board share for the
+    // clue receiver (matches the pass-to-share behaviour of turn-by-turn).
+    if (isVsAI(state.room) && state.me?.role === "operative" && hadClue && !state.room?.current_clue) {
+      await handleShareBoard();
+    }
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't reveal that tile.");

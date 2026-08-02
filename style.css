@@ -593,6 +593,7 @@ a { color: var(--accent); }
 .clue-log-row.clue-guess { padding-left: 18px; font-size: 12px; opacity: 0.85; }
 .cl-correct { color: #2cbe4e; font-weight: 700; min-width: 14px; }
 .cl-wrong   { color: #e05c5c; font-weight: 700; min-width: 14px; }
+.cl-ai      { min-width: 14px; }
 .cl-guess-name { flex: 1; }
 .cl-colour-red     { color: var(--red); font-size: 11px; }
 .cl-colour-blue    { color: var(--blue); font-size: 11px; }
