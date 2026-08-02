@@ -1,0 +1,83 @@
+{
+  "_comment": "Hand-written test puzzles for the 1-player Daily mode. Format a generator would emit: board is 25 tiles (9 blue, 15 neutral, 1 assassin); clues cover all 9 blue tiles; each clue lists its intended blue targets. Neutrals are chosen as deliberate traps for the clues (e.g. a non-blue water Pokemon under a water clue). The 'targets' arrays are the hidden answer key and would live server-side.",
+  "grid_size": 5,
+  "blue_count": 9,
+  "puzzles": [
+    {
+      "date": "2026-08-03",
+      "theme": "Gen I types",
+      "clues": [
+        { "word": "FLAME",   "number": 2, "targets": ["Charizard", "Moltres"] },
+        { "word": "OCEAN",   "number": 2, "targets": ["Blastoise", "Gyarados"] },
+        { "word": "SHOCK",   "number": 2, "targets": ["Pikachu", "Raichu"] },
+        { "word": "MIND",    "number": 2, "targets": ["Alakazam", "Hypno"] },
+        { "word": "BOULDER", "number": 1, "targets": ["Onix"] }
+      ],
+      "board": [
+        { "name": "Charizard",  "colour": "blue" },
+        { "name": "Moltres",    "colour": "blue" },
+        { "name": "Blastoise",  "colour": "blue" },
+        { "name": "Gyarados",   "colour": "blue" },
+        { "name": "Pikachu",    "colour": "blue" },
+        { "name": "Raichu",     "colour": "blue" },
+        { "name": "Alakazam",   "colour": "blue" },
+        { "name": "Hypno",      "colour": "blue" },
+        { "name": "Onix",       "colour": "blue" },
+        { "name": "Charmander", "colour": "neutral", "trap_for": "FLAME" },
+        { "name": "Squirtle",   "colour": "neutral", "trap_for": "OCEAN" },
+        { "name": "Vaporeon",   "colour": "neutral", "trap_for": "OCEAN" },
+        { "name": "Jolteon",    "colour": "neutral", "trap_for": "SHOCK" },
+        { "name": "Kadabra",    "colour": "neutral", "trap_for": "MIND" },
+        { "name": "Geodude",    "colour": "neutral", "trap_for": "BOULDER" },
+        { "name": "Bulbasaur",  "colour": "neutral" },
+        { "name": "Oddish",     "colour": "neutral" },
+        { "name": "Meowth",     "colour": "neutral" },
+        { "name": "Jigglypuff", "colour": "neutral" },
+        { "name": "Eevee",      "colour": "neutral" },
+        { "name": "Lickitung",  "colour": "neutral" },
+        { "name": "Tauros",     "colour": "neutral" },
+        { "name": "Ekans",      "colour": "neutral" },
+        { "name": "Rattata",    "colour": "neutral" },
+        { "name": "Ditto",      "colour": "assassin" }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "theme": "Evolution lines & legends",
+      "clues": [
+        { "word": "SEED",      "number": 3, "targets": ["Bulbasaur", "Ivysaur", "Venusaur"] },
+        { "word": "EEVEE",     "number": 2, "targets": ["Vaporeon", "Jolteon"] },
+        { "word": "FLAME",     "number": 1, "targets": ["Flareon"] },
+        { "word": "BIRD",      "number": 2, "targets": ["Zapdos", "Articuno"] },
+        { "word": "DRAGON",    "number": 1, "targets": ["Dragonite"] }
+      ],
+      "board": [
+        { "name": "Bulbasaur",  "colour": "blue" },
+        { "name": "Ivysaur",    "colour": "blue" },
+        { "name": "Venusaur",   "colour": "blue" },
+        { "name": "Vaporeon",   "colour": "blue" },
+        { "name": "Jolteon",    "colour": "blue" },
+        { "name": "Flareon",    "colour": "blue" },
+        { "name": "Zapdos",     "colour": "blue" },
+        { "name": "Articuno",   "colour": "blue" },
+        { "name": "Dragonite",  "colour": "blue" },
+        { "name": "Eevee",      "colour": "neutral", "trap_for": "EEVEE" },
+        { "name": "Moltres",    "colour": "neutral", "trap_for": "BIRD" },
+        { "name": "Pidgey",     "colour": "neutral", "trap_for": "BIRD" },
+        { "name": "Spearow",    "colour": "neutral", "trap_for": "BIRD" },
+        { "name": "Charmander", "colour": "neutral", "trap_for": "FLAME" },
+        { "name": "Oddish",     "colour": "neutral", "trap_for": "SEED" },
+        { "name": "Bellsprout", "colour": "neutral", "trap_for": "SEED" },
+        { "name": "Dratini",    "colour": "neutral", "trap_for": "DRAGON" },
+        { "name": "Psyduck",    "colour": "neutral" },
+        { "name": "Machop",     "colour": "neutral" },
+        { "name": "Geodude",    "colour": "neutral" },
+        { "name": "Rattata",    "colour": "neutral" },
+        { "name": "Sandshrew",  "colour": "neutral" },
+        { "name": "Clefairy",   "colour": "neutral" },
+        { "name": "Meowth",     "colour": "neutral" },
+        { "name": "Mewtwo",     "colour": "assassin" }
+      ]
+    }
+  ]
+}

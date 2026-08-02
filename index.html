@@ -79,7 +79,7 @@
           <label>Play mode</label>
           <div class="mode-groups">
             <div class="mode-group">
-              <div class="mode-group-label">Classic</div>
+              <div class="mode-group-label">Classic <span class="player-count">4+ players</span></div>
               <div class="radio-row">
                 <label class="radio-chip checked" data-role="mode">
                   <input type="radio" name="mode" value="online" checked />
@@ -92,7 +92,7 @@
               </div>
             </div>
             <div class="mode-group">
-              <div class="mode-group-label">2 player</div>
+              <div class="mode-group-label">2 player <span class="player-count">2 players</span></div>
               <div class="radio-row">
                 <label class="radio-chip" data-role="mode">
                   <input type="radio" name="mode" value="two_player" />
@@ -275,6 +275,8 @@
         <div class="clue-log-title">Clue log</div>
         <div id="clue-log-list"></div>
       </div>
+
+      <div class="mode-explainer hidden" id="mode-explainer"></div>
 
       <div class="share-row hidden" id="share-board-row">
         <button class="btn btn-share" id="share-board-btn">↗ Share board</button>

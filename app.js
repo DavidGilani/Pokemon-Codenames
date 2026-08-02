@@ -1097,6 +1097,9 @@ function renderGame(changedPosition) {
   // Clue log
   renderClueLog(room);
 
+  // How-to-play banner
+  renderModeExplainer(room);
+
   // Counts / rounds
   const redLeft = countRemaining(room, "red");
   const blueLeft = countRemaining(room, "blue");
@@ -1258,6 +1261,26 @@ function renderGameTeams(room) {
       <div class="gt-col gt-blue"><div class="gt-title">Blue team</div>${blue.length ? blue.map(playerRow).join("") : '<div class="gt-player" style="color:var(--text-faint)">—</div>'}</div>
       ${observersHtml}`;
   }
+}
+
+// ----------------------------------------------------------------------------
+// How-to-play banner — a short reminder of the mode's dynamic, under the log
+// ----------------------------------------------------------------------------
+const MODE_EXPLAINERS = {
+  online: "<strong>Classic online.</strong> Two teams race to find their own Pokémon. Each team's clue giver gives a one-word clue and a number; guessers tap tiles — find your team's, avoid the other team's, the neutrals, and never the assassin.",
+  in_person: "<strong>In person.</strong> This screen shows the board for everyone. Each team's clue giver peeks at the key privately on their own phone and gives one-word clues; the group guesses on this shared screen.",
+  two_player: "<strong>Two-player co-op.</strong> Work together to reveal all 9 of your blue Pokémon in as few rounds as possible. One gives clues, the other guesses. Hit the assassin and it's game over.",
+  turn_by_turn: "<strong>Turn-by-turn co-op.</strong> Same as two-player, played at your own pace: the clue giver sends a clue, then shares the link so the guesser can take their turn whenever they like.",
+  two_player_ai: "<strong>Two-player vs AI.</strong> You're the blue team — clear all 9 of your blue Pokémon before the AI reveals all 8 of its red ones. After each of your turns the AI flips over some red tiles. Avoid the assassin!",
+};
+
+function renderModeExplainer(room) {
+  const el = $("#mode-explainer");
+  if (!el) return;
+  const text = MODE_EXPLAINERS[room.mode];
+  if (!text) { el.classList.add("hidden"); return; }
+  el.classList.remove("hidden");
+  el.innerHTML = text;
 }
 
 // ----------------------------------------------------------------------------
@@ -1476,7 +1499,7 @@ async function handleSubmitClue(e) {
     });
     if (error) throw error;
     await resyncRoom();
-    if (isAsyncMode(state.room)) await handleShareClue(word, number);
+    if (isAsyncMode(state.room) || isVsAI(state.room)) await handleShareClue(word, number);
     $("#clue-word").value = "";
     $("#clue-number").value = "1";
   } catch (err) {
@@ -1508,7 +1531,7 @@ async function handleEndTurn() {
     const { error } = await sb.rpc("end_turn", { p_room_id: state.roomId });
     if (error) throw error;
     await resyncRoom();
-    if (isAsyncMode(state.room)) await handleShareBoard();
+    if (isAsyncMode(state.room) || isVsAI(state.room)) await handleShareBoard();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't pass the turn.");
