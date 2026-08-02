@@ -8,11 +8,18 @@ worked example puzzles, and how we can learn from real player data.
 - **One player.** No clue giver — the clues are pre-written ("by the AI").
 - **5×5 board, 9 blue tiles** (same tile counts as a co-op board: 9 blue,
   15 neutral, 1 assassin).
-- The player is given **5 clues**, each with a number, that between them cover
-  all 9 blue tiles (e.g. 2+2+2+2+1, or 4+3+2, depending on what good clues the
-  day's Pokémon allow).
+- The player is given **exactly 5 clues**, each with a number, that between them
+  cover all 9 blue tiles (e.g. 2+2+2+2+1, or 3+2+2+1+1).
 - The player gets **one turn** to find all 9 blue tiles. Success = all 9 found.
-- Same puzzle for everyone that day (a "Wordle-style" daily), shareable result.
+- **Two puzzles per day:** one drawn from **Gen I only**, and one drawn from
+  **any generation (mixed)**. Same two puzzles for everyone that day
+  (a "Wordle-style" daily), each with a shareable result.
+- **Board-first generation** (owner preference): deal the 25 tiles randomly
+  first, THEN write clues for whatever blues came up. This yields far more
+  interesting, creative clues than choosing blues to fit a clue.
+- **Player help:** the player may request **up to 3 extra clues** (one at a
+  time) if stuck, so they can still finish with some assistance. (Track how many
+  hints were used in the result/stats.)
 
 ## Locked decisions (from owner feedback)
 
@@ -24,15 +31,24 @@ worked example puzzles, and how we can learn from real player data.
   Score = blues found / 9, plus neutrals hit and time taken.
 - **Assassin:** kept, but instant-end on tap. It's safe because we author the
   clues *after* seeing the whole board and verify no clue leans toward the
-  assassin (or any neutral) before locking it — see the `avoids` notes in the
-  examples.
-- **Clues:** all **5 shown at once**. Single words. Overlap encouraged (a blue
-  can appear in multiple clues; numbers may sum to >9). A clue word is **never**
-  the name of a Pokémon on the board.
-- **Timer:** runs for the attempt and is included in the shareable result.
-- **Stats:** show blues found, neutrals hit, and time. **Streaks:** deferred —
-  they'd rely on browser cache (`localStorage`), which breaks across devices
-  without login, so not worth it for v1.
+  assassin before locking it. When a blue shares the assassin's obvious theme
+  (e.g. a blue Fighting type with a Fighting assassin), we must clue that blue
+  by a DIFFERENT handle (name-pun/sprite/colour), never the shared theme.
+- **Clues:** all **5 shown at once**. Single words.
+  - **Overlap is good, but never duplicate a set:** a blue may appear in more
+    than one clue (numbers can sum to >9), which adds nice "which tile is
+    double-clued?" depth — but **no two clues may cover the *exact same* set**
+    of blues.
+  - **Not traps:** clues are our best attempt to lead the player to all 9 blues
+    and away from neutrals; we do NOT plant neutral collisions on purpose. Some
+    residual risk is fine (and unavoidable on a random board) — note it, don't
+    engineer it.
+- **Timer:** runs for the attempt (starts on first tap) and is included in the
+  shareable result.
+- **Stats:** show blues found, neutrals hit, hints used, and time.
+  **Streaks:** deferred — they'd rely on browser cache (`localStorage`), which
+  breaks across devices without login, so not worth it for v1.
+- **Generation:** two dailies — one Gen-I-only, one mixed (any generation).
 
 ## Where the clues come from — my recommendation
 
@@ -89,37 +105,81 @@ limit 500;
 
 (If `created_at` doesn't exist on `rooms`, drop the `order by` line.)
 
+## Clue-word restriction rule (IMPORTANT — must match the live site)
+
+The live site (`clueOverlapsPokemon` in `app.js`) rejects a clue that shares a
+**4+ character substring** with any Pokémon on the board (either direction),
+case/punctuation-insensitive.
+
+**For authoring Daily puzzles we use a STRICTER rule:** a clue word must not
+share **3 or more consecutive letters** with ANY Pokémon on the board (blue,
+neutral, or assassin), in either direction. So:
+- ❌ `RAT` for Raticate, `CHOP` for Machop, `CROW` for Murkrow, `FAIRY` for
+  Clefairy (the clue is a fragment of the name).
+- ❌ `PINK` when **Weepin**bell is on the board (`pin`), `GROUND` when
+  H**oun**doom is on the board (`oun`), `COCOON` when Tenta**coo**l is present
+  (`coo`), `GRASS` when La**pras** is present (`ras`).
+- ✅ Use a synonym/alt handle instead: `ROSY` (not PINK), `DIRT` (not GROUND),
+  `PUPA` (not COCOON), `PLANT`/`PITCHER` (not GRASS).
+
+Always run this check against all 25 names before locking a clue.
+
+## Use the sprites — niche, specific clues welcome
+
+Clues are chosen with the **on-tile sprite** in mind, not just type/colour.
+Sprite details unlock clues that separate look-alikes:
+- `FIST` / `PUNCH` for Machop (its sprite punches toward the camera) — a way to
+  clue it *without* the word "fight", which would also point at a Fighting
+  assassin like Poliwrath.
+- `PUPA` (Kakuna's cocoon), `SKULL` (Cubone's helmet), `SIX` (Exeggcute's six
+  eggs), `TONGUE` (Lickitung), `GIFT` (Delibird's sack), `DINO` (Tyranitar),
+  `PITCHER` (Victreebel/Weepinbell).
+
+## Board-first + re-deal (how the generator should work)
+
+Deal 25 random tiles (9 blue / 15 neutral / 1 assassin) first, then try to
+cover all 9 blues with ≤5 clean clues. **Most random boards can't be covered in
+5 clean clues** — the 9 blues usually form only 2–3 natural groups plus several
+loners. So the generator must **re-deal** until it finds a board whose blues
+cluster enough for 5 clues (this is cheap). Concretely, keep a board only if the
+blues can be covered by clue-groups (shared type/colour/shape/lore) that are
+**absent from every neutral and the assassin**, in ≤5 groups. Then hand-/AI-
+finish the exact clue words (adding sprite/pun handles) and run the letter-rule
+and assassin checks.
+
 ## Worked test examples
 
-See `daily_puzzle_examples.json` — two complete, hand-written 5×5 puzzles (9
-blue, 5 clues each) built purely from public Pokémon knowledge. Each clue lists
-the blue tiles it's meant to link, and the neutrals are chosen as deliberate
-*traps* (e.g. a water clue with a non-blue water Pokémon on the board) so the
-puzzle actually tests judgement. These are the format a generator would emit.
+Current batch: **`daily_puzzle_batch_v2.json`** — 4 board-first puzzles (2 Gen I,
+2 mixed) generated by the re-deal method above, each solvable in exactly 5 clues,
+all passing the strict letter rule, with `decoys` noted (inherent risk, not
+planted) and `kind`/sprite rationale per clue.
 
 ## Clue-writing principles (learned from the exported player data)
 
-Strong human clues in the export were single words of a few kinds — this is the
-register the generator should target:
+Strong human clues in the export were single words of a few kinds — the register
+to target:
 - **Type:** Bird, Water, Poison, Ghost, Dragon, Psychic.
 - **Colour:** Blue, Pink.
 - **Shape/trait:** Round, Pointy, Legless.
-- **Lore / pun:** Pearl→Shellder, Otter→Buizel, Ruff→(dog), King→Nido**king**,
-  Cerulean→(water city), Shell→shelled mons.
+- **Lore / pun / sprite:** Pearl→Shellder, Otter→Buizel, Ruff→(dog),
+  King→Nido**king**, Fist→Machop's punching sprite.
 
-Hard rules for our solo clues (they are helpers, never traps):
+Hard rules for our solo clues (helpers, never traps):
 1. Every clue points only at blue tiles; before locking it, confirm no neutral
    and **especially not the assassin** plausibly matches.
-2. Prefer the **narrowest** word that still links the intended blues, so it
-   doesn't accidentally sweep in a neutral (e.g. "TURTLE" not "WATER" when
-   there are non-turtle Water neutrals about).
-3. Overlap is good — reuse a blue across clues to add duplicate-spotting depth.
-4. Never use a word that is a Pokémon's name on the board.
+2. Prefer the **narrowest** word that links the intended blues (e.g. "TURTLE"
+   not "WATER" when non-turtle Water neutrals are about).
+3. **Mix the clue kinds** across the 5 — don't lean on types alone; on a random
+   board a type is usually shared by a neutral/assassin.
+4. Overlap is good, but **no two clues share the identical set** of blues.
+5. Obey the **letter rule** (no 3+ consecutive letters of any board name).
+6. Consider the **sprite** for niche clues.
 
 ## Still open
 
-1. Do the three example puzzles feel right in difficulty/tone? Any clue you'd
-   cut or reword?
-2. Once happy, I'll (a) wire the mode in behind a `daily` route, (b) add a
-   `daily_puzzles` table + RLS so the key is hidden until you finish, and
-   (c) generate a first batch (e.g. 30 days) for you to review before launch.
+1. Do the `batch_v2` puzzles feel right in difficulty/tone? Any clue to reword?
+2. Once happy, I'll (a) wire in the mode behind a `daily` route with the two
+   dailies (Gen I + mixed), the 2-mistakes-then-end rule, the timer, and the
+   up-to-3-extra-clues help; (b) add a `daily_puzzles` table + RLS so the key is
+   hidden until you finish, plus an easy edit path for you to tweak clues/leave
+   feedback in Supabase; (c) generate a reviewable batch before launch.
