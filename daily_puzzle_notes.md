@@ -171,6 +171,22 @@ easy anchors, some sophisticated ones — so it's achievable but has bite.
 Guidance: try for roughly **1–2 Category-1 anchors + a couple of 2–3 + at least
 one 4–5** per puzzle. Never make all five Category 1.
 
+**No disguised-type clues (IMPORTANT).** A higher-category clue must not simply
+be a type word in disguise. `BLAZE`/`FLAME`/`INFERNO` = Fire, `SHADE`/`PHANTOM`
+= Ghost, `WYRM`/`DRAKE` = Dragon, `DIRT`/`EARTH` = Ground, `AQUA`/`WAVE` =
+Water, `BOLT`/`VOLT` = Electric, `FROST` = Ice, `TOXIN` = Poison, `PETAL`/`LEAF`
+= Grass, etc. If the blues a clue links share **only a type**, a fancy synonym
+adds no challenge over the plain type word — so **do not use it as one of the 5
+base clues**. Instead:
+- Use the **honest type word** (`FIRE`, `GHOST`, `WATER`…) as a plain Cat-1
+  anchor — but **at most 1–2 type/colour anchors per board**.
+- Make the other 3–4 clues **genuinely non-type**: group by sprite feature
+  (`HORN`, `THREE`, `BLADES`, `SHELL`), lore/pun (`FOSSIL`, `PSEUDO`, `ORPHAN`,
+  `ROYALS`, `BOND`), behaviour (`DIGGER`, `SING`, `KICK`), or stats — and prefer
+  groupings that **span multiple types** (that's what makes them hard).
+- Colour clues (`PINK`, `YELLOW`) are fine and are NOT type disguises — colour
+  is a legitimate separate handle (as in classic Codenames).
+
 **Skew harder (playtest feedback):** the first live puzzles played **too easy**.
 The main lever is not just *which* categories but *how the hard ones group*:
 

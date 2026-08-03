@@ -89,6 +89,13 @@ Chosen on the landing page when creating a room. `mode` values:
   `daily_attempts`. Board-first generation: deal randomly, then write clues,
   re-dealing until the 9 blues cluster into ≤5 clean clues. **Skew difficulty
   harder by grouping MULTIPLE blues under higher-category (lore/stat) clues.**
+  **No disguised-type clues:** a higher-category clue must NOT just be a type in
+  disguise — e.g. `BLAZE`/`FLAME` for Fire, `SHADE` for Ghost, `WYRM` for
+  Dragon, `DIRT` for Ground. If the only thing a clue's blues share is a type,
+  it adds no extra challenge over the plain type word, so don't use it as one of
+  the 5 base clues. Use the honest type word as a Cat-1 anchor (at most 1–2 per
+  board), and make the other clues genuinely non-type (sprite / lore / pun /
+  stat), ideally spanning multiple types.
   **The deep spec — clue-correctness rule and the 1–5 clue-difficulty
   categories — lives in `daily_puzzle_notes.md`; read it before authoring.**
 

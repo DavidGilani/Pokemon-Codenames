@@ -1903,14 +1903,13 @@ function dailyShare() {
   const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const diff = dailyDifficulty(daily.clues);
-  const guesses = daily.taps.length;
   const outcome = daily.outcome === "win"
     ? `✅ Solved it – all 9 found!`
     : `❌ ${daily.bluesFound}/9 found`;
   const text = [
     `Pokémon Codenames – Daily (${poolLabel} · ${diff.label})`,
     outcome,
-    `✗ ${daily.mistakes} mistakes · 👆 ${guesses} guesses · ⏱ ${time}`,
+    `✗ ${daily.mistakes} mistakes · ⏱ ${time}`,
     `Can you beat it?`,
   ].join("\n");
   const url = `${window.location.origin}${window.location.pathname}`;
@@ -1982,15 +1981,26 @@ async function boot() {
     return;
   }
 
-  // No invite code – restore the most recently visited game (if any)
+  // No invite code – restore the most recently visited game ONLY if it's still
+  // in progress. Landing on the bare site URL should open the homepage, not
+  // reopen the end-of-game banner of a game that's already finished. We peek at
+  // the room status first so a finished game never even flashes on screen.
   const last = _findLastSession();
   if (last) {
     state.roomId = last.roomId;
     state.playerId = last.playerId;
     state.nickname = last.nickname || "";
     try {
-      await enterRoom();
-      return;
+      await fetchRoom();
+      if (state.room && state.room.status !== "finished") {
+        await enterRoom();
+        return;
+      }
+      // Finished (or unreadable): fall through to the homepage. Keep the stored
+      // session so a ?code deep-link can still reopen it later.
+      state.room = null;
+      state.roomId = null;
+      state.playerId = null;
     } catch (err) {
       console.error(err);
       _removeSession(last.roomId);
