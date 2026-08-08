@@ -1447,7 +1447,9 @@ function buildResultShareText() {
   clueLog.forEach((c, i) => {
     lines.push(`${i + 1}. "${c.word}" ×${c.number}`);
     guessLog.filter((g) => g.clue_index === i).forEach((g) => {
-      lines.push(`   ${g.correct ? "✅" : "❌"} ${g.name}`);
+      // AI guesses get the same robot marker used on the board / clue log.
+      const who = g.ai ? "🤖 " : "";
+      lines.push(`   ${g.correct ? "✅" : "❌"} ${who}${g.name}`);
     });
   });
   return lines.join("\n");
