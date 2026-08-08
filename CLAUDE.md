@@ -96,6 +96,13 @@ Chosen on the landing page when creating a room. `mode` values:
   the 5 base clues. Use the honest type word as a Cat-1 anchor (at most 1–2 per
   board), and make the other clues genuinely non-type (sprite / lore / pun /
   stat), ideally spanning multiple types.
+  **Harder clue categories + balancing:** beyond types/sprite/trait/lore, use
+  **Connection** (shared Ability / signature move / evolution method / egg group /
+  region — Cat 5), **Mythology** (`KITSUNE`, `PHOENIX` — Cat 5) and **Real-world
+  archetype** (`CANINE`, `RAPTOR`, `CEPHALOPOD` — Cat 3–4, cross-type). Cat 2
+  (sprite) is nearly as easy as Cat 1, so the top tiers **cap** it: Hard uses ≤1
+  sprite clue + exactly 2 Cat 4–5; Brutal exactly 3 Cat 4–5; Evil 0 sprite + ≥4
+  Cat 4–5. (Full mix table in `daily_puzzle_notes.md`.)
   **Brutal/Evil structural gate:** the category spread isn't enough — a Brutal or
   Evil board must ALSO have **at most one `× 1` clue** and its **clue numbers must
   sum to ≥ 11** (≥ 2 overlaps); otherwise ship it as Hard.

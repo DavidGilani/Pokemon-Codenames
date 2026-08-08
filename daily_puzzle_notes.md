@@ -179,14 +179,52 @@ easy anchors, some sophisticated ones — so it's achievable but has bite.
 - **Category 4 — Lore / Pokédex flavour / pun.** Dex nicknames and wordplay:
   `AURA` (Lucario, the Aura Pokémon), `ORPHAN` (Cubone), `KING`→Nido**king**,
   `LAND-SHARK` (Garchomp).
-- **Category 5 — Stats / deep Pokédex / anti-clue.** The most sophisticated:
-  base-stat standouts (**highest Special Attack**, **huge HP**, **fastest**,
-  **heaviest**), obscure dex facts, and **anti-clues** (`LEGENDARY × 0` = none
-  of your blues are legendary — used to fence off a tempting neutral). These
-  link tiles that share nothing visible, so they're the hardest to spot.
+- **Category 5 — Stats / deep Pokédex / anti-clue / connection / mythology.** The
+  most sophisticated. These link tiles that share **nothing visible**, so they're
+  the hardest to spot:
+  - **Stats:** base-stat standouts (**highest Special Attack**, **huge HP**,
+    **fastest**, **heaviest**).
+  - **Anti-clues** (`LEGENDARY × 0` = none of your blues are legendary).
+  - **Connection (NEW):** a hidden relationship with no on-tile tell — same
+    **Ability** (`INTIMIDATE`, `LEVITATE`), a shared **signature move**, same
+    **evolution method** (`TRADE`, `STONE`), same **egg group**, or **debut
+    region** (mixed only). Cross-type by nature; keep to well-known facts.
+  - **Mythology / folklore origin (NEW):** the real myth a Pokémon is built on —
+    `KITSUNE` (Ninetales), `PHOENIX`, `GENIE`, `GOLEM`. Knowledge-gated.
 
-Guidance: try for roughly **1–2 Category-1 anchors + a couple of 2–3 + at least
-one 4–5** per puzzle. Never make all five Category 1.
+- **NEW mid-hard category — Real-world archetype (Cat 3–4).** The *real animal*
+  the Pokémon is based on, **spanning types**: `CANINE`, `FELINE`, `RAPTOR`,
+  `PRIMATE`, `CEPHALOPOD`, `CRUSTACEAN`, `SERPENT`, `EQUINE`, `URSINE`. Harder
+  than a type clue because you must abstract past the Pokémon's typing (a Fire
+  dog + a Normal dog + a Dark dog all = `CANINE`). Tag the obvious ones Cat 3,
+  the abstract ones Cat 4.
+
+**Category 2 is nearly as easy as Category 1.** A sprite clue (`HORN`, `THREE`,
+`SHELL`, `BLADES`) is *read, not thought* — so a board built mostly from Cat-2
+clues plays easy even with zero Cat-1 clues. That's why the top tiers **cap**
+Cat-2 usage (see the mix table below).
+
+## Category mix per difficulty tier (balancing)
+
+Difficulty is not just "how many Cat-1 clues" — it's the whole mix, and the
+easy-to-read categories (1 and 2) are **capped** from Hard upward so the
+knowledge categories carry the weight. Target mix over the 5 base clues:
+
+| Tier | Cat 1 | Cat 2 (sprite) | Cat 3–5 | also required |
+|------|-------|----------------|---------|---------------|
+| Easy | 3–4 | rest | — | — |
+| Medium | 2 | ~2 | ≥1 (Cat 3–4) | — |
+| Challenging | 1 | ≤2 | ≥2 (Cat 3–4) | — |
+| **Hard** | 0 | **≤1** | exactly **2 Cat 4–5** + ≥1 Cat 3 | — |
+| **Brutal** | 0 | ≤1 | exactly **3 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
+| **Evil** | 0 | **0** | **≥4 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
+
+This keeps the **displayed** badge (`highs`=cat≥4: ≥4→Evil, 3→Brutal; else by
+Cat-1 count 0/1/2/3+ → Hard/Challenging/Medium/Easy) in agreement with the
+authored intent: Hard = exactly 2 highs, Brutal = exactly 3, Evil = ≥4.
+
+Guidance beyond the table: never make all five Category 1; prefer richer
+multi-tile Cat 4–5 clues over strings of `×1` sprite clues.
 
 **No disguised-type clues (IMPORTANT).** A higher-category clue must not simply
 be a type word in disguise. `BLAZE`/`FLAME`/`INFERNO` = Fire, `SHADE`/`PHANTOM`
