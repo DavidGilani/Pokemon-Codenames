@@ -23,8 +23,9 @@ worked example puzzles, and how we can learn from real player data.
 
 ## Locked decisions (from owner feedback)
 
-- **Board:** 9 blue + 15 neutral + **1 assassin**. **No red tiles** — a red
-  tile would play identically to a neutral for a solo player, so it's removed.
+- **Board:** 9 blue + **16 neutral**. **No red tiles and NO assassin** — both
+  play identically to a neutral for a solo player, so the board is just 9 blue
+  vs 16 neutral. (Earlier drafts kept an assassin; it was removed.)
 - **Scoring:** you may keep tapping until you either find all 9 blue (win) or
   make your **5th mistake** (i.e. 4 mistakes allowed; the 5th ends the game —
   loosened from 3 so players get a bit more rope). On finish, reveal the full
@@ -36,17 +37,33 @@ worked example puzzles, and how we can learn from real player data.
 - **Difficulty badge (shown to the player):** derived from the clue-category
   spread — `highs`(cat≥4)≥4 → Evil, ≥3 → Brutal; else by count of cat-1 clues:
   0 → Hard, 1 → Challenging, 2 → Medium, 3+ → Easy.
+- **Brutal / Evil structural gate (NEW):** the category spread above is
+  necessary but NOT sufficient. For a board to ship as **Brutal or Evil** it must
+  ALSO satisfy both:
+  1. **At most ONE `× 1` clue** (i.e. at most one clue that points to a single
+     tile). The rest must each group ≥ 2 blues.
+  2. **The clue numbers must sum to ≥ 11** — i.e. at least **two overlaps**
+     (a blue appearing under a second clue) beyond the 9 tiles. This forces the
+     "which tile is double-clued?" ambiguity that makes the top tiers actually
+     hard. If a board hits the category spread but fails either test, tighten the
+     clues (merge singletons, add overlap) or label it Hard instead.
+- **Randomise clue order (NEW):** the 5 base clues (and the hint list) must be
+  shuffled, NOT listed in board order. Do not order clues to follow the tiles
+  top-to-bottom / left-to-right — that quietly leaks which clue maps to which
+  region of the grid. Shuffle the `clues` array (and `hints`) before storing.
+- **No clue reuse within a rolling 2 weeks (NEW):** to keep the daily fresh for
+  regulars, a **(clue word → exact target Pokémon)** pairing and a **(clue word →
+  exact group of Pokémon)** pairing may NOT repeat within the **previous 14 days**
+  of puzzles, counting **both pools together**. E.g. if `FINS → Garchomp` or
+  `PSEUDO → {Garchomp, Tyranitar, Salamence}` was used in the last fortnight,
+  pick a different handle. Also avoid leaning on the same clue *word* many days
+  running even against different Pokémon — vary the vocabulary.
 - **Extra clues are conditional + unlimited.** Hints carry hidden target
   positions; `daily_hint_next` serves the un-shown hint covering the most
   STILL-UNREVEALED blues (tie-break: easier category first). So **every blue
   must be covered by at least one hint** (grouped is fine), and hints should be
   **easier** than the base clues. The player can keep asking until no helpful
   clue remains.
-- **Assassin:** kept, but instant-end on tap. It's safe because we author the
-  clues *after* seeing the whole board and verify no clue leans toward the
-  assassin before locking it. When a blue shares the assassin's obvious theme
-  (e.g. a blue Fighting type with a Fighting assassin), we must clue that blue
-  by a DIFFERENT handle (name-pun/sprite/colour), never the shared theme.
 - **Clues:** all **5 shown at once**. Single words.
   - **Group generously:** a clue can cover as many blues as genuinely fit
     (2, 3, 4, even more) — don't split a clean group into singletons. If BUG

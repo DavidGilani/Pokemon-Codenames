@@ -96,6 +96,14 @@ Chosen on the landing page when creating a room. `mode` values:
   the 5 base clues. Use the honest type word as a Cat-1 anchor (at most 1–2 per
   board), and make the other clues genuinely non-type (sprite / lore / pun /
   stat), ideally spanning multiple types.
+  **Brutal/Evil structural gate:** the category spread isn't enough — a Brutal or
+  Evil board must ALSO have **at most one `× 1` clue** and its **clue numbers must
+  sum to ≥ 11** (≥ 2 overlaps); otherwise ship it as Hard.
+  **Randomise clue order:** shuffle the 5 base clues (and the hints) — never list
+  them in board order (top-to-bottom), which leaks which clue maps to which tiles.
+  **No clue reuse within a rolling 2 weeks:** a `word → exact Pokémon` or
+  `word → exact group` pairing must not repeat within the previous 14 days
+  (counting both pools together); vary the vocabulary for regulars.
   **The deep spec — clue-correctness rule and the 1–5 clue-difficulty
   categories — lives in `daily_puzzle_notes.md`; read it before authoring.**
 
