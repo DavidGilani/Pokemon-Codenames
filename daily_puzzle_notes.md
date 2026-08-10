@@ -47,6 +47,14 @@ worked example puzzles, and how we can learn from real player data.
      "which tile is double-clued?" ambiguity that makes the top tiers actually
      hard. If a board hits the category spread but fails either test, tighten the
      clues (merge singletons, add overlap) or label it Hard instead.
+- **Randomise TILE positions (NEW — important):** the 9 blue tiles must be
+  scattered to random grid positions, NOT left in a fixed pattern. The
+  board-authoring convention put blues at positions `0,2,4,6,8,10,12,14,16`
+  (a fixed checkerboard) on every board, which produced the exact same visual
+  layout every single day — a dead giveaway for regulars. When emitting a
+  puzzle, apply an independent random permutation of the 25 positions and remap
+  the tiles AND every clue/hint `t` array through it together. (`28_updates.sql`
+  retro-shuffled all saved boards.)
 - **Randomise clue order (NEW):** the 5 base clues (and the hint list) must be
   shuffled, NOT listed in board order. Do not order clues to follow the tiles
   top-to-bottom / left-to-right — that quietly leaks which clue maps to which

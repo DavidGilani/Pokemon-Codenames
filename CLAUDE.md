@@ -108,6 +108,9 @@ Chosen on the landing page when creating a room. `mode` values:
   sum to ≥ 11** (≥ 2 overlaps); otherwise ship it as Hard.
   **Randomise clue order:** shuffle the 5 base clues (and the hints) — never list
   them in board order (top-to-bottom), which leaks which clue maps to which tiles.
+  **Randomise tile positions:** scatter the 9 blue tiles to random grid positions
+  (permute all 25 positions and remap the clue/hint `t` arrays with them) — never
+  leave blues in a fixed pattern, or every day's board looks identical.
   **No clue reuse within a rolling 2 weeks:** a `word → exact Pokémon` or
   `word → exact group` pairing must not repeat within the previous 14 days
   (counting both pools together); vary the vocabulary for regulars.
