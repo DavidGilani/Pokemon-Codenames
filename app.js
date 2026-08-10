@@ -1630,10 +1630,24 @@ function dailyDifficulty(clues) {
   return { label: "Easy", cls: "easy" };
 }
 
+// Deep-link suffix for each daily pool, so a finished puzzle can be shared:
+// ?daily=1 (Gen I) and ?daily=all (mixed / all generations).
+function dailyParam(pool) { return pool === "gen1" ? "1" : "all"; }
+function poolFromParam(v) { return v === "1" ? "gen1" : v === "all" ? "mixed" : null; }
+function dailyUrl(pool) {
+  return `${window.location.origin}${window.location.pathname}?daily=${dailyParam(pool)}`;
+}
+function setDailyUrl(pool) {
+  try { history.replaceState(null, "", `${window.location.pathname}?daily=${dailyParam(pool)}`); } catch {}
+}
+function clearDailyUrl() {
+  try { history.replaceState(null, "", window.location.pathname); } catch {}
+}
+
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
 }
 
@@ -1661,6 +1675,7 @@ async function startDaily(pool) {
     daily.bluesTotal = 9;
     daily.startedAt = Date.now(); // timer starts as soon as the puzzle loads
     setRoomPill(null);
+    setDailyUrl(pool); // reflect which daily this is in the URL (shareable)
     showScreen("daily");
     renderDaily();
     // Log the start of this attempt (best-effort).
@@ -1900,7 +1915,7 @@ function renderDailyResult() {
     </div>`;
   $("#daily-share-btn").addEventListener("click", dailyShare);
   $("#daily-other-btn").addEventListener("click", () => startDaily(daily.pool === "gen1" ? "mixed" : "gen1"));
-  $("#daily-home-btn").addEventListener("click", () => showScreen("landing"));
+  $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
   $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => dailyRate(b.dataset.rate)));
 }
 
@@ -1929,7 +1944,7 @@ function dailyShare() {
     `✗ ${daily.mistakes} mistakes · ⏱ ${time}`,
     `Can you beat it?`,
   ].join("\n");
-  const url = `${window.location.origin}${window.location.pathname}`;
+  const url = dailyUrl(daily.pool); // links straight to this specific daily
   nativeShare({ title: "Pokémon Codenames – Daily", text, url });
 }
 
@@ -1992,6 +2007,13 @@ async function boot() {
   }, 1000);
 
   _migrateOldSession(); // one-time migration from old single-session key
+
+  // Daily deep-link: ?daily=1 (Gen I) / ?daily=all (mixed) opens that puzzle.
+  const dailyDeep = poolFromParam(new URLSearchParams(window.location.search).get("daily"));
+  if (dailyDeep) {
+    await startDaily(dailyDeep);
+    return;
+  }
 
   const inviteCode = new URLSearchParams(window.location.search).get("code");
   if (inviteCode) {
