@@ -35,6 +35,7 @@ const state = {
   revealedSnapshot: null, // Set of revealed positions from the last render (for reveal animation + sounds)
   _prevClueCount: null, // last seen clue_count (to detect new clues → sound)
   _prevStatus: null, // last seen room.status (to detect game-over → sound)
+  _cluePhase: null, // classic mode: {key, at} anchor for the clue-giving timer
 };
 
 let lastSignature = null;   // used by the poll to avoid needless re-renders
@@ -240,6 +241,7 @@ function clearSession() {
   state._prevClueCount = null;
   state._prevStatus = null;
   state._prevClue = null;
+  state._cluePhase = null;
   lastSignature = null;
   statsRequested = false;
   if (state.channel) {
@@ -1234,7 +1236,20 @@ function renderTimer() {
       const start = new Date(room.started_at).getTime();
       el.textContent = `Time elapsed: ${formatDuration(serverNow() - start, isAsync)}`;
     } else {
-      const start = room.turn_started_at ? new Date(room.turn_started_at).getTime() : serverNow();
+      // Classic per-turn timer. turn_started_at is stamped when the clue is
+      // submitted, so during the clue giver's thinking phase it's null – anchor
+      // to when we first saw this clue-giving turn so the timer keeps running
+      // instead of sitting at 0:00.
+      let start;
+      if (room.turn_started_at) {
+        start = new Date(room.turn_started_at).getTime();
+      } else {
+        const key = `${room.current_team}:${room.clue_count || 0}`;
+        if (!state._cluePhase || state._cluePhase.key !== key) {
+          state._cluePhase = { key, at: serverNow() };
+        }
+        start = state._cluePhase.at;
+      }
       el.textContent = `This turn: ${formatDuration(serverNow() - start)}`;
     }
   } else if (room.status === "finished" && coop) {
@@ -1921,12 +1936,32 @@ function dailyShare() {
 // ============================================================================
 // Boot
 // ============================================================================
+function goHome() {
+  // Strip any ?code= so a refresh doesn't deep-join, hide the win overlay,
+  // drop the room pill, and show the landing page. Session is left intact.
+  try { history.replaceState(null, "", window.location.pathname); } catch {}
+  const overlay = $("#win-overlay");
+  if (overlay) overlay.classList.add("hidden");
+  setRoomPill(null);
+  showScreen("landing");
+}
+
 async function boot() {
   initLandingScreen();
   initLobbyScreen();
   initGameScreen();
   initSoundToggle();
   initDaily();
+
+  // Tapping the brand (logo + name) always returns to the homepage, from any
+  // screen. Keeps the stored session so the game can be rejoined via its link.
+  const brand = $("#brand-home");
+  if (brand) {
+    brand.addEventListener("click", goHome);
+    brand.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); goHome(); }
+    });
+  }
 
   $("#refresh-btn").addEventListener("click", async () => {
     await resyncRoom();

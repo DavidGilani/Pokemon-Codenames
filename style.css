@@ -86,7 +86,7 @@ a { color: var(--accent); }
   border-bottom: 1px solid var(--panel-border);
 }
 
-.brand { display: flex; align-items: center; gap: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
 
 .brand-ball {
   width: 24px; height: 24px; flex: none;
