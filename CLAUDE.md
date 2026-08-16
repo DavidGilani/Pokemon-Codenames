@@ -96,13 +96,19 @@ Chosen on the landing page when creating a room. `mode` values:
   the 5 base clues. Use the honest type word as a Cat-1 anchor (at most 1–2 per
   board), and make the other clues genuinely non-type (sprite / lore / pun /
   stat), ideally spanning multiple types.
-  **Harder clue categories + balancing:** beyond types/sprite/trait/lore, use
-  **Connection** (shared Ability / signature move / evolution method / egg group /
-  region — Cat 5), **Mythology** (`KITSUNE`, `PHOENIX` — Cat 5) and **Real-world
-  archetype** (`CANINE`, `RAPTOR`, `CEPHALOPOD` — Cat 3–4, cross-type). Cat 2
-  (sprite) is nearly as easy as Cat 1, so the top tiers **cap** it: Hard uses ≤1
-  sprite clue + exactly 2 Cat 4–5; Brutal exactly 3 Cat 4–5; Evil 0 sprite + ≥4
-  Cat 4–5. (Full mix table in `daily_puzzle_notes.md`.)
+  **Every clue idea maps to one of 5 categories** (full list in
+  `daily_puzzle_notes.md`). Beyond type/sprite/trait/lore/stat, the families are:
+  **Cat 1** also covers same-family (`EEVEE`), starters (`STARTER`), legendaries
+  (`LEGENDARY`); **Cat 3** covers the *exact* real-world animal (`FELINE`,
+  `CANINE`), same generation/region, and popular-trainer groupings; **Cat 4**
+  covers *technical* animal groupings (`CEPHALOPOD`, `RAPTOR`, `PRIMATE`), same
+  route/area, shared famous move (`EARTHQUAKE`, `FLY`), and niche characters;
+  **Cat 5** covers connection (Ability / evo-method / egg-group / `MEGA`),
+  mythology (`KITSUNE`), stats, and anti-clues (`× 0`). **Use ≥3 different clue
+  families per board — variety is the fun.** Cat 2 (sprite) is nearly as easy as
+  Cat 1, so top tiers **cap** it: Challenging ≤1 Cat 4–5 (kept below Hard); Hard
+  ≤1 sprite + exactly 2 Cat 4–5; Brutal exactly 3 Cat 4–5; Evil 0 sprite + ≥4
+  Cat 4–5.
   **Brutal/Evil structural gate:** the category spread isn't enough — a Brutal or
   Evil board must ALSO have **at most one `× 1` clue** and its **clue numbers must
   sum to ≥ 11** (≥ 2 overlaps); otherwise ship it as Hard.
@@ -111,9 +117,11 @@ Chosen on the landing page when creating a room. `mode` values:
   **Randomise tile positions:** scatter the 9 blue tiles to random grid positions
   (permute all 25 positions and remap the clue/hint `t` arrays with them) — never
   leave blues in a fixed pattern, or every day's board looks identical.
-  **No clue reuse within a rolling 2 weeks:** a `word → exact Pokémon` or
-  `word → exact group` pairing must not repeat within the previous 14 days
-  (counting both pools together); vary the vocabulary for regulars.
+  **Anti-repetition (both pools counted together):** (1) a `word → exact Pokémon`
+  or `word → exact group` pairing must not repeat within the previous **14 days**
+  (single-mon clues included); (2) the **same clue word** must not be used at all
+  within the previous **7 days**, even for a different set of mons — forces varied
+  vocabulary.
   **The deep spec — clue-correctness rule and the 1–5 clue-difficulty
   categories — lives in `daily_puzzle_notes.md`; read it before authoring.**
 

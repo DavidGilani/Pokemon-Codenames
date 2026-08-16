@@ -59,13 +59,21 @@ worked example puzzles, and how we can learn from real player data.
   shuffled, NOT listed in board order. Do not order clues to follow the tiles
   top-to-bottom / left-to-right — that quietly leaks which clue maps to which
   region of the grid. Shuffle the `clues` array (and `hints`) before storing.
-- **No clue reuse within a rolling 2 weeks (NEW):** to keep the daily fresh for
-  regulars, a **(clue word → exact target Pokémon)** pairing and a **(clue word →
-  exact group of Pokémon)** pairing may NOT repeat within the **previous 14 days**
-  of puzzles, counting **both pools together**. E.g. if `FINS → Garchomp` or
-  `PSEUDO → {Garchomp, Tyranitar, Salamence}` was used in the last fortnight,
-  pick a different handle. Also avoid leaning on the same clue *word* many days
-  running even against different Pokémon — vary the vocabulary.
+- **Anti-repetition (two rules, both enforced; count BOTH pools together):**
+  1. **No repeated grouping for 2 weeks.** A **(clue word → exact Pokémon)** or
+     **(clue word → exact group of Pokémon)** pairing may NOT repeat within the
+     **previous 14 days**. This explicitly includes single-Pokémon clues: if
+     `FINS → Garchomp` or `PSEUDO → {Garchomp, Tyranitar, Salamence}` was used in
+     the last fortnight, that exact pairing is off-limits. (A *different* group
+     for the same word is allowed under this rule — but see rule 2.)
+  2. **No repeated clue word for 1 week.** The **same clue word** may NOT be used
+     at all within the **previous 7 days**, even for a completely different set of
+     Pokémon. E.g. if `MEGA` appeared on any board in the last week, don't use the
+     word `MEGA` again this week (regardless of which mons). This forces genuinely
+     varied vocabulary day to day.
+  Practically: keep a running list of the last fortnight's (word → group) pairs
+  and the last week's words, and check every candidate clue against both before
+  locking it.
 - **Extra clues are conditional + unlimited.** Hints carry hidden target
   positions; `daily_hint_next` serves the un-shown hint covering the most
   STILL-UNREVEALED blues (tie-break: easier category first). So **every blue
@@ -171,65 +179,84 @@ all 25 tiles before locking a clue. `WYRM × 3` for the dragons is fine only if
 no neutral/assassin is Dragon-type (note: a dragon-*looking* Gyarados is
 Water/Flying, so it is correctly excluded — that nuance is fair difficulty).
 
-## Clue-difficulty categories (aim for a spread of 1–5)
+## Clue-difficulty categories (EVERY clue idea maps to ONE of these 5)
 
-Tag every clue with a difficulty category. A good puzzle **mixes** them — some
-easy anchors, some sophisticated ones — so it's achievable but has bite.
+Tag every clue with a category 1–5. A good board **mixes categories AND clue
+families** — variety is what makes it fun (see the mix section below).
 
-- **Category 1 — Type / Colour.** The simplest: `FIRE`, `GHOST`, `WATER`,
-  `PINK`, `YELLOW`. Easiest to read, but on a dense board they're often
-  *incorrect* (see Rule 0) — use only when the property is unique to the blues.
-- **Category 2 — Sprite / visual.** Something you can see in the on-tile image:
-  `SKULL` (Cubone), `PUPA` (Kakuna), `FROG` (Greninja), `HEADS` (Hydreigon),
-  `SIX` (Exeggcute). A step up because you read the picture, not a label.
-- **Category 3 — Trait / behaviour.** How it acts or what it does: `DIGGER`,
-  `KICK` (Blaziken), `NINJA`, `SLEEP`.
-- **Category 4 — Lore / Pokédex flavour / pun.** Dex nicknames and wordplay:
-  `AURA` (Lucario, the Aura Pokémon), `ORPHAN` (Cubone), `KING`→Nido**king**,
-  `LAND-SHARK` (Garchomp).
-- **Category 5 — Stats / deep Pokédex / anti-clue / connection / mythology.** The
-  most sophisticated. These link tiles that share **nothing visible**, so they're
-  the hardest to spot:
-  - **Stats:** base-stat standouts (**highest Special Attack**, **huge HP**,
-    **fastest**, **heaviest**).
-  - **Anti-clues** (`LEGENDARY × 0` = none of your blues are legendary).
-  - **Connection (NEW):** a hidden relationship with no on-tile tell — same
-    **Ability** (`INTIMIDATE`, `LEVITATE`), a shared **signature move**, same
-    **evolution method** (`TRADE`, `STONE`), same **egg group**, or **debut
-    region** (mixed only). Cross-type by nature; keep to well-known facts.
-  - **Mythology / folklore origin (NEW):** the real myth a Pokémon is built on —
-    `KITSUNE` (Ninetales), `PHOENIX`, `GENIE`, `GOLEM`. Knowledge-gated.
+**Category 1 — the easy, well-known groupings.** Read instantly once you know the
+category. Use only when the property is unique to the blues (Rule 0).
+- **Type / Colour:** `FIRE`, `GHOST`, `WATER`, `PINK`, `YELLOW`.
+- **Same evolutionary family:** name the family so the shared line is obvious —
+  `EEVEE` (the eeveelutions), `NIDO` (the Nido family).
+- **Starters:** the blues are all starter Pokémon — `STARTER`.
+- **Legendaries:** the blues are all legendary — `LEGENDARY` (as a *positive*
+  grouping; the `× 0` anti-clue version is Cat 5, see below).
 
-- **NEW mid-hard category — Real-world archetype (Cat 3–4).** The *real animal*
-  the Pokémon is based on, **spanning types**: `CANINE`, `FELINE`, `RAPTOR`,
-  `PRIMATE`, `CEPHALOPOD`, `CRUSTACEAN`, `SERPENT`, `EQUINE`, `URSINE`. Harder
-  than a type clue because you must abstract past the Pokémon's typing (a Fire
-  dog + a Normal dog + a Dark dog all = `CANINE`). Tag the obvious ones Cat 3,
-  the abstract ones Cat 4.
+**Category 2 — Sprite / visual.** Something you can SEE on the tile: `SKULL`
+(Cubone), `PUPA` (Kakuna), `HORN`, `THREE` (heads/bodies), `SHELL`, `BLADES`,
+`SIX` (Exeggcute). Read, not thought.
 
-**Category 2 is nearly as easy as Category 1.** A sprite clue (`HORN`, `THREE`,
-`SHELL`, `BLADES`) is *read, not thought* — so a board built mostly from Cat-2
-clues plays easy even with zero Cat-1 clues. That's why the top tiers **cap**
-Cat-2 usage (see the mix table below).
+**Category 3 — Trait/behaviour, EXACT animal, or era/who (light knowledge).**
+- **Trait / behaviour:** `DIGGER`, `KICK` (Blaziken), `SLEEP`, `SING`.
+- **Real-world archetype — the exact animal it most resembles:** `FELINE` (cat),
+  `CANINE` (dog), `EQUINE` (horse), `SERPENT` (snake), a plain `BEAR`. You just
+  recognise the animal.
+- **Same generation / region:** the blues all debut in one generation/region —
+  `KANTO`, `JOHTO`, `GEN-I`.
+- **Popular trainer / character:** linked by a *well-known* trainer, gym leader,
+  or series character (a famous leader's/rival's team).
+
+**Category 4 — Lore / pun / technical grouping / route / move / niche character.**
+- **Lore / Pokédex flavour / pun:** `AURA` (Lucario), `ORPHAN` (Cubone),
+  `KING`→Nido**king**.
+- **Real-world archetype — a TECHNICAL biological grouping** (not the obvious
+  animal): `CEPHALOPOD`, `CRUSTACEAN`, `PRIMATE`, `RAPTOR` (birds of prey),
+  `MUSTELID`. Harder because it's the scientific class, not "cat"/"dog".
+- **Same route / area:** all found in one place — `CINNABAR`, `VIRIDIAN-FOREST`,
+  `SAFARI`.
+- **Shared popular / signature move:** they all learn a famous move —
+  `EARTHQUAKE`, `HYPER-BEAM`, `FLY`, `SURF`.
+- **Less-popular trainer / character grouping.**
+
+**Category 5 — Stats / connection / mythology / anti-clue.** Link tiles that
+share **nothing visible** — the hardest to spot.
+- **Stats:** base-stat standouts (highest Special Attack, fastest, heaviest).
+- **Connection:** same **Ability** (`INTIMIDATE`, `LEVITATE`), same **evolution
+  method** (`TRADE`, `STONE`), same **egg group**, or **has a Mega Evolution**
+  (`MEGA`).
+- **Mythology / folklore origin:** `KITSUNE` (Ninetales), `PHOENIX`, `GENIE`,
+  `GOLEM`.
+- **Anti-clue (`× 0`):** a category NONE of your blues are in (`LEGENDARY × 0`),
+  used to fence off a tempting neutral. Anti-clues are **always Cat 5**.
 
 ## Category mix per difficulty tier (balancing)
 
-Difficulty is not just "how many Cat-1 clues" — it's the whole mix, and the
-easy-to-read categories (1 and 2) are **capped** from Hard upward so the
-knowledge categories carry the weight. Target mix over the 5 base clues:
+Difficulty is the whole mix, not just "how many Cat-1 clues". Two things drive it:
 
-| Tier | Cat 1 | Cat 2 (sprite) | Cat 3–5 | also required |
-|------|-------|----------------|---------|---------------|
+1. **Cat 2 is nearly as easy as Cat 1.** A sprite clue (`HORN`, `THREE`, `SHELL`,
+   `BLADES`) is *read, not thought*, so a board built mostly from Cat-2 clues
+   plays easy even with zero Cat-1 clues. That's why the top tiers **cap** Cat 2.
+2. **Variety is required.** Use clues from at least **3 different families** across
+   the 5 base clues — never stack (e.g. three sprite clues, or three connection
+   clues). Variety is the fun, and it also spreads the difficulty honestly.
+
+Target mix over the 5 base clues (an independent tier for each pool each day):
+
+| Tier | Cat 1 | Cat 2 (sprite) | Cat 3–5 | also |
+|------|-------|----------------|---------|------|
 | Easy | 3–4 | rest | — | — |
-| Medium | 2 | ~2 | ≥1 (Cat 3–4) | — |
-| Challenging | 1 | ≤2 | ≥2 (Cat 3–4) | — |
+| Medium | 2 | ~2 | ≥1 Cat 3–4 (**≤1 Cat 4–5**) | — |
+| Challenging | 1 | 1–2 | ≥2 Cat 3, **≤1 Cat 4–5** | keep it *below* Hard |
 | **Hard** | 0 | **≤1** | exactly **2 Cat 4–5** + ≥1 Cat 3 | — |
 | **Brutal** | 0 | ≤1 | exactly **3 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
 | **Evil** | 0 | **0** | **≥4 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
 
 This keeps the **displayed** badge (`highs`=cat≥4: ≥4→Evil, 3→Brutal; else by
 Cat-1 count 0/1/2/3+ → Hard/Challenging/Medium/Easy) in agreement with the
-authored intent: Hard = exactly 2 highs, Brutal = exactly 3, Evil = ≥4.
+authored intent: Challenging ≤1 high, Hard exactly 2 highs, Brutal 3, Evil ≥4.
+(Playtest note: early Challenging boards read a touch *hard* — the `≤1 Cat 4–5`
+cap keeps Challenging genuinely easier than Hard.)
 
 Guidance beyond the table: never make all five Category 1; prefer richer
 multi-tile Cat 4–5 clues over strings of `×1` sprite clues.
@@ -300,17 +327,30 @@ Sprite details unlock clues that separate look-alikes:
   eggs), `TONGUE` (Lickitung), `GIFT` (Delibird's sack), `DINO` (Tyranitar),
   `PITCHER` (Victreebel/Weepinbell).
 
-## Board-first + re-deal (how the generator should work)
+## Blues-first generation (the current method)
 
-Deal 25 random tiles (9 blue / 15 neutral / 1 assassin) first, then try to
-cover all 9 blues with ≤5 clean clues. **Most random boards can't be covered in
-5 clean clues** — the 9 blues usually form only 2–3 natural groups plus several
-loners. So the generator must **re-deal** until it finds a board whose blues
-cluster enough for 5 clues (this is cheap). Concretely, keep a board only if the
-blues can be covered by clue-groups (shared type/colour/shape/lore) that are
-**absent from every neutral and the assassin**, in ≤5 groups. Then hand-/AI-
-finish the exact clue words (adding sprite/pun handles) and run the letter-rule
-and assassin checks.
+The old "deal 25, then hunt for clues" approach wasted most of its effort
+re-dealing. The current method is **blues-first**:
+
+1. **Pick the 9 blues.** Randomly draw 9 Pokémon from the pool (Gen I, or all
+   gens for mixed).
+2. **Write the 5 clues for those 9.** Craft a clue set that (a) covers all 9,
+   (b) hits the **target difficulty** for that weekday (mix table), (c) **maximises
+   variety** — ≥3 different clue families, no disguised types, and (d) passes the
+   **anti-repetition** rules (no repeated group/single for 14 days; no repeated
+   *word* for 7 days). If the random 9 don't admit a good varied set, **re-roll
+   the 9** (far cheaper than re-dealing 25).
+3. **Check Rule 0 against the other blues.** Each clue's property must hold for
+   *exactly* its listed blues — including not accidentally matching a
+   non-targeted blue.
+4. **Fill the 16 neutrals to avoid conflicts.** Pick neutrals that do NOT match
+   any of the 5 clues (exclude any species sharing a clue's property). This is
+   the easy part.
+5. **Finish + verify:** strict letter rule (no 3+ shared letters with any of the
+   25 names), full hint coverage (every blue covered by ≥1 easier hint),
+   randomise clue order and tile positions.
+
+(There is no assassin — the board is 9 blue + 16 neutral.)
 
 ## Worked test examples
 
