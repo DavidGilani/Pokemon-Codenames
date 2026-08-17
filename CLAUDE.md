@@ -145,6 +145,18 @@ Chosen on the landing page when creating a room. `mode` values:
 - **Sessions**: multi-room map in `localStorage` under `pc_sessions`
   (keyed by roomId) so a user can juggle several games by URL. `?code=XXXX`
   links deep-join.
+- **Daily progress (per device, no login)**: each day's daily is remembered in
+  `localStorage` under `pc_daily:{date}:{pool}` — revealed tiles, strikes,
+  hints, taps, elapsed time, and finished/outcome/solution. Re-opening a
+  finished daily jumps straight to the stats box (you can't replay it that day);
+  an in-progress one resumes where you left off. `startDaily` restores the saved
+  record instead of starting a new attempt; keys for past dates are pruned.
+  It's device/browser-local (clearing cache or another device starts fresh).
+- **Daily timer pauses off-screen**: the daily timer is an *active-time
+  accumulator* (`daily.elapsedMs` banked + `daily.runningSince`), not wall-clock.
+  `dailyPauseTimer`/`dailyResumeTimer` bank/resume it on `visibilitychange`
+  (tab hidden / app backgrounded) and window blur/focus, and on finish/exit, so
+  time away from the tab/app doesn't count.
 - **Observer mode**: joining a game whose seats are full drops you in as an
   observer (no team/role) — you see the board without colours, the roster,
   and the clue/guess log.

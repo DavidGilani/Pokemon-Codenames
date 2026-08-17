@@ -1613,7 +1613,18 @@ const daily = {
   shownHintIdx: [], noMoreHints: false,
   startedAt: null, finished: false, outcome: null, solution: null, solutionClues: null,
   taps: [], attemptId: null, rating: null,
+  // Timer as an accumulator of ACTIVE time so it can pause when the player
+  // leaves the tab/app: elapsedMs = banked active time; runningSince = when the
+  // current active stretch began (null while paused/finished); timerOn = started.
+  elapsedMs: 0, runningSince: null, timerOn: false,
 };
+
+// Active elapsed time (ms/secs), counting only while the timer is running.
+function dailyElapsedMs() {
+  return daily.elapsedMs + (daily.runningSince && !daily.finished ? Date.now() - daily.runningSince : 0);
+}
+function dailyElapsedSecs() { return Math.floor(dailyElapsedMs() / 1000); }
+function fmtClock(secs) { return `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`; }
 
 // Difficulty label derived from the puzzle's clue-category spread (change #2).
 // More Category-1 (easy type/colour) clues => easier; more Category-4/5
@@ -1644,10 +1655,68 @@ function clearDailyUrl() {
   try { history.replaceState(null, "", window.location.pathname); } catch {}
 }
 
+// --- Per-device daily progress (no login): remember how far a player got in
+// each day's puzzle, keyed by puzzle date + pool, in localStorage. Restoring a
+// finished puzzle re-shows the stats box; restoring an in-progress one puts the
+// board, strikes, hints and timer back where they were.
+const DAILY_KEY_PREFIX = "pc_daily:";
+function _dailyKey(date, pool) { return `${DAILY_KEY_PREFIX}${date}:${pool}`; }
+function _saveDailyProgress() {
+  if (!daily.date || !daily.pool) return;
+  try {
+    localStorage.setItem(_dailyKey(daily.date, daily.pool), JSON.stringify({
+      v: 1, date: daily.date, pool: daily.pool,
+      revealed: daily.revealed, bluesFound: daily.bluesFound, mistakes: daily.mistakes,
+      hintsUsed: daily.hintsUsed, revealedHints: daily.revealedHints, shownHintIdx: daily.shownHintIdx,
+      noMoreHints: daily.noMoreHints, taps: daily.taps, elapsedMs: dailyElapsedMs(),
+      finished: daily.finished, outcome: daily.outcome, solution: daily.solution,
+      solutionClues: daily.solutionClues, attemptId: daily.attemptId, rating: daily.rating,
+    }));
+  } catch {}
+  _pruneDailyProgress();
+}
+function _loadDailyProgress(date, pool) {
+  try {
+    const raw = localStorage.getItem(_dailyKey(date, pool));
+    if (!raw) return null;
+    const s = JSON.parse(raw);
+    return (s && s.date === date && s.pool === pool) ? s : null;
+  } catch { return null; }
+}
+function _pruneDailyProgress() {
+  // Drop saved dailies from earlier days (date is YYYY-MM-DD, so string compare
+  // is chronological). Keeps localStorage tidy — only the current date survives.
+  try {
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(DAILY_KEY_PREFIX)) {
+        const d = k.slice(DAILY_KEY_PREFIX.length).split(":")[0];
+        if (d && daily.date && d < daily.date) localStorage.removeItem(k);
+      }
+    }
+  } catch {}
+}
+
+// Pause/resume the daily timer (banks active time on pause; only resumes while
+// the daily screen is actually showing). Idempotent, so repeated events are safe.
+function dailyPauseTimer() {
+  if (daily.timerOn && daily.runningSince != null && !daily.finished) {
+    daily.elapsedMs += Date.now() - daily.runningSince;
+    daily.runningSince = null;
+    _saveDailyProgress();
+  }
+}
+function dailyResumeTimer() {
+  if (daily.timerOn && daily.runningSince == null && !daily.finished
+      && $("#screen-daily").classList.contains("active")) {
+    daily.runningSince = Date.now();
+  }
+}
+
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { dailyPauseTimer(); clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
 }
 
@@ -1658,6 +1727,7 @@ function _dailyReset() {
   daily.startedAt = null; daily.finished = false; daily.outcome = null;
   daily.solution = null; daily.solutionClues = null;
   daily.taps = []; daily.attemptId = null; daily.rating = null;
+  daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
 }
 
 async function startDaily(pool) {
@@ -1673,9 +1743,39 @@ async function startDaily(pool) {
     daily.clues = row.clues || [];
     daily.tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
     daily.bluesTotal = 9;
-    daily.startedAt = Date.now(); // timer starts as soon as the puzzle loads
     setRoomPill(null);
     setDailyUrl(pool); // reflect which daily this is in the URL (shareable)
+
+    // Already played (or partway through) on this device today? Restore it and
+    // DON'T start a new attempt or reset the timer. A finished puzzle re-opens
+    // straight to the stats box; an in-progress one resumes where it left off.
+    const saved = _loadDailyProgress(daily.date, pool);
+    if (saved) {
+      daily.revealed = saved.revealed || {};
+      daily.bluesFound = saved.bluesFound || 0;
+      daily.mistakes = saved.mistakes || 0;
+      daily.hintsUsed = saved.hintsUsed || 0;
+      daily.revealedHints = saved.revealedHints || [];
+      daily.shownHintIdx = saved.shownHintIdx || [];
+      daily.noMoreHints = !!saved.noMoreHints;
+      daily.taps = saved.taps || [];
+      daily.elapsedMs = saved.elapsedMs || 0;
+      daily.finished = !!saved.finished;
+      daily.outcome = saved.outcome || null;
+      daily.solution = saved.solution || null;
+      daily.solutionClues = saved.solutionClues || null;
+      daily.attemptId = saved.attemptId || null;
+      daily.rating = saved.rating || null;
+      daily.timerOn = !daily.finished;
+      daily.runningSince = daily.finished ? null : Date.now();
+      showScreen("daily");
+      renderDaily();
+      return;
+    }
+
+    // Fresh start: timer begins now (as active time), then render + log.
+    daily.startedAt = Date.now();
+    daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
     showScreen("daily");
     renderDaily();
     // Log the start of this attempt (best-effort).
@@ -1683,6 +1783,7 @@ async function startDaily(pool) {
       const { data: aid } = await sb.rpc("daily_start_attempt", { p_date: daily.date, p_pool: pool });
       daily.attemptId = aid || null;
     } catch (err) { console.error(err); }
+    _saveDailyProgress();
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't load the daily puzzle.");
@@ -1706,8 +1807,7 @@ function renderDaily() {
     ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "";
 
   // Stat bar
-  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
-  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  const time = fmtClock(dailyElapsedSecs());
   $("#daily-statbar").innerHTML =
     `<span>🔵 <strong>${daily.bluesFound}</strong>/9 found</span>` +
     `<span>✗ <strong>${daily.mistakes}</strong>/${daily.maxMistakes} strikes</span>` +
@@ -1795,6 +1895,7 @@ async function dailyRevealTile(position) {
       if (daily.mistakes >= daily.maxMistakes) { renderDaily(); dailyFinish("lose"); }
       else renderDaily();
     }
+    _saveDailyProgress();
   } catch (err) {
     console.error(err);
     toast("Couldn't reveal that tile.");
@@ -1815,25 +1916,27 @@ async function dailyRequestHint() {
       p_revealed: revealed, p_shown: daily.shownHintIdx,
     });
     if (error) throw error;
-    if (!data) { daily.noMoreHints = true; toast("No more helpful clues right now."); renderDaily(); return; }
+    if (!data) { daily.noMoreHints = true; toast("No more helpful clues right now."); renderDaily(); _saveDailyProgress(); return; }
     daily.revealedHints.push(data);
     if (typeof data.idx === "number") daily.shownHintIdx.push(data.idx);
     daily.hintsUsed += 1;
     renderDaily();
+    _saveDailyProgress();
   } catch (err) {
     // Fallback for older puzzles/DBs without the conditional-hint RPC: serve
     // the flat hint list by index (old behaviour, capped at 3).
     console.error(err);
     try {
-      if (daily.hintsUsed >= 3) { daily.noMoreHints = true; renderDaily(); return; }
+      if (daily.hintsUsed >= 3) { daily.noMoreHints = true; renderDaily(); _saveDailyProgress(); return; }
       const { data, error } = await sb.rpc("daily_hint", {
         p_date: daily.date, p_pool: daily.pool, p_index: daily.hintsUsed,
       });
       if (error) throw error;
-      if (!data) { daily.noMoreHints = true; toast("No more extra clues for this puzzle."); renderDaily(); return; }
+      if (!data) { daily.noMoreHints = true; toast("No more extra clues for this puzzle."); renderDaily(); _saveDailyProgress(); return; }
       daily.revealedHints.push(data);
       daily.hintsUsed += 1;
       renderDaily();
+      _saveDailyProgress();
     } catch (err2) {
       console.error(err2);
       toast("Couldn't get an extra clue.");
@@ -1842,11 +1945,13 @@ async function dailyRequestHint() {
 }
 
 async function dailyFinish(outcome) {
+  // Freeze the timer at the current active time before anything else reads it.
+  const duration = dailyElapsedMs();
+  daily.elapsedMs = duration; daily.runningSince = null; daily.timerOn = false;
   daily.finished = true;
   daily.outcome = outcome;
   if (outcome === "win") playSound("win");
   else if (outcome === "lose") playSound("lose");
-  const duration = daily.startedAt ? Date.now() - daily.startedAt : 0;
   try {
     const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
     if (!error && data) {
@@ -1865,13 +1970,13 @@ async function dailyFinish(outcome) {
       });
     } catch (err) { console.error(err); }
   }
+  _saveDailyProgress(); // remember completion on this device
   renderDaily();
 }
 
 function renderDailyResult() {
   const el = $("#daily-result");
-  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
-  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  const time = fmtClock(dailyElapsedSecs());
   let title;
   if (daily.outcome === "win") title = `Solved it! 9/9 🎉`;
   else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
@@ -1922,6 +2027,7 @@ function renderDailyResult() {
 async function dailyRate(rating) {
   daily.rating = rating;
   renderDailyResult();
+  _saveDailyProgress(); // remember the rating so it sticks on revisit
   if (daily.attemptId) {
     try { await sb.rpc("daily_rate_attempt", { p_id: daily.attemptId, p_rating: rating }); }
     catch (err) { console.error(err); }
@@ -1931,8 +2037,7 @@ async function dailyRate(rating) {
 function dailyShare() {
   // No board grid – that would reveal the answers to whoever you share with
   // (change #3). Share only the outcome, mistakes, guesses and time.
-  const secs = daily.startedAt ? Math.floor((Date.now() - daily.startedAt) / 1000) : 0;
-  const time = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
+  const time = fmtClock(dailyElapsedSecs());
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const diff = dailyDifficulty(daily.clues);
   const outcome = daily.outcome === "win"
@@ -1957,6 +2062,7 @@ function goHome() {
   try { history.replaceState(null, "", window.location.pathname); } catch {}
   const overlay = $("#win-overlay");
   if (overlay) overlay.classList.add("hidden");
+  dailyPauseTimer(); // if leaving a daily mid-solve, bank the time
   setRoomPill(null);
   showScreen("landing");
 }
@@ -1991,18 +2097,17 @@ async function boot() {
   // Self-healing: on focus/visibility, on a steady background interval, and a
   // once-a-second tick just to keep the timer display moving.
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") resyncRoom();
+    if (document.visibilityState === "visible") { resyncRoom(); dailyResumeTimer(); }
+    else dailyPauseTimer(); // tab hidden / app backgrounded -> pause the daily timer
   });
-  window.addEventListener("focus", () => resyncRoom());
+  window.addEventListener("focus", () => { resyncRoom(); dailyResumeTimer(); });
+  window.addEventListener("blur", () => dailyPauseTimer()); // clicked away -> pause
   setInterval(pollTick, POLL_MS);
   setInterval(() => {
     if (state.room && $("#screen-game").classList.contains("active")) renderTimer();
-    if ($("#screen-daily").classList.contains("active") && daily.startedAt && !daily.finished) {
+    if ($("#screen-daily").classList.contains("active") && daily.timerOn && !daily.finished) {
       const el = $("#daily-timer");
-      if (el) {
-        const secs = Math.floor((Date.now() - daily.startedAt) / 1000);
-        el.textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`;
-      }
+      if (el) el.textContent = fmtClock(dailyElapsedSecs());
     }
   }, 1000);
 
