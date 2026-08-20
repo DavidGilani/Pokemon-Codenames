@@ -74,6 +74,33 @@ worked example puzzles, and how we can learn from real player data.
   Practically: keep a running list of the last fortnight's (word → group) pairs
   and the last week's words, and check every candidate clue against both before
   locking it.
+- **Anti-repetition (three MORE rules, added after boards kept reusing the same
+  ~20 Pokémon and the same connections under synonyms; count BOTH pools):**
+  3. **Pokémon-frequency cap.** A Pokémon may appear as a **blue at most once per
+     10 days** (across both pools). Before, a handful of "easily-clued" mons
+     (Garchomp appeared in 55% of mixed boards; Rhydon/Cubone/Alakazam/Machamp
+     ~1-in-3 gen1 boards) dominated because they were the ones we already had
+     hooks for. The cap forces the pool to rotate. (As a neutral a mon may recur
+     freely — only its use as a *blue* is capped.)
+  4. **Clue-concept tracking (not just the word).** Rule 2 only blocked repeated
+     *words*, so we dodged it with synonyms — `CEPHALOPOD`/`KRAKEN`/`SQUID`/
+     `INKLING` are all the same idea, as are `FOSSIL`/`EXTINCT`/`RELIC`/`AMBER`/
+     `TRILOBITE`, or `EARTHQUAKE`/`QUAKE`/`TREMOR`. Tag every clue with its
+     **underlying concept** (its `arch`/`tags` fact, e.g. `cephalopod`, `fossil`,
+     `fighter`, `intimidate`, `ghost`, `pseudo`) and use **no concept more than
+     once per 5 days** — synonyms count as the same concept. This is what stops
+     boards *feeling* repetitive even when the exact words differ.
+  5. **Force cross-type / cross-gen spread.** A board's 9 blues must span at least
+     **4 distinct primary types** (gen1) / **5 distinct primary types** (mixed),
+     and mixed boards must span at least **3 generations**. Stops every board
+     looking like the same cluster of dragons/fossils/fighters.
+- **Use the Pokémon fact bank (`pokemon_facts.json`).** Clue authoring is now
+  data-driven: pick 9 genuinely varied blues FIRST (obeying rules 3-5), then let
+  each mon's facts (types, colour, `evo`, `egg`, `arch`, `tags`, `stat`) surface
+  many candidate connections — instead of only reaching for the mons we already
+  know a hook for (which is exactly what caused the repetition). The file lives in
+  the repo root; it's an **authoring aid only** and is never shipped to the site.
+  Built/validated by `daily_tools/build_facts.py`.
 - **Extra clues are conditional + unlimited.** Hints carry hidden target
   positions; `daily_hint_next` serves the un-shown hint covering the most
   STILL-UNREVEALED blues (tie-break: easier category first). So **every blue

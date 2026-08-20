@@ -120,8 +120,17 @@ Chosen on the landing page when creating a room. `mode` values:
   **Anti-repetition (both pools counted together):** (1) a `word → exact Pokémon`
   or `word → exact group` pairing must not repeat within the previous **14 days**
   (single-mon clues included); (2) the **same clue word** must not be used at all
-  within the previous **7 days**, even for a different set of mons — forces varied
-  vocabulary.
+  within the previous **7 days**, even for a different set of mons; (3) a Pokémon
+  may be a **blue at most once per 10 days** (frequency cap — stops the same
+  "easily-clued" mons dominating); (4) a **clue concept** (its `arch`/`tags` fact,
+  e.g. cephalopod / fossil / fighter — synonyms collapse to one concept) may be
+  used **at most once per 5 days**; (5) each board's 9 blues must span **≥4 types**
+  (gen1) / **≥5 types + ≥3 generations** (mixed). Rules 3–5 were added after
+  boards kept reusing ~20 mons and the same connections under synonyms.
+  **Authoring aid:** `pokemon_facts.json` (repo root, built by
+  `daily_tools/build_facts.py`) is a 270-mon fact bank — types, colour, evo/egg
+  group, animal archetype, sprite/lore tags, stat standouts. Pick 9 varied blues
+  FIRST, then let the facts surface connections (never shipped to the site).
   **The deep spec — clue-correctness rule and the 1–5 clue-difficulty
   categories — lives in `daily_puzzle_notes.md`; read it before authoring.**
 
