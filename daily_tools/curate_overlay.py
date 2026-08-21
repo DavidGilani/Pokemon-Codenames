@@ -172,7 +172,74 @@ E("Dragonite", arch=["dragon"], based=["Western dragon (but friendly/kind)"], sp
 E("Mewtwo", arch=["humanoid"], based=["genetically-engineered clone of Mew"], sprite=["tube-neck","tail"], sig="Psystrike", lore=["cloned in Cinnabar Mansion; movie antagonist"], loc=["Cerulean Cave"], role=["legendary","mega"], nick=["first movie villain"], c2="purple")
 E("Mew", arch=["mammal"], based=["cat / fetus (ancestor of all Pokemon)"], sprite=["small","long-tail"], sig="", lore=["contains all Pokemon DNA; ancestor of all"], role=["mythical"], nick=["truck myth (Mew under the truck)"], c2="")
 
+# ---- bulk tables applied on top of the per-mon entries ----
+SIG={}      # name -> best-known move
+TEAMS={}    # "Trainer (role)" -> [mons on their notable team]
+
+def _ensure(name):
+    return DATA.setdefault(name, dict(arch=[],based_on=[],sprite=[],signature_move="",
+        lore=[],mythology=[],location=[],trainer=[],nickname=[],color_secondary="",role=[],wk=1))
+
+# === Gen 1 best-known moves ===
+SIG.update({
+ "Bulbasaur":"Vine Whip","Ivysaur":"Razor Leaf","Venusaur":"Solar Beam","Charmander":"Ember",
+ "Charmeleon":"Flamethrower","Charizard":"Flamethrower","Squirtle":"Water Gun","Wartortle":"Water Pulse",
+ "Blastoise":"Hydro Pump","Caterpie":"String Shot","Metapod":"Harden","Butterfree":"Sleep Powder",
+ "Weedle":"Poison Sting","Kakuna":"Harden","Beedrill":"Twineedle","Pidgey":"Gust","Pidgeotto":"Wing Attack",
+ "Pidgeot":"Hurricane","Rattata":"Quick Attack","Raticate":"Super Fang","Spearow":"Peck","Fearow":"Drill Peck",
+ "Ekans":"Wrap","Arbok":"Glare","Pikachu":"Thunderbolt","Raichu":"Thunderbolt","Sandshrew":"Dig",
+ "Sandslash":"Earthquake","Nidoran♀":"Scratch","Nidorina":"Bite","Nidoqueen":"Earthquake","Nidoran♂":"Horn Attack",
+ "Nidorino":"Horn Attack","Nidoking":"Earthquake","Clefairy":"Metronome","Clefable":"Moonblast","Vulpix":"Ember",
+ "Ninetales":"Flamethrower","Jigglypuff":"Sing","Wigglytuff":"Double-Edge","Zubat":"Leech Life","Golbat":"Wing Attack",
+ "Oddish":"Absorb","Gloom":"Acid","Vileplume":"Petal Dance","Paras":"Spore","Parasect":"Spore","Venonat":"Confusion",
+ "Venomoth":"Psychic","Diglett":"Dig","Dugtrio":"Earthquake","Meowth":"Pay Day","Persian":"Slash","Psyduck":"Confusion",
+ "Golduck":"Hydro Pump","Mankey":"Karate Chop","Primeape":"Cross Chop","Growlithe":"Flamethrower","Arcanine":"Extreme Speed",
+ "Poliwag":"Water Gun","Poliwhirl":"Body Slam","Poliwrath":"Submission","Abra":"Teleport","Kadabra":"Psybeam",
+ "Alakazam":"Psychic","Machop":"Karate Chop","Machoke":"Submission","Machamp":"Dynamic Punch","Bellsprout":"Vine Whip",
+ "Weepinbell":"Razor Leaf","Victreebel":"Razor Leaf","Tentacool":"Acid","Tentacruel":"Hydro Pump","Geodude":"Rock Throw",
+ "Graveler":"Rock Slide","Golem":"Explosion","Ponyta":"Flame Wheel","Rapidash":"Fire Blast","Slowpoke":"Confusion",
+ "Slowbro":"Psychic","Magnemite":"Thunder Shock","Magneton":"Thunderbolt","Farfetch'd":"Slash","Doduo":"Peck",
+ "Dodrio":"Tri Attack","Seel":"Aurora Beam","Dewgong":"Ice Beam","Grimer":"Sludge","Muk":"Sludge Bomb","Shellder":"Clamp",
+ "Cloyster":"Ice Beam","Gastly":"Lick","Haunter":"Night Shade","Gengar":"Shadow Ball","Onix":"Rock Throw","Drowzee":"Hypnosis",
+ "Hypno":"Psychic","Krabby":"Crabhammer","Kingler":"Crabhammer","Voltorb":"Self-Destruct","Electrode":"Explosion",
+ "Exeggcute":"Barrage","Exeggutor":"Psychic","Cubone":"Bone Club","Marowak":"Bonemerang","Hitmonlee":"High Jump Kick",
+ "Hitmonchan":"Sky Uppercut","Lickitung":"Lick","Koffing":"Smog","Weezing":"Sludge Bomb","Rhyhorn":"Horn Attack",
+ "Rhydon":"Earthquake","Chansey":"Soft-Boiled","Tangela":"Vine Whip","Kangaskhan":"Dizzy Punch","Horsea":"Smokescreen",
+ "Seadra":"Hydro Pump","Goldeen":"Horn Attack","Seaking":"Megahorn","Staryu":"Swift","Starmie":"Psychic","Mr. Mime":"Barrier",
+ "Scyther":"X-Scissor","Jynx":"Lovely Kiss","Electabuzz":"Thunder Punch","Magmar":"Fire Punch","Pinsir":"Guillotine",
+ "Tauros":"Body Slam","Magikarp":"Splash","Gyarados":"Hydro Pump","Lapras":"Ice Beam","Ditto":"Transform","Eevee":"Quick Attack",
+ "Vaporeon":"Hydro Pump","Jolteon":"Thunderbolt","Flareon":"Flamethrower","Porygon":"Tri Attack","Omanyte":"Water Gun",
+ "Omastar":"Hydro Pump","Kabuto":"Scratch","Kabutops":"Slash","Aerodactyl":"Rock Slide","Snorlax":"Body Slam",
+ "Articuno":"Ice Beam","Zapdos":"Thunder","Moltres":"Fire Blast","Dratini":"Wrap","Dragonair":"Dragon Rage",
+ "Dragonite":"Hyper Beam","Mewtwo":"Psystrike","Mew":"Psychic",
+})
+# === Kanto gym leaders / Elite Four / Champion ===
+TEAMS.update({
+ "Brock (gym)":["Geodude","Onix"],
+ "Misty (gym)":["Staryu","Starmie"],
+ "Lt. Surge (gym)":["Voltorb","Pikachu","Raichu"],
+ "Erika (gym)":["Victreebel","Tangela","Vileplume","Weepinbell","Gloom"],
+ "Koga (gym)":["Koffing","Muk","Weezing","Golbat","Grimer","Venonat"],
+ "Sabrina (gym)":["Kadabra","Mr. Mime","Venomoth","Alakazam"],
+ "Blaine (gym)":["Growlithe","Ponyta","Rapidash","Arcanine","Magmar"],
+ "Giovanni (gym)":["Rhyhorn","Dugtrio","Nidoqueen","Nidoking","Rhydon","Persian","Kangaskhan"],
+ "Lorelei (E4)":["Dewgong","Cloyster","Slowbro","Jynx","Lapras"],
+ "Bruno (E4)":["Onix","Hitmonlee","Hitmonchan","Machamp"],
+ "Agatha (E4)":["Gengar","Golbat","Haunter","Arbok"],
+ "Lance (E4/champion)":["Gyarados","Dragonair","Aerodactyl","Dragonite","Charizard","Kingdra"],
+ "Blue (champion)":["Pidgeot","Alakazam","Rhydon","Exeggutor","Arcanine","Gyarados","Charizard","Blastoise","Venusaur"],
+})
+
 if __name__=="__main__":
+    for nm,mv in SIG.items(): _ensure(nm)["signature_move"]=mv
+    for trn,mons in TEAMS.items():
+        for m in mons:
+            e=_ensure(m)
+            if trn not in e["trainer"]: e["trainer"].append(trn)
+    # dedup: drop bare "Name" when a role-suffixed "Name (…)" is also present
+    for e in DATA.values():
+        roled={t.split(" (")[0] for t in e["trainer"] if " (" in t}
+        e["trainer"]=[t for t in e["trainer"] if not (t in roled)]
     out=os.path.join(HERE,"curated_overlay.json")
     # Merge: keep any existing (not-yet-re-authored) entries, overwrite with the
     # freshly curated ones here. Lets us curate gen-by-gen without losing prior work.

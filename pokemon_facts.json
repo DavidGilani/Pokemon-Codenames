@@ -52,7 +52,7 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Vine Whip",
 "lore": [
 "starter"
 ],
@@ -120,7 +120,7 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Razor Leaf",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -183,11 +183,13 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "Frenzy Plant",
+"signature_move": "Solar Beam",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blue (champion)"
+],
 "nickname": [],
 "role": [
 "starter",
@@ -248,7 +250,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ember",
 "lore": [
 "starter",
 "tail flame = life"
@@ -316,7 +318,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Flamethrower",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -381,14 +383,16 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "Blast Burn",
+"signature_move": "Flamethrower",
 "lore": [
 "not a Dragon type despite looks"
 ],
 "mythology": [],
 "location": [],
 "trainer": [
-"Ash"
+"Ash",
+"Lance (E4/champion)",
+"Blue (champion)"
 ],
 "nickname": [
 "fan favourite"
@@ -450,7 +454,7 @@
 "curl-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Water Gun",
 "lore": [
 "starter"
 ],
@@ -517,7 +521,7 @@
 "fluffy-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Water Pulse",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -577,11 +581,13 @@
 "back-cannons"
 ],
 "moves": [],
-"signature_move": "Hydro Cannon",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blue (champion)"
+],
 "nickname": [],
 "role": [
 "starter",
@@ -643,7 +649,7 @@
 "osmeterium"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "String Shot",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -702,7 +708,7 @@
 "hard-shell"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Harden",
 "lore": [
 "only knows Harden"
 ],
@@ -765,7 +771,7 @@
 "big-eyes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Sleep Powder",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -832,7 +838,7 @@
 "tail-stinger"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Poison Sting",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -890,7 +896,7 @@
 "hard-shell"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Harden",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -952,7 +958,7 @@
 "tail-stinger"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Twineedle",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1017,7 +1023,7 @@
 "crest"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Gust",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1081,7 +1087,7 @@
 "talons"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Wing Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1145,11 +1151,13 @@
 "wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hurricane",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blue (champion)"
+],
 "nickname": [],
 "role": [
 "mega"
@@ -1207,7 +1215,7 @@
 "whiskers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Quick Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1269,7 +1277,7 @@
 "whiskers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Super Fang",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1332,7 +1340,7 @@
 "short-wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Peck",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1396,7 +1404,7 @@
 "long-neck"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Drill Peck",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1458,7 +1466,7 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Wrap",
 "lore": [
 "name = snake backwards"
 ],
@@ -1524,14 +1532,15 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Glare",
 "lore": [
 "name = kobra backwards"
 ],
 "mythology": [],
 "location": [],
 "trainer": [
-"Jessie (Team Rocket)"
+"Jessie (Team Rocket)",
+"Agatha (E4)"
 ],
 "nickname": [],
 "role": [],
@@ -1589,7 +1598,7 @@
 "lightning-tail"
 ],
 "moves": [],
-"signature_move": "Volt Tackle",
+"signature_move": "Thunderbolt",
 "lore": [],
 "mythology": [],
 "location": [
@@ -1597,7 +1606,8 @@
 ],
 "trainer": [
 "Ash",
-"Pikachu"
+"Pikachu",
+"Lt. Surge (gym)"
 ],
 "nickname": [
 "franchise mascot"
@@ -1661,11 +1671,13 @@
 "thin-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunderbolt",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lt. Surge (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -1721,7 +1733,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Dig",
 "lore": [],
 "mythology": [],
 "location": [
@@ -1785,7 +1797,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Earthquake",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1847,7 +1859,7 @@
 "whiskers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Scratch",
 "lore": [
 "one of few gendered species"
 ],
@@ -1909,7 +1921,7 @@
 "ears"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Bite",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -1970,13 +1982,15 @@
 "tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Earthquake",
 "lore": [
 "royalty (queen)"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Giovanni (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -2034,7 +2048,7 @@
 "forehead-horn"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Horn Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -2095,7 +2109,7 @@
 "spines"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Horn Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -2157,13 +2171,15 @@
 "scales"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Earthquake",
 "lore": [
 "royalty (king)"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Giovanni (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -2219,7 +2235,7 @@
 "small-wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Metronome",
 "lore": [],
 "mythology": [
 "arrived from space / moon"
@@ -2283,7 +2299,7 @@
 "pointed-ears"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Moonblast",
 "lore": [],
 "mythology": [
 "moonlight folklore"
@@ -2346,7 +2362,7 @@
 "curls"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ember",
 "lore": [],
 "mythology": [
 "kitsune (six-tailed fox)"
@@ -2409,7 +2425,7 @@
 "mane"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Flamethrower",
 "lore": [],
 "mythology": [
 "kitsune / kyubi (1000-year fox)"
@@ -2542,7 +2558,7 @@
 "rabbit-ears"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Double-Edge",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -2603,7 +2619,7 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Leech Life",
 "lore": [],
 "mythology": [],
 "location": [
@@ -2668,11 +2684,14 @@
 "wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Wing Attack",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Koga (gym)",
+"Agatha (E4)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -2728,7 +2747,7 @@
 "blue-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Absorb",
 "lore": [],
 "mythology": [],
 "location": [
@@ -2790,11 +2809,13 @@
 "flower-head"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Acid",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Erika (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -2848,11 +2869,13 @@
 "giant-petals"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Petal Dance",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Erika (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -2911,7 +2934,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Spore",
 "lore": [],
 "mythology": [
 "zombie fungus lore"
@@ -2975,7 +2998,7 @@
 "dead-eyes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Spore",
 "lore": [
 "the fungus controls the host"
 ],
@@ -3040,11 +3063,13 @@
 "fur"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Confusion",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Koga (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -3101,11 +3126,13 @@
 "dust-scales"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Sabrina (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -3162,7 +3189,7 @@
 "underground-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Dig",
 "lore": [],
 "mythology": [],
 "location": [
@@ -3226,13 +3253,15 @@
 "three-heads"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Earthquake",
 "lore": [],
 "mythology": [],
 "location": [
 "Diglett's Cave"
 ],
-"trainer": [],
+"trainer": [
+"Giovanni (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -3360,12 +3389,12 @@
 "whiskers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Slash",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"Giovanni"
+"Giovanni (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -3424,7 +3453,7 @@
 "headache-hands"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Confusion",
 "lore": [
 "psychic when headache peaks"
 ],
@@ -3491,7 +3520,7 @@
 "webbed"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [
 "kappa (water sprite)"
@@ -3554,7 +3583,7 @@
 "fists"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Karate Chop",
 "lore": [
 "always furious"
 ],
@@ -3619,7 +3648,7 @@
 "bound-hands"
 ],
 "moves": [],
-"signature_move": "Rage Fist (via Annihilape)",
+"signature_move": "Cross Chop",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -3680,12 +3709,13 @@
 "fluffy-mane"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Flamethrower",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"Officer Jenny (Growlithe/Arcanine)"
+"Officer Jenny (Growlithe/Arcanine)",
+"Blaine (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -3743,7 +3773,7 @@
 "mane"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Extreme Speed",
 "lore": [
 "'Legendary Pokemon' in the Pokedex"
 ],
@@ -3751,7 +3781,10 @@
 "shisa / komainu"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blaine (gym)",
+"Blue (champion)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -3807,7 +3840,7 @@
 "tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Water Gun",
 "lore": [
 "swirl = visible guts"
 ],
@@ -3868,7 +3901,7 @@
 "gloved-hands"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Body Slam",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -3929,7 +3962,7 @@
 "belly-swirl"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Submission",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4055,13 +4088,15 @@
 "whiskers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psybeam",
 "lore": [
 "Uri Geller lawsuit → absent for 20 years"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Sabrina (gym)"
+],
 "nickname": [
 "Uri Geller"
 ],
@@ -4123,13 +4158,16 @@
 "armour"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [
 "IQ 5000; huge brain"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Sabrina (gym)",
+"Blue (champion)"
+],
 "nickname": [],
 "role": [
 "mega"
@@ -4188,7 +4226,7 @@
 "tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Karate Chop",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4248,7 +4286,7 @@
 "power-save-belt"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Submission",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4315,7 +4353,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Bruno (E4)"
+],
 "nickname": [],
 "role": [
 "gmax"
@@ -4373,7 +4413,7 @@
 "stem-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Vine Whip",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4432,11 +4472,13 @@
 "hook"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Razor Leaf",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Erika (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -4492,12 +4534,13 @@
 "vine"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Razor Leaf",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"James (Team Rocket)"
+"James (Team Rocket)",
+"Erika (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -4555,7 +4598,7 @@
 "tentacles"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Acid",
 "lore": [],
 "mythology": [],
 "location": [
@@ -4620,7 +4663,7 @@
 "tentacles"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4681,13 +4724,15 @@
 "rocky-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Rock Throw",
 "lore": [],
 "mythology": [],
 "location": [
 "caves / Rock Tunnel"
 ],
-"trainer": [],
+"trainer": [
+"Brock (gym)"
+],
 "nickname": [
 "Rock-throwing meme"
 ],
@@ -4747,7 +4792,7 @@
 "rocky-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Rock Slide",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -4812,7 +4857,7 @@
 "stubby-limbs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Explosion",
 "lore": [],
 "mythology": [
 "golem"
@@ -4874,11 +4919,13 @@
 "hooves"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Flame Wheel",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blaine (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -4938,11 +4985,13 @@
 "horn"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Fire Blast",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blaine (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -5001,7 +5050,7 @@
 "pink-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Confusion",
 "lore": [
 "takes 5s to feel pain"
 ],
@@ -5067,13 +5116,15 @@
 "shell-on-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [
 "Shellder bites its tail"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lorelei (E4)"
+],
 "nickname": [],
 "role": [
 "mega"
@@ -5133,7 +5184,7 @@
 "single-eye"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunder Shock",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -5195,7 +5246,7 @@
 "three-fused"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunderbolt",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -5257,7 +5308,7 @@
 "beak"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Slash",
 "lore": [
 "Japanese idiom 'duck comes with spring onions'"
 ],
@@ -5321,7 +5372,7 @@
 "long-legs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Peck",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -5384,7 +5435,7 @@
 "long-legs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Tri Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -5446,7 +5497,7 @@
 "tusk"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Aurora Beam",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -5508,11 +5559,13 @@
 "horn"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ice Beam",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lorelei (E4)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -5568,13 +5621,15 @@
 "grin"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Sludge",
 "lore": [],
 "mythology": [
 "born from polluted sludge"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Koga (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -5629,11 +5684,13 @@
 "oozing-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Sludge Bomb",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Koga (gym)"
+],
 "nickname": [],
 "role": [
 "gmax"
@@ -5692,7 +5749,7 @@
 "clam-shell"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Clamp",
 "lore": [
 "bites Slowpoke's tail"
 ],
@@ -5757,11 +5814,13 @@
 "face-inside"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ice Beam",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lorelei (E4)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -5819,7 +5878,7 @@
 "eyes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Lick",
 "lore": [],
 "mythology": [
 "onibi / ghost gas"
@@ -5884,13 +5943,15 @@
 "tongue"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Night Shade",
 "lore": [],
 "mythology": [],
 "location": [
 "Pokemon Tower"
 ],
-"trainer": [],
+"trainer": [
+"Agatha (E4)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -5947,14 +6008,14 @@
 "spikes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Shadow Ball",
 "lore": [],
 "mythology": [
 "your shadow come alive"
 ],
 "location": [],
 "trainer": [
-"Agatha"
+"Agatha (E4)"
 ],
 "nickname": [
 "Clefable's shadow theory"
@@ -6019,14 +6080,15 @@
 "head-horn"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Rock Throw",
 "lore": [],
 "mythology": [],
 "location": [
 "Rock Tunnel"
 ],
 "trainer": [
-"Brock"
+"Brock (gym)",
+"Bruno (E4)"
 ],
 "nickname": [],
 "role": [],
@@ -6082,7 +6144,7 @@
 "trunk"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hypnosis",
 "lore": [],
 "mythology": [
 "baku (eats dreams)"
@@ -6144,7 +6206,7 @@
 "collar-ruff"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [],
 "mythology": [
 "baku dream-eater"
@@ -6208,7 +6270,7 @@
 "claws"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Crabhammer",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -6270,7 +6332,7 @@
 "huge-claw"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Crabhammer",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -6335,13 +6397,15 @@
 "face"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Self-Destruct",
 "lore": [
 "disguised as a Poke Ball"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lt. Surge (gym)"
+],
 "nickname": [
 "Self-Destruct troll"
 ],
@@ -6400,7 +6464,7 @@
 "grin"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Explosion",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -6463,7 +6527,7 @@
 "cracks"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Barrage",
 "lore": [
 "actually seeds, not eggs"
 ],
@@ -6526,11 +6590,13 @@
 "palm-trunk"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blue (champion)"
+],
 "nickname": [
 "Alolan long-neck meme"
 ],
@@ -6587,7 +6653,7 @@
 "bone-club"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Bone Club",
 "lore": [
 "wears its dead mother's skull; cries"
 ],
@@ -6654,7 +6720,7 @@
 "bone-club"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Bonemerang",
 "lore": [],
 "mythology": [
 "vengeful ghost of its mother"
@@ -6725,7 +6791,9 @@
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Bruno (E4)"
+],
 "nickname": [
 "Bruce Lee"
 ],
@@ -6781,13 +6849,15 @@
 "boxing-gloves"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Sky Uppercut",
 "lore": [
 "name from Jackie Chan"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Bruno (E4)"
+],
 "nickname": [
 "Jackie Chan"
 ],
@@ -6844,7 +6914,7 @@
 "long-tongue"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Lick",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -6906,12 +6976,13 @@
 "gas"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Smog",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"James (Team Rocket)"
+"James (Team Rocket)",
+"Koga (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -6970,12 +7041,13 @@
 "gas"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Sludge Bomb",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"James (Team Rocket)"
+"James (Team Rocket)",
+"Koga (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -7035,12 +7107,13 @@
 "armour-hide"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Horn Attack",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"Ash's mum races them"
+"Ash's mum races them",
+"Giovanni (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -7103,13 +7176,16 @@
 "tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Earthquake",
 "lore": [
 "first Pokemon ever designed"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Giovanni (gym)",
+"Blue (champion)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -7164,7 +7240,7 @@
 "belly-egg-pouch"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Soft-Boiled",
 "lore": [
 "hard to catch; gives lots of XP"
 ],
@@ -7232,11 +7308,13 @@
 "red-boots"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Vine Whip",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Erika (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -7292,13 +7370,15 @@
 "baby"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Dizzy Punch",
 "lore": [
 "Genghis Khan pun"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Giovanni (gym)"
+],
 "nickname": [],
 "role": [
 "mega"
@@ -7357,7 +7437,7 @@
 "dorsal-fin"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Smokescreen",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -7419,7 +7499,7 @@
 "fins"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -7478,7 +7558,7 @@
 "flowing-fins"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Horn Attack",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -7540,7 +7620,7 @@
 "koi-fins"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Megahorn",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -7600,12 +7680,12 @@
 "star-shape"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Swift",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"Misty"
+"Misty (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -7665,12 +7745,12 @@
 "spinning"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [],
 "mythology": [],
 "location": [],
 "trainer": [
-"Misty"
+"Misty (gym)"
 ],
 "nickname": [
 "'it's a UFO'"
@@ -7729,14 +7809,15 @@
 "invisible-walls"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Barrier",
 "lore": [
 "makes invisible barriers"
 ],
 "mythology": [],
 "location": [],
 "trainer": [
-"Ash's mum's Mr. Mime (Mimey)"
+"Ash's mum's Mr. Mime (Mimey)",
+"Sabrina (gym)"
 ],
 "nickname": [],
 "role": [],
@@ -7796,7 +7877,7 @@
 "wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "X-Scissor",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -7857,13 +7938,15 @@
 "lips"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Lovely Kiss",
 "lore": [],
 "mythology": [
 "Yuki-onna (snow woman)"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lorelei (E4)"
+],
 "nickname": [
 "design controversy"
 ],
@@ -7921,7 +8004,7 @@
 "horns"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunder Punch",
 "lore": [
 "rival to Magmar"
 ],
@@ -7982,13 +8065,15 @@
 "flame-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Fire Punch",
 "lore": [
 "rival to Electabuzz"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Blaine (gym)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -8045,7 +8130,7 @@
 "horn-pincers"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Guillotine",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8109,7 +8194,7 @@
 "head-horns"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Body Slam",
 "lore": [],
 "mythology": [],
 "location": [
@@ -8239,13 +8324,16 @@
 "barbels"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [
 "carp → dragon transformation"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lance (E4/champion)",
+"Blue (champion)"
+],
 "nickname": [
 "red Gyarados (Lake of Rage)"
 ],
@@ -8306,13 +8394,15 @@
 "long-neck"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ice Beam",
 "lore": [],
 "mythology": [
 "Nessie"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lorelei (E4)"
+],
 "nickname": [
 "gentle ferry; near-extinct lore"
 ],
@@ -8434,7 +8524,7 @@
 "bushy-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Quick Attack",
 "lore": [
 "unstable DNA; many evolutions"
 ],
@@ -8499,7 +8589,7 @@
 "frilled-collar"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [
 "Water Stone eeveelution"
 ],
@@ -8564,7 +8654,7 @@
 "spiky-fur"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunderbolt",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8626,7 +8716,7 @@
 "fluffy-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Flamethrower",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8688,7 +8778,7 @@
 "blocky-body"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Tri Attack",
 "lore": [
 "first man-made Pokemon"
 ],
@@ -8754,7 +8844,7 @@
 "tentacles"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Water Gun",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8821,7 +8911,7 @@
 "spikes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hydro Pump",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8885,7 +8975,7 @@
 "red-eyes"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Scratch",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -8949,7 +9039,7 @@
 "shell"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Slash",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -9015,11 +9105,13 @@
 "fangs"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Rock Slide",
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lance (E4/champion)"
+],
 "nickname": [],
 "role": [
 "fossil",
@@ -9079,7 +9171,7 @@
 "sleepy"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Body Slam",
 "lore": [
 "blocks roads; always sleeping/eating"
 ],
@@ -9145,7 +9237,7 @@
 "tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Ice Beam",
 "lore": [],
 "mythology": [],
 "location": [
@@ -9213,7 +9305,7 @@
 "spiky-crest"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunder",
 "lore": [],
 "mythology": [
 "thunderbird"
@@ -9283,7 +9375,7 @@
 "flame-crest"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Fire Blast",
 "lore": [],
 "mythology": [
 "phoenix"
@@ -9351,7 +9443,7 @@
 "forehead-orb"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Wrap",
 "lore": [],
 "mythology": [],
 "location": [
@@ -9415,13 +9507,15 @@
 "wing-crest"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Dragon Rage",
 "lore": [],
 "mythology": [
 "dragon that controls weather"
 ],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lance (E4/champion)"
+],
 "nickname": [],
 "role": [],
 "other": [],
@@ -9479,13 +9573,15 @@
 "small-wings"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Hyper Beam",
 "lore": [
 "rescues sailors; gentle"
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lance (E4/champion)"
+],
 "nickname": [
 "fat dragon; carries mail"
 ],
@@ -9616,7 +9712,7 @@
 "long-tail"
 ],
 "moves": [],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [
 "contains all Pokemon DNA; ancestor of all"
 ],
@@ -13934,11 +14030,13 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Lance (E4/champion)"
+],
 "nickname": [],
 "role": [],
 "other": [],
-"wk": 0
+"wk": 1
 },
 "Phanpy": {
 "dex": 231,
