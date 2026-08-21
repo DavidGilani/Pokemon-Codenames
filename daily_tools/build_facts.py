@@ -143,11 +143,13 @@ def main():
     facts={}
     for nm,r in base.items():
         o=overlay.get(nm,{})
-        sprite,role,myth,lore,moves,other=bucket_tags(o.get("tags",[]))
-        # data-derived role flags
+        # legacy: an overlay entry may still carry a flat `tags` list -> bucket it.
+        ls,lrole,lmyth,llore,lmoves,lother=bucket_tags(o.get("tags",[]))
+        role=list(dict.fromkeys(o.get("role",[])+lrole))
         if r["legendary"] and "legendary" not in role: role.append("legendary")
         if r["mythical"] and "mythical" not in role: role.append("mythical")
         if r["baby"] and "baby" not in role: role.append("baby")
+        dd=lambda L: list(dict.fromkeys(L))
         facts[nm]=dict(
             dex=r["dex"], gen=r["gen"], region=r["region"],
             types=r["types"], color_primary=r["color"], color_secondary=o.get("color_secondary",""),
@@ -155,18 +157,20 @@ def main():
             egg=r["egg"], evo=r["evo"], family=r["family"], stage=r["stage"], gender=r["gender"],
             legendary=r["legendary"], mythical=r["mythical"], baby=r["baby"],
             base=r["base"], weight=r["weight"], height=r["height"], stat=stat_tags(r["base"],r["weight"]),
-            arch=o.get("arch",[]), sprite=o.get("sprite",[])+sprite, moves=o.get("moves",[])+moves,
-            lore=o.get("lore",[])+lore, mythology=o.get("mythology",[])+myth,
+            arch=o.get("arch",[]), based_on=o.get("based_on",[]),
+            sprite=dd(o.get("sprite",[])+ls), moves=dd(o.get("moves",[])+lmoves),
+            signature_move=o.get("signature_move",""),
+            lore=dd(o.get("lore",[])+llore), mythology=dd(o.get("mythology",[])+lmyth),
             location=o.get("location",[]), trainer=o.get("trainer",[]),
-            role=role, other=o.get("other",[])+other,
+            nickname=o.get("nickname",[]), role=role, other=dd(o.get("other",[])+lother),
             wk=o.get("wk", 1 if (r["legendary"] or r["mythical"]) else 0))
     json.dump(facts, open(os.path.join(HERE,"..","pokemon_facts.json"),"w"), ensure_ascii=False, indent=0)
     # CSV
     cols=["name","dex","gen","region","type1","type2","color_primary","color_secondary",
           "abilities","genus","shape","habitat","evo","family","stage","gender","legendary","mythical","baby",
           "hp","attack","defense","sp_attack","sp_defense","speed","weight_kg","height_m",
-          "egg_groups","stat_standouts","arch","sprite","moves","lore","mythology","location",
-          "trainer","role","other","well_known"]
+          "egg_groups","stat_standouts","arch","based_on","sprite","moves","signature_move","lore",
+          "mythology","location","trainer","community_nickname","role","other","well_known"]
     J=lambda L: ", ".join(L)
     with open(os.path.join(HERE,"..","pokemon_facts.csv"),"w",newline="") as fh:
         w=csv.DictWriter(fh,fieldnames=cols); w.writeheader()
@@ -180,9 +184,10 @@ def main():
                 "hp":b.get("hp",""),"attack":b.get("attack",""),"defense":b.get("defense",""),
                 "sp_attack":b.get("special-attack",""),"sp_defense":b.get("special-defense",""),
                 "speed":b.get("speed",""),"weight_kg":round(r["weight"]/10,1),"height_m":round(r["height"]/10,1),
-                "egg_groups":J(r["egg"]),"stat_standouts":J(r["stat"]),"arch":J(r["arch"]),"sprite":J(r["sprite"]),
-                "moves":J(r["moves"]),"lore":J(r["lore"]),"mythology":J(r["mythology"]),"location":J(r["location"]),
-                "trainer":J(r["trainer"]),"role":J(r["role"]),"other":J(r["other"]),"well_known":r["wk"]})
+                "egg_groups":J(r["egg"]),"stat_standouts":J(r["stat"]),"arch":J(r["arch"]),"based_on":J(r["based_on"]),
+                "sprite":J(r["sprite"]),"moves":J(r["moves"]),"signature_move":r["signature_move"],"lore":J(r["lore"]),
+                "mythology":J(r["mythology"]),"location":J(r["location"]),"trainer":J(r["trainer"]),
+                "community_nickname":J(r["nickname"]),"role":J(r["role"]),"other":J(r["other"]),"well_known":r["wk"]})
     print("records:",len(facts))
     print("by gen:",dict(sorted(Counter(r['gen'] for r in facts.values()).items())))
     print("with abilities:",sum(1 for r in facts.values() if r['abilities']),
