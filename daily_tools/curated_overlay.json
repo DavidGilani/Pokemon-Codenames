@@ -1305,7 +1305,8 @@
 ],
 "trainer": [
 "Giovanni (gym)",
-"Hapu (kahuna)"
+"Hapu (kahuna)",
+"Rika (E4)"
 ],
 "nickname": [],
 "color_secondary": "brown",
@@ -4046,7 +4047,7 @@
 "forehead-gem",
 "forked-tail"
 ],
-"signature_move": "",
+"signature_move": "Psychic",
 "lore": [
 "Sun eeveelution (evolves by day + friendship)"
 ],
@@ -4074,7 +4075,7 @@
 "yellow-rings",
 "glow"
 ],
-"signature_move": "",
+"signature_move": "Foul Play",
 "lore": [
 "Moon eeveelution (evolves by night + friendship); rings glow"
 ],
@@ -4241,7 +4242,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Rika (E4)"
+],
 "nickname": [],
 "color_secondary": "gray",
 "role": [],
@@ -4368,7 +4371,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Diantha (champion)"
+"Diantha (champion)",
+"Tulip (gym)"
 ],
 "nickname": [],
 "color_secondary": "white",
@@ -4726,7 +4730,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Larry (gym/E4)"
+],
 "nickname": [],
 "color_secondary": "brown",
 "role": [],
@@ -5001,7 +5007,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Molayne (E4)"
+"Molayne (E4)",
+"Poppy (E4)"
 ],
 "nickname": [],
 "color_secondary": "red",
@@ -5316,7 +5323,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Fantina (gym)"
+"Fantina (gym)",
+"Iono (gym)"
 ],
 "nickname": [],
 "color_secondary": "red",
@@ -5637,7 +5645,8 @@
 "trainer": [
 "Iris (champion)",
 "Drayden (gym)",
-"Leon (champion)"
+"Leon (champion)",
+"Hassel (E4)"
 ],
 "nickname": [],
 "color_secondary": "yellow",
@@ -5660,7 +5669,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Brycen (gym)"
+"Brycen (gym)",
+"Grusha (gym)"
 ],
 "nickname": [],
 "color_secondary": "white",
@@ -6093,7 +6103,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Valerie? no"
+"Valerie? no",
+"Tulip (gym)"
 ],
 "nickname": [],
 "color_secondary": "green",
@@ -6194,7 +6205,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Drasna (E4)"
+"Drasna (E4)",
+"Hassel (E4)"
 ],
 "nickname": [],
 "color_secondary": "",
@@ -6393,7 +6405,8 @@
 "location": [],
 "trainer": [
 "Acerola (captain/E4)",
-"Allister (gym)"
+"Allister (gym)",
+"Ryme (gym)"
 ],
 "nickname": [
 "fan favourite; sad backstory"
@@ -6622,7 +6635,9 @@
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Poppy (E4)"
+],
 "nickname": [],
 "color_secondary": "black",
 "role": [],
@@ -6646,7 +6661,9 @@
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Ryme (gym)"
+],
 "nickname": [],
 "color_secondary": "purple",
 "role": [
@@ -6696,7 +6713,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Melony (gym)"
+"Melony (gym)",
+"Grusha (gym)"
 ],
 "nickname": [],
 "color_secondary": "white",
@@ -7634,7 +7652,9 @@
 "location": [
 "blocks Route 36 (needs Squirtbottle)"
 ],
-"trainer": [],
+"trainer": [
+"Brassius (gym)"
+],
 "nickname": [
 "not a tree"
 ],
@@ -8212,7 +8232,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Katy (gym)"
+],
 "nickname": [],
 "color_secondary": "",
 "role": [],
@@ -8873,7 +8895,7 @@
 "witch-hat-crest",
 "tail"
 ],
-"signature_move": "",
+"signature_move": "Sucker Punch",
 "lore": [],
 "mythology": [
 "bird of ill omen"
@@ -10331,7 +10353,8 @@
 "location": [],
 "trainer": [
 "Maxie (Team Magma)",
-"Flannery (gym)"
+"Flannery (gym)",
+"Rika (E4)"
 ],
 "nickname": [],
 "color_secondary": "",
@@ -10563,7 +10586,8 @@
 "trainer": [
 "Winona (gym)",
 "Drake (E4)",
-"Drasna (E4)"
+"Drasna (E4)",
+"Grusha (gym)"
 ],
 "nickname": [],
 "color_secondary": "blue",
@@ -10712,7 +10736,8 @@
 "location": [],
 "trainer": [
 "Wallace (gym/champion)",
-"Bertha (E4)"
+"Bertha (E4)",
+"Rika (E4)"
 ],
 "nickname": [],
 "color_secondary": "blue",
@@ -11022,7 +11047,8 @@
 ],
 "location": [],
 "trainer": [
-"Phoebe (E4)"
+"Phoebe (E4)",
+"Ryme (gym)"
 ],
 "nickname": [],
 "color_secondary": "",
@@ -11093,7 +11119,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Winona (gym)"
+"Winona (gym)",
+"Larry (gym/E4)"
 ],
 "nickname": [],
 "color_secondary": "brown",
@@ -11994,7 +12021,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Iono (gym)"
+],
 "nickname": [],
 "color_secondary": "black",
 "role": [],
@@ -12605,7 +12634,8 @@
 ],
 "location": [],
 "trainer": [
-"Lucian (E4)"
+"Lucian (E4)",
+"Poppy (E4)"
 ],
 "nickname": [],
 "color_secondary": "green",
@@ -14552,7 +14582,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Brassius (gym)"
+],
 "nickname": [],
 "color_secondary": "green",
 "role": [],
@@ -16888,7 +16920,7 @@
 "sprite": [
 "flame-mane"
 ],
-"signature_move": "",
+"signature_move": "Hyper Voice",
 "lore": [],
 "mythology": [],
 "location": [],
@@ -16978,7 +17010,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Ramos (gym)"
+"Ramos (gym)",
+"Geeta (champion)"
 ],
 "nickname": [],
 "color_secondary": "brown",
@@ -17330,7 +17363,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Drasna (E4)"
+"Drasna (E4)",
+"Hassel (E4)"
 ],
 "nickname": [],
 "color_secondary": "brown",
@@ -17696,7 +17730,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Wulfric (gym)"
+"Wulfric (gym)",
+"Geeta (champion)"
 ],
 "nickname": [],
 "color_secondary": "blue",
@@ -18233,7 +18268,8 @@
 "mythology": [],
 "location": [],
 "trainer": [
-"Hala (kahuna)"
+"Hala (kahuna)",
+"Kofu (gym)"
 ],
 "nickname": [],
 "color_secondary": "white",
@@ -18256,7 +18292,9 @@
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Larry (gym/E4)"
+],
 "nickname": [],
 "color_secondary": "",
 "role": [],
@@ -18858,7 +18896,9 @@
 ],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Larry (gym/E4)"
+],
 "nickname": [],
 "color_secondary": "blue",
 "role": [],
@@ -20267,7 +20307,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Hassel (E4)"
+],
 "nickname": [],
 "color_secondary": "green",
 "role": [
@@ -20892,7 +20934,9 @@
 "lore": [],
 "mythology": [],
 "location": [],
-"trainer": [],
+"trainer": [
+"Poppy (E4)"
+],
 "nickname": [],
 "color_secondary": "green",
 "role": [
@@ -21666,6 +21710,2822 @@
 "color_secondary": "pink",
 "role": [
 "legendary"
+],
+"wk": 1
+},
+"Sprigatito": {
+"arch": [
+"feline",
+"cat"
+],
+"based_on": [
+"cat + herb (grassy kitten)"
+],
+"sprite": [
+"leaf-collar"
+],
+"signature_move": "Scratch",
+"lore": [
+"starter"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Floragato": {
+"arch": [
+"feline",
+"cat"
+],
+"based_on": [
+"cat magician (flower)"
+],
+"sprite": [
+"flower-stem-tail"
+],
+"signature_move": "Magical Leaf",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Meowscarada": {
+"arch": [
+"feline",
+"cat"
+],
+"based_on": [
+"cat magician (Puss in Boots / stage magician)"
+],
+"sprite": [
+"cape",
+"flower-wand",
+"mask"
+],
+"signature_move": "Flower Trick",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Fuecoco": {
+"arch": [
+"reptile",
+"crocodile"
+],
+"based_on": [
+"croc + chili pepper"
+],
+"sprite": [
+"fire-scale-head"
+],
+"signature_move": "Ember",
+"lore": [
+"starter"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "red",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Crocalor": {
+"arch": [
+"reptile",
+"crocodile"
+],
+"based_on": [
+"croc + egg flame"
+],
+"sprite": [
+"head-flame-egg"
+],
+"signature_move": "Fire Fang",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Skeledirge": {
+"arch": [
+"reptile",
+"crocodile"
+],
+"based_on": [
+"Day-of-the-Dead singer croc (ghost)"
+],
+"sprite": [
+"flame-bird-hat",
+"cracked-body"
+],
+"signature_move": "Torch Song",
+"lore": [
+"a crooning ghost croc; the flame bird sings with it"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Quaxly": {
+"arch": [
+"bird",
+"duck"
+],
+"based_on": [
+"duckling (gelled hair-quiff)"
+],
+"sprite": [
+"hair-quiff",
+"boat-body"
+],
+"signature_move": "Water Gun",
+"lore": [
+"starter; obsessed with cleanliness"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Quaxwell": {
+"arch": [
+"bird",
+"duck"
+],
+"based_on": [
+"duck dancer"
+],
+"sprite": [
+"hair-swoop",
+"leg-fins"
+],
+"signature_move": "Aqua Cutter",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Quaquaval": {
+"arch": [
+"bird",
+"duck"
+],
+"based_on": [
+"flamenco / samba carnival dancer duck"
+],
+"sprite": [
+"feather-fans",
+"plumage"
+],
+"signature_move": "Aqua Step",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [
+"starter"
+],
+"wk": 1
+},
+"Lechonk": {
+"arch": [
+"boar",
+"pig"
+],
+"based_on": [
+"hog / pig (truffle sniffer)"
+],
+"sprite": [
+"snout",
+"bristly"
+],
+"signature_move": "Tackle",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"lech-ONK meme"
+],
+"color_secondary": "brown",
+"role": [],
+"wk": 1
+},
+"Oinkologne": {
+"arch": [
+"boar",
+"pig"
+],
+"based_on": [
+"fragrant hog (cologne)"
+],
+"sprite": [
+"long-body",
+"scent"
+],
+"signature_move": "Body Slam",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "brown",
+"role": [],
+"wk": 1
+},
+"Tarountula": {
+"arch": [
+"arachnid",
+"spider"
+],
+"based_on": [
+"spider (ball of thread)"
+],
+"sprite": [
+"thread-ball"
+],
+"signature_move": "Struggle Bug",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Katy (gym)"
+],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Spidops": {
+"arch": [
+"arachnid",
+"spider"
+],
+"based_on": [
+"trapdoor spider (engineer / trapper)"
+],
+"sprite": [
+"thread-tools"
+],
+"signature_move": "Silk Trap",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Nymble": {
+"arch": [
+"insect"
+],
+"based_on": [
+"grasshopper nymph"
+],
+"sprite": [
+"hopping-legs"
+],
+"signature_move": "Bug Bite",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Katy (gym)"
+],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Lokix": {
+"arch": [
+"insect"
+],
+"based_on": [
+"locust (vigilante / sentai)"
+],
+"sprite": [
+"red-eye-wings"
+],
+"signature_move": "First Impression",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Pawmi": {
+"arch": [
+"rodent"
+],
+"based_on": [
+"pika / hamster (cheek paw-pads)"
+],
+"sprite": [
+"cheeks",
+"paw-pads"
+],
+"signature_move": "Thunder Shock",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Pawmo": {
+"arch": [
+"rodent"
+],
+"based_on": [
+"hamster (walks on two legs)"
+],
+"sprite": [
+"fur-collar"
+],
+"signature_move": "Arm Thrust",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Pawmot": {
+"arch": [
+"rodent"
+],
+"based_on": [
+"hamster warrior (paw-pad discharge)"
+],
+"sprite": [
+"fluffy-mane",
+"paw-pads"
+],
+"signature_move": "Revival Blessing",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Tandemaus": {
+"arch": [
+"rodent"
+],
+"based_on": [
+"pair of mice"
+],
+"sprite": [
+"two-mice"
+],
+"signature_move": "Tickle",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Maushold": {
+"arch": [
+"rodent"
+],
+"based_on": [
+"family of mice (household)"
+],
+"sprite": [
+"mouse-family"
+],
+"signature_move": "Population Bomb",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Fidough": {
+"arch": [
+"canine"
+],
+"based_on": [
+"bread dough puppy (Dachshund)"
+],
+"sprite": [
+"doughy-body"
+],
+"signature_move": "Play Rough",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"bread dog"
+],
+"color_secondary": "cream",
+"role": [],
+"wk": 1
+},
+"Dachsbun": {
+"arch": [
+"canine"
+],
+"based_on": [
+"dachshund + baked bread"
+],
+"sprite": [
+"scored-crust-back"
+],
+"signature_move": "Play Rough",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "brown",
+"role": [],
+"wk": 1
+},
+"Smoliv": {
+"arch": [
+"plant"
+],
+"based_on": [
+"olive sprout"
+],
+"sprite": [
+"olive-head",
+"leaf"
+],
+"signature_move": "Absorb",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Brassius (gym)"
+],
+"nickname": [
+"tiny olive"
+],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Dolliv": {
+"arch": [
+"plant"
+],
+"based_on": [
+"olive tree sapling"
+],
+"sprite": [
+"olive-branch"
+],
+"signature_move": "Magical Leaf",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Arboliva": {
+"arch": [
+"plant"
+],
+"based_on": [
+"olive tree (oil)"
+],
+"sprite": [
+"olive-crown",
+"oil"
+],
+"signature_move": "Petal Blizzard",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Squawkabilly": {
+"arch": [
+"bird"
+],
+"based_on": [
+"parakeet (rockabilly / greaser)"
+],
+"sprite": [
+"hair-quiff-feathers"
+],
+"signature_move": "Brave Bird",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Nacli": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"rock salt"
+],
+"sprite": [
+"salt-block"
+],
+"signature_move": "Rock Throw",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Naclstack": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"stacked salt (Chinese guardian)"
+],
+"sprite": [
+"salt-tower"
+],
+"signature_move": "Rock Blast",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Garganacl": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"salt golem / colossus"
+],
+"sprite": [
+"salt-arms",
+"craggy"
+],
+"signature_move": "Salt Cure",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Charcadet": {
+"arch": [
+"humanoid"
+],
+"based_on": [
+"fire child (ember knight cadet)"
+],
+"sprite": [
+"flame-head"
+],
+"signature_move": "Ember",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Armarouge": {
+"arch": [
+"humanoid"
+],
+"based_on": [
+"mage knight (armour + fire cannon)"
+],
+"sprite": [
+"cannon-shoulder",
+"armour"
+],
+"signature_move": "Armor Cannon",
+"lore": [
+"a psychic mage-knight (Scarlet)"
+],
+"mythology": [],
+"location": [],
+"trainer": [
+"Ryme? no"
+],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Ceruledge": {
+"arch": [
+"humanoid"
+],
+"based_on": [
+"blade knight (fire swords)"
+],
+"sprite": [
+"arm-blades",
+"helm"
+],
+"signature_move": "Bitter Blade",
+"lore": [
+"a ghostly blade-knight (Violet)"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Tadbulb": {
+"arch": [
+"amphibian"
+],
+"based_on": [
+"tadpole + light bulb"
+],
+"sprite": [
+"bulb-body"
+],
+"signature_move": "Spark",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Bellibolt": {
+"arch": [
+"amphibian",
+"frog"
+],
+"based_on": [
+"frog (belly = giant eyes / dynamo)"
+],
+"sprite": [
+"belly-eyes"
+],
+"signature_move": "Slack Off",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Iono (gym)"
+],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Wattrel": {
+"arch": [
+"bird"
+],
+"based_on": [
+"storm petrel (electric)"
+],
+"sprite": [
+"bolt-crest"
+],
+"signature_move": "Spark",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Iono (gym)"
+],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Kilowattrel": {
+"arch": [
+"bird"
+],
+"based_on": [
+"frigatebird (throat sac antenna)"
+],
+"sprite": [
+"throat-sac",
+"antenna-crest"
+],
+"signature_move": "Volt Switch",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Maschiff": {
+"arch": [
+"canine"
+],
+"based_on": [
+"mastiff puppy"
+],
+"sprite": [
+"underbite",
+"collar-fur"
+],
+"signature_move": "Bite",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Mabosstiff": {
+"arch": [
+"canine"
+],
+"based_on": [
+"mastiff boss (mob dog)"
+],
+"sprite": [
+"mustache-fur",
+"fangs"
+],
+"signature_move": "Comeuppance",
+"lore": [
+"central to the Path of Legends story"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Shroodle": {
+"arch": [
+"mammal"
+],
+"based_on": [
+"lemur / mouse (ink glands)"
+],
+"sprite": [
+"ink-tail"
+],
+"signature_move": "Scratch",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Grafaiai": {
+"arch": [
+"primate"
+],
+"based_on": [
+"aye-aye / graffiti artist (toxic paint)"
+],
+"sprite": [
+"paint-fingers",
+"graffiti-pattern"
+],
+"signature_move": "Doodle",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "purple",
+"role": [],
+"wk": 1
+},
+"Bramblin": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"tumbleweed ghost"
+],
+"sprite": [
+"tumbleweed-body",
+"hands"
+],
+"signature_move": "Astonish",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Brambleghast": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"tumbleweed spirit (drags people off)"
+],
+"sprite": [
+"tumbleweed-mass",
+"maw"
+],
+"signature_move": "Power Whip",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Toedscool": {
+"arch": [
+"fungus"
+],
+"based_on": [
+"mushroom + mud (Tentacool look-alike / convergent)"
+],
+"sprite": [
+"mushroom-cap",
+"legs"
+],
+"signature_move": "Absorb",
+"lore": [
+"convergent evolution mimicking Tentacool"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Toedscruel": {
+"arch": [
+"fungus"
+],
+"based_on": [
+"mushroom (Tentacruel look-alike)"
+],
+"sprite": [
+"cap-crown",
+"legs"
+],
+"signature_move": "Giga Drain",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Klawf": {
+"arch": [
+"crustacean",
+"crab"
+],
+"based_on": [
+"ambush crab (sideways)"
+],
+"sprite": [
+"big-claws",
+"eye-stalks"
+],
+"signature_move": "Rock Slide",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Capsakid": {
+"arch": [
+"plant"
+],
+"based_on": [
+"chili pepper sprout"
+],
+"sprite": [
+"pepper-head"
+],
+"signature_move": "Bullet Seed",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Scovillain": {
+"arch": [
+"plant"
+],
+"based_on": [
+"two-headed chili (Scoville / good-evil)"
+],
+"sprite": [
+"twin-pepper-heads"
+],
+"signature_move": "Flamethrower",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Rellor": {
+"arch": [
+"insect"
+],
+"based_on": [
+"dung beetle (mud ball)"
+],
+"sprite": [
+"mud-ball"
+],
+"signature_move": "Bug Bite",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "brown",
+"role": [],
+"wk": 1
+},
+"Rabsca": {
+"arch": [
+"insect"
+],
+"based_on": [
+"scarab beetle (Egyptian psychic)"
+],
+"sprite": [
+"orb-ball",
+"scarab"
+],
+"signature_move": "Psychic",
+"lore": [],
+"mythology": [
+"Egyptian scarab"
+],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Flittle": {
+"arch": [
+"bird"
+],
+"based_on": [
+"chick (float skirt)"
+],
+"sprite": [
+"skirt-feathers"
+],
+"signature_move": "Confusion",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Espathra": {
+"arch": [
+"bird"
+],
+"based_on": [
+"ostrich / Cleopatra (Egyptian psychic)"
+],
+"sprite": [
+"eye-plumes",
+"fan-collar"
+],
+"signature_move": "Lumina Crash",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Geeta (champion)",
+"Tulip (gym)"
+],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Tinkatink": {
+"arch": [
+"fairy"
+],
+"based_on": [
+"goblin smith (tiny hammer)"
+],
+"sprite": [
+"hammer",
+"horns"
+],
+"signature_move": "Fairy Wind",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "pink",
+"role": [],
+"wk": 1
+},
+"Tinkatuff": {
+"arch": [
+"fairy"
+],
+"based_on": [
+"goblin smith (bigger hammer)"
+],
+"sprite": [
+"hammer",
+"hair"
+],
+"signature_move": "Rock Smash",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "pink",
+"role": [],
+"wk": 1
+},
+"Tinkaton": {
+"arch": [
+"fairy"
+],
+"based_on": [
+"goblin blacksmith (giant hammer)"
+],
+"sprite": [
+"giant-hammer",
+"horns"
+],
+"signature_move": "Gigaton Hammer",
+"lore": [
+"dex claims it fells Corviknight to build its hammer"
+],
+"mythology": [],
+"location": [],
+"trainer": [
+"Poppy (E4)"
+],
+"nickname": [
+"Corviknight slayer meme"
+],
+"color_secondary": "pink",
+"role": [],
+"wk": 1
+},
+"Wiglett": {
+"arch": [
+"fish"
+],
+"based_on": [
+"garden eel (Diglett look-alike / convergent)"
+],
+"sprite": [
+"eel-body",
+"nose"
+],
+"signature_move": "Water Gun",
+"lore": [
+"convergent evolution mimicking Diglett"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Wugtrio": {
+"arch": [
+"fish"
+],
+"based_on": [
+"garden eels (Dugtrio look-alike)"
+],
+"sprite": [
+"three-eels"
+],
+"signature_move": "Mud-Slap",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Kofu (gym)"
+],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Bombirdier": {
+"arch": [
+"bird"
+],
+"based_on": [
+"stork / bombardier (drops stones)"
+],
+"sprite": [
+"stone-bundle",
+"scarf"
+],
+"signature_move": "Rock Throw",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Finizen": {
+"arch": [
+"cetacean"
+],
+"based_on": [
+"dolphin (common)"
+],
+"sprite": [
+"water-ring-tail"
+],
+"signature_move": "Aqua Jet",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Palafin": {
+"arch": [
+"cetacean"
+],
+"based_on": [
+"dolphin superhero (Zero → Hero forme)"
+],
+"sprite": [
+"hero-muscles",
+"star-chest"
+],
+"signature_move": "Jet Punch",
+"lore": [
+"transforms into a buff superhero (Hero Forme)"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"dolphin superhero"
+],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Varoom": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"motorcycle engine (steel poison)"
+],
+"sprite": [
+"engine-body",
+"exhaust"
+],
+"signature_move": "Gyro Ball",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Revavroom": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"hot-rod engine (revving)"
+],
+"sprite": [
+"exhaust-pipes",
+"engine"
+],
+"signature_move": "Spin Out",
+"lore": [
+"Team Star's Starmobiles are based on it"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Cyclizar": {
+"arch": [
+"reptile",
+"lizard"
+],
+"based_on": [
+"lizard + motorbike (rideable)"
+],
+"sprite": [
+"wheel-collar",
+"tail-handle"
+],
+"signature_move": "Shed Tail",
+"lore": [
+"resembles Koraidon/Miraidon"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Orthworm": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"earthworm (steel drill)"
+],
+"sprite": [
+"segmented-body"
+],
+"signature_move": "Iron Tail",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Glimmet": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"crystal flower (toxic ore)"
+],
+"sprite": [
+"crystal-petals"
+],
+"signature_move": "Power Gem",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Glimmora": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"crystal flower / meteor (starfish)"
+],
+"sprite": [
+"crystal-bloom",
+"core"
+],
+"signature_move": "Mortal Spin",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Geeta (champion)"
+],
+"nickname": [],
+"color_secondary": "purple",
+"role": [],
+"wk": 1
+},
+"Greavard": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"ghost dog (grave candle)"
+],
+"sprite": [
+"candle-head",
+"fluffy"
+],
+"signature_move": "Bite",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"ghost puppy"
+],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Houndstone": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"gravestone dog (bone)"
+],
+"sprite": [
+"grave-collar",
+"bone-crown"
+],
+"signature_move": "Last Respects",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Ryme (gym)"
+],
+"nickname": [],
+"color_secondary": "black",
+"role": [],
+"wk": 1
+},
+"Flamigo": {
+"arch": [
+"bird"
+],
+"based_on": [
+"flamingo (tied-in-a-knot neck)"
+],
+"sprite": [
+"neck-knot"
+],
+"signature_move": "Wing Attack",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Larry (gym/E4)"
+],
+"nickname": [],
+"color_secondary": "pink",
+"role": [],
+"wk": 1
+},
+"Cetoddle": {
+"arch": [
+"cetacean"
+],
+"based_on": [
+"land whale calf"
+],
+"sprite": [
+"stubby-legs"
+],
+"signature_move": "Icy Wind",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Cetitan": {
+"arch": [
+"cetacean"
+],
+"based_on": [
+"land whale (Terra Whale)"
+],
+"sprite": [
+"ice-horn",
+"bulk"
+],
+"signature_move": "Ice Spinner",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Grusha (gym)"
+],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Veluza": {
+"arch": [
+"fish"
+],
+"based_on": [
+"filet fish (self-sharpening)"
+],
+"sprite": [
+"sleek-body"
+],
+"signature_move": "Aqua Cutter",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Kofu (gym)",
+"Geeta (champion)"
+],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Dondozo": {
+"arch": [
+"fish"
+],
+"based_on": [
+"giant catfish (commander)"
+],
+"sprite": [
+"mustache-whiskers",
+"huge-body"
+],
+"signature_move": "Wave Crash",
+"lore": [
+"commanded by a Tatsugiri in its mouth"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Tatsugiri": {
+"arch": [
+"fish",
+"dragon"
+],
+"based_on": [
+"sushi (nigiri mimic) dragon"
+],
+"sprite": [
+"sushi-body",
+"rice-belly"
+],
+"signature_move": "Draco Meteor",
+"lore": [
+"disguises as sushi; commands Dondozo"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"sushi dragon meme"
+],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Annihilape": {
+"arch": [
+"primate",
+"monkey"
+],
+"based_on": [
+"rage ape (spirit of fury)"
+],
+"sprite": [
+"ring-chest-hole",
+"veins"
+],
+"signature_move": "Rage Fist",
+"lore": [
+"Primeape that died of rage and came back"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [],
+"wk": 1
+},
+"Clodsire": {
+"arch": [
+"amphibian"
+],
+"based_on": [
+"Paldean Wooper evo (spiny salamander)"
+],
+"sprite": [
+"spike-back",
+"flat-face"
+],
+"signature_move": "Poison Jab",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [
+"Rika (E4)"
+],
+"nickname": [
+"chill dude / friend-shaped"
+],
+"color_secondary": "brown",
+"role": [],
+"wk": 1
+},
+"Farigiraf": {
+"arch": [
+"mammal"
+],
+"based_on": [
+"giraffe (palindrome; head + tail-head merged)"
+],
+"sprite": [
+"head-antennae",
+"long-neck"
+],
+"signature_move": "Twin Beam",
+"lore": [
+"name is a palindrome (like Girafarig)"
+],
+"mythology": [],
+"location": [],
+"trainer": [
+"Tulip (gym)"
+],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Dudunsparce": {
+"arch": [
+"serpent"
+],
+"based_on": [
+"Tsuchinoko / land snake (two or three segments)"
+],
+"sprite": [
+"drill-tail",
+"segments"
+],
+"signature_move": "Boomburst",
+"lore": [],
+"mythology": [
+"Tsuchinoko"
+],
+"location": [],
+"trainer": [
+"Larry (gym/E4)"
+],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Kingambit": {
+"arch": [
+"blade"
+],
+"based_on": [
+"shogun / general (bisharp warlord, blade helm)"
+],
+"sprite": [
+"axe-crown",
+"blade-arms"
+],
+"signature_move": "Kowtow Cleave",
+"lore": [
+"leads armies of Pawniard/Bisharp"
+],
+"mythology": [],
+"location": [],
+"trainer": [
+"Geeta (champion)"
+],
+"nickname": [],
+"color_secondary": "red",
+"role": [],
+"wk": 1
+},
+"Great Tusk": {
+"arch": [
+"proboscisless"
+],
+"based_on": [
+"Donphan (Ancient Paradox)"
+],
+"sprite": [
+"huge-tusks",
+"spiky"
+],
+"signature_move": "Headlong Rush",
+"lore": [],
+"mythology": [
+"Paradox (ancient) form of Donphan"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Scream Tail": {
+"arch": [
+"fairy"
+],
+"based_on": [
+"Jigglypuff (Ancient Paradox)"
+],
+"sprite": [
+"huge-ears",
+"round"
+],
+"signature_move": "Dazzling Gleam",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Jigglypuff"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "pink",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Brute Bonnet": {
+"arch": [
+"fungus"
+],
+"based_on": [
+"Amoonguss (Ancient Paradox)"
+],
+"sprite": [
+"mushroom-fangs"
+],
+"signature_move": "Sucker Punch",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Amoonguss"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "red",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Flutter Mane": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"Misdreavus (Ancient Paradox)"
+],
+"sprite": [
+"hair-wings",
+"fangs"
+],
+"signature_move": "Moonblast",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Misdreavus"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past); VGC terror"
+],
+"color_secondary": "white",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Slither Wing": {
+"arch": [
+"insect",
+"moth"
+],
+"based_on": [
+"Volcarona (Ancient Paradox)"
+],
+"sprite": [
+"moth-wings",
+"legs"
+],
+"signature_move": "Close Combat",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Volcarona"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Sandy Shocks": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"Magneton (Ancient Paradox)"
+],
+"sprite": [
+"coil-magnets",
+"spikes"
+],
+"signature_move": "Thunderbolt",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Magneton"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "yellow",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Treads": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Donphan (Future Paradox robot)"
+],
+"sprite": [
+"tire-wheel",
+"metal"
+],
+"signature_move": "Iron Head",
+"lore": [],
+"mythology": [
+"Paradox (future) of Donphan"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "gray",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Bundle": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Delibird (Future Paradox robot)"
+],
+"sprite": [
+"sack-drone",
+"fin"
+],
+"signature_move": "Freeze-Dry",
+"lore": [],
+"mythology": [
+"Paradox (future) of Delibird"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future); VGC pivot"
+],
+"color_secondary": "white",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Hands": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Hariyama (Future Paradox robot)"
+],
+"sprite": [
+"huge-metal-hands"
+],
+"signature_move": "Wild Charge",
+"lore": [],
+"mythology": [
+"Paradox (future) of Hariyama"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future); VGC staple"
+],
+"color_secondary": "purple",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Jugulis": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Hydreigon (Future Paradox robot)"
+],
+"sprite": [
+"three-metal-heads"
+],
+"signature_move": "Dark Pulse",
+"lore": [],
+"mythology": [
+"Paradox (future) of Hydreigon"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "black",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Moth": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Volcarona (Future Paradox robot)"
+],
+"sprite": [
+"fan-wings",
+"metal"
+],
+"signature_move": "Fiery Dance",
+"lore": [],
+"mythology": [
+"Paradox (future) of Volcarona"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "gray",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Thorns": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Tyranitar (Future Paradox robot)"
+],
+"sprite": [
+"crystal-spikes",
+"metal"
+],
+"signature_move": "Stone Edge",
+"lore": [],
+"mythology": [
+"Paradox (future) of Tyranitar"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "gray",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Frigibax": {
+"arch": [
+"shark",
+"dragon"
+],
+"based_on": [
+"shark (ice fin)"
+],
+"sprite": [
+"ice-fin"
+],
+"signature_move": "Dragon Breath",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Arctibax": {
+"arch": [
+"shark",
+"dragon"
+],
+"based_on": [
+"shark (ice armour)"
+],
+"sprite": [
+"ice-dorsal"
+],
+"signature_move": "Icicle Crash",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [],
+"wk": 1
+},
+"Baxcalibur": {
+"arch": [
+"shark",
+"dragon"
+],
+"based_on": [
+"ice dragon shark (Excalibur)"
+],
+"sprite": [
+"ice-fin-blade",
+"fangs"
+],
+"signature_move": "Glaive Rush",
+"lore": [
+"pseudo"
+],
+"mythology": [],
+"location": [],
+"trainer": [
+"Hassel (E4)"
+],
+"nickname": [],
+"color_secondary": "blue",
+"role": [
+"pseudo"
+],
+"wk": 1
+},
+"Gimmighoul": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"treasure chest ghost (coin hoarder)"
+],
+"sprite": [
+"chest-body",
+"coin"
+],
+"signature_move": "Astonish",
+"lore": [
+"hoards 999 coins to evolve"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "",
+"role": [],
+"wk": 1
+},
+"Gholdengo": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"golden surfer made of 1000 coins"
+],
+"sprite": [
+"coin-body",
+"gold-quiff"
+],
+"signature_move": "Make It Rain",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [
+"coin surfer; VGC pick"
+],
+"color_secondary": "yellow",
+"role": [],
+"wk": 1
+},
+"Wo-Chien": {
+"arch": [
+"mollusc"
+],
+"based_on": [
+"snail on wooden tablets (Treasure of Ruin — grudge)"
+],
+"sprite": [
+"tablet-shell",
+"vines"
+],
+"signature_move": "Ruination",
+"lore": [],
+"mythology": [
+"Treasures of Ruin (ruinous curse); box myth"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Treasures of Ruin"
+],
+"color_secondary": "brown",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Chien-Pao": {
+"arch": [
+"feline"
+],
+"based_on": [
+"saber-tooth / snow leopard on a sword-tablet"
+],
+"sprite": [
+"ice-fangs",
+"earrings"
+],
+"signature_move": "Icicle Crash",
+"lore": [],
+"mythology": [
+"Treasures of Ruin (ruinous curse)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Treasures of Ruin"
+],
+"color_secondary": "white",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Ting-Lu": {
+"arch": [
+"mammal"
+],
+"based_on": [
+"moose / deer cauldron on stone tablets"
+],
+"sprite": [
+"cauldron-head",
+"antlers"
+],
+"signature_move": "Ruination",
+"lore": [],
+"mythology": [
+"Treasures of Ruin (ruinous curse)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Treasures of Ruin"
+],
+"color_secondary": "black",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Chi-Yu": {
+"arch": [
+"fish"
+],
+"based_on": [
+"goldfish wreathed in beads of fire"
+],
+"sprite": [
+"bead-ring",
+"fins"
+],
+"signature_move": "Lava Plume",
+"lore": [],
+"mythology": [
+"Treasures of Ruin (ruinous curse)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Treasures of Ruin"
+],
+"color_secondary": "red",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Roaring Moon": {
+"arch": [
+"dragon"
+],
+"based_on": [
+"Salamence (Ancient Paradox)"
+],
+"sprite": [
+"crescent-wings",
+"fangs"
+],
+"signature_move": "Dragon Dance",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Salamence"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "green",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Valiant": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Gardevoir + Gallade (Future Paradox robot)"
+],
+"sprite": [
+"arm-blades",
+"metal"
+],
+"signature_move": "Spirit Break",
+"lore": [],
+"mythology": [
+"Paradox (future) of the Ralts line"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "white",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Koraidon": {
+"arch": [
+"reptile",
+"dragon"
+],
+"based_on": [
+"ancient ride dragon (Scarlet Book)"
+],
+"sprite": [
+"mane",
+"ride-body"
+],
+"signature_move": "Collision Course",
+"lore": [],
+"mythology": [
+"the Winged King; ancient legend (Scarlet)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"box legend (Scarlet)"
+],
+"color_secondary": "red",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Miraidon": {
+"arch": [
+"reptile",
+"dragon"
+],
+"based_on": [
+"futuristic hover-bike dragon (Violet Book)"
+],
+"sprite": [
+"hover-wheels",
+"circuits"
+],
+"signature_move": "Electro Drift",
+"lore": [],
+"mythology": [
+"the Iron Serpent; future legend (Violet)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"box legend (Violet)"
+],
+"color_secondary": "",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Walking Wake": {
+"arch": [
+"dragon"
+],
+"based_on": [
+"Suicune (Ancient Paradox)"
+],
+"sprite": [
+"crystal-mane"
+],
+"signature_move": "Hydro Steam",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Suicune; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "blue",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Leaves": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Virizion (Future Paradox robot)"
+],
+"sprite": [
+"blade-horns",
+"metal"
+],
+"signature_move": "Psyblade",
+"lore": [],
+"mythology": [
+"Paradox (future) of Virizion; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "green",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Dipplin": {
+"arch": [
+"dragon"
+],
+"based_on": [
+"candy apple (two apples)"
+],
+"sprite": [
+"twin-apple-shell"
+],
+"signature_move": "Sappy Seed",
+"lore": [
+"Applin evolution (Teal Mask)"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Poltchageist": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"matcha tea powder ghost (Sinistea convergent)"
+],
+"sprite": [
+"matcha-mound"
+],
+"signature_move": "Matcha Gotcha",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Sinistcha": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"matcha tea whisk / chawan (haunted tea)"
+],
+"sprite": [
+"tea-bowl",
+"whisk"
+],
+"signature_move": "Matcha Gotcha",
+"lore": [],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Okidogi": {
+"arch": [
+"canine"
+],
+"based_on": [
+"dog retainer (Momotaro's dog)"
+],
+"sprite": [
+"muscle-arms",
+"chain-collar"
+],
+"signature_move": "Gunk Shot",
+"lore": [],
+"mythology": [
+"Loyal Three (Momotaro companions)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Loyal Three"
+],
+"color_secondary": "green",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Munkidori": {
+"arch": [
+"primate",
+"monkey"
+],
+"based_on": [
+"monkey retainer (Momotaro's monkey)"
+],
+"sprite": [
+"brain-glow",
+"tail"
+],
+"signature_move": "Psychic",
+"lore": [],
+"mythology": [
+"Loyal Three (Momotaro companions)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Loyal Three"
+],
+"color_secondary": "purple",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Fezandipiti": {
+"arch": [
+"bird"
+],
+"based_on": [
+"pheasant retainer (Momotaro's pheasant)"
+],
+"sprite": [
+"feather-fans",
+"plumes"
+],
+"signature_move": "Moonblast",
+"lore": [],
+"mythology": [
+"Loyal Three (Momotaro companions)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Loyal Three"
+],
+"color_secondary": "black",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Ogerpon": {
+"arch": [
+"fairy"
+],
+"based_on": [
+"oni / ogre girl with masks (Momotaro's ogre)"
+],
+"sprite": [
+"mask",
+"vine-body"
+],
+"signature_move": "Ivy Cudgel",
+"lore": [],
+"mythology": [
+"the masked ogre; Teal Mask; four masks"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Teal Mask star"
+],
+"color_secondary": "green",
+"role": [
+"mythical"
+],
+"wk": 1
+},
+"Archaludon": {
+"arch": [
+"mineral",
+"dragon"
+],
+"based_on": [
+"suspension bridge / duralumin dragon"
+],
+"sprite": [
+"bridge-body",
+"cables"
+],
+"signature_move": "Electro Shot",
+"lore": [
+"Duraludon evolution (Indigo Disk)"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "white",
+"role": [],
+"wk": 1
+},
+"Hydrapple": {
+"arch": [
+"dragon"
+],
+"based_on": [
+"hydra of apple-snails / syrup"
+],
+"sprite": [
+"snail-heads",
+"apple-shell"
+],
+"signature_move": "Fickle Beam",
+"lore": [
+"Dipplin evolution"
+],
+"mythology": [],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "green",
+"role": [],
+"wk": 1
+},
+"Gouging Fire": {
+"arch": [
+"mammal"
+],
+"based_on": [
+"Entei (Ancient Paradox)"
+],
+"sprite": [
+"flame-mane",
+"horns"
+],
+"signature_move": "Burning Bulwark",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Entei; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "black",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Raging Bolt": {
+"arch": [
+"mammal"
+],
+"based_on": [
+"Raikou (Ancient Paradox)"
+],
+"sprite": [
+"long-neck",
+"fur-mane"
+],
+"signature_move": "Thunderclap",
+"lore": [],
+"mythology": [
+"Paradox (ancient) of Raikou; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (past)"
+],
+"color_secondary": "yellow",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Boulder": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Terrakion (Future Paradox robot)"
+],
+"sprite": [
+"blade-horn",
+"metal"
+],
+"signature_move": "Mighty Cleave",
+"lore": [],
+"mythology": [
+"Paradox (future) of Terrakion; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "gray",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Iron Crown": {
+"arch": [
+"automaton"
+],
+"based_on": [
+"Cobalion (Future Paradox robot)"
+],
+"sprite": [
+"crown-blades",
+"metal"
+],
+"signature_move": "Tachyon Cutter",
+"lore": [],
+"mythology": [
+"Paradox (future) of Cobalion; DLC"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Paradox (future)"
+],
+"color_secondary": "blue",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Terapagos": {
+"arch": [
+"turtle"
+],
+"based_on": [
+"turtle (Terastal crystal energy)"
+],
+"sprite": [
+"crystal-shell",
+"gem"
+],
+"signature_move": "Tera Starstorm",
+"lore": [],
+"mythology": [
+"source of the Terastal phenomenon; Indigo Disk"
+],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "blue",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Pecharunt": {
+"arch": [
+"ghost"
+],
+"based_on": [
+"peach mochi (Momotaro's peach)"
+],
+"sprite": [
+"mochi-body",
+"peach-chains"
+],
+"signature_move": "Malignant Chain",
+"lore": [],
+"mythology": [
+"mythical; the peach that commands the Loyal Three"
+],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "purple",
+"role": [
+"mythical"
 ],
 "wk": 1
 }
