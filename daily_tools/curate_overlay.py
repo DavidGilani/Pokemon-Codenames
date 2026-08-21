@@ -1099,6 +1099,13 @@ E("Guzzlord", arch=["alien"], based=["glutton / black hole dragon (Ultra Beast)"
 E("Necrozma", arch=["alien","dragon"], based=["prism / light-eating entity"], sprite=["prism-body","black-holes"], sig="Prismatic Laser", myth=["a being of light stolen from Ultra Megalopolis"], role=["legendary"], nick=["Ultra Necrozma"], c2="black")
 E("Magearna", arch=["automaton"], based=["antique wind-up doll / automaton (500 years old)"], sprite=["soul-heart-orb","ribbon-hair"], myth=["artificial Pokemon; Movie 19"], role=["mythical"], c2="gray")
 E("Marshadow", arch=["ghost"], based=["shadow / stowaway boxer"], sprite=["shadow-cloak","fists"], sig="Spectral Thief", myth=["hides in shadows; Movie 20"], role=["mythical"], nick=["shiny event exclusive"], c2="gray")
+E("Poipole", arch=["alien"], based=["poison syringe / newt (Ultra Beast)"], sprite=["head-needle","cheer-face"], myth=["Ultra Beast (Poison Pin); Ash's Poipole"], trn=["Ash"], role=["mythical"], nick=["Ultra Beast"], c2="purple")
+E("Naganadel", arch=["alien","wasp"], based=["poison wasp / stinger (Ultra Beast)"], sprite=["stinger-tail","wings"], myth=["Ultra Beast (Stinger)"], role=["mythical"], nick=["Ultra Beast"], c2="purple")
+E("Stakataka", arch=["alien"], based=["stacked stone wall / block fortress (Ultra Beast)"], sprite=["block-stack","many-eyes"], myth=["Ultra Beast (Rampart)"], role=["legendary"], nick=["Ultra Beast"], c2="blue")
+E("Blacephalon", arch=["alien"], based=["clown + fireworks head (Ultra Beast)"], sprite=["detachable-head","cracker"], myth=["Ultra Beast (Fireworks); explodes its own head"], role=["legendary"], nick=["Ultra Beast"], c2="white")
+E("Zeraora", arch=["feline"], based=["thundercat / lightning beast"], sprite=["paw-pads","tuft-mane"], sig="Plasma Fists", myth=["generates lightning from its paws; Movie 21"], role=["mythical"], c2="yellow")
+E("Meltan", arch=["mineral"], based=["hex nut / liquid metal drop"], sprite=["nut-head","mercury-body"], myth=["Mythical; discovered via Pokemon GO"], role=["mythical"], nick=["GO exclusive"], c2="gray")
+E("Melmetal", arch=["mineral"], based=["giant nut golem / smelted metal titan"], sprite=["hex-nut-core","huge-arms"], sig="Double Iron Bash", myth=["Mythical; revered in ancient times"], role=["mythical","gmax"], c2="gray")
 
 SIG.update({
  "Rowlet":"Leafage","Dartrix":"Razor Leaf","Decidueye":"Spirit Shackle","Litten":"Ember","Torracat":"Fire Fang",
@@ -1119,6 +1126,7 @@ SIG.update({
  "Xurkitree":"Thunderbolt","Celesteela":"Heavy Slam","Kartana":"Leaf Blade","Guzzlord":"Crunch","Necrozma":"Prismatic Laser",
  "Magearna":"Fleur Cannon","Marshadow":"Spectral Thief",
 })
+SIG.update({"Poipole":"Peck","Naganadel":"Air Slash","Stakataka":"Gyro Ball","Blacephalon":"Mind Blown","Zeraora":"Plasma Fists","Meltan":"Thunder Shock","Melmetal":"Double Iron Bash"})
 TEAMS.update({
  "Hala (kahuna)":["Crabominable","Hariyama","Machamp","Primeape"],
  "Olivia (kahuna/E4)":["Lycanroc","Probopass","Relicanth","Gigalith","Armaldo"],

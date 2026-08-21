@@ -50632,7 +50632,7 @@
 "poison"
 ],
 "color_primary": "purple",
-"color_secondary": "",
+"color_secondary": "purple",
 "abilities": [
 "Beast Boost"
 ],
@@ -50662,19 +50662,34 @@
 "stat": [
 "light"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"alien"
+],
+"based_on": [
+"poison syringe / newt (Ultra Beast)"
+],
+"sprite": [
+"head-needle",
+"cheer-face"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Peck",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Ultra Beast (Poison Pin); Ash's Poipole"
+],
 "location": [],
-"trainer": [],
-"nickname": [],
-"role": [],
+"trainer": [
+"Ash"
+],
+"nickname": [
+"Ultra Beast"
+],
+"role": [
+"mythical"
+],
 "other": [],
-"wk": 0
+"wk": 1
 },
 "Naganadel": {
 "dex": 804,
@@ -50685,7 +50700,7 @@
 "dragon"
 ],
 "color_primary": "purple",
-"color_secondary": "",
+"color_secondary": "purple",
 "abilities": [
 "Beast Boost"
 ],
@@ -50716,19 +50731,33 @@
 "fast",
 "spatk"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"alien",
+"wasp"
+],
+"based_on": [
+"poison wasp / stinger (Ultra Beast)"
+],
+"sprite": [
+"stinger-tail",
+"wings"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Air Slash",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Ultra Beast (Stinger)"
+],
 "location": [],
 "trainer": [],
-"nickname": [],
-"role": [],
+"nickname": [
+"Ultra Beast"
+],
+"role": [
+"mythical"
+],
 "other": [],
-"wk": 0
+"wk": 1
 },
 "Stakataka": {
 "dex": 805,
@@ -50739,7 +50768,7 @@
 "steel"
 ],
 "color_primary": "gray",
-"color_secondary": "",
+"color_secondary": "blue",
 "abilities": [
 "Beast Boost"
 ],
@@ -50771,19 +50800,32 @@
 "tanky",
 "heavy"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"alien"
+],
+"based_on": [
+"stacked stone wall / block fortress (Ultra Beast)"
+],
+"sprite": [
+"block-stack",
+"many-eyes"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Gyro Ball",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Ultra Beast (Rampart)"
+],
 "location": [],
 "trainer": [],
-"nickname": [],
-"role": [],
+"nickname": [
+"Ultra Beast"
+],
+"role": [
+"legendary"
+],
 "other": [],
-"wk": 0
+"wk": 1
 },
 "Blacephalon": {
 "dex": 806,
@@ -50794,7 +50836,7 @@
 "ghost"
 ],
 "color_primary": "white",
-"color_secondary": "",
+"color_secondary": "white",
 "abilities": [
 "Beast Boost"
 ],
@@ -50826,19 +50868,32 @@
 "atk",
 "spatk"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"alien"
+],
+"based_on": [
+"clown + fireworks head (Ultra Beast)"
+],
+"sprite": [
+"detachable-head",
+"cracker"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Mind Blown",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Ultra Beast (Fireworks); explodes its own head"
+],
 "location": [],
 "trainer": [],
-"nickname": [],
-"role": [],
+"nickname": [
+"Ultra Beast"
+],
+"role": [
+"legendary"
+],
 "other": [],
-"wk": 0
+"wk": 1
 },
 "Zeraora": {
 "dex": 807,
@@ -50848,7 +50903,7 @@
 "electric"
 ],
 "color_primary": "yellow",
-"color_secondary": "",
+"color_secondary": "yellow",
 "abilities": [
 "Volt Absorb"
 ],
@@ -50878,13 +50933,22 @@
 "stat": [
 "fast"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"feline"
+],
+"based_on": [
+"thundercat / lightning beast"
+],
+"sprite": [
+"paw-pads",
+"tuft-mane"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Plasma Fists",
 "lore": [],
-"mythology": [],
+"mythology": [
+"generates lightning from its paws; Movie 21"
+],
 "location": [],
 "trainer": [],
 "nickname": [],
@@ -50902,7 +50966,7 @@
 "steel"
 ],
 "color_primary": "gray",
-"color_secondary": "",
+"color_secondary": "gray",
 "abilities": [
 "Magnet Pull"
 ],
@@ -50930,16 +50994,27 @@
 "weight": 80,
 "height": 2,
 "stat": [],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"mineral"
+],
+"based_on": [
+"hex nut / liquid metal drop"
+],
+"sprite": [
+"nut-head",
+"mercury-body"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Thunder Shock",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Mythical; discovered via Pokemon GO"
+],
 "location": [],
 "trainer": [],
-"nickname": [],
+"nickname": [
+"GO exclusive"
+],
 "role": [
 "mythical"
 ],
@@ -50954,7 +51029,7 @@
 "steel"
 ],
 "color_primary": "gray",
-"color_secondary": "",
+"color_secondary": "gray",
 "abilities": [
 "Iron Fist"
 ],
@@ -50986,18 +51061,28 @@
 "tanky",
 "heavy"
 ],
-"arch": [],
-"based_on": [],
-"sprite": [],
+"arch": [
+"mineral"
+],
+"based_on": [
+"giant nut golem / smelted metal titan"
+],
+"sprite": [
+"hex-nut-core",
+"huge-arms"
+],
 "moves": [],
-"signature_move": "",
+"signature_move": "Double Iron Bash",
 "lore": [],
-"mythology": [],
+"mythology": [
+"Mythical; revered in ancient times"
+],
 "location": [],
 "trainer": [],
 "nickname": [],
 "role": [
-"mythical"
+"mythical",
+"gmax"
 ],
 "other": [],
 "wk": 1

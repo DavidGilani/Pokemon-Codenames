@@ -19324,5 +19324,194 @@
 "color_secondary": "",
 "role": [],
 "wk": 1
+},
+"Poipole": {
+"arch": [
+"alien"
+],
+"based_on": [
+"poison syringe / newt (Ultra Beast)"
+],
+"sprite": [
+"head-needle",
+"cheer-face"
+],
+"signature_move": "Peck",
+"lore": [],
+"mythology": [
+"Ultra Beast (Poison Pin); Ash's Poipole"
+],
+"location": [],
+"trainer": [
+"Ash"
+],
+"nickname": [
+"Ultra Beast"
+],
+"color_secondary": "purple",
+"role": [
+"mythical"
+],
+"wk": 1
+},
+"Naganadel": {
+"arch": [
+"alien",
+"wasp"
+],
+"based_on": [
+"poison wasp / stinger (Ultra Beast)"
+],
+"sprite": [
+"stinger-tail",
+"wings"
+],
+"signature_move": "Air Slash",
+"lore": [],
+"mythology": [
+"Ultra Beast (Stinger)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Ultra Beast"
+],
+"color_secondary": "purple",
+"role": [
+"mythical"
+],
+"wk": 1
+},
+"Stakataka": {
+"arch": [
+"alien"
+],
+"based_on": [
+"stacked stone wall / block fortress (Ultra Beast)"
+],
+"sprite": [
+"block-stack",
+"many-eyes"
+],
+"signature_move": "Gyro Ball",
+"lore": [],
+"mythology": [
+"Ultra Beast (Rampart)"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Ultra Beast"
+],
+"color_secondary": "blue",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Blacephalon": {
+"arch": [
+"alien"
+],
+"based_on": [
+"clown + fireworks head (Ultra Beast)"
+],
+"sprite": [
+"detachable-head",
+"cracker"
+],
+"signature_move": "Mind Blown",
+"lore": [],
+"mythology": [
+"Ultra Beast (Fireworks); explodes its own head"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"Ultra Beast"
+],
+"color_secondary": "white",
+"role": [
+"legendary"
+],
+"wk": 1
+},
+"Zeraora": {
+"arch": [
+"feline"
+],
+"based_on": [
+"thundercat / lightning beast"
+],
+"sprite": [
+"paw-pads",
+"tuft-mane"
+],
+"signature_move": "Plasma Fists",
+"lore": [],
+"mythology": [
+"generates lightning from its paws; Movie 21"
+],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "yellow",
+"role": [
+"mythical"
+],
+"wk": 1
+},
+"Meltan": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"hex nut / liquid metal drop"
+],
+"sprite": [
+"nut-head",
+"mercury-body"
+],
+"signature_move": "Thunder Shock",
+"lore": [],
+"mythology": [
+"Mythical; discovered via Pokemon GO"
+],
+"location": [],
+"trainer": [],
+"nickname": [
+"GO exclusive"
+],
+"color_secondary": "gray",
+"role": [
+"mythical"
+],
+"wk": 1
+},
+"Melmetal": {
+"arch": [
+"mineral"
+],
+"based_on": [
+"giant nut golem / smelted metal titan"
+],
+"sprite": [
+"hex-nut-core",
+"huge-arms"
+],
+"signature_move": "Double Iron Bash",
+"lore": [],
+"mythology": [
+"Mythical; revered in ancient times"
+],
+"location": [],
+"trainer": [],
+"nickname": [],
+"color_secondary": "gray",
+"role": [
+"mythical",
+"gmax"
+],
+"wk": 1
 }
 }
