@@ -370,6 +370,191 @@ TEAMS.update({
  "Red (champion)":["Pikachu","Espeon","Snorlax","Lapras","Venusaur","Charizard","Blastoise"],
 })
 
+# ============================== GEN 3 (Hoenn) ==============================
+E("Treecko", arch=["reptile","gecko"], based=["gecko / wood lizard"], sprite=["tail","belly"], lore=["starter"], role=["starter"], c2="red")
+E("Grovyle", arch=["reptile","gecko"], based=["gecko / theropod"], sprite=["leaf-blades","tail-leaves"], c2="red")
+E("Sceptile", arch=["reptile","gecko"], based=["monitor lizard / forest guardian"], sprite=["leaf-blades","tail","seed-back"], trn=["Ash"], role=["starter","mega"], c2="red")
+E("Torchic", arch=["bird"], based=["chick"], sprite=["fluffy","head-feathers"], lore=["starter"], trn=["May (anime)"], role=["starter"], c2="orange")
+E("Combusken", arch=["bird"], based=["young fighting fowl"], sprite=["leg-spurs","crest"], c2="orange")
+E("Blaziken", arch=["bird"], based=["fighting cockerel / kickboxer"], sprite=["wrist-flames","talons"], sig="Blaze Kick", role=["starter","mega"], c2="cream")
+E("Mudkip", arch=["amphibian","mudfish"], based=["mudskipper / axolotl"], sprite=["head-fin","cheek-fins"], lore=["starter"], nick=["'so i herd u liek mudkipz'"], role=["starter"], c2="orange")
+E("Marshtomp", arch=["amphibian","mudfish"], based=["mudskipper"], sprite=["head-fin","belly-pattern"], c2="")
+E("Swampert", arch=["amphibian","mudfish"], based=["mudskipper / axolotl"], sprite=["head-fins","gill-cheeks"], role=["starter","mega"], c2="orange")
+E("Poochyena", arch=["canine"], based=["hyena / dog pup"], sprite=["bushy-tail","fangs"], c2="gray")
+E("Mightyena", arch=["canine"], based=["hyena"], sprite=["mane","fangs"], trn=["Sidney (E4)"], c2="gray")
+E("Zigzagoon", arch=["mammal"], based=["raccoon / tanuki"], sprite=["zigzag-pattern"], lore=["Pickup ability; zigzags"], c2="brown")
+E("Linoone", arch=["mammal"], based=["badger / raccoon"], sprite=["stripes","pointed-face"], c2="white")
+E("Wurmple", arch=["insect","caterpillar"], based=["caterpillar"], sprite=["spikes","suction-feet"], c2="red")
+E("Silcoon", arch=["insect","pupa"], based=["cocoon"], sprite=["silk-shell"], c2="")
+E("Beautifly", arch=["insect","butterfly"], based=["butterfly"], sprite=["wings","proboscis"], c2="black")
+E("Cascoon", arch=["insect","pupa"], based=["cocoon"], sprite=["spiky-silk"], c2="")
+E("Dustox", arch=["insect","moth"], based=["moth"], sprite=["wings","antennae"], c2="green")
+E("Lotad", arch=["plant"], based=["lily pad / duckweed"], sprite=["leaf-hat"], c2="green")
+E("Lombre", arch=["plant"], based=["kappa / lily pad"], sprite=["leaf-hat","frills"], myth=["kappa"], c2="white")
+E("Ludicolo", arch=["plant"], based=["Mexican dancer / pineapple / kappa"], sprite=["sombrero-leaf","poncho-pattern"], lore=["dances to festive rhythms"], c2="yellow")
+E("Seedot", arch=["plant"], based=["acorn"], sprite=["acorn-body","stalk"], c2="brown")
+E("Nuzleaf", arch=["plant"], based=["tengu / trickster"], sprite=["leaf-nose","mask-pattern"], myth=["tengu"], c2="brown")
+E("Shiftry", arch=["plant"], based=["tengu (long-nosed goblin)"], sprite=["leaf-fans","nose","hair"], myth=["tengu (wind demon)"], c2="brown")
+E("Taillow", arch=["bird"], based=["swallow"], sprite=["forked-tail"], trn=["Ash"], c2="blue")
+E("Swellow", arch=["bird"], based=["swallow / swift"], sprite=["forked-tail","crest"], c2="blue")
+E("Wingull", arch=["bird"], based=["seagull"], sprite=["long-wings","beak"], c2="white")
+E("Pelipper", arch=["bird"], based=["pelican"], sprite=["huge-bill-pouch"], c2="yellow")
+E("Ralts", arch=["humanoid"], based=["psychic embryo / fairy"], sprite=["horns","hair-bowl"], c2="green")
+E("Kirlia", arch=["humanoid"], based=["ballet dancer"], sprite=["tutu-flare","horns"], c2="green")
+E("Gardevoir", arch=["humanoid"], based=["elegant dancer / knight's guardian"], sprite=["gown","chest-horn"], lore=["will protect its trainer with its life"], role=["mega"], c2="white")
+E("Surskit", arch=["insect"], based=["pond skater / water strider"], sprite=["antenna","thin-legs"], c2="blue")
+E("Masquerain", arch=["insect"], based=["moth / mask"], sprite=["eye-pattern-wings"], c2="black")
+E("Shroomish", arch=["plant"], based=["mushroom (button)"], sprite=["cap","spots"], c2="green")
+E("Breloom", arch=["plant"], based=["mushroom + kangaroo boxer"], sprite=["cap","spring-arms"], sig="Mach Punch", c2="green")
+E("Slakoth", arch=["mammal"], based=["sloth"], sprite=["lazy-face","claws"], lore=["Truant; barely moves"], c2="brown")
+E("Vigoroth", arch=["primate"], based=["hyperactive sloth / ape"], sprite=["wild-mane","claws"], c2="white")
+E("Slaking", arch=["primate"], based=["gorilla / sloth (lazy king)"], sprite=["big-belly","collar-fur"], lore=["highest raw stats but Truant halves output"], c2="brown")
+E("Nincada", arch=["insect"], based=["cicada nymph (underground)"], sprite=["claws","dull-eyes"], c2="gray")
+E("Ninjask", arch=["insect","cicada"], based=["cicada (adult) / ninja"], sprite=["wings","speed-lines"], lore=["fastest first-stage-related; Speed Boost"], c2="black")
+E("Shedinja", arch=["ghost"], based=["cicada husk / empty shell"], sprite=["hollow-back","halo"], lore=["appears from Nincada's shed shell; always 1 HP; Wonder Guard"], myth=["steals souls through its back"], nick=["1 HP; Wonder Guard"], c2="gray")
+E("Whismur", arch=["mammal"], based=["earplug / rabbit"], sprite=["big-ears","round"], c2="pink")
+E("Loudred", arch=["mammal"], based=["speaker / delinquent"], sprite=["speaker-ears","big-mouth"], c2="")
+E("Exploud", arch=["mammal"], based=["subwoofer / sound tubes"], sprite=["sound-tubes","big-mouth"], sig="Boomburst", c2="green")
+E("Makuhita", arch=["humanoid"], based=["sumo wrestler"], sprite=["big-fists","tubby"], c2="yellow")
+E("Hariyama", arch=["humanoid"], based=["sumo wrestler"], sprite=["huge-palms","belt"], trn=["Brawly (gym)"], c2="")
+E("Azurill", arch=["mammal"], based=["baby (ball tail)"], sprite=["ball-tail","big-ears"], role=["baby"], c2="")
+E("Nosepass", arch=["mineral"], based=["Easter Island moai statue (compass)"], sprite=["magnet-nose"], lore=["nose always points north (magnetic)"], myth=["moai"], c2="")
+E("Skitty", arch=["feline","cat"], based=["kitten"], sprite=["curl-tail","big-ears"], trn=["May (anime)"], c2="pink")
+E("Delcatty", arch=["feline","cat"], based=["cat (fancy)"], sprite=["collar-fur"], c2="")
+E("Sableye", arch=["gremlin"], based=["gremlin / gem-hoarder"], sprite=["gem-eyes","gem-body"], lore=["feeds on gems; first Dark/Ghost"], role=["mega"], c2="blue")
+E("Mawile", arch=["deceiver"], based=["futakuchi-onna (two-mouthed woman) / trap"], sprite=["jaw-horns","innocent-face"], myth=["futakuchi-onna"], role=["mega"], c2="black")
+E("Aron", arch=["dinosaur"], based=["armoured dinosaur / iron"], sprite=["steel-armour","eyes"], lore=["eats iron ore"], c2="gray")
+E("Lairon", arch=["dinosaur"], based=["armoured beast"], sprite=["armour-bands"], c2="gray")
+E("Aggron", arch=["dinosaur"], based=["armoured dinosaur / territory guardian"], sprite=["horns","armour-plates"], role=["mega"], c2="")
+E("Meditite", arch=["humanoid"], based=["yogi (meditation)"], sprite=["lotus-pose"], c2="red")
+E("Medicham", arch=["humanoid"], based=["yoga master / Indian dancer"], sprite=["floaty-limbs","turban-head"], role=["mega"], c2="red")
+E("Electrike", arch=["canine"], based=["dog / lightning"], sprite=["spiky-fur"], c2="yellow")
+E("Manectric", arch=["canine"], based=["lightning wolf / jackal"], sprite=["mane","bolt-body"], trn=["Wattson (gym)"], role=["mega"], c2="yellow")
+E("Plusle", arch=["rodent"], based=["cheerleader mouse (plus)"], sprite=["plus-cheeks","pom-tail"], c2="red")
+E("Minun", arch=["rodent"], based=["cheerleader mouse (minus)"], sprite=["minus-cheeks","pom-tail"], c2="blue")
+E("Volbeat", arch=["insect"], based=["firefly (male)"], sprite=["light-tail"], c2="")
+E("Illumise", arch=["insect"], based=["firefly (female)"], sprite=["antennae","light"], c2="purple")
+E("Roselia", arch=["plant"], based=["rose (thorns)"], sprite=["rose-hands"], c2="green")
+E("Gulpin", arch=["amorphous"], based=["stomach / sac"], sprite=["big-mouth","tuft"], c2="")
+E("Swalot", arch=["amorphous"], based=["stomach / glutton"], sprite=["huge-mouth","whiskers"], lore=["swallows anything whole"], c2="")
+E("Carvanha", arch=["fish"], based=["piranha"], sprite=["fangs","fins"], c2="red")
+E("Sharpedo", arch=["shark"], based=["bull shark / torpedo submarine"], sprite=["torpedo-body","teeth","star-scar"], trn=["Archie (Team Aqua)"], role=["mega"], c2="yellow")
+E("Wailmer", arch=["cetacean","whale"], based=["whale (ball)"], sprite=["round","blue-body"], c2="")
+E("Wailord", arch=["cetacean","whale"], based=["blue whale (largest Pokemon)"], sprite=["huge-body","spots"], lore=["largest Pokemon by size"], c2="")
+E("Numel", arch=["camelid"], based=["camel / volcano"], sprite=["back-hump","dopey"], c2="green")
+E("Camerupt", arch=["camelid"], based=["camel + volcano"], sprite=["back-volcanoes","humps"], trn=["Maxie (Team Magma)"], role=["mega"], c2="")
+E("Torkoal", arch=["turtle"], based=["tortoise + coal/boiler"], sprite=["smokestack-shell"], c2="black")
+E("Spoink", arch=["mammal"], based=["pig (bouncing) + pearl"], sprite=["spring-tail","head-pearl"], lore=["bounces on its tail to keep its heart beating; stops = dies"], nick=["dies if it stops bouncing"], c2="black")
+E("Grumpig", arch=["mammal"], based=["pig / manipulator"], sprite=["black-pearls","curl-ears"], c2="black")
+E("Spinda", arch=["mammal"], based=["panda / drunkard"], sprite=["spiral-eyes","wobble"], lore=["staggers dizzily; every Spinda's spots differ (4 billion patterns)"], nick=["unique spot pattern each"], c2="brown")
+E("Trapinch", arch=["insect"], based=["antlion / trapdoor"], sprite=["huge-jaws","big-head"], c2="brown")
+E("Vibrava", arch=["insect"], based=["antlion (adult) / dragonfly"], sprite=["rhombus-wings"], c2="green")
+E("Flygon", arch=["insect","dragon"], based=["dragonfly / desert spirit"], sprite=["goggle-eyes","green-wings"], lore=["'the desert spirit'; hums in sandstorms"], c2="red")
+E("Cacnea", arch=["plant"], based=["cactus"], sprite=["spikes","arms"], trn=["James (anime)"], c2="")
+E("Cacturne", arch=["plant"], based=["cactus + scarecrow / bandit"], sprite=["diamond-eyes","spiky-arms"], lore=["stalks travellers in the desert at night"], c2="green")
+E("Swablu", arch=["bird"], based=["cotton bird / bluebird"], sprite=["cotton-wings"], c2="blue")
+E("Altaria", arch=["bird","dragon"], based=["cloud bird / phoenix / bluebird"], sprite=["cotton-cloud-wings"], trn=["Winona (gym)"], role=["mega"], c2="blue")
+E("Zangoose", arch=["mammal","mustelid"], based=["mongoose / cat-weasel"], sprite=["claws","scars"], lore=["sworn enemy of Seviper"], c2="red")
+E("Seviper", arch=["serpent","snake"], based=["viper (sword-tail)"], sprite=["blade-tail","fangs"], lore=["feuds with Zangoose"], trn=["Jessie (anime)"], c2="purple")
+E("Lunatone", arch=["mineral"], based=["moon / meteorite"], sprite=["crescent","red-eye"], myth=["moon rock"], c2="yellow")
+E("Solrock", arch=["mineral"], based=["sun / meteorite"], sprite=["sun-rays","face"], myth=["sun rock"], c2="")
+E("Barboach", arch=["fish"], based=["loach / catfish"], sprite=["whiskers","slimy"], c2="")
+E("Whiscash", arch=["fish"], based=["catfish (namazu — earthquake myth)"], sprite=["whiskers","mustache"], myth=["namazu (earthquake catfish)"], c2="blue")
+E("Corphish", arch=["crustacean","crayfish"], based=["crayfish"], sprite=["pincers"], trn=["Ash"], c2="red")
+E("Crawdaunt", arch=["crustacean","crayfish"], based=["lobster / crayfish rogue"], sprite=["big-claws","star-head"], trn=["Sidney (E4)"], c2="")
+E("Baltoy", arch=["mineral"], based=["dogu clay figurine (spinning top)"], sprite=["single-eye","spins"], myth=["dogu"], c2="brown")
+E("Claydol", arch=["mineral"], based=["dogu / ancient clay doll"], sprite=["many-eyes","arms-float"], myth=["ancient dogu automaton"], c2="black")
+E("Lileep", arch=["plant"], based=["sea lily / crinoid (fossil)"], sprite=["petals","stalk"], role=["fossil"], c2="purple")
+E("Cradily", arch=["plant"], based=["sea lily / anemone (fossil)"], sprite=["neck-frill","tentacle-petals"], role=["fossil"], c2="green")
+E("Anorith", arch=["arthropod"], based=["Anomalocaris (fossil)"], sprite=["plate-armour","claws"], role=["fossil"], c2="blue")
+E("Armaldo", arch=["arthropod"], based=["Anomalocaris (armoured)"], sprite=["plate-armour","claws"], role=["fossil"], c2="")
+E("Feebas", arch=["fish"], based=["ugly fish (Chinese ugly carp)"], sprite=["ragged-fins","dull"], lore=["extremely rare; ugly duckling"], nick=["ugly → Milotic"], c2="brown")
+E("Milotic", arch=["fish","serpent"], based=["eel / Chinese dragon / mermaid (beauty)"], sprite=["ribbon-fins","scales"], lore=["'most beautiful Pokemon'; calms hostility"], trn=["Wallace (gym/champion)"], c2="cream")
+E("Castform", arch=["weather"], based=["cloud / weather forecast"], sprite=["changes-with-weather"], c2="")
+E("Kecleon", arch=["reptile","chameleon"], based=["chameleon"], sprite=["zigzag-belly","curl-tail"], c2="red")
+E("Shuppet", arch=["ghost"], based=["cloth puppet / teru teru bozu"], sprite=["horn","wispy-body"], myth=["grudge doll"], c2="")
+E("Banette", arch=["ghost"], based=["abandoned marionette doll (voodoo)"], sprite=["zipper-mouth","pins"], lore=["a discarded doll seeking the child who threw it away"], myth=["cursed doll / voodoo"], role=["mega"], c2="")
+E("Duskull", arch=["ghost"], based=["grim reaper / Yamawaro"], sprite=["skull-mask","single-eye"], c2="")
+E("Dusclops", arch=["ghost"], based=["mummy / reaper (hollow body)"], sprite=["cyclops-eye","bandages"], c2="")
+E("Tropius", arch=["dinosaur"], based=["sauropod + banana + palm"], sprite=["neck-fruit","leaf-wings"], c2="brown")
+E("Chimecho", arch=["ghost"], based=["wind chime (fūrin)"], sprite=["chime-body","tail"], c2="")
+E("Absol", arch=["feline","canine"], based=["disaster beast / kirin / barghest"], sprite=["scythe-horn","mane"], lore=["appears before disasters; wrongly blamed"], myth=["harbinger of calamity"], trn=["Sidney (E4)"], role=["mega"], c2="white")
+E("Wynaut", arch=["patience"], based=["baby (patience)"], sprite=["ears-hands","big-mouth"], role=["baby"], c2="")
+E("Snorunt", arch=["yokai"], based=["Yuki-warashi (snow child)"], sprite=["hood-body"], myth=["yuki-warashi"], c2="")
+E("Glalie", arch=["yokai"], based=["floating ice head / oni mask"], sprite=["ice-mask","horns"], role=["mega"], c2="")
+E("Froslass", arch=["yokai"], based=["Yuki-onna (snow woman)"], sprite=["kimono-body","hollow"], myth=["yuki-onna"], c2="purple")
+E("Spheal", arch=["pinniped"], based=["seal pup (ball)"], sprite=["round","clap"], nick=["rolls like a ball"], c2="")
+E("Sealeo", arch=["pinniped"], based=["sea lion"], sprite=["tusks","whiskers"], c2="")
+E("Walrein", arch=["pinniped"], based=["walrus"], sprite=["tusks","blubber"], trn=["Glacia (E4)"], c2="")
+E("Clamperl", arch=["mollusc"], based=["clam (pearl)"], sprite=["shell","pearl"], c2="blue")
+E("Huntail", arch=["fish"], based=["deep-sea anglerfish / eel"], sprite=["tail-lure","fangs"], c2="")
+E("Gorebyss", arch=["fish"], based=["deep-sea fish / eel"], sprite=["thin-snout"], c2="pink")
+E("Relicanth", arch=["fish"], based=["coelacanth (living fossil)"], sprite=["rock-scales"], lore=["unchanged for 100 million years"], c2="")
+E("Luvdisc", arch=["fish"], based=["heart-shaped fish"], sprite=["heart-body"], c2="pink")
+E("Bagon", arch=["dragon"], based=["dragon (headbutts, dreams of flying)"], sprite=["rock-head"], lore=["dreams of flying; headbutts rocks"], c2="blue")
+E("Shelgon", arch=["dragon"], based=["dragon in a shell / cocoon"], sprite=["shell-armour"], c2="white")
+E("Salamence", arch=["dragon"], based=["Western dragon (grew wings from wishing to fly)"], sprite=["red-wings","crescent-head"], lore=["pseudo; its cells awakened wings"], role=["pseudo","mega"], c2="red")
+E("Beldum", arch=["mineral"], based=["magnet / steel claw"], sprite=["single-eye","claw"], c2="blue")
+E("Metang", arch=["mineral"], based=["two Beldum fused / robot arms"], sprite=["claws","cross-face"], c2="blue")
+E("Metagross", arch=["mineral"], based=["four Beldum / supercomputer spider"], sprite=["four-legs","x-face"], lore=["pseudo; brain like a supercomputer"], trn=["Steven (champion)"], role=["pseudo","mega"], c2="")
+E("Regirock", arch=["golem"], based=["rock golem (titan)"], sprite=["rock-body","dot-face"], myth=["ancient golem titan"], role=["legendary"], c2="")
+E("Regice", arch=["golem"], based=["ice golem (titan)"], sprite=["ice-body","dot-face"], myth=["ancient golem titan"], role=["legendary"], c2="")
+E("Registeel", arch=["golem"], based=["steel golem (titan)"], sprite=["metal-body","dot-face"], myth=["ancient golem titan"], role=["legendary"], c2="")
+E("Latias", arch=["dragon"], based=["jet plane dragon (eon)"], sprite=["glider-wings"], myth=["Eon duo; Movie 5 (Heroes)"], role=["legendary"], c2="white")
+E("Latios", arch=["dragon"], based=["jet plane dragon (eon)"], sprite=["glider-wings"], myth=["Eon duo; Movie 5 (Heroes)"], role=["legendary"], c2="white")
+E("Kyogre", arch=["cetacean"], based=["orca / whale / Leviathan (the sea)"], sprite=["fins","markings"], sig="Origin Pulse", myth=["expanded the seas; primal weather trio"], role=["legendary"], nick=["box legend (Sapphire)"], c2="white")
+E("Groudon", arch=["dinosaur"], based=["Behemoth / dinosaur (the land)"], sprite=["claws","plates"], sig="Precipice Blades", myth=["raised the continents; primal weather trio"], role=["legendary"], nick=["box legend (Ruby)"], c2="white")
+E("Rayquaza", arch=["serpent","dragon"], based=["sky serpent / ozone dragon / quetzalcoatl"], sprite=["serpent-body","fins"], sig="Dragon Ascent", myth=["calms Kyogre & Groudon; lives in the ozone layer"], loc=["Sky Pillar"], role=["legendary","mega"], nick=["box legend (Emerald)"], c2="yellow")
+E("Jirachi", arch=["fairy"], based=["wish star / tanabata"], sprite=["tags","third-eye"], myth=["grants wishes; wakes 7 days every 1000 years; Movie 6"], role=["mythical"], c2="")
+E("Deoxys", arch=["alien"], based=["DNA / virus from space"], sprite=["crystal-chest","tentacle-arms"], myth=["mutated from a space virus; forme changer; Movie 7"], role=["mythical"], c2="")
+
+# === Gen 3 best-known moves ===
+SIG.update({
+ "Treecko":"Pound","Grovyle":"Leaf Blade","Sceptile":"Leaf Blade","Torchic":"Ember","Combusken":"Double Kick",
+ "Blaziken":"Blaze Kick","Mudkip":"Water Gun","Marshtomp":"Mud Shot","Swampert":"Muddy Water","Poochyena":"Bite",
+ "Mightyena":"Crunch","Zigzagoon":"Tackle","Linoone":"Belly Drum","Wurmple":"Poison Sting","Silcoon":"Harden",
+ "Beautifly":"Silver Wind","Cascoon":"Harden","Dustox":"Psybeam","Lotad":"Absorb","Lombre":"Fake Out","Ludicolo":"Hydro Pump",
+ "Seedot":"Bide","Nuzleaf":"Razor Leaf","Shiftry":"Leaf Storm","Taillow":"Wing Attack","Swellow":"Aerial Ace",
+ "Wingull":"Water Gun","Pelipper":"Hurricane","Ralts":"Confusion","Kirlia":"Psybeam","Gardevoir":"Psychic",
+ "Surskit":"Bubble","Masquerain":"Air Slash","Shroomish":"Absorb","Breloom":"Mach Punch","Slakoth":"Slack Off",
+ "Vigoroth":"Slash","Slaking":"Hammer Arm","Nincada":"Fury Swipes","Ninjask":"Fury Cutter","Shedinja":"Shadow Sneak",
+ "Whismur":"Uproar","Loudred":"Screech","Exploud":"Boomburst","Makuhita":"Arm Thrust","Hariyama":"Close Combat",
+ "Azurill":"Water Gun","Nosepass":"Rock Slide","Skitty":"Assist","Delcatty":"Double-Edge","Sableye":"Shadow Ball",
+ "Mawile":"Iron Head","Aron":"Metal Claw","Lairon":"Iron Head","Aggron":"Heavy Slam","Meditite":"Confusion",
+ "Medicham":"Hi Jump Kick","Electrike":"Spark","Manectric":"Thunderbolt","Plusle":"Helping Hand","Minun":"Helping Hand",
+ "Volbeat":"Tail Glow","Illumise":"Covet","Roselia":"Petal Dance","Gulpin":"Sludge","Swalot":"Sludge Bomb",
+ "Carvanha":"Bite","Sharpedo":"Crunch","Wailmer":"Water Pulse","Wailord":"Water Spout","Numel":"Ember","Camerupt":"Eruption",
+ "Torkoal":"Lava Plume","Spoink":"Psychic","Grumpig":"Psychic","Spinda":"Teeter Dance","Trapinch":"Bite",
+ "Vibrava":"Dragon Breath","Flygon":"Earthquake","Cacnea":"Needle Arm","Cacturne":"Needle Arm","Swablu":"Peck",
+ "Altaria":"Dragon Pulse","Zangoose":"Crush Claw","Seviper":"Poison Fang","Lunatone":"Psychic","Solrock":"Solar Beam",
+ "Barboach":"Mud Slap","Whiscash":"Earthquake","Corphish":"Crabhammer","Crawdaunt":"Crabhammer","Baltoy":"Rapid Spin",
+ "Claydol":"Earthquake","Lileep":"Ingrain","Cradily":"Ancient Power","Anorith":"Fury Cutter","Armaldo":"X-Scissor",
+ "Feebas":"Splash","Milotic":"Recover","Castform":"Weather Ball","Kecleon":"Sucker Punch","Shuppet":"Shadow Sneak",
+ "Banette":"Shadow Claw","Duskull":"Night Shade","Dusclops":"Will-O-Wisp","Tropius":"Magical Leaf","Chimecho":"Psywave",
+ "Absol":"Night Slash","Wynaut":"Counter","Snorunt":"Powder Snow","Glalie":"Ice Beam","Froslass":"Ice Shard",
+ "Spheal":"Rollout","Sealeo":"Aurora Beam","Walrein":"Ice Beam","Clamperl":"Clamp","Huntail":"Crunch","Gorebyss":"Psychic",
+ "Relicanth":"Head Smash","Luvdisc":"Sweet Kiss","Bagon":"Ember","Shelgon":"Dragon Breath","Salamence":"Dragon Claw",
+ "Beldum":"Take Down","Metang":"Metal Claw","Metagross":"Meteor Mash","Regirock":"Stone Edge","Regice":"Ice Beam",
+ "Registeel":"Flash Cannon","Latias":"Mist Ball","Latios":"Luster Purge","Kyogre":"Origin Pulse","Groudon":"Precipice Blades",
+ "Rayquaza":"Dragon Ascent","Jirachi":"Doom Desire","Deoxys":"Psycho Boost",
+})
+# === Hoenn gym leaders / Elite Four / Champions ===
+TEAMS.update({
+ "Roxanne (gym)":["Geodude","Nosepass"],
+ "Brawly (gym)":["Machop","Makuhita","Hariyama"],
+ "Wattson (gym)":["Magnemite","Voltorb","Magneton","Electrike","Manectric"],
+ "Flannery (gym)":["Slugma","Numel","Torkoal","Camerupt"],
+ "Norman (gym)":["Slaking","Vigoroth","Spinda","Linoone"],
+ "Winona (gym)":["Swellow","Pelipper","Skarmory","Altaria","Tropius"],
+ "Tate & Liza (gym)":["Solrock","Lunatone","Xatu","Claydol"],
+ "Wallace (gym/champion)":["Milotic","Whiscash","Sealeo","Seaking","Ludicolo","Tentacruel","Gyarados"],
+ "Sidney (E4)":["Mightyena","Shiftry","Cacturne","Crawdaunt","Absol"],
+ "Phoebe (E4)":["Dusclops","Banette","Sableye"],
+ "Glacia (E4)":["Glalie","Sealeo","Walrein"],
+ "Drake (E4)":["Salamence","Flygon","Altaria","Kingdra","Shelgon"],
+ "Steven (champion)":["Metagross","Skarmory","Aggron","Cradily","Armaldo","Claydol"],
+})
+
 if __name__=="__main__":
     for nm,mv in SIG.items(): _ensure(nm)["signature_move"]=mv
     for trn,mons in TEAMS.items():
