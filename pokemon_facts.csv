@@ -1,0 +1,1026 @@
+name,dex,gen,type1,type2,color,evo,legendary,mythical,hp,attack,defense,sp_attack,sp_defense,speed,weight_kg,egg_groups,arch,tags,stat_standouts,well_known
+Bulbasaur,1,1,grass,poison,green,none,False,False,45,49,49,65,65,45,6.9,"monster, plant",toad,"starter, kanto, bulb, seed, fangs",,1
+Ivysaur,2,1,grass,poison,green,level,False,False,60,62,63,80,80,60,13.0,"monster, plant",toad,"kanto, bud, fangs",,0
+Venusaur,3,1,grass,poison,green,level,False,False,80,82,83,100,100,80,100.0,"monster, plant",toad,"starter, kanto, bloom, flower, mega, fangs",,1
+Charmander,4,1,fire,,red,none,False,False,39,52,43,60,50,65,8.5,"monster, dragon",lizard,"starter, kanto, flame-tail, claws",,1
+Charmeleon,5,1,fire,,red,level,False,False,58,64,58,80,65,80,19.0,"monster, dragon",lizard,"kanto, flame-tail, horn, claws",,0
+Charizard,6,1,fire,flying,red,level,False,False,78,84,78,109,85,100,90.5,"monster, dragon","dragon, lizard","starter, kanto, wings, flame-tail, mega, gmax, fangs",fast,1
+Squirtle,7,1,water,,blue,none,False,False,44,48,65,50,64,43,9.0,"monster, water1",turtle,"starter, kanto, shell, tail",,1
+Wartortle,8,1,water,,blue,level,False,False,59,63,80,65,80,58,22.5,"monster, water1",turtle,"kanto, shell, ears, tail",,0
+Blastoise,9,1,water,,blue,level,False,False,79,83,100,85,105,78,85.5,"monster, water1",turtle,"starter, kanto, shell, cannons, mega, gmax",,1
+Caterpie,10,1,bug,,green,none,False,False,45,30,35,20,20,45,2.9,bug,"insect, caterpillar","kanto, antenna",,1
+Metapod,11,1,bug,,green,level,False,False,50,20,55,25,25,30,9.9,bug,"insect, pupa","kanto, cocoon, shell",,0
+Butterfree,12,1,bug,flying,white,level,False,False,60,45,50,90,80,70,32.0,bug,"insect, butterfly","kanto, wings, gmax, compound-eyes",,1
+Weedle,13,1,bug,poison,brown,none,False,False,40,35,30,20,20,50,3.2,bug,"insect, caterpillar","kanto, stinger, nose",,0
+Kakuna,14,1,bug,poison,yellow,level,False,False,45,25,50,25,25,35,10.0,bug,"insect, pupa","kanto, cocoon",,0
+Beedrill,15,1,bug,poison,yellow,level,False,False,65,90,40,45,80,75,29.5,bug,"insect, wasp","kanto, stingers, wings, mega, lances",,1
+Pidgey,16,1,normal,flying,brown,none,False,False,40,45,40,35,35,56,1.8,flying,bird,"kanto, beak, wings",,0
+Pidgeotto,17,1,normal,flying,brown,level,False,False,63,60,55,50,50,71,30.0,flying,"bird, raptor","kanto, crest, beak",,0
+Pidgeot,18,1,normal,flying,brown,level,False,False,83,80,75,70,70,101,39.5,flying,"bird, raptor","kanto, crest, wings, mega",fast,1
+Rattata,19,1,normal,,purple,none,False,False,30,56,35,25,35,72,3.5,ground,"rodent, rat","kanto, buck-teeth, whiskers, tail",,1
+Raticate,20,1,normal,,brown,level,False,False,55,81,60,50,70,97,18.5,ground,"rodent, rat","kanto, buck-teeth, whiskers",,0
+Spearow,21,1,normal,flying,brown,none,False,False,40,60,30,31,31,70,2.0,flying,bird,"kanto, beak, wings",,0
+Fearow,22,1,normal,flying,brown,level,False,False,65,90,65,61,61,100,38.0,flying,"bird, raptor","kanto, beak, long-neck",fast,0
+Ekans,23,1,poison,,purple,none,False,False,35,60,44,40,54,55,6.9,"ground, dragon","serpent, snake","kanto, coils, fangs, rattle",,0
+Arbok,24,1,poison,,purple,level,False,False,60,95,69,65,79,80,65.0,"ground, dragon","serpent, snake, cobra","kanto, hood, fangs",,1
+Pikachu,25,1,electric,,yellow,friendship,False,False,35,55,40,50,50,90,6.0,"ground, fairy","rodent, mouse","kanto, mascot, cheeks, tail, gmax",,1
+Raichu,26,1,electric,,yellow,stone,False,False,60,90,55,90,80,110,30.0,"ground, fairy","rodent, mouse","kanto, cheeks, tail, bolt-tail",fast,1
+Sandshrew,27,1,ground,,yellow,none,False,False,50,75,85,20,30,40,12.0,ground,"pangolin, armadillo","kanto, curl, claws, burrow",,0
+Sandslash,28,1,ground,,yellow,stone,False,False,75,100,110,45,55,65,29.5,ground,"pangolin, armadillo","kanto, spikes, spiky-ball, claws",tanky,0
+Nidoran♀,29,1,poison,,blue,none,False,False,55,47,52,40,40,41,7.0,"monster, ground",rodent,"kanto, ears, spines",,0
+Nidorina,30,1,poison,,blue,level,False,False,70,62,67,55,55,56,20.0,no-eggs,rodent,"kanto, ears, spines",,0
+Nidoqueen,31,1,poison,ground,blue,stone,False,False,90,92,87,75,85,76,60.0,no-eggs,pachyderm,"kanto, queen, royalty, spikes, scales, horn",,1
+Nidoran♂,32,1,poison,,purple,none,False,False,46,57,40,40,40,50,9.0,"monster, ground",rodent,"kanto, ears, horn",,0
+Nidorino,33,1,poison,,purple,level,False,False,61,72,57,55,55,65,19.5,"monster, ground",rodent,"kanto, horn, spines",,0
+Nidoking,34,1,poison,ground,purple,stone,False,False,81,102,77,85,75,85,62.0,"monster, ground",pachyderm,"kanto, king, royalty, horn, spikes, tail, move:earthquake",,1
+Clefairy,35,1,fairy,,pink,friendship,False,False,70,45,48,60,65,35,7.5,fairy,,"kanto, wings, curl, moon, star",,1
+Clefable,36,1,fairy,,pink,stone,False,False,95,70,73,95,90,60,40.0,fairy,,"kanto, wings, moon, moonstone, fairy-mythos",,1
+Vulpix,37,1,fire,,brown,none,False,False,38,41,40,50,65,65,9.9,ground,"fox, canine","kanto, curls, tails, kitsune",,1
+Ninetales,38,1,fire,,yellow,stone,False,False,73,76,75,81,100,100,19.9,ground,"fox, canine","kanto, nine-tails, kitsune, mythical-lore",fast,1
+Jigglypuff,39,1,normal,fairy,pink,friendship,False,False,115,45,20,45,25,20,5.5,fairy,,"kanto, balloon, round, sing, mascot",,1
+Wigglytuff,40,1,normal,fairy,pink,stone,False,False,140,70,45,85,50,45,12.0,fairy,,"kanto, balloon, round, ears",,1
+Zubat,41,1,poison,flying,purple,none,False,False,40,45,35,30,40,55,7.5,flying,"chiropteran, bat","kanto, wings, fangs, no-eyes",,1
+Golbat,42,1,poison,flying,purple,level,False,False,75,80,70,65,75,90,55.0,flying,"chiropteran, bat","kanto, wings, fangs, big-mouth",,0
+Oddish,43,1,grass,poison,blue,none,False,False,45,50,55,75,65,30,5.4,plant,,"kanto, leaves, bulb",,1
+Gloom,44,1,grass,poison,blue,level,False,False,60,65,70,85,75,40,8.6,plant,,"kanto, drool, flower",,0
+Vileplume,45,1,grass,poison,red,stone,False,False,75,80,85,110,90,50,18.6,plant,,"kanto, petals, flower, rafflesia",,1
+Paras,46,1,bug,grass,red,none,False,False,35,70,55,45,55,25,5.4,"bug, plant","insect, crab","kanto, mushroom, claws",,0
+Parasect,47,1,bug,grass,red,level,False,False,60,95,80,60,80,30,29.5,"bug, plant","insect, crab","kanto, mushroom, fungus",,0
+Venonat,48,1,bug,poison,purple,none,False,False,60,55,50,40,55,45,30.0,bug,insect,"kanto, big-eyes, fuzzy",,0
+Venomoth,49,1,bug,poison,purple,level,False,False,70,65,60,90,75,90,12.5,bug,"insect, moth","kanto, wings, dust",,0
+Diglett,50,1,ground,,brown,none,False,False,10,55,25,35,45,95,0.8,ground,mole,"kanto, nose, burrow, dig",,1
+Dugtrio,51,1,ground,,brown,level,False,False,35,100,50,50,70,120,33.3,ground,mole,"kanto, three-heads, trio, burrow",fast,1
+Meowth,52,1,normal,,yellow,none,False,False,40,45,35,40,40,90,4.2,ground,"feline, cat","kanto, coin, charm, whiskers, gmax",,1
+Persian,53,1,normal,,yellow,friendship,False,False,65,70,60,65,65,115,32.0,ground,"feline, cat","kanto, gem, whiskers, sleek",fast,1
+Psyduck,54,1,water,,yellow,none,False,False,50,52,48,65,50,55,19.6,"water1, ground","duck, platypus","kanto, headache, bill",,1
+Golduck,55,1,water,,blue,level,False,False,80,82,78,95,80,85,76.6,"water1, ground","platypus, duck","kanto, bill, forehead-gem, webbed",,1
+Mankey,56,1,fighting,,brown,none,False,False,40,80,35,35,45,70,28.0,ground,"primate, monkey","kanto, angry, fists",,1
+Primeape,57,1,fighting,,brown,level,False,False,65,105,60,60,70,95,32.0,ground,"primate, monkey","kanto, furious, fists",,1
+Growlithe,58,1,fire,,brown,none,False,False,55,70,45,70,50,60,19.0,ground,"canine, dog","kanto, pup, stripes, loyal",,1
+Arcanine,59,1,fire,,brown,stone,False,False,90,110,80,100,80,95,155.0,ground,"canine, dog","kanto, stripes, mane, legendary-lore",,1
+Poliwag,60,1,water,,blue,none,False,False,40,50,40,40,40,90,12.4,water1,"frog, tadpole","kanto, swirl, tail",,1
+Poliwhirl,61,1,water,,blue,level,False,False,65,65,65,50,50,90,20.0,water1,frog,"kanto, swirl, gloves",,0
+Poliwrath,62,1,water,fighting,blue,stone,False,False,90,95,95,70,90,70,54.0,water1,frog,"kanto, swirl, muscles",,0
+Abra,63,1,psychic,,brown,none,False,False,25,20,15,105,55,90,19.5,humanshape,,"kanto, sleep, teleport",,1
+Kadabra,64,1,psychic,,brown,level,False,False,40,35,30,120,70,105,56.5,humanshape,,"kanto, spoon, psychic-power, whiskers","fast, spatk",1
+Alakazam,65,1,psychic,,brown,trade,False,False,55,50,45,135,95,120,48.0,humanshape,,"kanto, spoons, genius, psychic-power, mega","fast, spatk",1
+Machop,66,1,fighting,,gray,none,False,False,70,80,50,35,35,35,19.5,humanshape,primate,"kanto, muscle, tail",,1
+Machoke,67,1,fighting,,gray,level,False,False,80,100,70,50,60,45,70.5,humanshape,primate,"kanto, muscle, belt",,0
+Machamp,68,1,fighting,,gray,trade,False,False,90,130,80,65,85,55,130.0,humanshape,primate,"kanto, four-arms, muscle, gmax, move:submission",atk,1
+Bellsprout,69,1,grass,poison,green,none,False,False,50,75,35,70,30,40,4.0,plant,plant,"kanto, pitcher, vine",,0
+Weepinbell,70,1,grass,poison,green,level,False,False,65,90,50,85,45,55,6.4,plant,plant,"kanto, pitcher, bell",,0
+Victreebel,71,1,grass,poison,green,stone,False,False,80,105,65,100,70,70,15.5,plant,plant,"kanto, pitcher, venus-flytrap, vine",,1
+Tentacool,72,1,water,poison,blue,none,False,False,40,40,35,50,100,70,45.5,water3,"cnidarian, jellyfish","kanto, jelly, tentacles",,0
+Tentacruel,73,1,water,poison,blue,level,False,False,80,70,65,80,120,100,55.0,water3,"cnidarian, jellyfish","kanto, jewels, tentacles",fast,1
+Geodude,74,1,rock,ground,brown,none,False,False,40,80,100,30,30,20,20.0,mineral,,"kanto, boulder, fists, rock",,1
+Graveler,75,1,rock,ground,brown,level,False,False,55,95,115,45,45,35,105.0,mineral,,"kanto, boulder, four-arms, rock",tanky,0
+Golem,76,1,rock,ground,brown,trade,False,False,80,120,130,55,65,45,300.0,mineral,,"kanto, boulder, shell, golem-mythos, move:earthquake","atk, tanky, heavy",1
+Ponyta,77,1,fire,,yellow,none,False,False,50,85,55,65,65,90,30.0,ground,"equine, horse","kanto, mane-fire, hooves",,1
+Rapidash,78,1,fire,,yellow,level,False,False,65,100,70,80,80,105,95.0,ground,"equine, horse, unicorn","kanto, blaze-mane, horn, hooves",fast,1
+Slowpoke,79,1,water,psychic,pink,none,False,False,90,65,65,40,40,15,36.0,"monster, water1",,"kanto, tail, dopey",,1
+Slowbro,80,1,water,psychic,pink,stone,False,False,95,75,110,100,80,30,78.5,"monster, water1",,"kanto, shell-tail, mega",tanky,1
+Magnemite,81,1,electric,steel,gray,none,False,False,25,35,70,95,55,45,6.0,mineral,,"kanto, magnet, screw, float",,1
+Magneton,82,1,electric,steel,gray,level,False,False,50,60,95,120,70,70,60.0,mineral,,"kanto, magnets, three, cluster",spatk,1
+Farfetch'd,83,1,normal,flying,brown,none,False,False,52,90,55,58,62,60,15.0,"flying, ground","bird, duck","kanto, leek, wields",,1
+Doduo,84,1,normal,flying,brown,none,False,False,35,85,45,35,35,75,39.2,flying,"bird, ratite","kanto, two-heads, beak",,0
+Dodrio,85,1,normal,flying,brown,level,False,False,60,110,70,60,60,110,85.2,flying,"bird, ratite","kanto, three-heads, beak",fast,1
+Seel,86,1,water,,white,none,False,False,65,45,55,45,70,45,90.0,"water1, ground","pinniped, seal","kanto, tusk, horn",,0
+Dewgong,87,1,water,ice,white,level,False,False,90,70,80,70,95,70,120.0,"water1, ground","pinniped, seal","kanto, sleek, tusk, dugong",,0
+Grimer,88,1,poison,,purple,none,False,False,80,80,50,40,50,25,30.0,indeterminate,,"kanto, ooze, sludge",,1
+Muk,89,1,poison,,purple,level,False,False,105,105,75,65,100,50,30.0,indeterminate,,"kanto, sludge, gmax, toxic",,1
+Shellder,90,1,water,,purple,none,False,False,30,65,100,45,25,40,4.0,water3,"mollusc, clam","kanto, clam, pearl, tongue",,1
+Cloyster,91,1,water,ice,purple,stone,False,False,50,95,180,85,45,70,132.5,water3,"mollusc, bivalve","kanto, shell, spikes, pearl",tanky,1
+Gastly,92,1,ghost,poison,purple,none,False,False,30,35,30,100,35,80,0.1,indeterminate,,"kanto, gas, vapour, ghost-lore",,1
+Haunter,93,1,ghost,poison,purple,level,False,False,45,50,45,115,55,95,0.1,indeterminate,,"kanto, hands, tongue, ghost-lore",,1
+Gengar,94,1,ghost,poison,purple,trade,False,False,60,65,60,130,75,110,40.5,indeterminate,,"kanto, grin, shadow, mega, gmax, ghost-lore","fast, spatk",1
+Onix,95,1,rock,ground,gray,none,False,False,35,45,160,30,45,70,210.0,mineral,serpent,"kanto, rock-snake, boulder-body, long",tanky,1
+Drowzee,96,1,psychic,,yellow,none,False,False,60,48,45,43,90,42,32.4,humanshape,tapir,"kanto, pendulum, dreams, baku-mythos",,1
+Hypno,97,1,psychic,,yellow,level,False,False,85,73,70,73,115,67,75.6,humanshape,tapir,"kanto, pendulum, hypnosis, sleep",,1
+Krabby,98,1,water,,red,none,False,False,30,105,90,25,25,50,6.5,water3,"crustacean, crab","kanto, pincers, claws",,0
+Kingler,99,1,water,,red,level,False,False,55,130,115,50,50,75,60.0,water3,"crustacean, crab","kanto, big-claw, pincers, gmax","atk, tanky",1
+Voltorb,100,1,electric,,red,none,False,False,40,30,50,55,55,100,10.4,mineral,,"kanto, ball, poke-ball, self-destruct",fast,1
+Electrode,101,1,electric,,red,stone,False,False,60,50,70,80,80,150,66.6,mineral,,"kanto, sphere, ball, explode",fast,1
+Exeggcute,102,1,grass,psychic,pink,none,False,False,60,40,80,60,45,40,2.5,plant,,"kanto, six, eggs, seeds",,1
+Exeggutor,103,1,grass,psychic,yellow,stone,False,False,95,95,85,125,75,55,120.0,plant,,"kanto, palm, three-heads, coconut",spatk,1
+Cubone,104,1,ground,,brown,none,False,False,50,50,95,40,50,35,6.5,monster,,"kanto, skull, bone-club, orphan, wields",,1
+Marowak,105,1,ground,,brown,level,False,False,60,80,110,50,80,45,45.0,monster,,"kanto, bone-club, skull, wields, move:earthquake",tanky,1
+Hitmonlee,106,1,fighting,,brown,level,False,False,50,120,53,35,110,87,49.8,humanshape,,"kanto, kick, legs, siblings",atk,1
+Hitmonchan,107,1,fighting,,brown,level,False,False,50,105,79,35,110,76,50.2,humanshape,,"kanto, gloves, punch, boxer, siblings, wields",,1
+Lickitung,108,1,normal,,pink,none,False,False,90,55,75,60,75,30,65.5,monster,,"kanto, tongue, lick",,1
+Koffing,109,1,poison,,purple,none,False,False,40,65,95,60,45,35,1.0,indeterminate,,"kanto, gas, skull-face, float",,1
+Weezing,110,1,poison,,purple,level,False,False,65,90,120,85,70,60,9.5,indeterminate,,"kanto, twin, gas, smog",tanky,1
+Rhyhorn,111,1,ground,rock,gray,none,False,False,80,85,95,30,30,25,115.0,"monster, ground","pachyderm, rhino","kanto, horn, hide",,0
+Rhydon,112,1,ground,rock,gray,level,False,False,105,130,120,45,45,40,120.0,"monster, ground","pachyderm, rhino","kanto, drill-horn, hide, move:earthquake","atk, tanky",1
+Chansey,113,1,normal,,pink,level,False,False,250,5,5,35,105,50,34.6,fairy,,"kanto, egg, belly-egg, nurse",,1
+Tangela,114,1,grass,,blue,none,False,False,65,55,115,100,40,60,35.0,plant,,"kanto, vines, tangle",tanky,0
+Kangaskhan,115,1,normal,,brown,none,False,False,105,95,80,40,80,90,80.0,monster,"marsupial, kangaroo","kanto, pouch, baby, mega",,1
+Horsea,116,1,water,,blue,none,False,False,30,40,70,70,25,60,8.0,"water1, dragon","fish, seahorse","kanto, snout, fins",,0
+Seadra,117,1,water,,blue,level,False,False,55,65,95,95,45,85,25.0,"water1, dragon","fish, seahorse","kanto, spines, fins",,0
+Goldeen,118,1,water,,red,none,False,False,45,67,60,35,50,63,15.0,water2,fish,"kanto, horn, fins, goldfish",,0
+Seaking,119,1,water,,red,level,False,False,80,92,65,65,80,68,39.0,water2,fish,"kanto, horn, fins, goldfish",,0
+Staryu,120,1,water,,brown,none,False,False,30,45,55,70,55,85,34.5,water3,"echinoderm, starfish","kanto, star, core-gem",,1
+Starmie,121,1,water,psychic,purple,stone,False,False,60,75,85,100,85,115,80.0,water3,"echinoderm, starfish","kanto, star, core-gem, spin",fast,1
+Mr. Mime,122,1,psychic,fairy,pink,level,False,False,40,45,65,100,120,90,54.5,humanshape,,"kanto, mime, barrier, panes",,1
+Scyther,123,1,bug,flying,green,none,False,False,70,110,80,55,80,105,56.0,bug,"insect, mantis","kanto, scythes, blades, wings",fast,1
+Jynx,124,1,ice,psychic,red,level,False,False,65,50,35,115,95,95,40.6,humanshape,,"kanto, lips, gown, opera",,1
+Electabuzz,125,1,electric,,yellow,level,False,False,65,83,57,95,85,105,30.0,humanshape,,"kanto, stripes, rival-magmar",fast,1
+Magmar,126,1,fire,,red,level,False,False,65,95,57,100,85,93,44.5,humanshape,,"kanto, duckbill, flame, rival-electabuzz",,1
+Pinsir,127,1,bug,,brown,none,False,False,65,125,100,55,70,85,55.0,bug,"insect, beetle","kanto, pincers, horns, mega, stag-beetle",atk,1
+Tauros,128,1,normal,,brown,none,False,False,75,100,95,40,70,110,88.4,ground,"bovine, bull","kanto, three-tails, horns, safari",fast,1
+Magikarp,129,1,water,,red,none,False,False,20,10,55,15,20,80,10.0,"water2, dragon","fish, carp","kanto, splash, useless, whiskers",,1
+Gyarados,130,1,water,flying,blue,level,False,False,95,125,79,60,100,81,235.0,"water2, dragon","serpent, dragon","kanto, serpent, fangs, mega, move:hyper-beam",atk,1
+Lapras,131,1,water,ice,blue,none,False,False,130,85,80,85,95,60,220.0,"monster, water1",plesiosaur,"kanto, shell-back, ferry, gmax, nessie",,1
+Ditto,132,1,normal,,purple,none,False,False,48,48,48,48,48,48,4.0,ditto,,"kanto, blob, transform, imposter, clone",,1
+Eevee,133,1,normal,,brown,none,False,False,55,55,50,45,65,55,6.5,ground,mammal,"kanto, eeveelution, fluffy, gmax, evolution-mythos",,1
+Vaporeon,134,1,water,,blue,stone,False,False,130,65,60,110,95,65,29.0,ground,mermaid,"kanto, eeveelution, fins, stone",,1
+Jolteon,135,1,electric,,yellow,stone,False,False,65,65,60,110,95,130,24.5,ground,,"kanto, eeveelution, spiky, stone",fast,1
+Flareon,136,1,fire,,red,stone,False,False,65,130,60,95,110,65,25.0,ground,,"kanto, eeveelution, fluff, stone",atk,1
+Porygon,137,1,normal,,pink,none,False,False,65,60,70,85,75,40,36.5,mineral,,"kanto, polygon, digital, pixel, trade-item",,1
+Omanyte,138,1,rock,water,blue,none,False,False,35,40,100,90,55,35,7.5,"water1, water3","mollusc, ammonite","kanto, fossil, spiral-shell, tentacles",,1
+Omastar,139,1,rock,water,blue,level,False,False,70,60,125,115,70,55,35.0,"water1, water3","mollusc, ammonite, cephalopod","kanto, fossil, spiral, spikes",tanky,1
+Kabuto,140,1,rock,water,brown,none,False,False,30,80,90,55,45,55,11.5,"water1, water3","arthropod, trilobite","kanto, fossil, dome, horseshoe-crab",,1
+Kabutops,141,1,rock,water,brown,level,False,False,60,115,105,65,70,80,40.5,"water1, water3","arthropod, trilobite","kanto, fossil, scythe-arms, blades",,1
+Aerodactyl,142,1,rock,flying,purple,none,False,False,80,105,65,60,75,130,59.0,flying,"pterosaur, raptor","kanto, fossil, wings, fangs, mega",fast,1
+Snorlax,143,1,normal,,black,friendship,False,False,160,110,65,65,110,30,460.0,monster,bear,"kanto, belly, sleep, gmax, heavy",heavy,1
+Articuno,144,1,ice,flying,blue,none,True,False,90,85,100,95,125,85,55.4,no-eggs,bird,"kanto, legendary, ice-crest, wings, bird-trio",,1
+Zapdos,145,1,electric,flying,yellow,none,True,False,90,90,85,125,90,100,52.6,no-eggs,bird,"kanto, legendary, spiky, wings, bird-trio","fast, spatk",1
+Moltres,146,1,fire,flying,yellow,none,True,False,90,100,90,125,85,90,60.0,no-eggs,"bird, phoenix","kanto, legendary, flame-wings, phoenix, bird-trio",spatk,1
+Dratini,147,1,dragon,,blue,none,False,False,41,64,45,50,50,50,3.3,"water1, dragon","serpent, dragon","kanto, serpent, orb",,1
+Dragonair,148,1,dragon,,blue,level,False,False,61,84,65,70,70,70,16.5,"water1, dragon","serpent, dragon","kanto, serpent, neck-orb, mystical",,1
+Dragonite,149,1,dragon,flying,brown,level,False,False,91,134,95,100,100,80,210.0,"water1, dragon",dragon,"kanto, pseudo, antennae, wings, move:hyper-beam",atk,1
+Mewtwo,150,1,psychic,,purple,none,True,False,106,110,90,154,90,130,122.0,no-eggs,,"kanto, legendary, clone, mega, psychic-power","fast, spatk, tanky",1
+Mew,151,1,psychic,,pink,none,False,True,100,100,100,100,100,100,4.0,no-eggs,,"kanto, mythical, pink, clone-origin, transform","fast, tanky",1
+Chikorita,152,2,grass,,green,none,False,False,45,49,65,49,65,45,6.4,"monster, plant",,,,0
+Bayleef,153,2,grass,,green,level,False,False,60,62,80,63,80,60,15.8,"monster, plant",,,,0
+Meganium,154,2,grass,,green,level,False,False,80,82,100,83,100,80,100.5,"monster, plant",dinosaur,"starter, johto, petals, fangs",,1
+Cyndaquil,155,2,fire,,yellow,none,False,False,39,52,43,60,50,65,7.9,ground,,,,0
+Quilava,156,2,fire,,yellow,level,False,False,58,64,58,80,65,80,19.0,ground,,,,0
+Typhlosion,157,2,fire,,yellow,level,False,False,78,84,78,109,85,100,79.5,ground,,"starter, johto, flame-collar, badger",fast,1
+Totodile,158,2,water,,blue,none,False,False,50,65,64,44,48,43,9.5,"monster, water1",,,,0
+Croconaw,159,2,water,,blue,level,False,False,65,80,80,59,63,58,25.0,"monster, water1",,,,0
+Feraligatr,160,2,water,,blue,level,False,False,85,105,100,79,83,78,88.8,"monster, water1","reptile, crocodile","starter, johto, jaws, fangs, gator",,1
+Sentret,161,2,normal,,brown,none,False,False,35,46,34,35,45,20,6.0,ground,,,,0
+Furret,162,2,normal,,brown,level,False,False,85,76,64,45,55,90,32.5,ground,,,,0
+Hoothoot,163,2,normal,flying,brown,none,False,False,60,30,30,36,56,50,21.2,flying,,,,0
+Noctowl,164,2,normal,flying,brown,level,False,False,100,50,50,86,96,70,40.8,flying,,,,0
+Ledyba,165,2,bug,flying,red,none,False,False,40,20,30,40,80,55,10.8,bug,,,,0
+Ledian,166,2,bug,flying,red,level,False,False,55,35,50,55,110,85,35.6,bug,,,,0
+Spinarak,167,2,bug,poison,green,none,False,False,40,60,40,40,40,30,8.5,bug,,,,0
+Ariados,168,2,bug,poison,red,level,False,False,70,90,70,60,70,40,33.5,bug,,,,0
+Crobat,169,2,poison,flying,purple,friendship,False,False,85,90,80,70,80,130,75.0,flying,,,fast,0
+Chinchou,170,2,water,electric,blue,none,False,False,75,38,38,56,56,67,12.0,water2,,,,0
+Lanturn,171,2,water,electric,blue,level,False,False,125,58,58,76,76,67,22.5,water2,,,,0
+Pichu,172,2,electric,,yellow,none,False,False,20,40,15,35,35,60,2.0,no-eggs,,,,0
+Cleffa,173,2,fairy,,pink,none,False,False,50,25,28,45,55,15,3.0,no-eggs,,,,0
+Igglybuff,174,2,normal,fairy,pink,none,False,False,90,30,15,40,20,15,1.0,no-eggs,,,,0
+Togepi,175,2,fairy,,white,none,False,False,35,20,65,40,65,20,1.5,no-eggs,,,,0
+Togetic,176,2,fairy,flying,white,friendship,False,False,55,40,85,80,105,40,3.2,"flying, fairy",,,,0
+Natu,177,2,psychic,flying,green,none,False,False,40,50,45,70,45,70,2.0,flying,,,,0
+Xatu,178,2,psychic,flying,green,level,False,False,65,75,70,95,70,95,15.0,flying,,,,0
+Mareep,179,2,electric,,white,none,False,False,55,40,40,65,45,35,7.8,"monster, ground",,,,0
+Flaaffy,180,2,electric,,pink,level,False,False,70,55,55,80,60,45,13.3,"monster, ground",,,,0
+Ampharos,181,2,electric,,yellow,level,False,False,90,75,85,115,90,55,61.5,"monster, ground",,"johto, tail-orb, beacon, mega, sheep",,1
+Bellossom,182,2,grass,,green,stone,False,False,75,80,95,90,100,50,5.8,plant,,"johto, petals, hula, flower",,1
+Marill,183,2,water,fairy,blue,friendship,False,False,70,20,50,20,50,40,8.5,"water1, fairy",,,,0
+Azumarill,184,2,water,fairy,blue,level,False,False,100,50,80,60,80,50,28.5,"water1, fairy",,,,0
+Sudowoodo,185,2,rock,,brown,level,False,False,70,100,115,30,65,30,38.0,mineral,,,tanky,0
+Politoed,186,2,water,,green,trade,False,False,90,75,75,90,100,70,33.9,water1,,,,0
+Hoppip,187,2,grass,flying,pink,none,False,False,35,35,40,35,55,50,0.5,"fairy, plant",,,,0
+Skiploom,188,2,grass,flying,green,level,False,False,55,45,50,45,65,80,1.0,"fairy, plant",,,,0
+Jumpluff,189,2,grass,flying,blue,level,False,False,75,55,70,55,95,110,3.0,"fairy, plant",,,fast,0
+Aipom,190,2,normal,,purple,none,False,False,55,70,55,40,55,85,11.5,ground,,,,0
+Sunkern,191,2,grass,,yellow,none,False,False,30,30,30,30,30,30,1.8,plant,,,,0
+Sunflora,192,2,grass,,yellow,stone,False,False,75,75,55,105,85,30,8.5,plant,,,,0
+Yanma,193,2,bug,flying,red,none,False,False,65,65,45,75,45,95,38.0,bug,,,,0
+Wooper,194,2,water,ground,blue,none,False,False,55,45,45,25,25,15,8.5,"water1, ground",,,,0
+Quagsire,195,2,water,ground,blue,level,False,False,95,85,85,65,65,35,75.0,"water1, ground",,,,0
+Espeon,196,2,psychic,,purple,friendship,False,False,65,65,60,130,95,110,26.5,ground,,"johto, eeveelution, forehead-gem, fork-tail","fast, spatk",1
+Umbreon,197,2,dark,,black,friendship,False,False,95,65,110,60,130,65,27.0,ground,,"johto, eeveelution, rings, glow",tanky,1
+Murkrow,198,2,dark,flying,black,none,False,False,60,85,42,85,42,91,2.1,flying,,,,0
+Slowking,199,2,water,psychic,pink,stone,False,False,95,75,80,100,110,30,79.5,"monster, water1",,,,0
+Misdreavus,200,2,ghost,,gray,none,False,False,60,60,60,85,85,85,1.0,indeterminate,,,,0
+Unown,201,2,psychic,,black,none,False,False,48,72,48,72,48,48,5.0,no-eggs,,,,0
+Wobbuffet,202,2,psychic,,blue,level,False,False,190,33,58,33,58,33,28.5,indeterminate,,,,0
+Girafarig,203,2,normal,psychic,yellow,none,False,False,70,80,65,90,65,85,41.5,ground,,,,0
+Pineco,204,2,bug,,gray,none,False,False,50,65,90,35,35,15,7.2,bug,,,,0
+Forretress,205,2,bug,steel,purple,level,False,False,75,90,140,60,60,40,125.8,bug,,,tanky,0
+Dunsparce,206,2,normal,,yellow,none,False,False,100,70,70,65,65,45,14.0,ground,,,,0
+Gligar,207,2,ground,flying,purple,none,False,False,65,75,105,35,65,85,64.8,bug,,,,0
+Steelix,208,2,steel,ground,gray,trade,False,False,75,85,200,55,65,30,400.0,mineral,serpent,"johto, iron-snake, mega, move:earthquake","tanky, heavy",1
+Snubbull,209,2,fairy,,pink,none,False,False,60,80,50,40,40,30,7.8,"ground, fairy",,,,0
+Granbull,210,2,fairy,,purple,level,False,False,90,120,75,60,60,45,48.7,"ground, fairy",,,atk,0
+Qwilfish,211,2,water,poison,gray,none,False,False,65,95,85,55,55,85,3.9,water2,,,,0
+Scizor,212,2,bug,steel,red,trade,False,False,70,130,100,55,80,65,118.0,bug,"insect, mantis","johto, red-claws, pincers, blades, mega",atk,1
+Shuckle,213,2,bug,rock,yellow,none,False,False,20,10,230,10,230,5,20.5,bug,,,tanky,0
+Heracross,214,2,bug,fighting,blue,none,False,False,80,125,75,40,95,85,54.0,bug,"insect, beetle","johto, horn, mega, stag-beetle",atk,1
+Sneasel,215,2,dark,ice,black,none,False,False,55,95,55,35,75,115,28.0,ground,,,fast,0
+Teddiursa,216,2,normal,,brown,none,False,False,60,80,50,50,50,40,8.8,ground,,,,0
+Ursaring,217,2,normal,,brown,level,False,False,90,130,75,75,75,55,125.8,ground,bear,"johto, chest-ring, claws, forager",atk,1
+Slugma,218,2,fire,,red,none,False,False,40,40,40,70,40,20,35.0,indeterminate,,,,0
+Magcargo,219,2,fire,rock,red,level,False,False,60,50,120,90,80,30,55.0,indeterminate,,,tanky,0
+Swinub,220,2,ice,ground,brown,none,False,False,50,50,40,30,30,50,6.5,ground,,,,0
+Piloswine,221,2,ice,ground,brown,level,False,False,100,100,80,60,60,50,55.8,ground,,,,0
+Corsola,222,2,water,rock,pink,none,False,False,65,55,95,65,95,35,5.0,"water1, water3",,,,0
+Remoraid,223,2,water,,gray,none,False,False,35,65,35,65,35,65,12.0,"water1, water2",,,,0
+Octillery,224,2,water,,red,level,False,False,75,105,75,105,75,45,28.5,"water1, water2","cephalopod, octopus","johto, suckers, cannon, pot",,0
+Delibird,225,2,ice,flying,red,none,False,False,45,55,45,65,45,75,16.0,"water1, ground",,,,0
+Mantine,226,2,water,flying,purple,level,False,False,85,40,70,80,140,70,220.0,water1,,,,0
+Skarmory,227,2,steel,flying,gray,none,False,False,65,80,140,40,70,70,50.5,flying,"bird, raptor","johto, armour, blades, wings",tanky,1
+Houndour,228,2,dark,fire,black,none,False,False,45,60,30,80,50,65,10.8,ground,,,,0
+Houndoom,229,2,dark,fire,black,level,False,False,75,90,50,110,80,95,35.0,ground,"canine, dog","johto, horns, hound, mega",,1
+Kingdra,230,2,water,dragon,blue,trade,False,False,75,95,95,95,95,85,152.0,"water1, dragon",,,,0
+Phanpy,231,2,ground,,blue,none,False,False,90,60,60,40,40,40,33.5,ground,,,,0
+Donphan,232,2,ground,,gray,level,False,False,90,120,120,60,60,50,120.0,ground,"pachyderm, elephant","johto, tusks, move:earthquake, proboscidean","atk, tanky",1
+Porygon2,233,2,normal,,red,trade,False,False,85,80,90,105,95,60,32.5,mineral,,,,0
+Stantler,234,2,normal,,brown,none,False,False,73,95,62,85,65,85,71.2,ground,,,,0
+Smeargle,235,2,normal,,white,none,False,False,55,20,35,20,45,75,58.0,ground,,,,0
+Tyrogue,236,2,fighting,,purple,none,False,False,35,35,35,35,35,35,21.0,no-eggs,,,,0
+Hitmontop,237,2,fighting,,brown,level,False,False,50,95,95,35,110,70,48.0,humanshape,,,,0
+Smoochum,238,2,ice,psychic,pink,none,False,False,45,30,15,85,65,65,6.0,no-eggs,,,,0
+Elekid,239,2,electric,,yellow,none,False,False,45,63,37,65,55,95,23.5,no-eggs,,,,0
+Magby,240,2,fire,,red,none,False,False,45,75,37,70,55,83,21.4,no-eggs,,,,0
+Miltank,241,2,normal,,pink,none,False,False,95,80,105,40,70,100,75.5,ground,,,fast,0
+Blissey,242,2,normal,,pink,friendship,False,False,255,10,10,75,135,55,46.8,fairy,,"johto, egg, pouch-egg, nurse, happy",,1
+Raikou,243,2,electric,,yellow,none,True,False,90,85,75,115,100,115,178.0,no-eggs,,legendary,fast,1
+Entei,244,2,fire,,brown,none,True,False,115,115,85,90,75,100,198.0,no-eggs,,legendary,fast,1
+Suicune,245,2,water,,blue,none,True,False,100,75,115,90,115,85,187.0,no-eggs,,legendary,tanky,1
+Larvitar,246,2,rock,ground,green,none,False,False,50,64,50,45,50,41,72.0,monster,,,,0
+Pupitar,247,2,rock,ground,gray,level,False,False,70,84,70,65,70,51,152.0,monster,,,,0
+Tyranitar,248,2,rock,dark,green,level,False,False,100,134,110,95,100,61,202.0,monster,dinosaur,"johto, pseudo, dino, mega, sandstorm","atk, tanky",1
+Lugia,249,2,psychic,flying,white,none,True,False,106,90,130,90,154,110,216.0,no-eggs,,legendary,"fast, tanky",1
+Ho-Oh,250,2,fire,flying,red,none,True,False,106,130,90,110,154,90,199.0,no-eggs,,legendary,"atk, tanky",1
+Celebi,251,2,psychic,grass,green,none,False,True,100,100,100,100,100,100,5.0,no-eggs,,mythical,"fast, tanky",1
+Treecko,252,3,grass,,green,none,False,False,40,45,35,65,55,70,5.0,"monster, dragon",,,,0
+Grovyle,253,3,grass,,green,level,False,False,50,65,45,85,65,95,21.6,"monster, dragon",,,,0
+Sceptile,254,3,grass,,green,level,False,False,70,85,65,105,85,120,52.2,"monster, dragon","reptile, gecko","starter, hoenn, leaf-blade, mega, tail",fast,1
+Torchic,255,3,fire,,red,none,False,False,45,60,40,70,50,45,2.5,ground,,,,0
+Combusken,256,3,fire,fighting,red,level,False,False,60,85,60,85,60,55,19.5,ground,,,,0
+Blaziken,257,3,fire,fighting,red,level,False,False,80,120,70,110,70,80,52.0,ground,bird,"starter, hoenn, kick, talons, mega",atk,1
+Mudkip,258,3,water,,blue,none,False,False,50,70,50,50,50,40,7.6,"monster, water1",,,,0
+Marshtomp,259,3,water,ground,blue,level,False,False,70,85,70,60,70,50,28.0,"monster, water1",,,,0
+Swampert,260,3,water,ground,blue,level,False,False,100,110,90,85,90,60,81.9,"monster, water1","amphibian, mudfish","starter, hoenn, mud, fins, mega",tanky,1
+Poochyena,261,3,dark,,gray,none,False,False,35,55,35,30,30,35,13.6,ground,,,,0
+Mightyena,262,3,dark,,gray,level,False,False,70,90,70,60,60,70,37.0,ground,,,,0
+Zigzagoon,263,3,normal,,brown,none,False,False,38,30,41,30,41,60,17.5,ground,,,,0
+Linoone,264,3,normal,,white,level,False,False,78,70,61,50,61,100,32.5,ground,,,fast,0
+Wurmple,265,3,bug,,red,none,False,False,45,45,35,20,30,20,3.6,bug,,,,0
+Silcoon,266,3,bug,,white,level,False,False,50,35,55,25,25,15,10.0,bug,,,,0
+Beautifly,267,3,bug,flying,yellow,level,False,False,60,70,50,100,50,65,28.4,bug,,,,0
+Cascoon,268,3,bug,,purple,level,False,False,50,35,55,25,25,15,11.5,bug,,,,0
+Dustox,269,3,bug,poison,green,level,False,False,60,50,70,50,90,65,31.6,bug,,,,0
+Lotad,270,3,water,grass,green,none,False,False,40,30,30,40,50,30,2.6,"water1, plant",,,,0
+Lombre,271,3,water,grass,green,level,False,False,60,50,50,60,70,50,32.5,"water1, plant",,,,0
+Ludicolo,272,3,water,grass,green,stone,False,False,80,70,70,90,100,70,55.0,"water1, plant",,,,0
+Seedot,273,3,grass,,brown,none,False,False,40,40,50,30,30,30,4.0,"ground, plant",,,,0
+Nuzleaf,274,3,grass,dark,brown,level,False,False,70,70,40,60,40,60,28.0,"ground, plant",,,,0
+Shiftry,275,3,grass,dark,brown,stone,False,False,90,100,60,90,60,80,59.6,"ground, plant",,,,0
+Taillow,276,3,normal,flying,blue,none,False,False,40,55,30,30,30,85,2.3,flying,,,,0
+Swellow,277,3,normal,flying,blue,level,False,False,60,85,60,75,50,125,19.8,flying,,,fast,0
+Wingull,278,3,water,flying,white,none,False,False,40,30,30,55,30,85,9.5,"water1, flying",,,,0
+Pelipper,279,3,water,flying,yellow,level,False,False,60,50,100,95,70,65,28.0,"water1, flying",,,,0
+Ralts,280,3,psychic,fairy,white,none,False,False,28,25,25,45,35,40,6.6,"humanshape, indeterminate",,,,0
+Kirlia,281,3,psychic,fairy,white,level,False,False,38,35,35,65,55,50,20.2,"humanshape, indeterminate",,,,0
+Gardevoir,282,3,psychic,fairy,white,level,False,False,68,65,65,125,115,80,48.4,"humanshape, indeterminate",,"hoenn, gown, elegant, mega",spatk,1
+Surskit,283,3,bug,water,blue,none,False,False,40,30,32,50,52,65,1.7,"water1, bug",,,,0
+Masquerain,284,3,bug,flying,blue,level,False,False,70,60,62,100,82,80,3.6,"water1, bug",,,,0
+Shroomish,285,3,grass,,brown,none,False,False,60,40,60,40,60,35,4.5,"fairy, plant",,,,0
+Breloom,286,3,grass,fighting,green,level,False,False,60,130,80,60,60,70,39.2,"fairy, plant",,,atk,0
+Slakoth,287,3,normal,,brown,none,False,False,60,60,60,35,35,30,24.0,ground,,,,0
+Vigoroth,288,3,normal,,white,level,False,False,80,80,80,55,55,90,46.5,ground,,,,0
+Slaking,289,3,normal,,brown,level,False,False,150,160,100,95,65,100,130.5,ground,,,"fast, atk",0
+Nincada,290,3,bug,ground,gray,none,False,False,31,45,90,30,30,40,5.5,bug,,,,0
+Ninjask,291,3,bug,flying,yellow,level,False,False,61,90,45,50,50,160,12.0,bug,,,fast,0
+Shedinja,292,3,bug,ghost,brown,shed,False,False,1,90,45,30,30,40,1.2,mineral,,,,0
+Whismur,293,3,normal,,pink,none,False,False,64,51,23,51,23,28,16.3,"monster, ground",,,,0
+Loudred,294,3,normal,,blue,level,False,False,84,71,43,71,43,48,40.5,"monster, ground",,,,0
+Exploud,295,3,normal,,blue,level,False,False,104,91,63,91,73,68,84.0,"monster, ground",,,,0
+Makuhita,296,3,fighting,,yellow,none,False,False,72,60,30,20,30,25,86.4,humanshape,,,,0
+Hariyama,297,3,fighting,,brown,level,False,False,144,120,60,40,60,50,253.8,humanshape,,,"atk, heavy",0
+Azurill,298,3,normal,fairy,blue,none,False,False,50,20,40,20,40,20,2.0,no-eggs,,,,0
+Nosepass,299,3,rock,,gray,none,False,False,30,45,135,45,90,30,97.0,mineral,,,tanky,0
+Skitty,300,3,normal,,pink,none,False,False,50,45,45,35,35,50,11.0,"ground, fairy",,,,0
+Delcatty,301,3,normal,,purple,stone,False,False,70,65,65,55,55,90,32.6,"ground, fairy",,,,0
+Sableye,302,3,dark,ghost,purple,none,False,False,50,75,75,65,65,50,11.0,humanshape,,"hoenn, gem-eyes, gremlin, mega, folklore",,1
+Mawile,303,3,steel,fairy,black,none,False,False,50,85,85,55,55,50,11.5,"ground, fairy",,,,0
+Aron,304,3,steel,rock,gray,none,False,False,50,70,100,40,40,30,60.0,monster,,,,0
+Lairon,305,3,steel,rock,gray,level,False,False,60,90,140,50,50,40,120.0,monster,,,tanky,0
+Aggron,306,3,steel,rock,gray,level,False,False,70,110,180,60,60,50,360.0,monster,dinosaur,"hoenn, armour, horns, mega, iron","tanky, heavy",1
+Meditite,307,3,fighting,psychic,blue,none,False,False,30,40,55,40,55,60,11.2,humanshape,,,,0
+Medicham,308,3,fighting,psychic,red,level,False,False,60,60,75,60,75,80,31.5,humanshape,,,,0
+Electrike,309,3,electric,,green,none,False,False,40,45,40,65,40,65,15.2,ground,,,,0
+Manectric,310,3,electric,,yellow,level,False,False,70,75,60,105,60,105,40.2,ground,canine,"hoenn, mane, mega, jackal",fast,0
+Plusle,311,3,electric,,yellow,none,False,False,60,50,40,85,75,95,4.2,fairy,,,,0
+Minun,312,3,electric,,yellow,none,False,False,60,40,50,75,85,95,4.2,fairy,,,,0
+Volbeat,313,3,bug,,gray,none,False,False,65,73,75,47,85,85,17.7,"bug, humanshape",,,,0
+Illumise,314,3,bug,,purple,none,False,False,65,47,75,73,85,85,17.7,"bug, humanshape",,,,0
+Roselia,315,3,grass,poison,green,friendship,False,False,50,60,45,100,80,65,2.0,"fairy, plant",,,,0
+Gulpin,316,3,poison,,green,none,False,False,70,43,53,43,53,40,10.3,indeterminate,,,,0
+Swalot,317,3,poison,,purple,level,False,False,100,73,83,73,83,55,80.0,indeterminate,,,,0
+Carvanha,318,3,water,dark,red,none,False,False,45,90,20,65,20,65,20.8,water2,,,,0
+Sharpedo,319,3,water,dark,blue,level,False,False,70,120,40,95,40,95,88.8,water2,,,atk,0
+Wailmer,320,3,water,,blue,none,False,False,130,70,35,70,35,60,130.0,"ground, water2",,,,0
+Wailord,321,3,water,,blue,level,False,False,170,90,45,90,45,60,398.0,"ground, water2","cetacean, whale","hoenn, whale, huge, float",heavy,1
+Numel,322,3,fire,ground,yellow,none,False,False,60,60,40,65,45,35,24.0,ground,,,,0
+Camerupt,323,3,fire,ground,red,level,False,False,70,100,70,105,75,40,220.0,ground,,,,0
+Torkoal,324,3,fire,,brown,none,False,False,70,85,140,85,70,20,80.4,ground,,,tanky,0
+Spoink,325,3,psychic,,black,none,False,False,60,25,35,70,80,60,30.6,ground,,,,0
+Grumpig,326,3,psychic,,purple,level,False,False,80,45,65,90,110,80,71.5,ground,,,,0
+Spinda,327,3,normal,,brown,none,False,False,60,60,60,60,60,60,5.0,"ground, humanshape",,,,0
+Trapinch,328,3,ground,,brown,none,False,False,45,100,45,45,45,10,15.0,"bug, dragon",,,,0
+Vibrava,329,3,ground,dragon,green,level,False,False,50,70,50,50,50,70,15.3,"bug, dragon",,,,0
+Flygon,330,3,ground,dragon,green,level,False,False,80,100,80,80,80,100,82.0,"bug, dragon","insect, dragon","hoenn, goggles, wings, desert-spirit",fast,1
+Cacnea,331,3,grass,,green,none,False,False,50,85,40,85,40,35,51.3,"plant, humanshape",,,,0
+Cacturne,332,3,grass,dark,green,level,False,False,70,115,60,115,60,55,77.4,"plant, humanshape",,,,0
+Swablu,333,3,normal,flying,blue,none,False,False,45,40,60,40,75,50,1.2,"flying, dragon",,,,0
+Altaria,334,3,dragon,flying,blue,level,False,False,75,70,90,70,105,80,20.6,"flying, dragon",,,,0
+Zangoose,335,3,normal,,white,none,False,False,73,115,60,60,60,90,40.3,ground,,,,0
+Seviper,336,3,poison,,black,none,False,False,73,100,60,100,60,65,52.5,"ground, dragon",,,,0
+Lunatone,337,3,rock,psychic,yellow,none,False,False,90,55,65,95,85,70,168.0,mineral,,,,0
+Solrock,338,3,rock,psychic,red,none,False,False,90,95,85,55,65,70,154.0,mineral,,,,0
+Barboach,339,3,water,ground,gray,none,False,False,50,48,43,46,41,60,1.9,water2,,,,0
+Whiscash,340,3,water,ground,blue,level,False,False,110,78,73,76,71,60,23.6,water2,,,,0
+Corphish,341,3,water,,red,none,False,False,43,80,65,50,35,35,11.5,"water1, water3",,,,0
+Crawdaunt,342,3,water,dark,red,level,False,False,63,120,85,90,55,55,32.8,"water1, water3",,,atk,0
+Baltoy,343,3,ground,psychic,brown,none,False,False,40,40,55,40,70,55,21.5,mineral,,,,0
+Claydol,344,3,ground,psychic,black,level,False,False,60,70,105,70,120,75,108.0,mineral,,,,0
+Lileep,345,3,rock,grass,purple,none,False,False,66,41,77,61,87,23,23.8,water3,,,,0
+Cradily,346,3,rock,grass,green,level,False,False,86,81,97,81,107,43,60.4,water3,,,,0
+Anorith,347,3,rock,bug,gray,none,False,False,45,95,50,40,50,75,12.5,water3,,,,0
+Armaldo,348,3,rock,bug,gray,level,False,False,75,125,100,70,80,45,68.2,water3,,,atk,0
+Feebas,349,3,water,,brown,none,False,False,20,15,20,10,55,80,7.4,"water1, dragon",,,,0
+Milotic,350,3,water,,pink,level,False,False,95,60,79,100,125,81,162.0,"water1, dragon","fish, serpent, eel","hoenn, ribbon, elegant, tender",,1
+Castform,351,3,normal,,gray,none,False,False,70,70,70,70,70,70,0.8,"fairy, indeterminate",,,,0
+Kecleon,352,3,normal,,green,none,False,False,60,90,70,60,120,40,22.0,ground,,,,0
+Shuppet,353,3,ghost,,black,none,False,False,44,75,35,63,33,45,2.3,indeterminate,,,,0
+Banette,354,3,ghost,,black,level,False,False,64,115,65,83,63,65,12.5,indeterminate,,,,0
+Duskull,355,3,ghost,,black,none,False,False,20,40,90,30,90,25,15.0,indeterminate,,,,0
+Dusclops,356,3,ghost,,black,level,False,False,40,70,130,60,130,25,30.6,indeterminate,,,tanky,0
+Tropius,357,3,grass,flying,green,none,False,False,99,68,83,72,87,51,100.0,"monster, plant",,,,0
+Chimecho,358,3,psychic,,blue,friendship,False,False,75,50,80,95,90,65,1.0,indeterminate,,,,0
+Absol,359,3,dark,,white,none,False,False,65,130,60,75,60,75,47.0,ground,"feline, canine","hoenn, disaster, horn, mega, scythe-horn",atk,1
+Wynaut,360,3,psychic,,blue,none,False,False,95,23,48,23,48,23,14.0,no-eggs,,,,0
+Snorunt,361,3,ice,,gray,none,False,False,50,50,50,50,50,50,16.8,"fairy, mineral",,,,0
+Glalie,362,3,ice,,gray,level,False,False,80,80,80,80,80,80,256.5,"fairy, mineral",,,heavy,0
+Spheal,363,3,ice,water,blue,none,False,False,70,40,50,55,50,25,39.5,"water1, ground",,,,0
+Sealeo,364,3,ice,water,blue,level,False,False,90,60,70,75,70,45,87.6,"water1, ground",,,,0
+Walrein,365,3,ice,water,blue,level,False,False,110,80,90,95,90,65,150.6,"water1, ground",,,tanky,0
+Clamperl,366,3,water,,blue,none,False,False,35,64,85,74,55,32,52.5,water1,,,,0
+Huntail,367,3,water,,blue,trade,False,False,55,104,105,94,75,52,27.0,water1,,,,0
+Gorebyss,368,3,water,,pink,trade,False,False,55,84,105,114,75,52,22.6,water1,,,,0
+Relicanth,369,3,water,rock,gray,none,False,False,100,90,130,45,65,55,23.4,"water1, water2",,,tanky,0
+Luvdisc,370,3,water,,pink,none,False,False,43,30,55,40,65,97,8.7,water2,,,,0
+Bagon,371,3,dragon,,blue,none,False,False,45,75,60,40,30,50,42.1,dragon,,,,0
+Shelgon,372,3,dragon,,white,level,False,False,65,95,100,60,50,50,110.5,dragon,,,,0
+Salamence,373,3,dragon,flying,blue,level,False,False,95,135,80,110,80,100,102.6,dragon,dragon,"hoenn, pseudo, crescent, wings, mega, move:hyper-beam","fast, atk",1
+Beldum,374,3,steel,psychic,blue,none,False,False,40,55,80,35,60,30,95.2,mineral,,,,0
+Metang,375,3,steel,psychic,blue,level,False,False,60,75,100,55,80,50,202.5,mineral,,,,0
+Metagross,376,3,steel,psychic,blue,level,False,False,80,135,130,95,90,70,550.0,mineral,,"hoenn, pseudo, legs, x-face, mega","atk, tanky, heavy",1
+Regirock,377,3,rock,,brown,none,True,False,80,100,200,50,100,50,230.0,no-eggs,,legendary,tanky,1
+Regice,378,3,ice,,blue,none,True,False,80,50,100,100,200,50,175.0,no-eggs,,legendary,,1
+Registeel,379,3,steel,,gray,none,True,False,80,75,150,75,150,50,205.0,no-eggs,,legendary,tanky,1
+Latias,380,3,dragon,psychic,red,none,True,False,80,80,90,110,130,110,40.0,no-eggs,,legendary,fast,1
+Latios,381,3,dragon,psychic,blue,none,True,False,80,90,80,130,110,110,60.0,no-eggs,,legendary,"fast, spatk",1
+Kyogre,382,3,water,,blue,none,True,False,100,100,90,150,140,90,352.0,no-eggs,,legendary,"spatk, tanky, heavy",1
+Groudon,383,3,ground,,red,none,True,False,100,150,140,100,90,90,950.0,no-eggs,,legendary,"atk, tanky, heavy",1
+Rayquaza,384,3,dragon,flying,green,none,True,False,105,150,90,150,90,95,206.5,no-eggs,"serpent, dragon","hoenn, legendary, sky, mega, ozone","atk, spatk, tanky",1
+Jirachi,385,3,steel,psychic,yellow,none,False,True,100,100,100,100,100,100,1.1,no-eggs,,mythical,"fast, tanky",1
+Deoxys,386,3,psychic,,red,none,False,True,50,150,50,150,50,150,60.8,no-eggs,,mythical,"fast, atk, spatk",1
+Turtwig,387,4,grass,,green,none,False,False,55,68,64,45,55,31,10.2,"monster, plant",,,,0
+Grotle,388,4,grass,,green,level,False,False,75,89,85,55,65,36,97.0,"monster, plant",,,,0
+Torterra,389,4,grass,ground,green,level,False,False,95,109,105,75,85,56,310.0,"monster, plant","turtle, tortoise","starter, sinnoh, tree, shell, move:earthquake",heavy,1
+Chimchar,390,4,fire,,brown,none,False,False,44,58,44,58,44,61,6.2,"ground, humanshape",,,,0
+Monferno,391,4,fire,fighting,brown,level,False,False,64,78,52,78,52,81,22.0,"ground, humanshape",,,,0
+Infernape,392,4,fire,fighting,brown,level,False,False,76,104,71,104,71,108,55.0,"ground, humanshape","primate, monkey","starter, sinnoh, flame-head, fists",fast,1
+Piplup,393,4,water,,blue,none,False,False,53,51,53,61,56,40,5.2,"water1, ground",,,,0
+Prinplup,394,4,water,,blue,level,False,False,64,66,68,81,76,50,23.0,"water1, ground",,,,0
+Empoleon,395,4,water,steel,blue,level,False,False,84,86,88,111,101,60,84.5,"water1, ground","bird, penguin","starter, sinnoh, trident, emperor, royalty",,1
+Starly,396,4,normal,flying,brown,none,False,False,40,55,30,30,30,60,2.0,flying,,,,0
+Staravia,397,4,normal,flying,brown,level,False,False,55,75,50,40,40,80,15.5,flying,,,,0
+Staraptor,398,4,normal,flying,brown,level,False,False,85,120,70,50,60,100,24.9,flying,"bird, raptor","sinnoh, hawk-crest, talons, move:fly","fast, atk",1
+Bidoof,399,4,normal,,brown,none,False,False,59,45,40,35,40,31,20.0,"water1, ground",,,,0
+Bibarel,400,4,normal,water,brown,level,False,False,79,85,60,55,60,71,31.5,"water1, ground",,,,0
+Kricketot,401,4,bug,,red,none,False,False,37,25,41,25,41,25,2.2,bug,,,,0
+Kricketune,402,4,bug,,red,level,False,False,77,85,51,55,51,65,25.5,bug,,,,0
+Shinx,403,4,electric,,blue,none,False,False,45,65,34,40,34,45,9.5,ground,,,,0
+Luxio,404,4,electric,,blue,level,False,False,60,85,49,60,49,60,30.5,ground,,,,0
+Luxray,405,4,electric,,blue,level,False,False,80,120,79,95,79,70,42.0,ground,"feline, lion","sinnoh, mane, x-ray-eyes, intimidate",atk,1
+Budew,406,4,grass,poison,green,none,False,False,40,30,35,50,70,55,1.2,no-eggs,,,,0
+Roserade,407,4,grass,poison,green,stone,False,False,60,70,65,125,105,90,14.5,"fairy, plant",,"sinnoh, bouquet, masquerade, thorns",spatk,1
+Cranidos,408,4,rock,,blue,none,False,False,67,125,40,30,30,58,31.5,monster,,,atk,0
+Rampardos,409,4,rock,,blue,level,False,False,97,165,60,65,50,58,102.5,monster,dinosaur,"sinnoh, fossil, skull, headbutt",atk,0
+Shieldon,410,4,rock,steel,gray,none,False,False,30,42,118,42,88,30,57.0,monster,,,tanky,0
+Bastiodon,411,4,rock,steel,gray,level,False,False,60,52,168,47,138,30,149.5,monster,dinosaur,"sinnoh, fossil, shield-face, wall",tanky,0
+Burmy,412,4,bug,,green,none,False,False,40,29,45,29,45,36,3.4,bug,,,,0
+Wormadam,413,4,bug,grass,green,level,False,False,60,59,85,79,105,36,6.5,bug,,,,0
+Mothim,414,4,bug,flying,yellow,level,False,False,70,94,50,94,50,66,23.3,bug,,,,0
+Combee,415,4,bug,flying,yellow,none,False,False,30,30,42,30,42,70,5.5,bug,,,,0
+Vespiquen,416,4,bug,flying,yellow,level,False,False,70,80,102,80,102,40,38.5,bug,,,,0
+Pachirisu,417,4,electric,,white,none,False,False,60,45,70,45,90,95,3.9,"ground, fairy",,,,0
+Buizel,418,4,water,,brown,none,False,False,55,65,35,60,30,85,29.5,"water1, ground",,,,0
+Floatzel,419,4,water,,brown,level,False,False,85,105,55,85,50,115,33.5,"water1, ground",,,fast,0
+Cherubi,420,4,grass,,pink,none,False,False,45,35,45,62,53,35,3.3,"fairy, plant",,,,0
+Cherrim,421,4,grass,,purple,level,False,False,70,60,70,87,78,85,9.3,"fairy, plant",,,,0
+Shellos,422,4,water,,purple,none,False,False,76,48,48,57,62,34,6.3,"water1, indeterminate",,,,0
+Gastrodon,423,4,water,ground,purple,level,False,False,111,83,68,92,82,39,29.9,"water1, indeterminate",,,,0
+Ambipom,424,4,normal,,purple,level,False,False,75,100,66,60,66,115,20.3,ground,,,fast,0
+Drifloon,425,4,ghost,flying,purple,none,False,False,90,50,34,60,44,70,1.2,indeterminate,,,,0
+Drifblim,426,4,ghost,flying,purple,level,False,False,150,80,44,90,54,80,15.0,indeterminate,,,,0
+Buneary,427,4,normal,,brown,none,False,False,55,66,44,44,56,85,5.5,"ground, humanshape",,,,0
+Lopunny,428,4,normal,,brown,friendship,False,False,65,76,84,54,96,105,33.3,"ground, humanshape",,,fast,0
+Mismagius,429,4,ghost,,purple,stone,False,False,60,60,60,105,105,105,4.4,indeterminate,,"sinnoh, witch-hat, hex, levitate, folklore",fast,1
+Honchkrow,430,4,dark,flying,black,stone,False,False,100,125,52,105,52,71,27.3,flying,"bird, corvid","sinnoh, crow, boss, hat",atk,0
+Glameow,431,4,normal,,gray,none,False,False,49,55,42,42,37,85,3.9,ground,,,,0
+Purugly,432,4,normal,,gray,level,False,False,71,82,64,64,59,112,43.8,ground,,,fast,0
+Chingling,433,4,psychic,,yellow,none,False,False,45,30,50,65,50,45,0.6,no-eggs,,,,0
+Stunky,434,4,poison,dark,purple,none,False,False,63,63,47,41,41,74,19.2,ground,,,,0
+Skuntank,435,4,poison,dark,purple,level,False,False,103,93,67,71,61,84,38.0,ground,,,,0
+Bronzor,436,4,steel,psychic,green,none,False,False,57,24,86,24,86,23,60.5,mineral,,,,0
+Bronzong,437,4,steel,psychic,green,level,False,False,67,89,116,79,116,33,187.0,mineral,,,tanky,0
+Bonsly,438,4,rock,,brown,none,False,False,50,80,95,10,45,10,15.0,no-eggs,,,,0
+Mime Jr.,439,4,psychic,fairy,pink,none,False,False,20,25,45,70,90,60,13.0,no-eggs,,,,0
+Happiny,440,4,normal,,pink,none,False,False,100,5,5,15,65,30,24.4,no-eggs,,,,0
+Chatot,441,4,normal,flying,black,none,False,False,76,65,45,92,42,91,1.9,flying,,,,0
+Spiritomb,442,4,ghost,dark,purple,none,False,False,50,92,108,92,108,35,108.0,indeterminate,,"sinnoh, keystone, 108-souls, folklore, forbidden",,1
+Gible,443,4,dragon,ground,blue,none,False,False,58,70,45,40,45,42,20.5,"monster, dragon",,,,0
+Gabite,444,4,dragon,ground,blue,level,False,False,68,90,65,50,55,82,56.0,"monster, dragon",,,,0
+Garchomp,445,4,dragon,ground,blue,level,False,False,108,130,95,80,85,102,95.0,"monster, dragon","shark, dragon","sinnoh, pseudo, fins, jet, mega, move:earthquake","fast, atk, tanky",1
+Munchlax,446,4,normal,,black,none,False,False,135,85,40,40,85,5,105.0,no-eggs,,,,0
+Riolu,447,4,fighting,,blue,none,False,False,40,70,40,35,40,60,20.2,no-eggs,,,,0
+Lucario,448,4,fighting,steel,blue,friendship,False,False,70,110,70,115,70,90,54.0,"ground, humanshape","canine, jackal","sinnoh, aura, jackal, mega",,1
+Hippopotas,449,4,ground,,brown,none,False,False,68,72,78,38,42,32,49.5,ground,,,,0
+Hippowdon,450,4,ground,,brown,level,False,False,108,112,118,68,72,47,300.0,ground,"pachyderm, hippo","sinnoh, sandstorm, jaws, move:earthquake","tanky, heavy",0
+Skorupi,451,4,poison,bug,purple,none,False,False,40,50,90,30,55,65,12.0,"bug, water3",,,,0
+Drapion,452,4,poison,dark,purple,level,False,False,70,90,110,60,75,95,61.5,"bug, water3","arachnid, scorpion","sinnoh, pincers, claws",tanky,0
+Croagunk,453,4,poison,fighting,blue,none,False,False,48,61,40,61,40,50,23.0,humanshape,,,,0
+Toxicroak,454,4,poison,fighting,blue,level,False,False,83,106,65,86,65,85,44.4,humanshape,,,,0
+Carnivine,455,4,grass,,green,none,False,False,74,100,72,90,72,46,27.0,plant,,,,0
+Finneon,456,4,water,,blue,none,False,False,49,49,56,49,61,66,7.0,water2,,,,0
+Lumineon,457,4,water,,blue,level,False,False,69,69,76,69,86,91,24.0,water2,fish,"sinnoh, fins, glow, neon",,0
+Mantyke,458,4,water,flying,blue,none,False,False,45,20,50,60,120,50,65.0,no-eggs,,,,0
+Snover,459,4,grass,ice,white,none,False,False,60,62,50,62,60,40,50.5,"monster, plant",,,,0
+Abomasnow,460,4,grass,ice,white,level,False,False,90,92,75,92,85,60,135.5,"monster, plant",,,,0
+Weavile,461,4,dark,ice,black,level,False,False,70,120,65,45,85,125,34.0,ground,"mustelid, weasel","sinnoh, claws, thief, sneak, feathers","fast, atk",1
+Magnezone,462,4,electric,steel,gray,level,False,False,70,70,115,130,90,60,180.0,mineral,,"sinnoh, magnets, ufo, float","spatk, tanky",0
+Lickilicky,463,4,normal,,pink,level,False,False,110,85,95,80,95,50,140.0,monster,,,tanky,0
+Rhyperior,464,4,ground,rock,gray,trade,False,False,115,140,130,55,55,40,282.8,"monster, ground","pachyderm, rhino","sinnoh, drills, armour, move:earthquake","atk, tanky, heavy",1
+Tangrowth,465,4,grass,,blue,level,False,False,100,100,125,110,50,50,128.6,plant,,"sinnoh, vines, tangle",tanky,0
+Electivire,466,4,electric,,yellow,trade,False,False,75,123,67,95,85,95,138.6,humanshape,,"sinnoh, tails, stripes, brawn",atk,0
+Magmortar,467,4,fire,,red,trade,False,False,75,95,67,125,95,83,68.0,humanshape,,"sinnoh, cannons, flame",spatk,0
+Togekiss,468,4,fairy,flying,white,stone,False,False,85,50,95,120,115,80,38.0,"flying, fairy",bird,"sinnoh, egg-wings, jubilee, grace",spatk,1
+Yanmega,469,4,bug,flying,green,level,False,False,86,76,86,116,56,95,51.5,bug,,,,0
+Leafeon,470,4,grass,,green,level,False,False,65,110,130,60,65,95,25.5,ground,,"sinnoh, eeveelution, leaf, sprout",tanky,1
+Glaceon,471,4,ice,,blue,level,False,False,65,60,110,130,95,65,25.9,ground,,"sinnoh, eeveelution, frost, diamond-dust","spatk, tanky",1
+Gliscor,472,4,ground,flying,purple,level,False,False,75,95,125,45,75,95,42.5,bug,"chiropteran, bat, scorpion","sinnoh, fangs, wings, tail",tanky,0
+Mamoswine,473,4,ice,ground,brown,level,False,False,110,130,80,70,60,80,291.0,ground,"proboscidean, mammoth","sinnoh, tusks, fur, move:earthquake","atk, heavy",1
+Porygon-Z,474,4,normal,,red,trade,False,False,85,80,70,135,75,90,34.0,mineral,,,spatk,0
+Gallade,475,4,psychic,fighting,white,stone,False,False,68,125,65,65,115,80,52.0,"humanshape, indeterminate",,"sinnoh, elbow-blades, chivalry, mega",atk,1
+Probopass,476,4,rock,steel,gray,level,False,False,60,55,145,75,150,40,340.0,mineral,,,"tanky, heavy",0
+Dusknoir,477,4,ghost,,black,trade,False,False,45,100,135,65,135,45,106.6,indeterminate,,,tanky,0
+Froslass,478,4,ice,ghost,white,stone,False,False,70,80,70,80,70,110,26.6,"fairy, mineral",,"sinnoh, kimono, yuki-onna, folklore",fast,1
+Rotom,479,4,electric,ghost,red,none,False,False,50,50,77,95,77,91,0.3,indeterminate,,,,0
+Uxie,480,4,psychic,,yellow,none,True,False,75,75,130,75,130,95,0.3,no-eggs,,legendary,tanky,1
+Mesprit,481,4,psychic,,pink,none,True,False,80,105,105,105,105,80,0.3,no-eggs,,legendary,,1
+Azelf,482,4,psychic,,blue,none,True,False,75,125,70,125,70,115,0.3,no-eggs,,legendary,"fast, atk, spatk",1
+Dialga,483,4,steel,dragon,white,none,True,False,100,120,120,150,100,90,683.0,no-eggs,,legendary,"atk, spatk, tanky, heavy",1
+Palkia,484,4,water,dragon,purple,none,True,False,90,120,100,150,120,100,336.0,no-eggs,,legendary,"fast, atk, spatk, heavy",1
+Heatran,485,4,fire,steel,brown,none,True,False,91,90,106,130,106,77,430.0,no-eggs,,legendary,"spatk, heavy",1
+Regigigas,486,4,normal,,white,none,True,False,110,160,110,80,110,100,420.0,no-eggs,,legendary,"fast, atk, tanky, heavy",1
+Giratina,487,4,ghost,dragon,black,none,True,False,150,100,120,100,120,90,750.0,no-eggs,,legendary,"tanky, heavy",1
+Cresselia,488,4,psychic,,yellow,none,True,False,120,70,110,75,120,85,85.6,no-eggs,,legendary,tanky,1
+Phione,489,4,water,,blue,none,False,True,80,80,80,80,80,80,3.1,"water1, fairy",,mythical,,1
+Manaphy,490,4,water,,blue,none,False,True,100,100,100,100,100,100,1.4,"water1, fairy",,mythical,"fast, tanky",1
+Darkrai,491,4,dark,,black,none,False,True,70,90,90,135,90,125,50.5,no-eggs,,mythical,"fast, spatk",1
+Shaymin,492,4,grass,,green,none,False,True,100,100,100,100,100,100,2.1,no-eggs,,mythical,"fast, tanky",1
+Arceus,493,4,normal,,white,none,False,True,120,120,120,120,120,120,320.0,no-eggs,,mythical,"fast, atk, spatk, tanky, heavy",1
+Victini,494,5,psychic,fire,yellow,none,False,True,100,100,100,100,100,100,4.0,no-eggs,,mythical,"fast, tanky",1
+Snivy,495,5,grass,,green,none,False,False,45,45,55,45,55,63,8.1,"ground, plant",,,,0
+Servine,496,5,grass,,green,level,False,False,60,60,75,60,75,83,16.0,"ground, plant",,,,0
+Serperior,497,5,grass,,green,level,False,False,75,75,95,75,95,113,63.0,"ground, plant","serpent, snake","starter, unova, regal, coils",fast,1
+Tepig,498,5,fire,,red,none,False,False,65,63,45,45,45,45,9.9,ground,,,,0
+Pignite,499,5,fire,fighting,red,level,False,False,90,93,55,70,55,55,55.5,ground,,,,0
+Emboar,500,5,fire,fighting,red,level,False,False,110,123,65,100,65,65,150.0,ground,"boar, pig","starter, unova, beard, fists, tusks",atk,1
+Oshawott,501,5,water,,blue,none,False,False,55,55,45,63,45,45,5.9,ground,,,,0
+Dewott,502,5,water,,blue,level,False,False,75,75,60,83,60,60,24.5,ground,,,,0
+Samurott,503,5,water,,blue,level,False,False,95,100,85,108,70,70,94.6,ground,"pinniped, otter","starter, unova, whiskers, seamitar, samurai",,1
+Patrat,504,5,normal,,brown,none,False,False,45,55,39,35,39,42,11.6,ground,,,,0
+Watchog,505,5,normal,,brown,level,False,False,60,85,69,60,69,77,27.0,ground,,,,0
+Lillipup,506,5,normal,,brown,none,False,False,45,60,45,25,45,55,4.1,ground,,,,0
+Herdier,507,5,normal,,gray,level,False,False,65,80,65,35,65,60,14.7,ground,,,,0
+Stoutland,508,5,normal,,gray,level,False,False,85,110,90,45,90,80,61.0,ground,,,,0
+Purrloin,509,5,dark,,purple,none,False,False,41,50,37,50,37,66,10.1,ground,,,,0
+Liepard,510,5,dark,,purple,level,False,False,64,88,50,88,50,106,37.5,ground,"feline, leopard","unova, sleek-cat, prowl, thief",fast,1
+Pansage,511,5,grass,,green,none,False,False,50,53,48,53,48,64,10.5,ground,,,,0
+Simisage,512,5,grass,,green,stone,False,False,75,98,63,98,63,101,30.5,ground,,,fast,0
+Pansear,513,5,fire,,red,none,False,False,50,53,48,53,48,64,11.0,ground,,,,0
+Simisear,514,5,fire,,red,stone,False,False,75,98,63,98,63,101,28.0,ground,,,fast,0
+Panpour,515,5,water,,blue,none,False,False,50,53,48,53,48,64,13.5,ground,,,,0
+Simipour,516,5,water,,blue,stone,False,False,75,98,63,98,63,101,29.0,ground,,,fast,0
+Munna,517,5,psychic,,pink,none,False,False,76,25,45,67,55,24,23.3,ground,,,,0
+Musharna,518,5,psychic,,pink,stone,False,False,116,55,85,107,95,29,60.5,ground,,,tanky,0
+Pidove,519,5,normal,flying,gray,none,False,False,50,55,50,36,30,43,2.1,flying,,,,0
+Tranquill,520,5,normal,flying,gray,level,False,False,62,77,62,50,42,65,15.0,flying,,,,0
+Unfezant,521,5,normal,flying,gray,level,False,False,80,115,80,65,55,93,29.0,flying,,,,0
+Blitzle,522,5,electric,,black,none,False,False,45,60,32,50,32,76,29.8,ground,,,,0
+Zebstrika,523,5,electric,,black,level,False,False,75,100,63,80,63,116,79.5,ground,"equine, zebra","unova, stripes, mane, hooves",fast,1
+Roggenrola,524,5,rock,,blue,none,False,False,55,75,85,25,25,15,18.0,mineral,,,,0
+Boldore,525,5,rock,,blue,level,False,False,70,105,105,50,40,20,102.0,mineral,,,,0
+Gigalith,526,5,rock,,blue,trade,False,False,85,135,130,60,80,25,260.0,mineral,,,"atk, tanky, heavy",0
+Woobat,527,5,psychic,flying,blue,none,False,False,65,45,43,55,43,72,2.1,"ground, flying",,,,0
+Swoobat,528,5,psychic,flying,blue,friendship,False,False,67,57,55,77,55,114,10.5,"ground, flying",,,fast,0
+Drilbur,529,5,ground,,gray,none,False,False,60,85,40,30,45,68,8.5,ground,,,,0
+Excadrill,530,5,ground,steel,gray,level,False,False,110,135,60,50,65,88,40.4,ground,mole,"unova, drills, claws, burrow, move:earthquake",atk,1
+Audino,531,5,normal,,pink,none,False,False,103,60,86,60,86,50,31.0,fairy,,"unova, ears, nurse, mega, healer",,1
+Timburr,532,5,fighting,,gray,none,False,False,75,80,55,25,35,35,12.5,humanshape,,,,0
+Gurdurr,533,5,fighting,,gray,level,False,False,85,105,85,40,50,40,40.0,humanshape,,,,0
+Conkeldurr,534,5,fighting,,brown,trade,False,False,105,140,95,55,65,45,87.0,humanshape,,,atk,0
+Tympole,535,5,water,,blue,none,False,False,50,50,40,50,40,64,4.5,water1,,,,0
+Palpitoad,536,5,water,ground,blue,level,False,False,75,65,55,65,55,69,17.0,water1,,,,0
+Seismitoad,537,5,water,ground,blue,level,False,False,105,95,75,85,75,74,62.0,water1,,,,0
+Throh,538,5,fighting,,red,none,False,False,120,100,85,30,85,45,55.5,humanshape,,,,0
+Sawk,539,5,fighting,,blue,none,False,False,75,125,75,30,75,85,51.0,humanshape,,,atk,0
+Sewaddle,540,5,bug,grass,yellow,none,False,False,45,53,70,40,60,42,2.5,bug,,,,0
+Swadloon,541,5,bug,grass,green,level,False,False,55,63,90,50,80,42,7.3,bug,,,,0
+Leavanny,542,5,bug,grass,yellow,friendship,False,False,75,103,80,70,80,92,20.5,bug,,,,0
+Venipede,543,5,bug,poison,red,none,False,False,30,45,59,30,39,57,5.3,bug,,,,0
+Whirlipede,544,5,bug,poison,gray,level,False,False,40,55,99,40,79,47,58.5,bug,,,,0
+Scolipede,545,5,bug,poison,red,level,False,False,60,100,89,55,69,112,200.5,bug,,,fast,0
+Cottonee,546,5,grass,fairy,green,none,False,False,40,27,60,37,50,66,0.6,"plant, fairy",,,,0
+Whimsicott,547,5,grass,fairy,green,stone,False,False,60,67,85,77,75,116,6.6,"plant, fairy",,,fast,0
+Petilil,548,5,grass,,green,none,False,False,45,35,50,70,50,30,6.6,plant,,,,0
+Lilligant,549,5,grass,,green,stone,False,False,70,60,75,110,75,90,16.3,plant,,,,0
+Basculin,550,5,water,,green,none,False,False,70,92,65,80,55,98,18.0,water2,,,,0
+Sandile,551,5,ground,dark,brown,none,False,False,50,72,35,35,35,65,15.2,ground,,,,0
+Krokorok,552,5,ground,dark,brown,level,False,False,60,82,45,45,45,74,33.4,ground,,,,0
+Krookodile,553,5,ground,dark,red,level,False,False,95,117,80,65,70,92,96.3,ground,"reptile, crocodile","unova, jaws, shades, intimidate, move:earthquake",,1
+Darumaka,554,5,fire,,red,none,False,False,70,90,45,15,45,50,37.5,ground,,,,0
+Darmanitan,555,5,fire,,red,stone,False,False,105,140,55,30,55,95,92.9,ground,,,atk,0
+Maractus,556,5,grass,,green,none,False,False,75,86,67,106,67,60,28.0,plant,,,,0
+Dwebble,557,5,bug,rock,red,none,False,False,50,65,85,35,35,55,14.5,"bug, mineral",,,,0
+Crustle,558,5,bug,rock,red,level,False,False,70,105,125,65,75,45,200.0,"bug, mineral",,,tanky,0
+Scraggy,559,5,dark,fighting,yellow,none,False,False,50,75,70,35,70,48,11.8,"ground, dragon",,,,0
+Scrafty,560,5,dark,fighting,red,level,False,False,65,90,115,45,115,58,30.0,"ground, dragon","reptile, lizard","unova, hoodie, crest, thug",tanky,1
+Sigilyph,561,5,psychic,flying,black,none,False,False,72,58,80,103,80,97,14.0,flying,,,,0
+Yamask,562,5,ghost,,black,none,False,False,38,30,85,55,65,30,1.5,"mineral, indeterminate",,,,0
+Cofagrigus,563,5,ghost,,yellow,level,False,False,58,50,145,95,105,30,76.5,"mineral, indeterminate",,,tanky,0
+Tirtouga,564,5,water,rock,blue,none,False,False,54,78,103,53,45,22,16.5,"water1, water3",,,,0
+Carracosta,565,5,water,rock,blue,level,False,False,74,108,133,83,65,32,81.0,"water1, water3",,,tanky,0
+Archen,566,5,rock,flying,yellow,none,False,False,55,112,45,74,45,70,9.5,"flying, water3",,,,0
+Archeops,567,5,rock,flying,yellow,level,False,False,75,140,65,112,65,110,32.0,"flying, water3",,,"fast, atk",0
+Trubbish,568,5,poison,,green,none,False,False,50,50,62,40,62,65,31.0,mineral,,,,0
+Garbodor,569,5,poison,,green,level,False,False,80,95,82,60,82,75,107.3,mineral,,,,0
+Zorua,570,5,dark,,gray,none,False,False,40,65,40,80,40,65,12.5,ground,,,,0
+Zoroark,571,5,dark,,gray,level,False,False,60,105,60,120,60,105,81.1,ground,"canine, fox","unova, ponytail, illusion, trickster, kitsune","fast, spatk",1
+Minccino,572,5,normal,,gray,none,False,False,55,50,40,40,40,75,5.8,ground,,,,0
+Cinccino,573,5,normal,,gray,stone,False,False,75,95,60,65,60,115,7.5,ground,,,fast,0
+Gothita,574,5,psychic,,purple,none,False,False,45,30,50,55,65,45,5.8,humanshape,,,,0
+Gothorita,575,5,psychic,,purple,level,False,False,60,45,70,75,85,55,18.0,humanshape,,,,0
+Gothitelle,576,5,psychic,,purple,level,False,False,70,55,95,95,110,65,44.0,humanshape,,,,0
+Solosis,577,5,psychic,,green,none,False,False,45,30,40,105,50,20,1.0,indeterminate,,,,0
+Duosion,578,5,psychic,,green,level,False,False,65,40,50,125,60,30,8.0,indeterminate,,,spatk,0
+Reuniclus,579,5,psychic,,green,level,False,False,110,65,75,125,85,30,20.1,indeterminate,,,spatk,0
+Ducklett,580,5,water,flying,blue,none,False,False,62,44,50,44,50,55,5.5,"water1, flying",,,,0
+Swanna,581,5,water,flying,white,level,False,False,75,87,63,87,63,98,24.2,"water1, flying",,,,0
+Vanillite,582,5,ice,,white,none,False,False,36,50,50,65,60,44,5.7,mineral,,,,0
+Vanillish,583,5,ice,,white,level,False,False,51,65,65,80,75,59,41.0,mineral,,,,0
+Vanilluxe,584,5,ice,,white,level,False,False,71,95,85,110,95,79,57.5,mineral,,,,0
+Deerling,585,5,normal,grass,pink,none,False,False,60,60,50,40,50,75,19.5,ground,,,,0
+Sawsbuck,586,5,normal,grass,brown,level,False,False,80,100,70,60,70,95,92.5,ground,,,,0
+Emolga,587,5,electric,flying,white,none,False,False,55,75,60,75,60,103,5.0,ground,,,fast,0
+Karrablast,588,5,bug,,blue,none,False,False,50,75,45,40,45,60,5.9,bug,,,,0
+Escavalier,589,5,bug,steel,gray,trade,False,False,70,135,105,60,105,20,33.0,bug,,,atk,0
+Foongus,590,5,grass,poison,white,none,False,False,69,55,45,55,55,15,1.0,plant,,,,0
+Amoonguss,591,5,grass,poison,white,level,False,False,114,85,70,85,80,30,10.5,plant,,,,0
+Frillish,592,5,water,ghost,white,none,False,False,55,40,50,65,85,40,33.0,indeterminate,,,,0
+Jellicent,593,5,water,ghost,white,level,False,False,100,60,70,85,105,60,135.0,indeterminate,,,,0
+Alomomola,594,5,water,,pink,none,False,False,165,75,80,40,45,65,31.6,"water1, water2",fish,"unova, heart, nurse, caretaker",,0
+Joltik,595,5,bug,electric,yellow,none,False,False,50,47,50,57,50,65,0.6,bug,,,,0
+Galvantula,596,5,bug,electric,yellow,level,False,False,70,77,60,97,60,108,14.3,bug,,,fast,0
+Ferroseed,597,5,grass,steel,gray,none,False,False,44,50,91,24,86,10,18.8,"plant, mineral",,,,0
+Ferrothorn,598,5,grass,steel,gray,level,False,False,74,94,131,54,116,20,110.0,"plant, mineral",,,tanky,0
+Klink,599,5,steel,,gray,none,False,False,40,55,70,45,60,30,21.0,mineral,,,,0
+Klang,600,5,steel,,gray,level,False,False,60,80,95,70,85,50,51.0,mineral,,,,0
+Klinklang,601,5,steel,,gray,level,False,False,60,100,115,70,85,90,81.0,mineral,,,tanky,0
+Tynamo,602,5,electric,,white,none,False,False,35,55,40,45,40,60,0.3,indeterminate,,,,0
+Eelektrik,603,5,electric,,blue,level,False,False,65,85,70,75,70,40,22.0,indeterminate,,,,0
+Eelektross,604,5,electric,,blue,stone,False,False,85,115,80,105,80,50,80.5,indeterminate,,,,0
+Elgyem,605,5,psychic,,blue,none,False,False,55,55,55,85,55,30,9.0,humanshape,,,,0
+Beheeyem,606,5,psychic,,brown,level,False,False,75,75,75,125,95,40,34.5,humanshape,,,spatk,0
+Litwick,607,5,ghost,fire,white,none,False,False,50,30,55,65,55,20,3.1,indeterminate,,,,0
+Lampent,608,5,ghost,fire,black,level,False,False,60,40,60,95,60,55,13.0,indeterminate,,,,0
+Chandelure,609,5,ghost,fire,black,stone,False,False,60,55,90,145,90,80,34.3,indeterminate,,"unova, lantern, chandelier, levitate, will-o-wisp, folklore",spatk,1
+Axew,610,5,dragon,,green,none,False,False,46,87,60,30,40,57,18.0,"monster, dragon",,,,0
+Fraxure,611,5,dragon,,green,level,False,False,66,117,70,40,50,67,36.0,"monster, dragon",,,,0
+Haxorus,612,5,dragon,,yellow,level,False,False,76,147,90,60,70,97,105.5,"monster, dragon",dragon,"unova, axe-jaw, tusks, blades",atk,1
+Cubchoo,613,5,ice,,white,none,False,False,55,70,40,60,40,40,8.5,ground,,,,0
+Beartic,614,5,ice,,white,level,False,False,95,130,80,70,80,50,260.0,ground,"bear, polar-bear","unova, ice-beard, claws","atk, heavy",1
+Cryogonal,615,5,ice,,blue,none,False,False,80,50,50,95,135,105,148.0,mineral,,"unova, snowflake, crystal, chains",fast,0
+Shelmet,616,5,bug,,red,none,False,False,50,40,85,40,65,25,7.7,bug,,,,0
+Accelgor,617,5,bug,,red,trade,False,False,80,70,40,100,60,145,25.3,bug,,,fast,0
+Stunfisk,618,5,ground,electric,brown,none,False,False,109,66,84,81,99,32,11.0,"water1, indeterminate",,,tanky,0
+Mienfoo,619,5,fighting,,yellow,none,False,False,45,85,50,55,50,65,20.0,"ground, humanshape",,,,0
+Mienshao,620,5,fighting,,purple,level,False,False,65,125,60,95,60,105,35.5,"ground, humanshape","mustelid, weasel","unova, sleeves, martial-arts","fast, atk",0
+Druddigon,621,5,dragon,,red,none,False,False,77,120,90,60,90,48,139.0,"dragon, monster",dragon,"unova, rough-skin, claws",atk,0
+Golett,622,5,ground,ghost,green,none,False,False,59,74,50,35,50,35,92.0,mineral,,,,0
+Golurk,623,5,ground,ghost,green,level,False,False,89,124,80,55,80,55,330.0,mineral,,"unova, golem-mythos, automaton, rocket, seal","atk, heavy",1
+Pawniard,624,5,dark,steel,red,none,False,False,45,85,70,40,40,60,10.2,humanshape,,,,0
+Bisharp,625,5,dark,steel,red,level,False,False,65,125,100,60,70,70,70.0,humanshape,,"unova, blades, warlord, helmet, axe",atk,1
+Bouffalant,626,5,normal,,brown,none,False,False,95,110,95,40,95,55,94.6,ground,,,,0
+Rufflet,627,5,normal,flying,white,none,False,False,70,83,50,37,50,60,10.5,flying,,,,0
+Braviary,628,5,normal,flying,red,level,False,False,100,123,75,57,75,80,41.0,flying,"bird, raptor, eagle","unova, eagle, valour, talons",atk,1
+Vullaby,629,5,dark,flying,brown,none,False,False,70,55,75,45,65,60,9.0,flying,,,,0
+Mandibuzz,630,5,dark,flying,brown,level,False,False,110,65,105,55,95,80,39.5,flying,,,tanky,0
+Heatmor,631,5,fire,,red,none,False,False,85,97,66,105,66,65,58.0,ground,,,,0
+Durant,632,5,bug,steel,gray,none,False,False,58,109,112,48,48,109,33.0,bug,,,"fast, tanky",0
+Deino,633,5,dark,dragon,blue,none,False,False,52,65,50,45,50,38,17.3,dragon,,,,0
+Zweilous,634,5,dark,dragon,blue,level,False,False,72,85,70,65,70,58,50.0,dragon,,,,0
+Hydreigon,635,5,dark,dragon,blue,level,False,False,92,105,90,125,90,98,160.0,dragon,"hydra, dragon","unova, pseudo, three-heads, hydra-mythos",spatk,1
+Larvesta,636,5,bug,fire,white,none,False,False,55,85,55,50,55,60,28.8,bug,,,,0
+Volcarona,637,5,bug,fire,white,level,False,False,85,60,65,135,105,100,46.0,bug,"insect, moth","unova, sun-wings, embers, moth","fast, spatk",1
+Cobalion,638,5,steel,fighting,blue,none,True,False,91,90,129,90,72,108,250.0,no-eggs,,legendary,"fast, tanky, heavy",1
+Terrakion,639,5,rock,fighting,gray,none,True,False,91,129,90,72,90,108,260.0,no-eggs,,legendary,"fast, atk, heavy",1
+Virizion,640,5,grass,fighting,green,none,True,False,91,90,72,90,129,108,200.0,no-eggs,,legendary,fast,1
+Tornadus,641,5,flying,,green,none,True,False,79,115,70,125,80,111,63.0,no-eggs,,legendary,"fast, spatk",1
+Thundurus,642,5,electric,flying,blue,none,True,False,79,115,70,125,80,111,61.0,no-eggs,,legendary,"fast, spatk",1
+Reshiram,643,5,dragon,fire,white,none,True,False,100,120,100,150,120,90,330.0,no-eggs,,legendary,"atk, spatk, tanky, heavy",1
+Zekrom,644,5,dragon,electric,black,none,True,False,100,150,120,120,100,90,345.0,no-eggs,,legendary,"atk, spatk, tanky, heavy",1
+Landorus,645,5,ground,flying,brown,none,True,False,89,125,90,115,80,101,68.0,no-eggs,,legendary,"fast, atk",1
+Kyurem,646,5,dragon,ice,gray,none,True,False,125,130,90,130,90,95,325.0,no-eggs,,legendary,"atk, spatk, tanky, heavy",1
+Keldeo,647,5,water,fighting,yellow,none,False,True,91,72,90,129,90,108,48.5,no-eggs,,mythical,"fast, spatk",1
+Meloetta,648,5,normal,psychic,white,none,False,True,100,77,77,128,128,90,6.5,no-eggs,,mythical,"spatk, tanky",1
+Genesect,649,5,bug,steel,purple,none,False,True,71,120,95,120,95,99,82.5,no-eggs,,mythical,"atk, spatk",1
+Chespin,650,6,grass,,green,none,False,False,56,61,65,48,45,38,9.0,ground,,,,0
+Quilladin,651,6,grass,,green,level,False,False,61,78,95,56,58,57,29.0,ground,,,,0
+Chesnaught,652,6,grass,fighting,green,level,False,False,88,107,122,74,75,64,90.0,ground,,"starter, kalos, armour, spikes, knight",tanky,1
+Fennekin,653,6,fire,,red,none,False,False,40,45,40,62,60,60,9.4,ground,,,,0
+Braixen,654,6,fire,,red,level,False,False,59,59,58,90,70,73,14.5,ground,,,,0
+Delphox,655,6,fire,psychic,red,level,False,False,75,69,72,114,100,104,39.0,ground,"fox, canine","starter, kalos, wand, robe, witch, kitsune",fast,1
+Froakie,656,6,water,,blue,none,False,False,41,56,40,62,44,71,7.0,water1,,,,0
+Frogadier,657,6,water,,blue,level,False,False,54,63,52,83,56,97,10.9,water1,,,,0
+Greninja,658,6,water,dark,blue,level,False,False,72,95,67,103,71,122,40.0,water1,"frog, ninja","starter, kalos, tongue-scarf, ninja, shuriken",fast,1
+Bunnelby,659,6,normal,,brown,none,False,False,38,36,38,32,36,57,5.0,ground,,,,0
+Diggersby,660,6,normal,ground,brown,level,False,False,85,56,77,50,77,78,42.4,ground,,,,0
+Fletchling,661,6,normal,flying,red,none,False,False,45,50,43,40,38,62,1.7,flying,,,,0
+Fletchinder,662,6,fire,flying,red,level,False,False,62,73,55,56,52,84,16.0,flying,,,,0
+Talonflame,663,6,fire,flying,red,level,False,False,78,81,71,74,69,126,24.5,flying,"bird, falcon, raptor","kalos, talons, embers, move:fly",fast,1
+Scatterbug,664,6,bug,,black,none,False,False,38,35,40,27,25,35,2.5,bug,,,,0
+Spewpa,665,6,bug,,black,level,False,False,45,22,60,27,30,29,8.4,bug,,,,0
+Vivillon,666,6,bug,flying,white,level,False,False,80,52,50,90,50,89,17.0,bug,,,,0
+Litleo,667,6,fire,normal,brown,none,False,False,62,50,58,73,54,72,13.5,ground,,,,0
+Pyroar,668,6,fire,normal,brown,level,False,False,86,68,72,109,66,106,81.5,ground,,,fast,0
+Flabébé,669,6,fairy,,white,none,False,False,44,38,39,61,79,42,0.1,fairy,,,,0
+Floette,670,6,fairy,,white,level,False,False,54,45,47,75,98,52,0.9,fairy,,,,0
+Florges,671,6,fairy,,white,stone,False,False,78,65,68,112,154,75,10.0,fairy,,"kalos, flower, garden, blossom, elegant",,1
+Skiddo,672,6,grass,,brown,none,False,False,66,65,48,62,57,52,31.0,ground,,,,0
+Gogoat,673,6,grass,,brown,level,False,False,123,100,62,97,81,68,91.0,ground,,,,0
+Pancham,674,6,fighting,,white,none,False,False,67,82,62,46,48,43,8.0,"ground, humanshape",,,,0
+Pangoro,675,6,fighting,dark,white,level,False,False,95,124,78,69,71,58,136.0,"ground, humanshape",,,atk,0
+Furfrou,676,6,normal,,white,none,False,False,75,80,60,65,90,102,28.0,ground,,,fast,0
+Espurr,677,6,psychic,,gray,none,False,False,62,48,54,63,60,68,3.5,ground,,,,0
+Meowstic,678,6,psychic,,blue,level,False,False,74,48,76,83,81,104,8.5,ground,,,fast,0
+Honedge,679,6,steel,ghost,brown,none,False,False,45,80,100,35,37,28,2.0,mineral,,,,0
+Doublade,680,6,steel,ghost,brown,level,False,False,59,110,150,45,49,35,4.5,mineral,,,tanky,0
+Aegislash,681,6,steel,ghost,brown,stone,False,False,60,50,140,50,140,60,53.0,mineral,,"kalos, sword, shield, hilt, royal-blade",tanky,1
+Spritzee,682,6,fairy,,pink,none,False,False,78,52,60,63,65,23,0.5,fairy,,,,0
+Aromatisse,683,6,fairy,,pink,trade,False,False,101,72,72,99,89,29,15.5,fairy,,,,0
+Swirlix,684,6,fairy,,white,none,False,False,62,48,66,59,57,49,3.5,fairy,,,,0
+Slurpuff,685,6,fairy,,white,trade,False,False,82,80,86,85,75,72,5.0,fairy,,,,0
+Inkay,686,6,dark,psychic,blue,none,False,False,53,54,53,37,46,45,3.5,"water1, water2",,,,0
+Malamar,687,6,dark,psychic,blue,level,False,False,86,92,88,68,75,73,47.0,"water1, water2","cephalopod, squid","kalos, squid, hypnosis, upside-down",,1
+Binacle,688,6,rock,water,brown,none,False,False,42,52,67,39,56,50,31.0,water3,,,,0
+Barbaracle,689,6,rock,water,brown,level,False,False,72,105,115,54,86,68,96.0,water3,,,tanky,0
+Skrelp,690,6,poison,water,brown,none,False,False,50,60,60,60,60,30,7.3,"water1, dragon",,,,0
+Dragalge,691,6,poison,dragon,brown,level,False,False,65,75,90,97,123,44,81.5,"water1, dragon",,,,0
+Clauncher,692,6,water,,blue,none,False,False,50,53,62,58,63,44,8.3,"water1, water3",,,,0
+Clawitzer,693,6,water,,blue,level,False,False,71,73,88,120,89,59,35.3,"water1, water3",,,spatk,0
+Helioptile,694,6,electric,normal,yellow,none,False,False,44,38,33,61,43,70,6.0,"monster, dragon",,,,0
+Heliolisk,695,6,electric,normal,yellow,stone,False,False,62,55,52,109,94,109,21.0,"monster, dragon",,,fast,0
+Tyrunt,696,6,rock,dragon,brown,none,False,False,58,89,77,45,45,48,26.0,"monster, dragon",,,,0
+Tyrantrum,697,6,rock,dragon,red,level,False,False,82,121,119,69,59,71,270.0,"monster, dragon","dinosaur, theropod","kalos, fossil, king-jaw, t-rex, despot","atk, tanky, heavy",1
+Amaura,698,6,rock,ice,blue,none,False,False,77,59,50,67,63,46,25.2,monster,,,,0
+Aurorus,699,6,rock,ice,blue,level,False,False,123,77,72,99,92,58,225.0,monster,,,,0
+Sylveon,700,6,fairy,,pink,friendship,False,False,95,65,65,110,130,60,23.5,ground,,"kalos, eeveelution, bows, ribbons, feelers",,1
+Hawlucha,701,6,fighting,flying,green,none,False,False,78,92,75,74,63,118,21.5,"flying, humanshape",,,fast,0
+Dedenne,702,6,electric,fairy,yellow,none,False,False,67,58,57,81,67,101,2.2,"ground, fairy",,,fast,0
+Carbink,703,6,rock,fairy,gray,none,False,False,50,50,150,50,150,50,5.7,"fairy, mineral",,,tanky,0
+Goomy,704,6,dragon,,purple,none,False,False,45,50,35,55,75,40,2.8,dragon,,,,0
+Sliggoo,705,6,dragon,,purple,level,False,False,68,75,53,83,113,60,17.5,dragon,,,,0
+Goodra,706,6,dragon,,purple,level,False,False,90,100,70,110,150,80,150.5,dragon,"dragon, slug","kalos, pseudo, slime, horns, gooey",,1
+Klefki,707,6,steel,fairy,gray,none,False,False,57,80,91,80,87,75,3.0,mineral,,"kalos, keys, keyring, collector",,1
+Phantump,708,6,ghost,grass,brown,none,False,False,43,70,48,50,60,38,7.0,"plant, indeterminate",,,,0
+Trevenant,709,6,ghost,grass,brown,trade,False,False,85,110,76,65,82,56,71.0,"plant, indeterminate",,"kalos, haunted-tree, folklore, roots",,0
+Pumpkaboo,710,6,ghost,grass,brown,none,False,False,49,66,70,44,55,51,5.0,indeterminate,,,,0
+Gourgeist,711,6,ghost,grass,brown,trade,False,False,65,90,122,58,75,84,12.5,indeterminate,,"kalos, pumpkin, jack-o-lantern, halloween, folklore",tanky,0
+Bergmite,712,6,ice,,blue,none,False,False,55,69,85,32,35,28,99.5,"monster, mineral",,,,0
+Avalugg,713,6,ice,,blue,level,False,False,95,117,184,44,46,28,505.0,"monster, mineral",,,"tanky, heavy",0
+Noibat,714,6,flying,dragon,purple,none,False,False,40,30,35,45,40,55,8.0,"flying, dragon",,,,0
+Noivern,715,6,flying,dragon,purple,level,False,False,85,70,80,97,80,123,85.0,"flying, dragon","chiropteran, bat, wyvern","kalos, sound, wings, ears",fast,1
+Xerneas,716,6,fairy,,blue,none,True,False,126,131,95,131,98,99,215.0,no-eggs,,legendary,"atk, spatk, tanky",1
+Yveltal,717,6,dark,flying,red,none,True,False,126,131,95,131,98,99,203.0,no-eggs,,legendary,"atk, spatk, tanky",1
+Zygarde,718,6,dragon,ground,green,none,True,False,108,100,121,81,95,95,305.0,no-eggs,,legendary,"tanky, heavy",1
+Diancie,719,6,rock,fairy,pink,none,False,True,50,100,150,100,150,50,8.8,no-eggs,,mythical,tanky,1
+Hoopa,720,6,psychic,ghost,purple,none,False,True,80,110,60,150,130,70,9.0,no-eggs,,mythical,spatk,1
+Volcanion,721,6,fire,water,brown,none,False,True,80,110,120,130,90,70,195.0,no-eggs,,mythical,"spatk, tanky",1
+Rowlet,722,7,grass,flying,brown,none,False,False,68,55,55,50,50,42,1.5,flying,,,,0
+Dartrix,723,7,grass,flying,brown,level,False,False,78,75,75,70,70,52,16.0,flying,,,,0
+Decidueye,724,7,grass,ghost,brown,level,False,False,78,107,75,100,100,70,36.6,flying,"bird, owl","starter, alola, archer, hood, owl",,1
+Litten,725,7,fire,,red,none,False,False,45,65,40,60,40,70,4.3,ground,,,,0
+Torracat,726,7,fire,,red,level,False,False,65,85,50,80,50,90,25.0,ground,,,,0
+Incineroar,727,7,fire,dark,red,level,False,False,95,115,90,80,90,60,83.0,ground,"feline, tiger","starter, alola, belt-fire, wrestler, heel, intimidate",,1
+Popplio,728,7,water,,blue,none,False,False,50,54,54,66,56,40,7.5,"water1, ground",,,,0
+Brionne,729,7,water,,blue,level,False,False,60,69,69,91,81,50,17.5,"water1, ground",,,,0
+Primarina,730,7,water,fairy,blue,level,False,False,80,74,74,126,116,60,44.0,"water1, ground","pinniped, sea-lion","starter, alola, opera, diva, song",spatk,1
+Pikipek,731,7,normal,flying,black,none,False,False,35,75,30,30,30,65,1.2,flying,,,,0
+Trumbeak,732,7,normal,flying,black,level,False,False,55,85,50,40,50,75,14.8,flying,,,,0
+Toucannon,733,7,normal,flying,black,level,False,False,80,120,75,75,75,60,26.0,flying,,,atk,0
+Yungoos,734,7,normal,,brown,none,False,False,48,70,30,30,30,45,6.0,ground,,,,0
+Gumshoos,735,7,normal,,brown,level,False,False,88,110,60,55,60,45,14.2,ground,,,,0
+Grubbin,736,7,bug,,gray,none,False,False,47,62,45,55,45,46,4.4,bug,,,,0
+Charjabug,737,7,bug,electric,green,level,False,False,57,82,95,55,75,36,10.5,bug,,,,0
+Vikavolt,738,7,bug,electric,blue,stone,False,False,77,70,90,145,75,43,45.0,bug,,,spatk,0
+Crabrawler,739,7,fighting,,purple,none,False,False,47,82,57,42,47,63,7.0,water3,,,,0
+Crabominable,740,7,fighting,ice,white,stone,False,False,97,132,77,62,67,43,180.0,water3,,,atk,0
+Oricorio,741,7,fire,flying,red,none,False,False,75,70,70,98,70,93,3.4,flying,,,,0
+Cutiefly,742,7,bug,fairy,yellow,none,False,False,40,45,40,55,40,84,0.2,"bug, fairy",,,,0
+Ribombee,743,7,bug,fairy,yellow,level,False,False,60,55,60,95,70,124,0.5,"bug, fairy",,,fast,0
+Rockruff,744,7,rock,,brown,none,False,False,45,65,40,30,40,60,9.2,ground,,,,0
+Lycanroc,745,7,rock,,brown,level,False,False,75,115,65,55,65,112,25.0,ground,"canine, wolf","alola, wolf, mane, howl",fast,1
+Wishiwashi,746,7,water,,blue,none,False,False,45,20,20,25,25,40,0.3,water2,,,,0
+Mareanie,747,7,poison,water,blue,none,False,False,50,53,62,43,52,45,8.0,water1,,,,0
+Toxapex,748,7,poison,water,blue,level,False,False,50,63,152,53,142,35,14.5,water1,"echinoderm, starfish","alola, spikes, crown-of-thorns, venom",tanky,1
+Mudbray,749,7,ground,,brown,none,False,False,70,100,70,45,55,45,110.0,ground,"equine, donkey","alola, hooves, stubborn, mud",,0
+Mudsdale,750,7,ground,,brown,level,False,False,100,125,100,55,85,35,920.0,ground,"equine, horse, draft-horse","alola, hooves, clydesdale, kick","atk, tanky, heavy",1
+Dewpider,751,7,water,bug,green,none,False,False,38,40,52,40,72,27,4.0,"water1, bug",,,,0
+Araquanid,752,7,water,bug,green,level,False,False,68,70,92,50,132,42,82.0,"water1, bug",,,,0
+Fomantis,753,7,grass,,pink,none,False,False,40,55,35,50,35,35,1.5,plant,,,,0
+Lurantis,754,7,grass,,pink,level,False,False,70,105,90,80,90,45,18.5,plant,,,,0
+Morelull,755,7,grass,fairy,purple,none,False,False,40,35,55,65,75,15,1.5,plant,,,,0
+Shiinotic,756,7,grass,fairy,purple,level,False,False,60,45,80,90,100,30,11.5,plant,,,,0
+Salandit,757,7,poison,fire,black,none,False,False,48,44,40,71,40,77,4.8,"monster, dragon",,,,0
+Salazzle,758,7,poison,fire,black,level,False,False,68,64,60,111,60,117,22.2,"monster, dragon","reptile, lizard","alola, toxic, salamander, allure",fast,0
+Stufful,759,7,normal,fighting,pink,none,False,False,70,75,50,45,50,50,6.8,ground,,,,0
+Bewear,760,7,normal,fighting,pink,level,False,False,120,125,80,55,60,60,135.0,ground,bear,"alola, hug, dangerous, ribbon",atk,1
+Bounsweet,761,7,grass,,purple,none,False,False,42,30,38,30,38,32,3.2,plant,,,,0
+Steenee,762,7,grass,,purple,level,False,False,52,40,48,40,48,62,8.2,plant,,,,0
+Tsareena,763,7,grass,,purple,level,False,False,72,120,98,50,98,72,21.4,plant,,,atk,0
+Comfey,764,7,fairy,,green,none,False,False,51,52,90,82,110,100,0.3,plant,,,fast,0
+Oranguru,765,7,normal,psychic,white,none,False,False,90,60,80,90,110,60,76.0,ground,,,,0
+Passimian,766,7,fighting,,white,none,False,False,100,120,90,40,60,80,82.8,ground,,,atk,0
+Wimpod,767,7,bug,water,gray,none,False,False,25,35,40,20,30,80,12.0,"bug, water3",,,,0
+Golisopod,768,7,bug,water,gray,level,False,False,75,125,140,60,90,40,108.0,"bug, water3","crustacean, isopod","alola, armour, claws, chivalry","atk, tanky",1
+Sandygast,769,7,ghost,ground,brown,none,False,False,55,55,80,70,45,15,70.0,indeterminate,,,,0
+Palossand,770,7,ghost,ground,brown,level,False,False,85,75,110,100,75,35,250.0,indeterminate,,,"tanky, heavy",0
+Pyukumuku,771,7,water,,black,none,False,False,55,60,130,30,130,5,1.2,water1,,,tanky,0
+Type: Null,772,7,normal,,gray,none,True,False,95,95,95,95,95,59,120.5,no-eggs,,legendary,,1
+Silvally,773,7,normal,,gray,friendship,True,False,95,95,95,95,95,95,100.5,no-eggs,,legendary,,1
+Minior,774,7,rock,flying,brown,none,False,False,60,60,100,60,100,60,40.0,mineral,,,,0
+Komala,775,7,normal,,blue,none,False,False,65,115,65,75,95,65,19.9,ground,,,,0
+Turtonator,776,7,fire,dragon,red,none,False,False,60,78,135,91,85,36,212.0,"monster, dragon",,,tanky,0
+Togedemaru,777,7,electric,steel,gray,none,False,False,65,98,63,40,73,96,3.3,"ground, fairy",,,,0
+Mimikyu,778,7,ghost,fairy,yellow,none,False,False,55,90,80,50,105,96,0.7,indeterminate,,"alola, rag, disguise, pikachu-costume, folklore",,1
+Bruxish,779,7,water,psychic,pink,none,False,False,68,105,70,70,70,92,19.0,water2,fish,"alola, teeth, grind, triggerfish",,0
+Drampa,780,7,normal,dragon,white,none,False,False,78,60,85,135,91,36,185.0,"monster, dragon",,,spatk,0
+Dhelmise,781,7,ghost,grass,green,none,False,False,70,131,100,86,90,40,210.0,mineral,,,atk,0
+Jangmo-o,782,7,dragon,,gray,none,False,False,45,55,65,45,45,45,29.7,dragon,,,,0
+Hakamo-o,783,7,dragon,fighting,gray,level,False,False,55,75,90,65,70,65,47.0,dragon,,,,0
+Kommo-o,784,7,dragon,fighting,gray,level,False,False,75,110,125,100,105,85,78.2,dragon,dragon,"alola, scales, drums, clanging",tanky,1
+Tapu Koko,785,7,electric,fairy,yellow,none,True,False,70,115,85,95,75,130,20.5,no-eggs,,legendary,fast,1
+Tapu Lele,786,7,psychic,fairy,pink,none,True,False,70,85,75,130,115,95,18.6,no-eggs,,legendary,spatk,1
+Tapu Bulu,787,7,grass,fairy,red,none,True,False,70,130,115,85,95,75,45.5,no-eggs,,legendary,"atk, tanky",1
+Tapu Fini,788,7,water,fairy,purple,none,True,False,70,75,115,95,130,85,21.2,no-eggs,,legendary,tanky,1
+Cosmog,789,7,psychic,,blue,none,True,False,43,29,31,29,31,37,0.1,no-eggs,,legendary,,1
+Cosmoem,790,7,psychic,,blue,level,True,False,43,29,131,29,131,37,999.9,no-eggs,,legendary,"tanky, heavy",1
+Solgaleo,791,7,psychic,steel,white,level,True,False,137,137,107,113,89,97,230.0,no-eggs,,legendary,"atk, tanky",1
+Lunala,792,7,psychic,ghost,purple,level,True,False,137,113,89,137,107,97,120.0,no-eggs,,legendary,"spatk, tanky",1
+Nihilego,793,7,rock,poison,white,none,False,False,109,53,47,127,131,103,55.5,no-eggs,,,"fast, spatk",0
+Buzzwole,794,7,bug,fighting,red,none,False,False,107,139,139,53,53,79,333.6,no-eggs,,,"atk, tanky, heavy",0
+Pheromosa,795,7,bug,fighting,white,none,False,False,71,137,37,137,37,151,25.0,no-eggs,,,"fast, atk, spatk",0
+Xurkitree,796,7,electric,,black,none,False,False,83,89,71,173,71,83,100.0,no-eggs,,,spatk,0
+Celesteela,797,7,steel,flying,green,none,False,False,97,101,103,107,101,61,999.9,no-eggs,,,heavy,0
+Kartana,798,7,grass,steel,white,none,False,False,59,181,131,59,31,109,0.1,no-eggs,,"alola, paper, origami, blade, ultra-beast","fast, atk, tanky",1
+Guzzlord,799,7,dark,dragon,black,none,False,False,223,101,53,97,53,43,888.0,no-eggs,,,heavy,0
+Necrozma,800,7,psychic,,black,none,True,False,97,107,101,127,89,79,230.0,no-eggs,,legendary,spatk,1
+Magearna,801,7,steel,fairy,gray,none,False,True,80,95,115,130,115,65,80.5,no-eggs,,mythical,"spatk, tanky",1
+Marshadow,802,7,fighting,ghost,gray,none,False,True,90,125,80,90,90,125,22.2,no-eggs,,mythical,"fast, atk",1
+Poipole,803,7,poison,,purple,none,False,False,67,73,67,73,67,73,1.8,no-eggs,,,,0
+Naganadel,804,7,poison,dragon,purple,level,False,False,73,73,73,127,73,121,150.0,no-eggs,,,"fast, spatk",0
+Stakataka,805,7,rock,steel,gray,none,False,False,61,131,211,53,101,13,820.0,no-eggs,,,"atk, tanky, heavy",0
+Blacephalon,806,7,fire,ghost,white,none,False,False,53,127,53,151,79,107,13.0,no-eggs,,,"fast, atk, spatk",0
+Zeraora,807,7,electric,,yellow,none,False,True,88,112,75,102,80,143,44.5,no-eggs,,mythical,fast,1
+Meltan,808,7,steel,,gray,none,False,True,46,65,65,55,35,34,8.0,no-eggs,,mythical,,1
+Melmetal,809,7,steel,,gray,level,False,True,135,143,143,80,65,34,800.0,no-eggs,,mythical,"atk, tanky, heavy",1
+Grookey,810,8,grass,,green,none,False,False,50,65,50,40,40,65,5.0,"ground, plant",,,,0
+Thwackey,811,8,grass,,green,level,False,False,70,85,70,55,60,80,14.0,"ground, plant",,,,0
+Rillaboom,812,8,grass,,green,level,False,False,100,125,90,60,70,85,90.0,"ground, plant","primate, gorilla","starter, galar, drum, rhythm, mane",atk,1
+Scorbunny,813,8,fire,,white,none,False,False,50,71,40,40,40,69,4.5,"ground, humanshape",,,,0
+Raboot,814,8,fire,,gray,level,False,False,65,86,60,55,60,94,9.0,"ground, humanshape",,,,0
+Cinderace,815,8,fire,,white,level,False,False,80,116,75,65,75,119,33.0,"ground, humanshape","lagomorph, rabbit","starter, galar, striker, fireball, footballer",fast,1
+Sobble,816,8,water,,blue,none,False,False,50,40,40,70,40,70,4.0,"water1, ground",,,,0
+Drizzile,817,8,water,,blue,level,False,False,65,60,55,95,55,90,11.5,"water1, ground",,,,0
+Inteleon,818,8,water,,blue,level,False,False,70,85,65,125,65,120,45.2,"water1, ground","reptile, lizard","starter, galar, secret-agent, sniper, gecko","fast, spatk",1
+Skwovet,819,8,normal,,brown,none,False,False,70,55,55,35,35,25,2.5,ground,,,,0
+Greedent,820,8,normal,,brown,level,False,False,120,95,95,55,75,20,6.0,ground,,,,0
+Rookidee,821,8,flying,,blue,none,False,False,38,47,35,33,35,57,1.8,flying,,,,0
+Corvisquire,822,8,flying,,blue,level,False,False,68,67,55,43,55,77,16.0,flying,,,,0
+Corviknight,823,8,flying,steel,purple,level,False,False,98,87,105,53,85,67,75.0,flying,"bird, corvid, raven","galar, armour, taxi, raven, knight",,1
+Blipbug,824,8,bug,,blue,none,False,False,25,20,20,25,45,45,8.0,bug,,,,0
+Dottler,825,8,bug,psychic,yellow,level,False,False,50,35,80,50,90,30,19.5,bug,,,,0
+Orbeetle,826,8,bug,psychic,red,level,False,False,60,45,110,80,120,90,40.8,bug,,,tanky,0
+Nickit,827,8,dark,,brown,none,False,False,40,28,28,47,52,50,8.9,ground,,,,0
+Thievul,828,8,dark,,brown,level,False,False,70,58,58,87,92,90,19.9,ground,,,,0
+Gossifleur,829,8,grass,,green,none,False,False,40,40,60,40,60,10,2.2,plant,,,,0
+Eldegoss,830,8,grass,,green,level,False,False,60,50,90,80,120,60,2.5,plant,,,,0
+Wooloo,831,8,normal,,white,none,False,False,42,40,55,40,45,48,6.0,ground,,,,0
+Dubwool,832,8,normal,,white,level,False,False,72,80,100,60,90,88,43.0,ground,,,,0
+Chewtle,833,8,water,,green,none,False,False,50,64,50,38,38,44,8.5,"monster, water1",,,,0
+Drednaw,834,8,water,rock,green,level,False,False,90,115,90,48,68,74,115.5,"monster, water1",,,,0
+Yamper,835,8,electric,,yellow,none,False,False,59,45,50,40,50,26,13.5,ground,,,,0
+Boltund,836,8,electric,,yellow,level,False,False,69,90,60,90,60,121,34.0,ground,,,fast,0
+Rolycoly,837,8,rock,,black,none,False,False,30,40,50,40,50,30,12.0,mineral,,,,0
+Carkol,838,8,rock,fire,black,level,False,False,80,60,90,60,70,50,78.0,mineral,,,,0
+Coalossal,839,8,rock,fire,black,level,False,False,110,80,120,80,90,30,310.5,mineral,,,"tanky, heavy",0
+Applin,840,8,grass,dragon,green,none,False,False,40,40,80,40,40,20,0.5,"plant, dragon",,,,0
+Flapple,841,8,grass,dragon,green,stone,False,False,70,110,80,95,60,70,1.0,"plant, dragon",,,,0
+Appletun,842,8,grass,dragon,green,stone,False,False,110,85,80,100,80,30,13.0,"plant, dragon",,,,0
+Silicobra,843,8,ground,,green,none,False,False,52,57,75,35,50,46,7.6,"ground, dragon",,,,0
+Sandaconda,844,8,ground,,green,level,False,False,72,107,125,65,70,71,65.5,"ground, dragon",,,tanky,0
+Cramorant,845,8,flying,water,blue,none,False,False,70,85,55,85,95,85,18.0,"water1, flying",,,,0
+Arrokuda,846,8,water,,brown,none,False,False,41,63,40,40,30,66,1.0,water2,,,,0
+Barraskewda,847,8,water,,brown,level,False,False,61,123,60,60,50,136,30.0,water2,,,"fast, atk",0
+Toxel,848,8,electric,poison,purple,none,False,False,40,38,35,54,35,40,11.0,no-eggs,,,,0
+Toxtricity,849,8,electric,poison,purple,level,False,False,75,98,70,114,70,75,40.0,humanshape,reptile,"galar, guitar, punk, amp, rocker",,1
+Sizzlipede,850,8,fire,bug,red,none,False,False,50,65,45,50,50,45,1.0,bug,,,,0
+Centiskorch,851,8,fire,bug,red,level,False,False,100,115,65,90,90,65,120.0,bug,,,,0
+Clobbopus,852,8,fighting,,brown,none,False,False,50,68,60,50,50,32,4.0,"water1, humanshape",,,,0
+Grapploct,853,8,fighting,,blue,level,False,False,80,118,90,70,80,42,39.0,"water1, humanshape","cephalopod, octopus","galar, suckers, grappler, judo",,0
+Sinistea,854,8,ghost,,purple,none,False,False,40,45,45,74,54,50,0.2,"mineral, indeterminate",,,,0
+Polteageist,855,8,ghost,,purple,stone,False,False,60,65,65,134,114,70,0.4,"mineral, indeterminate",,,spatk,0
+Hatenna,856,8,psychic,,pink,none,False,False,42,30,45,56,53,39,3.4,fairy,,,,0
+Hattrem,857,8,psychic,,pink,level,False,False,57,40,65,86,73,49,4.8,fairy,,,,0
+Hatterene,858,8,psychic,fairy,pink,level,False,False,57,90,95,136,103,29,5.1,fairy,,,spatk,0
+Impidimp,859,8,dark,fairy,pink,none,False,False,45,45,30,55,40,50,5.5,"fairy, humanshape",,,,0
+Morgrem,860,8,dark,fairy,pink,level,False,False,65,60,45,75,55,70,12.5,"fairy, humanshape",,,,0
+Grimmsnarl,861,8,dark,fairy,purple,level,False,False,95,120,65,95,75,60,61.0,"fairy, humanshape",,"galar, hair, goblin, trickster, folklore",atk,1
+Obstagoon,862,8,dark,normal,gray,level,False,False,93,90,101,60,81,95,46.0,ground,,,,0
+Perrserker,863,8,steel,,brown,level,False,False,70,110,100,50,60,50,28.0,ground,,,,0
+Cursola,864,8,ghost,,white,level,False,False,60,95,50,145,130,30,0.4,"water1, water3",,,spatk,0
+Sirfetch'd,865,8,fighting,,white,three-critical-hits,False,False,62,135,95,68,82,65,117.0,"flying, ground",,,atk,0
+Mr. Rime,866,8,ice,psychic,purple,level,False,False,80,85,75,110,100,70,58.2,humanshape,,,,0
+Runerigus,867,8,ground,ghost,gray,take-damage,False,False,58,95,145,50,105,30,66.6,"mineral, indeterminate",,,tanky,0
+Milcery,868,8,fairy,,white,none,False,False,45,40,40,50,61,34,0.3,"fairy, indeterminate",,,,0
+Alcremie,869,8,fairy,,white,spin,False,False,65,60,75,110,121,64,0.5,"fairy, indeterminate",,,,0
+Falinks,870,8,fighting,,yellow,none,False,False,65,100,100,70,60,75,62.0,"fairy, mineral",,,,0
+Pincurchin,871,8,electric,,purple,none,False,False,48,101,95,91,85,15,1.0,"water1, indeterminate",,,,0
+Snom,872,8,ice,bug,white,none,False,False,30,25,35,45,30,20,3.8,bug,,,,0
+Frosmoth,873,8,ice,bug,white,friendship,False,False,70,65,60,125,90,65,42.0,bug,"insect, moth","galar, ice-wings, scales, moth",spatk,1
+Stonjourner,874,8,rock,,gray,none,False,False,100,125,135,20,20,70,520.0,mineral,,,"atk, tanky, heavy",0
+Eiscue,875,8,ice,,blue,none,False,False,75,80,110,65,90,50,89.0,"water1, ground",,,tanky,0
+Indeedee,876,8,psychic,normal,purple,none,False,False,60,65,55,105,95,95,28.0,fairy,,,,0
+Morpeko,877,8,electric,dark,yellow,none,False,False,58,95,58,70,58,97,3.0,"ground, fairy",,,,0
+Cufant,878,8,steel,,yellow,none,False,False,72,80,49,40,49,40,100.0,"ground, mineral",,,,0
+Copperajah,879,8,steel,,green,level,False,False,122,130,69,80,69,30,650.0,"ground, mineral",,,"atk, heavy",0
+Dracozolt,880,8,electric,dragon,green,none,False,False,90,100,90,80,70,75,190.0,no-eggs,,,,0
+Arctozolt,881,8,electric,ice,blue,none,False,False,90,100,90,90,80,55,150.0,no-eggs,,,,0
+Dracovish,882,8,water,dragon,green,none,False,False,90,90,100,70,80,75,215.0,no-eggs,,,,0
+Arctovish,883,8,water,ice,blue,none,False,False,90,90,100,80,90,55,175.0,no-eggs,,,,0
+Duraludon,884,8,steel,dragon,white,none,False,False,70,95,115,120,50,85,40.0,"mineral, dragon",,,"spatk, tanky",0
+Dreepy,885,8,dragon,ghost,green,none,False,False,28,60,30,40,30,82,2.0,"indeterminate, dragon",,,,0
+Drakloak,886,8,dragon,ghost,green,level,False,False,68,80,50,60,50,102,11.0,"indeterminate, dragon",,,fast,0
+Dragapult,887,8,dragon,ghost,green,level,False,False,88,120,75,100,75,142,50.0,"indeterminate, dragon",dragon,"galar, pseudo, stealth-bomber, missile, dreepy","fast, atk",1
+Zacian,888,8,fairy,,blue,none,True,False,92,120,115,80,115,138,110.0,no-eggs,,legendary,"fast, atk, tanky",1
+Zamazenta,889,8,fighting,,red,none,True,False,92,120,115,80,115,138,210.0,no-eggs,,legendary,"fast, atk, tanky",1
+Eternatus,890,8,poison,dragon,purple,none,True,False,140,85,95,145,95,130,950.0,no-eggs,,legendary,"fast, spatk, tanky, heavy",1
+Kubfu,891,8,fighting,,gray,none,True,False,60,90,60,53,50,72,12.0,no-eggs,,legendary,,1
+Urshifu,892,8,fighting,dark,gray,stone,True,False,100,130,100,63,60,97,105.0,no-eggs,,legendary,atk,1
+Zarude,893,8,dark,grass,green,none,False,True,105,120,105,70,95,105,70.0,no-eggs,,mythical,"fast, atk, tanky",1
+Regieleki,894,8,electric,,yellow,none,True,False,80,100,50,100,50,200,145.0,no-eggs,,legendary,fast,1
+Regidrago,895,8,dragon,,green,none,True,False,200,100,50,100,50,80,200.0,no-eggs,,legendary,,1
+Glastrier,896,8,ice,,white,none,True,False,100,145,130,65,110,30,800.0,no-eggs,,legendary,"atk, tanky, heavy",1
+Spectrier,897,8,ghost,,black,none,True,False,100,65,60,145,80,130,44.5,no-eggs,,legendary,"fast, spatk",1
+Calyrex,898,8,psychic,grass,green,none,True,False,100,80,80,80,80,80,7.7,no-eggs,,legendary,,1
+Wyrdeer,899,8,normal,psychic,gray,agile-style-move,False,False,103,105,72,105,75,65,95.1,ground,,,,0
+Kleavor,900,8,bug,rock,brown,stone,False,False,70,135,95,45,70,85,89.0,bug,,,atk,0
+Ursaluna,901,8,ground,normal,brown,stone,False,False,130,140,105,45,80,50,290.0,ground,,,"atk, tanky, heavy",0
+Basculegion,902,8,water,ghost,green,recoil-damage,False,False,120,112,65,80,75,78,110.0,water2,,,,0
+Sneasler,903,8,fighting,poison,gray,level,False,False,80,130,60,40,80,120,43.0,ground,,,"fast, atk",0
+Overqwil,904,8,dark,poison,black,use-move,False,False,85,115,95,65,65,85,60.5,water2,,,,0
+Enamorus,905,8,fairy,flying,pink,none,True,False,74,115,70,135,80,106,48.0,no-eggs,,legendary,"fast, spatk",1
+Sprigatito,906,9,grass,,green,none,False,False,40,61,54,45,45,65,4.1,"ground, plant",,,,0
+Floragato,907,9,grass,,green,level,False,False,61,80,63,60,63,83,12.2,"ground, plant",,,,0
+Meowscarada,908,9,grass,dark,green,level,False,False,76,110,70,81,70,123,31.2,"ground, plant",,,fast,0
+Fuecoco,909,9,fire,,red,none,False,False,67,45,59,63,40,36,9.8,ground,,,,0
+Crocalor,910,9,fire,,red,level,False,False,81,55,78,90,58,49,30.7,ground,,,,0
+Skeledirge,911,9,fire,ghost,red,level,False,False,104,75,100,110,75,66,326.5,ground,,,heavy,0
+Quaxly,912,9,water,,white,none,False,False,55,65,45,50,45,50,6.1,"flying, water1",,,,0
+Quaxwell,913,9,water,,blue,level,False,False,70,85,65,65,60,65,21.5,"flying, water1",,,,0
+Quaquaval,914,9,water,fighting,blue,level,False,False,85,120,80,85,75,85,61.9,"flying, water1",,,atk,0
+Lechonk,915,9,normal,,gray,none,False,False,54,45,40,35,45,35,10.2,ground,,,,0
+Oinkologne,916,9,normal,,gray,level,False,False,110,100,75,59,80,65,120.0,ground,,,,0
+Tarountula,917,9,bug,,white,none,False,False,35,41,45,29,40,20,4.0,bug,,,,0
+Spidops,918,9,bug,,green,level,False,False,60,79,92,52,86,35,16.5,bug,,,,0
+Nymble,919,9,bug,,gray,none,False,False,33,46,40,21,25,45,1.0,bug,,,,0
+Lokix,920,9,bug,dark,gray,level,False,False,71,102,78,52,55,92,17.5,bug,,,,0
+Pawmi,921,9,electric,,yellow,none,False,False,45,50,20,40,25,60,2.5,ground,,,,0
+Pawmo,922,9,electric,fighting,yellow,level,False,False,60,75,40,50,40,85,6.5,ground,,,,0
+Pawmot,923,9,electric,fighting,yellow,level,False,False,70,115,70,70,60,105,41.0,ground,,,fast,0
+Tandemaus,924,9,normal,,white,none,False,False,50,50,45,40,45,75,1.8,"ground, fairy",,,,0
+Maushold,925,9,normal,,white,other,False,False,74,75,70,65,75,111,2.8,"ground, fairy",,,fast,0
+Fidough,926,9,fairy,,yellow,none,False,False,37,55,70,30,55,65,10.9,"ground, mineral",,,,0
+Dachsbun,927,9,fairy,,brown,level,False,False,57,80,115,50,80,95,14.9,"ground, mineral",,,tanky,0
+Smoliv,928,9,grass,normal,green,none,False,False,41,35,45,58,51,30,6.5,plant,,,,0
+Dolliv,929,9,grass,normal,green,level,False,False,52,53,60,78,78,33,11.9,plant,,,,0
+Arboliva,930,9,grass,normal,green,level,False,False,78,69,90,125,109,39,48.2,plant,,,spatk,0
+Squawkabilly,931,9,normal,flying,green,none,False,False,82,96,51,45,51,92,2.4,flying,,,,0
+Nacli,932,9,rock,,brown,none,False,False,55,55,75,35,35,25,16.0,mineral,,,,0
+Naclstack,933,9,rock,,brown,level,False,False,60,60,100,35,65,35,105.0,mineral,,,,0
+Garganacl,934,9,rock,,brown,level,False,False,100,100,130,45,90,35,240.0,mineral,,,tanky,0
+Charcadet,935,9,fire,,red,none,False,False,40,50,40,50,40,35,10.5,humanshape,,,,0
+Armarouge,936,9,fire,psychic,red,stone,False,False,85,60,100,125,80,75,85.0,humanshape,,,spatk,0
+Ceruledge,937,9,fire,ghost,blue,stone,False,False,75,125,80,60,100,85,62.0,humanshape,,,atk,0
+Tadbulb,938,9,electric,,yellow,none,False,False,61,31,41,59,35,45,0.4,water1,,,,0
+Bellibolt,939,9,electric,,green,stone,False,False,109,64,91,103,83,45,113.0,water1,,,,0
+Wattrel,940,9,electric,flying,black,none,False,False,40,40,35,55,40,70,3.6,"water1, flying",,,,0
+Kilowattrel,941,9,electric,flying,yellow,level,False,False,70,70,60,105,60,125,38.6,"water1, flying",,,fast,0
+Maschiff,942,9,dark,,brown,none,False,False,60,78,60,40,51,51,16.0,ground,,,,0
+Mabosstiff,943,9,dark,,gray,level,False,False,80,120,90,60,70,85,61.0,ground,,,atk,0
+Shroodle,944,9,poison,normal,gray,none,False,False,40,65,35,40,35,75,0.7,ground,,,,0
+Grafaiai,945,9,poison,normal,gray,level,False,False,63,95,65,80,72,110,27.2,ground,,,fast,0
+Bramblin,946,9,grass,ghost,brown,none,False,False,40,65,30,45,35,60,0.6,plant,,,,0
+Brambleghast,947,9,grass,ghost,brown,level,False,False,55,115,70,80,70,90,6.0,plant,,,,0
+Toedscool,948,9,ground,grass,yellow,none,False,False,40,40,35,50,100,70,33.0,plant,,,,0
+Toedscruel,949,9,ground,grass,black,level,False,False,80,70,65,80,120,100,58.0,plant,,,fast,0
+Klawf,950,9,rock,,red,none,False,False,70,100,115,35,55,75,79.0,water3,,,tanky,0
+Capsakid,951,9,grass,,green,none,False,False,50,62,40,62,40,50,3.0,plant,,,,0
+Scovillain,952,9,grass,fire,green,stone,False,False,65,108,65,108,65,75,15.0,plant,,,,0
+Rellor,953,9,bug,,brown,none,False,False,41,50,60,31,58,30,1.0,bug,,,,0
+Rabsca,954,9,bug,psychic,green,level,False,False,75,50,85,115,100,45,3.5,bug,,,,0
+Flittle,955,9,psychic,,yellow,none,False,False,30,35,30,55,30,75,1.5,flying,,,,0
+Espathra,956,9,psychic,,yellow,level,False,False,95,60,60,101,60,105,90.0,flying,,,fast,0
+Tinkatink,957,9,fairy,steel,pink,none,False,False,50,45,45,35,64,58,8.9,fairy,,,,0
+Tinkatuff,958,9,fairy,steel,pink,level,False,False,65,55,55,45,82,78,59.1,fairy,,,,0
+Tinkaton,959,9,fairy,steel,pink,level,False,False,85,75,77,70,105,94,112.8,fairy,,,,0
+Wiglett,960,9,water,,white,none,False,False,10,55,25,35,25,95,1.8,water3,,,,0
+Wugtrio,961,9,water,,red,level,False,False,35,100,50,50,70,120,5.4,water3,,,fast,0
+Bombirdier,962,9,flying,dark,white,none,False,False,70,103,85,60,85,82,42.9,flying,,,,0
+Finizen,963,9,water,,blue,none,False,False,70,45,40,45,40,75,60.2,"ground, water2",,,,0
+Palafin,964,9,water,,blue,level,False,False,100,70,72,53,62,100,60.2,"ground, water2",,,fast,0
+Varoom,965,9,steel,poison,gray,none,False,False,45,70,63,30,45,47,35.0,mineral,,,,0
+Revavroom,966,9,steel,poison,gray,level,False,False,80,119,90,54,67,90,120.0,mineral,,,,0
+Cyclizar,967,9,dragon,normal,green,none,False,False,70,95,65,85,65,121,63.0,ground,,,fast,0
+Orthworm,968,9,steel,,pink,none,False,False,70,85,145,60,55,65,310.0,ground,,,"tanky, heavy",0
+Glimmet,969,9,rock,poison,blue,none,False,False,48,35,42,105,60,60,8.0,mineral,,,,0
+Glimmora,970,9,rock,poison,blue,level,False,False,83,55,90,130,81,86,45.0,mineral,,,spatk,0
+Greavard,971,9,ghost,,white,none,False,False,50,61,60,30,55,34,35.0,ground,,,,0
+Houndstone,972,9,ghost,,white,level,False,False,72,101,100,50,97,68,15.0,ground,,,,0
+Flamigo,973,9,flying,fighting,pink,none,False,False,82,115,74,75,64,90,37.0,flying,,,,0
+Cetoddle,974,9,ice,,white,none,False,False,108,68,45,30,40,43,45.0,ground,,,,0
+Cetitan,975,9,ice,,white,stone,False,False,170,113,65,45,55,73,700.0,ground,,,heavy,0
+Veluza,976,9,water,psychic,gray,none,False,False,90,102,73,78,65,70,90.0,water2,,,,0
+Dondozo,977,9,water,,blue,none,False,False,150,100,115,65,65,35,220.0,water2,,,tanky,0
+Tatsugiri,978,9,dragon,water,pink,none,False,False,68,50,60,120,95,82,8.0,water2,,,spatk,0
+Annihilape,979,9,fighting,ghost,gray,use-move,False,False,110,115,80,50,90,90,56.0,ground,,,,0
+Clodsire,980,9,poison,ground,brown,level,False,False,130,75,60,45,100,20,223.0,"water1, ground",,,,0
+Farigiraf,981,9,normal,psychic,brown,level,False,False,120,90,70,110,70,60,160.0,ground,,,,0
+Dudunsparce,982,9,normal,,yellow,level,False,False,125,100,80,85,75,55,39.2,ground,,,,0
+Kingambit,983,9,dark,steel,black,three-defeated-bisharp,False,False,100,135,120,60,85,50,120.0,humanshape,,,"atk, tanky",0
+Great Tusk,984,9,ground,fighting,purple,none,False,False,115,131,131,53,53,87,320.0,no-eggs,,,"atk, tanky, heavy",0
+Scream Tail,985,9,fairy,psychic,pink,none,False,False,115,65,99,65,115,111,8.0,no-eggs,,,"fast, tanky",0
+Brute Bonnet,986,9,grass,dark,gray,none,False,False,111,127,99,79,99,55,21.0,no-eggs,,,"atk, tanky",0
+Flutter Mane,987,9,ghost,fairy,gray,none,False,False,55,55,55,135,135,135,4.0,no-eggs,,,"fast, spatk",0
+Slither Wing,988,9,bug,fighting,red,none,False,False,85,135,79,85,105,81,92.0,no-eggs,,,atk,0
+Sandy Shocks,989,9,electric,ground,gray,none,False,False,85,81,97,121,85,101,60.0,no-eggs,,,"fast, spatk",0
+Iron Treads,990,9,ground,steel,gray,none,False,False,90,112,120,72,70,106,240.0,no-eggs,,,"fast, tanky",0
+Iron Bundle,991,9,ice,water,red,none,False,False,56,80,114,124,60,136,11.0,no-eggs,,,"fast, spatk, tanky",0
+Iron Hands,992,9,fighting,electric,gray,none,False,False,154,140,108,50,68,50,380.7,no-eggs,,,"atk, heavy",0
+Iron Jugulis,993,9,dark,flying,blue,none,False,False,94,80,86,122,80,108,111.0,no-eggs,,,"fast, spatk",0
+Iron Moth,994,9,fire,poison,yellow,none,False,False,80,70,60,140,110,110,36.0,no-eggs,,,"fast, spatk",0
+Iron Thorns,995,9,rock,electric,green,none,False,False,100,134,110,70,84,72,303.0,no-eggs,,,"atk, tanky, heavy",0
+Frigibax,996,9,dragon,ice,gray,none,False,False,65,75,45,35,45,55,17.0,"dragon, mineral",,,,0
+Arctibax,997,9,dragon,ice,gray,level,False,False,90,95,66,45,65,62,30.0,"dragon, mineral",,,,0
+Baxcalibur,998,9,dragon,ice,gray,level,False,False,115,145,92,75,86,87,210.0,"dragon, mineral",,,atk,0
+Gimmighoul,999,9,ghost,,brown,none,False,False,45,30,70,75,70,10,5.0,no-eggs,,,,0
+Gholdengo,1000,9,steel,ghost,yellow,gimmighoul-coins,False,False,87,60,95,133,91,84,30.0,no-eggs,,,spatk,0
+Wo-Chien,1001,9,dark,grass,brown,none,True,False,85,85,100,95,135,70,74.2,no-eggs,,legendary,,1
+Chien-Pao,1002,9,dark,ice,white,none,True,False,80,120,80,90,65,135,152.2,no-eggs,,legendary,"fast, atk",1
+Ting-Lu,1003,9,dark,ground,brown,none,True,False,155,110,125,55,80,45,699.7,no-eggs,,legendary,"tanky, heavy",1
+Chi-Yu,1004,9,dark,fire,red,none,True,False,55,80,80,135,120,100,4.9,no-eggs,,legendary,"fast, spatk",1
+Roaring Moon,1005,9,dragon,dark,green,none,False,False,105,139,71,55,101,119,380.0,no-eggs,,,"fast, atk, heavy",0
+Iron Valiant,1006,9,fairy,fighting,white,none,False,False,74,130,90,120,60,116,35.0,no-eggs,,,"fast, atk, spatk",0
+Koraidon,1007,9,fighting,dragon,red,none,True,False,100,135,115,85,100,135,303.0,no-eggs,,legendary,"fast, atk, tanky, heavy",1
+Miraidon,1008,9,electric,dragon,blue,none,True,False,100,85,100,135,115,135,240.0,no-eggs,,legendary,"fast, spatk, tanky",1
+Walking Wake,1009,9,water,dragon,blue,none,False,False,99,83,91,125,83,109,280.0,no-eggs,,,"fast, spatk, heavy",0
+Iron Leaves,1010,9,grass,psychic,green,none,False,False,90,130,88,70,108,104,125.0,no-eggs,,,"fast, atk",0
+Dipplin,1011,9,grass,dragon,green,stone,False,False,80,80,110,95,80,40,9.7,"plant, dragon",,,tanky,0
+Poltchageist,1012,9,grass,ghost,green,none,False,False,40,45,45,74,54,50,1.1,"mineral, indeterminate",,,,0
+Sinistcha,1013,9,grass,ghost,green,stone,False,False,71,60,106,121,80,70,2.2,"mineral, indeterminate",,,spatk,0
+Okidogi,1014,9,poison,fighting,black,none,True,False,88,128,115,58,86,80,92.2,no-eggs,,legendary,"atk, tanky",1
+Munkidori,1015,9,poison,psychic,black,none,True,False,88,75,66,130,90,106,12.2,no-eggs,,legendary,"fast, spatk",1
+Fezandipiti,1016,9,poison,fairy,black,none,True,False,88,91,82,70,125,99,30.1,no-eggs,,legendary,,1
+Ogerpon,1017,9,grass,,green,none,True,False,80,120,84,60,96,110,39.8,no-eggs,,legendary,"fast, atk",1
+Archaludon,1018,9,steel,dragon,white,stone,False,False,90,105,130,125,65,85,60.0,"mineral, dragon",,,"spatk, tanky",0
+Hydrapple,1019,9,grass,dragon,green,level,False,False,106,80,110,120,80,44,93.0,"plant, dragon",,,"spatk, tanky",0
+Gouging Fire,1020,9,fire,dragon,brown,none,False,False,105,115,121,65,93,91,590.0,no-eggs,,,"tanky, heavy",0
+Raging Bolt,1021,9,electric,dragon,yellow,none,False,False,125,73,91,137,89,75,480.0,no-eggs,,,"spatk, tanky, heavy",0
+Iron Boulder,1022,9,rock,psychic,gray,none,False,False,90,120,80,68,108,124,162.5,no-eggs,,,"fast, atk",0
+Iron Crown,1023,9,steel,psychic,blue,none,False,False,90,72,100,122,108,98,156.0,no-eggs,,,spatk,0
+Terapagos,1024,9,normal,,blue,none,True,False,90,65,85,65,85,60,6.5,no-eggs,,legendary,,1
+Pecharunt,1025,9,poison,ghost,purple,none,False,True,88,88,160,88,88,88,0.3,no-eggs,,mythical,tanky,1

@@ -107,6 +107,23 @@ def main():
             arch=ov.get("arch",[]), tags=tags, stat=stat_tags(r["base"], r["weight"]),
             wk=ov.get("wk", 1 if (r["legendary"] or r["mythical"]) else 0))
     json.dump(facts, open(os.path.join(HERE,"..","pokemon_facts.json"),"w"), ensure_ascii=False, indent=0)
+    # Also emit a spreadsheet-friendly CSV (one row per mon) that stays in sync.
+    cols=["name","dex","gen","type1","type2","color","evo","legendary","mythical",
+          "hp","attack","defense","sp_attack","sp_defense","speed","weight_kg",
+          "egg_groups","arch","tags","stat_standouts","well_known"]
+    with open(os.path.join(HERE,"..","pokemon_facts.csv"),"w",newline="") as fh:
+        w=csv.DictWriter(fh,fieldnames=cols); w.writeheader()
+        for name,r in sorted(facts.items(),key=lambda kv:kv[1]["dex"]):
+            b=r.get("base",{})
+            w.writerow({"name":name,"dex":r["dex"],"gen":r["gen"],
+                "type1":r["types"][0] if r["types"] else "","type2":r["types"][1] if len(r["types"])>1 else "",
+                "color":r["color"],"evo":r["evo"],"legendary":r["legendary"],"mythical":r["mythical"],
+                "hp":b.get("hp",""),"attack":b.get("attack",""),"defense":b.get("defense",""),
+                "sp_attack":b.get("special-attack",""),"sp_defense":b.get("special-defense",""),
+                "speed":b.get("speed",""),"weight_kg":round(r.get("weight",0)/10,1),
+                "egg_groups":", ".join(r.get("egg",[])),"arch":", ".join(r.get("arch",[])),
+                "tags":", ".join(r.get("tags",[])),"stat_standouts":", ".join(r.get("stat",[])),
+                "well_known":r.get("wk",0)})
     from collections import Counter
     print("records:",len(facts))
     print("by gen:",dict(sorted(Counter(r['gen'] for r in facts.values()).items())))
