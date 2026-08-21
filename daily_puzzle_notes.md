@@ -354,6 +354,35 @@ Sprite details unlock clues that separate look-alikes:
   eggs), `TONGUE` (Lickitung), `GIFT` (Delibird's sack), `DINO` (Tyranitar),
   `PITCHER` (Victreebel/Weepinbell).
 
+## Philosophy: the fact bank VERIFIES, human/AI creativity AUTHORS
+
+**Do NOT generate clues by matching against a fixed list of pre-written clue
+words.** That was tried (`daily_tools/build_daily.py`) and it fails in exactly
+the way you'd predict: the fixed vocabulary "runs out" after a few days, so the
+generator either repeats or falls back to whichever clue *type* happens to have
+the most canned options (it produced a monotonous "name-the-animal" parade —
+`SIMIAN`, `PINNIPED`, `JELLYFISH`). The space of real connections is effectively
+unlimited; a fixed word list is not.
+
+The right division of labour:
+- **`pokemon_facts.json` is GROUND TRUTH, not a clue menu.** Its job is to let
+  you (a) *verify* any clue's correctness — Rule 0: does this property hold for
+  exactly these blues and for **no** neutral? — and (b) enforce the anti-rep +
+  spread guardrails. It has the full national dex (gens 1-9): types, colour, egg
+  groups, base stats, weight, evolution method, legendary/mythical, plus curated
+  archetype/sprite hooks. Complete + accurate, so any factual claim can be checked.
+- **The AUTHOR (a person, or the AI) invents the connections.** For each clue
+  *type* (the 1-5 categories) think up a FRESH link for *these particular* 9 mons
+  — a sprite gag, a pun, shared lore, a signature move, a trainer's team, a
+  real-world trivia link, a visual detail — rather than pulling from a list.
+  Variety comes from creativity within each type, not from a bigger list.
+- **Then verify mechanically:** Rule 0 (against the facts), strict letter rule,
+  coverage, mix table, and all five anti-rep rules. `build_daily.py`'s value is
+  this checking + surfacing candidate diverse blues — not writing the clue words.
+
+So: pick varied blues → **creatively** write clues that link them (many types,
+no repeats vs recent days) → verify against the fact bank → fill neutrals.
+
 ## Blues-first generation (the current method)
 
 The old "deal 25, then hunt for clues" approach wasted most of its effort
