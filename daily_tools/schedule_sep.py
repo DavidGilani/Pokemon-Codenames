@@ -134,7 +134,7 @@ def explain_for(word,cat,concept,members):
     elif pre=="trainer": reason=f"They belong to {r}'s team."
     elif pre=="colour": reason=f"They're all {r}."
     else: reason=r[:1].upper()+r[1:]+"."
-    return f"{reason} (Category {cat}: {CATNAME[cat]}.)"
+    return reason
 
 errors=[]; assembled=[]
 nb=defaultdict(list); nw=defaultdict(list); ng=defaultdict(list); nc=defaultdict(list)
