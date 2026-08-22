@@ -84,7 +84,16 @@ Chosen on the landing page when creating a room. `mode` values:
   the `daily_puzzles` table with the colour key hidden behind RPCs
   (`get_daily_puzzle`, `daily_reveal`, `daily_hint_next`, `daily_solution`);
   base clues and hints carry hidden target positions (`t`), stripped by
-  `get_daily_puzzle` and only revealed by `daily_solution` at the end. Every
+  `get_daily_puzzle` and only revealed by `daily_solution` at the end. **Offline
+  play:** `get_daily_full` returns the board plus a *sealed* blob — the colour
+  key + hints + clues, XOR-obfuscated and base64'd (`_daily_seal` in SQL,
+  `_dailyUnseal` in `app.js`, shared key `DAILY_SEAL_KEY`). The client unseals it
+  once at load and then resolves every reveal / hint / finish LOCALLY, so a
+  dropped connection after load doesn't stop the puzzle. (Sealing means the key
+  reaches the browser — light obfuscation, not real anti-cheat.) **Clue
+  explanations:** each base clue carries an `explain` sentence (why it points at
+  those mon + which category); shown under each clue on the finish screen, and
+  stripped by `get_daily_puzzle` mid-game so it can't leak early. Every
   attempt (taps, time, hints, mistakes, difficulty rating) is logged to
   `daily_attempts`. Board-first generation: deal randomly, then write clues,
   re-dealing until the 9 blues cluster into ≤5 clean clues. **Skew difficulty
@@ -161,6 +170,16 @@ Chosen on the landing page when creating a room. `mode` values:
   an in-progress one resumes where you left off. `startDaily` restores the saved
   record instead of starting a new attempt; keys for past dates are pruned.
   It's device/browser-local (clearing cache or another device starts fresh).
+  The saved record also caches the `sealed` blob so an in-progress daily can be
+  resumed offline within the session.
+- **Daily offline play**: `startDaily` fetches `get_daily_full` and unseals the
+  colour key / hints / clues into `daily.key`. When `daily.key` is set,
+  `dailyRevealTile`, `dailyRequestHint` (`_dailyNextHintLocal`) and `dailyFinish`
+  all run with no network — so losing connection after the page loads doesn't
+  block play. Falls back to the online `get_daily_puzzle` + `daily_reveal` path
+  on older DBs. Attempt logging stays best-effort online.
+- **Daily clue explanations**: the finish screen ("What each clue meant") shows a
+  one-line `explain` per clue (from the puzzle data) — the reason + category.
 - **Daily timer pauses off-screen**: the daily timer is an *active-time
   accumulator* (`daily.elapsedMs` banked + `daily.runningSince`), not wall-clock.
   `dailyPauseTimer`/`dailyResumeTimer` bank/resume it on `visibilitychange`

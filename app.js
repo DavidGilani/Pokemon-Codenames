@@ -1617,7 +1617,66 @@ const daily = {
   // leaves the tab/app: elapsedMs = banked active time; runningSince = when the
   // current active stretch began (null while paused/finished); timerOn = started.
   elapsedMs: 0, runningSince: null, timerOn: false,
+  // Offline play: `sealed` is the obfuscated blob from the server; `key` is the
+  // unsealed { c: {pos->colour}, h: hints[], k: clues[] }. When `key` is set,
+  // every reveal / hint / finish is resolved locally with no further network,
+  // so a dropped connection after load doesn't stop the puzzle.
+  sealed: null, key: null,
 };
+
+// Un-seal the offline puzzle blob (mirror of _daily_seal in SQL): base64-decode,
+// XOR with the shared key, then parse. Kept deliberately lightweight — this is
+// obfuscation so the answers aren't readable at a glance, not real encryption.
+const DAILY_SEAL_KEY = [142, 55, 91, 44, 116, 17, 163];
+function _dailyUnseal(b64) {
+  const bin = atob(String(b64).replace(/\s+/g, "")); // Postgres base64 wraps at 76 cols
+
+  const out = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i) ^ DAILY_SEAL_KEY[i % 7];
+  return JSON.parse(new TextDecoder().decode(out));
+}
+// Base clues for mid-game display, with the answer-bearing fields removed.
+function _dailyStripClues(clues) {
+  return (clues || []).map((c) => {
+    const o = { word: c.word, number: c.number, cat: c.cat };
+    if (c.anti) o.anti = true;
+    return o;
+  });
+}
+// The next most-helpful unshown hint, computed locally (mirror of
+// daily_hint_next): prefer the hint covering the most STILL-unrevealed blues,
+// tie-break easier category first, then order.
+function _dailyNextHintLocal() {
+  const revealed = Object.keys(daily.revealed).map(Number);
+  const hints = (daily.key && daily.key.h) || [];
+  let best = null;
+  hints.forEach((hint, idx) => {
+    if (daily.shownHintIdx.includes(idx)) return;
+    const t = hint.t || [];
+    const unrev = t.filter((p) => !revealed.includes(p)).length;
+    if (unrev <= 0) return;
+    const cat = hint.cat || 1;
+    if (!best || unrev > best.unrev || (unrev === best.unrev && cat < best.cat)) {
+      best = { idx, unrev, cat, hint };
+    }
+  });
+  if (!best) return null;
+  return { word: best.hint.word, number: best.hint.number, cat: best.hint.cat || 1, idx: best.idx };
+}
+// Find a saved-but-still-current daily for this pool (used to resume offline if
+// the initial fetch fails). Returns the parsed record, or null.
+function _latestSavedForPool(pool) {
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(DAILY_KEY_PREFIX) && k.endsWith(":" + pool)) {
+        const s = JSON.parse(localStorage.getItem(k));
+        if (s && s.pool === pool && s.sealed) return s;
+      }
+    }
+  } catch {}
+  return null;
+}
 
 // Active elapsed time (ms/secs), counting only while the timer is running.
 function dailyElapsedMs() {
@@ -1671,6 +1730,7 @@ function _saveDailyProgress() {
       noMoreHints: daily.noMoreHints, taps: daily.taps, elapsedMs: dailyElapsedMs(),
       finished: daily.finished, outcome: daily.outcome, solution: daily.solution,
       solutionClues: daily.solutionClues, attemptId: daily.attemptId, rating: daily.rating,
+      sealed: daily.sealed,
     }));
   } catch {}
   _pruneDailyProgress();
@@ -1728,21 +1788,55 @@ function _dailyReset() {
   daily.solution = null; daily.solutionClues = null;
   daily.taps = []; daily.attemptId = null; daily.rating = null;
   daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
+  daily.sealed = null; daily.key = null;
 }
 
 async function startDaily(pool) {
   try {
-    await ensureAuth();
-    const { data, error } = await sb.rpc("get_daily_puzzle", { p_pool: pool });
-    if (error) throw error;
-    const row = data && data[0];
-    if (!row) { toast("No daily puzzle available yet – check back soon."); return; }
+    try { await ensureAuth(); } catch (e) { console.error(e); } // may fail offline; carry on
+    let date = null, tiles = null, sealed = null, cluesOnline = null;
+    // Preferred path: get the whole puzzle "sealed" so it can be played offline.
+    try {
+      const { data, error } = await sb.rpc("get_daily_full", { p_pool: pool });
+      if (error) throw error;
+      const row = data && data[0];
+      if (row) {
+        date = row.puzzle_date;
+        tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+        sealed = row.sealed || null;
+      }
+    } catch (e) { console.error(e); }
+    // Fallback: older DB without get_daily_full → colour-hidden online mode.
+    if (!date) {
+      try {
+        const { data, error } = await sb.rpc("get_daily_puzzle", { p_pool: pool });
+        if (error) throw error;
+        const row = data && data[0];
+        if (row) {
+          date = row.puzzle_date;
+          tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+          cluesOnline = row.clues || [];
+        }
+      } catch (e) { console.error(e); }
+    }
+    // Last resort: fully offline at load — resume the most recent saved puzzle
+    // for this pool if we cached its sealed blob earlier.
+    if (!date) {
+      const s = _latestSavedForPool(pool);
+      if (s) { date = s.date; sealed = s.sealed; }
+    }
+    if (!date) { toast("No daily puzzle available yet – check back soon."); return; }
+
     _dailyReset();
     daily.pool = pool;
-    daily.date = row.puzzle_date;
-    daily.clues = row.clues || [];
-    daily.tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+    daily.date = date;
     daily.bluesTotal = 9;
+    if (sealed) {
+      daily.sealed = sealed;
+      try { daily.key = _dailyUnseal(sealed); } catch (e) { console.error(e); daily.key = null; }
+    }
+    daily.clues = daily.key ? _dailyStripClues(daily.key.k) : (cluesOnline || []);
+    if (tiles) daily.tiles = tiles;
     setRoomPill(null);
     setDailyUrl(pool); // reflect which daily this is in the URL (shareable)
 
@@ -1871,11 +1965,17 @@ async function dailyRevealTile(position) {
   if (daily.finished || daily.revealed[position] || _dailyRevealBusy) return;
   _dailyRevealBusy = true;
   try {
-    const { data, error } = await sb.rpc("daily_reveal", {
-      p_date: daily.date, p_pool: daily.pool, p_position: position,
-    });
-    if (error) throw error;
-    const colour = data;
+    let colour;
+    if (daily.key) {
+      // Offline: colour comes from the unsealed key — no network.
+      colour = (daily.key.c && daily.key.c[String(position)]) || "neutral";
+    } else {
+      const { data, error } = await sb.rpc("daily_reveal", {
+        p_date: daily.date, p_pool: daily.pool, p_position: position,
+      });
+      if (error) throw error;
+      colour = data;
+    }
     daily.revealed[position] = colour;
     const tile = daily.tiles.find((t) => t.position === position);
     daily.taps.push({ position, name: tile ? tile.name : null, colour });
@@ -1906,9 +2006,20 @@ async function dailyRevealTile(position) {
 
 async function dailyRequestHint() {
   if (daily.finished || daily.noMoreHints) return;
-  // Ask the server for the next clue that helps with a tile we HAVEN'T revealed
-  // yet (change #4). It picks from clues covering the most still-missing blues,
-  // so late-game hints naturally narrow to the specific tiles left.
+  // Offline: pick the next helpful hint locally from the unsealed key.
+  if (daily.key) {
+    const h = _dailyNextHintLocal();
+    if (!h) { daily.noMoreHints = true; toast("No more helpful clues right now."); renderDaily(); _saveDailyProgress(); return; }
+    daily.revealedHints.push(h);
+    daily.shownHintIdx.push(h.idx);
+    daily.hintsUsed += 1;
+    renderDaily();
+    _saveDailyProgress();
+    return;
+  }
+  // Online: ask the server for the next clue that helps with a tile we HAVEN'T
+  // revealed yet. It picks from clues covering the most still-missing blues, so
+  // late-game hints naturally narrow to the specific tiles left.
   const revealed = Object.keys(daily.revealed).map(Number);
   try {
     const { data, error } = await sb.rpc("daily_hint_next", {
@@ -1952,14 +2063,22 @@ async function dailyFinish(outcome) {
   daily.outcome = outcome;
   if (outcome === "win") playSound("win");
   else if (outcome === "lose") playSound("lose");
-  try {
-    const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
-    if (!error && data) {
-      // New shape: { tiles, clues (with targets) }. Old shape: a bare tiles array.
-      if (Array.isArray(data)) { daily.solution = data; daily.solutionClues = null; }
-      else { daily.solution = data.tiles || []; daily.solutionClues = data.clues || null; }
-    }
-  } catch (err) { console.error(err); }
+  if (daily.key) {
+    // Offline: build the full reveal from the unsealed key — no network.
+    daily.solution = daily.tiles.map((t) => ({
+      ...t, colour: (daily.key.c && daily.key.c[String(t.position)]) || "neutral",
+    }));
+    daily.solutionClues = daily.key.k || null;
+  } else {
+    try {
+      const { data, error } = await sb.rpc("daily_solution", { p_date: daily.date, p_pool: daily.pool });
+      if (!error && data) {
+        // New shape: { tiles, clues (with targets) }. Old shape: a bare tiles array.
+        if (Array.isArray(data)) { daily.solution = data; daily.solutionClues = null; }
+        else { daily.solution = data.tiles || []; daily.solutionClues = data.clues || null; }
+      }
+    } catch (err) { console.error(err); }
+  }
   // Log the finished attempt (best-effort).
   if (daily.attemptId) {
     try {
@@ -1992,7 +2111,9 @@ function renderDailyResult() {
       const names = c.anti
         ? "anti-clue – none of your Pokémon"
         : (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
-      return `<div class="daily-answer-row"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">${num}</span></span><span class="da-names">${names}</span></div>`;
+      const why = c.explain
+        ? `<div class="da-why">${escapeHtml(c.explain)}</div>` : "";
+      return `<div class="daily-answer-row"><div class="da-line"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">${num}</span></span><span class="da-names">${names}</span></div>${why}</div>`;
     }).join("");
     answersHtml = `<div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${rows}</div>`;
   }

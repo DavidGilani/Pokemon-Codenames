@@ -406,13 +406,16 @@ a { color: var(--accent); }
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--text-faint); margin-bottom: 2px;
 }
-.daily-answer-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; font-size: 13px; }
+.daily-answer-row { display: flex; flex-direction: column; gap: 3px; font-size: 13px; }
+.daily-answer-row + .daily-answer-row { border-top: 1px solid var(--panel-border); padding-top: 6px; }
+.daily-answer-row .da-line { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
 .daily-answer-row .da-clue {
   font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;
   font-weight: 600; min-width: 120px; color: var(--text);
 }
 .daily-answer-row .da-num { color: var(--text-faint); }
 .daily-answer-row .da-names { color: var(--text-dim); }
+.daily-answer-row .da-why { color: var(--text-faint); font-size: 12px; line-height: 1.4; }
 
 .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
