@@ -1,23 +1,24 @@
 # Creative hand-authored boards Aug 22-30 (loaded by schedule_aug22.py).
-# clue = (word, cat, concept, [members]). Gentle ramp, no Brutal/Evil.
+# clue = (word, cat, concept, [members]). Saturdays are always Brutal/Evil;
+# the rest ramp Easy -> Hard.
 # Anti-rep aware: clue words spaced >7d, concepts >5d, blues respect the
 # per-mon cap, no dual-type Rule-0 overlaps, letter-safe clue words.
 
-# ===== 08-22 Sat : MEDIUM =====
-board("2026-08-22","gen1","Medium",[
-  ("FIRE",1,"type:fire",["Growlithe","Ponyta"]),
-  ("GHOST",1,"type:ghost",["Gastly","Haunter"]),
-  ("SUMO",3,"based:sumo",["Machop","Poliwrath"]),
+# ===== 08-22 Sat : BRUTAL (Saturdays are always Brutal/Evil) =====
+board("2026-08-22","gen1","Brutal",[
+  ("SUMO",3,"based:sumo",["Machop","Poliwrath","Machoke"]),
   ("FOX-SPIRIT",5,"myth:kitsune",["Vulpix","Ninetales"]),
-  ("PINCERS",2,"sprite:pincers",["Kingler"]),
-], exclude=["Arcanine","Flareon","Magmar","Gengar","Machoke","Machamp","Primeape","Mankey","Krabby","Rapidash"])
-board("2026-08-22","mixed","Medium",[
-  ("STEEL",1,"type:steel",["Klink","Bronzor"]),
-  ("DARK",1,"type:dark",["Poochyena","Sneasel"]),
+  ("GHOST",1,"type:ghost",["Gastly","Haunter"]),
+  ("OPERA",4,"lore:jynx",["Jynx"]),
+  ("NURSE",4,"lore:nurse",["Chansey"]),
+], exclude=["Ekans","Koffing","Weezing","Machamp","Primeape","Arcanine","Flareon","Gengar","Blissey","Kingler","Slowbro"])
+board("2026-08-22","mixed","Brutal",[
   ("GRIM-REAPER",4,"based:reaper",["Duskull","Dusknoir"]),
-  ("RODENT",3,"arch:rodent",["Patrat","Bidoof"]),
-  ("STAR",2,"sprite:star",["Minior"]),
-], exclude=["Klang","Klinklang","Bronzong","Mightyena","Weavile","Watchog","Bibarel","Litwick"])
+  ("THIEF",4,"lore:thief",["Scraggy","Scrafty"]),
+  ("DOODLEBUG",4,"arch:antlion",["Trapinch","Vibrava"]),
+  ("HEADBUTT",3,"arch:dinosaur",["Cranidos","Rampardos"]),
+  ("MANDIBLES",2,"sprite:jaws",["Durant"]),
+], exclude=["Sableye","Spiritomb","Flygon","Shieldon","Bastiodon","Krokorok","Sandile","Skarmory","Sneasel","Weavile","Meowth"])
 
 # ===== 08-23 Sun : MEDIUM =====
 board("2026-08-23","gen1","Medium",[
@@ -115,21 +116,21 @@ board("2026-08-28","mixed","Hard",[
   ("ANGLERFISH",4,"arch:anglerfish",["Chinchou","Lanturn"]),
 ], exclude=["Rampardos","Cranidos","Volbeat","Illumise","Ledyba","Baltoy","Claydol"])
 
-# ===== 08-29 Sat : HARD =====
-board("2026-08-29","gen1","Hard",[
-  ("SNAKE",3,"arch:serpent",["Ekans","Arbok"]),
+# ===== 08-29 Sat : BRUTAL (Saturdays are always Brutal/Evil) =====
+board("2026-08-29","gen1","Brutal",[
   ("OSTRICH",4,"arch:ratite",["Doduo","Dodrio"]),
-  ("SPIKE",2,"sprite:drill",["Rhyhorn","Rhydon"]),
+  ("MANTIS",4,"arch:mantis",["Scyther"]),
   ("CLOWN",4,"based:mime",["Mr. Mime"]),
-  ("STAG-BEETLE",3,"arch:beetle",["Pinsir","Scyther"]),
-], exclude=["Nidoran♀","Nidoran♂","Nidoking","Nidoqueen","Rhyperior","Jynx","Heracross","Fearow","Pidgey"])
-board("2026-08-29","mixed","Hard",[
-  ("BAMBOO",3,"arch:panda",["Pancham","Pangoro"]),
-  ("PINNIPED",3,"arch:sealion",["Popplio","Sealeo"]),
+  ("SNAKE",3,"arch:serpent",["Ekans","Arbok","Onix"]),
+  ("AUGER",2,"sprite:drill",["Rhyhorn","Rhydon"]),
+], exclude=["Nidoking","Nidoqueen","Rhyperior","Jynx","Heracross","Fearow","Pidgey","Pinsir","Steelix"])
+board("2026-08-29","mixed","Brutal",[
   ("KNIGHT",4,"based:knight",["Escavalier","Bisharp"]),
-  ("NIGHT-BIRD",3,"arch:owl",["Hoothoot","Noctowl"]),
-  ("MAGNET",2,"sprite:magnet",["Nosepass"]),
-], exclude=["Primeape","Pawniard","Kingambit","Rowlet","Dartrix","Decidueye","Probopass","Rockruff"])
+  ("TOMB",4,"based:coffin",["Yamask","Cofagrigus"]),
+  ("FORTUNE-TELLER",5,"lore:tarot",["Xatu"]),
+  ("TURTLE",3,"arch:turtle",["Tirtouga","Carracosta"]),
+  ("FRILL",2,"sprite:frill",["Helioptile","Heliolisk"]),
+], exclude=["Kingambit","Pawniard","Runerigus","Natu","Relicanth","Charjabug","Vikavolt","Accelgor"])
 
 # ===== 08-30 Sun : MEDIUM =====
 board("2026-08-30","gen1","Medium",[

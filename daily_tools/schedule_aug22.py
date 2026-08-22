@@ -52,6 +52,7 @@ for d,cl in AUG21:
 B=[]
 def board(date,pool,tier,clues,exclude=()): B.append(dict(date=date,pool=pool,tier=tier,clues=clues,exclude=list(exclude)))
 exec(open(f"{ROOT}/daily_tools/boards_creative.py").read())
+exec(open(f"{ROOT}/daily_tools/daily_common.py").read())  # explain_for
 
 # ---- auto-hint: first sprite/arch/based word that passes the letter rule ----
 def hint_for(nm, names, used):
@@ -59,8 +60,15 @@ def hint_for(nm, names, used):
     for s in r["sprite"]: cands.append((s.upper().replace(" ","-"),2))
     for a in r["arch"]: cands.append((a.upper(),3))
     for b in r["based_on"]:
-        w=re.split(r"[\(/]",b)[0].strip().upper().replace(" ","-")
-        if w: cands.append((w,3))
+        for part in re.split(r"[\(/,]",b):
+            w=part.strip().upper().replace(" ","-")
+            if w: cands.append((w,3))
+    if r.get("genus"): cands.append((r["genus"].split()[0].upper(),2))
+    if r.get("color_primary"): cands.append((r["color_primary"].upper()+"-BODY",2))
+    for eg in r.get("egg",[]): cands.append((eg.upper()+"-EGG",3))
+    for mv in r.get("moves",[]): cands.append((mv.upper().replace(" ","-"),3))
+    if r.get("habitat"): cands.append((r["habitat"].upper().replace(" ","-"),3))
+    if r.get("color_secondary"): cands.append((r["color_secondary"].upper()+"-MARKS",2))
     cands.append(("TYPE-"+r["types"][0].upper(),1))
     for w,c in cands:
         if w in used: continue
@@ -150,9 +158,15 @@ if errors:
 else:
     print("  ALL VALID —",len(assembled),"boards")
     def jarr(o):
-        return "["+", ".join("{"+", ".join(['"word": '+json.dumps(x["word"]),'"number": %d'%x["number"],'"cat": %d'%x["cat"],'"t": ['+", ".join(map(str,x["t"]))+"]"])+"}" for x in o)+"]"
+        parts=[]
+        for x in o:
+            fields=['"word": '+json.dumps(x["word"]),'"number": %d'%x["number"],
+                    '"cat": %d'%x["cat"],'"t": ['+", ".join(map(str,x["t"]))+"]"]
+            if x.get("explain"): fields.append('"explain": '+json.dumps(x["explain"]))
+            parts.append("{"+", ".join(fields)+"}")
+        return "["+", ".join(parts)+"]"
     def sq(s): return "'"+s.replace("'","''")+"'"
-    L=["-- 30_updates.sql : creative daily puzzles 2026-08-22 .. 2026-08-30 (fact-bank authored).",
+    L=["-- 30_updates.sql : creative daily puzzles 2026-08-22 .. 2026-08-30 (fact-bank authored, with per-clue explanations).",
        "-- Replaces the earlier auto-generated boards for these dates.","",
        "insert into public.daily_puzzles (puzzle_date, pool, clues, hints, tiles) values"]
     R=[]
@@ -161,7 +175,8 @@ else:
         perm=list(range(25)); random.Random(hash(("p",b["date"],b["pool"]))&0xffffffff).shuffle(perm)
         pos={nm:perm[i] for i,nm in enumerate(names)}
         tiles=sorted([{"name":nm,"colour":"blue" if nm in blues else "neutral","position":pos[nm]} for nm in names],key=lambda t:t["position"])
-        co=[{"word":w,"number":len(m),"cat":c,"t":sorted(pos[x] for x in m)} for w,c,cc,m in b["clues"]]
+        co=[{"word":w,"number":len(m),"cat":c,"t":sorted(pos[x] for x in m),
+             "explain":explain_for(w,c,cc,m)} for w,c,cc,m in b["clues"]]
         random.Random(hash(("c",b["date"],b["pool"]))&0xffffffff).shuffle(co)
         ho=[{"word":hints[nm][0],"number":1,"cat":hints[nm][1],"t":[pos[nm]]} for nm in blues]
         random.Random(hash(("h",b["date"],b["pool"]))&0xffffffff).shuffle(ho)

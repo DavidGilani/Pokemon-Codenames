@@ -1,5 +1,6 @@
 # Creative hand-authored boards Aug 31 - Sep 6 (loaded by schedule_sep.py).
-# clue = (word, cat, concept, [members]). Gentle ramp, no Brutal/Evil.
+# clue = (word, cat, concept, [members]). Saturdays are always Brutal/Evil;
+# the rest ramp Easy -> Hard.
 # Anti-rep aware vs. history + Aug 21 + Aug 22-30 boards.
 
 # ===== 08-31 Sun : MEDIUM =====
@@ -82,34 +83,34 @@ board("2026-09-04","mixed","Challenging",[
   ("LANTERN",4,"based:lantern",["Chandelure"]),
 ], exclude=["Pupitar","Tyranitar","Shelgon","Salamence","Zweilous","Hydreigon","Excadrill","Lampent"])
 
-# ===== 09-05 Fri : HARD =====
-board("2026-09-05","gen1","Hard",[
+# ===== 09-05 Sat : BRUTAL (Saturdays are always Brutal/Evil) =====
+board("2026-09-05","gen1","Brutal",[
+  ("KITSUNE",5,"myth:kitsune",["Vulpix","Ninetales"]),
+  ("SHAPESHIFTER",5,"lore:transform",["Ditto","Mew"]),
+  ("MANEATER",4,"based:flytrap",["Victreebel"]),
+  ("UNICORN",3,"arch:unicorn",["Ponyta","Rapidash"]),
+  ("PUGILIST",3,"based:boxer",["Hitmonlee","Hitmonchan"]),
+], exclude=["Arcanine","Growlithe","Charizard","Charmander","Gloom","Weepinbell","Primeape","Poliwrath","Mewtwo","Bellossom"])
+board("2026-09-05","mixed","Brutal",[
+  ("SCARECROW",4,"based:scarecrow",["Cacnea","Cacturne"]),
+  ("SAMURAI",4,"based:samurai",["Kubfu","Urshifu"]),
+  ("GHOST-FOREST",5,"lore:haunted-tree",["Phantump","Trevenant"]),
+  ("PELICAN",3,"arch:pelican",["Cramorant"]),
+  ("WEASEL",3,"arch:weasel",["Furret","Sentret"]),
+], exclude=["Maractus","Sirfetch'd","Gourgeist","Pumpkaboo","Corviknight","Ambipom","Furfrou","Zarude"])
+
+# ===== 09-06 Sun : HARD =====
+board("2026-09-06","gen1","Hard",[
   ("JELLYFISH",4,"arch:jellyfish",["Tentacool","Tentacruel"]),
   ("SLUDGE",3,"arch:sludge",["Grimer","Muk"]),
   ("SPHERE",2,"sprite:ball",["Voltorb","Electrode"]),
   ("FERRY",3,"lore:ferry",["Lapras"]),
   ("FOSSILISED",5,"lore:fossil",["Kabutops","Omastar"]),
 ], exclude=["Cloyster","Shellder","Omanyte","Kabuto","Aerodactyl","Weezing","Koffing","Magnemite"])
-board("2026-09-05","mixed","Hard",[
+board("2026-09-06","mixed","Hard",[
   ("MOLTEN",3,"lore:lava",["Slugma","Magcargo"]),
   ("SQUID",4,"arch:squid",["Inkay","Malamar"]),
   ("FROG",3,"arch:frog",["Tympole","Palpitoad"]),
   ("HIVE",3,"arch:bee",["Combee","Vespiquen"]),
   ("GEM",2,"sprite:gem",["Carbink"]),
 ], exclude=["Torkoal","Octillery","Seismitoad","Diancie","Sableye","Cutiefly","Ribombee"])
-
-# ===== 09-06 Sat : HARD =====
-board("2026-09-06","gen1","Hard",[
-  ("SEA-DOG",3,"arch:seal",["Seel","Dewgong"]),
-  ("UNICORN",3,"arch:unicorn",["Ponyta","Rapidash"]),
-  ("SPORES",2,"sprite:spores",["Vileplume","Gloom"]),
-  ("SUMO",3,"based:sumo",["Machop","Machoke"]),
-  ("DUCK-KNIGHT",4,"lore:leek",["Farfetch'd"]),
-], exclude=["Cloyster","Oddish","Bellossom","Machamp","Poliwrath","Vulpix","Ninetales"])
-board("2026-09-06","mixed","Hard",[
-  ("WATERBIRD",3,"arch:swan",["Ducklett","Swanna"]),
-  ("PRIMATE",3,"arch:gorilla",["Grookey","Thwackey","Rillaboom"]),
-  ("SCARAB",4,"based:scarab",["Nincada"]),
-  ("WEASEL",3,"arch:weasel",["Furret","Sentret"]),
-  ("HOARD",2,"sprite:coins",["Gimmighoul"]),
-], exclude=["Ninjask","Shedinja","Ambipom","Furfrou","Gholdengo","Bombirdier","Wattrel"])

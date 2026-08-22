@@ -90,51 +90,7 @@ def label(cats):
     if ones==2: return "Medium"
     return "Easy"
 
-# ---- per-clue explanation sentence for the end-of-game reveal ----
-CATNAME={1:"the easy one — type or family",2:"look at the sprite",
-         3:"a real-world basis",4:"a trickier grouping",5:"a deeper connection"}
-READ={
- # arch (plain noun): "based on the real-world {r}"
- "golem":"rock golem","butterfly":"butterfly","fox":"fox","caterpillar":"caterpillar",
- "crow":"crow","snail":"snail","tapir":"tapir (a dream-eating baku)","crocodile":"crocodile",
- "duck":"duck","eel":"eel and sea-serpent","monkey":"monkey","octopus":"octopus","squid":"squid",
- "sloth":"sloth","cobra":"cobra","feline":"cat","rhino":"rhinoceros","otter":"sea otter",
- "mole":"mole","firefly":"firefly","jellyfish":"jellyfish","frog":"frog","bee":"bee",
- "seal":"seal and sea lion","unicorn":"unicorn","swan":"swan","gorilla":"gorilla",
- "weasel":"weasel","sludge":"blob of living sludge",
- # based (phrase): "based on {r}"
- "bone":"the bone club and skull helmet it wears","lantern":"a haunted lantern",
- "sumo":"sumo wrestlers","scarab":"the scarab beetle","polygon":"3-D polygon graphics",
- # sprite (phrase): "you can spot it on the sprite — {r}"
- "fist":"the raised fists","seeds":"the seeds on its body","mushroom":"the mushroom on its back",
- "pincers":"the big pincers","scythe":"the scythe-shaped arms","acorn":"the acorn cap",
- "ball":"a Poké Ball shape","coin":"the gold coin on its forehead","coins":"a hoard of gold coins",
- "gem":"a gemstone body","spores":"the spores it puffs out",
- # lore (phrase): "from their Pokédex lore — {r}"
- "vampire":"they're vampire bats","teleport":"its signature Teleport move",
- "jynx":"an opera diva / snow-hag","ferry":"it ferries travellers across the sea",
- "fossil":"they're prehistoric fossils brought back to life","lava":"they're made of molten lava",
- "leek":"the spring onion (leek) it carries","mythical":"a mythical dragon",
- # family
- "eevee":"Eevee",
-}
-def _read(tail): return READ.get(tail, tail.replace("-"," "))
-def explain_for(word,cat,concept,members):
-    pre,_,tail=concept.partition(":"); r=_read(tail)
-    if pre=="type": reason=f"Every one is a {tail.capitalize()}-type."
-    elif pre=="group": reason={"starter":"They're first-partner (starter) Pokémon.",
-        "legendary":"They're all Legendary Pokémon.","pseudo":"They're pseudo-legendary Pokémon."}.get(tail,f"They're all {r}.")
-    elif pre=="family": reason=f"They're all part of the {r} family."
-    elif pre=="arch": reason=f"They're all based on the real-world {r}."
-    elif pre=="based": reason=f"They're based on {r}."
-    elif pre=="sprite": reason=f"You can spot it on the sprite — {r}."
-    elif pre=="lore": reason=f"It's from their Pokédex lore — {r}."
-    elif pre=="myth": reason=f"It's rooted in mythology — {r}."
-    elif pre=="name": reason=f"It's wordplay on their names — {r}."
-    elif pre=="trainer": reason=f"They belong to {r}'s team."
-    elif pre=="colour": reason=f"They're all {r}."
-    else: reason=r[:1].upper()+r[1:]+"."
-    return reason
+exec(open(f"{ROOT}/daily_tools/daily_common.py").read())
 
 errors=[]; assembled=[]
 nb=defaultdict(list); nw=defaultdict(list); ng=defaultdict(list); nc=defaultdict(list)
