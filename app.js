@@ -1635,6 +1635,18 @@ function _dailyUnseal(b64) {
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i) ^ DAILY_SEAL_KEY[i % 7];
   return JSON.parse(new TextDecoder().decode(out));
 }
+// A stable signature of a board (tile names + clue words). If the puzzle for a
+// date/pool is re-authored (e.g. a mid-day difficulty change), the signature
+// changes, so a cached "completed"/in-progress record for the OLD board is
+// ignored and the player can attempt the new one.
+function _dailySig(tiles, clues) {
+  const t = (tiles || []).map((x) => x.name).sort().join("|");
+  const c = (clues || []).map((x) => x.word).sort().join("|");
+  const s = t + "#" + c;
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0;
+  return h.toString(36);
+}
 // Base clues for mid-game display, with the answer-bearing fields removed.
 function _dailyStripClues(clues) {
   return (clues || []).map((c) => {
@@ -1730,7 +1742,7 @@ function _saveDailyProgress() {
       noMoreHints: daily.noMoreHints, taps: daily.taps, elapsedMs: dailyElapsedMs(),
       finished: daily.finished, outcome: daily.outcome, solution: daily.solution,
       solutionClues: daily.solutionClues, attemptId: daily.attemptId, rating: daily.rating,
-      sealed: daily.sealed,
+      sealed: daily.sealed, sig: daily.sig,
     }));
   } catch {}
   _pruneDailyProgress();
@@ -1788,7 +1800,7 @@ function _dailyReset() {
   daily.solution = null; daily.solutionClues = null;
   daily.taps = []; daily.attemptId = null; daily.rating = null;
   daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
-  daily.sealed = null; daily.key = null;
+  daily.sealed = null; daily.key = null; daily.sig = null;
 }
 
 async function startDaily(pool) {
@@ -1837,14 +1849,19 @@ async function startDaily(pool) {
     }
     daily.clues = daily.key ? _dailyStripClues(daily.key.k) : (cluesOnline || []);
     if (tiles) daily.tiles = tiles;
+    daily.sig = _dailySig(daily.tiles, daily.clues);
     setRoomPill(null);
     setDailyUrl(pool); // reflect which daily this is in the URL (shareable)
 
     // Already played (or partway through) on this device today? Restore it and
     // DON'T start a new attempt or reset the timer. A finished puzzle re-opens
     // straight to the stats box; an in-progress one resumes where it left off.
+    // BUT if the board was re-authored since (signature changed — e.g. a mid-day
+    // difficulty swap), ignore the stale record and start the new puzzle fresh.
     const saved = _loadDailyProgress(daily.date, pool);
-    if (saved) {
+    if (saved && saved.sig && daily.sig && saved.sig !== daily.sig) {
+      try { localStorage.removeItem(_dailyKey(daily.date, pool)); } catch {}
+    } else if (saved) {
       daily.revealed = saved.revealed || {};
       daily.bluesFound = saved.bluesFound || 0;
       daily.mistakes = saved.mistakes || 0;

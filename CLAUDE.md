@@ -72,9 +72,13 @@ Chosen on the landing page when creating a room. `mode` values:
   pre-written clues** covering all 9 blue tiles and has **one turn**: keep
   tapping until all 9 blue are found (win) or **5 strikes** (wrong taps) ends it.
   A **difficulty badge** (Easy → Evil) is shown, derived from the clue-category
-  spread (more Cat-1 clues = easier; more Cat-4/5 = harder). **Saturdays are
-  always Brutal or Evil** (a fixed weekly spike — author ≥3 Cat-4/5 clues that
-  day); the other days ramp Easy → Hard. They may request
+  spread (more Cat-1 clues = easier; more Cat-4/5 = harder). **Difficulty is
+  FIXED by weekday** (same for both pools): Mon Easy · Tue Medium · Wed
+  Challenging · Thu Hard · Fri Hard · **Sat Brutal · Sun Evil**. A board must
+  match its date's weekday tier; a good board on the wrong day is **moved** to
+  the next free matching-weekday date, not deleted. **Brutal & Evil boards must
+  also pass the structural gate: clue numbers sum ≥ 11 (≥2 double-clued tiles)
+  and ≤1 `×1` clue** (verifier-enforced). They may request
   **unlimited extra clues** (hints): each hint is **conditional** — the server
   serves the clue that helps most with the tiles still UNREVEALED
   (`daily_hint_next`), and every blue is covered by at least one hint. Timer

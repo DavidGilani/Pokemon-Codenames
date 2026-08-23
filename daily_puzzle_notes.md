@@ -268,7 +268,20 @@ Difficulty is the whole mix, not just "how many Cat-1 clues". Two things drive i
    the 5 base clues — never stack (e.g. three sprite clues, or three connection
    clues). Variety is the fun, and it also spreads the difficulty honestly.
 
-Target mix over the 5 base clues (an independent tier for each pool each day):
+### Difficulty by day of week (FIXED schedule)
+
+Every date's tier is set by its weekday — **the same for both pools that day**.
+The week ramps up and peaks across the weekend:
+
+| Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|-----|-----|-----|-----|-----|-----|-----|
+| Easy | Medium | Challenging | Hard | Hard | **Brutal** | **Evil** |
+
+This is a hard rule: when authoring/scheduling, a date MUST get a board of its
+weekday's tier. If a good board is the wrong tier for its date, **move it to the
+next free date whose weekday matches its tier** rather than discarding it.
+
+Target mix over the 5 base clues (the tier is fixed by weekday, above):
 
 | Tier | Cat 1 | Cat 2 (sprite) | Cat 3–5 | also |
 |------|-------|----------------|---------|------|
@@ -276,8 +289,14 @@ Target mix over the 5 base clues (an independent tier for each pool each day):
 | Medium | 2 | ~2 | ≥1 Cat 3–4 (**≤1 Cat 4–5**) | — |
 | Challenging | 1 | 1–2 | ≥2 Cat 3, **≤1 Cat 4–5** | keep it *below* Hard |
 | **Hard** | 0 | **≤1** | exactly **2 Cat 4–5** + ≥1 Cat 3 | — |
-| **Brutal** | 0 | ≤1 | exactly **3 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
-| **Evil** | 0 | **0** | **≥4 Cat 4–5** | ≤1 `×1` clue, sum ≥ 11 |
+| **Brutal** | ≤1 | ≤1 | exactly **3 Cat 4–5** | ≤1 `×1` clue, **sum ≥ 11** |
+| **Evil** | 0 | **0** | **≥4 Cat 4–5** | ≤1 `×1` clue, **sum ≥ 11** |
+
+**sum ≥ 11** = the five clue numbers add to **11 or more**, i.e. at least two
+blue tiles are each covered by a second clue (the "which tile is double-clued?"
+ambiguity that makes the top tiers genuinely hard). REQUIRED for Brutal and Evil
+and verifier-enforced. (A single Cat-1 "type umbrella" is allowed in Brutal to
+set up the overlaps; Evil stays pure — no Cat 1, no Cat 2.)
 
 This keeps the **displayed** badge (`highs`=cat≥4: ≥4→Evil, 3→Brutal; else by
 Cat-1 count 0/1/2/3+ → Hard/Challenging/Medium/Easy) in agreement with the
