@@ -78,4 +78,8 @@ def explain_for(word, cat, concept, members):
         return f"They belong to {r}'s team."
     if pre == "colour":
         return f"They're all {r}."
+    if pre == "habitat":
+        return f"They all live in the same kind of place — {r}."
+    if pre == "egg":
+        return f"They're in the same egg group — {r}."
     return r[:1].upper() + r[1:] + "."
