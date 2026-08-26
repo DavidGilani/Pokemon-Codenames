@@ -17,8 +17,10 @@ from collections import defaultdict
 ROOT="/home/user/Pokemon-Codenames"
 FACTS=json.load(open(f"{ROOT}/pokemon_facts.json"))
 GEN1={n for n,r in FACTS.items() if r["gen"]==1}
-TARGET_DATE="2026-08-27"
-TIER="Hard"
+import sys
+TARGET_DATE=sys.argv[1] if len(sys.argv)>1 else "2026-08-27"
+TIER=sys.argv[2] if len(sys.argv)>2 else "Hard"
+REPLACED_DATES={TARGET_DATE}
 
 def norm(s): return re.sub(r'[^a-z]','',s.lower())
 def shares3(a,b):
@@ -47,10 +49,29 @@ def board(date,pool,tier,clues,exclude=()): B.append(dict(date=date,pool=pool,ti
 exec(open(f"{ROOT}/daily_tools/daily_common.py").read())
 exec(open(f"{ROOT}/daily_tools/boards_v2.py").read())
 for b in B:
-    if b["date"]==TARGET_DATE: continue  # being replaced
+    if b["date"] in REPLACED_DATES: continue  # being replaced
     for w,c,cc,m in b["clues"]:
         USES[w].append((b["date"], frozenset(m))); CONCEPT[cc].append(b["date"])
         for nm in m: BLUE_USED[nm].append(b["date"])
+
+# 33_updates.sql already replaced 2026-08-27 with a fresh random-draw board;
+# fold those words/concepts/blues into the corpus (they're live/about-to-be-live)
+# even though boards_v2.py still has the old text for that date.
+EXTRA_27=[
+ ("2026-08-27",[("BIRD",["Dodrio","Farfetch'd","Moltres","Zapdos"],"arch:bird"),
+  ("RED",["Charizard","Seaking"],"colour:red"),
+  ("GROUND",["Arbok","Farfetch'd","Raticate"],"egg:ground"),
+  ("GRASSLAND",["Arbok","Dodrio","Farfetch'd","Ivysaur","Raticate"],"habitat:grassland")]),
+ ("2026-08-27",[("BLUE",["Beldum","Grapploct","Mareanie"],"colour:blue"),
+  ("NO-EGGS",["Igglybuff","Ogerpon","Solgaleo"],"egg:no-eggs"),
+  ("GROUND",["Mienshao","Skiddo"],"egg:ground"),
+  ("MINERAL",["Beldum","Vanilluxe"],"arch:mineral")]),
+]
+if TARGET_DATE!="2026-08-27":
+    for d,cl in EXTRA_27:
+        for w,m,cc in cl:
+            USES[w].append((d,frozenset(m))); CONCEPT[cc].append(d)
+            for nm in m: BLUE_USED[nm].append(d)
 
 def label(cats):
     highs=sum(1 for c in cats if c>=4); ones=sum(1 for c in cats if c==1)
@@ -98,13 +119,14 @@ def try_cover(blues, pool):
             if covered!=set(blues): continue
             # no blue double-counted more than needed; allow overlap (that's fine/good)
             cats=[c for _,_,c,_ in combo]
+            ones=sum(1 for c in cats if c==1); twos=sum(1 for c in cats if c==2)
+            threes=sum(1 for c in cats if c==3); highs=sum(1 for c in cats if c>=4)
             if TIER=="Hard":
-                if any(c==1 for c in cats): continue
-                if sum(1 for c in cats if c==2)>1: continue
-                highs=sum(1 for c in cats if c>=4)
-                if highs!=2: continue
-                if not any(c==3 for c in cats): continue
-                if len(set(cats))<3: continue
+                if ones!=0 or twos>1 or highs!=2 or threes<1 or len(set(cats))<3: continue
+            elif TIER=="Challenging":
+                if ones!=1 or not(1<=twos<=2) or threes<2 or highs>1 or len(set(cats))<3: continue
+            elif TIER=="Medium":
+                if ones!=2 or len(set(cats))<3: continue
             key_sig=frozenset(k for k,_,_,_ in combo)
             if key_sig in seen_group_sets: continue
             seen_group_sets.add(key_sig)
@@ -131,7 +153,7 @@ def try_board(pool, seed):
     poolset=list(GEN1) if pool=="gen1" else list(FACTS)
     dt=TARGET_DATE; cap=5 if pool=="gen1" else 10
     eligible=[nm for nm in poolset if nm.isascii() and FACTS[nm].get("wk",0)==1
-              and not any(0<days(dt,od)<=cap for od in BLUE_USED.get(nm,[]))]
+              and not any(0<abs(days(dt,od))<=cap for od in BLUE_USED.get(nm,[]))]
     if len(eligible)<9: return None
     blues=rng.sample(eligible,9)
     fams=[FACTS[n]["family"] for n in blues]
@@ -147,10 +169,10 @@ def try_board(pool, seed):
     for w,c,cc,m in clues:
         grp=frozenset(m)
         for od,om in USES.get(w,[]):
-            if 0<days(dt,od)<=7: return None
-            if 0<days(dt,od)<=14 and om==grp: return None
+            if 0<abs(days(dt,od))<=7: return None
+            if 0<abs(days(dt,od))<=14 and om==grp: return None
         for od in CONCEPT.get(cc,[]):
-            if 0<days(dt,od)<=5: return None
+            if 0<abs(days(dt,od))<=5: return None
     # letter rule vs blues+clue words themselves
     cluewords=[w for w,c,cc,m in clues]
     for i,w in enumerate(cluewords):
@@ -194,7 +216,7 @@ def hint_for(nm, names, used):
 RESULTS={}
 for pool in ("gen1","mixed"):
     found=None
-    for attempt in range(20000):
+    for attempt in range(150000):
         r=try_board(pool, attempt*7919+1)
         if r: found=r; break
     print(pool, "->", "FOUND after %d attempts"%attempt if found else "NOT FOUND in 20000 draws")
@@ -223,12 +245,11 @@ if len(RESULTS)==2:
             parts.append("{"+", ".join(fields)+"}")
         return "["+", ".join(parts)+"]"
     def sq(s): return "'"+s.replace("'","''")+"'"
-    L=["-- 33_updates.sql : replace 2026-08-27 (Thu -> Hard) with boards generated by",
-       "-- TRUE random draw of the 9 blues, then auto-discovered shared attributes",
-       "-- (type/arch/based-on/egg-group/habitat/colour) covering all 9 in <=5 clues.",
-       "-- Experiment requested to check whether random draw reduces how often blues",
-       "-- cluster around evolution lines (this run explicitly excludes any board",
-       "-- where two blues share an evolution family). Supersedes 32_updates for this date.","",
+    L=[f"-- replace {TARGET_DATE} ({TIER}) with boards generated by TRUE random draw of",
+       "-- the 9 blues, then auto-discovered shared attributes (type/arch/based-on/",
+       "-- egg-group/habitat/colour) covering all 9 in <=5 clean single-word clues.",
+       "-- Random draw excludes any two blues sharing an evolution family. Supersedes",
+       "-- the previous board for this date.","",
        "insert into public.daily_puzzles (puzzle_date, pool, clues, hints, tiles) values"]
     R=[]
     for pool,found in RESULTS.items():
@@ -247,7 +268,8 @@ if len(RESULTS)==2:
     L.append(",\n".join(R))
     L.append("on conflict (puzzle_date, pool) do update")
     L.append("  set clues = excluded.clues, hints = excluded.hints, tiles = excluded.tiles;")
-    open(f"{ROOT}/33_updates.sql","w").write("\n".join(L)+"\n")
-    print("wrote 33_updates.sql")
+    outname=f"33_updates_{TARGET_DATE}.sql"
+    open(f"{ROOT}/{outname}","w").write("\n".join(L)+"\n")
+    print("wrote",outname)
 else:
     print("MISSING pools, not writing SQL:", set(("gen1","mixed"))-set(RESULTS))
