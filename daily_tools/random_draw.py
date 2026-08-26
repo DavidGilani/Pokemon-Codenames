@@ -106,8 +106,10 @@ def try_cover(blues, pool):
             by_key[key].append(nm)
     groups=[]
     for key,members in by_key.items():
-        if len(members)<2: continue  # single-member clues waste a slot; need broad coverage in <=5
         _,word,cat=next(x for x in attrs(members[0]) if x[0]==key)
+        # single-member clues waste a slot for most categories, but a lone
+        # type/legendary (cat1) anchor clue is a normal, valid single-tile clue
+        if len(members)<2 and cat!=1: continue
         groups.append((key,word,cat,tuple(sorted(set(members)))))
     groups.sort(key=lambda g:-len(g[3]))
     best=None
