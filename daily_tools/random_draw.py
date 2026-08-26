@@ -71,9 +71,9 @@ def attrs(nm):
         for part in re.split(r"[\(/,+]",bo):
             w=part.strip().strip("()").strip()
             if w and len(w)>=3: out.append((f"based:{w.lower()}", w.upper().replace(" ","-"), 4))
-    for eg in r.get("egg",[]): out.append((f"egg:{eg}", eg.upper()+"-EGG-GROUP", 5))
+    for eg in r.get("egg",[]): out.append((f"egg:{eg}", eg.upper(), 5))
     if r.get("habitat"): out.append((f"habitat:{r['habitat']}", r["habitat"].upper().replace(" ","-"), 4))
-    if r.get("color_primary"): out.append((f"colour:{r['color_primary']}", r["color_primary"].upper()+"-BODY", 2))
+    if r.get("color_primary"): out.append((f"colour:{r['color_primary']}", r["color_primary"].upper(), 2))
     if r.get("genus"): out.append((f"genus:{r['genus']}", r["genus"].split()[0].upper(), 2))
     return out
 
@@ -179,8 +179,8 @@ def hint_for(nm, names, used):
             w=part.strip().strip("()").strip().upper().replace(" ","-")
             if w: cands.append((w,3))
     if r.get("genus"): cands.append((r["genus"].split()[0].upper(),2))
-    if r.get("color_primary"): cands.append((r["color_primary"].upper()+"-BODY",2))
-    for eg in r.get("egg",[]): cands.append((eg.upper()+"-EGG",3))
+    if r.get("color_primary"): cands.append((r["color_primary"].upper(),2))
+    for eg in r.get("egg",[]): cands.append((eg.upper(),3))
     for mv in r.get("moves",[]): cands.append((mv.upper().replace(" ","-"),3))
     if r.get("habitat"): cands.append((r["habitat"].upper().replace(" ","-"),3))
     if r.get("color_secondary"): cands.append((r["color_secondary"].upper()+"-MARKS",2))
