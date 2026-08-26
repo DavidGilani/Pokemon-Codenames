@@ -112,6 +112,7 @@ def try_cover(blues, pool):
         if len(members)<2 and cat!=1: continue
         groups.append((key,word,cat,tuple(sorted(set(members)))))
     groups.sort(key=lambda g:-len(g[3]))
+    groups=groups[:14]  # bound the combinations search (itertools blows up otherwise)
     best=None
     seen_group_sets=set()
     for combo_size in (3,4,5):
@@ -218,7 +219,7 @@ def hint_for(nm, names, used):
 RESULTS={}
 for pool in ("gen1","mixed"):
     found=None
-    for attempt in range(150000):
+    for attempt in range(200000):
         r=try_board(pool, attempt*7919+1)
         if r: found=r; break
     print(pool, "->", "FOUND after %d attempts"%attempt if found else "NOT FOUND in 20000 draws")
