@@ -449,6 +449,7 @@ a { color: var(--accent); }
 .daily-diff.diff-hard        { background: #d1622b; }
 .daily-diff.diff-brutal      { background: #c23b3b; }
 .daily-diff.diff-evil        { background: #7d2fb8; }
+.daily-diff.diff-example     { background: var(--neutral-dim); color: var(--text-dim); }
 
 /* End-of-game "what each clue meant" reveal */
 .daily-answers {

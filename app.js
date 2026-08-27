@@ -1819,33 +1819,35 @@ function _dailyReset() {
   daily.practice = false;
 }
 
-// A fixed, self-contained example board (an easy Monday-style puzzle) used by
-// the "Play a test game" tutorial. Colours/clues/hints live entirely client-side
-// (like an unsealed daily) so it plays with zero network and is never cached.
+// A fixed, self-contained example board used by the "Play a test game" tutorial
+// — the real Wed 19 Aug Gen I daily (fossils, shells, horns, Cubone the orphan,
+// Machamp's arms), chosen to show off non-type clues. Colours/clues/hints live
+// entirely client-side (like an unsealed daily) so it plays with zero network
+// and is never cached.
 const PRACTICE_BLUES = [
-  [0, "Charmander", 4], [3, "Squirtle", 7], [6, "Pikachu", 25], [8, "Vulpix", 37],
-  [11, "Caterpie", 10], [14, "Psyduck", 54], [17, "Pidgey", 16], [20, "Weedle", 13],
-  [23, "Spearow", 21],
+  [2, "Nidoking", 34], [3, "Cubone", 104], [4, "Kabutops", 141], [5, "Machamp", 68],
+  [9, "Rhydon", 112], [13, "Blastoise", 9], [16, "Aerodactyl", 142], [18, "Omastar", 139],
+  [20, "Cloyster", 91],
 ];
 const PRACTICE_NEUTRALS = [
-  [1, "Geodude", 74], [2, "Machop", 66], [4, "Abra", 63], [5, "Gastly", 92],
-  [7, "Cubone", 104], [9, "Sandshrew", 27], [10, "Ekans", 23], [12, "Nidoran♀", 29],
-  [13, "Jigglypuff", 39], [15, "Clefairy", 35], [16, "Lickitung", 108], [18, "Snorlax", 143],
-  [19, "Ditto", 132], [21, "Chansey", 113], [22, "Onix", 95], [24, "Mankey", 56],
+  [0, "Pikachu", 25], [1, "Gengar", 94], [6, "Weezing", 110], [7, "Ninetales", 38],
+  [8, "Haunter", 93], [10, "Snorlax", 143], [11, "Koffing", 109], [12, "Jolteon", 135],
+  [14, "Meowth", 52], [15, "Arcanine", 59], [17, "Electabuzz", 125], [19, "Vulpix", 37],
+  [21, "Vaporeon", 134], [22, "Growlithe", 58], [23, "Persian", 53], [24, "Raichu", 26],
 ];
 const PRACTICE_CLUES = [
-  { word: "FIRE", number: 2, cat: 1, t: [0, 8], explain: "Both are Fire-types." },
-  { word: "WATER", number: 2, cat: 1, t: [3, 14], explain: "Both are Water-types." },
-  { word: "ELECTRIC", number: 1, cat: 1, t: [6], explain: "It's the Electric-type." },
-  { word: "BUG", number: 2, cat: 1, t: [11, 20], explain: "Both are Bug-types." },
-  { word: "BIRD", number: 2, cat: 3, t: [17, 23], explain: "Both are small birds." },
+  { word: "FOSSIL", number: 3, cat: 4, t: [4, 16, 18], explain: "They were all revived from prehistoric fossils." },
+  { word: "SHELL", number: 2, cat: 2, t: [13, 20], explain: "Look for the big shell each one carries." },
+  { word: "HORN", number: 2, cat: 2, t: [2, 9], explain: "Each has a prominent horn." },
+  { word: "ORPHAN", number: 1, cat: 4, t: [3], explain: "Cubone wears the skull of its lost mother — the 'Lonely' Pokémon." },
+  { word: "ARMS", number: 1, cat: 2, t: [5], explain: "Machamp and its four muscular arms." },
 ];
 const PRACTICE_HINTS = [
-  { word: "FLAME-TAIL", number: 1, cat: 2, t: [0] }, { word: "SIX-TAILS", number: 1, cat: 2, t: [8] },
-  { word: "SHELL", number: 1, cat: 2, t: [3] }, { word: "HEADACHE", number: 1, cat: 4, t: [14] },
-  { word: "CHEEKS", number: 1, cat: 2, t: [6] }, { word: "ANTENNA", number: 1, cat: 2, t: [11] },
-  { word: "NOSE-SPIKE", number: 1, cat: 2, t: [20] }, { word: "CREST", number: 1, cat: 2, t: [17] },
-  { word: "BEAK", number: 1, cat: 2, t: [23] },
+  { word: "SICKLE", number: 1, cat: 2, t: [4] }, { word: "SPIRAL", number: 1, cat: 2, t: [18] },
+  { word: "FANGS", number: 1, cat: 2, t: [16] }, { word: "TURTLE", number: 1, cat: 2, t: [13] },
+  { word: "PEARL", number: 1, cat: 4, t: [20] }, { word: "DRILL", number: 1, cat: 2, t: [9] },
+  { word: "BARBS", number: 1, cat: 2, t: [2] }, { word: "SKULL", number: 1, cat: 2, t: [3] },
+  { word: "MUSCLE", number: 1, cat: 3, t: [5] },
 ];
 
 function startPractice() {
@@ -1991,7 +1993,7 @@ function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   const diff = dailyDifficulty(daily.clues);
   $("#daily-play-title").innerHTML = daily.practice
-    ? `Test game <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`
+    ? `Test game <span class="daily-diff diff-example">Example</span>`
     : `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
   $("#daily-play-sub").textContent = daily.practice
     ? `A quick example to learn the ropes — nothing here is saved or shared.`
