@@ -1826,8 +1826,8 @@ function _dailyReset() {
 // and is never cached.
 const PRACTICE_BLUES = [
   [2, "Nidoking", 34], [3, "Cubone", 104], [4, "Kabutops", 141], [5, "Machamp", 68],
-  [9, "Rhydon", 112], [13, "Blastoise", 9], [16, "Aerodactyl", 142], [18, "Omastar", 139],
-  [20, "Cloyster", 91],
+  [9, "Rhydon", 112], [13, "Psyduck", 54], [16, "Aerodactyl", 142], [18, "Omastar", 139],
+  [20, "Starmie", 121],
 ];
 const PRACTICE_NEUTRALS = [
   [0, "Pikachu", 25], [1, "Gengar", 94], [6, "Weezing", 110], [7, "Ninetales", 38],
@@ -1837,15 +1837,15 @@ const PRACTICE_NEUTRALS = [
 ];
 const PRACTICE_CLUES = [
   { word: "FOSSIL", number: 3, cat: 4, t: [4, 16, 18], explain: "They were all revived from prehistoric fossils." },
-  { word: "SHELL", number: 2, cat: 2, t: [13, 20], explain: "Look for the big shell each one carries." },
+  { word: "MISTY", number: 2, cat: 3, t: [13, 20], explain: "Both are on the team of Water-type gym leader Misty." },
   { word: "HORN", number: 2, cat: 2, t: [2, 9], explain: "Each has a prominent horn." },
   { word: "ORPHAN", number: 1, cat: 4, t: [3], explain: "Cubone wears the skull of its lost mother — the 'Lonely' Pokémon." },
   { word: "ARMS", number: 1, cat: 2, t: [5], explain: "Machamp and its four muscular arms." },
 ];
 const PRACTICE_HINTS = [
   { word: "SICKLE", number: 1, cat: 2, t: [4] }, { word: "SPIRAL", number: 1, cat: 2, t: [18] },
-  { word: "FANGS", number: 1, cat: 2, t: [16] }, { word: "TURTLE", number: 1, cat: 2, t: [13] },
-  { word: "PEARL", number: 1, cat: 4, t: [20] }, { word: "DRILL", number: 1, cat: 2, t: [9] },
+  { word: "FANGS", number: 1, cat: 2, t: [16] }, { word: "HEADACHE", number: 1, cat: 4, t: [13] },
+  { word: "GEM", number: 1, cat: 2, t: [20] }, { word: "DRILL", number: 1, cat: 2, t: [9] },
   { word: "BARBS", number: 1, cat: 2, t: [2] }, { word: "SKULL", number: 1, cat: 2, t: [3] },
   { word: "MUSCLE", number: 1, cat: 3, t: [5] },
 ];
