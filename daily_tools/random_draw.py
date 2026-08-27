@@ -20,7 +20,7 @@ GEN1={n for n,r in FACTS.items() if r["gen"]==1}
 import sys
 TARGET_DATE=sys.argv[1] if len(sys.argv)>1 else "2026-08-27"
 TIER=sys.argv[2] if len(sys.argv)>2 else "Hard"
-REPLACED_DATES={TARGET_DATE}
+REPLACED_DATES={TARGET_DATE,"2026-08-26","2026-08-27"}
 
 def norm(s): return re.sub(r'[^a-z]','',s.lower())
 def shares3(a,b):
@@ -54,24 +54,23 @@ for b in B:
         USES[w].append((b["date"], frozenset(m))); CONCEPT[cc].append(b["date"])
         for nm in m: BLUE_USED[nm].append(b["date"])
 
-# 33_updates.sql already replaced 2026-08-27 with a fresh random-draw board;
-# fold those words/concepts/blues into the corpus (they're live/about-to-be-live)
-# even though boards_v2.py still has the old text for that date.
-EXTRA_27=[
- ("2026-08-27",[("BIRD",["Dodrio","Farfetch'd","Moltres","Zapdos"],"arch:bird"),
-  ("RED",["Charizard","Seaking"],"colour:red"),
-  ("GROUND",["Arbok","Farfetch'd","Raticate"],"egg:ground"),
-  ("GRASSLAND",["Arbok","Dodrio","Farfetch'd","Ivysaur","Raticate"],"habitat:grassland")]),
- ("2026-08-27",[("BLUE",["Beldum","Grapploct","Mareanie"],"colour:blue"),
-  ("NO-EGGS",["Igglybuff","Ogerpon","Solgaleo"],"egg:no-eggs"),
-  ("GROUND",["Mienshao","Skiddo"],"egg:ground"),
-  ("MINERAL",["Beldum","Vanilluxe"],"arch:mineral")]),
-]
-if TARGET_DATE!="2026-08-27":
-    for d,cl in EXTRA_27:
-        for w,m,cc in cl:
-            USES[w].append((d,frozenset(m))); CONCEPT[cc].append(d)
-            for nm in m: BLUE_USED[nm].append(d)
+# Both 2026-08-26 and 2026-08-27 are being regenerated (colour clues were
+# unreliable -- see attrs() note). Fold in whichever of the two SQL files
+# already exists on disk (the "sibling" date) so each run's anti-rep checks
+# see the other's real, current words/concepts/blues instead of stale text.
+import os
+for sib_date, sib_path in [("2026-08-26", f"{ROOT}/33_updates_2026-08-26.sql"),
+                            ("2026-08-27", f"{ROOT}/33_updates_2026-08-27.sql")]:
+    if sib_date==TARGET_DATE or not os.path.exists(sib_path): continue
+    s=open(sib_path).read()
+    for m in re.finditer(r"'(\[.*?\])'::jsonb,\s*\n\s*'\[.*?\]'::jsonb,\s*\n\s*'(\[.*?\])'::jsonb", s, re.S):
+        clues_j, tiles_j = m.groups()
+        cl=json.loads(clues_j.replace("''","'")); ti=json.loads(tiles_j.replace("''","'"))
+        p2n={t["position"]:t["name"] for t in ti}
+        for c in cl:
+            members=frozenset(p2n[p] for p in c["t"])
+            USES[c["word"]].append((sib_date, members))
+            for nm in members: BLUE_USED[nm].append(sib_date)
 
 def label(cats):
     highs=sum(1 for c in cats if c>=4); ones=sum(1 for c in cats if c==1)
@@ -94,47 +93,69 @@ def attrs(nm):
             if w and len(w)>=3: out.append((f"based:{w.lower()}", w.upper().replace(" ","-"), 4))
     for eg in r.get("egg",[]): out.append((f"egg:{eg}", eg.upper(), 5))
     if r.get("habitat"): out.append((f"habitat:{r['habitat']}", r["habitat"].upper().replace(" ","-"), 4))
-    if r.get("color_primary"): out.append((f"colour:{r['color_primary']}", r["color_primary"].upper(), 2))
+    # NOTE: colour deliberately excluded. pokemon_facts.json's color_primary/
+    # color_secondary are single-value simplifications of a whole sprite and
+    # are unreliable (e.g. Alakazam tagged "brown" despite reading as mostly
+    # yellow; Dragapult tagged "green" when that's barely true; secondary
+    # sprite colours like the green on Bonsly/Sirfetch'd aren't captured at
+    # all). A colour clue needs an actual visual judgement call, not a lookup
+    # against this field, so it's authored by hand, never auto-generated.
     if r.get("genus"): out.append((f"genus:{r['genus']}", r["genus"].split()[0].upper(), 2))
+    for s in r.get("sprite",[]):
+        w=s.strip()
+        if w: out.append((f"sprite:{w.lower()}", w.upper().replace(" ","-"), 2))
     return out
 
+def _cats_ok(cats):
+    ones=sum(1 for c in cats if c==1); twos=sum(1 for c in cats if c==2)
+    threes=sum(1 for c in cats if c==3); highs=sum(1 for c in cats if c>=4)
+    if TIER=="Hard":
+        return ones==0 and twos<=1 and highs==2 and threes>=1 and len(set(cats))>=3
+    if TIER=="Challenging":
+        return ones==1 and 1<=twos<=2 and threes>=2 and highs<=1 and len(set(cats))>=3
+    if TIER=="Medium":
+        return ones==2 and len(set(cats))>=3
+    return True
+
 def try_cover(blues, pool):
-    # concept-key -> members among blues
+    # concept-key -> members among blues (multi-member groups only, for the
+    # combinatorial search -- singles are used only to mop up leftover blues)
     by_key=defaultdict(list)
     for nm in blues:
         for key,word,cat in attrs(nm):
             by_key[key].append(nm)
-    groups=[]
+    multi=[]
     for key,members in by_key.items():
+        if len(members)<2: continue
         _,word,cat=next(x for x in attrs(members[0]) if x[0]==key)
-        # single-member clues waste a slot for most categories, but a lone
-        # type/legendary (cat1) anchor clue is a normal, valid single-tile clue
-        if len(members)<2 and cat!=1: continue
-        groups.append((key,word,cat,tuple(sorted(set(members)))))
-    groups.sort(key=lambda g:-len(g[3]))
-    groups=groups[:14]  # bound the combinations search (itertools blows up otherwise)
-    best=None
+        multi.append((key,word,cat,tuple(sorted(set(members)))))
+    multi.sort(key=lambda g:-len(g[3]))
+    multi=multi[:12]  # bound the combinations search (itertools blows up otherwise)
     seen_group_sets=set()
-    for combo_size in (3,4,5):
-        for combo in itertools.combinations(groups, combo_size):
+    for combo_size in (2,3,4,5):
+        for combo in itertools.combinations(multi, combo_size):
             covered=set()
             for _,_,_,m in combo: covered.update(m)
-            if covered!=set(blues): continue
-            # no blue double-counted more than needed; allow overlap (that's fine/good)
+            missing=set(blues)-covered
+            if len(missing)>1: continue  # only mop up at most one leftover blue with a single
+            if combo_size+len(missing)>5: continue
             cats=[c for _,_,c,_ in combo]
-            ones=sum(1 for c in cats if c==1); twos=sum(1 for c in cats if c==2)
-            threes=sum(1 for c in cats if c==3); highs=sum(1 for c in cats if c>=4)
-            if TIER=="Hard":
-                if ones!=0 or twos>1 or highs!=2 or threes<1 or len(set(cats))<3: continue
-            elif TIER=="Challenging":
-                if ones!=1 or not(1<=twos<=2) or threes<2 or highs>1 or len(set(cats))<3: continue
-            elif TIER=="Medium":
-                if ones!=2 or len(set(cats))<3: continue
-            key_sig=frozenset(k for k,_,_,_ in combo)
-            if key_sig in seen_group_sets: continue
-            seen_group_sets.add(key_sig)
-            best=combo
-            return best
+            if missing:
+                nm=next(iter(missing))
+                for key,word,cat in attrs(nm):
+                    if key in {k for k,_,_,_ in combo}: continue
+                    if _cats_ok(cats+[cat]):
+                        full=list(combo)+[(key,word,cat,(nm,))]
+                        sig=frozenset(k for k,_,_,_ in full)
+                        if sig in seen_group_sets: continue
+                        seen_group_sets.add(sig)
+                        return full
+            else:
+                if _cats_ok(cats):
+                    sig=frozenset(k for k,_,_,_ in combo)
+                    if sig in seen_group_sets: continue
+                    seen_group_sets.add(sig)
+                    return list(combo)
     return None
 
 def build_clues(combo):
@@ -167,6 +188,8 @@ def try_board(pool, seed):
     if pool=="mixed" and len({FACTS[n]["gen"] for n in blues})<3: return None
     combo=try_cover(blues,pool)
     if not combo: return None
+    membersets=[frozenset(m) for _,_,_,m in combo]
+    if len(membersets)!=len(set(membersets)): return None  # no two clues share the identical blue set
     clues=build_clues(combo)
     # anti-rep on words/groups/concepts
     for w,c,cc,m in clues:
@@ -204,11 +227,10 @@ def hint_for(nm, names, used):
             w=part.strip().strip("()").strip().upper().replace(" ","-")
             if w: cands.append((w,3))
     if r.get("genus"): cands.append((r["genus"].split()[0].upper(),2))
-    if r.get("color_primary"): cands.append((r["color_primary"].upper(),2))
     for eg in r.get("egg",[]): cands.append((eg.upper(),3))
     for mv in r.get("moves",[]): cands.append((mv.upper().replace(" ","-"),3))
     if r.get("habitat"): cands.append((r["habitat"].upper().replace(" ","-"),3))
-    if r.get("color_secondary"): cands.append((r["color_secondary"].upper()+"-MARKS",2))
+    # colour deliberately excluded here too -- see attrs() note above
     cands.append(("TYPE-"+r["types"][0].upper(),1))
     for w,c in cands:
         if w in used: continue
@@ -219,7 +241,7 @@ def hint_for(nm, names, used):
 RESULTS={}
 for pool in ("gen1","mixed"):
     found=None
-    for attempt in range(200000):
+    for attempt in range(150000):
         r=try_board(pool, attempt*7919+1)
         if r: found=r; break
     print(pool, "->", "FOUND after %d attempts"%attempt if found else "NOT FOUND in 20000 draws")
