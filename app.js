@@ -1843,11 +1843,15 @@ const PRACTICE_CLUES = [
   { word: "ARMS", number: 1, cat: 2, t: [5], explain: "Machamp and its four muscular arms." },
 ];
 const PRACTICE_HINTS = [
-  { word: "SICKLE", number: 1, cat: 2, t: [4] }, { word: "SPIRAL", number: 1, cat: 2, t: [18] },
-  { word: "FANGS", number: 1, cat: 2, t: [16] }, { word: "HEADACHE", number: 1, cat: 4, t: [13] },
-  { word: "GEM", number: 1, cat: 2, t: [20] }, { word: "DRILL", number: 1, cat: 2, t: [9] },
-  { word: "BARBS", number: 1, cat: 2, t: [2] }, { word: "SKULL", number: 1, cat: 2, t: [3] },
-  { word: "MUSCLE", number: 1, cat: 3, t: [5] },
+  { word: "SICKLE", number: 1, cat: 2, t: [4], explain: "Kabutops slashes with its scythe-like blades." },
+  { word: "SPIRAL", number: 1, cat: 2, t: [18], explain: "Omastar's coiled, spiral ammonite shell." },
+  { word: "FANGS", number: 1, cat: 2, t: [16], explain: "The sharp fangs lining Aerodactyl's jaws." },
+  { word: "HEADACHE", number: 1, cat: 4, t: [13], explain: "Psyduck's endless psychic headache." },
+  { word: "GEM", number: 1, cat: 2, t: [20], explain: "The jewelled core at the centre of Starmie." },
+  { word: "DRILL", number: 1, cat: 2, t: [9], explain: "The drill-like horn on Rhydon's snout." },
+  { word: "ROYALTY", number: 1, cat: 4, t: [2], explain: "‘King’ is right there in Nidoking's name." },
+  { word: "SKULL", number: 1, cat: 2, t: [3], explain: "The skull helmet Cubone wears." },
+  { word: "MUSCLE", number: 1, cat: 3, t: [5], explain: "Machamp's four bulging arms." },
 ];
 
 function startPractice() {
@@ -2319,6 +2323,44 @@ async function dailyFinish(outcome) {
   renderDaily();
 }
 
+// The "What each clue meant" box: a row per base clue, then a row for each
+// EXTRA CLUE the player revealed (with the tile it pointed to, and a why-line
+// where the data carries one). Shared by the normal and tutorial finish screens.
+function _dailyAnswersBox() {
+  if (!daily.solutionClues || !daily.solution) return "";
+  const nameAt = {};
+  daily.solution.forEach((t) => (nameAt[t.position] = t.name));
+  const row = (word, numTxt, names, explain, extraClass) =>
+    `<div class="daily-answer-row${extraClass || ""}"><div class="da-line">`
+    + `<span class="da-clue">${escapeHtml(word)}${numTxt ? ` <span class="da-num">${numTxt}</span>` : ""}</span>`
+    + `<span class="da-names">${names}</span></div>`
+    + (explain ? `<div class="da-why">${escapeHtml(explain)}</div>` : "") + `</div>`;
+
+  const clueRows = daily.solutionClues.map((c) => {
+    const num = c.anti ? "× 0" : `× ${c.number}`;
+    const names = c.anti ? "anti-clue – none of your Pokémon"
+      : (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
+    return row(c.word, num, names, c.explain, "");
+  }).join("");
+
+  // Extra clues the player actually revealed. Prefer the full hint objects from
+  // the unsealed key (they carry the target tile + any why-line); fall back to
+  // whatever was shown mid-game.
+  const keyHints = (daily.key && daily.key.h) || [];
+  const revealed = (daily.shownHintIdx && daily.shownHintIdx.length)
+    ? daily.shownHintIdx.map((i) => keyHints[i]).filter(Boolean)
+    : (daily.revealedHints || []);
+  let hintRows = "";
+  if (revealed.length) {
+    const rows = revealed.map((h) => {
+      const names = (h.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
+      return row(`💡 ${h.word}`, "", names, h.explain, " da-hint-row");
+    }).join("");
+    hintRows = `<div class="daily-answers-sublabel">Extra clues you revealed</div>${rows}`;
+  }
+  return `<div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${clueRows}${hintRows}</div>`;
+}
+
 function renderDailyResult() {
   const el = $("#daily-result");
   const time = fmtClock(dailyElapsedSecs());
@@ -2327,22 +2369,7 @@ function renderDailyResult() {
   else if (daily.outcome === "assassin") title = `💀 You hit the assassin!`;
   else title = `Out of guesses – ${daily.bluesFound}/9 found`;
 
-  // Show what each clue was pointing to (change #5), now the board's revealed.
-  let answersHtml = "";
-  if (daily.solutionClues && daily.solution) {
-    const nameAt = {};
-    daily.solution.forEach((t) => (nameAt[t.position] = t.name));
-    const rows = daily.solutionClues.map((c) => {
-      const num = c.anti ? "× 0" : `× ${c.number}`;
-      const names = c.anti
-        ? "anti-clue – none of your Pokémon"
-        : (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
-      const why = c.explain
-        ? `<div class="da-why">${escapeHtml(c.explain)}</div>` : "";
-      return `<div class="daily-answer-row"><div class="da-line"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">${num}</span></span><span class="da-names">${names}</span></div>${why}</div>`;
-    }).join("");
-    answersHtml = `<div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${rows}</div>`;
-  }
+  const answersHtml = _dailyAnswersBox();
 
   // Tutorial finish: no score sharing, no difficulty rating, no caching —
   // just congratulate and point them at today's real puzzles.
@@ -2351,14 +2378,7 @@ function renderDailyResult() {
     el.innerHTML = `
       <div class="daily-result-title">${won ? "Nice — you've got it! 🎉" : "Good try — that's the idea!"}</div>
       <div class="daily-result-line">That was just practice. Ready for today's puzzle?</div>
-      <div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${
-        (daily.solutionClues || []).map((c) => {
-          const nameAt = {}; (daily.solution || []).forEach((t) => (nameAt[t.position] = t.name));
-          const names = (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
-          const why = c.explain ? `<div class="da-why">${escapeHtml(c.explain)}</div>` : "";
-          return `<div class="daily-answer-row"><div class="da-line"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">× ${c.number}</span></span><span class="da-names">${names}</span></div>${why}</div>`;
-        }).join("")
-      }</div>
+      ${answersHtml}
       <div class="daily-result-btns">
         <button class="btn btn-primary" id="daily-go-gen1">Play today's Gen I puzzle</button>
         <button class="btn btn-primary" id="daily-go-mixed">Play today's all-gens puzzle</button>

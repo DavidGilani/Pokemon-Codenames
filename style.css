@@ -471,6 +471,13 @@ a { color: var(--accent); }
 .daily-answer-row .da-num { color: var(--text-faint); }
 .daily-answer-row .da-names { color: var(--text-dim); }
 .daily-answer-row .da-why { color: var(--text-faint); font-size: 12px; line-height: 1.4; }
+.daily-answers-sublabel {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-faint); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--panel-border);
+}
+.daily-answer-row.da-hint-row .da-clue { color: var(--text-dim); font-weight: 600; }
+/* a revealed-hint row shouldn't inherit the solid divider from the clue above */
+.daily-answers-sublabel + .daily-answer-row { border-top: none; padding-top: 0; }
 
 .teams-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
