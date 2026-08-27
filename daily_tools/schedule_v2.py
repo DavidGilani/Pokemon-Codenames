@@ -61,25 +61,39 @@ exec(open(f"{ROOT}/daily_tools/daily_common.py").read())  # explain_for
 exec(open(f"{ROOT}/daily_tools/boards_v2.py").read())
 
 def hint_for(nm, names, used):
+    # Each candidate is (word, cat, explain). A hint points at ONE blue, so its
+    # explanation names that Pokemon and says what the hint word refers to.
+    # Word SELECTION is unchanged (first candidate that passes) — only the extra
+    # explain string is new, shown on the finish screen under "clues you revealed".
     r=FACTS[nm]; cands=[]
-    for s in r["sprite"]: cands.append((s.upper().replace(" ","-"),2))
-    for a in r["arch"]: cands.append((a.upper(),3))
+    def sub(x): return x.replace("-"," ").lower()
+    def art(x): return "an" if x[:1].lower() in "aeio" else "a"  # rough a/an (u->"a")
+    for s in r["sprite"]:
+        cands.append((s.upper().replace(" ","-"),2, f"Look for the {sub(s)} on {nm}'s sprite."))
+    for a in r["arch"]:
+        cands.append((a.upper(),3, f"{nm} is based on {art(sub(a))} {sub(a)}."))
     for b in r["based_on"]:
         for part in re.split(r"[\(/,]",b):
             w=part.strip().upper().replace(" ","-")
-            if w: cands.append((w,3))
-    if r.get("genus"): cands.append((r["genus"].split()[0].upper(),2))
-    if r.get("color_primary"): cands.append((r["color_primary"].upper()+"-BODY",2))
-    for eg in r.get("egg",[]): cands.append((eg.upper()+"-EGG",3))
-    for mv in r.get("moves",[]): cands.append((mv.upper().replace(" ","-"),3))
-    if r.get("habitat"): cands.append((r["habitat"].upper().replace(" ","-"),3))
-    if r.get("color_secondary"): cands.append((r["color_secondary"].upper()+"-MARKS",2))
-    cands.append(("TYPE-"+r["types"][0].upper(),1))
-    for w,c in cands:
+            if w: cands.append((w,3, f"{nm} is based on the {sub(w)}."))
+    if r.get("genus"):
+        cands.append((r["genus"].split()[0].upper(),2, f"{nm} is the {r['genus']}."))
+    if r.get("color_primary"):
+        cands.append((r["color_primary"].upper()+"-BODY",2, f"{nm} is mostly {r['color_primary'].lower()}."))
+    for eg in r.get("egg",[]):
+        cands.append((eg.upper()+"-EGG",3, f"{nm} is in the {sub(eg)} egg group."))
+    for mv in r.get("moves",[]):
+        cands.append((mv.upper().replace(" ","-"),3, f"{nm} is known for the move {sub(mv).title()}."))
+    if r.get("habitat"):
+        cands.append((r["habitat"].upper().replace(" ","-"),3, f"{nm} is found in the {sub(r['habitat'])}."))
+    if r.get("color_secondary"):
+        cands.append((r["color_secondary"].upper()+"-MARKS",2, f"{nm} has {r['color_secondary'].lower()} markings."))
+    cands.append(("TYPE-"+r["types"][0].upper(),1, f"{nm} is a {r['types'][0].capitalize()}-type."))
+    for w,c,ex in cands:
         if w in used: continue
         if any(shares3(w,x) for x in names): continue
-        return w,c
-    return None,None
+        return w,c,ex
+    return None,None,None
 
 def evo_groups(clues):
     """Clues that group a Pokemon with its own evolution: >=2 members sharing an
@@ -185,9 +199,9 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
             if f: errors.append(f"{where}: LETTER clue {w}~{nm}({f})")
     hints={}; used=set()
     for nm in blues:
-        hw,hc=hint_for(nm,names,used)
+        hw,hc,he=hint_for(nm,names,used)
         if not hw: errors.append(f"{where}: no hint for {nm}"); continue
-        hints[nm]=(hw,hc); used.add(hw)
+        hints[nm]=(hw,hc,he); used.add(hw)
     b.update(blues=blues,neutrals=neutrals,hints=hints); assembled.append(b)
 
 # every date in the window must have both pools
@@ -230,7 +244,7 @@ else:
         co=[{"word":w,"number":len(m),"cat":c,"t":sorted(pos[x] for x in m),
              "explain":explain_for(w,c,cc,m)} for w,c,cc,m in b["clues"]]
         random.Random(hash(("c",b["date"],b["pool"]))&0xffffffff).shuffle(co)
-        ho=[{"word":hints[nm][0],"number":1,"cat":hints[nm][1],"t":[pos[nm]]} for nm in blues]
+        ho=[{"word":hints[nm][0],"number":1,"cat":hints[nm][1],"t":[pos[nm]],"explain":hints[nm][2]} for nm in blues]
         random.Random(hash(("h",b["date"],b["pool"]))&0xffffffff).shuffle(ho)
         tj="["+", ".join('{"name": %s, "colour": %s, "position": %d}'%(json.dumps(t["name"]),json.dumps(t["colour"]),t["position"]) for t in tiles)+"]"
         R.append("  (%s, %s,\n   %s::jsonb,\n   %s::jsonb,\n   %s::jsonb)"%(sq(b["date"]),sq(b["pool"]),sq(jarr(co)),sq(jarr(ho)),sq(tj)))
