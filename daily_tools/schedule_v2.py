@@ -17,6 +17,9 @@ random.seed(2026)
 
 WEEKDAY_TIER={0:"Easy",1:"Medium",2:"Challenging",3:"Hard",4:"Hard",5:"Brutal",6:"Evil"}
 def tier_for(date): return WEEKDAY_TIER[datetime.date.fromisoformat(date).weekday()]
+# Boards from EVO_FROM onward are re-authored under the evolution-family cap and
+# re-emitted. Earlier dates are already played: kept as anti-rep corpus only.
+EVO_FROM="2026-08-27"
 
 def norm(s): return re.sub(r'[^a-z]','',s.lower())
 def shares3(a,b):
@@ -132,13 +135,16 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
         if sum(1 for n in nums if n==1)>1: errors.append(f"{where}: {b['tier']} >1 single-tile clue")
     # Evolution-family cap: <=1 clue per board may group a mon with its own
     # evolution line; <=3 such groups across any rolling 7-day window (both pools).
+    # Dates before EVO_FROM predate the rule (already played) -- grandfathered:
+    # kept as anti-rep corpus but not re-authored and not evo-checked/counted.
     eg=evo_groups(clues)
-    if len(eg)>1:
-        errors.append(f"{where}: {len(eg)} evolution-family clues (max 1) {eg}")
-    for w,f in eg: evo_log.append((d,w))
-    recent_evo=sum(1 for od,_ in evo_log if 0<=days(d,od)<7)
-    if recent_evo>3:
-        errors.append(f"{where}: {recent_evo} evolution-family clues in trailing 7d (max 3)")
+    if d>=EVO_FROM:
+        if len(eg)>1:
+            errors.append(f"{where}: {len(eg)} evolution-family clues (max 1) {eg}")
+        for w,f in eg: evo_log.append((d,w))
+        recent_evo=sum(1 for od,_ in evo_log if 0<=days(d,od)<7)
+        if recent_evo>3:
+            errors.append(f"{where}: {recent_evo} evolution-family clues in trailing 7d (max 3)")
     ptypes={FACTS[n]["types"][0] for n in blues}
     need=4 if pool=="gen1" else 5
     if len(ptypes)<need: errors.append(f"{where}: {len(ptypes)} types (<{need}) {sorted(ptypes)}")
@@ -208,12 +214,15 @@ else:
             parts.append("{"+", ".join(fields)+"}")
         return "["+", ".join(parts)+"]"
     def sq(s): return "'"+s.replace("'","''")+"'"
-    L=["-- 32_updates.sql : reschedule dailies 2026-08-22 .. 2026-09-06 to match the",
-       "-- fixed weekday difficulty (Mon Easy .. Sat Brutal, Sun Evil), with Brutal/Evil",
-       "-- boards passing the overlap gate. Supersedes 30/31_updates for these dates.","",
+    L=["-- 33_updates.sql : re-author dailies 2026-08-27 .. 2026-09-06 under the new",
+       "-- evolution-family cap (<=1 evo-pair clue per board, <=3 per rolling 7 days)",
+       "-- -- most boards now group blues by cross-family handles, not evo lines.",
+       "-- Weekday difficulty and Brutal/Evil overlap gate unchanged. Supersedes",
+       "-- 32_updates for these dates; Aug 22-26 (already played) are left as-is.","",
        "insert into public.daily_puzzles (puzzle_date, pool, clues, hints, tiles) values"]
     R=[]
     for b in assembled:
+        if b["date"]<EVO_FROM: continue  # already played; not re-emitted
         blues,neutrals,hints=b["blues"],b["neutrals"],b["hints"]; names=blues+neutrals
         perm=list(range(25)); random.Random(hash(("p",b["date"],b["pool"]))&0xffffffff).shuffle(perm)
         pos={nm:perm[i] for i,nm in enumerate(names)}
@@ -228,5 +237,5 @@ else:
     L.append(",\n".join(R))
     L.append("on conflict (puzzle_date, pool) do update")
     L.append("  set clues = excluded.clues, hints = excluded.hints, tiles = excluded.tiles;")
-    open(f"{ROOT}/32_updates.sql","w").write("\n".join(L)+"\n")
-    print("wrote 32_updates.sql")
+    open(f"{ROOT}/33_updates.sql","w").write("\n".join(L)+"\n")
+    print("wrote 33_updates.sql")

@@ -83,178 +83,179 @@ board("2026-08-26","mixed","Challenging",[
   ("STAR",2,"sprite:star",["Minior"]),
 ], exclude=["Togekiss","Corviknight","Rookidee","Chandelure","Cottonee","Whimsicott","Floette"])
 
-# ===== 08-27 Thu : HARD =====
+
+# ===== 08-27 Thu : HARD (re-authored under evolution-family cap) =====
 board("2026-08-27","gen1","Hard",[
-  ("COCOON",2,"sprite:cocoon",["Metapod","Kakuna"]),
-  ("WATERFOWL",3,"arch:duck",["Psyduck","Golduck","Farfetch'd"]),
-  ("SEAL",3,"arch:seal",["Seel","Dewgong"]),
-  ("PLESIOSAUR",4,"arch:plesiosaur",["Lapras"]),
-  ("VENUS-FLYTRAP",4,"based:flytrap",["Victreebel"]),
-], exclude=["Beedrill","Butterfree","Cloyster","Shellder","Bellsprout","Weepinbell","Golbat","Slowbro"])
+  ("COILS",3,"arch:serpent",["Onix","Arbok","Gyarados"]),
+  ("MESMERIST",4,"lore:hypnosis",["Hypno"]),
+  ("FLYTRAP",4,"based:flytrap",["Victreebel"]),
+  ("SICKLE",2,"sprite:scythe-arms",["Scyther","Kabutops"]),
+  ("MOLLUSC",3,"arch:mollusc",["Shellder","Omanyte"]),
+], exclude=["Ekans","Dratini","Dragonair","Dragonite","Weepinbell","Bellsprout","Cloyster","Omastar","Kabuto","Pinsir"])
 board("2026-08-27","mixed","Hard",[
-  ("SWORD",4,"based:sword",["Honedge","Doublade"]),
-  ("MIMIC",4,"lore:colour-change",["Kecleon"]),
-  ("KOI",2,"sprite:fins",["Magikarp","Feebas"]),
-  ("LIZARD",3,"arch:gecko",["Treecko","Grovyle"]),
-  ("HERMIT-CRAB",3,"arch:hermit-crab",["Dwebble","Crustle"]),
-], exclude=["Aegislash","Sceptile","Milotic","Gyarados","Boldore","Roggenrola","Ditto"])
+  ("KRAKEN",4,"arch:cephalopod",["Octillery","Malamar"]),
+  ("SWORD",4,"based:sword",["Kartana","Doublade"]),
+  ("LIZARD",3,"arch:reptile",["Kecleon","Heliolisk"]),
+  ("CRUSTACEAN",3,"arch:crustacean",["Corphish","Dwebble"]),
+  ("SPARK",2,"sprite:spark",["Pincurchin"]),
+], exclude=["Inkay","Grapploct","Clobbopus","Aegislash","Honedge","Crawdaunt","Crustle","Kingler","Krabby"])
 
 # ===== 08-28 Fri : HARD =====
 board("2026-08-28","gen1","Hard",[
-  ("JELLYFISH",4,"arch:jellyfish",["Tentacool","Tentacruel"]),
-  ("GAS",4,"lore:poison-gas",["Koffing","Weezing"]),
-  ("SPHERE",2,"sprite:ball",["Voltorb","Electrode"]),
-  ("HORSESHOE",3,"arch:magnet",["Magnemite","Magneton"]),
-  ("SEED-BOMB",3,"lore:seeds",["Exeggcute"]),
-], exclude=["Cloyster","Shellder","Muk","Grimer","Magnezone","Exeggutor","Electabuzz","Magmar"])
+  ("FISH",3,"arch:fish",["Horsea","Goldeen","Magikarp"]),
+  ("PACHYDERM",3,"arch:pachyderm",["Rhyhorn","Nidoking"]),
+  ("DIGITAL",5,"lore:polygon",["Porygon"]),
+  ("SUNDEW",4,"based:pitcher",["Weepinbell"]),
+  ("CLAWS",2,"sprite:claws",["Sandshrew","Krabby"]),
+], exclude=["Seadra","Seaking","Gyarados","Rhydon","Nidoqueen","Nidorino","Bellsprout","Victreebel","Sandslash","Kingler"])
 board("2026-08-28","mixed","Hard",[
-  ("DINOSAUR",3,"arch:dinosaur",["Tyrunt","Tyrantrum"]),
-  ("AUTOMATON",4,"based:golem",["Golett","Golurk"]),
-  ("SPOTS",2,"sprite:spots",["Ledyba","Ledian"]),
-  ("STEAM",3,"lore:smoke",["Torkoal"]),
-  ("ANGLERFISH",4,"arch:anglerfish",["Chinchou","Lanturn"]),
-], exclude=["Rampardos","Cranidos","Volbeat","Illumise","Baltoy","Claydol","Stonjourner"])
+  ("WHALE",4,"arch:cetacean",["Wailord","Cetitan"]),
+  ("RAPTOR",4,"arch:raptor",["Skarmory","Braviary"]),
+  ("TOADSTOOL",3,"arch:fungus",["Amoonguss","Shiinotic"]),
+  ("SPIDER",3,"arch:spider",["Galvantula","Araquanid"]),
+  ("GEM",2,"sprite:gem",["Carbink"]),
+], exclude=["Wailmer","Kyogre","Rufflet","Talonflame","Morelull","Spinarak","Joltik","Dewpider","Sableye"])
 
 # ===== 08-29 Sat : BRUTAL =====
 board("2026-08-29","gen1","Brutal",[
-  ("NORMAL",1,"type:normal",["Doduo","Dodrio","Chansey","Tauros"]),
-  ("OSTRICH",4,"arch:ratite",["Doduo","Dodrio"]),
-  ("BRUTE",4,"lore:brute",["Rhyhorn","Rhydon"]),
-  ("CLOWN",4,"based:mime",["Mr. Mime"]),
-  ("STAG-BEETLE",3,"arch:beetle",["Pinsir","Scyther"]),
-], exclude=["Nidoking","Nidoqueen","Rhyperior","Jynx","Heracross","Fearow","Pidgey","Kangaskhan","Snorlax"])
+  ("NORMAL",1,"type:normal",["Tauros","Ditto","Lickitung"]),
+  ("SUMO-RING",4,"based:sumo",["Poliwrath","Sandslash"]),
+  ("SPARRING",4,"lore:martial-arts",["Hitmonchan","Machoke","Poliwrath"]),
+  ("MENTALIST",5,"lore:mind",["Kadabra","Drowzee"]),
+  ("BISON",3,"arch:bovine",["Tauros"]),
+], exclude=["Kangaskhan","Snorlax","Chansey","Eevee","Porygon","Machop","Machamp","Hitmonlee","Alakazam","Hypno"])
 board("2026-08-29","mixed","Brutal",[
-  ("STEEL",1,"type:steel",["Klink","Bronzor","Escavalier","Bisharp"]),
+  ("WARRIOR",4,"based:samurai",["Kubfu","Ceruledge","Samurott"]),
   ("KNIGHT",4,"based:knight",["Escavalier","Bisharp"]),
-  ("GEAR",4,"lore:gears",["Klink","Bronzor"]),
-  ("TOMB",4,"based:coffin",["Yamask","Cofagrigus","Runerigus"]),
-  ("GATOR",3,"arch:crocodile",["Totodile","Croconaw"]),
-], exclude=["Klang","Klinklang","Bronzong","Pawniard","Kingambit","Feraligatr","Sandygast","Cursola"])
+  ("STEEL",1,"type:steel",["Escavalier","Bisharp","Klink"]),
+  ("ROBOT",5,"arch:automaton",["Varoom","Golurk"]),
+  ("GEARS",3,"lore:gears",["Klink","Bronzong"]),
+], exclude=["Urshifu","Oshawott","Pawniard","Kingambit","Karrablast","Klang","Klinklang","Bronzor","Golett","Aegislash"])
 
 # ===== 08-30 Sun : EVIL =====
 board("2026-08-30","gen1","Evil",[
-  ("LEGEND-TRIO",5,"lore:legendary-birds",["Articuno","Zapdos","Moltres"]),
-  ("BLIZZARD",4,"lore:ice-storm",["Articuno","Jynx"]),
-  ("VOLCANO",4,"lore:volcano",["Moltres","Magmar"]),
-  ("TEST-TUBE",5,"lore:clone",["Mewtwo","Mew"]),
-  ("SLEEPER",3,"lore:sleep",["Drowzee","Hypno"]),
-], exclude=["Electabuzz","Machop","Hitmonlee","Hitmonchan","Primeape","Mankey","Slowpoke","Zapdos-Galar"])
+  ("MOLTEN",3,"lore:lava",["Magmar","Flareon"]),
+  ("FOSSIL",5,"lore:fossil",["Omastar","Kabuto","Aerodactyl"]),
+  ("HEAVYWEIGHT",5,"stat:heavy",["Snorlax","Golem"]),
+  ("SLUDGE",4,"lore:poison-gas",["Weezing","Muk"]),
+  ("BEDROCK",4,"stat:defense",["Golem","Kabuto","Omastar"]),
+], exclude=["Magby","Omanyte","Kabutops","Graveler","Geodude","Koffing","Grimer","Rhydon","Ponyta","Charmander"])
 board("2026-08-30","mixed","Evil",[
-  ("DIG-SITE",5,"lore:fossil",["Shieldon","Bastiodon","Rampardos"]),
-  ("CERATOPS",4,"arch:ceratopsian",["Shieldon","Bastiodon"]),
-  ("CURSE-DOLL",5,"lore:cursed-doll",["Mimikyu","Banette"]),
-  ("FUSED",4,"lore:fused-fossil",["Dracovish","Dracozolt"]),
-  ("LAZYBONES",3,"arch:sloth",["Slakoth","Vigoroth"]),
-], exclude=["Cranidos","Shuppet","Slaking","Arctovish","Arctozolt","Aurorus","Tyrunt","Bastiodon-x"])
+  ("DIG-SITE",5,"lore:fossil",["Rampardos","Archeops"]),
+  ("CHIMERA",4,"arch:chimera",["Dracozolt","Arctovish"]),
+  ("CURSED-DOLL",5,"based:doll",["Mimikyu","Banette"]),
+  ("ALIEN",4,"arch:alien",["Beheeyem","Necrozma"]),
+  ("ANCIENT",3,"lore:ancient",["Rampardos","Archeops","Bastiodon"]),
+], exclude=["Cranidos","Tyrunt","Tyrantrum","Dracovish","Arctozolt","Shuppet","Elgyem","Shieldon","Aerodactyl","Golett"])
 
 # ===== 08-31 Mon : EASY =====
 board("2026-08-31","gen1","Easy",[
-  ("FLYING",1,"type:flying",["Pidgey","Pidgeotto"]),
-  ("BRANCHER",1,"family:eevee",["Vaporeon","Jolteon","Flareon"]),
-  ("ICE",1,"type:ice",["Cloyster"]),
-  ("MOUSE",3,"arch:rodent",["Rattata","Raticate"]),
-  ("SEED",2,"sprite:seeds",["Bellsprout"]),
-], exclude=["Pidgeot","Spearow","Eevee","Espeon","Umbreon","Dewgong","Lapras","Weepinbell"])
+  ("AVIAN",1,"type:flying",["Pidgey","Spearow"]),
+  ("ICE",1,"type:ice",["Jynx","Dewgong"]),
+  ("PURPLE",1,"colour:purple",["Koffing","Nidorino"]),
+  ("COCOON",2,"sprite:hard-shell",["Kakuna","Metapod"]),
+  ("BEAK",2,"sprite:beak",["Dodrio"]),
+], exclude=["Pidgeot","Fearow","Articuno","Zapdos","Moltres","Weezing","Nidoking","Beedrill","Butterfree","Seel"])
 board("2026-08-31","mixed","Easy",[
   ("GROUND",1,"type:ground",["Phanpy","Hippopotas"]),
-  ("ICE",1,"type:ice",["Snom","Cubchoo"]),
-  ("MULTIFORM",1,"family:eevee",["Espeon","Umbreon"]),
-  ("SCAVENGER",3,"arch:hyena",["Poochyena","Mightyena"]),
-  ("SNAIL",3,"arch:snail",["Shellos"]),
-], exclude=["Donphan","Hippowdon","Frosmoth","Beartic","Sylveon","Leafeon","Gastrodon","Linoone"])
+  ("ICE",1,"type:ice",["Swinub","Cubchoo"]),
+  ("GHOST",1,"type:ghost",["Drifloon","Yamask"]),
+  ("SPIKES",2,"sprite:spikes",["Ferroseed","Qwilfish"]),
+  ("TAIL",2,"sprite:tail",["Sentret"]),
+], exclude=["Donphan","Hippowdon","Piloswine","Beartic","Drifblim","Cofagrigus","Ferrothorn","Overqwil","Furret","Dedenne"])
 
 # ===== 09-01 Tue : MEDIUM =====
 board("2026-09-01","gen1","Medium",[
-  ("ROCK",1,"type:rock",["Geodude","Graveler"]),
-  ("STARTER",1,"group:starter",["Bulbasaur","Charmander","Squirtle"]),
-  ("STALLION",3,"arch:equine",["Ponyta","Rapidash"]),
-  ("TONGUE",2,"sprite:tongue",["Lickitung"]),
-  ("VINES",3,"arch:vine",["Tangela"]),
-], exclude=["Golem","Onix","Ivysaur","Charmeleon","Wartortle","Weepinbell","Vileplume","Tauros"])
+  ("BROWN",1,"colour:brown",["Cubone","Diglett"]),
+  ("YELLOW",1,"colour:yellow",["Electabuzz","Jolteon"]),
+  ("PLANT",3,"arch:plant",["Vileplume","Exeggcute","Ivysaur"]),
+  ("HIPPOCAMPUS",3,"arch:seahorse",["Seadra"]),
+  ("BALLOON",2,"sprite:big-eyes",["Wigglytuff"]),
+], exclude=["Marowak","Dugtrio","Electivire","Flareon","Gloom","Exeggutor","Venusaur","Horsea","Jigglypuff","Raichu"])
 board("2026-09-01","mixed","Medium",[
-  ("ELECTRIC",1,"type:electric",["Blitzle","Emolga"]),
-  ("FIGHTING",1,"type:fighting",["Makuhita","Meditite"]),
-  ("MONKEY",3,"arch:monkey",["Pansage","Panpour","Pansear"]),
-  ("KEYRING",4,"based:keyring",["Klefki"]),
-  ("ACORN",2,"sprite:acorn",["Seedot"]),
-], exclude=["Zebstrika","Pachirisu","Hariyama","Medicham","Simisage","Simipour","Simisear","Nuzleaf"])
+  ("BUG",1,"type:bug",["Ledyba","Wurmple"]),
+  ("FIGHTING",1,"type:fighting",["Makuhita","Timburr"]),
+  ("DEER",3,"arch:deer",["Stantler","Sawsbuck"]),
+  ("GATOR",3,"arch:crocodile",["Sandile","Fuecoco"]),
+  ("ACORN",2,"sprite:acorn",["Pineco"]),
+], exclude=["Glalie","Avalugg","Hariyama","Conkeldurr","Wyrdeer","Deerling","Krokorok","Crocalor","Skeledirge","Forretress"])
 
 # ===== 09-02 Wed : CHALLENGING =====
 board("2026-09-02","gen1","Challenging",[
-  ("POISON",1,"type:poison",["Nidorino","Nidorina"]),
-  ("FELINE",3,"arch:feline",["Meowth","Persian"]),
-  ("MUMMY",4,"myth:mummy",["Marowak","Cubone"]),
-  ("BALLOON",2,"sprite:balloon",["Jigglypuff"]),
-  ("DABBLER",3,"arch:duck",["Psyduck","Golduck"]),
-], exclude=["Nidoking","Nidoqueen","Wigglytuff","Arbok","Persian-Alola","Marowak-Alola","Psyduck-x","Golduck-x"])
+  ("POISON",1,"type:poison",["Zubat","Nidorina","Grimer"]),
+  ("WHISKERS",2,"sprite:whiskers",["Rattata","Meowth"]),
+  ("ECHINODERM",3,"arch:starfish",["Staryu"]),
+  ("SHELL",2,"sprite:shell",["Cloyster","Wartortle"]),
+  ("MINDBENDER",3,"lore:teleport",["Alakazam"]),
+], exclude=["Golbat","Nidoqueen","Muk","Raticate","Persian","Starmie","Shellder","Blastoise","Kadabra","Ekans"])
 board("2026-09-02","mixed","Challenging",[
-  ("PSEUDO-LEGENDARY",1,"group:pseudo",["Larvitar","Bagon","Beldum"]),
-  ("SEA-WEASEL",3,"arch:otter",["Oshawott","Dewott"]),
-  ("FIREFLY",3,"arch:firefly",["Volbeat","Illumise"]),
-  ("LANTERN",4,"based:lantern",["Chandelure"]),
-  ("PINNIPED",3,"arch:seal",["Spheal"]),
-], exclude=["Pupitar","Tyranitar","Shelgon","Salamence","Metang","Metagross","Samurott","Sealeo"])
+  ("DARK",1,"type:dark",["Poochyena","Purrloin"]),
+  ("WEASEL",3,"arch:mustelid",["Furret","Zangoose"]),
+  ("AMPHIBIAN",3,"arch:frog",["Croagunk","Froakie"]),
+  ("WISP",4,"lore:willowisp",["Chandelure"]),
+  ("HORNS",2,"sprite:horns",["Skiddo","Bouffalant"]),
+], exclude=["Mightyena","Liepard","Sneasel","Weavile","Toxicroak","Greninja","Litwick","Lampent","Gogoat","Tauros"])
 
 # ===== 09-03 Thu : HARD =====
 board("2026-09-03","gen1","Hard",[
-  ("KUNG-FU",4,"lore:martial-arts",["Mankey","Machop"]),
-  ("GENIUS",4,"lore:high-iq",["Alakazam","Kadabra"]),
-  ("HIPPOCAMPUS",3,"arch:seahorse",["Horsea","Seadra"]),
-  ("MOLLUSK",3,"arch:shellfish",["Shellder","Omastar"]),
-  ("PETALS",2,"sprite:petals",["Vileplume"]),
-], exclude=["Machamp","Machoke","Poliwrath","Primeape","Abra","Goldeen","Seaking","Gloom"])
+  ("WYVERN",4,"arch:dragon",["Dragonite","Charizard"]),
+  ("BEETLE",3,"arch:beetle",["Pinsir","Scyther"]),
+  ("FANGS",2,"sprite:fangs",["Arbok","Nidoking"]),
+  ("ROYALTY",4,"lore:royalty",["Nidoking","Nidoqueen"]),
+  ("CRAB",3,"arch:crab",["Kingler","Parasect"]),
+], exclude=["Dratini","Dragonair","Charmeleon","Heracross","Ekans","Nidorino","Nidorina","Krabby","Paras","Gyarados"])
 board("2026-09-03","mixed","Hard",[
-  ("SQUID",4,"arch:squid",["Inkay","Malamar"]),
-  ("MEDUSA",4,"myth:jellyfish",["Frillish","Jellicent"]),
-  ("MOLTEN",3,"lore:lava",["Slugma","Magcargo"]),
-  ("HIVE",3,"arch:bee",["Combee","Vespiquen"]),
-  ("SPARK",2,"sprite:spark",["Pincurchin"]),
-], exclude=["Octillery","Tentacruel","Torkoal","Ninjask","Mareanie","Toxapex","Frillish-x"])
+  ("GORGON",4,"myth:jellyfish",["Jellicent","Nihilego"]),
+  ("TURTLE",3,"arch:turtle",["Torkoal","Drednaw"]),
+  ("MOTH",3,"arch:moth",["Dustox","Volcarona"]),
+  ("SQUID",4,"arch:cephalopod",["Grapploct"]),
+  ("BITE",2,"sprite:jaws",["Sharpedo","Mawile"]),
+], exclude=["Frillish","Tentacruel","Chewtle","Turtwig","Beautifly","Mothim","Malamar","Inkay","Carvanha","Mawile-x"])
 
 # ===== 09-04 Fri : HARD =====
 board("2026-09-04","gen1","Hard",[
-  ("VENOM-ROYALTY",4,"lore:poison-royalty",["Nidoking","Nidoqueen"]),
-  ("BRAWLER",4,"lore:brawl",["Machamp","Machoke"]),
-  ("RHINO",3,"arch:rhino",["Rhyhorn","Rhydon"]),
-  ("FROGLET",3,"arch:tadpole",["Poliwag","Poliwhirl"]),
-  ("TUSKS",2,"sprite:tusks",["Dewgong"]),
-], exclude=["Nidorino","Nidorina","Rhyperior","Machop","Seel","Cloyster","Politoed","Slowbro"])
+  ("SERPENT",3,"arch:serpent",["Ekans","Gyarados"]),
+  ("BIRD",3,"arch:bird",["Fearow","Doduo","Pidgeot"]),
+  ("VAMPIRE",4,"lore:vampire",["Golbat"]),
+  ("MANEATER",4,"based:flytrap",["Victreebel"]),
+  ("MANE",2,"sprite:mane",["Ninetales","Rapidash"]),
+], exclude=["Arbok","Onix","Dratini","Spearow","Pidgeotto","Zubat","Weepinbell","Bellsprout","Arcanine","Ponyta"])
 board("2026-09-04","mixed","Hard",[
-  ("WHALE",4,"arch:whale",["Wailmer","Wailord"]),
-  ("BELL",4,"lore:bell-spirit",["Chingling","Chimecho"]),
-  ("PRIMATE",3,"arch:gorilla",["Grookey","Thwackey"]),
-  ("MOTH",3,"arch:moth",["Dustox","Beautifly"]),
-  ("SPIKE-BALL",2,"sprite:spikes",["Togedemaru"]),
-], exclude=["Bronzong","Rillaboom","Wormadam","Mothim","Ferroseed","Sandygast","Wailord-x"])
+  ("SCARECROW",4,"based:scarecrow",["Cacturne"]),
+  ("HALLOWEEN",4,"based:pumpkin",["Gourgeist"]),
+  ("PRIMATE",3,"arch:monkey",["Grookey","Pansage","Panpour"]),
+  ("BOAR",3,"arch:boar",["Tepig","Lechonk"]),
+  ("PINCERS",2,"sprite:claws",["Crawdaunt","Klawf"]),
+], exclude=["Cacnea","Pumpkaboo","Thwackey","Simisage","Simipour","Emboar","Oinkologne","Corphish","Crabominable","Sandygast"])
 
 # ===== 09-05 Sat : BRUTAL =====
 board("2026-09-05","gen1","Brutal",[
-  ("GHOST",1,"type:ghost",["Gastly","Haunter","Gengar"]),
-  ("CURSE",4,"lore:curse",["Gastly","Gengar"]),
-  ("TRANSFORM",5,"lore:transform",["Ditto","Mew"]),
-  ("FLYTRAP",4,"based:flytrap",["Victreebel"]),
-  ("PUGILIST",3,"based:boxer",["Hitmonlee","Hitmonchan","Primeape"]),
-], exclude=["Gloom","Weepinbell","Mewtwo","Machamp","Machoke","Machop","Poliwrath","Bellsprout"])
+  ("BRAWLER",4,"lore:brawl",["Machamp","Hitmonlee","Primeape"]),
+  ("OOZE",3,"arch:amorphous",["Weezing","Muk"]),
+  ("CURSE",5,"lore:curse",["Gengar","Marowak"]),
+  ("VENOM",4,"lore:poison-gas",["Weezing","Gengar"]),
+  ("TELEPATH",3,"lore:mind",["Slowbro","Starmie"]),
+], exclude=["Machoke","Machop","Hitmonchan","Mankey","Grimer","Koffing","Haunter","Gastly","Cubone","Slowpoke"])
 board("2026-09-05","mixed","Brutal",[
-  ("DARK",1,"type:dark",["Purrloin","Liepard","Sneasel"]),
-  ("THIEF",4,"lore:thief",["Purrloin","Liepard"]),
-  ("SAMURAI",4,"based:samurai",["Kubfu","Urshifu","Ceruledge"]),
-  ("GHOST-FOREST",5,"lore:haunted-tree",["Phantump","Trevenant"]),
-  ("FROST",3,"arch:snowman",["Vanilluxe"]),
-], exclude=["Weavile","Sneasler","Zoroark","Liepard-x","Aegislash","Honedge","Vanillite","Vanillish"])
+  ("GENIE",5,"arch:genie",["Tornadus","Thundurus","Landorus"]),
+  ("DEITY",5,"arch:deity",["Tapu Koko","Tapu Bulu"]),
+  ("UFO",4,"arch:alien",["Elgyem","Guzzlord"]),
+  ("ESP",1,"type:psychic",["Elgyem","Celebi","Jirachi"]),
+  ("MYTHIC",3,"lore:mythical",["Celebi","Jirachi"]),
+], exclude=["Enamorus","Tapu Lele","Tapu Fini","Beheeyem","Necrozma","Mew","Uxie","Mesprit","Azelf","Deoxys"])
 
 # ===== 09-06 Sun : EVIL =====
 board("2026-09-06","gen1","Evil",[
-  ("RELIC",5,"lore:fossil",["Omanyte","Kabuto","Aerodactyl"]),
-  ("SEA-FOSSIL",4,"arch:ammonite",["Omanyte","Kabuto"]),
-  ("MESMERIST",5,"lore:hypnosis",["Drowzee","Hypno"]),
-  ("LEVIATHAN",4,"lore:sea-serpent",["Gyarados","Dragonite"]),
-  ("CORE-GEM",3,"lore:core",["Staryu","Starmie"]),
-], exclude=["Kabutops","Omastar","Dratini","Dragonair","Magnemite","Magneton","Slowpoke","Slowbro"])
+  ("RELIC",5,"lore:fossil",["Aerodactyl","Omastar","Kabutops"]),
+  ("LEGEND",5,"lore:legendary",["Articuno","Zapdos","Moltres"]),
+  ("FROST",4,"lore:ice-storm",["Articuno","Lapras"]),
+  ("VOLCANO",4,"lore:volcano",["Moltres","Magmar"]),
+  ("SEAL",3,"arch:pinniped",["Dewgong"]),
+], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix"])
 board("2026-09-06","mixed","Evil",[
-  ("FROZEN-RELIC",5,"lore:fossil",["Arctovish","Arctozolt"]),
-  ("CHIMERA",4,"lore:fused-fossil",["Arctovish","Arctozolt"]),
-  ("CURSED-CUP",5,"lore:haunted-object",["Sinistcha","Polteageist"]),
-  ("WEASEL",4,"lore:mischief",["Nickit","Thievul"]),
-  ("PENGUIN",3,"arch:penguin",["Eiscue","Empoleon","Prinplup"]),
-], exclude=["Dracovish","Dracozolt","Sinistea","Rabsca","Grimmsnarl","Zorua","Piplup","Arctozolt-x"])
+  ("REVENANT",5,"lore:fossil",["Tirtouga","Archen","Dracovish"]),
+  ("FUSION",4,"arch:chimera",["Dracovish","Arctozolt"]),
+  ("FROZEN",4,"lore:ice-storm",["Arctozolt","Eiscue"]),
+  ("POSSESSED",5,"lore:haunted-object",["Polteageist","Sinistcha"]),
+  ("TRICKSTER",3,"arch:fox",["Thievul","Zoroark"]),
+], exclude=["Carracosta","Archeops","Dracozolt","Arctovish","Sinistea","Zorua","Nickit","Delphox","Vulpix","Ninetales"])

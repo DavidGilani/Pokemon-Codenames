@@ -48,7 +48,18 @@ READ = {
  "hydra":"the many-headed hydra","mermaid":"a mermaid","phoenix":"a phoenix",
  # name / family / group
  "palindrome":"their names read the same backwards","eevee":"Eevee",
+ # extra concept phrasings (stat / lore / fantastical archetypes / based)
+ "defense":"a rock-solid defence stat","heavy":"being seriously heavy","special":"a huge Special stat",
+ "speed":"blistering Speed","ancient":"prehistoric relics dug up as fossils",
+ "doll":"a possessed doll","royalty":"royalty — a king or queen","brawl":"bare-knuckle brawlers",
+ "martial-arts":"trained martial artists","mind":"raw psychic mind-power","gears":"living clockwork gears",
+ "willowisp":"a will-o'-the-wisp flame","mythical":"rare mythical Pokémon","poison-gas":"the toxic gas they belch",
+ "ice-storm":"a howling blizzard","haunted-object":"an everyday object turned haunted","polygon":"blocky 3-D graphics",
+ "lava":"molten lava","volcano":"an erupting volcano","legendary":"the legendary birds","sea-serpent":"a sea serpent",
 }
+# fantastical archetypes that shouldn't read "based on the real-world ..."
+_FANCIFUL = {"genie":"wish-granting genies","deity":"guardian deities","chimera":"stitched-together chimeras",
+             "alien":"alien visitors","dragon":"dragons","serpent":"snakes"}
 def _read(tail): return READ.get(tail, tail.replace("-", " "))
 
 def explain_for(word, cat, concept, members):
@@ -63,7 +74,11 @@ def explain_for(word, cat, concept, members):
     if pre == "family":
         return f"They're all part of the {r} family."
     if pre == "arch":
+        if tail in _FANCIFUL:
+            return f"They're all {_FANCIFUL[tail]}."
         return f"They're all based on the real-world {r}."
+    if pre == "stat":
+        return f"They share a standout stat — {r}."
     if pre == "based":
         return f"They're based on {r}."
     if pre == "sprite":
