@@ -78,6 +78,19 @@ def hint_for(nm, names, used):
         return w,c
     return None,None
 
+def evo_groups(clues):
+    """Clues that group a Pokemon with its own evolution: >=2 members sharing an
+    evolution family. Returns list of (word, family). The user cap: <=1 such
+    group per board, <=3 across any rolling 7-day window (both pools)."""
+    out=[]
+    for w,c,cc,m in clues:
+        byfam=defaultdict(list)
+        for nm in m:
+            if nm in FACTS: byfam[FACTS[nm]["family"]].append(nm)
+        for f,mem in byfam.items():
+            if len(mem)>=2: out.append((w,f))
+    return out
+
 def label(cats):
     highs=sum(1 for c in cats if c>=4); ones=sum(1 for c in cats if c==1)
     if highs>=4: return "Evil"
@@ -89,6 +102,7 @@ def label(cats):
 
 errors=[]; assembled=[]
 nb=defaultdict(list); nw=defaultdict(list); ng=defaultdict(list); nc=defaultdict(list)
+evo_log=[]  # (date, word) for each evolution-family clue-group, for the 7-day cap
 seen_dates=set()
 for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     d,pool,where=b["date"],b["pool"],f'{b["date"]} {b["pool"]}'
@@ -116,6 +130,15 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
         nums=[len(m) for w,c,cc,m in clues]
         if sum(nums)<11: errors.append(f"{where}: {b['tier']} sum {sum(nums)}<11")
         if sum(1 for n in nums if n==1)>1: errors.append(f"{where}: {b['tier']} >1 single-tile clue")
+    # Evolution-family cap: <=1 clue per board may group a mon with its own
+    # evolution line; <=3 such groups across any rolling 7-day window (both pools).
+    eg=evo_groups(clues)
+    if len(eg)>1:
+        errors.append(f"{where}: {len(eg)} evolution-family clues (max 1) {eg}")
+    for w,f in eg: evo_log.append((d,w))
+    recent_evo=sum(1 for od,_ in evo_log if 0<=days(d,od)<7)
+    if recent_evo>3:
+        errors.append(f"{where}: {recent_evo} evolution-family clues in trailing 7d (max 3)")
     ptypes={FACTS[n]["types"][0] for n in blues}
     need=4 if pool=="gen1" else 5
     if len(ptypes)<need: errors.append(f"{where}: {len(ptypes)} types (<{need}) {sorted(ptypes)}")

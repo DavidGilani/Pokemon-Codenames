@@ -94,6 +94,20 @@ worked example puzzles, and how we can learn from real player data.
      **4 distinct primary types** (gen1) / **5 distinct primary types** (mixed),
      and mixed boards must span at least **3 generations**. Stops every board
      looking like the same cluster of dragons/fossils/fighters.
+  6. **Cap evolution-family groupings.** Grouping a Pokémon with its own evolution
+     (e.g. `SUMO → {Machop, Machoke}`, `LEVIATHAN → {Dratini, Dragonair,
+     Dragonite}`) is the *easiest* 2–3-tile clue to write, so left unchecked it
+     dominates — most boards ended up leaning on evolution pairs, which reads as
+     lazy/repetitive. So: a clue counts as an **evolution-family group** when
+     **≥2 of its members share an evolution family**. **At most ONE** such group
+     per board, and **at most THREE** across any rolling **7-day** window (both
+     pools counted together). In practice that means the *majority* of boards
+     must group their blues by something OTHER than shared evo line — shared type
+     across different families, a real-world archetype spanning families
+     (`CANINE`, `RAPTOR`), colour, a shared move/lore/pun. This is the whole
+     point: force genuinely varied, thought-about connections instead of "here's
+     a mon and its next stage". Verifier-enforced in `schedule_v2.py`
+     (`evo_groups`).
 - **Use the Pokémon fact bank (`pokemon_facts.json`).** Clue authoring is now
   data-driven: pick 9 genuinely varied blues FIRST (obeying rules 3-5), then let
   each mon's facts (types, colour, `evo`, `egg`, `arch`, `tags`, `stat`) surface

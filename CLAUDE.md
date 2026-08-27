@@ -140,8 +140,13 @@ Chosen on the landing page when creating a room. `mode` values:
   "easily-clued" mons dominating); (4) a **clue concept** (its `arch`/`tags` fact,
   e.g. cephalopod / fossil / fighter — synonyms collapse to one concept) may be
   used **at most once per 5 days**; (5) each board's 9 blues must span **≥4 types**
-  (gen1) / **≥5 types + ≥3 generations** (mixed). Rules 3–5 were added after
-  boards kept reusing ~20 mons and the same connections under synonyms.
+  (gen1) / **≥5 types + ≥3 generations** (mixed); (6) **evolution-family cap** — a
+  clue that groups a mon with its own evolution line (≥2 members sharing an evo
+  family) may appear **at most once per board** and **at most 3× per rolling 7
+  days** (both pools). Rules 3–5 were added after boards kept reusing ~20 mons
+  and the same connections under synonyms; rule 6 after boards leaned too heavily
+  on evolution pairs (the easiest 2-tile clue) — most boards should group blues
+  by something other than a shared evo line.
   **Authoring aid:** `pokemon_facts.json` (repo root, built by
   `daily_tools/build_facts.py`) is a 270-mon fact bank — types, colour, evo/egg
   group, animal archetype, sprite/lore tags, stat standouts. Pick 9 varied blues
