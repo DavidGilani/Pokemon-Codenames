@@ -1622,7 +1622,15 @@ const daily = {
   // every reveal / hint / finish is resolved locally with no further network,
   // so a dropped connection after load doesn't stop the puzzle.
   sealed: null, key: null,
+  // Player's own scratch notes (per device, never sent anywhere): `clueDone`
+  // is a set of clue ids the player greyed out; `notes` maps a tile position to
+  // an array of clue indices (colours) they've pencilled onto that tile.
+  clueDone: {}, notes: {},
 };
+
+// One vivid colour per base clue, by display order. Used both to tint the clue
+// chips and as the pencil-marking palette on tiles (Clues-by-Sam style).
+const DAILY_CLUE_COLORS = ["#e5484d", "#f5a524", "#46c26a", "#3fb6e0", "#c150c8"];
 
 // Un-seal the offline puzzle blob (mirror of _daily_seal in SQL): base64-decode,
 // XOR with the shared key, then parse. Kept deliberately lightweight — this is
@@ -1743,6 +1751,7 @@ function _saveDailyProgress() {
       finished: daily.finished, outcome: daily.outcome, solution: daily.solution,
       solutionClues: daily.solutionClues, attemptId: daily.attemptId, rating: daily.rating,
       sealed: daily.sealed, sig: daily.sig,
+      clueDone: daily.clueDone, notes: daily.notes,
     }));
   } catch {}
   _pruneDailyProgress();
@@ -1788,7 +1797,7 @@ function dailyResumeTimer() {
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { dailyPauseTimer(); clearDailyUrl(); showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
 }
 
@@ -1801,6 +1810,7 @@ function _dailyReset() {
   daily.taps = []; daily.attemptId = null; daily.rating = null;
   daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
   daily.sealed = null; daily.key = null; daily.sig = null;
+  daily.clueDone = {}; daily.notes = {}; _closeNotePalette();
 }
 
 async function startDaily(pool) {
@@ -1877,6 +1887,8 @@ async function startDaily(pool) {
       daily.solutionClues = saved.solutionClues || null;
       daily.attemptId = saved.attemptId || null;
       daily.rating = saved.rating || null;
+      daily.clueDone = saved.clueDone || {};
+      daily.notes = saved.notes || {};
       daily.timerOn = !daily.finished;
       daily.runningSince = daily.finished ? null : Date.now();
       showScreen("daily");
@@ -1901,12 +1913,19 @@ async function startDaily(pool) {
   }
 }
 
-function _clueChip(c) {
+function _clueChip(c, idx, kind) {
   // Note: c.cat (difficulty 1-5) is a back-end categorisation only – not shown.
-  if (c.anti) {
-    return `<div class="daily-clue daily-anti"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× 0</span></div>`;
-  }
-  return `<div class="daily-clue"><span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">× ${c.number}</span></div>`;
+  // `kind` is "b" (base clue) or "h" (revealed hint); base clues carry a colour
+  // dot matching the tile-marking palette. Tapping a chip greys it out (a
+  // personal "I've got this one" toggle) — see the delegated handler below.
+  const id = `${kind}${idx}`;
+  const done = daily.clueDone[id] ? " is-done" : "";
+  const colour = kind === "b" ? DAILY_CLUE_COLORS[idx % DAILY_CLUE_COLORS.length] : null;
+  const dot = colour ? `<span class="dc-dot" style="background:${colour}"></span>` : "";
+  const num = c.anti ? "× 0" : `× ${c.number}`;
+  const anti = c.anti ? " daily-anti" : "";
+  return `<div class="daily-clue${anti}${done}" data-clue-id="${id}" role="button" tabindex="0">`
+    + `${dot}<span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">${num}</span></div>`;
 }
 
 function renderDaily() {
@@ -1926,11 +1945,28 @@ function renderDaily() {
     `<span>⏱ <strong id="daily-timer">${time}</strong></span>`;
 
   // Clues (base + revealed hints)
-  const cluesHtml = daily.clues.map(_clueChip).join("");
+  const cluesHtml = daily.clues.map((c, i) => _clueChip(c, i, "b")).join("");
   const hintsHtml = daily.revealedHints.length
-    ? `<div class="daily-hints-label">Extra clues</div>` + daily.revealedHints.map(_clueChip).join("")
+    ? `<div class="daily-hints-label">Extra clues</div>`
+      + daily.revealedHints.map((c, j) => _clueChip(c, j, "h")).join("")
     : "";
-  $("#daily-clues").innerHTML = cluesHtml + hintsHtml;
+  const cluesEl = $("#daily-clues");
+  cluesEl.innerHTML = cluesHtml + hintsHtml;
+  if (!cluesEl._noteWired) {
+    cluesEl._noteWired = true;
+    const toggle = (e) => {
+      const chip = e.target.closest(".daily-clue");
+      if (!chip || daily.finished) return;
+      const id = chip.dataset.clueId;
+      if (daily.clueDone[id]) delete daily.clueDone[id]; else daily.clueDone[id] = true;
+      chip.classList.toggle("is-done");
+      _saveDailyProgress();
+    };
+    cluesEl.addEventListener("click", toggle);
+    cluesEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(e); }
+    });
+  }
 
   // Hint button – extra clues are now unlimited and chosen to match the tiles
   // you still have left, so it stays available until no helpful clue remains.
@@ -1967,11 +2003,115 @@ function dailyMakeTile(tile) {
   el.innerHTML = `
     <div class="tile-img-wrap"><img src="${art}" alt="${escapeHtml(tile.name)}" decoding="async" ${fallback ? `onerror="this.onerror=null;this.src='${fallback}'"` : ""} /></div>
     <div class="tile-name">${escapeHtml(tile.name)}</div>`;
-  if (clickable) el.addEventListener("click", () => dailyRevealTile(tile.position));
+
+  // Colour pencil-marks (the player's own scratch notes) — only while the tile
+  // is still in play; once revealed/finished the real colour takes over.
+  if (clickable) _renderTileNotes(el, tile.position);
+
+  if (clickable) {
+    // Short tap reveals; long-press (or right-click) opens the colour palette.
+    // A long-press must NOT also reveal, so we swallow the trailing click.
+    let lpTimer = null, longFired = false, sx = 0, sy = 0;
+    const cancelLP = () => { if (lpTimer) { clearTimeout(lpTimer); lpTimer = null; } };
+    el.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      longFired = false; sx = e.clientX; sy = e.clientY;
+      lpTimer = setTimeout(() => { longFired = true; openNotePalette(tile.position, el); }, 420);
+    });
+    el.addEventListener("pointermove", (e) => {
+      if (lpTimer && (Math.abs(e.clientX - sx) > 12 || Math.abs(e.clientY - sy) > 12)) cancelLP();
+    });
+    el.addEventListener("pointerup", cancelLP);
+    el.addEventListener("pointercancel", cancelLP);
+    el.addEventListener("pointerleave", cancelLP);
+    el.addEventListener("contextmenu", (e) => { e.preventDefault(); openNotePalette(tile.position, el); });
+    el.addEventListener("click", () => {
+      if (longFired) { longFired = false; return; } // long-press already handled
+      dailyRevealTile(tile.position);
+    });
+  }
   return el;
 }
 
+// Draw the little coloured corner triangles for whichever clues the player has
+// pencilled onto this tile. Each clue colour has a fixed corner so a given
+// colour always sits in the same spot across the board.
+function _renderTileNotes(el, position) {
+  const existing = el.querySelector(".tile-notes");
+  if (existing) existing.remove();
+  const marks = daily.notes[position] || [];
+  if (!marks.length) return;
+  const wrap = document.createElement("div");
+  wrap.className = "tile-notes";
+  marks.slice().sort((a, b) => a - b).forEach((ci) => {
+    const m = document.createElement("span");
+    m.className = `note-mark note-slot-${ci % 5}`;
+    m.style.setProperty("--nc", DAILY_CLUE_COLORS[ci % DAILY_CLUE_COLORS.length]);
+    wrap.appendChild(m);
+  });
+  el.appendChild(wrap);
+}
+
+// The floating colour-palette popover (one shared element). Long-pressing a tile
+// opens it beside that tile; tapping a swatch toggles that clue-colour note.
+let _notePaletteEl = null, _notePalettePos = null;
+function _closeNotePalette() {
+  if (_notePaletteEl) { _notePaletteEl.remove(); _notePaletteEl = null; }
+  _notePalettePos = null;
+  document.removeEventListener("pointerdown", _notePaletteOutside, true);
+}
+function _notePaletteOutside(e) {
+  if (_notePaletteEl && !_notePaletteEl.contains(e.target)) _closeNotePalette();
+}
+function openNotePalette(position, tileEl) {
+  if (daily.finished || daily.revealed[position]) return;
+  _closeNotePalette();
+  _notePalettePos = position;
+  const pal = document.createElement("div");
+  pal.className = "note-palette";
+  const marks = daily.notes[position] || [];
+  // A "clear" swatch, then one swatch per base clue colour.
+  const clear = document.createElement("button");
+  clear.className = "note-swatch note-clear"; clear.type = "button";
+  clear.setAttribute("aria-label", "Clear marks");
+  clear.addEventListener("click", () => {
+    delete daily.notes[position];
+    _renderTileNotes(tileEl, position); _saveDailyProgress(); _closeNotePalette();
+  });
+  pal.appendChild(clear);
+  for (let i = 0; i < daily.clues.length; i++) {
+    const sw = document.createElement("button");
+    sw.type = "button"; sw.className = "note-swatch";
+    sw.style.background = DAILY_CLUE_COLORS[i % DAILY_CLUE_COLORS.length];
+    if (marks.includes(i)) sw.classList.add("is-on");
+    sw.setAttribute("aria-label", `Clue ${i + 1}`);
+    sw.addEventListener("click", () => {
+      const cur = daily.notes[position] || [];
+      const at = cur.indexOf(i);
+      if (at >= 0) cur.splice(at, 1); else cur.push(i);
+      if (cur.length) daily.notes[position] = cur; else delete daily.notes[position];
+      sw.classList.toggle("is-on");
+      _renderTileNotes(tileEl, position); _saveDailyProgress();
+    });
+    pal.appendChild(sw);
+  }
+  document.body.appendChild(pal);
+  _notePaletteEl = pal;
+  // Position beside the tile (to the right if it fits, else the left).
+  const r = tileEl.getBoundingClientRect();
+  const pr = pal.getBoundingClientRect();
+  const sxo = window.scrollX, syo = window.scrollY;
+  let left = r.right + sxo + 8;
+  if (r.right + pr.width + 8 > window.innerWidth) left = r.left + sxo - pr.width - 8;
+  let top = r.top + syo + (r.height - pr.height) / 2;
+  top = Math.max(syo + 8, Math.min(top, syo + window.innerHeight - pr.height - 8));
+  pal.style.left = `${Math.max(sxo + 4, left)}px`;
+  pal.style.top = `${top}px`;
+  setTimeout(() => document.addEventListener("pointerdown", _notePaletteOutside, true), 0);
+}
+
 function renderDailyBoard() {
+  _closeNotePalette();
   const board = $("#daily-board");
   board.innerHTML = "";
   daily.tiles.forEach((t) => board.appendChild(dailyMakeTile(t)));
