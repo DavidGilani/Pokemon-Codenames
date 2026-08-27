@@ -408,6 +408,24 @@ a { color: var(--accent); }
 
 .tile.daily-unpicked { opacity: 0.55; }
 
+/* "Play a test game" affordance + the tutorial how-to-play panel. */
+.daily-tutorial-row { margin: -4px 0 2px; }
+#daily-tutorial-btn { border-style: dashed; }
+.daily-tutorial-panel {
+  background: var(--panel); border: 1px solid var(--panel-border);
+  border-radius: var(--radius); padding: 14px 16px; margin-bottom: 4px;
+}
+.daily-tutorial-panel .dtp-title {
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em;
+  font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px;
+}
+.daily-tutorial-panel .dtp-steps { margin: 0; padding-left: 20px; display: grid; gap: 7px; }
+.daily-tutorial-panel .dtp-steps li { font-size: 13.5px; line-height: 1.45; color: var(--text-dim); }
+.daily-tutorial-panel .dtp-steps strong { color: var(--text); }
+.daily-tutorial-panel .dtp-foot {
+  margin-top: 11px; font-size: 13px; color: var(--text-faint); font-style: italic;
+}
+
 .daily-result {
   background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius);
   padding: 18px; text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;

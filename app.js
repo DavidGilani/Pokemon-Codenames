@@ -1626,6 +1626,9 @@ const daily = {
   // is a set of clue ids the player greyed out; `notes` maps a tile position to
   // an array of clue indices (colours) they've pencilled onto that tile.
   clueDone: {}, notes: {},
+  // Tutorial "test game": a self-contained example board played fully offline.
+  // Nothing is saved, logged or shareable; finishing offers today's real puzzles.
+  practice: false,
 };
 
 // One vivid colour per base clue, by display order. Used both to tint the clue
@@ -1741,6 +1744,7 @@ function clearDailyUrl() {
 const DAILY_KEY_PREFIX = "pc_daily:";
 function _dailyKey(date, pool) { return `${DAILY_KEY_PREFIX}${date}:${pool}`; }
 function _saveDailyProgress() {
+  if (daily.practice) return; // the tutorial game is never cached
   if (!daily.date || !daily.pool) return;
   try {
     localStorage.setItem(_dailyKey(daily.date, daily.pool), JSON.stringify({
@@ -1799,6 +1803,7 @@ function initDaily() {
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
   $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
+  $("#daily-tutorial-btn").addEventListener("click", startPractice);
 }
 
 function _dailyReset() {
@@ -1811,6 +1816,60 @@ function _dailyReset() {
   daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
   daily.sealed = null; daily.key = null; daily.sig = null;
   daily.clueDone = {}; daily.notes = {}; _closeNotePalette();
+  daily.practice = false;
+}
+
+// A fixed, self-contained example board (an easy Monday-style puzzle) used by
+// the "Play a test game" tutorial. Colours/clues/hints live entirely client-side
+// (like an unsealed daily) so it plays with zero network and is never cached.
+const PRACTICE_BLUES = [
+  [0, "Charmander", 4], [3, "Squirtle", 7], [6, "Pikachu", 25], [8, "Vulpix", 37],
+  [11, "Caterpie", 10], [14, "Psyduck", 54], [17, "Pidgey", 16], [20, "Weedle", 13],
+  [23, "Spearow", 21],
+];
+const PRACTICE_NEUTRALS = [
+  [1, "Geodude", 74], [2, "Machop", 66], [4, "Abra", 63], [5, "Gastly", 92],
+  [7, "Cubone", 104], [9, "Sandshrew", 27], [10, "Ekans", 23], [12, "Nidoran♀", 29],
+  [13, "Jigglypuff", 39], [15, "Clefairy", 35], [16, "Lickitung", 108], [18, "Snorlax", 143],
+  [19, "Ditto", 132], [21, "Chansey", 113], [22, "Onix", 95], [24, "Mankey", 56],
+];
+const PRACTICE_CLUES = [
+  { word: "FIRE", number: 2, cat: 1, t: [0, 8], explain: "Both are Fire-types." },
+  { word: "WATER", number: 2, cat: 1, t: [3, 14], explain: "Both are Water-types." },
+  { word: "ELECTRIC", number: 1, cat: 1, t: [6], explain: "It's the Electric-type." },
+  { word: "BUG", number: 2, cat: 1, t: [11, 20], explain: "Both are Bug-types." },
+  { word: "BIRD", number: 2, cat: 3, t: [17, 23], explain: "Both are small birds." },
+];
+const PRACTICE_HINTS = [
+  { word: "FLAME-TAIL", number: 1, cat: 2, t: [0] }, { word: "SIX-TAILS", number: 1, cat: 2, t: [8] },
+  { word: "SHELL", number: 1, cat: 2, t: [3] }, { word: "HEADACHE", number: 1, cat: 4, t: [14] },
+  { word: "CHEEKS", number: 1, cat: 2, t: [6] }, { word: "ANTENNA", number: 1, cat: 2, t: [11] },
+  { word: "NOSE-SPIKE", number: 1, cat: 2, t: [20] }, { word: "CREST", number: 1, cat: 2, t: [17] },
+  { word: "BEAK", number: 1, cat: 2, t: [23] },
+];
+
+function startPractice() {
+  _closeNotePalette();
+  dailyPauseTimer();
+  _dailyReset();
+  daily.practice = true;
+  daily.pool = "gen1"; // keeps internal helpers happy; the UI shows "Test game"
+  daily.date = "practice";
+  daily.bluesTotal = 9;
+  const tiles = [];
+  const c = {};
+  PRACTICE_BLUES.forEach(([pos, name, id]) => { tiles.push({ name, pokemon_id: id, position: pos }); c[String(pos)] = "blue"; });
+  PRACTICE_NEUTRALS.forEach(([pos, name, id]) => { tiles.push({ name, pokemon_id: id, position: pos }); c[String(pos)] = "neutral"; });
+  tiles.sort((a, b) => a.position - b.position);
+  daily.tiles = tiles;
+  daily.key = { c, h: PRACTICE_HINTS, k: PRACTICE_CLUES };
+  daily.clues = _dailyStripClues(PRACTICE_CLUES);
+  daily.sig = _dailySig(daily.tiles, daily.clues);
+  daily.startedAt = Date.now();
+  daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
+  clearDailyUrl();
+  showScreen("daily");
+  renderDaily();
 }
 
 async function startDaily(pool) {
@@ -1931,10 +1990,18 @@ function _clueChip(c, idx, kind) {
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   const diff = dailyDifficulty(daily.clues);
-  $("#daily-play-title").innerHTML =
-    `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
-  $("#daily-play-sub").textContent = daily.date
-    ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "";
+  $("#daily-play-title").innerHTML = daily.practice
+    ? `Test game <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`
+    : `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+  $("#daily-play-sub").textContent = daily.practice
+    ? `A quick example to learn the ropes — nothing here is saved or shared.`
+    : (daily.date ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "");
+  // Tutorial affordances: the "test game" button shows on the real puzzle only;
+  // the how-to-play panel shows only while playing the test game.
+  const tutRow = $("#daily-tutorial-row");
+  if (tutRow) tutRow.classList.toggle("hidden", daily.practice || daily.finished);
+  const tutPanel = $("#daily-tutorial-panel");
+  if (tutPanel) tutPanel.classList.toggle("hidden", !daily.practice || daily.finished);
 
   // Stat bar
   const time = fmtClock(dailyElapsedSecs());
@@ -2273,6 +2340,32 @@ function renderDailyResult() {
       return `<div class="daily-answer-row"><div class="da-line"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">${num}</span></span><span class="da-names">${names}</span></div>${why}</div>`;
     }).join("");
     answersHtml = `<div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${rows}</div>`;
+  }
+
+  // Tutorial finish: no score sharing, no difficulty rating, no caching —
+  // just congratulate and point them at today's real puzzles.
+  if (daily.practice) {
+    const won = daily.outcome === "win";
+    el.innerHTML = `
+      <div class="daily-result-title">${won ? "Nice — you've got it! 🎉" : "Good try — that's the idea!"}</div>
+      <div class="daily-result-line">That was just practice. Ready for today's puzzle?</div>
+      <div class="daily-answers"><div class="daily-answers-label">What each clue meant</div>${
+        (daily.solutionClues || []).map((c) => {
+          const nameAt = {}; (daily.solution || []).forEach((t) => (nameAt[t.position] = t.name));
+          const names = (c.t || []).map((p) => escapeHtml(nameAt[p] || "?")).join(", ");
+          const why = c.explain ? `<div class="da-why">${escapeHtml(c.explain)}</div>` : "";
+          return `<div class="daily-answer-row"><div class="da-line"><span class="da-clue">${escapeHtml(c.word)} <span class="da-num">× ${c.number}</span></span><span class="da-names">${names}</span></div>${why}</div>`;
+        }).join("")
+      }</div>
+      <div class="daily-result-btns">
+        <button class="btn btn-primary" id="daily-go-gen1">Play today's Gen I puzzle</button>
+        <button class="btn btn-primary" id="daily-go-mixed">Play today's all-gens puzzle</button>
+        <button class="btn btn-ghost" id="daily-home-btn">Home</button>
+      </div>`;
+    $("#daily-go-gen1").addEventListener("click", () => startDaily("gen1"));
+    $("#daily-go-mixed").addEventListener("click", () => startDaily("mixed"));
+    $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
+    return;
   }
 
   const ratings = [
