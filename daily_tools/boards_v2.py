@@ -127,7 +127,7 @@ board("2026-08-29","gen1","Brutal",[
 board("2026-08-29","mixed","Brutal",[
   ("WARRIOR",4,"based:samurai",["Kubfu","Ceruledge","Samurott"]),
   ("KNIGHT",4,"based:knight",["Escavalier","Bisharp"]),
-  ("STEEL",1,"type:steel",["Escavalier","Bisharp","Klink"]),
+  ("STEEL",1,"type:steel",["Escavalier","Bisharp","Klink","Varoom","Bronzong"]),
   ("ROBOT",5,"arch:automaton",["Varoom","Golurk"]),
   ("GEARS",3,"lore:gears",["Klink","Bronzong"]),
 ], exclude=["Urshifu","Oshawott","Pawniard","Kingambit","Karrablast","Klang","Klinklang","Bronzor","Golett","Aegislash"])
@@ -150,14 +150,14 @@ board("2026-08-30","mixed","Evil",[
 
 # ===== 08-31 Mon : EASY =====
 board("2026-08-31","gen1","Easy",[
-  ("AVIAN",1,"type:flying",["Pidgey","Spearow"]),
+  ("AVIAN",1,"type:flying",["Pidgey","Spearow","Dodrio"]),
   ("ICE",1,"type:ice",["Jynx","Dewgong"]),
   ("PURPLE",1,"colour:purple",["Koffing","Nidorino"]),
   ("COCOON",2,"sprite:hard-shell",["Kakuna","Metapod"]),
   ("BEAK",2,"sprite:beak",["Dodrio"]),
 ], exclude=["Pidgeot","Fearow","Articuno","Zapdos","Moltres","Weezing","Nidoking","Beedrill","Butterfree","Seel"])
 board("2026-08-31","mixed","Easy",[
-  ("GROUND",1,"type:ground",["Phanpy","Hippopotas"]),
+  ("GROUND",1,"type:ground",["Phanpy","Hippopotas","Swinub"]),
   ("ICE",1,"type:ice",["Swinub","Cubchoo"]),
   ("GHOST",1,"type:ghost",["Drifloon","Yamask"]),
   ("SPIKES",2,"sprite:spikes",["Ferroseed","Qwilfish"]),
@@ -173,7 +173,7 @@ board("2026-09-01","gen1","Medium",[
   ("BALLOON",2,"sprite:big-eyes",["Wigglytuff"]),
 ], exclude=["Marowak","Dugtrio","Electivire","Flareon","Gloom","Exeggutor","Venusaur","Horsea","Jigglypuff","Raichu"])
 board("2026-09-01","mixed","Medium",[
-  ("BUG",1,"type:bug",["Ledyba","Wurmple"]),
+  ("BUG",1,"type:bug",["Ledyba","Wurmple","Pineco"]),
   ("FIGHTING",1,"type:fighting",["Makuhita","Timburr"]),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"]),
   ("GATOR",3,"arch:crocodile",["Sandile","Fuecoco"]),

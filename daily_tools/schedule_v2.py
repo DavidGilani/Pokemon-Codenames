@@ -8,12 +8,15 @@ letter, spread, coverage and category rule. Corpus = real history <= Aug 20 +
 the fresh Aug 21 + Aug 22 boards (Aug 22 already live & correct). Emits
 32_updates.sql. Boards are read from daily_tools/boards_v2.py.
 """
-import csv, json, re, random, datetime
+import csv, json, re, random, datetime, hashlib
 from collections import defaultdict
 ROOT="/home/user/Pokemon-Codenames"
 FACTS=json.load(open(f"{ROOT}/pokemon_facts.json"))
 GEN1={n for n,r in FACTS.items() if r["gen"]==1}
 random.seed(2026)
+# Stable per-board seed (Python's hash() is salted per process, which made
+# neutral fills — and thus the greedy hint search — non-reproducible run to run).
+def _sd(x): return int(hashlib.md5(repr(x).encode()).hexdigest()[:8], 16)
 
 WEEKDAY_TIER={0:"Easy",1:"Medium",2:"Challenging",3:"Hard",4:"Hard",5:"Brutal",6:"Evil"}
 def tier_for(date): return WEEKDAY_TIER[datetime.date.fromisoformat(date).weekday()]
@@ -142,6 +145,17 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     if b["tier"] in("Hard","Brutal") and cat2>1: errors.append(f"{where}: cat2={cat2}>1")
     if b["tier"]=="Evil" and cat2>0: errors.append(f"{where}: Evil has cat2={cat2}")
     if len(set(cats))<3 and b["tier"]!="Easy": errors.append(f"{where}: <3 distinct cats")
+    # A TYPE clue must cover EVERY blue of that type — otherwise its number is
+    # a lie (e.g. STEEL x3 when 5 blues are Steel-type). Types are objective and
+    # players count them, so this has to be exact. (Colour data is fuzzier, so
+    # not enforced here.)
+    if d>=EVO_FROM:  # only enforce on re-authored/emitted boards (past ones are grandfathered)
+        for w,c,cc,m in clues:
+            if cc.startswith("type:"):
+                ty=cc.split(":",1)[1]
+                allty=sorted(nm for nm in blues if ty in FACTS[nm]["types"])
+                if sorted(m)!=allty:
+                    errors.append(f"{where}: type clue {w} lists {sorted(m)} but every {ty}-type blue is {allty}")
     # Brutal/Evil structural gate
     if b["tier"] in("Brutal","Evil"):
         nums=[len(m) for w,c,cc,m in clues]
@@ -189,7 +203,8 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     cand=[nm for nm in poolset if nm not in blues and nm not in set(b["exclude"])
           and nm.isascii() and FACTS[nm].get("wk",0)==1 and ok_sem(nm)
           and not any(shares3(w,nm) for w in cluewords)]
-    rng=random.Random(hash((d,pool))&0xffffffff); rng.shuffle(cand)
+    cand=sorted(cand)  # set iteration is hash-salted; sort first for reproducibility
+    rng=random.Random(_sd((d,pool))); rng.shuffle(cand)
     neutrals=cand[:16]
     if len(neutrals)<16: errors.append(f"{where}: only {len(neutrals)} neutrals")
     names=blues+neutrals
@@ -238,14 +253,14 @@ else:
     for b in assembled:
         if b["date"]<EVO_FROM: continue  # already played; not re-emitted
         blues,neutrals,hints=b["blues"],b["neutrals"],b["hints"]; names=blues+neutrals
-        perm=list(range(25)); random.Random(hash(("p",b["date"],b["pool"]))&0xffffffff).shuffle(perm)
+        perm=list(range(25)); random.Random(_sd(("p",b["date"],b["pool"]))).shuffle(perm)
         pos={nm:perm[i] for i,nm in enumerate(names)}
         tiles=sorted([{"name":nm,"colour":"blue" if nm in blues else "neutral","position":pos[nm]} for nm in names],key=lambda t:t["position"])
         co=[{"word":w,"number":len(m),"cat":c,"t":sorted(pos[x] for x in m),
              "explain":explain_for(w,c,cc,m)} for w,c,cc,m in b["clues"]]
-        random.Random(hash(("c",b["date"],b["pool"]))&0xffffffff).shuffle(co)
+        random.Random(_sd(("c",b["date"],b["pool"]))).shuffle(co)
         ho=[{"word":hints[nm][0],"number":1,"cat":hints[nm][1],"t":[pos[nm]],"explain":hints[nm][2]} for nm in blues]
-        random.Random(hash(("h",b["date"],b["pool"]))&0xffffffff).shuffle(ho)
+        random.Random(_sd(("h",b["date"],b["pool"]))).shuffle(ho)
         tj="["+", ".join('{"name": %s, "colour": %s, "position": %d}'%(json.dumps(t["name"]),json.dumps(t["colour"]),t["position"]) for t in tiles)+"]"
         R.append("  (%s, %s,\n   %s::jsonb,\n   %s::jsonb,\n   %s::jsonb)"%(sq(b["date"]),sq(b["pool"]),sq(jarr(co)),sq(jarr(ho)),sq(tj)))
     L.append(",\n".join(R))
