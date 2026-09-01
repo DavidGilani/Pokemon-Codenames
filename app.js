@@ -1623,9 +1623,10 @@ const daily = {
   // so a dropped connection after load doesn't stop the puzzle.
   sealed: null, key: null,
   // Player's own scratch notes (per device, never sent anywhere): `clueDone`
-  // is a set of clue ids the player greyed out; `notes` maps a tile position to
-  // an array of clue indices (colours) they've pencilled onto that tile.
-  clueDone: {}, notes: {},
+  // is a set of clue ids the player greyed out; `clueLeft` maps a clue id to how
+  // many of its tiles the player thinks are still to find (0..number); `notes`
+  // maps a tile position to an array of clue indices (colours) pencilled on it.
+  clueDone: {}, clueLeft: {}, notes: {},
   // Tutorial "test game": a self-contained example board played fully offline.
   // Nothing is saved, logged or shareable; finishing offers today's real puzzles.
   practice: false,
@@ -1755,7 +1756,7 @@ function _saveDailyProgress() {
       finished: daily.finished, outcome: daily.outcome, solution: daily.solution,
       solutionClues: daily.solutionClues, attemptId: daily.attemptId, rating: daily.rating,
       sealed: daily.sealed, sig: daily.sig,
-      clueDone: daily.clueDone, notes: daily.notes,
+      clueDone: daily.clueDone, clueLeft: daily.clueLeft, notes: daily.notes,
     }));
   } catch {}
   _pruneDailyProgress();
@@ -1815,7 +1816,7 @@ function _dailyReset() {
   daily.taps = []; daily.attemptId = null; daily.rating = null;
   daily.elapsedMs = 0; daily.runningSince = null; daily.timerOn = false;
   daily.sealed = null; daily.key = null; daily.sig = null;
-  daily.clueDone = {}; daily.notes = {}; _closeNotePalette();
+  daily.clueDone = {}; daily.clueLeft = {}; daily.notes = {}; _closeNotePalette();
   daily.practice = false;
 }
 
@@ -1953,6 +1954,7 @@ async function startDaily(pool) {
       daily.attemptId = saved.attemptId || null;
       daily.rating = saved.rating || null;
       daily.clueDone = saved.clueDone || {};
+      daily.clueLeft = saved.clueLeft || {};
       daily.notes = saved.notes || {};
       daily.timerOn = !daily.finished;
       daily.runningSince = daily.finished ? null : Date.now();
@@ -1987,9 +1989,16 @@ function _clueChip(c, idx, kind) {
   const done = daily.clueDone[id] ? " is-done" : "";
   const colour = kind === "b" ? DAILY_CLUE_COLORS[idx % DAILY_CLUE_COLORS.length] : null;
   const dot = colour ? `<span class="dc-dot" style="background:${colour}"></span>` : "";
-  const num = c.anti ? "× 0" : `× ${c.number}`;
   const anti = c.anti ? " daily-anti" : "";
-  return `<div class="daily-clue${anti}${done}" data-clue-id="${id}" role="button" tabindex="0">`
+  // The × number, optionally overridden by the player's own "still to find" count
+  // (set by holding the chip). When reduced, the original is struck through.
+  const left = daily.clueLeft[id];
+  let num;
+  if (c.anti) num = "× 0";
+  else if (kind === "b" && typeof left === "number" && left !== c.number)
+    num = `<s>× ${c.number}</s> <span class="dc-left">${left} left</span>`;
+  else num = `× ${c.number}`;
+  return `<div class="daily-clue${anti}${done}" data-clue-id="${id}" data-clue-num="${c.number}" data-clue-kind="${kind}" role="button" tabindex="0">`
     + `${dot}<span class="dc-word">${escapeHtml(c.word)}</span><span class="dc-num">${num}</span></div>`;
 }
 
@@ -2027,17 +2036,43 @@ function renderDaily() {
   cluesEl.innerHTML = cluesHtml + hintsHtml;
   if (!cluesEl._noteWired) {
     cluesEl._noteWired = true;
-    const toggle = (e) => {
-      const chip = e.target.closest(".daily-clue");
+    // Tap a clue to grey it out ("got this one"); press & hold a BASE clue to
+    // set how many of its tiles you still have to find (0..number).
+    const toggleDone = (chip) => {
       if (!chip || daily.finished) return;
       const id = chip.dataset.clueId;
       if (daily.clueDone[id]) delete daily.clueDone[id]; else daily.clueDone[id] = true;
       chip.classList.toggle("is-done");
       _saveDailyProgress();
     };
-    cluesEl.addEventListener("click", toggle);
+    let lpTimer = null, longFired = false, sx = 0, sy = 0;
+    const cancelLP = () => { if (lpTimer) { clearTimeout(lpTimer); lpTimer = null; } };
+    cluesEl.addEventListener("pointerdown", (e) => {
+      const chip = e.target.closest(".daily-clue");
+      if (!chip || daily.finished) return;
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      longFired = false; sx = e.clientX; sy = e.clientY;
+      const num = Number(chip.dataset.clueNum);
+      if (chip.dataset.clueKind === "b" && num > 0) {
+        lpTimer = setTimeout(() => { longFired = true; openClueCountPalette(chip); }, 420);
+      }
+    });
+    cluesEl.addEventListener("pointermove", (e) => {
+      if (lpTimer && (Math.abs(e.clientX - sx) > 12 || Math.abs(e.clientY - sy) > 12)) cancelLP();
+    });
+    cluesEl.addEventListener("pointerup", cancelLP);
+    cluesEl.addEventListener("pointercancel", cancelLP);
+    cluesEl.addEventListener("pointerleave", cancelLP);
+    cluesEl.addEventListener("contextmenu", (e) => {
+      const chip = e.target.closest(".daily-clue");
+      if (chip && chip.dataset.clueKind === "b" && !daily.finished) { e.preventDefault(); openClueCountPalette(chip); }
+    });
+    cluesEl.addEventListener("click", (e) => {
+      if (longFired) { longFired = false; return; } // long-press already handled
+      toggleDone(e.target.closest(".daily-clue"));
+    });
     cluesEl.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(e); }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleDone(e.target.closest(".daily-clue")); }
     });
   }
 
@@ -2180,6 +2215,41 @@ function openNotePalette(position, tileEl) {
   top = Math.max(syo + 8, Math.min(top, syo + window.innerHeight - pr.height - 8));
   pal.style.left = `${Math.max(sxo + 4, left)}px`;
   pal.style.top = `${top}px`;
+  setTimeout(() => document.addEventListener("pointerdown", _notePaletteOutside, true), 0);
+}
+
+// Press & hold a base clue to set how many of its tiles are still to find.
+function openClueCountPalette(chip) {
+  if (daily.finished) return;
+  _closeNotePalette();
+  const id = chip.dataset.clueId;
+  const number = Number(chip.dataset.clueNum);
+  const cur = (typeof daily.clueLeft[id] === "number") ? daily.clueLeft[id] : number;
+  const pal = document.createElement("div");
+  pal.className = "note-palette clue-count-palette";
+  pal.innerHTML = `<div class="ccp-label">Still to find</div>`;
+  const rowEl = document.createElement("div"); rowEl.className = "ccp-row";
+  for (let k = 0; k <= number; k++) {
+    const btn = document.createElement("button");
+    btn.type = "button"; btn.className = "ccp-btn" + (k === cur ? " is-on" : "");
+    btn.textContent = String(k);
+    btn.addEventListener("click", () => {
+      if (k === number) delete daily.clueLeft[id]; else daily.clueLeft[id] = k;
+      renderDaily();           // re-render chips with the new count (also closes this)
+      _saveDailyProgress();
+    });
+    rowEl.appendChild(btn);
+  }
+  pal.appendChild(rowEl);
+  document.body.appendChild(pal);
+  _notePaletteEl = pal;
+  const r = chip.getBoundingClientRect();
+  const pr = pal.getBoundingClientRect();
+  const sxo = window.scrollX, syo = window.scrollY;
+  let top = r.bottom + syo + 6;
+  if (r.bottom + pr.height + 6 > window.innerHeight) top = r.top + syo - pr.height - 6;
+  let leftpx = Math.max(sxo + 4, Math.min(r.left + sxo, sxo + window.innerWidth - pr.width - 4));
+  pal.style.left = `${leftpx}px`; pal.style.top = `${Math.max(syo + 4, top)}px`;
   setTimeout(() => document.addEventListener("pointerdown", _notePaletteOutside, true), 0);
 }
 
