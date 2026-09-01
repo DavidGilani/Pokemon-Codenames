@@ -149,6 +149,9 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     # a lie (e.g. STEEL x3 when 5 blues are Steel-type). Types are objective and
     # players count them, so this has to be exact. (Colour data is fuzzier, so
     # not enforced here.)
+    # Allow UP TO 5 clues (fewer is fine as long as all 9 blues are covered and
+    # the tier's mix still holds).
+    if not (1<=len(clues)<=5): errors.append(f"{where}: {len(clues)} clues (must be 1-5)")
     if d>=EVO_FROM:  # only enforce on re-authored/emitted boards (past ones are grandfathered)
         for w,c,cc,m in clues:
             if cc.startswith("type:"):
@@ -156,6 +159,15 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
                 allty=sorted(nm for nm in blues if ty in FACTS[nm]["types"])
                 if sorted(m)!=allty:
                     errors.append(f"{where}: type clue {w} lists {sorted(m)} but every {ty}-type blue is {allty}")
+        # No clue's blue-set may be a subset of another's — splitting {A,B,C} into
+        # a separate {A,B} clue is a dull way to pad the board. (Empty anti-clues
+        # are exempt.) This also blocks two clues with the identical set.
+        sets=[(w,frozenset(m)) for w,c,cc,m in clues]
+        for i,(wi,si) in enumerate(sets):
+            for j,(wj,sj) in enumerate(sets):
+                if i==j or not si: continue
+                if si<sj or (si==sj and i<j):
+                    errors.append(f"{where}: clue {wi} {sorted(si)} is contained in {wj} {sorted(sj)} (redundant split)")
     # Brutal/Evil structural gate
     if b["tier"] in("Brutal","Evil"):
         nums=[len(m) for w,c,cc,m in clues]

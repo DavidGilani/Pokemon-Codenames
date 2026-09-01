@@ -119,17 +119,17 @@ board("2026-08-28","mixed","Hard",[
 # ===== 08-29 Sat : BRUTAL =====
 board("2026-08-29","gen1","Brutal",[
   ("NORMAL",1,"type:normal",["Tauros","Ditto","Lickitung"]),
-  ("SUMO-RING",4,"based:sumo",["Poliwrath","Sandslash"]),
-  ("SPARRING",4,"lore:martial-arts",["Hitmonchan","Machoke","Poliwrath"]),
+  ("WRESTLER",4,"based:sumo",["Poliwrath","Sandslash"]),
+  ("MARTIAL",4,"lore:martial-arts",["Hitmonchan","Machoke","Poliwrath"]),
   ("MENTALIST",5,"lore:mind",["Kadabra","Drowzee"]),
-  ("BISON",3,"arch:bovine",["Tauros"]),
+  ("MIGHT",3,"lore:strength",["Machoke","Tauros"]),
 ], exclude=["Kangaskhan","Snorlax","Chansey","Eevee","Porygon","Machop","Machamp","Hitmonlee","Alakazam","Hypno"])
 board("2026-08-29","mixed","Brutal",[
   ("WARRIOR",4,"based:samurai",["Kubfu","Ceruledge","Samurott"]),
   ("KNIGHT",4,"based:knight",["Escavalier","Bisharp"]),
-  ("STEEL",1,"type:steel",["Escavalier","Bisharp","Klink","Varoom","Bronzong"]),
-  ("ROBOT",5,"arch:automaton",["Varoom","Golurk"]),
+  ("ROBOT",5,"arch:automaton",["Klink","Varoom","Golurk"]),
   ("GEARS",3,"lore:gears",["Klink","Bronzong"]),
+  ("SWORDS",2,"sprite:blades",["Samurott","Bisharp"]),
 ], exclude=["Urshifu","Oshawott","Pawniard","Kingambit","Karrablast","Klang","Klinklang","Bronzor","Golett","Aegislash"])
 
 # ===== 08-30 Sun : EVIL =====
@@ -141,11 +141,11 @@ board("2026-08-30","gen1","Evil",[
   ("BEDROCK",4,"stat:defense",["Golem","Kabuto","Omastar"]),
 ], exclude=["Magby","Omanyte","Kabutops","Graveler","Geodude","Koffing","Grimer","Rhydon","Ponyta","Charmander"])
 board("2026-08-30","mixed","Evil",[
-  ("DIG-SITE",5,"lore:fossil",["Rampardos","Archeops"]),
+  ("FOSSIL",5,"lore:fossil",["Rampardos","Archeops","Bastiodon"]),
   ("CHIMERA",4,"arch:chimera",["Dracozolt","Arctovish"]),
   ("CURSED-DOLL",5,"based:doll",["Mimikyu","Banette"]),
   ("ALIEN",4,"arch:alien",["Beheeyem","Necrozma"]),
-  ("ANCIENT",3,"lore:ancient",["Rampardos","Archeops","Bastiodon"]),
+  ("ANCIENT",3,"lore:ancient",["Rampardos","Dracozolt"]),
 ], exclude=["Cranidos","Tyrunt","Tyrantrum","Dracovish","Arctozolt","Shuppet","Elgyem","Shieldon","Aerodactyl","Golett"])
 
 # ===== 08-31 Mon : EASY =====
@@ -154,7 +154,6 @@ board("2026-08-31","gen1","Easy",[
   ("ICE",1,"type:ice",["Jynx","Dewgong"]),
   ("PURPLE",1,"colour:purple",["Koffing","Nidorino"]),
   ("COCOON",2,"sprite:hard-shell",["Kakuna","Metapod"]),
-  ("BEAK",2,"sprite:beak",["Dodrio"]),
 ], exclude=["Pidgeot","Fearow","Articuno","Zapdos","Moltres","Weezing","Nidoking","Beedrill","Butterfree","Seel"])
 board("2026-08-31","mixed","Easy",[
   ("GROUND",1,"type:ground",["Phanpy","Hippopotas","Swinub"]),
@@ -173,11 +172,11 @@ board("2026-09-01","gen1","Medium",[
   ("BALLOON",2,"sprite:big-eyes",["Wigglytuff"]),
 ], exclude=["Marowak","Dugtrio","Electivire","Flareon","Gloom","Exeggutor","Venusaur","Horsea","Jigglypuff","Raichu"])
 board("2026-09-01","mixed","Medium",[
-  ("BUG",1,"type:bug",["Ledyba","Wurmple","Pineco"]),
+  ("BUG",1,"type:bug",["Ledyba","Wurmple"]),
   ("FIGHTING",1,"type:fighting",["Makuhita","Timburr"]),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"]),
   ("GATOR",3,"arch:crocodile",["Sandile","Fuecoco"]),
-  ("ACORN",2,"sprite:acorn",["Pineco"]),
+  ("FRUIT",2,"sprite:cherries",["Cherubi"]),
 ], exclude=["Glalie","Avalugg","Hariyama","Conkeldurr","Wyrdeer","Deerling","Krokorok","Crocalor","Skeledirge","Forretress"])
 
 # ===== 09-02 Wed : CHALLENGING =====
@@ -240,8 +239,8 @@ board("2026-09-05","mixed","Brutal",[
   ("GENIE",5,"arch:genie",["Tornadus","Thundurus","Landorus"]),
   ("DEITY",5,"arch:deity",["Tapu Koko","Tapu Bulu"]),
   ("UFO",4,"arch:alien",["Elgyem","Guzzlord"]),
-  ("ESP",1,"type:psychic",["Elgyem","Celebi","Jirachi"]),
   ("MYTHIC",3,"lore:mythical",["Celebi","Jirachi"]),
+  ("COSMIC",3,"lore:cosmic",["Elgyem","Jirachi"]),
 ], exclude=["Enamorus","Tapu Lele","Tapu Fini","Beheeyem","Necrozma","Mew","Uxie","Mesprit","Azelf","Deoxys"])
 
 # ===== 09-06 Sun : EVIL =====
