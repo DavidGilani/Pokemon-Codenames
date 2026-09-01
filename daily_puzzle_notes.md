@@ -1,15 +1,63 @@
-# 1-player Daily Puzzle — design notes & prototype
+# 1-player Daily Puzzle — design notes
 
-Scratch/design doc (not wired into the live app yet). Captures the plan, some
-worked example puzzles, and how we can learn from real player data.
+How the solo daily puzzle works and how to author new boards. **Start with the
+checklist below** — the sections after it are the detailed reference/history.
+
+## Authoring checklist (read this first)
+
+A board = **9 blue + 16 neutral** tiles (no assassin). Two boards drop per day
+(**Gen I** and **mixed/all-gens**); each is the same for everyone, played in one
+turn (find all 9 blue; **5th wrong tap ends it**), with **unlimited conditional
+hints**. The tier is **fixed by weekday**: Mon Easy · Tue Medium · Wed
+Challenging · Thu Hard · Fri Hard · Sat Brutal · Sun Evil.
+
+To author one board:
+
+1. **Pick 9 varied blues.** Draw 9 from the pool; make them span types and
+   (mixed) generations — see the spread rule. Re-roll if they don't admit a good
+   clue set.
+2. **Write UP TO 5 clues that cover all 9 blues.** Fewer than 5 is fine if every
+   blue is covered and the tier's mix still holds. Numbers may sum to >9
+   (overlaps are good). **The AUTHOR invents the connection** — the fact bank is
+   only for *checking*, never a menu of clue words.
+3. **Every clue must be CORRECT (Rule 0).** A clue's property must hold for
+   *exactly* its listed tiles and **no other tile** — neutral **or** another
+   blue. In particular a **type clue must include EVERY blue of that type** (a
+   Steel clue on 3 tiles when 5 blues are Steel is wrong).
+4. **No redundant/overlapping-to-death clues.** No clue's tile-set may be
+   **wholly contained in another clue's** (splitting {A,B,C} into a separate
+   {A,B} is a dull split; identical sets are likewise out).
+5. **Variety.** Use **≥3 different clue families** across the board (type,
+   colour, sprite, real-world animal, lore/pun, trainer, move, stat…). **No
+   disguised-type clues** (don't dress a shared type up as `WYRM`/`BLAZE` — use
+   the honest type word, at most 1–2 type/colour anchors per board).
+6. **Cap evolution-family clues.** A clue that groups a mon with its own
+   evolution line counts as one "evo group": **≤1 per board, ≤3 per rolling 7
+   days** (both pools). Prefer grouping blues by something *other* than a shared
+   evo line.
+7. **Hit the tier's category mix** (table below) and, for **Brutal/Evil**, the
+   gate: clue numbers **sum ≥ 11** and **≤ 1 single-tile clue**.
+8. **Anti-repetition** (both pools together): a clue **word** not reused within
+   7 days; a **word→group** pairing not within 14 days; a **concept** (synonyms
+   collapse) not within 5 days; a mon is a **blue** at most once per **5 days**
+   (Gen I) / **10 days** (mixed).
+9. **Strict letter rule.** A clue/hint word must not share **3+ consecutive
+   letters** with ANY of the 25 tile names.
+10. **Hints.** Every blue is covered by **≥1 easier hint**; each hint carries a
+    one-line `explain`. **Randomise** clue order, hint order, and tile positions.
+
+Everything above is enforced by `daily_tools/schedule_v2.py` (which reads the
+hand-authored boards in `daily_tools/boards_v2.py` and emits the SQL). The rest
+of this doc explains the reasoning.
 
 ## The concept (as agreed for the first cut)
 
 - **One player.** No clue giver — the clues are pre-written ("by the AI").
 - **5×5 board, 9 blue tiles** (same tile counts as a co-op board: 9 blue,
   15 neutral, 1 assassin).
-- The player is given **exactly 5 clues**, each with a number, that between them
-  cover all 9 blue tiles (e.g. 2+2+2+2+1, or 3+2+2+1+1).
+- The player is given **up to 5 clues**, each with a number, that between them
+  cover all 9 blue tiles (e.g. 2+2+2+2+1, or 3+2+2+1+1). Fewer than 5 is fine as
+  long as all 9 are covered and the tier's mix still holds.
 - The player gets **one turn** to find all 9 blue tiles. Success = all 9 found.
 - **Two puzzles per day:** one drawn from **Gen I only**, and one drawn from
   **any generation (mixed)**. Same two puzzles for everyone that day
@@ -121,14 +169,17 @@ worked example puzzles, and how we can learn from real player data.
   must be covered by at least one hint** (grouped is fine), and hints should be
   **easier** than the base clues. The player can keep asking until no helpful
   clue remains.
-- **Clues:** all **5 shown at once**. Single words.
+- **Clues:** up to **5, all shown at once**. Single words.
   - **Group generously:** a clue can cover as many blues as genuinely fit
     (2, 3, 4, even more) — don't split a clean group into singletons. If BUG
-    covers 4 blues, make it `BUG × 4`.
+    covers 4 blues, make it `BUG × 4`. And a **type clue must cover EVERY blue of
+    that type** (don't say `STEEL × 3` when 5 blues are Steel).
   - **Overlap is GOOD and preferred where achievable:** a blue may appear in
     more than one clue (numbers can sum to >9), which adds a nice "which tile is
-    double-clued?" layer — but **no two clues may cover the *exact same* set**
-    of blues.
+    double-clued?" layer. BUT **no clue's set of blues may be wholly contained in
+    another clue's** — that includes two identical sets *and* the boring
+    {A,B}-inside-{A,B,C} split. Overlap where the clues genuinely cross; never
+    nest one entirely inside another.
   - **Anti-clues (number 0):** a clue may state a category with `× 0`, meaning
     **none of your blues are in it**. Use it to eliminate a tempting neutral —
     e.g. `LEGENDARY × 0` tells the player the legendary bird Articuno is NOT

@@ -127,6 +127,12 @@ Chosen on the landing page when creating a room. `mode` values:
   **Brutal/Evil structural gate:** the category spread isn't enough — a Brutal or
   Evil board must ALSO have **at most one `× 1` clue** and its **clue numbers must
   sum to ≥ 11** (≥ 2 overlaps); otherwise ship it as Hard.
+  **Up to 5 clues:** a board may use FEWER than 5 clues if all 9 blues are still
+  covered and the tier's mix holds (don't pad with filler). **Type-clue
+  completeness:** a type clue must cover EVERY blue of that type (no `STEEL × 3`
+  when 5 blues are Steel). **No nested clues:** a clue's blue-set may not be
+  wholly contained in another clue's — overlap where clues genuinely cross, but
+  never split `{A,B,C}` into a separate `{A,B}` (identical sets are out too).
   **Randomise clue order:** shuffle the 5 base clues (and the hints) — never list
   them in board order (top-to-bottom), which leaks which clue maps to which tiles.
   **Randomise tile positions:** scatter the 9 blue tiles to random grid positions
