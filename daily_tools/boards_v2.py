@@ -183,7 +183,7 @@ board("2026-09-01","mixed","Medium",[
 board("2026-09-02","gen1","Challenging",[
   ("POISON",1,"type:poison",["Zubat","Nidorina","Grimer"]),
   ("WHISKERS",2,"sprite:whiskers",["Rattata","Meowth"]),
-  ("ECHINODERM",3,"arch:starfish",["Staryu"]),
+  ("TWINKLE",3,"lore:star",["Staryu"]),
   ("SHELL",2,"sprite:shell",["Cloyster","Wartortle"]),
   ("MINDBENDER",3,"lore:teleport",["Alakazam"]),
 ], exclude=["Golbat","Nidoqueen","Muk","Raticate","Persian","Starmie","Shellder","Blastoise","Kadabra","Ekans"])
@@ -208,8 +208,8 @@ board("2026-09-03","mixed","Hard",[
   ("TURTLE",3,"arch:turtle",["Torkoal","Drednaw"]),
   ("MOTH",3,"arch:moth",["Dustox","Volcarona"]),
   ("SQUID",4,"arch:cephalopod",["Grapploct"]),
-  ("BITE",2,"sprite:jaws",["Sharpedo","Mawile"]),
-], exclude=["Frillish","Tentacruel","Chewtle","Turtwig","Beautifly","Mothim","Malamar","Inkay","Carvanha","Mawile-x"])
+  ("JAWS",2,"sprite:jaws",["Sharpedo","Mawile"]),
+], exclude=["Frillish","Tentacruel","Chewtle","Turtwig","Beautifly","Mothim","Malamar","Inkay","Carvanha","Mightyena","Guzzlord","Golbat","Carnivine","Crabrawler","Trevenant"])
 
 # ===== 09-04 Fri : HARD =====
 board("2026-09-04","gen1","Hard",[
@@ -218,14 +218,14 @@ board("2026-09-04","gen1","Hard",[
   ("VAMPIRE",4,"lore:vampire",["Golbat"]),
   ("MANEATER",4,"based:flytrap",["Victreebel"]),
   ("MANE",2,"sprite:mane",["Ninetales","Rapidash"]),
-], exclude=["Arbok","Onix","Dratini","Spearow","Pidgeotto","Zubat","Weepinbell","Bellsprout","Arcanine","Ponyta"])
+], exclude=["Arbok","Onix","Dratini","Spearow","Pidgeotto","Zubat","Weepinbell","Bellsprout","Arcanine","Ponyta","Pidgey","Porygon","Farfetch'd","Dodrio"])
 board("2026-09-04","mixed","Hard",[
-  ("SCARECROW",4,"based:scarecrow",["Cacturne"]),
-  ("HALLOWEEN",4,"based:pumpkin",["Gourgeist"]),
-  ("PRIMATE",3,"arch:monkey",["Grookey","Pansage","Panpour"]),
-  ("BOAR",3,"arch:boar",["Tepig","Lechonk"]),
-  ("PINCERS",2,"sprite:claws",["Crawdaunt","Klawf"]),
-], exclude=["Cacnea","Pumpkaboo","Thwackey","Simisage","Simipour","Emboar","Oinkologne","Corphish","Crabominable","Sandygast"])
+  ("AUTOMATON",4,"arch:automaton",["Golett","Magearna"]),
+  ("CETACEAN",4,"arch:cetacean",["Wailmer","Kyogre"]),
+  ("SHARK",3,"arch:shark",["Gible","Frigibax"]),
+  ("WOLF",3,"arch:wolf",["Lycanroc","Zacian"]),
+  ("KEYS",2,"sprite:keys",["Klefki"]),
+], exclude=["Golurk","Klink","Klang","Klinklang","Bronzong","Beldum","Metang","Metagross","Wailord","Gabite","Garchomp","Arctibax","Baxcalibur","Rockruff","Zamazenta","Registeel"])
 
 # ===== 09-05 Sat : BRUTAL =====
 board("2026-09-05","gen1","Brutal",[
