@@ -227,6 +227,34 @@ Chosen on the landing page when creating a room. `mode` values:
   (receiver), and share a full result recap at game end (final emoji grid +
   every clue and guess with ✅/❌).
 
+## Nightly board generator (scheduled ~02:00 Europe/London)
+
+A scheduled Claude session tops up the daily-puzzle pipeline overnight so the
+owner always has upcoming boards to QA. Its job: **ensure every day in the next
+14 days has BOTH a `gen1` and a `mixed` board; author any that are missing**
+(soonest gaps first), then stop. Workflow:
+
+1. Read this daily section + `daily_puzzle_notes.md` + `daily_tools/boards_v2.py`
+   + `daily_tools/schedule_v2.py`; use `pokemon_facts.json` for connections.
+2. Query Supabase (`daily_puzzles`) for missing `(date, pool)` in
+   `[today, today+14]`. If none missing, **make no changes and stop.**
+3. Add a `board(...)` entry to `boards_v2.py` for each gap, matching the date's
+   **weekday tier** (Mon Easy · Tue Medium · Wed Challenging · Thu Hard · Fri
+   Hard · Sat Brutal · Sun Evil) and following **every** rule the verifier
+   enforces. **AI generation must satisfy all rules — never add to the
+   `FLOURISH` set** (that is for human QA overrides only).
+4. `python3 daily_tools/schedule_v2.py` until it prints `ALL VALID` (it re-emits
+   `33_updates.sql`).
+5. Apply only the new `(date,pool)` upserts to Supabase (base64 `do $$ … execute
+   convert_from(decode(...)) … $$;` pattern keeps the JSON exact).
+6. Commit + push to `main`.
+
+New boards land **untested** → they show **blue** in the QA overview (`?qa=1`)
+for the owner to playtest. The generator never rates its own boards; only real
+QA feedback (or an explicit fix) turns a board green. If it can't fill every gap
+in one run, it fills the soonest dates and stops cleanly — the next night
+continues.
+
 ## Working preferences (from the project owner)
 
 - **ALWAYS push changes directly to `main`.** Do NOT develop on, push to, or
