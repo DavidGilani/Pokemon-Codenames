@@ -2062,7 +2062,7 @@ async function startQaBoard(date, pool) {
     daily.tiles = tiles;
     daily.sig = _dailySig(daily.tiles, daily.clues);
     setRoomPill(null);
-    clearDailyUrl();
+    try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {} // keep QA mode on refresh
     daily.startedAt = Date.now();
     daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
     showScreen("daily");
