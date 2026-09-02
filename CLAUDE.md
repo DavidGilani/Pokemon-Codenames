@@ -101,7 +101,15 @@ Chosen on the landing page when creating a room. `mode` values:
   those mon + which category); shown under each clue on the finish screen, and
   stripped by `get_daily_puzzle` mid-game so it can't leak early. Every
   attempt (taps, time, hints, mistakes, difficulty rating) is logged to
-  `daily_attempts`. Board-first generation: deal randomly, then write clues,
+  `daily_attempts`. **QA / playtest page (unlisted, `?qa=1`):** plays every
+  upcoming board (today → +30 days, both pools) back-to-back with the normal
+  daily engine, and after each board a rating + free-text note is saved to the
+  `daily_feedback` table. Backed by RPCs `list_daily_qa(from,to)` (lists boards +
+  difficulty), `get_daily_qa(date,pool)` (serves ANY date incl. future, sealed
+  like `get_daily_full`), and `submit_daily_feedback(...)`. QA mode never caches
+  to `localStorage` or logs a player attempt (like the tutorial). Read the
+  feedback back via the Supabase MCP connection to fix boards. Board-first
+  generation: deal randomly, then write clues,
   re-dealing until the 9 blues cluster into ≤5 clean clues. **Skew difficulty
   harder by grouping MULTIPLE blues under higher-category (lore/stat) clues.**
   **No disguised-type clues:** a higher-category clue must NOT just be a type in

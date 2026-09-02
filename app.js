@@ -1630,6 +1630,11 @@ const daily = {
   // Tutorial "test game": a self-contained example board played fully offline.
   // Nothing is saved, logged or shareable; finishing offers today's real puzzles.
   practice: false,
+  // QA / playtest mode (URL-gated ?qa=1): play upcoming boards back-to-back and
+  // save a rating + note per board to the daily_feedback table. Like practice,
+  // nothing is cached to localStorage and no player attempt is logged. `qaQueue`
+  // and `qaIndex` persist across boards (not cleared by _dailyReset).
+  qa: false, qaQueue: [], qaIndex: 0,
 };
 
 // One vivid colour per base clue, by display order. Used both to tint the clue
@@ -1708,6 +1713,12 @@ function dailyElapsedMs() {
 }
 function dailyElapsedSecs() { return Math.floor(dailyElapsedMs() / 1000); }
 function fmtClock(secs) { return `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, "0")}`; }
+// Local YYYY-MM-DD, optionally offset by N days (used to build the QA date window).
+function _todayStr(offsetDays) {
+  const d = new Date();
+  if (offsetDays) d.setDate(d.getDate() + offsetDays);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
 
 // Difficulty label derived from the puzzle's clue-category spread (change #2).
 // More Category-1 (easy type/colour) clues => easier; more Category-4/5
@@ -1745,7 +1756,7 @@ function clearDailyUrl() {
 const DAILY_KEY_PREFIX = "pc_daily:";
 function _dailyKey(date, pool) { return `${DAILY_KEY_PREFIX}${date}:${pool}`; }
 function _saveDailyProgress() {
-  if (daily.practice) return; // the tutorial game is never cached
+  if (daily.practice || daily.qa) return; // the tutorial and QA games are never cached
   if (!daily.date || !daily.pool) return;
   try {
     localStorage.setItem(_dailyKey(daily.date, daily.pool), JSON.stringify({
@@ -1802,7 +1813,7 @@ function dailyResumeTimer() {
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); clearDailyUrl(); showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
   $("#daily-tutorial-btn").addEventListener("click", startPractice);
 }
@@ -1818,6 +1829,7 @@ function _dailyReset() {
   daily.sealed = null; daily.key = null; daily.sig = null;
   daily.clueDone = {}; daily.clueLeft = {}; daily.notes = {}; _closeNotePalette();
   daily.practice = false;
+  daily.qa = false; // qaQueue/qaIndex intentionally left alone (span multiple boards)
 }
 
 // A fixed, self-contained example board used by the "Play a test game" tutorial
@@ -1980,6 +1992,135 @@ async function startDaily(pool) {
   }
 }
 
+// ============================================================================
+// QA / playtest mode (change #5) — URL-gated with ?qa=1. Loads every board in a
+// date window and plays them back-to-back with the normal daily engine; after
+// each board the tester leaves a rating + note, saved to the daily_feedback
+// table (read back here via Supabase to fix boards). Nothing is cached locally
+// and no player attempt is logged.
+// ============================================================================
+const QA_WINDOW_DAYS = 30; // how far ahead to pull upcoming boards for QA
+
+async function startQaBatch() {
+  try {
+    try { await ensureAuth(); } catch (e) { console.error(e); }
+    const from = _todayStr();
+    const to = _todayStr(QA_WINDOW_DAYS);
+    const { data, error } = await sb.rpc("list_daily_qa", { p_from: from, p_to: to });
+    if (error) throw error;
+    const queue = (data || []).map((r) => ({
+      date: r.puzzle_date, pool: r.pool, n_clues: r.n_clues, difficulty: r.difficulty,
+    }));
+    if (!queue.length) { toast("No upcoming boards to QA in the next 30 days."); showScreen("landing"); return; }
+    daily.qaQueue = queue;
+    daily.qaIndex = 0;
+    await qaLoadCurrent();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || "Couldn't load the QA batch.");
+    showScreen("landing");
+  }
+}
+
+async function qaLoadCurrent() {
+  if (daily.qaIndex >= daily.qaQueue.length) { renderQaDone(); return; }
+  const item = daily.qaQueue[daily.qaIndex];
+  await startQaBoard(item.date, item.pool);
+}
+
+async function startQaBoard(date, pool) {
+  try {
+    let tiles = null, sealed = null;
+    const { data, error } = await sb.rpc("get_daily_qa", { p_date: date, p_pool: pool });
+    if (error) throw error;
+    const row = data && data[0];
+    if (!row) { toast(`No board found for ${date} (${pool}).`); daily.qaIndex++; return qaLoadCurrent(); }
+    tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+    sealed = row.sealed || null;
+
+    _dailyReset();
+    daily.qa = true;
+    daily.pool = pool;
+    daily.date = date;
+    daily.bluesTotal = 9;
+    if (sealed) {
+      daily.sealed = sealed;
+      try { daily.key = _dailyUnseal(sealed); } catch (e) { console.error(e); daily.key = null; }
+    }
+    daily.clues = daily.key ? _dailyStripClues(daily.key.k) : [];
+    daily.tiles = tiles;
+    daily.sig = _dailySig(daily.tiles, daily.clues);
+    setRoomPill(null);
+    clearDailyUrl();
+    daily.startedAt = Date.now();
+    daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
+    showScreen("daily");
+    renderDaily();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || "Couldn't load the QA board.");
+  }
+}
+
+async function qaSaveAndAdvance(outcome) {
+  const item = daily.qaQueue[daily.qaIndex] || {};
+  const note = ($("#qa-note") ? $("#qa-note").value : "").trim();
+  const rating = daily.rating || null;
+  try {
+    await sb.rpc("submit_daily_feedback", {
+      p_date: daily.date, p_pool: daily.pool,
+      p_rating: rating, p_note: note,
+      p_outcome: outcome || daily.outcome || null,
+      p_mistakes: daily.mistakes, p_hints: daily.hintsUsed,
+      p_duration: dailyElapsedSecs(),
+    });
+    toast("Feedback saved.");
+  } catch (err) {
+    console.error(err);
+    toast("Couldn't save feedback (see console) — moving on.");
+  }
+  daily.qaIndex++;
+  await qaLoadCurrent();
+}
+
+// Save the current board's feedback (best-effort) and leave QA mode for home.
+async function qaSaveAndAdvanceThenExit() {
+  const note = ($("#qa-note") ? $("#qa-note").value : "").trim();
+  try {
+    await sb.rpc("submit_daily_feedback", {
+      p_date: daily.date, p_pool: daily.pool,
+      p_rating: daily.rating || null, p_note: note,
+      p_outcome: daily.outcome || null, p_mistakes: daily.mistakes,
+      p_hints: daily.hintsUsed, p_duration: dailyElapsedSecs(),
+    });
+    toast("Feedback saved.");
+  } catch (err) { console.error(err); }
+  daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0;
+  clearDailyUrl();
+  showScreen("landing");
+}
+
+function renderQaDone() {
+  daily.qa = false; // batch over — leave QA mode
+  const el = $("#daily-result");
+  const n = daily.qaQueue.length;
+  el.innerHTML = `
+    <div class="daily-result-title">QA batch complete 🎉</div>
+    <div class="daily-result-line">You reviewed ${n} board${n === 1 ? "" : "s"}. Feedback is saved.</div>
+    <div class="daily-result-btns">
+      <button class="btn btn-primary" id="qa-restart-btn">Run the batch again</button>
+      <button class="btn btn-ghost" id="daily-home-btn">Home</button>
+    </div>`;
+  // Hide the mid-game play elements and show just the result panel.
+  ["#daily-statbar", "#daily-clues", "#daily-board", "#daily-tutorial-row"].forEach((sel) => {
+    const n = $(sel); if (n) n.classList.add("hidden");
+  });
+  const hintRow = document.querySelector(".daily-hint-row"); if (hintRow) hintRow.classList.add("hidden");
+  el.classList.remove("hidden");
+  $("#qa-restart-btn").addEventListener("click", startQaBatch);
+  $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
+}
+
 function _clueChip(c, idx, kind) {
   // Note: c.cat (difficulty 1-5) is a back-end categorisation only – not shown.
   // `kind` is "b" (base clue) or "h" (revealed hint); base clues carry a colour
@@ -2005,16 +2146,28 @@ function _clueChip(c, idx, kind) {
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   const diff = dailyDifficulty(daily.clues);
-  $("#daily-play-title").innerHTML = daily.practice
-    ? `Test game <span class="daily-diff diff-example">Example</span>`
-    : `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
-  $("#daily-play-sub").textContent = daily.practice
-    ? `A quick example to learn the ropes — nothing here is saved or shared.`
-    : (daily.date ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "");
+  // Un-hide the play elements (renderQaDone hides them at the end of a QA batch).
+  ["#daily-statbar", "#daily-clues", "#daily-board"].forEach((sel) => {
+    const n = $(sel); if (n) n.classList.remove("hidden");
+  });
+  const hRow = document.querySelector(".daily-hint-row"); if (hRow) hRow.classList.remove("hidden");
+  if (daily.qa) {
+    $("#daily-play-title").innerHTML =
+      `QA ${daily.qaIndex + 1}/${daily.qaQueue.length} · ${poolLabel} `
+      + `<span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+    $("#daily-play-sub").textContent = `${daily.date} — play it, then rate it.`;
+  } else {
+    $("#daily-play-title").innerHTML = daily.practice
+      ? `Test game <span class="daily-diff diff-example">Example</span>`
+      : `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+    $("#daily-play-sub").textContent = daily.practice
+      ? `A quick example to learn the ropes — nothing here is saved or shared.`
+      : (daily.date ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "");
+  }
   // Tutorial affordances: the "test game" button shows on the real puzzle only;
-  // the how-to-play panel shows only while playing the test game.
+  // the how-to-play panel shows only while playing the test game. QA hides both.
   const tutRow = $("#daily-tutorial-row");
-  if (tutRow) tutRow.classList.toggle("hidden", daily.practice || daily.finished);
+  if (tutRow) tutRow.classList.toggle("hidden", daily.practice || daily.qa || daily.finished);
   const tutPanel = $("#daily-tutorial-panel");
   if (tutPanel) tutPanel.classList.toggle("hidden", !daily.practice || daily.finished);
 
@@ -2441,6 +2594,40 @@ function renderDailyResult() {
 
   const answersHtml = _dailyAnswersBox();
 
+  // QA finish: show the outcome + answers, then a rating + note form. Saving
+  // writes to daily_feedback and advances to the next board in the batch.
+  if (daily.qa) {
+    const ratings = [
+      ["way_too_easy", "Way too easy"], ["slightly_easy", "Slightly easy"],
+      ["just_right", "Just right"], ["slightly_hard", "Slightly hard"],
+      ["way_too_hard", "Way too hard"],
+    ];
+    const rateBtns = ratings
+      .map(([v, label]) => `<button class="btn btn-ghost btn-mini daily-rate ${daily.rating === v ? "chosen" : ""}" data-rate="${v}">${label}</button>`)
+      .join("");
+    const last = daily.qaIndex >= daily.qaQueue.length - 1;
+    el.innerHTML = `
+      <div class="daily-result-title">${title}</div>
+      <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+      ${answersHtml}
+      <div class="daily-rate-label">How was the difficulty?</div>
+      <div class="daily-rate-row">${rateBtns}</div>
+      <textarea id="qa-note" class="qa-note" rows="3" placeholder="Notes for this board (bad clue, ambiguity, typo, too easy/hard…) — optional"></textarea>
+      <div class="daily-result-btns">
+        <button class="btn btn-primary" id="qa-next-btn">${last ? "Save &amp; finish batch" : "Save &amp; next board →"}</button>
+        <button class="btn btn-ghost" id="qa-home-btn">Save &amp; exit</button>
+      </div>`;
+    $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => {
+      daily.rating = b.dataset.rate;
+      $all(".daily-rate", el).forEach((x) => x.classList.toggle("chosen", x.dataset.rate === daily.rating));
+    }));
+    $("#qa-next-btn").addEventListener("click", () => qaSaveAndAdvance());
+    $("#qa-home-btn").addEventListener("click", async () => {
+      await qaSaveAndAdvanceThenExit();
+    });
+    return;
+  }
+
   // Tutorial finish: no score sharing, no difficulty rating, no caching —
   // just congratulate and point them at today's real puzzles.
   if (daily.practice) {
@@ -2575,6 +2762,13 @@ async function boot() {
   }, 1000);
 
   _migrateOldSession(); // one-time migration from old single-session key
+
+  // QA / playtest deep-link (unlisted): ?qa=1 plays upcoming boards back-to-back
+  // with a feedback form after each, saved to daily_feedback.
+  if (new URLSearchParams(window.location.search).get("qa") === "1") {
+    await startQaBatch();
+    return;
+  }
 
   // Daily deep-link: ?daily=1 (Gen I) / ?daily=all (mixed) opens that puzzle.
   const dailyDeep = poolFromParam(new URLSearchParams(window.location.search).get("daily"));

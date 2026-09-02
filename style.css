@@ -453,6 +453,15 @@ a { color: var(--accent); }
 .daily-rate-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .daily-rate.chosen { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
+/* QA / playtest feedback note (change #5) */
+.qa-note {
+  width: 100%; box-sizing: border-box; margin: 8px 0 2px;
+  padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  font: inherit; font-size: 13px; resize: vertical; min-height: 52px;
+}
+.qa-note:focus { outline: none; border-color: var(--accent); }
+
 /* Difficulty badge (derived from the clue-category spread) */
 .daily-diff {
   font-size: 12px; font-weight: 700; letter-spacing: 0.03em;
