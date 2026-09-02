@@ -258,3 +258,14 @@ board("2026-09-06","mixed","Evil",[
   ("POSSESSED",5,"lore:haunted-object",["Polteageist","Sinistcha"]),
   ("TRICKSTER",3,"arch:fox",["Thievul","Zoroark"]),
 ], exclude=["Carracosta","Archeops","Dracozolt","Arctovish","Sinistea","Zorua","Nickit","Delphox","Vulpix","Ninetales"])
+
+# ===== 09-08 Tue : MEDIUM =====
+# The "way too easy" Sep-04 board, re-tiered to a legit Medium (two type
+# anchors: FIRE=Tepig, NORMAL=Lechonk) so the difficulty badge reads Medium.
+board("2026-09-08","mixed","Medium",[
+  ("HALLOWEEN",4,"based:pumpkin",["Cacturne","Gourgeist"]),
+  ("PRIMATE",3,"arch:monkey",["Grookey","Pansage","Panpour"]),
+  ("PINCERS",2,"sprite:claws",["Crawdaunt","Klawf"]),
+  ("FIRE",1,"type:fire",["Tepig"]),
+  ("NORMAL",1,"type:normal",["Lechonk"]),
+], exclude=["Simisage","Simipour","Chimchar","Monferno","Infernape","Aipom","Ambipom","Oranguru","Passimian","Mankey","Primeape","Thwackey","Rillaboom","Pumpkaboo","Cacnea","Sandygast","Palossand","Krabby","Kingler","Corphish","Crabrawler","Crabominable","Clauncher","Pignite","Emboar","Oinkologne","Trevenant","Phantump","Gliscor","Gligar","Skorupi","Drapion","Weavile","Sneasel","Drifloon","Drifblim","Greavard","Houndstone","Mimikyu","Banette","Misdreavus","Mismagius","Sableye","Chandelure","Kleavor"])
