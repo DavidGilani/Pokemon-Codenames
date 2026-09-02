@@ -2008,10 +2008,21 @@ async function startQaBatch() {
     const to = _todayStr(QA_WINDOW_DAYS);
     const { data, error } = await sb.rpc("list_daily_qa", { p_from: from, p_to: to });
     if (error) throw error;
-    const queue = (data || []).map((r) => ({
+    const all = (data || []).map((r) => ({
       date: r.puzzle_date, pool: r.pool, n_clues: r.n_clues, difficulty: r.difficulty,
+      reviewed: r.reviewed || 0,
     }));
-    if (!queue.length) { toast("No upcoming boards to QA in the next 30 days."); showScreen("landing"); return; }
+    // Only queue boards that haven't been QA'd yet (no feedback saved for them).
+    const queue = all.filter((b) => !b.reviewed);
+    const skipped = all.length - queue.length;
+    if (!queue.length) {
+      toast(all.length
+        ? `All ${all.length} upcoming boards have already been QA'd. 🎉`
+        : "No upcoming boards to QA in the next 30 days.");
+      showScreen("landing");
+      return;
+    }
+    if (skipped) toast(`Skipping ${skipped} already-QA'd board${skipped === 1 ? "" : "s"}.`);
     daily.qaQueue = queue;
     daily.qaIndex = 0;
     await qaLoadCurrent();
