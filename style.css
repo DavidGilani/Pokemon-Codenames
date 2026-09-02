@@ -347,6 +347,7 @@ a { color: var(--accent); }
 
 .daily-play-wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .daily-play-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.daily-header-btns { display: flex; gap: 6px; flex-shrink: 0; }
 .daily-play-title { font-family: var(--font-display, inherit); font-size: 20px; font-weight: 700; }
 .daily-play-sub { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
 .daily-statbar {
@@ -452,6 +453,31 @@ a { color: var(--accent); }
 .daily-rate-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 .daily-rate-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .daily-rate.chosen { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+/* QA overview grid (dashboard of upcoming boards) */
+.qa-wrap { max-width: 640px; margin: 0 auto; padding: 18px 16px; }
+.qa-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.qa-title { font-size: 20px; font-weight: 700; }
+.qa-sub { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+.qa-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+.qa-key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; }
+.qa-blue { background: #3fb6e0; }
+.qa-green { background: #46c26a; }
+.qa-red { background: #e5484d; }
+.qa-black { background: var(--panel-2); border: 1px solid var(--panel-border); }
+.qa-grid { display: flex; flex-direction: column; gap: 8px; }
+.qa-row { display: grid; grid-template-columns: 96px 1fr 1fr; gap: 8px; align-items: stretch; }
+.qa-date { font-size: 12px; color: var(--text-dim); font-family: var(--font-mono); display: flex; align-items: center; }
+.qa-cell {
+  border-radius: 8px; padding: 7px 10px; min-height: 46px;
+  display: flex; flex-direction: column; justify-content: center; color: #fff;
+  border: 1px solid transparent;
+}
+.qa-cell .qa-cell-pool { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.85; }
+.qa-cell .qa-cell-diff { font-size: 12.5px; font-weight: 600; }
+.qa-cell.qa-blue { cursor: pointer; }
+.qa-cell.qa-blue:hover { filter: brightness(1.12); }
+.qa-cell.qa-black { color: var(--text-faint); background: var(--panel-2); border: 1px dashed var(--panel-border); }
 
 /* QA / playtest feedback note (change #5) */
 .qa-note {

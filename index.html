@@ -311,7 +311,10 @@
           <div class="daily-play-title" id="daily-play-title">Daily puzzle</div>
           <div class="daily-play-sub" id="daily-play-sub"></div>
         </div>
-        <button class="btn btn-ghost btn-mini" id="daily-exit-btn">Exit</button>
+        <div class="daily-header-btns">
+          <button class="btn btn-ghost btn-mini hidden" id="daily-qa-back">← QA overview</button>
+          <button class="btn btn-ghost btn-mini" id="daily-exit-btn">Exit</button>
+        </div>
       </div>
 
       <div class="daily-tutorial-row" id="daily-tutorial-row">
@@ -344,6 +347,25 @@
       <div class="board" id="daily-board"></div>
 
       <div class="daily-result hidden" id="daily-result"></div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-qa">
+    <div class="qa-wrap">
+      <div class="qa-header">
+        <div>
+          <div class="qa-title">QA overview</div>
+          <div class="qa-sub">Upcoming daily boards. Tap a blue box to start testing.</div>
+        </div>
+        <button class="btn btn-ghost btn-mini" id="qa-home-btn2">Home</button>
+      </div>
+      <div class="qa-legend">
+        <span><i class="qa-key qa-blue"></i> To test</span>
+        <span><i class="qa-key qa-green"></i> Tested — OK</span>
+        <span><i class="qa-key qa-red"></i> Needs changes</span>
+        <span><i class="qa-key qa-black"></i> Not created</span>
+      </div>
+      <div class="qa-grid" id="qa-grid"></div>
     </div>
   </section>
 

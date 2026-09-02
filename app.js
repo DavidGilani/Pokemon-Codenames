@@ -1836,6 +1836,13 @@ function initDaily() {
   $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
   $("#daily-tutorial-btn").addEventListener("click", startPractice);
+  const qaBack = $("#daily-qa-back");
+  if (qaBack) qaBack.addEventListener("click", () => showQaOverview());
+  const qaHome = $("#qa-home-btn2");
+  if (qaHome) qaHome.addEventListener("click", () => {
+    daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0;
+    clearDailyUrl(); showScreen("landing");
+  });
 }
 
 function _dailyReset() {
@@ -2021,40 +2028,77 @@ async function startDaily(pool) {
 // ============================================================================
 const QA_WINDOW_DAYS = 30; // how far ahead to pull upcoming boards for QA
 
-async function startQaBatch() {
+// The QA overview: a grid of the upcoming days (two boards each). Colours:
+// blue = created, not tested yet (tap to test); green = tested, nothing
+// outstanding; red = tested with a note not yet addressed; black = not created.
+async function showQaOverview() {
+  try { await ensureAuth(); } catch (e) { console.error(e); }
+  daily.qa = false; // between boards
+  try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {}
+  let rows = [];
   try {
-    try { await ensureAuth(); } catch (e) { console.error(e); }
-    const from = _todayStr();
-    const to = _todayStr(QA_WINDOW_DAYS);
-    const { data, error } = await sb.rpc("list_daily_qa", { p_from: from, p_to: to });
+    const { data, error } = await sb.rpc("daily_qa_overview", { p_from: _todayStr(), p_to: _todayStr(QA_WINDOW_DAYS) });
     if (error) throw error;
-    const all = (data || []).map((r) => ({
-      date: r.puzzle_date, pool: r.pool, n_clues: r.n_clues, difficulty: r.difficulty,
-      reviewed: r.reviewed || 0,
-    }));
-    // Only queue boards that haven't been QA'd yet (no feedback saved for them).
-    const queue = all.filter((b) => !b.reviewed);
-    const skipped = all.length - queue.length;
-    if (!queue.length) {
-      toast(all.length
-        ? `All ${all.length} upcoming boards have already been QA'd. 🎉`
-        : "No upcoming boards to QA in the next 30 days.");
-      showScreen("landing");
-      return;
-    }
-    if (skipped) toast(`Skipping ${skipped} already-QA'd board${skipped === 1 ? "" : "s"}.`);
-    daily.qaQueue = queue;
-    daily.qaIndex = 0;
-    await qaLoadCurrent();
-  } catch (err) {
-    console.error(err);
-    toast(err.message || "Couldn't load the QA batch.");
-    showScreen("landing");
-  }
+    rows = data || [];
+  } catch (err) { console.error(err); toast("Couldn't load the QA overview."); }
+  daily.qaOverview = rows;
+  showScreen("qa");
+  renderQaOverview();
+}
+
+function _qaDateLabel(d) {
+  const dt = new Date(`${d}T00:00:00`);
+  return dt.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+}
+
+function renderQaOverview() {
+  const grid = $("#qa-grid");
+  const rows = daily.qaOverview || [];
+  const byDate = new Map();
+  rows.forEach((r) => {
+    if (!byDate.has(r.puzzle_date)) byDate.set(r.puzzle_date, {});
+    byDate.get(r.puzzle_date)[r.pool] = r;
+  });
+  const cell = (r) => {
+    if (!r) return `<div class="qa-cell qa-black"></div>`;
+    const poolLbl = r.pool === "gen1" ? "Gen I" : "All gens";
+    const label = r.status === "black" ? "—" : (r.difficulty || "");
+    const click = r.status === "blue"
+      ? ` data-qa-date="${r.puzzle_date}" data-qa-pool="${r.pool}" role="button" tabindex="0"` : "";
+    return `<div class="qa-cell qa-${r.status}"${click}>`
+      + `<span class="qa-cell-pool">${poolLbl}</span><span class="qa-cell-diff">${escapeHtml(label)}</span></div>`;
+  };
+  const dates = [...byDate.keys()].sort();
+  const blues = rows.filter((r) => r.status === "blue").length;
+  const sub = $(".qa-sub");
+  if (sub) sub.textContent = blues
+    ? `${blues} board${blues === 1 ? "" : "s"} to test — tap a blue box to start.`
+    : "Everything upcoming has been tested. 🎉";
+  grid.innerHTML = dates.map((d) => {
+    const g = byDate.get(d);
+    return `<div class="qa-row"><div class="qa-date">${_qaDateLabel(d)}</div>${cell(g.gen1)}${cell(g.mixed)}</div>`;
+  }).join("");
+  grid.querySelectorAll(".qa-cell.qa-blue").forEach((c) => {
+    const go = () => startQaSequence(c.dataset.qaDate, c.dataset.qaPool);
+    c.addEventListener("click", go);
+    c.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+}
+
+// Tapping a blue board starts a run through all blue boards (date order),
+// beginning at the one tapped; finishing the last returns to the overview.
+async function startQaSequence(date, pool) {
+  const blues = (daily.qaOverview || []).filter((r) => r.status === "blue")
+    .map((r) => ({ date: r.puzzle_date, pool: r.pool }));
+  let idx = blues.findIndex((b) => b.date === date && b.pool === pool);
+  if (idx < 0) { blues.unshift({ date, pool }); idx = 0; }
+  daily.qaQueue = blues;
+  daily.qaIndex = idx;
+  await qaLoadCurrent();
 }
 
 async function qaLoadCurrent() {
-  if (daily.qaIndex >= daily.qaQueue.length) { renderQaDone(); return; }
+  if (daily.qaIndex >= daily.qaQueue.length) { await showQaOverview(); return; }
   const item = daily.qaQueue[daily.qaIndex];
   await startQaBoard(item.date, item.pool);
 }
@@ -2114,8 +2158,8 @@ async function qaSaveAndAdvance(outcome) {
   await qaLoadCurrent();
 }
 
-// Save the current board's feedback (best-effort) and leave QA mode for home.
-async function qaSaveAndAdvanceThenExit() {
+// Save the current board's feedback (best-effort), then return to the overview.
+async function qaSaveAndBackToOverview() {
   const note = ($("#qa-note") ? $("#qa-note").value : "").trim();
   try {
     await sb.rpc("submit_daily_feedback", {
@@ -2126,30 +2170,7 @@ async function qaSaveAndAdvanceThenExit() {
     });
     toast("Feedback saved.");
   } catch (err) { console.error(err); }
-  daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0;
-  clearDailyUrl();
-  showScreen("landing");
-}
-
-function renderQaDone() {
-  daily.qa = false; // batch over — leave QA mode
-  const el = $("#daily-result");
-  const n = daily.qaQueue.length;
-  el.innerHTML = `
-    <div class="daily-result-title">QA batch complete 🎉</div>
-    <div class="daily-result-line">You reviewed ${n} board${n === 1 ? "" : "s"}. Feedback is saved.</div>
-    <div class="daily-result-btns">
-      <button class="btn btn-primary" id="qa-restart-btn">Run the batch again</button>
-      <button class="btn btn-ghost" id="daily-home-btn">Home</button>
-    </div>`;
-  // Hide the mid-game play elements and show just the result panel.
-  ["#daily-statbar", "#daily-clues", "#daily-board", "#daily-tutorial-row"].forEach((sel) => {
-    const n = $(sel); if (n) n.classList.add("hidden");
-  });
-  const hintRow = document.querySelector(".daily-hint-row"); if (hintRow) hintRow.classList.add("hidden");
-  el.classList.remove("hidden");
-  $("#qa-restart-btn").addEventListener("click", startQaBatch);
-  $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
+  await showQaOverview();
 }
 
 function _clueChip(c, idx, kind) {
@@ -2177,7 +2198,7 @@ function _clueChip(c, idx, kind) {
 function renderDaily() {
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   const diff = dailyDifficulty(daily.clues);
-  // Un-hide the play elements (renderQaDone hides them at the end of a QA batch).
+  // Un-hide the play elements in case a prior view hid them.
   ["#daily-statbar", "#daily-clues", "#daily-board"].forEach((sel) => {
     const n = $(sel); if (n) n.classList.remove("hidden");
   });
@@ -2201,6 +2222,8 @@ function renderDaily() {
   if (tutRow) tutRow.classList.toggle("hidden", daily.practice || daily.qa || daily.finished);
   const tutPanel = $("#daily-tutorial-panel");
   if (tutPanel) tutPanel.classList.toggle("hidden", !daily.practice || daily.finished);
+  const qaBack = $("#daily-qa-back");
+  if (qaBack) qaBack.classList.toggle("hidden", !daily.qa); // "← QA overview" only in QA mode
 
   // Stat bar
   const time = fmtClock(dailyElapsedSecs());
@@ -2646,17 +2669,15 @@ function renderDailyResult() {
       <div class="daily-rate-row">${rateBtns}</div>
       <textarea id="qa-note" class="qa-note" rows="3" placeholder="Notes for this board (bad clue, ambiguity, typo, too easy/hard…) — optional"></textarea>
       <div class="daily-result-btns">
-        <button class="btn btn-primary" id="qa-next-btn">${last ? "Save &amp; finish batch" : "Save &amp; next board →"}</button>
-        <button class="btn btn-ghost" id="qa-home-btn">Save &amp; exit</button>
+        <button class="btn btn-primary" id="qa-next-btn">${last ? "Save &amp; finish" : "Save &amp; next board →"}</button>
+        <button class="btn btn-ghost" id="qa-home-btn">Save &amp; back to overview</button>
       </div>`;
     $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => {
       daily.rating = b.dataset.rate;
       $all(".daily-rate", el).forEach((x) => x.classList.toggle("chosen", x.dataset.rate === daily.rating));
     }));
     $("#qa-next-btn").addEventListener("click", () => qaSaveAndAdvance());
-    $("#qa-home-btn").addEventListener("click", async () => {
-      await qaSaveAndAdvanceThenExit();
-    });
+    $("#qa-home-btn").addEventListener("click", () => qaSaveAndBackToOverview());
     return;
   }
 
@@ -2795,10 +2816,10 @@ async function boot() {
 
   _migrateOldSession(); // one-time migration from old single-session key
 
-  // QA / playtest deep-link (unlisted): ?qa=1 plays upcoming boards back-to-back
-  // with a feedback form after each, saved to daily_feedback.
+  // QA / playtest deep-link (unlisted): ?qa=1 opens the QA overview grid of
+  // upcoming boards; tapping a blue (untested) board starts a testing run.
   if (new URLSearchParams(window.location.search).get("qa") === "1") {
-    await startQaBatch();
+    await showQaOverview();
     return;
   }
 
