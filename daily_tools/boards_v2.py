@@ -256,7 +256,7 @@ board("2026-09-06","mixed","Evil",[
   ("FUSION",4,"arch:chimera",["Dracovish","Arctozolt"]),
   ("FROZEN",4,"lore:ice-storm",["Arctozolt","Eiscue"]),
   ("POSSESSED",5,"lore:haunted-object",["Polteageist","Sinistcha"]),
-  ("TRICKSTER",3,"arch:fox",["Thievul","Zoroark"]),
+  ("ROBIN-HOOD",3,"arch:fox",["Thievul","Zoroark"]),
 ], exclude=["Carracosta","Archeops","Dracozolt","Arctovish","Sinistea","Zorua","Nickit","Delphox","Vulpix","Ninetales"])
 
 # ===== 09-08 Tue : MEDIUM =====
