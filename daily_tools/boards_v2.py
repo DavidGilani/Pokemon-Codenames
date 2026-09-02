@@ -244,19 +244,31 @@ board("2026-09-05","mixed","Brutal",[
 ], exclude=["Enamorus","Tapu Lele","Tapu Fini","Beheeyem","Necrozma","Mew","Uxie","Mesprit","Azelf","Deoxys"])
 
 # ===== 09-06 Sun : EVIL =====
+# New Evil gen1 (the too-easy fossil/legendary board moved to 09-17, below).
 board("2026-09-06","gen1","Evil",[
-  ("RELIC",5,"lore:fossil",["Aerodactyl","Omastar","Kabutops"]),
-  ("LEGEND",5,"lore:legendary",["Articuno","Zapdos","Moltres"]),
+  ("CLONE",5,"lore:clone",["Mewtwo","Mew"]),
+  ("ARTIFICIAL",5,"lore:artificial",["Porygon","Magneton","Mewtwo"]),
+  ("TRANSFORM",5,"lore:transform",["Ditto","Mew"]),
+  ("MOLLUSC",4,"arch:mollusc",["Shellder","Omanyte"]),
+  ("CANINE",3,"arch:canine",["Growlithe","Vulpix"]),
+], exclude=["Voltorb","Electrode","Magnemite","Cloyster","Omastar","Kabuto","Kabutops","Arcanine","Ninetales","Eevee","Vaporeon","Jolteon","Flareon","Vulpix-x","Seadra"])
+
+# ===== 09-17 Thu : HARD (the too-easy Evil gen1 board, re-tiered + relocated) =====
+board("2026-09-17","gen1","Hard",[
+  ("RELIC",4,"lore:fossil",["Aerodactyl","Omastar","Kabutops"]),
+  ("LEGEND",3,"lore:legendary",["Articuno","Zapdos","Moltres"]),
   ("FROST",4,"lore:ice-storm",["Articuno","Lapras"]),
-  ("VOLCANO",4,"lore:volcano",["Moltres","Magmar"]),
-  ("SEAL",3,"arch:pinniped",["Dewgong"]),
-], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix"])
+  ("VOLCANO",3,"lore:volcano",["Moltres","Magmar"]),
+  ("TUSKS",2,"sprite:tusks",["Dewgong"]),
+], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix","Rhyhorn","Rhydon","Nidoking"])
+# QA flourish (owner-approved): kept as Evil with 4 clues even though it misses
+# the 3-distinct-cats / sum>=11 gates — Arctozolt folded into REVENANT (it's a
+# revived fossil) so FUSION is redundant. See FLOURISH in schedule_v2.py.
 board("2026-09-06","mixed","Evil",[
-  ("REVENANT",5,"lore:fossil",["Tirtouga","Archen","Dracovish"]),
-  ("FUSION",4,"arch:chimera",["Dracovish","Arctozolt"]),
+  ("REVENANT",5,"lore:fossil",["Tirtouga","Archen","Dracovish","Arctozolt"]),
   ("FROZEN",4,"lore:ice-storm",["Arctozolt","Eiscue"]),
   ("POSSESSED",5,"lore:haunted-object",["Polteageist","Sinistcha"]),
-  ("ROBIN-HOOD",3,"arch:fox",["Thievul","Zoroark"]),
+  ("ROBIN-HOOD",4,"based:robin-hood",["Thievul","Zoroark"]),
 ], exclude=["Carracosta","Archeops","Dracozolt","Arctovish","Sinistea","Zorua","Nickit","Delphox","Vulpix","Ninetales"])
 
 # ===== 09-08 Tue : MEDIUM =====
