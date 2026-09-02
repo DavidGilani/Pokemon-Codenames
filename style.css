@@ -631,11 +631,13 @@ a { color: var(--accent); }
   .peek-badge { display: none; }
   .tile .tile-img-wrap { height: 60px; }
   .tile .tile-name {
-    white-space: normal;
-    font-size: 7.5px;
+    /* Single line at a readable base; JS (_fitBoardNames) shrinks the font just
+       enough for long names to fit, so every tile stays the same size and the
+       full Pokémon name is always shown (ellipsis only as a last resort). */
+    font-size: 9px;
     line-height: 1.15;
     letter-spacing: 0;
-    padding: 3px 2px 4px;
+    padding: 4px 2px 5px;
   }
 }
 

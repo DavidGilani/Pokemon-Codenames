@@ -657,6 +657,25 @@ function makeTile(card, { interactive, animatePositions }) {
   return tile;
 }
 
+// Keep every tile the same size but never truncate a Pokémon name: shrink a
+// tile's label font ONLY when the full name won't fit on one line at the base
+// size (longer all-gens names like "Walking Wake" step down a little; short
+// names stay at the base size). Runs after layout so widths are real.
+function _fitBoardNames(boardEl) {
+  requestAnimationFrame(() => {
+    boardEl.querySelectorAll(".tile-name").forEach((el) => {
+      el.style.fontSize = ""; // reset to the CSS base each render
+      if (!el.clientWidth) return; // not laid out (hidden) — skip
+      let fs = parseFloat(getComputedStyle(el).fontSize) || 10;
+      let guard = 32;
+      while (el.scrollWidth > el.clientWidth && fs > 6 && guard-- > 0) {
+        fs -= 0.5;
+        el.style.fontSize = `${fs}px`;
+      }
+    });
+  });
+}
+
 function renderBoardInto(el, opts) {
   const showImages = state.room?.settings?.show_images !== false;
   const clickable = opts.interactive && canReveal();
@@ -679,6 +698,7 @@ function renderBoardInto(el, opts) {
   el.innerHTML = "";
   el.classList.toggle("no-images", !showImages);
   state.cards.forEach((card) => el.appendChild(makeTile(card, opts)));
+  if (showImages) _fitBoardNames(el);
 }
 
 // ============================================================================
@@ -2422,6 +2442,7 @@ function renderDailyBoard() {
   const board = $("#daily-board");
   board.innerHTML = "";
   daily.tiles.forEach((t) => board.appendChild(dailyMakeTile(t)));
+  _fitBoardNames(board);
 }
 
 let _dailyRevealBusy = false;
