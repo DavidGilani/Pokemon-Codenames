@@ -1817,6 +1817,36 @@ function _getStreak(pool) {
 function _daysApart(a, b) { // whole days from date-string a to b (b - a)
   return Math.round((new Date(`${b}T00:00:00`) - new Date(`${a}T00:00:00`)) / 86400000);
 }
+// One-time (per device, per pool) backfill: reconstruct the player's real win
+// streak from the server (daily_attempts) so long-time daily players don't reset
+// to 1 now that streaks exist. Takes the higher of {server, whatever's local},
+// then the local record is authoritative going forward.
+async function _seedStreaksFromServer() {
+  try {
+    const { data, error } = await sb.rpc("daily_streak");
+    if (error || !data) return;
+    data.forEach((row) => {
+      const pool = row.pool;
+      if (pool !== "gen1" && pool !== "mixed") return;
+      const flag = `pc_streak_sync:${pool}`;
+      try { if (localStorage.getItem(flag)) return; } catch { return; } // already backfilled
+      const srvCur = row.current || 0;
+      const loc = _getStreak(pool);
+      const merged = {
+        current: Math.max(loc.current || 0, srvCur),
+        best: Math.max(loc.best || 0, row.best || 0, srvCur, loc.current || 0),
+        lastDate: srvCur > (loc.current || 0) ? (row.last_win || loc.lastDate) : loc.lastDate,
+        lastWon: srvCur > (loc.current || 0) ? true : loc.lastWon,
+      };
+      try {
+        localStorage.setItem(_streakKey(pool), JSON.stringify(merged));
+        localStorage.setItem(flag, "1");
+      } catch {}
+    });
+    renderLandingStreaks();
+  } catch (e) { console.error(e); }
+}
+
 function _updateDailyStreak() {
   if (daily.practice || daily.qa || !daily.date || !daily.pool) return; // tutorial/QA never count
   const s = _getStreak(daily.pool);
@@ -2886,6 +2916,7 @@ async function boot() {
   await syncRealtimeAuth();
   await syncServerClock();
   sb.auth.onAuthStateChange(() => syncRealtimeAuth());
+  _seedStreaksFromServer(); // one-time backfill of earned win streaks from the server
 
   // Self-healing: on focus/visibility, on a steady background interval, and a
   // once-a-second tick just to keep the timer display moving.
