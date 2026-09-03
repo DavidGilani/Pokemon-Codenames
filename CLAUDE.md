@@ -229,30 +229,37 @@ Chosen on the landing page when creating a room. `mode` values:
 
 ## Nightly board generator (scheduled ~02:00 Europe/London)
 
-A scheduled Claude session tops up the daily-puzzle pipeline overnight so the
-owner always has upcoming boards to QA. Its job: **ensure every day in the next
-14 days has BOTH a `gen1` and a `mixed` board; author any that are missing**
-(soonest gaps first), then stop. Workflow:
+A scheduled Claude session runs overnight to (a) **act on outstanding QA
+feedback** and (b) **top up the board pipeline** so the owner always has upcoming
+boards to QA. Workflow:
 
 1. Read this daily section + `daily_puzzle_notes.md` + `daily_tools/boards_v2.py`
    + `daily_tools/schedule_v2.py`; use `pokemon_facts.json` for connections.
-2. Query Supabase (`daily_puzzles`) for missing `(date, pool)` in
-   `[today, today+14]`. If none missing, **make no changes and stop.**
-3. Add a `board(...)` entry to `boards_v2.py` for each gap, matching the date's
-   **weekday tier** (Mon Easy · Tue Medium · Wed Challenging · Thu Hard · Fri
-   Hard · Sat Brutal · Sun Evil) and following **every** rule the verifier
-   enforces. **AI generation must satisfy all rules — never add to the
-   `FLOURISH` set** (that is for human QA overrides only).
+2. **Address QA feedback first.** Query Supabase (`daily_feedback`) for rows with
+   an actionable note (`note` is not null and not `auto:%`) and
+   `addressed = false`. For each, implement the requested change in
+   `boards_v2.py` **only if it can be done within every rule**; re-verify, apply
+   to Supabase, and set that row's `addressed = true` (turns the board **green**
+   in the QA grid). If a note is ambiguous, conflicts with the rules, or would
+   need a `FLOURISH`-style override, **leave it un-addressed (stays red)** and
+   report it for the owner — never force a rule-breaking change and never touch
+   `FLOURISH` (human QA overrides only).
+3. **Fill gaps.** Ensure every day in `[today, today+21]` (3 weeks) has BOTH a
+   `gen1` and a `mixed` board; author any missing ones, soonest gaps first. Add a
+   `board(...)` entry matching the date's **weekday tier** (Mon Easy · Tue Medium
+   · Wed Challenging · Thu Hard · Fri Hard · Sat Brutal · Sun Evil) and following
+   **every** rule the verifier enforces.
 4. `python3 daily_tools/schedule_v2.py` until it prints `ALL VALID` (it re-emits
    `33_updates.sql`).
-5. Apply only the new `(date,pool)` upserts to Supabase (base64 `do $$ … execute
-   convert_from(decode(...)) … $$;` pattern keeps the JSON exact).
-6. Commit + push to `main`.
+5. Apply the new/changed `(date,pool)` upserts to Supabase (base64 `do $$ …
+   execute convert_from(decode(...)) … $$;` pattern keeps the JSON exact).
+6. Commit + push to `main`, and report what was fixed / created (and any feedback
+   left un-addressed for the owner).
 
 New boards land **untested** → they show **blue** in the QA overview (`?qa=1`)
-for the owner to playtest. The generator never rates its own boards; only real
-QA feedback (or an explicit fix) turns a board green. If it can't fill every gap
-in one run, it fills the soonest dates and stops cleanly — the next night
+for the owner to playtest. The generator never rates its own boards; only a real
+fix (feedback addressed) turns a red board green. If it can't finish everything
+in one run, it does what it safely can and stops cleanly — the next night
 continues.
 
 ## Working preferences (from the project owner)
