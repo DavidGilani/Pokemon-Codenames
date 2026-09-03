@@ -68,6 +68,30 @@ const $all = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 function showScreen(name) {
   $all(".screen").forEach((el) => el.classList.remove("active"));
   $(`#screen-${name}`).classList.add("active");
+  if (name === "landing") renderLandingStreaks();
+}
+
+// A win streak still counts as "live" only if the last solve was today or
+// yesterday; an older last-solve means a missed day already broke it.
+function _liveStreak(pool) {
+  const s = _getStreak(pool);
+  if (!s.lastDate || !s.lastWon) return 0;
+  const gap = _daysApart(s.lastDate, _todayStr());
+  return gap >= 0 && gap <= 1 ? s.current : 0;
+}
+function renderLandingStreaks() {
+  const el = $("#daily-streak-line"); if (!el) return;
+  const g = _liveStreak("gen1"), m = _liveStreak("mixed");
+  const parts = [];
+  if (g >= 1) parts.push(`Gen I <strong>🔥 ${g}</strong>`);
+  if (m >= 1) parts.push(`All gens <strong>🔥 ${m}</strong>`);
+  if (parts.length) {
+    el.innerHTML = `Win streak: ${parts.join(" · ")} — solve today's to keep it alive!`;
+    el.classList.remove("hidden");
+  } else {
+    el.textContent = "";
+    el.classList.add("hidden");
+  }
 }
 
 function toast(message) {
@@ -286,6 +310,7 @@ async function syncRealtimeAuth() {
 // ============================================================================
 
 function initLandingScreen() {
+  renderLandingStreaks(); // landing starts active without showScreen, so paint streaks now
   $all('input[name="mode"]').forEach((input) => {
     input.addEventListener("change", () => {
       $all(".radio-chip[data-role='mode']").forEach((chip) =>
@@ -1776,18 +1801,18 @@ function clearDailyUrl() {
 const DAILY_KEY_PREFIX = "pc_daily:";
 function _dailyKey(date, pool) { return `${DAILY_KEY_PREFIX}${date}:${pool}`; }
 
-// Per-device daily streak, kept SEPARATELY for each pool (Gen I / All-gens),
-// login-free in localStorage. A "day streak" counts each consecutive puzzle DATE
-// on which you finished that pool's daily (win or loss both keep the habit);
-// missing a day resets it. Stored apart from the per-day records so pruning old
-// days never wipes the streak.
+// Per-device daily WIN streak, kept SEPARATELY for each pool (Gen I / All-gens),
+// login-free in localStorage. It counts consecutive puzzle DATES you SOLVED that
+// pool's daily; a loss or a missed day breaks it (resets to 0). Stored apart from
+// the per-day records so pruning old days never wipes the streak.
 function _streakKey(pool) { return `pc_streak:${pool}`; }
 function _getStreak(pool) {
   try {
     const r = JSON.parse(localStorage.getItem(_streakKey(pool)));
-    if (r && typeof r.current === "number") return { current: r.current, best: r.best || r.current, lastDate: r.lastDate || null };
+    if (r && typeof r.current === "number")
+      return { current: r.current, best: r.best || r.current, lastDate: r.lastDate || null, lastWon: !!r.lastWon };
   } catch {}
-  return { current: 0, best: 0, lastDate: null };
+  return { current: 0, best: 0, lastDate: null, lastWon: false };
 }
 function _daysApart(a, b) { // whole days from date-string a to b (b - a)
   return Math.round((new Date(`${b}T00:00:00`) - new Date(`${a}T00:00:00`)) / 86400000);
@@ -1796,10 +1821,17 @@ function _updateDailyStreak() {
   if (daily.practice || daily.qa || !daily.date || !daily.pool) return; // tutorial/QA never count
   const s = _getStreak(daily.pool);
   if (s.lastDate === daily.date) return; // this date already counted (e.g. re-finish)
-  if (s.lastDate && _daysApart(s.lastDate, daily.date) === 1) s.current = (s.current || 0) + 1;
-  else s.current = 1; // first play, or a gap broke the streak
-  s.best = Math.max(s.best || 0, s.current);
+  const won = daily.outcome === "win";
+  if (won) {
+    // Extend only if yesterday's puzzle was also solved; otherwise a fresh streak of 1.
+    if (s.lastWon && s.lastDate && _daysApart(s.lastDate, daily.date) === 1) s.current = (s.current || 0) + 1;
+    else s.current = 1;
+    s.best = Math.max(s.best || 0, s.current);
+  } else {
+    s.current = 0; // a loss breaks the win streak
+  }
   s.lastDate = daily.date;
+  s.lastWon = won;
   try { localStorage.setItem(_streakKey(daily.pool), JSON.stringify(s)); } catch {}
 }
 function _saveDailyProgress() {
@@ -2740,11 +2772,20 @@ function renderDailyResult() {
     .join("");
   const st = _getStreak(daily.pool);
   const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
-  const streakHtml = st.current
-    ? `<div class="daily-streak">🔥 ${poolName} day streak: <strong>${st.current}</strong>`
+  let streakHtml = "";
+  if (st.current >= 1) {
+    // Solved today — show the running win streak.
+    streakHtml = `<div class="daily-streak">🔥 ${poolName} win streak: <strong>${st.current}</strong>`
       + `${st.best > st.current ? ` <span class="ds-best">· best ${st.best}</span>` : ""}`
-      + `${st.current > 1 ? "" : `<span class="ds-hint"> — come back tomorrow to build it</span>`}</div>`
-    : "";
+      + `${st.current === 1 ? `<span class="ds-hint"> — solve it again tomorrow to keep it going</span>` : ""}</div>`;
+  } else if (daily.outcome !== "win" && st.best > 0) {
+    // Just broke a streak.
+    streakHtml = `<div class="daily-streak">💔 Win streak reset <span class="ds-best">· best ${st.best}</span>`
+      + `<span class="ds-hint"> — solve tomorrow's to start again</span></div>`;
+  } else if (daily.outcome !== "win") {
+    // Never had a streak yet.
+    streakHtml = `<div class="daily-streak ds-muted">Solve a daily to start a 🔥 win streak</div>`;
+  }
   el.innerHTML = `
     <div class="daily-result-title">${title}</div>
     <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
@@ -2779,16 +2820,20 @@ function dailyShare() {
   const time = fmtClock(dailyElapsedSecs());
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const diff = dailyDifficulty(daily.clues);
+  // Spoiler-free strikes bar (❌ used / ⬜ left, out of 5) — no board grid, so it
+  // never leaks the answers.
+  const strikes = "❌".repeat(daily.mistakes) + "⬜".repeat(Math.max(0, daily.maxMistakes - daily.mistakes));
   const outcome = daily.outcome === "win"
-    ? `✅ Solved it – all 9 found!`
-    : `❌ ${daily.bluesFound}/9 found`;
+    ? `✅ Solved all 9!`
+    : `😵 ${daily.bluesFound}/9 before 5 strikes`;
   const st = _getStreak(daily.pool);
+  const hintsBit = daily.hintsUsed ? ` · 💡 ${daily.hintsUsed}` : ` · 🚫 no hints`;
   const text = [
-    `Pokémon Codenames – Daily (${poolLabel} · ${diff.label})`,
+    `Pokémon Codenames — Daily 🧩 (${poolLabel} · ${diff.label})`,
     outcome,
-    `✗ ${daily.mistakes} mistakes · ⏱ ${time}`,
-    ...(st.current > 1 ? [`🔥 ${st.current}-day streak`] : []),
-    `Can you beat it?`,
+    `${strikes} · ⏱ ${time}${hintsBit}`,
+    ...(st.current > 1 ? [`🔥 ${st.current}-day ${poolLabel} win streak`] : []),
+    `Can you beat it? 👇`,
   ].join("\n");
   const url = dailyUrl(daily.pool); // links straight to this specific daily
   nativeShare({ title: "Pokémon Codenames – Daily", text, url });

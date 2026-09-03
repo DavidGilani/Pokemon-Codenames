@@ -452,6 +452,12 @@ a { color: var(--accent); }
 .daily-streak { margin-top: 6px; font-size: 15px; font-weight: 600; color: var(--text); }
 .daily-streak .ds-best { color: var(--text-dim); font-weight: 500; font-size: 13px; }
 .daily-streak .ds-hint { color: var(--text-faint); font-weight: 400; font-size: 12px; }
+.daily-streak.ds-muted { font-size: 13px; font-weight: 500; color: var(--text-dim); }
+.daily-streak-line {
+  margin-top: 8px; font-size: 13px; color: var(--text-dim);
+  background: var(--accent-dim); border-radius: 8px; padding: 6px 10px; display: inline-block;
+}
+.daily-streak-line strong { color: var(--text); }
 .daily-result-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .daily-rate-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
 .daily-rate-row { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
