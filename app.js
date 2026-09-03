@@ -86,7 +86,7 @@ function renderLandingStreaks() {
   if (g >= 1) parts.push(`Gen I <strong>🔥 ${g}</strong>`);
   if (m >= 1) parts.push(`All gens <strong>🔥 ${m}</strong>`);
   if (parts.length) {
-    el.innerHTML = `Win streak: ${parts.join(" · ")} — solve today's to keep it alive!`;
+    el.innerHTML = `Win streak: ${parts.join(" · ")} – solve today's to keep it alive!`;
     el.classList.remove("hidden");
   } else {
     el.textContent = "";
@@ -690,7 +690,7 @@ function _fitBoardNames(boardEl) {
   requestAnimationFrame(() => {
     boardEl.querySelectorAll(".tile-name").forEach((el) => {
       el.style.fontSize = ""; // reset to the CSS base each render
-      if (!el.clientWidth) return; // not laid out (hidden) — skip
+      if (!el.clientWidth) return; // not laid out (hidden) – skip
       let fs = parseFloat(getComputedStyle(el).fontSize) || 10;
       let guard = 32;
       while (el.scrollWidth > el.clientWidth && fs > 6 && guard-- > 0) {
@@ -1687,7 +1687,7 @@ const daily = {
 const DAILY_CLUE_COLORS = ["#e5484d", "#f5a524", "#46c26a", "#3fb6e0", "#c150c8"];
 
 // Un-seal the offline puzzle blob (mirror of _daily_seal in SQL): base64-decode,
-// XOR with the shared key, then parse. Kept deliberately lightweight — this is
+// XOR with the shared key, then parse. Kept deliberately lightweight – this is
 // obfuscation so the answers aren't readable at a glance, not real encryption.
 const DAILY_SEAL_KEY = [142, 55, 91, 44, 116, 17, 163];
 function _dailyUnseal(b64) {
@@ -1861,7 +1861,7 @@ function _loadDailyProgress(date, pool) {
 }
 function _pruneDailyProgress() {
   // Drop saved dailies from earlier days (date is YYYY-MM-DD, so string compare
-  // is chronological). Keeps localStorage tidy — only the current date survives.
+  // is chronological). Keeps localStorage tidy – only the current date survives.
   try {
     for (let i = localStorage.length - 1; i >= 0; i--) {
       const k = localStorage.key(i);
@@ -1919,7 +1919,7 @@ function _dailyReset() {
 }
 
 // A fixed, self-contained example board used by the "Play a test game" tutorial
-// — the real Wed 19 Aug Gen I daily (fossils, shells, horns, Cubone the orphan,
+// – the real Wed 19 Aug Gen I daily (fossils, shells, horns, Cubone the orphan,
 // Machamp's arms), chosen to show off non-type clues. Colours/clues/hints live
 // entirely client-side (like an unsealed daily) so it plays with zero network
 // and is never cached.
@@ -1938,7 +1938,7 @@ const PRACTICE_CLUES = [
   { word: "FOSSIL", number: 3, cat: 4, t: [4, 16, 18], explain: "They were all revived from prehistoric fossils." },
   { word: "MISTY", number: 2, cat: 3, t: [13, 20], explain: "Both are on the team of Water-type gym leader Misty." },
   { word: "HORN", number: 2, cat: 2, t: [2, 9], explain: "Each has a prominent horn." },
-  { word: "ORPHAN", number: 1, cat: 4, t: [3], explain: "Cubone wears the skull of its lost mother — the 'Lonely' Pokémon." },
+  { word: "ORPHAN", number: 1, cat: 4, t: [3], explain: "Cubone wears the skull of its lost mother – the 'Lonely' Pokémon." },
   { word: "ARMS", number: 1, cat: 2, t: [5], explain: "Machamp and its four muscular arms." },
 ];
 const PRACTICE_HINTS = [
@@ -2005,7 +2005,7 @@ async function startDaily(pool) {
         }
       } catch (e) { console.error(e); }
     }
-    // Last resort: fully offline at load — resume the most recent saved puzzle
+    // Last resort: fully offline at load – resume the most recent saved puzzle
     // for this pool if we cached its sealed blob earlier.
     if (!date) {
       const s = _latestSavedForPool(pool);
@@ -2030,7 +2030,7 @@ async function startDaily(pool) {
     // Already played (or partway through) on this device today? Restore it and
     // DON'T start a new attempt or reset the timer. A finished puzzle re-opens
     // straight to the stats box; an in-progress one resumes where it left off.
-    // BUT if the board was re-authored since (signature changed — e.g. a mid-day
+    // BUT if the board was re-authored since (signature changed – e.g. a mid-day
     // difficulty swap), ignore the stale record and start the new puzzle fresh.
     const saved = _loadDailyProgress(daily.date, pool);
     if (saved && saved.sig && daily.sig && saved.sig !== daily.sig) {
@@ -2079,7 +2079,7 @@ async function startDaily(pool) {
 }
 
 // ============================================================================
-// QA / playtest mode (change #5) — URL-gated with ?qa=1. Loads every board in a
+// QA / playtest mode (change #5) – URL-gated with ?qa=1. Loads every board in a
 // date window and plays them back-to-back with the normal daily engine; after
 // each board the tester leaves a rating + note, saved to the daily_feedback
 // table (read back here via Supabase to fix boards). Nothing is cached locally
@@ -2121,7 +2121,7 @@ function renderQaOverview() {
   const cell = (r) => {
     if (!r) return `<div class="qa-cell qa-black"></div>`;
     const poolLbl = r.pool === "gen1" ? "Gen I" : "All gens";
-    const label = r.status === "black" ? "—" : (r.difficulty || "");
+    const label = r.status === "black" ? "–" : (r.difficulty || "");
     const click = r.status === "blue"
       ? ` data-qa-date="${r.puzzle_date}" data-qa-pool="${r.pool}" role="button" tabindex="0"` : "";
     return `<div class="qa-cell qa-${r.status}"${click}>`
@@ -2131,7 +2131,7 @@ function renderQaOverview() {
   const blues = rows.filter((r) => r.status === "blue").length;
   const sub = $(".qa-sub");
   if (sub) sub.textContent = blues
-    ? `${blues} board${blues === 1 ? "" : "s"} to test — tap a blue box to start.`
+    ? `${blues} board${blues === 1 ? "" : "s"} to test – tap a blue box to start.`
     : "Everything upcoming has been tested. 🎉";
   grid.innerHTML = dates.map((d) => {
     const g = byDate.get(d);
@@ -2211,7 +2211,7 @@ async function qaSaveAndAdvance(outcome) {
     toast("Feedback saved.");
   } catch (err) {
     console.error(err);
-    toast("Couldn't save feedback (see console) — moving on.");
+    toast("Couldn't save feedback (see console) – moving on.");
   }
   daily.qaIndex++;
   await qaLoadCurrent();
@@ -2236,7 +2236,7 @@ function _clueChip(c, idx, kind) {
   // Note: c.cat (difficulty 1-5) is a back-end categorisation only – not shown.
   // `kind` is "b" (base clue) or "h" (revealed hint); base clues carry a colour
   // dot matching the tile-marking palette. Tapping a chip greys it out (a
-  // personal "I've got this one" toggle) — see the delegated handler below.
+  // personal "I've got this one" toggle) – see the delegated handler below.
   const id = `${kind}${idx}`;
   const done = daily.clueDone[id] ? " is-done" : "";
   const colour = kind === "b" ? DAILY_CLUE_COLORS[idx % DAILY_CLUE_COLORS.length] : null;
@@ -2266,13 +2266,13 @@ function renderDaily() {
     $("#daily-play-title").innerHTML =
       `QA ${daily.qaIndex + 1}/${daily.qaQueue.length} · ${poolLabel} `
       + `<span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
-    $("#daily-play-sub").textContent = `${daily.date} — play it, then rate it.`;
+    $("#daily-play-sub").textContent = `${daily.date} – play it, then rate it.`;
   } else {
     $("#daily-play-title").innerHTML = daily.practice
       ? `Test game <span class="daily-diff diff-example">Example</span>`
       : `Daily puzzle – ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
     $("#daily-play-sub").textContent = daily.practice
-      ? `A quick example to learn the ropes — nothing here is saved or shared.`
+      ? `A quick example to learn the ropes – nothing here is saved or shared.`
       : (daily.date ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "");
   }
   // Tutorial affordances: the "test game" button shows on the real puzzle only;
@@ -2378,7 +2378,7 @@ function dailyMakeTile(tile) {
     <div class="tile-img-wrap"><img src="${art}" alt="${escapeHtml(tile.name)}" decoding="async" ${fallback ? `onerror="this.onerror=null;this.src='${fallback}'"` : ""} /></div>
     <div class="tile-name">${escapeHtml(tile.name)}</div>`;
 
-  // Colour pencil-marks (the player's own scratch notes) — only while the tile
+  // Colour pencil-marks (the player's own scratch notes) – only while the tile
   // is still in play; once revealed/finished the real colour takes over.
   if (clickable) _renderTileNotes(el, tile.position);
 
@@ -2534,7 +2534,7 @@ async function dailyRevealTile(position) {
   try {
     let colour;
     if (daily.key) {
-      // Offline: colour comes from the unsealed key — no network.
+      // Offline: colour comes from the unsealed key – no network.
       colour = (daily.key.c && daily.key.c[String(position)]) || "neutral";
     } else {
       const { data, error } = await sb.rpc("daily_reveal", {
@@ -2631,7 +2631,7 @@ async function dailyFinish(outcome) {
   if (outcome === "win") playSound("win");
   else if (outcome === "lose") playSound("lose");
   if (daily.key) {
-    // Offline: build the full reveal from the unsealed key — no network.
+    // Offline: build the full reveal from the unsealed key – no network.
     daily.solution = daily.tiles.map((t) => ({
       ...t, colour: (daily.key.c && daily.key.c[String(t.position)]) || "neutral",
     }));
@@ -2727,7 +2727,7 @@ function renderDailyResult() {
       ${answersHtml}
       <div class="daily-rate-label">How was the difficulty?</div>
       <div class="daily-rate-row">${rateBtns}</div>
-      <textarea id="qa-note" class="qa-note" rows="3" placeholder="Notes for this board (bad clue, ambiguity, typo, too easy/hard…) — optional"></textarea>
+      <textarea id="qa-note" class="qa-note" rows="3" placeholder="Notes for this board (bad clue, ambiguity, typo, too easy/hard…) – optional"></textarea>
       <div class="daily-result-btns">
         <button class="btn btn-primary" id="qa-next-btn">${last ? "Save &amp; finish" : "Save &amp; next board →"}</button>
         <button class="btn btn-ghost" id="qa-home-btn">Save &amp; back to overview</button>
@@ -2741,12 +2741,12 @@ function renderDailyResult() {
     return;
   }
 
-  // Tutorial finish: no score sharing, no difficulty rating, no caching —
+  // Tutorial finish: no score sharing, no difficulty rating, no caching –
   // just congratulate and point them at today's real puzzles.
   if (daily.practice) {
     const won = daily.outcome === "win";
     el.innerHTML = `
-      <div class="daily-result-title">${won ? "Nice — you've got it! 🎉" : "Good try — that's the idea!"}</div>
+      <div class="daily-result-title">${won ? "Nice – you've got it! 🎉" : "Good try – that's the idea!"}</div>
       <div class="daily-result-line">That was just practice. Ready for today's puzzle?</div>
       ${answersHtml}
       <div class="daily-result-btns">
@@ -2774,14 +2774,14 @@ function renderDailyResult() {
   const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
   let streakHtml = "";
   if (st.current >= 1) {
-    // Solved today — show the running win streak.
+    // Solved today – show the running win streak.
     streakHtml = `<div class="daily-streak">🔥 ${poolName} win streak: <strong>${st.current}</strong>`
       + `${st.best > st.current ? ` <span class="ds-best">· best ${st.best}</span>` : ""}`
-      + `${st.current === 1 ? `<span class="ds-hint"> — solve it again tomorrow to keep it going</span>` : ""}</div>`;
+      + `${st.current === 1 ? `<span class="ds-hint"> – solve it again tomorrow to keep it going</span>` : ""}</div>`;
   } else if (daily.outcome !== "win" && st.best > 0) {
     // Just broke a streak.
     streakHtml = `<div class="daily-streak">💔 Win streak reset <span class="ds-best">· best ${st.best}</span>`
-      + `<span class="ds-hint"> — solve tomorrow's to start again</span></div>`;
+      + `<span class="ds-hint"> – solve tomorrow's to start again</span></div>`;
   } else if (daily.outcome !== "win") {
     // Never had a streak yet.
     streakHtml = `<div class="daily-streak ds-muted">Solve a daily to start a 🔥 win streak</div>`;
@@ -2820,23 +2820,30 @@ function dailyShare() {
   const time = fmtClock(dailyElapsedSecs());
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const diff = dailyDifficulty(daily.clues);
-  // Spoiler-free strikes bar (❌ used / ⬜ left, out of 5) — no board grid, so it
-  // never leaks the answers.
-  const strikes = "❌".repeat(daily.mistakes) + "⬜".repeat(Math.max(0, daily.maxMistakes - daily.mistakes));
+  const WD = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const dd = new Date(`${daily.date}T00:00:00`);
+  const dateLabel = isNaN(dd) ? "" : `${WD[dd.getDay()]} ${dd.getDate()} ${MO[dd.getMonth()]}`;
+  const mistakesText = daily.mistakes === 0
+    ? "no mistakes"
+    : `❌ ${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"}`;
   const outcome = daily.outcome === "win"
-    ? `✅ Solved all 9!`
-    : `😵 ${daily.bluesFound}/9 before 5 strikes`;
+    ? `✅ Solved – ${mistakesText}`
+    : `😵 ${daily.bluesFound}/9 – ${mistakesText}`;
   const st = _getStreak(daily.pool);
   const hintsBit = daily.hintsUsed ? ` · 💡 ${daily.hintsUsed}` : ` · 🚫 no hints`;
+  // Link goes on its own line – so it's embedded in the text (not passed as the
+  // share `url`, which apps append inline).
+  const url = dailyUrl(daily.pool);
   const text = [
-    `Pokémon Codenames — Daily 🧩 (${poolLabel} · ${diff.label})`,
-    outcome,
-    `${strikes} · ⏱ ${time}${hintsBit}`,
-    ...(st.current > 1 ? [`🔥 ${st.current}-day ${poolLabel} win streak`] : []),
+    `Pokémon Codenames – Daily 🧩`,
+    `${poolLabel} · ${diff.label}${dateLabel ? ` · ${dateLabel}` : ""}`,
+    `${outcome} · ⏱ ${time}${hintsBit}`,
+    ...(st.current >= 1 ? [`🔥 ${st.current}-day win streak`] : []),
     `Can you beat it? 👇`,
+    url,
   ].join("\n");
-  const url = dailyUrl(daily.pool); // links straight to this specific daily
-  nativeShare({ title: "Pokémon Codenames – Daily", text, url });
+  nativeShare({ title: "Pokémon Codenames – Daily", text });
 }
 
 // ============================================================================

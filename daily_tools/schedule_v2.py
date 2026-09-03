@@ -15,7 +15,7 @@ FACTS=json.load(open(f"{ROOT}/pokemon_facts.json"))
 GEN1={n for n,r in FACTS.items() if r["gen"]==1}
 random.seed(2026)
 # Stable per-board seed (Python's hash() is salted per process, which made
-# neutral fills — and thus the greedy hint search — non-reproducible run to run).
+# neutral fills – and thus the greedy hint search – non-reproducible run to run).
 def _sd(x): return int(hashlib.md5(repr(x).encode()).hexdigest()[:8], 16)
 
 WEEKDAY_TIER={0:"Easy",1:"Medium",2:"Challenging",3:"Hard",4:"Hard",5:"Brutal",6:"Evil"}
@@ -70,7 +70,7 @@ exec(open(f"{ROOT}/daily_tools/boards_v2.py").read())
 def hint_for(nm, names, used):
     # Each candidate is (word, cat, explain). A hint points at ONE blue, so its
     # explanation names that Pokemon and says what the hint word refers to.
-    # Word SELECTION is unchanged (first candidate that passes) — only the extra
+    # Word SELECTION is unchanged (first candidate that passes) – only the extra
     # explain string is new, shown on the finish screen under "clues you revealed".
     r=FACTS[nm]; cands=[]
     def sub(x): return x.replace("-"," ").lower()
@@ -149,7 +149,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     if b["tier"] in("Hard","Brutal") and cat2>1: errors.append(f"{where}: cat2={cat2}>1")
     if b["tier"]=="Evil" and cat2>0: errors.append(f"{where}: Evil has cat2={cat2}")
     if len(set(cats))<3 and b["tier"]!="Easy" and (d,pool) not in FLOURISH: errors.append(f"{where}: <3 distinct cats")
-    # A TYPE clue must cover EVERY blue of that type — otherwise its number is
+    # A TYPE clue must cover EVERY blue of that type – otherwise its number is
     # a lie (e.g. STEEL x3 when 5 blues are Steel-type). Types are objective and
     # players count them, so this has to be exact. (Colour data is fuzzier, so
     # not enforced here.)
@@ -163,7 +163,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
                 allty=sorted(nm for nm in blues if ty in FACTS[nm]["types"])
                 if sorted(m)!=allty:
                     errors.append(f"{where}: type clue {w} lists {sorted(m)} but every {ty}-type blue is {allty}")
-        # No clue's blue-set may be a subset of another's — splitting {A,B,C} into
+        # No clue's blue-set may be a subset of another's – splitting {A,B,C} into
         # a separate {A,B} clue is a dull way to pad the board. (Empty anti-clues
         # are exempt.) This also blocks two clues with the identical set.
         sets=[(w,frozenset(m)) for w,c,cc,m in clues]
@@ -249,7 +249,7 @@ if errors:
     for e in errors: print("  x",e)
     print(len(errors),"errors")
 else:
-    print("  ALL VALID —",len(assembled),"boards")
+    print("  ALL VALID –",len(assembled),"boards")
     def jarr(o):
         parts=[]
         for x in o:

@@ -26,7 +26,7 @@ READ = {
  "sword":"a sword","knight":"an armoured knight","golem-robot":"a robot golem",
  "flytrap":"a Venus flytrap","pitcher":"the pitcher plant","candle":"a lit candle",
  "gargoyle":"a stone gargoyle","coffin":"a coffin","samurai":"a samurai","scarecrow":"a scarecrow",
- # sprite (phrase): "you can spot it on the sprite — {r}"
+ # sprite (phrase): "you can spot it on the sprite – {r}"
  "fist":"the raised fists","seeds":"the seeds on its body","mushroom":"the mushroom on its back",
  "pincers":"the big pincers","scythe":"the scythe-shaped arms","acorn":"the acorn cap",
  "ball":"a Poké Ball shape","coin":"the gold coin on its forehead","coins":"a hoard of gold coins",
@@ -34,7 +34,7 @@ READ = {
  "gills":"its gills","web":"its web","cocoon":"its cocoon shell","drill":"its drill horn",
  "jaws":"its huge jaws","frill":"its frilled crest","tongue":"its long tongue",
  "petals":"its flower petals","fins":"its fins","balloon":"its round balloon body",
- # lore (phrase): "from their Pokédex lore — {r}"
+ # lore (phrase): "from their Pokédex lore – {r}"
  "vampire":"they're vampire bats","teleport":"its signature Teleport move",
  "jynx":"an opera diva / snow-hag","ferry":"it ferries travellers across the sea",
  "fossil":"they're prehistoric fossils brought back to life","lava":"they're made of molten lava",
@@ -51,7 +51,7 @@ READ = {
  # extra concept phrasings (stat / lore / fantastical archetypes / based)
  "defense":"a rock-solid defence stat","heavy":"being seriously heavy","special":"a huge Special stat",
  "speed":"blistering Speed","ancient":"prehistoric relics dug up as fossils",
- "doll":"a possessed doll","royalty":"royalty — a king or queen","brawl":"bare-knuckle brawlers",
+ "doll":"a possessed doll","royalty":"royalty – a king or queen","brawl":"bare-knuckle brawlers",
  "martial-arts":"trained martial artists","mind":"raw psychic mind-power","gears":"living clockwork gears",
  "willowisp":"a will-o'-the-wisp flame","mythical":"rare mythical Pokémon","poison-gas":"the toxic gas they belch",
  "ice-storm":"a howling blizzard","haunted-object":"an everyday object turned haunted","polygon":"blocky 3-D graphics",
@@ -78,23 +78,23 @@ def explain_for(word, cat, concept, members):
             return f"They're all {_FANCIFUL[tail]}."
         return f"They're all based on the real-world {r}."
     if pre == "stat":
-        return f"They share a standout stat — {r}."
+        return f"They share a standout stat – {r}."
     if pre == "based":
         return f"They're based on {r}."
     if pre == "sprite":
-        return f"You can spot it on the sprite — {r}."
+        return f"You can spot it on the sprite – {r}."
     if pre == "lore":
-        return f"It's from their Pokédex lore — {r}."
+        return f"It's from their Pokédex lore – {r}."
     if pre == "myth":
-        return f"It's rooted in mythology — {r}."
+        return f"It's rooted in mythology – {r}."
     if pre == "name":
-        return f"It's wordplay on their names — {r}."
+        return f"It's wordplay on their names – {r}."
     if pre == "trainer":
         return f"They belong to {r}'s team."
     if pre == "colour":
         return f"They're all {r}."
     if pre == "habitat":
-        return f"They all live in the same kind of place — {r}."
+        return f"They all live in the same kind of place – {r}."
     if pre == "egg":
-        return f"They're in the same egg group — {r}."
+        return f"They're in the same egg group – {r}."
     return r[:1].upper() + r[1:] + "."
