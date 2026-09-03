@@ -2861,14 +2861,18 @@ function dailyShare() {
     ? `✅ Solved – ${mistakesText}`
     : `😵 ${daily.bluesFound}/9 – ${mistakesText}`;
   const st = _getStreak(daily.pool);
-  const hintsBit = daily.hintsUsed ? ` · 💡 ${daily.hintsUsed}` : ` · 🚫 no hints`;
+  const hintsLine = daily.hintsUsed
+    ? `💡 ${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}`
+    : `🚫 no hints`;
   // Link goes on its own line – so it's embedded in the text (not passed as the
   // share `url`, which apps append inline).
   const url = dailyUrl(daily.pool);
   const text = [
     `Pokémon Codenames – Daily 🧩`,
     `${poolLabel} · ${diff.label}${dateLabel ? ` · ${dateLabel}` : ""}`,
-    `${outcome} · ⏱ ${time}${hintsBit}`,
+    outcome,
+    `⏱ ${time}`,
+    hintsLine,
     ...(st.current >= 1 ? [`🔥 ${st.current}-day win streak`] : []),
     `Can you beat it? 👇`,
     url,
