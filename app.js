@@ -1775,6 +1775,33 @@ function clearDailyUrl() {
 // board, strikes, hints and timer back where they were.
 const DAILY_KEY_PREFIX = "pc_daily:";
 function _dailyKey(date, pool) { return `${DAILY_KEY_PREFIX}${date}:${pool}`; }
+
+// Per-device daily streak, kept SEPARATELY for each pool (Gen I / All-gens),
+// login-free in localStorage. A "day streak" counts each consecutive puzzle DATE
+// on which you finished that pool's daily (win or loss both keep the habit);
+// missing a day resets it. Stored apart from the per-day records so pruning old
+// days never wipes the streak.
+function _streakKey(pool) { return `pc_streak:${pool}`; }
+function _getStreak(pool) {
+  try {
+    const r = JSON.parse(localStorage.getItem(_streakKey(pool)));
+    if (r && typeof r.current === "number") return { current: r.current, best: r.best || r.current, lastDate: r.lastDate || null };
+  } catch {}
+  return { current: 0, best: 0, lastDate: null };
+}
+function _daysApart(a, b) { // whole days from date-string a to b (b - a)
+  return Math.round((new Date(`${b}T00:00:00`) - new Date(`${a}T00:00:00`)) / 86400000);
+}
+function _updateDailyStreak() {
+  if (daily.practice || daily.qa || !daily.date || !daily.pool) return; // tutorial/QA never count
+  const s = _getStreak(daily.pool);
+  if (s.lastDate === daily.date) return; // this date already counted (e.g. re-finish)
+  if (s.lastDate && _daysApart(s.lastDate, daily.date) === 1) s.current = (s.current || 0) + 1;
+  else s.current = 1; // first play, or a gap broke the streak
+  s.best = Math.max(s.best || 0, s.current);
+  s.lastDate = daily.date;
+  try { localStorage.setItem(_streakKey(daily.pool), JSON.stringify(s)); } catch {}
+}
 function _saveDailyProgress() {
   if (daily.practice || daily.qa) return; // the tutorial and QA games are never cached
   if (!daily.date || !daily.pool) return;
@@ -2597,7 +2624,8 @@ async function dailyFinish(outcome) {
       });
     } catch (err) { console.error(err); }
   }
-  _saveDailyProgress(); // remember completion on this device
+  _updateDailyStreak();  // bump this pool's day streak (once per date)
+  _saveDailyProgress();  // remember completion on this device
   renderDaily();
 }
 
@@ -2710,9 +2738,17 @@ function renderDailyResult() {
   const rateBtns = ratings
     .map(([v, label]) => `<button class="btn btn-ghost btn-mini daily-rate ${daily.rating === v ? "chosen" : ""}" data-rate="${v}">${label}</button>`)
     .join("");
+  const st = _getStreak(daily.pool);
+  const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
+  const streakHtml = st.current
+    ? `<div class="daily-streak">🔥 ${poolName} day streak: <strong>${st.current}</strong>`
+      + `${st.best > st.current ? ` <span class="ds-best">· best ${st.best}</span>` : ""}`
+      + `${st.current > 1 ? "" : `<span class="ds-hint"> — come back tomorrow to build it</span>`}</div>`
+    : "";
   el.innerHTML = `
     <div class="daily-result-title">${title}</div>
     <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
+    ${streakHtml}
     ${answersHtml}
     <div class="daily-rate-label">${daily.rating ? "Thanks for the feedback!" : "How was the difficulty?"}</div>
     <div class="daily-rate-row">${rateBtns}</div>
@@ -2746,10 +2782,12 @@ function dailyShare() {
   const outcome = daily.outcome === "win"
     ? `✅ Solved it – all 9 found!`
     : `❌ ${daily.bluesFound}/9 found`;
+  const st = _getStreak(daily.pool);
   const text = [
     `Pokémon Codenames – Daily (${poolLabel} · ${diff.label})`,
     outcome,
     `✗ ${daily.mistakes} mistakes · ⏱ ${time}`,
+    ...(st.current > 1 ? [`🔥 ${st.current}-day streak`] : []),
     `Can you beat it?`,
   ].join("\n");
   const url = dailyUrl(daily.pool); // links straight to this specific daily
