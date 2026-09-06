@@ -1945,7 +1945,7 @@ function _dailyReset() {
   daily.sealed = null; daily.key = null; daily.sig = null;
   daily.clueDone = {}; daily.clueLeft = {}; daily.notes = {}; _closeNotePalette();
   daily.practice = false;
-  daily.qa = false; // qaQueue/qaIndex intentionally left alone (span multiple boards)
+  daily.qa = false; daily.qaView = false; // qaQueue/qaIndex left alone (span multiple boards)
 }
 
 // A fixed, self-contained example board used by the "Play a test game" tutorial
@@ -2152,7 +2152,8 @@ function renderQaOverview() {
     if (!r) return `<div class="qa-cell qa-black"></div>`;
     const poolLbl = r.pool === "gen1" ? "Gen I" : "All gens";
     const label = r.status === "black" ? "–" : (r.difficulty || "");
-    const click = r.status === "blue"
+    // Blue = tap to test; green/red = tap to view the board (read-only).
+    const click = r.status !== "black"
       ? ` data-qa-date="${r.puzzle_date}" data-qa-pool="${r.pool}" role="button" tabindex="0"` : "";
     return `<div class="qa-cell qa-${r.status}"${click}>`
       + `<span class="qa-cell-pool">${poolLbl}</span><span class="qa-cell-diff">${escapeHtml(label)}</span></div>`;
@@ -2161,17 +2162,52 @@ function renderQaOverview() {
   const blues = rows.filter((r) => r.status === "blue").length;
   const sub = $(".qa-sub");
   if (sub) sub.textContent = blues
-    ? `${blues} board${blues === 1 ? "" : "s"} to test – tap a blue box to start.`
-    : "Everything upcoming has been tested. 🎉";
+    ? `${blues} board${blues === 1 ? "" : "s"} to test – tap a blue box to start (or a green/red box to view it).`
+    : "All tested. Tap any green/red box to view that board.";
   grid.innerHTML = dates.map((d) => {
     const g = byDate.get(d);
     return `<div class="qa-row"><div class="qa-date">${_qaDateLabel(d)}</div>${cell(g.gen1)}${cell(g.mixed)}</div>`;
   }).join("");
-  grid.querySelectorAll(".qa-cell.qa-blue").forEach((c) => {
-    const go = () => startQaSequence(c.dataset.qaDate, c.dataset.qaPool);
+  grid.querySelectorAll(".qa-cell[data-qa-date]").forEach((c) => {
+    const isBlue = c.classList.contains("qa-blue");
+    const go = () => isBlue
+      ? startQaSequence(c.dataset.qaDate, c.dataset.qaPool)   // test run
+      : viewQaBoard(c.dataset.qaDate, c.dataset.qaPool);      // read-only view
     c.addEventListener("click", go);
     c.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   });
+}
+
+// Read-only view of an already-tested board: load it, reveal every tile and
+// show what each clue meant. Reached by tapping a green/red cell in the overview.
+async function viewQaBoard(date, pool) {
+  try {
+    const { data, error } = await sb.rpc("get_daily_qa", { p_date: date, p_pool: pool });
+    if (error) throw error;
+    const row = data && data[0];
+    if (!row) { toast(`No board found for ${date} (${pool}).`); return; }
+    _dailyReset();
+    daily.qa = true; daily.qaView = true;
+    daily.pool = pool; daily.date = date; daily.bluesTotal = 9;
+    daily.sealed = row.sealed || null;
+    try { daily.key = _dailyUnseal(daily.sealed); } catch (e) { console.error(e); daily.key = null; }
+    daily.clues = daily.key ? _dailyStripClues(daily.key.k) : [];
+    daily.tiles = (row.tiles || []).slice().sort((a, b) => a.position - b.position);
+    daily.sig = _dailySig(daily.tiles, daily.clues);
+    // fully-revealed solution view
+    const colourAt = (p) => (daily.key && daily.key.c && daily.key.c[String(p)]) || "neutral";
+    daily.solution = daily.tiles.map((t) => ({ ...t, colour: colourAt(t.position) }));
+    daily.solutionClues = daily.key ? daily.key.k : null;
+    daily.tiles.forEach((t) => { daily.revealed[t.position] = colourAt(t.position); });
+    daily.bluesFound = 9;
+    daily.finished = true; daily.outcome = "view"; daily.timerOn = false;
+    try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {}
+    showScreen("daily");
+    renderDaily();
+  } catch (err) {
+    console.error(err);
+    toast(err.message || "Couldn't load the board.");
+  }
 }
 
 // Tapping a blue board starts a run through all blue boards (date order),
@@ -2292,7 +2328,11 @@ function renderDaily() {
     const n = $(sel); if (n) n.classList.remove("hidden");
   });
   const hRow = document.querySelector(".daily-hint-row"); if (hRow) hRow.classList.remove("hidden");
-  if (daily.qa) {
+  if (daily.qaView) {
+    $("#daily-play-title").innerHTML =
+      `Viewing · ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+    $("#daily-play-sub").textContent = `${daily.date} – read-only preview.`;
+  } else if (daily.qa) {
     $("#daily-play-title").innerHTML =
       `QA ${daily.qaIndex + 1}/${daily.qaQueue.length} · ${poolLabel} `
       + `<span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
@@ -2738,6 +2778,20 @@ function renderDailyResult() {
   else title = `Out of guesses – ${daily.bluesFound}/9 found`;
 
   const answersHtml = _dailyAnswersBox();
+
+  // Read-only QA view (tapped a green/red cell): just the revealed board + what
+  // each clue meant, and a button back to the overview. No rating form.
+  if (daily.qaView) {
+    el.innerHTML = `
+      <div class="daily-result-title">Board preview</div>
+      <div class="daily-result-line">${daily.pool === "gen1" ? "Gen I" : "All-gens"} · ${daily.date}</div>
+      ${answersHtml}
+      <div class="daily-result-btns">
+        <button class="btn btn-primary" id="qa-back-btn">← Back to QA overview</button>
+      </div>`;
+    $("#qa-back-btn").addEventListener("click", () => showQaOverview());
+    return;
+  }
 
   // QA finish: show the outcome + answers, then a rating + note form. Saving
   // writes to daily_feedback and advances to the next board in the batch.

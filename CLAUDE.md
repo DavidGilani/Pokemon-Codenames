@@ -238,12 +238,19 @@ boards to QA. Workflow:
 2. **Address QA feedback first.** Query Supabase (`daily_feedback`) for rows with
    an actionable note (`note` is not null and not `auto:%`) and
    `addressed = false`. For each, implement the requested change in
-   `boards_v2.py` **only if it can be done within every rule**; re-verify, apply
-   to Supabase, and set that row's `addressed = true` (turns the board **green**
-   in the QA grid). If a note is ambiguous, conflicts with the rules, or would
-   need a `FLOURISH`-style override, **leave it un-addressed (stays red)** and
-   report it for the owner — never force a rule-breaking change and never touch
-   `FLOURISH` (human QA overrides only).
+   `boards_v2.py` **only if it can be done within every rule**; re-verify and
+   apply to Supabase. Then, depending on how big the change was:
+   - **Minor tweak** (a clue word, one tile swap, a hint fix): set that row's
+     `addressed = true` → the board turns **green** (no re-test needed).
+   - **Substantial re-creation** (most blues/clues changed, or the board rebuilt
+     around a new theme): **delete that board's `daily_feedback` rows** instead →
+     the board falls back to **blue** (untested) so the owner re-QAs the new
+     version. A green board must be one the owner has actually seen; anything
+     materially different needs a fresh look.
+   If a note is ambiguous, conflicts with the rules, or would need a `FLOURISH`
+   -style override, **leave it un-addressed (stays red)** and report it for the
+   owner — never force a rule-breaking change and never touch `FLOURISH` (human
+   QA overrides only).
 3. **Fill gaps.** Ensure every day in `[today, today+21]` (3 weeks) has BOTH a
    `gen1` and a `mixed` board; author any missing ones, soonest gaps first. Add a
    `board(...)` entry matching the date's **weekday tier** (Mon Easy · Tue Medium
