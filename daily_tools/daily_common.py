@@ -56,6 +56,10 @@ READ = {
  "willowisp":"a will-o'-the-wisp flame","mythical":"rare mythical Pokémon","poison-gas":"the toxic gas they belch",
  "ice-storm":"a howling blizzard","haunted-object":"an everyday object turned haunted","polygon":"blocky 3-D graphics",
  "lava":"molten lava","volcano":"an erupting volcano","legendary":"the legendary birds","sea-serpent":"a sea serpent",
+ "raptor":"bird of prey","canine":"dog","oni":"an oni demon","blue":"Blue, the Kanto Champion",
+ "clone":"a genetically-engineered clone","haunted":"they're each linked to something haunted or cursed",
+ "pioneer":"each was a landmark 'first' in Pokémon history","treasures-of-ruin":"the cursed Treasures of Ruin",
+ "musketeers":"the legendary Musketeer trio","fast":"blistering speed",
 }
 # fantastical archetypes that shouldn't read "based on the real-world ..."
 _FANCIFUL = {"genie":"wish-granting genies","deity":"guardian deities","chimera":"stitched-together chimeras",
@@ -66,7 +70,8 @@ def explain_for(word, cat, concept, members):
     pre, _, tail = concept.partition(":")
     r = _read(tail)
     if pre == "type":
-        return f"Every one is a {tail.capitalize()}-type."
+        art = "an" if tail[:1].lower() in "aeiou" else "a"
+        return f"Every one is {art} {tail.capitalize()}-type."
     if pre == "group":
         return {"starter":"They're first-partner (starter) Pokémon.",
                 "legendary":"They're all Legendary Pokémon.",
