@@ -2,3 +2,6 @@
 venv/
 __pycache__/
 *.pyc
+
+# Throwaway artifact from daily_tools/schedule_v2.py
+daily_tools/pending_upserts.sql

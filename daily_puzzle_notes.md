@@ -47,8 +47,11 @@ To author one board:
     one-line `explain`. **Randomise** clue order, hint order, and tile positions.
 
 Everything above is enforced by `daily_tools/schedule_v2.py` (which reads the
-hand-authored boards in `daily_tools/boards_v2.py` and emits the SQL). The rest
-of this doc explains the reasoning.
+hand-authored boards in `daily_tools/boards_v2.py`, checks them against the live
+anti-rep corpus in `daily_tools/live_boards.json`, and emits new-board upserts to
+`pending_upserts.sql`). It is self-contained — auto-detects the repo root, needs
+no CSVs, and computes its date window from `today` — so it runs in any fresh
+checkout. The rest of this doc explains the reasoning.
 
 ## The concept (as agreed for the first cut)
 
