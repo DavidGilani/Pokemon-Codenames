@@ -60,12 +60,37 @@ for d,cl in AUG21:
         USES[w].append((d,frozenset(m))); CONCEPT[cc].append(d)
         for nm in m: BLUE_USED[nm].append(d)
 
+
 # Corpus is history <= Aug 20 + Aug 21 only. Aug 22 onward is (re)authored in
 # boards_v2.py and emitted, so today (Sat Aug 22) also gets the Brutal gate.
 B=[]
 def board(date,pool,tier,clues,exclude=()): B.append(dict(date=date,pool=pool,tier=tier,clues=clues,exclude=list(exclude)))
 exec(open(f"{ROOT}/daily_tools/daily_common.py").read())  # explain_for
 exec(open(f"{ROOT}/daily_tools/boards_v2.py").read())
+
+# ---- live DB snapshot (reconciliation) ----
+# daily_tools/live_boards.json is a committed snapshot of every board that is
+# actually live in Supabase (refreshed by the nightly generator). Many dates are
+# authored ONLY in the DB (the nightly job upserts straight to Supabase), so
+# without this they'd be invisible to the anti-rep checks and a freshly authored
+# board could collide with them (repeat a word, a blue, a group). We fold those
+# DB-only boards into the WORD/GROUP/BLUE corpus. Dates that ARE authored here in
+# boards_v2.py are skipped: they already cross-check via the main loop (nw/nb/ng)
+# and re-adding them would flag a board against its own shipped neighbours. The
+# snapshot carries no concept tag (`cc`), so the CONCEPT rule can't be
+# reconstructed for DB-only dates -- an accepted gap.
+try:
+    LIVE=json.load(open(f"{ROOT}/daily_tools/live_boards.json"))
+except FileNotFoundError:
+    LIVE=[]
+AUTHORED={(b["date"],b["pool"]) for b in B}
+for r in LIVE:
+    d=r["date"]
+    if d<="2026-08-21" or (d,r["pool"]) in AUTHORED: continue
+    for c in r.get("clues") or []:
+        m=c.get("m") or []
+        USES[c["word"]].append((d,frozenset(m)))
+        for nm in m: BLUE_USED[nm].append(d)
 
 def hint_for(nm, names, used):
     # Each candidate is (word, cat, explain). A hint points at ONE blue, so its

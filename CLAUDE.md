@@ -260,8 +260,16 @@ boards to QA. Workflow:
    `33_updates.sql`).
 5. Apply the new/changed `(date,pool)` upserts to Supabase (base64 `do $$ …
    execute convert_from(decode(...)) … $$;` pattern keeps the JSON exact).
-6. Commit + push to `main`, and report what was fixed / created (and any feedback
-   left un-addressed for the owner).
+6. **Refresh the live snapshot.** Query Supabase for every board in
+   `[today-21, today+40]` and rewrite `daily_tools/live_boards.json` (rows of
+   `{date, pool, clues:[{word, n, cat, m:[blue names]}]}`, sorted by date then
+   pool). This file is the repo's record of what is actually live and is folded
+   into the verifier's anti-rep corpus for DB-only dates — the nightly job upserts
+   straight to Supabase, so without refreshing it a later board could repeat a
+   word/blue/group from a board that exists only in the DB. Re-run
+   `schedule_v2.py` after refreshing so the snapshot is in the corpus.
+7. Commit + push to `main` (**include `live_boards.json`**), and report what was
+   fixed / created (and any feedback left un-addressed for the owner).
 
 New boards land **untested** → they show **blue** in the QA overview (`?qa=1`)
 for the owner to playtest. The generator never rates its own boards; only a real
