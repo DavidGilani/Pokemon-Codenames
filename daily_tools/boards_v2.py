@@ -281,3 +281,36 @@ board("2026-09-08","mixed","Medium",[
   ("FIRE",1,"type:fire",["Tepig"]),
   ("NORMAL",1,"type:normal",["Lechonk"]),
 ], exclude=["Simisage","Simipour","Chimchar","Monferno","Infernape","Aipom","Ambipom","Oranguru","Passimian","Mankey","Primeape","Thwackey","Rillaboom","Pumpkaboo","Cacnea","Sandygast","Palossand","Krabby","Kingler","Corphish","Crabrawler","Crabominable","Clauncher","Pignite","Emboar","Oinkologne","Trevenant","Phantump","Gliscor","Gligar","Skorupi","Drapion","Weavile","Sneasel","Drifloon","Drifblim","Greavard","Houndstone","Mimikyu","Banette","Misdreavus","Mismagius","Sableye","Chandelure","Kleavor"])
+
+# ===== FEEDBACK FIX 2026-09-18 gen1 : removed 3-dragon WYVERN clue (too many
+# dragons in one day) and the BIPEDAL/humanoid clue's neutral conflict
+# (Magmar is also arch:humanoid, Charmeleon flagged by QA too). =====
+board("2026-09-18","gen1","Hard",[
+  ("CRAB",2,"sprite:pincers",["Kingler"]),
+  ("ANTENNAE",3,"sprite:antennae",["Venomoth"]),
+  ("MOLLUSC",4,"arch:mollusc",["Shellder"]),
+  ("BIPEDAL",4,"arch:humanoid",["Jynx","Mr. Mime","Electabuzz"]),
+  ("AVIAN",3,"arch:bird",["Farfetch'd","Spearow","Pidgey"]),
+], exclude=["Mewtwo","Machop","Hitmonlee","Hitmonchan","Magmar","Machoke","Machamp",
+            "Doduo","Articuno","Fearow","Zapdos","Pidgeotto","Moltres","Pidgeot","Dodrio",
+            "Omanyte","Cloyster","Omastar","Parasect","Krabby","Paras",
+            "Kakuna","Beedrill","Pinsir","Caterpie","Butterfree","Metapod","Scyther","Weedle","Venonat",
+            "Charmeleon"])
+
+# ===== 09-28 Mon : EASY (gap fill) =====
+board("2026-09-28","gen1","Easy",[
+  ("WATER",1,"type:water",["Squirtle","Poliwag","Horsea"]),
+  ("GRASS",1,"type:grass",["Bulbasaur","Bellsprout"]),
+  ("ROCK",1,"type:rock",["Geodude","Onix"]),
+  ("PSYCHIC",1,"type:psychic",["Abra","Drowzee"]),
+], exclude=["Wartortle","Blastoise","Victreebel","Weepinbell","Oddish","Gloom","Vileplume",
+            "Graveler","Golem","Kadabra","Alakazam","Slowpoke","Slowbro","Exeggcute","Exeggutor",
+            "Tangela","Ivysaur","Venusaur","Rhyhorn","Rhydon","Seadra","Poliwhirl","Poliwrath"])
+board("2026-09-28","mixed","Easy",[
+  ("WATER",1,"type:water",["Buizel","Popplio","Binacle"]),
+  ("GRASS",1,"type:grass",["Snivy","Chikorita","Snover"]),
+  ("ROCK",1,"type:rock",["Roggenrola","Binacle"]),
+  ("ICE",1,"type:ice",["Snover","Bergmite"]),
+  ("GLARE",2,"sprite:glare",["Espurr"]),
+], exclude=["Floatzel","Brionne","Primarina","Servine","Serperior","Bayleef","Meganium",
+            "Boldore","Gigalith","Barbaracle","Abomasnow","Cubchoo","Meowstic"])
