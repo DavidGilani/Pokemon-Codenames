@@ -345,6 +345,30 @@ a { color: var(--accent); }
 }
 .daily-cta-btns { display: flex; gap: 8px; }
 
+/* Daily is now the hero action – give the CTA a touch more presence. */
+.daily-cta { padding: 20px 22px; }
+.daily-cta h2 { font-size: 20px; }
+.daily-cta .sub { font-size: 13.5px; }
+
+/* "Play with friends" entry on the homepage + its sub-screen. */
+.friends-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.friends-cta h2 { margin: 0 0 4px; font-size: 17px; }
+.friends-cta .sub { font-size: 13px; color: var(--text-dim); max-width: 380px; }
+.friends-cta .btn { flex: none; }
+.friends-head { max-width: 860px; margin: 8px auto 20px; text-align: center; position: relative; }
+.friends-head h1 { font-size: clamp(24px, 5vw, 34px); margin: 6px 0 8px; }
+.friends-head .friends-sub { color: var(--text-dim); font-size: 14px; max-width: 520px; margin: 0 auto; }
+.friends-head #friends-back-btn { position: absolute; left: 0; top: 0; }
+@media (max-width: 560px) {
+  .friends-head { text-align: left; padding-top: 40px; }
+  .friends-head #friends-back-btn { top: 0; left: 0; }
+  .friends-head .friends-sub { margin: 0; }
+}
+
 .daily-play-wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .daily-play-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
 .daily-header-btns { display: flex; gap: 6px; flex-shrink: 0; }
@@ -913,6 +937,55 @@ a { color: var(--accent); }
 
 .win-subtitle { color: var(--text-dim); font-size: 14px; line-height: 1.5; margin-bottom: 22px; }
 .win-card .btn + .btn { margin-top: 10px; }
+
+/* ---- Daily completion share pop-up ---- */
+.dshare-overlay {
+  position: fixed; inset: 0; background: rgba(10, 12, 18, 0.85);
+  display: flex; align-items: center; justify-content: center; z-index: 60;
+  backdrop-filter: blur(3px); padding: 16px; overflow-y: auto;
+}
+.dshare-card {
+  background: var(--panel); border: 1px solid var(--panel-border);
+  border-radius: var(--radius); padding: 26px 26px 20px; text-align: center;
+  width: 100%; max-width: 380px; margin: auto;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.dshare-title {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--text); margin-bottom: 16px;
+}
+.dshare-visual {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  max-width: 260px; margin: 0 auto 6px;
+}
+.dtrail-sq {
+  width: 26px; height: 26px; border-radius: 6px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.dtrail-sq.hit { background: #3fbf4f; }
+.dtrail-sq.miss { background: var(--red); }
+.dtrail-sq.assassin { background: #12151f; }
+.dshare-caption {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-faint); margin: 12px 0 4px;
+}
+.dshare-headline {
+  font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text);
+}
+.dshare-sub { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+.dshare-streak {
+  margin-top: 10px; font-size: 14px; color: var(--text-dim);
+  background: rgba(255, 179, 71, 0.1); border: 1px solid rgba(255, 179, 71, 0.25);
+  border-radius: 10px; padding: 7px 10px;
+}
+.dshare-streak strong { color: #ffb347; }
+.dshare-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.dshare-url {
+  display: flex; align-items: center; gap: 7px; justify-content: center;
+  margin-top: 16px; font-size: 14px; color: var(--text-dim); cursor: pointer;
+}
+.dshare-url input { width: 16px; height: 16px; accent-color: var(--blue); }
+.dshare-close { display: block; width: 100%; margin-top: 14px; }
 
 .waiting-inline {
   text-align: center; color: var(--text-faint); font-size: 13px;

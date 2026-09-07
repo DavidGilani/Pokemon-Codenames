@@ -338,6 +338,12 @@ function initLandingScreen() {
   $("#create-room-form").addEventListener("submit", handleCreateRoom);
   $("#join-room-form").addEventListener("submit", handleJoinRoom);
 
+  // Daily is the homepage; "play with friends" (create/join a room) is a subpage.
+  const goFriends = $("#go-friends-btn");
+  if (goFriends) goFriends.addEventListener("click", () => showScreen("friends"));
+  const friendsBack = $("#friends-back-btn");
+  if (friendsBack) friendsBack.addEventListener("click", () => showScreen("landing"));
+
   const params = new URLSearchParams(window.location.search);
   const codeParam = params.get("code");
   if (codeParam) $("#join-code").value = codeParam.toUpperCase();
@@ -1932,6 +1938,14 @@ function initDaily() {
     daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0;
     clearDailyUrl(); showScreen("landing");
   });
+  // Daily share pop-up
+  $("#dshare-copy").addEventListener("click", dailyCopyText);
+  $("#dshare-text").addEventListener("click", dailyShareText);
+  $("#dshare-pic").addEventListener("click", dailySharePicture);
+  $("#dshare-close").addEventListener("click", closeDailyShareModal);
+  $("#daily-share-modal").addEventListener("click", (e) => {
+    if (e.target === $("#daily-share-modal")) closeDailyShareModal(); // tap backdrop
+  });
 }
 
 function _dailyReset() {
@@ -2729,6 +2743,11 @@ async function dailyFinish(outcome) {
   _updateDailyStreak();  // bump this pool's day streak (once per date)
   _saveDailyProgress();  // remember completion on this device
   renderDaily();
+  // Pop the share card (Clues-by-Sam style) for real solves – but not for the
+  // tutorial, QA runs, or a read-only board preview.
+  if (!daily.practice && !daily.qa && !daily.qaView) {
+    setTimeout(openDailyShareModal, 550); // let the last reveal animation land
+  }
 }
 
 // The "What each clue meant" box: a row per base clue, then a row for each
@@ -2898,41 +2917,242 @@ async function dailyRate(rating) {
   }
 }
 
-function dailyShare() {
-  // No board grid – that would reveal the answers to whoever you share with
-  // (change #3). Share only the outcome, mistakes, guesses and time.
+// ---- Daily completion share pop-up ----------------------------------------
+// The guess "trail": every tap in the order it happened – a green square for a
+// correct blue, a red square for a mistake. It's personal and Wordle-like, but
+// leaks NOTHING about where the blue tiles are (change #3), so it's safe to put
+// in a shared image. A flawless solve is just a run of greens.
+function _dailyTrail() {
+  return (daily.taps || [])
+    .filter((t) => t.colour !== "assassin") // the assassin ends it; shown separately
+    .map((t) => t.colour === "blue");
+}
+const _MO_FULL = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function _ordinal(n) {
+  const s = ["th", "st", "nd", "rd"], v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+function _dailyDateTitle() {
+  const dd = new Date(`${daily.date}T00:00:00`);
+  if (isNaN(dd)) return "";
+  return `${_MO_FULL[dd.getMonth()]} ${_ordinal(dd.getDate())} ${dd.getFullYear()}`;
+}
+
+// The text people actually share. Keeps the "main messages" (outcome, mistakes,
+// time, hints, streak) and adds the emoji trail as a spoiler-free visual line.
+function _dailyShareText(includeUrl) {
   const time = fmtClock(dailyElapsedSecs());
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All gens";
   const diff = dailyDifficulty(daily.clues);
   const WD = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const dd = new Date(`${daily.date}T00:00:00`);
-  const dateLabel = isNaN(dd) ? "" : `${WD[dd.getDay()]} ${dd.getDate()} ${MO[dd.getMonth()]}`;
+  const dateLabel = isNaN(dd) ? "" : `${WD[dd.getDay()]} ${dd.getDate()} ${_MO_FULL[dd.getMonth()]}`;
+  const trail = _dailyTrail().map((w) => (w ? "🟩" : "🟥")).join("");
+  const hitAssassin = daily.outcome === "assassin";
   const mistakesText = daily.mistakes === 0
     ? "no mistakes"
     : `❌ ${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"}`;
   const outcome = daily.outcome === "win"
     ? `✅ Solved – ${mistakesText}`
-    : `😵 ${daily.bluesFound}/9 – ${mistakesText}`;
+    : hitAssassin ? `💀 Hit the assassin – ${daily.bluesFound}/9`
+      : `😵 ${daily.bluesFound}/9 – ${mistakesText}`;
   const st = _getStreak(daily.pool);
   const hintsLine = daily.hintsUsed
     ? `💡 ${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}`
     : `🚫 no hints`;
-  // Link goes on its own line – so it's embedded in the text (not passed as the
-  // share `url`, which apps append inline).
-  const url = dailyUrl(daily.pool);
-  const text = [
+  const lines = [
     `Pokémon Codenames – Daily 🧩`,
     `${poolLabel} · ${diff.label}${dateLabel ? ` · ${dateLabel}` : ""}`,
+    ...(trail ? [trail + (hitAssassin ? "💀" : "")] : []),
     outcome,
     `⏱ ${time}`,
     hintsLine,
     ...(st.current >= 1 ? [`🔥 ${st.current}-day win streak`] : []),
     `Can you beat it? 👇`,
-    url,
-  ].join("\n");
-  nativeShare({ title: "Pokémon Codenames – Daily", text });
+  ];
+  if (includeUrl) lines.push(dailyUrl(daily.pool));
+  return lines.join("\n");
 }
+
+// Paint the trail as DOM squares inside `el` (wraps if long).
+function _renderTrailDom(el) {
+  const trail = _dailyTrail();
+  el.innerHTML = trail
+    .map((w) => `<span class="dtrail-sq ${w ? "hit" : "miss"}"></span>`).join("")
+    + (daily.outcome === "assassin" ? `<span class="dtrail-sq assassin">💀</span>` : "");
+}
+
+function openDailyShareModal() {
+  const modal = $("#daily-share-modal");
+  if (!modal) return;
+  const time = fmtClock(dailyElapsedSecs());
+  const diff = dailyDifficulty(daily.clues);
+  $("#dshare-title").textContent = `${_dailyDateTitle()} (${diff.label})`;
+  _renderTrailDom($("#dshare-visual"));
+
+  const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
+  if (daily.outcome === "win") {
+    $("#dshare-caption").textContent = daily.mistakes === 0 ? "Perfect solve!" : `${poolName} solved`;
+    $("#dshare-headline").textContent = `Solved in ${time}`;
+    $("#dshare-sub").textContent =
+      `${daily.mistakes === 0 ? "No mistakes" : `${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"}`}`
+      + ` · ${daily.hintsUsed ? `${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}` : "no hints"}`;
+  } else {
+    const hit = daily.outcome === "assassin";
+    $("#dshare-caption").textContent = hit ? "You hit the assassin!" : "Out of guesses";
+    $("#dshare-headline").textContent = `${daily.bluesFound}/9 found`;
+    $("#dshare-sub").textContent =
+      `${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"} · ⏱ ${time}`
+      + ` · ${daily.hintsUsed ? `${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}` : "no hints"}`;
+  }
+
+  const st = _getStreak(daily.pool);
+  const streakEl = $("#dshare-streak");
+  if (st.current >= 1) {
+    streakEl.innerHTML = `🔥 ${poolName} win streak: <strong>${st.current}</strong>`
+      + (st.best > st.current ? ` · best ${st.best}` : "");
+    streakEl.hidden = false;
+  } else if (daily.outcome !== "win" && st.best > 0) {
+    streakEl.innerHTML = `💔 Win streak reset · best ${st.best}`;
+    streakEl.hidden = false;
+  } else {
+    streakEl.hidden = true;
+  }
+  modal.classList.remove("hidden");
+}
+
+function closeDailyShareModal() {
+  const modal = $("#daily-share-modal");
+  if (modal) modal.classList.add("hidden");
+}
+
+function dailyShareText() {
+  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
+  nativeShare({ title: "Pokémon Codenames – Daily", text: _dailyShareText(includeUrl) });
+}
+
+async function dailyCopyText() {
+  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
+  const text = _dailyShareText(includeUrl);
+  try {
+    await navigator.clipboard.writeText(text);
+    toast("Copied to clipboard");
+  } catch (_) {
+    // Fallback for browsers without the async clipboard API.
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast("Copied to clipboard"); }
+    catch { toast("Couldn't copy – long-press to select"); }
+    ta.remove();
+  }
+}
+
+// Render the result as a shareable PNG (no board grid – spoiler-free). Uses the
+// same trail + stats as the modal, drawn on a dark card with the brand mark.
+async function dailySharePicture() {
+  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
+  const blob = await _renderDailyCardBlob();
+  if (!blob) { toast("Couldn't build the image"); return; }
+  const file = new File([blob], "pokemon-codenames-daily.png", { type: "image/png" });
+  const text = _dailyShareText(includeUrl);
+  // Prefer sharing the file where supported; fall back to a download.
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], text, title: "Pokémon Codenames – Daily" }); return; }
+    catch (_) { /* cancelled or failed – fall through to download */ }
+  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = file.name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+  toast("Image saved");
+}
+
+function _roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + w, y, x + w, y + h, r);
+  ctx.arcTo(x + w, y + h, x, y + h, r);
+  ctx.arcTo(x, y + h, x, y, r);
+  ctx.arcTo(x, y, x + w, y, r);
+  ctx.closePath();
+}
+
+async function _renderDailyCardBlob() {
+  const S = 2; // supersample for crisp text on mobile
+  const W = 600, H = 470;
+  const cv = document.createElement("canvas");
+  cv.width = W * S; cv.height = H * S;
+  const ctx = cv.getContext("2d");
+  ctx.scale(S, S);
+  // background
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, "#1b2030"); g.addColorStop(1, "#0e1119");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  ctx.textAlign = "center";
+  const cx = W / 2;
+  const diff = dailyDifficulty(daily.clues);
+  const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
+
+  ctx.fillStyle = "#eef1f8";
+  ctx.font = "700 30px 'Space Grotesk', system-ui, sans-serif";
+  ctx.fillText("Pokémon Codenames", cx, 56);
+  ctx.fillStyle = "#9aa4bd";
+  ctx.font = "600 20px 'Inter', system-ui, sans-serif";
+  ctx.fillText(`Daily · ${poolName} · ${diff.label}`, cx, 86);
+  ctx.fillText(_dailyDateTitle(), cx, 112);
+
+  // trail squares (wrap at 9 per row so a perfect solve is one neat row)
+  const trail = _dailyTrail();
+  const per = 9, sq = 34, gap = 10;
+  const rows = Math.max(1, Math.ceil(trail.length / per));
+  let ty = 150;
+  for (let r = 0; r < rows; r++) {
+    const slice = trail.slice(r * per, r * per + per);
+    const rowW = slice.length * sq + (slice.length - 1) * gap;
+    let x = cx - rowW / 2;
+    for (const win of slice) {
+      ctx.fillStyle = win ? "#3fbf4f" : "#e0453c";
+      _roundRect(ctx, x, ty, sq, sq, 7); ctx.fill();
+      x += sq + gap;
+    }
+    ty += sq + gap;
+  }
+  if (daily.outcome === "assassin") {
+    ctx.font = "700 30px system-ui"; ctx.fillText("💀", cx, ty + 4);
+    ty += sq;
+  }
+
+  // headline + stats
+  const time = fmtClock(dailyElapsedSecs());
+  ctx.fillStyle = "#eef1f8";
+  ctx.font = "700 34px 'Space Grotesk', system-ui, sans-serif";
+  const headline = daily.outcome === "win" ? `Solved in ${time}` : `${daily.bluesFound}/9 found`;
+  ctx.fillText(headline, cx, ty + 46);
+  ctx.fillStyle = "#c3cade";
+  ctx.font = "500 21px 'Inter', system-ui, sans-serif";
+  const mistakes = daily.mistakes === 0 ? "no mistakes" : `${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"}`;
+  const hints = daily.hintsUsed ? `${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}` : "no hints";
+  const stats = daily.outcome === "win" ? `${mistakes} · ${hints}` : `${mistakes} · ⏱ ${time} · ${hints}`;
+  ctx.fillText(stats, cx, ty + 78);
+  const st = _getStreak(daily.pool);
+  if (st.current >= 1) {
+    ctx.fillStyle = "#ffb347";
+    ctx.font = "600 21px 'Inter', system-ui, sans-serif";
+    ctx.fillText(`🔥 ${st.current}-day win streak`, cx, ty + 112);
+  }
+
+  ctx.fillStyle = "#78829e";
+  ctx.font = "500 18px 'IBM Plex Mono', monospace";
+  let host = "";
+  try { host = location.host || ""; } catch (_) { host = ""; }
+  ctx.fillText(host || "Play the daily puzzle", cx, H - 26);
+
+  return new Promise((res) => cv.toBlob(res, "image/png"));
+}
+
+// Kept as the entry point used by the inline result button.
+function dailyShare() { openDailyShareModal(); }
 
 // ============================================================================
 // Boot

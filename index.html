@@ -90,7 +90,7 @@
   <section class="screen active" id="screen-landing">
     <div class="hero">
       <h1>Pokémon Codenames</h1>
-      <p>Two teams, one Pokedex-flavored board. Clue givers give one-word clues to guide their clue receivers to their own Pokemon – without landing on the other team's, a neutral, or the assassin.</p>
+      <p>A daily Pokédex puzzle. Crack today's board from a handful of one-word clues – find all 9 hidden Pokémon before you run out of guesses.</p>
     </div>
 
     <div class="daily-cta">
@@ -103,6 +103,25 @@
         <button class="btn btn-primary" id="daily-gen1-btn">Gen I</button>
         <button class="btn btn-ghost" id="daily-mixed-btn">All gens</button>
       </div>
+    </div>
+
+    <div class="friends-cta">
+      <div class="friends-cta-text">
+        <h2>👥 Play with friends</h2>
+        <div class="sub">Classic teams, 2-player co-op, or vs the AI. Create a room or join with a code.</div>
+      </div>
+      <button class="btn btn-ghost" id="go-friends-btn">Play with friends →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       PLAY WITH FRIENDS SCREEN (create / join a room)
+       ================================================================== -->
+  <section class="screen" id="screen-friends">
+    <div class="friends-head">
+      <button class="btn btn-ghost btn-mini" id="friends-back-btn">← Back</button>
+      <h1>Play with friends</h1>
+      <p class="friends-sub">Give one-word clues to guide your team to their Pokémon – without hitting the other team's, a neutral, or the assassin.</p>
     </div>
 
     <div class="panel-grid">
@@ -424,6 +443,25 @@
       <button class="btn btn-primary" id="new-game-btn">Start a new game</button>
       <button class="btn btn-share" id="share-result-btn">↗ Share result</button>
       <button class="btn btn-ghost" id="see-board-btn">See the board</button>
+    </div>
+  </div>
+
+  <!-- Daily completion share pop-up (Clues-by-Sam style) -->
+  <div class="dshare-overlay hidden" id="daily-share-modal">
+    <div class="dshare-card">
+      <div class="dshare-title" id="dshare-title"></div>
+      <div class="dshare-visual" id="dshare-visual" aria-hidden="true"></div>
+      <div class="dshare-caption" id="dshare-caption"></div>
+      <div class="dshare-headline" id="dshare-headline"></div>
+      <div class="dshare-sub" id="dshare-sub"></div>
+      <div class="dshare-streak" id="dshare-streak"></div>
+      <div class="dshare-btns">
+        <button class="btn btn-ghost dshare-copy" id="dshare-copy">Copy Text</button>
+        <button class="btn btn-share" id="dshare-text">Share Text</button>
+        <button class="btn btn-share" id="dshare-pic">Share Picture</button>
+      </div>
+      <label class="dshare-url"><input type="checkbox" id="dshare-url" checked /> Include link</label>
+      <button class="btn btn-ghost dshare-close" id="dshare-close">Close</button>
     </div>
   </div>
 
