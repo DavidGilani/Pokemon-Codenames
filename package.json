@@ -1,0 +1,9 @@
+{
+  "name": "pokemon-codenames",
+  "private": true,
+  "description": "Serverless helpers for dynamic daily link-preview cards. The site itself is static (index.html/style.css/app.js) with no build step; these deps are only for the /api functions.",
+  "dependencies": {
+    "@vercel/og": "^0.6.8"
+  },
+  "type": "module"
+}

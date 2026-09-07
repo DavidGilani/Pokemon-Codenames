@@ -1791,7 +1791,9 @@ function dailyDifficulty(clues) {
 function dailyParam(pool) { return pool === "gen1" ? "1" : "all"; }
 function poolFromParam(v) { return v === "1" ? "gen1" : v === "all" ? "mixed" : null; }
 function dailyUrl(pool) {
-  return `${window.location.origin}${window.location.pathname}?daily=${dailyParam(pool)}`;
+  // Share via the /d/ path (served by api/share.js) so the link unfurls with a
+  // per-day preview card; it redirects real browsers into the SPA at ?daily=…
+  return `${window.location.origin}/d/${dailyParam(pool)}`;
 }
 function setDailyUrl(pool) {
   try { history.replaceState(null, "", `${window.location.pathname}?daily=${dailyParam(pool)}`); } catch {}

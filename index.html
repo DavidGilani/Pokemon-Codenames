@@ -18,13 +18,17 @@
 <meta name="theme-color" content="#0e1119" />
 <link rel="manifest" href="site.webmanifest" />
 
-<!-- social / link-preview cards -->
-<meta property="og:title" content="Pokémon Codenames" />
-<meta property="og:description" content="A Pokédex-flavoured spin on Codenames – give one-word clues to guide your team to their Pokémon and avoid the assassin." />
+<!-- social / link-preview cards. The bare site unfurls with today's Gen I daily
+     card (dynamic, updates each day); pool-specific daily shares use /d/1 · /d/all
+     (api/share.js), which set their own per-day og:image. -->
+<meta property="og:title" content="Pokémon Codenames – Daily puzzle" />
+<meta property="og:description" content="Crack today's board from a handful of one-word clues – can you find all 9 hidden Pokémon?" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="icon-512.png" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:image" content="icon-512.png" />
+<meta property="og:image" content="/api/og?daily=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="/api/og?daily=1" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

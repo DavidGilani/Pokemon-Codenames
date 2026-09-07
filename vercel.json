@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/d/:pool", "destination": "/api/share?daily=:pool" }
+  ]
+}
