@@ -35,8 +35,15 @@ function dateLabel(iso){
   return `${MO[d.getUTCMonth()]} ${ordinal(d.getUTCDate())} ${d.getUTCFullYear()}`;
 }
 // tiny element helper so we don't need JSX / a build step. 4th arg carries any
-// non-style props (e.g. an <img> src), which Satori reads directly.
-const h = (type, style, children, props = {}) => ({ type, props: { style, children, ...props } });
+// non-style props (e.g. an <img> src), which Satori reads directly. Satori
+// requires display:flex on any element with >1 child node, so add it by default.
+const h = (type, style, children, props = {}) => {
+  const st = { ...style };
+  // Satori requires display:flex on any non-leaf div; default every div to flex
+  // (single-text divs render fine) so we can't miss one.
+  if (type === "div" && !st.display) st.display = "flex";
+  return { type, props: { style: st, children, ...props } };
+};
 
 export default async function handler(req) {
   const url = new URL(req.url);
@@ -62,23 +69,42 @@ export default async function handler(req) {
     fetch(new URL("/ogassets/Outfit-Regular.ttf", url.origin)).then((r) => r.arrayBuffer()),
   ]);
 
-  const chip = (c) => h("div", {
-    display: "flex", alignItems: "center", background: "#1b2130",
-    border: "1px solid #2b3346", borderRadius: 12, padding: "10px 16px", margin: 6,
-    fontSize: 30, color: "#eef1f8", fontWeight: 700,
-  }, [
-    String(c.word || ""),
-    h("span", { color: "#8b95ad", fontWeight: 400, marginLeft: 10, fontSize: 26 },
-      c.anti ? "×0" : `×${c.number || 1}`),
-  ]);
+  // Clue colours match the puzzle page (DAILY_CLUE_COLORS in app.js), indexed by
+  // clue order so a given clue reads the same colour it does in-game.
+  const CLUE_COLORS = ["#e5484d", "#f5a524", "#46c26a", "#3fb6e0", "#c150c8"];
+  const list = (clues.length ? clues : [{ word: "Play today's puzzle", number: 9 }]).slice(0, 5);
+  // Size the clue text to the longest word so big words still fit 3-across.
+  const maxLen = Math.max(1, ...list.map((c) => String(c.word || "").length));
+  const fs = maxLen >= 11 ? 38 : maxLen >= 9 ? 46 : 54;
+  const numFs = Math.round(fs * 0.72);
+  const dotSz = Math.round(fs * 0.42);
+
+  const chip = (c, i) => {
+    const col = CLUE_COLORS[i % CLUE_COLORS.length];
+    return h("div", {
+      display: "flex", alignItems: "center", background: "#151b27",
+      border: `3px solid ${col}`, borderRadius: 20, padding: "16px 26px", margin: 11,
+    }, [
+      h("div", { width: dotSz, height: dotSz, borderRadius: dotSz, background: col, marginRight: 16 }, []),
+      h("div", { fontSize: fs, color: "#f4f6fb", fontWeight: 700 }, String(c.word || "")),
+      h("div", { fontSize: numFs, color: "#93a0ba", fontWeight: 400, marginLeft: 14 },
+        c.anti ? "×0" : `×${c.number || 1}`),
+    ]);
+  };
+
+  // Olympic-rings layout: up to 3 on the top row, the rest centred underneath.
+  const top = Math.min(3, Math.ceil(list.length / 2));
+  const row1 = list.slice(0, top);
+  const row2 = list.slice(top);
+  const rowStyle = { display: "flex", justifyContent: "center", alignItems: "center" };
 
   const tree = h("div", {
     width: "100%", height: "100%", display: "flex", flexDirection: "column",
-    background: "linear-gradient(160deg,#1b2030,#0e1119)", padding: 56,
+    background: "linear-gradient(160deg,#1b2030,#0e1119)", padding: "44px 56px",
     fontFamily: "Outfit", color: "#eef1f8",
   }, [
     // header row: logo + wordmark
-    h("div", { display: "flex", alignItems: "center", marginBottom: 8 }, [
+    h("div", { display: "flex", alignItems: "center" }, [
       h("img", { width: 92, height: 92, marginRight: 22 }, [], { src: LOGO_DATA_URI, width: 92, height: 92 }),
       h("div", { display: "flex", flexDirection: "column" }, [
         h("div", { fontSize: 52, fontWeight: 700, lineHeight: 1.05 }, "Pokémon Codenames"),
@@ -86,13 +112,15 @@ export default async function handler(req) {
           `Daily · ${poolLabel} · ${diff}${date ? " · " + dateLabel(date) : ""}`),
       ]),
     ]),
-    // clues
-    h("div", { fontSize: 26, color: "#c9a24a", fontWeight: 700, letterSpacing: 2,
-      textTransform: "uppercase", margin: "26px 0 6px" }, "Today's clues"),
-    h("div", { display: "flex", flexWrap: "wrap", alignContent: "flex-start", flex: 1 },
-      (clues.length ? clues : [{ word: "Play today's puzzle", number: 9 }]).slice(0, 6).map(chip)),
+    // clues – centred and filling the space
+    h("div", { display: "flex", flexDirection: "column", flex: 1, justifyContent: "center", alignItems: "center" }, [
+      h("div", { fontSize: 26, color: "#c9a24a", fontWeight: 700, letterSpacing: 2,
+        textTransform: "uppercase", marginBottom: 20, display: "flex" }, "Today's clues"),
+      h("div", rowStyle, row1.map((c, i) => chip(c, i))),
+      ...(row2.length ? [h("div", rowStyle, row2.map((c, i) => chip(c, top + i)))] : []),
+    ]),
     // footer
-    h("div", { display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }, [
+    h("div", { display: "flex", justifyContent: "space-between", alignItems: "center" }, [
       h("div", { fontSize: 30, fontWeight: 700, color: "#ffd24a" }, "Can you solve it?"),
       h("div", { fontSize: 26, color: "#78829e" }, (url.host || "")),
     ]),
