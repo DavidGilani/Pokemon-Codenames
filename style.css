@@ -980,12 +980,7 @@ a { color: var(--accent); }
 }
 .dshare-streak strong { color: #ffb347; }
 .dshare-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-.dshare-url {
-  display: flex; align-items: center; gap: 7px; justify-content: center;
-  margin-top: 16px; font-size: 14px; color: var(--text-dim); cursor: pointer;
-}
-.dshare-url input { width: 16px; height: 16px; accent-color: var(--blue); }
-.dshare-close { display: block; width: 100%; margin-top: 14px; }
+.dshare-close { display: block; width: 100%; margin-top: 12px; }
 
 .waiting-inline {
   text-align: center; color: var(--text-faint); font-size: 13px;

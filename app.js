@@ -1943,7 +1943,10 @@ function initDaily() {
   // Daily share pop-up
   $("#dshare-copy").addEventListener("click", dailyCopyText);
   $("#dshare-text").addEventListener("click", dailyShareText);
-  $("#dshare-pic").addEventListener("click", dailySharePicture);
+  $("#dshare-other").addEventListener("click", () => {
+    closeDailyShareModal();
+    startDaily(daily.pool === "gen1" ? "mixed" : "gen1");
+  });
   $("#dshare-close").addEventListener("click", closeDailyShareModal);
   $("#daily-share-modal").addEventListener("click", (e) => {
     if (e.target === $("#daily-share-modal")) closeDailyShareModal(); // tap backdrop
@@ -3020,6 +3023,10 @@ function openDailyShareModal() {
   } else {
     streakEl.hidden = true;
   }
+  // "Play the other puzzle" – jump straight to the opposite pool.
+  const other = daily.pool === "gen1" ? "mixed" : "gen1";
+  const otherBtn = $("#dshare-other");
+  if (otherBtn) otherBtn.textContent = `Play the ${other === "gen1" ? "Gen I" : "All-gens"} puzzle`;
   modal.classList.remove("hidden");
 }
 
@@ -3029,13 +3036,11 @@ function closeDailyShareModal() {
 }
 
 function dailyShareText() {
-  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
-  nativeShare({ title: "Pokémon Codenames – Daily", text: _dailyShareText(includeUrl) });
+  nativeShare({ title: "Pokémon Codenames – Daily", text: _dailyShareText(true) });
 }
 
 async function dailyCopyText() {
-  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
-  const text = _dailyShareText(includeUrl);
+  const text = _dailyShareText(true);
   try {
     await navigator.clipboard.writeText(text);
     toast("Copied to clipboard");
@@ -3048,109 +3053,6 @@ async function dailyCopyText() {
     catch { toast("Couldn't copy – long-press to select"); }
     ta.remove();
   }
-}
-
-// Render the result as a shareable PNG (no board grid – spoiler-free). Uses the
-// same trail + stats as the modal, drawn on a dark card with the brand mark.
-async function dailySharePicture() {
-  const includeUrl = $("#dshare-url") ? $("#dshare-url").checked : true;
-  const blob = await _renderDailyCardBlob();
-  if (!blob) { toast("Couldn't build the image"); return; }
-  const file = new File([blob], "pokemon-codenames-daily.png", { type: "image/png" });
-  const text = _dailyShareText(includeUrl);
-  // Prefer sharing the file where supported; fall back to a download.
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
-    try { await navigator.share({ files: [file], text, title: "Pokémon Codenames – Daily" }); return; }
-    catch (_) { /* cancelled or failed – fall through to download */ }
-  }
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = file.name; document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 4000);
-  toast("Image saved");
-}
-
-function _roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.arcTo(x + w, y, x + w, y + h, r);
-  ctx.arcTo(x + w, y + h, x, y + h, r);
-  ctx.arcTo(x, y + h, x, y, r);
-  ctx.arcTo(x, y, x + w, y, r);
-  ctx.closePath();
-}
-
-async function _renderDailyCardBlob() {
-  const S = 2; // supersample for crisp text on mobile
-  const W = 600, H = 470;
-  const cv = document.createElement("canvas");
-  cv.width = W * S; cv.height = H * S;
-  const ctx = cv.getContext("2d");
-  ctx.scale(S, S);
-  // background
-  const g = ctx.createLinearGradient(0, 0, 0, H);
-  g.addColorStop(0, "#1b2030"); g.addColorStop(1, "#0e1119");
-  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-  ctx.textAlign = "center";
-  const cx = W / 2;
-  const diff = dailyDifficulty(daily.clues);
-  const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
-
-  ctx.fillStyle = "#eef1f8";
-  ctx.font = "700 30px 'Space Grotesk', system-ui, sans-serif";
-  ctx.fillText("Pokémon Codenames", cx, 56);
-  ctx.fillStyle = "#9aa4bd";
-  ctx.font = "600 20px 'Inter', system-ui, sans-serif";
-  ctx.fillText(`Daily · ${poolName} · ${diff.label}`, cx, 86);
-  ctx.fillText(_dailyDateTitle(), cx, 112);
-
-  // trail squares (wrap at 9 per row so a perfect solve is one neat row)
-  const trail = _dailyTrail();
-  const per = 9, sq = 34, gap = 10;
-  const rows = Math.max(1, Math.ceil(trail.length / per));
-  let ty = 150;
-  for (let r = 0; r < rows; r++) {
-    const slice = trail.slice(r * per, r * per + per);
-    const rowW = slice.length * sq + (slice.length - 1) * gap;
-    let x = cx - rowW / 2;
-    for (const win of slice) {
-      ctx.fillStyle = win ? "#3fbf4f" : "#e0453c";
-      _roundRect(ctx, x, ty, sq, sq, 7); ctx.fill();
-      x += sq + gap;
-    }
-    ty += sq + gap;
-  }
-  if (daily.outcome === "assassin") {
-    ctx.font = "700 30px system-ui"; ctx.fillText("💀", cx, ty + 4);
-    ty += sq;
-  }
-
-  // headline + stats
-  const time = fmtClock(dailyElapsedSecs());
-  ctx.fillStyle = "#eef1f8";
-  ctx.font = "700 34px 'Space Grotesk', system-ui, sans-serif";
-  const headline = daily.outcome === "win" ? `Solved in ${time}` : `${daily.bluesFound}/9 found`;
-  ctx.fillText(headline, cx, ty + 46);
-  ctx.fillStyle = "#c3cade";
-  ctx.font = "500 21px 'Inter', system-ui, sans-serif";
-  const mistakes = daily.mistakes === 0 ? "no mistakes" : `${daily.mistakes} mistake${daily.mistakes === 1 ? "" : "s"}`;
-  const hints = daily.hintsUsed ? `${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}` : "no hints";
-  const stats = daily.outcome === "win" ? `${mistakes} · ${hints}` : `${mistakes} · ⏱ ${time} · ${hints}`;
-  ctx.fillText(stats, cx, ty + 78);
-  const st = _getStreak(daily.pool);
-  if (st.current >= 1) {
-    ctx.fillStyle = "#ffb347";
-    ctx.font = "600 21px 'Inter', system-ui, sans-serif";
-    ctx.fillText(`🔥 ${st.current}-day win streak`, cx, ty + 112);
-  }
-
-  ctx.fillStyle = "#78829e";
-  ctx.font = "500 18px 'IBM Plex Mono', monospace";
-  let host = "";
-  try { host = location.host || ""; } catch (_) { host = ""; }
-  ctx.fillText(host || "Play the daily puzzle", cx, H - 26);
-
-  return new Promise((res) => cv.toBlob(res, "image/png"));
 }
 
 // Kept as the entry point used by the inline result button.
