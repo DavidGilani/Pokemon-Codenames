@@ -10,7 +10,12 @@ export default function handler(req) {
   const pool = p === "all" ? "mixed" : "gen1";
   const poolLabel = pool === "gen1" ? "Gen I" : "All-gens";
   const origin = url.origin;
-  const img = `${origin}/api/og?daily=${p}`;
+  // Cache-buster: the card content changes each day but /d/:pool is a stable URL,
+  // and crawlers (WhatsApp, Facebook…) cache og:image hard. Stamping today's date
+  // (UTC, matching the DB's current_date rollover) makes each day a fresh image
+  // URL so the preview actually updates daily. og.js ignores this param.
+  const day = new Date().toISOString().slice(0, 10);
+  const img = `${origin}/api/og?daily=${p}&d=${day}`;
   const target = `${origin}/?daily=${p}`;
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
   const title = `Pokémon Codenames – Daily (${poolLabel})`;
