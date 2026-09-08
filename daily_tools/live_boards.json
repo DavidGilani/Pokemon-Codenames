@@ -1,105 +1,5 @@
 [
  {
-  "date": "2026-08-17",
-  "pool": "gen1",
-  "clues": [
-   {
-    "word": "WATER",
-    "n": 3,
-    "cat": 1,
-    "m": [
-     "Poliwag",
-     "Horsea",
-     "Krabby"
-    ]
-   },
-   {
-    "word": "SLEEP",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Drowzee",
-     "Hypno"
-    ]
-   },
-   {
-    "word": "SPOONS",
-    "n": 2,
-    "cat": 2,
-    "m": [
-     "Kadabra",
-     "Alakazam"
-    ]
-   },
-   {
-    "word": "ORPHAN",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Cubone"
-    ]
-   },
-   {
-    "word": "TONGUE",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Lickitung"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-17",
-  "pool": "mixed",
-  "clues": [
-   {
-    "word": "WATER",
-    "n": 3,
-    "cat": 1,
-    "m": [
-     "Swampert",
-     "Empoleon",
-     "Greninja"
-    ]
-   },
-   {
-    "word": "AURA",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Lucario"
-    ]
-   },
-   {
-    "word": "GOWN",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Gardevoir"
-    ]
-   },
-   {
-    "word": "PSEUDO",
-    "n": 3,
-    "cat": 5,
-    "m": [
-     "Hydreigon",
-     "Garchomp",
-     "Salamence"
-    ]
-   },
-   {
-    "word": "GRIN",
-    "n": 1,
-    "cat": 3,
-    "m": [
-     "Gengar"
-    ]
-   }
-  ]
- },
- {
   "date": "2026-08-18",
   "pool": "gen1",
   "clues": [
@@ -3484,7 +3384,7 @@
     ]
    },
    {
-    "word": "GOLEM-TRIO",
+    "word": "GOLEM",
     "n": 3,
     "cat": 5,
     "m": [
@@ -4298,6 +4198,106 @@
     "cat": 2,
     "m": [
      "Espurr"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-09-29",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "NORMAL",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Chansey",
+     "Tauros",
+     "Kangaskhan"
+    ]
+   },
+   {
+    "word": "NIPPERS",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Krabby"
+    ]
+   },
+   {
+    "word": "AERIAL",
+    "n": 1,
+    "cat": 1,
+    "m": [
+     "Golbat"
+    ]
+   },
+   {
+    "word": "CARAPACE",
+    "n": 2,
+    "cat": 2,
+    "m": [
+     "Kabuto",
+     "Shellder"
+    ]
+   },
+   {
+    "word": "SLUDGE",
+    "n": 2,
+    "cat": 4,
+    "m": [
+     "Grimer",
+     "Weezing"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-09-29",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "BARS",
+    "n": 2,
+    "cat": 2,
+    "m": [
+     "Basculin",
+     "Zebstrika"
+    ]
+   },
+   {
+    "word": "DARK",
+    "n": 1,
+    "cat": 1,
+    "m": [
+     "Purrloin"
+    ]
+   },
+   {
+    "word": "SPIRIT",
+    "n": 1,
+    "cat": 4,
+    "m": [
+     "Sandygast"
+    ]
+   },
+   {
+    "word": "CRUSTACEAN",
+    "n": 3,
+    "cat": 3,
+    "m": [
+     "Clauncher",
+     "Crabrawler",
+     "Corphish"
+    ]
+   },
+   {
+    "word": "NORMAL",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Furfrou",
+     "Miltank"
     ]
    }
   ]

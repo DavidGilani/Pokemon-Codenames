@@ -314,3 +314,21 @@ board("2026-09-28","mixed","Easy",[
   ("GLARE",2,"sprite:glare",["Espurr"]),
 ], exclude=["Floatzel","Brionne","Primarina","Servine","Serperior","Bayleef","Meganium",
             "Boldore","Gigalith","Barbaracle","Abomasnow","Cubchoo","Meowstic"])
+
+# ===== 09-29 Tue : MEDIUM (gap fill) =====
+board("2026-09-29","gen1","Medium",[
+  ("NORMAL",1,"type:normal",["Chansey","Tauros","Kangaskhan"]),
+  ("AERIAL",1,"type:flying",["Golbat"]),
+  ("CARAPACE",2,"sprite:shell",["Kabuto","Shellder"]),
+  ("NIPPERS",3,"arch:crab",["Krabby"]),
+  ("SLUDGE",4,"lore:poison-gas",["Weezing","Grimer"]),
+], exclude=["Blissey","Miltank","Zubat","Crobat","Kabutops","Cloyster","Kingler","Koffing","Muk",
+            "Nidoking","Nidoqueen","Rhydon","Rhyhorn","Persian","Raichu"])
+board("2026-09-29","mixed","Medium",[
+  ("NORMAL",1,"type:normal",["Furfrou","Miltank"]),
+  ("DARK",1,"type:dark",["Purrloin"]),
+  ("CRUSTACEAN",3,"arch:crustacean",["Clauncher","Crabrawler","Corphish"]),
+  ("SPIRIT",4,"based:a-haunted-sandcastle",["Sandygast"]),
+  ("BARS",2,"sprite:zebra-stripes",["Zebstrika","Basculin"]),
+], exclude=["Liepard","Clawitzer","Crabominable","Crawdaunt","Palossand","Blitzle","Basculegion",
+            "Chansey","Tauros","Kangaskhan","Girafarig","Furret"])
