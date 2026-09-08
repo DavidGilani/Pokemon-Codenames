@@ -3459,11 +3459,12 @@
   "pool": "mixed",
   "clues": [
    {
-    "word": "FAIRY",
-    "n": 2,
+    "word": "BABY",
+    "n": 3,
     "cat": 1,
     "m": [
      "Cleffa",
+     "Pichu",
      "Igglybuff"
     ]
    },
@@ -3638,7 +3639,7 @@
     ]
    },
    {
-    "word": "SKULL-CAP",
+    "word": "SKULL",
     "n": 1,
     "cat": 4,
     "m": [
