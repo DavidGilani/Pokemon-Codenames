@@ -1,105 +1,5 @@
 [
  {
-  "date": "2026-08-18",
-  "pool": "gen1",
-  "clues": [
-   {
-    "word": "WIELD",
-    "n": 4,
-    "cat": 4,
-    "m": [
-     "Farfetch'd",
-     "Alakazam",
-     "Cubone",
-     "Hitmonchan"
-    ]
-   },
-   {
-    "word": "ARMS",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Machamp"
-    ]
-   },
-   {
-    "word": "POUCH",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Kangaskhan"
-    ]
-   },
-   {
-    "word": "HORN",
-    "n": 2,
-    "cat": 2,
-    "m": [
-     "Nidoking",
-     "Rhydon"
-    ]
-   },
-   {
-    "word": "BLADES",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Scyther"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-18",
-  "pool": "mixed",
-  "clues": [
-   {
-    "word": "THREE",
-    "n": 4,
-    "cat": 2,
-    "m": [
-     "Magneton",
-     "Dugtrio",
-     "Hydreigon",
-     "Dodrio"
-    ]
-   },
-   {
-    "word": "AURA",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Lucario"
-    ]
-   },
-   {
-    "word": "GOWN",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Gardevoir"
-    ]
-   },
-   {
-    "word": "BLADES",
-    "n": 2,
-    "cat": 2,
-    "m": [
-     "Scizor",
-     "Aegislash"
-    ]
-   },
-   {
-    "word": "FROG",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Greninja"
-    ]
-   }
-  ]
- },
- {
   "date": "2026-08-19",
   "pool": "gen1",
   "clues": [
@@ -3662,7 +3562,7 @@
     ]
    },
    {
-    "word": "JUVENILE",
+    "word": "KID",
     "n": 2,
     "cat": 3,
     "m": [
@@ -3703,9 +3603,9 @@
   "pool": "gen1",
   "clues": [
    {
-    "word": "SCALE-POWDER",
+    "word": "POWDER",
     "n": 2,
-    "cat": 3,
+    "cat": 2,
     "m": [
      "Venomoth",
      "Butterfree"
@@ -3721,15 +3621,15 @@
     ]
    },
    {
-    "word": "FOREHEAD-GEM",
+    "word": "CAT",
     "n": 1,
-    "cat": 2,
+    "cat": 3,
     "m": [
      "Persian"
     ]
    },
    {
-    "word": "PINCER-CLAW",
+    "word": "SHELLFISH",
     "n": 1,
     "cat": 3,
     "m": [
@@ -3737,7 +3637,7 @@
     ]
    },
    {
-    "word": "MYTHIC-SERPENT",
+    "word": "SERPENT",
     "n": 3,
     "cat": 4,
     "m": [
@@ -3762,7 +3662,7 @@
     ]
    },
    {
-    "word": "SERPENT-BEAUTY",
+    "word": "EEL",
     "n": 1,
     "cat": 3,
     "m": [
@@ -4299,6 +4199,106 @@
     "m": [
      "Furfrou",
      "Miltank"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-09-30",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "MOLE",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Diglett",
+     "Sandshrew"
+    ]
+   },
+   {
+    "word": "FIRE",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Growlithe",
+     "Vulpix"
+    ]
+   },
+   {
+    "word": "POKEBALL",
+    "n": 1,
+    "cat": 4,
+    "m": [
+     "Voltorb"
+    ]
+   },
+   {
+    "word": "FLOCK",
+    "n": 3,
+    "cat": 3,
+    "m": [
+     "Fearow",
+     "Doduo",
+     "Pidgeotto"
+    ]
+   },
+   {
+    "word": "RATTLE",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Ekans"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-09-30",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "SIX",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Falinks"
+    ]
+   },
+   {
+    "word": "KEYRING",
+    "n": 1,
+    "cat": 4,
+    "m": [
+     "Klefki"
+    ]
+   },
+   {
+    "word": "EAGLE",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Braviary"
+    ]
+   },
+   {
+    "word": "STARTER",
+    "n": 5,
+    "cat": 1,
+    "m": [
+     "Feraligatr",
+     "Infernape",
+     "Delphox",
+     "Sceptile",
+     "Chesnaught"
+    ]
+   },
+   {
+    "word": "YAKUZA",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Pangoro"
     ]
    }
   ]

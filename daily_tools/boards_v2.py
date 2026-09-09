@@ -332,3 +332,19 @@ board("2026-09-29","mixed","Medium",[
   ("BARS",2,"sprite:zebra-stripes",["Zebstrika","Basculin"]),
 ], exclude=["Liepard","Clawitzer","Crabominable","Crawdaunt","Palossand","Blitzle","Basculegion",
             "Chansey","Tauros","Kangaskhan","Girafarig","Furret"])
+
+# ===== 09-30 Wed : CHALLENGING (gap fill) =====
+board("2026-09-30","gen1","Challenging",[
+  ("FIRE",1,"type:fire",["Vulpix","Growlithe"]),
+  ("POKEBALL",4,"based:pokeball",["Voltorb"]),
+  ("RATTLE",2,"sprite:rattle-tail",["Ekans"]),
+  ("MOLE",3,"arch:mole",["Diglett","Sandshrew"]),
+  ("FLOCK",3,"arch:bird",["Pidgeotto","Fearow","Doduo"]),
+], exclude=["Dugtrio","Sandslash","Electrode","Arcanine","Ninetales","Pidgeot","Pidgey","Spearow","Dodrio","Farfetch'd"])
+board("2026-09-30","mixed","Challenging",[
+  ("STARTER",1,"group:starter",["Sceptile","Infernape","Feraligatr","Chesnaught","Delphox"]),
+  ("YAKUZA",3,"based:panda-brawler",["Pangoro"]),
+  ("SIX",2,"sprite:formation",["Falinks"]),
+  ("EAGLE",3,"based:eagle",["Braviary"]),
+  ("KEYRING",4,"based:keyring",["Klefki"]),
+], exclude=["Treecko","Grovyle","Chimchar","Monferno","Totodile","Croconaw","Chespin","Quilladin","Fennekin","Braixen","Pancham","Rufflet"])
