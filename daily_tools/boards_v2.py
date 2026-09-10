@@ -348,3 +348,18 @@ board("2026-09-30","mixed","Challenging",[
   ("EAGLE",3,"based:eagle",["Braviary"]),
   ("KEYRING",4,"based:keyring",["Klefki"]),
 ], exclude=["Treecko","Grovyle","Chimchar","Monferno","Totodile","Croconaw","Chespin","Quilladin","Fennekin","Braixen","Pancham","Rufflet"])
+
+# ===== 10-01 Thu : HARD (gap fill) =====
+board("2026-10-01","gen1","Hard",[
+  ("GLOOPY",4,"arch:amorphous",["Ditto","Koffing","Muk"]),
+  ("GRUB",3,"arch:caterpillar",["Caterpie","Weedle"]),
+  ("MALLARD",3,"arch:duck",["Farfetch'd","Psyduck"]),
+  ("MENACE",5,"lore:intimidate",["Arbok","Gyarados"]),
+], exclude=["Grimer","Weezing","Kakuna","Metapod","Venonat","Paras","Parasect","Golduck","Arcanine","Ekans","Growlithe","Tauros"])
+board("2026-10-01","mixed","Hard",[
+  ("INKWELL",4,"arch:cephalopod",["Malamar","Octillery"]),
+  ("RAVEN",3,"arch:corvid",["Corviknight","Honchkrow"]),
+  ("DJINN",5,"arch:genie",["Landorus","Enamorus"]),
+  ("PINCER",3,"arch:scorpion",["Drapion","Gligar"]),
+  ("COSTUME",2,"sprite:pikachu-costume",["Mimikyu"]),
+], exclude=["Inkay","Clobbopus","Grapploct","Murkrow","Corvisquire","Tornadus","Thundurus","Hoopa","Skorupi","Gliscor"])

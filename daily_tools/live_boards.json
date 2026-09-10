@@ -1,105 +1,5 @@
 [
  {
-  "date": "2026-08-19",
-  "pool": "gen1",
-  "clues": [
-   {
-    "word": "FOSSIL",
-    "n": 3,
-    "cat": 4,
-    "m": [
-     "Kabutops",
-     "Aerodactyl",
-     "Omastar"
-    ]
-   },
-   {
-    "word": "SHELL",
-    "n": 2,
-    "cat": 2,
-    "m": [
-     "Blastoise",
-     "Cloyster"
-    ]
-   },
-   {
-    "word": "HORN",
-    "n": 2,
-    "cat": 2,
-    "m": [
-     "Nidoking",
-     "Rhydon"
-    ]
-   },
-   {
-    "word": "ORPHAN",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Cubone"
-    ]
-   },
-   {
-    "word": "ARMS",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Machamp"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-19",
-  "pool": "mixed",
-  "clues": [
-   {
-    "word": "PSEUDO",
-    "n": 3,
-    "cat": 5,
-    "m": [
-     "Metagross",
-     "Tyranitar",
-     "Garchomp"
-    ]
-   },
-   {
-    "word": "HEADS",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Hydreigon"
-    ]
-   },
-   {
-    "word": "AURA",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Lucario"
-    ]
-   },
-   {
-    "word": "GOWN",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Gardevoir"
-    ]
-   },
-   {
-    "word": "SWORDS",
-    "n": 3,
-    "cat": 2,
-    "m": [
-     "Scizor",
-     "Aegislash",
-     "Gallade"
-    ]
-   }
-  ]
- },
- {
   "date": "2026-08-20",
   "pool": "gen1",
   "clues": [
@@ -4299,6 +4199,99 @@
     "cat": 3,
     "m": [
      "Pangoro"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-10-01",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "MENACE",
+    "n": 2,
+    "cat": 5,
+    "m": [
+     "Gyarados",
+     "Arbok"
+    ]
+   },
+   {
+    "word": "MALLARD",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Farfetch'd",
+     "Psyduck"
+    ]
+   },
+   {
+    "word": "GLOOPY",
+    "n": 3,
+    "cat": 4,
+    "m": [
+     "Ditto",
+     "Koffing",
+     "Muk"
+    ]
+   },
+   {
+    "word": "GRUB",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Caterpie",
+     "Weedle"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-10-01",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "DJINN",
+    "n": 2,
+    "cat": 5,
+    "m": [
+     "Enamorus",
+     "Landorus"
+    ]
+   },
+   {
+    "word": "PINCER",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Drapion",
+     "Gligar"
+    ]
+   },
+   {
+    "word": "INKWELL",
+    "n": 2,
+    "cat": 4,
+    "m": [
+     "Malamar",
+     "Octillery"
+    ]
+   },
+   {
+    "word": "COSTUME",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Mimikyu"
+    ]
+   },
+   {
+    "word": "RAVEN",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Honchkrow",
+     "Corviknight"
     ]
    }
   ]

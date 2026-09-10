@@ -60,6 +60,7 @@ READ = {
  "clone":"a genetically-engineered clone","haunted":"they're each linked to something haunted or cursed",
  "pioneer":"each was a landmark 'first' in Pokémon history","treasures-of-ruin":"the cursed Treasures of Ruin",
  "musketeers":"the legendary Musketeer trio","fast":"blistering speed",
+ "amorphous":"shapeless ooze","intimidate":"their shared Intimidate ability",
 }
 # fantastical archetypes that shouldn't read "based on the real-world ..."
 _FANCIFUL = {"genie":"wish-granting genies","deity":"guardian deities","chimera":"stitched-together chimeras",
