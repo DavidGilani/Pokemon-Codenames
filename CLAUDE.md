@@ -267,6 +267,19 @@ boards to QA. Workflow:
    enforces. Re-run until it prints `ALL VALID` with no remaining gaps. It only
    verifies/emits boards **not already live** (already-live dates are skipped),
    and writes the new-board upserts to `daily_tools/pending_upserts.sql`.
+   **Before authoring, read `daily_puzzle_notes.md` → "Recurring QA themes to
+   PRE-EMPT"** and apply it, so boards don't come back for rework: over-diversify
+   away from recently-used mons/clues (watchlist: Grimer/Muk/Koffing/Weezing/
+   Magneton/Gourgeist), single real clue words (no hyphen-smushing), ability
+   clues = the real ability name, and **no clue may fit a neutral tile** (check
+   the whole 25-tile board, not just the 9 blues). Verify every "based on /
+   animal / sprite" claim is actually true.
+   **Write a bespoke `explain` for each clue** (optional 5th element of the clue
+   tuple) — a concrete one/two-sentence reason (quote the real Pokédex entry for
+   lore, name the Ability *and its effect*, name the specific myth); the
+   template is only a fallback. See `daily_puzzle_notes.md` → "Clue
+   explanations". When you fix a board from feedback, upgrade its explanations
+   too.
 5. Apply the new `(date,pool)` upserts to Supabase (base64 `do $$ …
    execute convert_from(decode(...)) … $$;` pattern keeps the JSON exact), then
    **re-refresh `daily_tools/live_boards.json`** from the DB so it includes what

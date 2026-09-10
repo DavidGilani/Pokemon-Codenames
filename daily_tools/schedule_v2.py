@@ -126,7 +126,7 @@ def hint_for(nm, names, used):
 
 def evo_groups(clues):
     out=[]
-    for w,c,cc,m in clues:
+    for w,c,cc,m,*_x in clues:
         byfam=defaultdict(list)
         for nm in m:
             if nm in FACTS: byfam[FACTS[nm]["family"]].append(nm)
@@ -157,14 +157,14 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     authored_dates.add((d,pool))
     poolset=GEN1 if pool=="gen1" else set(FACTS)
     clues=b["clues"]; blues=[]
-    for w,c,cc,m in clues:
+    for w,c,cc,m,*_x in clues:
         for nm in m:
             if nm not in blues: blues.append(nm)
     for nm in blues:
         if nm not in FACTS: errors.append(f"{where}: {nm} not in facts")
         elif nm not in poolset: errors.append(f"{where}: {nm} not in {pool} pool")
     if len(blues)!=9: errors.append(f"{where}: {len(blues)} blues {blues}")
-    cats=[c for w,c,cc,m in clues]
+    cats=[c for w,c,cc,m,*_x in clues]
     want=tier_for(d)
     if b["tier"]!=want: errors.append(f"{where}: tier {b['tier']} != weekday {want}")
     if label(cats)!=b["tier"]: errors.append(f'{where}: label {label(cats)}!=tier {b["tier"]}')
@@ -173,20 +173,20 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     if b["tier"]=="Evil" and cat2>0: errors.append(f"{where}: Evil has cat2={cat2}")
     if len(set(cats))<3 and b["tier"]!="Easy" and (d,pool) not in FLOURISH: errors.append(f"{where}: <3 distinct cats")
     if not (1<=len(clues)<=5): errors.append(f"{where}: {len(clues)} clues (must be 1-5)")
-    for w,c,cc,m in clues:
+    for w,c,cc,m,*_x in clues:
         if cc.startswith("type:"):
             ty=cc.split(":",1)[1]
             allty=sorted(nm for nm in blues if ty in FACTS[nm]["types"])
             if sorted(m)!=allty:
                 errors.append(f"{where}: type clue {w} lists {sorted(m)} but every {ty}-type blue is {allty}")
-    sets=[(w,frozenset(m)) for w,c,cc,m in clues]
+    sets=[(w,frozenset(m)) for w,c,cc,m,*_x in clues]
     for i,(wi,si) in enumerate(sets):
         for j,(wj,sj) in enumerate(sets):
             if i==j or not si: continue
             if si<sj or (si==sj and i<j):
                 errors.append(f"{where}: clue {wi} {sorted(si)} is contained in {wj} {sorted(sj)} (redundant split)")
     if b["tier"] in("Brutal","Evil") and (d,pool) not in FLOURISH:
-        nums=[len(m) for w,c,cc,m in clues]
+        nums=[len(m) for w,c,cc,m,*_x in clues]
         if sum(nums)<11: errors.append(f"{where}: {b['tier']} sum {sum(nums)}<11")
         if sum(1 for n in nums if n==1)>1: errors.append(f"{where}: {b['tier']} >1 single-tile clue")
     # Evolution-family cap: <=1 per board, <=3 across any rolling 7-day window
@@ -202,7 +202,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     if len(ptypes)<need: errors.append(f"{where}: {len(ptypes)} types (<{need}) {sorted(ptypes)}")
     if pool=="mixed" and len({FACTS[n]["gen"] for n in blues})<3: errors.append(f"{where}: <3 gens")
     cap=5 if pool=="gen1" else 10
-    for w,c,cc,m in clues:
+    for w,c,cc,m,*_x in clues:
         grp=frozenset(m)
         for od,om in USES.get(w,[])+nw[w]:
             if 0<abs(days(d,od))<=7: errors.append(f"{where}: WORD '{w}' within 7d of {od}")
@@ -212,9 +212,9 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
         for od in BLUE_USED.get(nm,[])+nb[nm]:
             if 0<abs(days(d,od))<=cap: errors.append(f"{where}: BLUE '{nm}' within {cap}d of {od}")
         nb[nm].append(d)
-    cluewords=[w for w,c,cc,m in clues]
-    ban_types={cc.split(":")[1] for w,c,cc,m in clues if cc.startswith("type:")}
-    ban_cols={cc.split(":")[1] for w,c,cc,m in clues if cc.startswith("colour:")}
+    cluewords=[w for w,c,cc,m,*_x in clues]
+    ban_types={cc.split(":")[1] for w,c,cc,m,*_x in clues if cc.startswith("type:")}
+    ban_cols={cc.split(":")[1] for w,c,cc,m,*_x in clues if cc.startswith("colour:")}
     def ok_sem(nm):
         r=FACTS[nm]
         if ban_types & set(r["types"]): return False
@@ -228,7 +228,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     neutrals=cand[:16]
     if len(neutrals)<16: errors.append(f"{where}: only {len(neutrals)} neutrals")
     names=blues+neutrals
-    for w,c,cc,m in clues:
+    for w,c,cc,m,*_x in clues:
         for nm in names:
             f=shares3(w,nm)
             if f: errors.append(f"{where}: LETTER clue {w}~{nm}({f})")
@@ -281,7 +281,7 @@ else:
         pos={nm:perm[i] for i,nm in enumerate(names)}
         tiles=sorted([{"name":nm,"colour":"blue" if nm in blues else "neutral","position":pos[nm]} for nm in names],key=lambda t:t["position"])
         co=[{"word":w,"number":len(m),"cat":c,"t":sorted(pos[x] for x in m),
-             "explain":explain_for(w,c,cc,m)} for w,c,cc,m in b["clues"]]
+             "explain":(_x[0] if _x else explain_for(w,c,cc,m))} for w,c,cc,m,*_x in b["clues"]]
         random.Random(_sd(("c",b["date"],b["pool"]))).shuffle(co)
         ho=[{"word":hints[nm][0],"number":1,"cat":hints[nm][1],"t":[pos[nm]],"explain":hints[nm][2]} for nm in blues]
         random.Random(_sd(("h",b["date"],b["pool"]))).shuffle(ho)

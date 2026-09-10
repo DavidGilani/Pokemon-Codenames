@@ -53,6 +53,125 @@ anti-rep corpus in `daily_tools/live_boards.json`, and emits new-board upserts t
 no CSVs, and computes its date window from `today` — so it runs in any fresh
 checkout. The rest of this doc explains the reasoning.
 
+## Recurring QA themes to PRE-EMPT (distilled from weeks of owner feedback)
+
+These are the things the owner flags again and again in QA. The verifier catches
+some of them; the rest are *authoring judgement* the generator must apply up
+front so boards don't come back for rework. **Check every board against this list
+before shipping.**
+
+1. **Repetition is the #1 complaint — so over-diversify, don't just scrape past
+   the windows.** The owner repeatedly asks "have these clues/Pokémon been used
+   recently? move the board if so." Two concrete habits:
+   - **Actually run the anti-rep check and MOVE, don't ship-and-hope.** If a
+     board would clash (a clue word within 7d, a group within 14d, a concept
+     within 5d, a blue within its 5/10-day cap, or the evo-family window), push
+     it to the next free date of the same weekday tier — never ship the clash.
+   - **Watchlist of over-used mons — actively avoid these as blues** unless
+     genuinely fresh: the poison-gas gang **Grimer, Muk, Koffing, Weezing**;
+     also **Magneton, Gourgeist**, and any mon that has been blue in the last
+     couple of weeks. The frequency cap is a *floor*, not a target — if a mon
+     has been blue recently, pick a different one even if the cap technically
+     allows it. Rotate the pool; the owner notices "these have come up a lot."
+   - Same for **clue concepts**: if `BEAK`, `TAIL`, `SLUDGE`, `SEAL`, etc. feel
+     familiar, they probably are — vary the handle.
+
+2. **Clue words must be single, real, standalone words — NO hyphen-smushing.**
+   The owner has rejected `skull-cap`→`skull`, `golem-trio`→`golem`,
+   `magma-shell`→`magma`, and killed `serpent-beauty` outright ("abusing the
+   hyphen to jam two words together"). Rule: **one honest word.** A hyphen is
+   only allowed for a genuinely hyphenated real term or proper noun
+   (`ROBIN-HOOD`, `WILL-O-WISP`, `TEAM-ROCKET`). Never bolt a second word on to
+   force a clue to fit — if it needs two words, find a better single word.
+
+3. **Ability clues must BE the ability's real name.** `MENACE`→`INTIMIDATE`,
+   `BUOYANT`→the real ability. If you're cluing a shared Ability, the clue word
+   is the Ability itself (INTIMIDATE, LEVITATE, SWIFT-SWIM), and the explanation
+   names the Ability *and what it does* (see Clue explanations below). Don't
+   paraphrase the ability into a vague word.
+
+4. **A clue must not also fit a NON-blue (neutral) tile — Rule 0 covers neutrals,
+   not just other blues.** This is the correctness gap the owner catches most:
+   `TAILED` with **Tauros** (a neutral with a prominent tail) on the board;
+   `SPIRIT` that also reads as **Greavard**; `STARTER` while **Froakie** (a
+   starter, but neutral) sits there; a Psychic clue while neutral **Mew** is
+   Psychic. **When filling the 16 neutrals, exclude any species that plausibly
+   matches ANY clue's actual idea** — not only its type/colour (which the code
+   bans) but its *concept*: starter, legendary, the animal, the tail/feature,
+   the ability, the myth. If a neutral could tempt the player under a clue, swap
+   it out. Treat the whole 25-tile board, not just the 9 blues.
+
+5. **Every factual claim must be actually true — verify, don't trust a tag.**
+   The owner has queried "is Machop really an ape?", "Piloswine looks like a
+   mammoth, not a boar", "is Espeon a fox?", "I don't see a pouch on Morpeko's
+   belly". The fact bank's `arch`/`based_on`/`sprite` are *candidates*, and some
+   are arguable or wrong. Before using an animal / "based on" / sprite-feature
+   clue or hint: **confirm it's genuinely defensible** (Piloswine → *mammoth*,
+   not boar; if an archetype is debatable, pick the safer word or a different
+   clue). Sprite-feature clues/hints must describe something **actually visible
+   on that sprite**.
+
+6. **Sanity-check *perceived* difficulty against the weekday tier.** The
+   category formula is a floor, but an obscure or clever clue can make a "Hard"
+   board *feel* Brutal, and vice-versa. The owner moves boards that feel off
+   ("this is really Challenging → move to a Challenging day"; "Omen is too hard
+   even for Hard"; "the juvenile clue is too hard"). If a clue is genuinely
+   obscure (`OMEN`, `JUVENILE`, `KAPPA` without help), either make its
+   *explanation* do the teaching, swap it for something fairer, or move the
+   board to a harder day. Aim the felt difficulty at the weekday, not just the
+   cat-count.
+
+7. **Don't clue a mon by something a hyphen-buried second property "technically"
+   satisfies.** Prefer the clean, central connection. (`SEAL`→Seel technically
+   works but is a name fragment / weak; the owner preferred `BLUBBER`.) When a
+   clue only *technically* passes, it usually reads as a stretch — find the
+   clean one.
+
+## Clue explanations (the post-game "what each clue meant" — make them richer)
+
+The reveal screen lists each clue with a one-line `explain` (and each revealed
+hint with its own). **Owner feedback: these are too short and vague** — "It's
+from their Pokédex lore – kappa" or "each was a landmark 'first' in Pokémon
+history" doesn't teach or delight. Make **all** clue/hint explanations a bit
+longer and genuinely informative (not only the lore ones).
+
+**How we do it: the AUTHOR writes a bespoke `explain` per clue** (an optional 5th
+element of the clue tuple in `boards_v2.py`), and the template in
+`daily_common.py` is only the fallback. Write it as **one or two sentences that
+say something concrete**:
+
+- **Lore / Pokédex clues:** quote or closely paraphrase the *actual Pokédex
+  entry* for the relevant mon, and connect it to the clue. Not "it's lore –
+  kappa" but e.g. *"Golduck is the Duck Pokémon, but its webbed limbs, bill and
+  the gem on its forehead come straight from the kappa — a mischievous Japanese
+  river-spirit."* If it's a piece of real-world / franchise trivia (e.g. "which
+  was the *first* Pokémon"), **look it up and get it right** — go beyond the
+  fact table (Bulbasaur is #001; Rhydon was the first ever *designed*; etc.).
+- **Ability clues:** name the Ability **and what it does** — *"They all have the
+  Intimidate Ability, which lowers the opposing Pokémon's Attack when they enter
+  battle."* (This is exactly the "explain X which does Y" the owner asked for.)
+- **Animal / "based on" clues:** name the creature and the tell — *"Both are
+  based on the cephalopod family: Octillery is a clear octopus, and Omastar an
+  ammonite, an extinct shelled relative of squid."*
+- **Myth clues:** name the specific myth and the link — *"The kitsune is a
+  many-tailed fox-spirit of Japanese folklore said to live a thousand years —
+  hence Ninetales' nine tails and long life."*
+- **Sprite / stat / type clues** still get a fuller sentence than the terse
+  default (point out *what* to look for, or *how* they stand out), but they
+  needn't be paragraphs — match the effort to how much there is to say.
+
+Keep them **accurate** (see theme 5 — no invented "facts"), friendly, and free
+of the internal category jargon. Two sentences max. When you fix a board from QA
+feedback, upgrade its explanations at the same time.
+
+**Data vs. lookup (decided):** we do **not** bulk-expand `pokemon_facts.json`
+with full Pokédex entries for all ~1,025 mons — only ~18 clues need an
+explanation each day, the text is authored once per board, and dumping a
+thousand copyrighted entries is heavy and unnecessary. Instead the **generator
+writes the explanation at authoring time** (it already reasons about each clue,
+and can look up the real dex entry / ability effect / trivia and verify it).
+`pokemon_facts.json` stays the *verification* bank; the prose lives on the board.
+
 ## The concept (as agreed for the first cut)
 
 - **One player.** No clue giver — the clues are pre-written ("by the AI").

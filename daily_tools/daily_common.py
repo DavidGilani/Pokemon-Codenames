@@ -67,40 +67,59 @@ _FANCIFUL = {"genie":"wish-granting genies","deity":"guardian deities","chimera"
              "alien":"alien visitors","dragon":"dragons","serpent":"snakes"}
 def _read(tail): return READ.get(tail, tail.replace("-", " "))
 
+def _names(members):
+    """Readable 'A, B and C' for weaving member names into the explanation."""
+    ms = list(members or [])
+    if not ms: return ""
+    if len(ms) == 1: return ms[0]
+    if len(ms) == 2: return f"{ms[0]} and {ms[1]}"
+    return ", ".join(ms[:-1]) + f" and {ms[-1]}"
+
+# NOTE ON EXPLANATIONS (owner feedback, Sep 2026): these template strings are the
+# BASELINE / fallback only. They read a bit thin ("It's from their Pokédex lore –
+# kappa"), so when AUTHORING a board, prefer a bespoke `explain` (optional 5th
+# element of the clue tuple) that says something concrete: quote/paraphrase the
+# real Pokédex entry, name the actual Ability and what it does, name the specific
+# myth and the link. See daily_puzzle_notes.md → "Clue explanations". The
+# functions below are only used when a clue has no bespoke explain.
 def explain_for(word, cat, concept, members):
     pre, _, tail = concept.partition(":")
     r = _read(tail)
     if pre == "type":
         art = "an" if tail[:1].lower() in "aeiou" else "a"
-        return f"Every one is {art} {tail.capitalize()}-type."
+        return f"Every one of these is {art} {tail.capitalize()}-type Pokémon."
     if pre == "group":
-        return {"starter":"They're first-partner (starter) Pokémon.",
+        return {"starter":"They're all first-partner (starter) Pokémon — the ones you choose at the start of a game.",
                 "legendary":"They're all Legendary Pokémon.",
-                "pseudo":"They're pseudo-legendary Pokémon."}.get(tail, f"They're all {r}.")
+                "pseudo":"They're all pseudo-legendary Pokémon (a 600-base-stat three-stage line)."}.get(tail, f"They're all {r}.")
     if pre == "family":
-        return f"They're all part of the {r} family."
+        return f"They're all part of the {r} evolutionary family."
     if pre == "arch":
         if tail in _FANCIFUL:
-            return f"They're all {_FANCIFUL[tail]}."
-        return f"They're all based on the real-world {r}."
+            return f"They're all based on {_FANCIFUL[tail]}."
+        return f"They're all based on the same real-world creature — the {r}."
     if pre == "stat":
-        return f"They share a standout stat – {r}."
+        return f"They share a standout base stat — {r}."
     if pre == "based":
-        return f"They're based on {r}."
+        return f"They're each based on {r}."
     if pre == "sprite":
-        return f"You can spot it on the sprite – {r}."
+        return f"Look closely at the sprite and you'll spot it — {r}."
     if pre == "lore":
-        return f"It's from their Pokédex lore – {r}."
+        return f"It comes from their Pokédex lore — {r}."
     if pre == "myth":
-        return f"It's rooted in mythology – {r}."
+        return f"It's rooted in mythology and folklore — {r}."
     if pre == "name":
-        return f"It's wordplay on their names – {r}."
+        return f"It's a play on their names — {r}."
     if pre == "trainer":
-        return f"They belong to {r}'s team."
+        return f"They're all on {r}'s team."
     if pre == "colour":
-        return f"They're all {r}."
+        return f"They're all {r} in colour."
     if pre == "habitat":
-        return f"They all live in the same kind of place – {r}."
+        return f"They all live in the same kind of place — {r}."
     if pre == "egg":
-        return f"They're in the same egg group – {r}."
+        return f"They're in the same Egg Group — {r} — so they can breed together."
+    if pre == "ability":
+        return f"They all share the same Ability: {tail.replace('-', ' ').title()}."
+    if pre == "move":
+        return f"They can all learn the move {tail.replace('-', ' ').title()}."
     return r[:1].upper() + r[1:] + "."
