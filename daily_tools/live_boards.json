@@ -3733,13 +3733,12 @@
    },
    {
     "m": [
-     "Porygon",
-     "Rhydon",
-     "Mew"
+     "Venusaur",
+     "Mewtwo"
     ],
-    "n": 3,
-    "cat": 4,
-    "word": "PIONEER"
+    "n": 2,
+    "cat": 5,
+    "word": "MEGA"
    },
    {
     "m": [
@@ -4112,7 +4111,7 @@
     ],
     "n": 2,
     "cat": 5,
-    "word": "MENACE"
+    "word": "INTIMIDATE"
    },
    {
     "m": [
@@ -4334,6 +4333,49 @@
     "n": 3,
     "cat": 1,
     "word": "GRASS"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-09",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Eiscue",
+     "Piplup"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "PENGUIN"
+   },
+   {
+    "m": [
+     "Rhydon",
+     "Arceus",
+     "Bulbasaur"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "FIRST"
+   },
+   {
+    "m": [
+     "Archen",
+     "Tyrunt"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "FOSSIL"
+   },
+   {
+    "m": [
+     "Sandaconda",
+     "Seviper"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "SERPENT"
    }
   ]
  }

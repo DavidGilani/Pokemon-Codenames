@@ -365,7 +365,10 @@ board("2026-10-01","gen1","Hard",[
   ("GLOOPY",4,"arch:amorphous",["Ditto","Koffing","Muk"]),
   ("GRUB",3,"arch:caterpillar",["Caterpie","Weedle"]),
   ("MALLARD",3,"arch:duck",["Farfetch'd","Psyduck"]),
-  ("MENACE",5,"lore:intimidate",["Arbok","Gyarados"]),
+  # Owner override: INTIMIDATE shares "ate" with Caterpie (a blue on this board);
+  # the letter rule is waived here per explicit owner request. Board is already
+  # live, so schedule_v2 skips it (this tuple is not re-verified).
+  ("INTIMIDATE",5,"lore:intimidate",["Arbok","Gyarados"],"Both share the Ability Intimidate, which cuts an opposing Pokémon's Attack the moment they enter battle."),
 ], exclude=["Grimer","Weezing","Kakuna","Metapod","Venonat","Paras","Parasect","Golduck","Arcanine","Ekans","Growlithe","Tauros"])
 board("2026-10-01","mixed","Hard",[
   ("INKWELL",4,"arch:cephalopod",["Malamar","Octillery"]),
@@ -457,3 +460,30 @@ board("2026-10-06","mixed","Medium",[
   ("GLARE",2,"sprite:blank-stare",["Espurr"],"Look for the wide, blank 'help me' stare on Espurr's sprite."),
 ], exclude=["Floatzel","Brionne","Primarina","Servine","Serperior","Bayleef","Meganium",
             "Boldore","Gigalith","Barbaracle","Abomasnow","Cubchoo","Meowstic"])
+
+# ===== 10-09 Fri (mixed) : HARD -- owner-requested "FIRST" board linking three different
+# senses of first: Bulbasaur (#001 in the Pokedex), Rhydon (the first Pokemon ever designed),
+# and Arceus ("The Original One" that myth says created the universe). Placed here because
+# Bulbasaur/Rhydon are blues on 09-27/09-28, so this is the first Hard/Challenging slot clear
+# of the 10-day blue-repeat cap. =====
+board("2026-10-09","mixed","Hard",[
+  ("FIRST",5,"lore:first",["Bulbasaur","Rhydon","Arceus"],"Three different kinds of 'first': Bulbasaur is No. 001 in the National Pokedex, Rhydon was the very first Pokemon ever designed by Game Freak, and Arceus is 'The Original One' that legend says shaped the whole Pokemon universe."),
+  ("FOSSIL",4,"lore:revived-fossil",["Tyrunt","Archen"],"Both are ancient Pokemon brought back to life from fossils -- Tyrunt from the Jaw Fossil and Archen from the Plume Fossil."),
+  ("PENGUIN",3,"arch:penguin",["Piplup","Eiscue"],"Both are based on penguins -- Piplup the plucky chick and Eiscue a penguin hauling a block of ice for a head."),
+  ("SERPENT",3,"arch:snake",["Seviper","Sandaconda"],"Both are based on real snakes -- Seviper a fanged viper and Sandaconda a coiled sand cobra."),
+], exclude=[
+  # FIRST look-alikes (other "original"/#1 legends)
+  "Victini","Mew","Mewtwo","Dialga","Palkia","Giratina","Ivysaur","Venusaur","Rhyhorn","Rhyperior",
+  # revived-fossil Pokemon (FOSSIL must fit only Tyrunt/Archen)
+  "Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Lileep","Cradily","Anorith","Armaldo",
+  "Cranidos","Rampardos","Shieldon","Bastiodon","Tirtouga","Carracosta","Amaura","Aurorus",
+  "Tyrantrum","Archeops","Dracovish","Arctovish","Dracozolt","Arctozolt","Relicanth","Genesect",
+  # ancient Paradox Pokemon (not fossils, but 'ancient' enough to be a FOSSIL red herring)
+  "Great Tusk","Scream Tail","Brute Bonnet","Flutter Mane","Slither Wing","Sandy Shocks",
+  "Roaring Moon","Walking Wake","Gouging Fire","Raging Bolt","Koraidon",
+  # penguins (PENGUIN must fit only Piplup/Eiscue)
+  "Prinplup","Empoleon","Delibird",
+  # snakes (SERPENT must fit only Seviper/Silicobra)
+  "Ekans","Arbok","Onix","Steelix","Dratini","Dragonair","Dragonite","Milotic","Feebas",
+  "Serperior","Servine","Snivy","Silicobra","Huntail","Rayquaza","Gyarados","Eelektross",
+  "Dunsparce","Dudunsparce","Silvally"])
