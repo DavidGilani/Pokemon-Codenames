@@ -1,105 +1,5 @@
 [
  {
-  "date": "2026-08-21",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Arbok",
-     "Weezing"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TEAM-ROCKET"
-   },
-   {
-    "m": [
-     "Bellsprout",
-     "Weepinbell"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PITCHER"
-   },
-   {
-    "m": [
-     "Golbat",
-     "Zubat"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "VAMPIRE"
-   },
-   {
-    "m": [
-     "Jigglypuff"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "DOODLER"
-   },
-   {
-    "m": [
-     "Psyduck",
-     "Golduck"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "MONOTREME"
-   }
-  ]
- },
- {
-  "date": "2026-08-21",
-  "pool": "mixed",
-  "clues": [
-   {
-    "m": [
-     "Eiscue",
-     "Piplup"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PENGUIN"
-   },
-   {
-    "m": [
-     "Toxtricity"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "PUNK-ROCKER"
-   },
-   {
-    "m": [
-     "Rillaboom"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "DRUMMER"
-   },
-   {
-    "m": [
-     "Eevee",
-     "Alomomola",
-     "Girafarig"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "PALINDROME"
-   },
-   {
-    "m": [
-     "Vanilluxe",
-     "Vanillite"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ICE-CREAM"
-   }
-  ]
- },
- {
   "date": "2026-08-22",
   "pool": "gen1",
   "clues": [
@@ -3518,7 +3418,7 @@
     ],
     "n": 3,
     "cat": 4,
-    "word": "HUMANOID"
+    "word": "PUNCHER"
    },
    {
     "m": [
@@ -3544,7 +3444,7 @@
     ],
     "n": 2,
     "cat": 3,
-    "word": "SEAL"
+    "word": "FLIPPERS"
    }
   ]
  },
@@ -3896,7 +3796,7 @@
     ],
     "n": 1,
     "cat": 2,
-    "word": "TUFT"
+    "word": "TOPKNOT"
    }
   ]
  },
@@ -4279,8 +4179,8 @@
      "Pelipper"
     ],
     "n": 2,
-    "cat": 2,
-    "word": "POUCH"
+    "cat": 3,
+    "word": "SEABIRD"
    },
    {
     "m": [
@@ -4290,6 +4190,104 @@
     "n": 2,
     "cat": 5,
     "word": "LEVITATE"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-03",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Alakazam",
+     "Golem",
+     "Gengar"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "TRADE"
+   },
+   {
+    "m": [
+     "Omastar",
+     "Kabutops"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "PREHISTORIC"
+   },
+   {
+    "m": [
+     "Hypno",
+     "Golem",
+     "Gengar"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "FOLKLORE"
+   },
+   {
+    "m": [
+     "Magneton",
+     "Weezing"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "CONJOINED"
+   },
+   {
+    "m": [
+     "Dragonite"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "KINDLY"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-03",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Porygon-Z",
+     "Metagross"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "DATA-BRAIN"
+   },
+   {
+    "m": [
+     "Salamence",
+     "Garchomp",
+     "Tyranitar",
+     "Metagross"
+    ],
+    "n": 4,
+    "cat": 5,
+    "word": "SIX-HUNDRED"
+   },
+   {
+    "m": [
+     "Magnezone",
+     "Lucario",
+     "Metagross",
+     "Probopass"
+    ],
+    "n": 4,
+    "cat": 1,
+    "word": "STEEL"
+   },
+   {
+    "m": [
+     "Riolu",
+     "Lucario"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "ANUBIS"
    }
   ]
  },

@@ -487,3 +487,22 @@ board("2026-10-09","mixed","Hard",[
   "Ekans","Arbok","Onix","Steelix","Dratini","Dragonair","Dragonite","Milotic","Feebas",
   "Serperior","Servine","Snivy","Silicobra","Huntail","Rayquaza","Gyarados","Eelektross",
   "Dunsparce","Dudunsparce","Silvally"])
+
+# ===== 10-03 Sat : BRUTAL (gap fill) =====
+board("2026-10-03","gen1","Brutal",[
+  ("KINDLY",3,"trait:gentle-giant",["Dragonite"],"Dragonite is famously gentle and kind despite its power -- Pokedex lore says it rescues drowning sailors and guides lost ships home."),
+  ("TRADE",5,"connection:trade-evolution",["Alakazam","Golem","Gengar"],"All three only reach their final form when traded to another trainer -- Kadabra becomes Alakazam, Graveler becomes Golem, and Haunter becomes Gengar."),
+  ("FOLKLORE",5,"myth:folklore-being",["Golem","Gengar","Hypno"],"Each is built on a folkloric being that blurs the line between animate and inanimate -- Golem the clay creature of Jewish legend, Gengar your own shadow come to life, and Hypno the baku, a dream-eating spirit of Japanese myth."),
+  ("PREHISTORIC",4,"lore:fossil-revival",["Kabutops","Omastar"],"Both are ancient sea creatures revived from fossils -- Kabutops from the Dome Fossil (a horseshoe crab) and Omastar from the Helix Fossil (a giant ammonite)."),
+  ("CONJOINED",2,"sprite:fused-body",["Magneton","Weezing"],"Look at the sprite and count the parts -- Magneton is three Magnemite fused together, and Weezing is twin gas-filled heads joined at the middle."),
+], exclude=["Machoke","Graveler","Haunter","Kadabra","Poliwhirl","Geodude","Gastly","Drowzee",
+            "Omanyte","Kabuto","Aerodactyl","Magnemite","Koffing","Exeggcute"])
+board("2026-10-03","mixed","Brutal",[
+  ("ANUBIS",5,"myth:anubis",["Lucario","Riolu"],"Both Lucario and its pre-evolution Riolu are based on Anubis, the jackal-headed Egyptian god who guided the dead -- fitting for Pokemon that read life energy through Aura."),
+  ("STEEL",1,"type:steel",["Lucario","Metagross","Probopass","Magnezone"],"All four are Steel-type Pokemon."),
+  ("SIX-HUNDRED",5,"stat:sixhundred",["Metagross","Salamence","Garchomp","Tyranitar"],"All four share the exact same base stat total of 600 -- the unofficial benchmark for a 'pseudo-legendary'."),
+  ("DATA-BRAIN",4,"lore:supercomputer",["Metagross","Porygon-Z"],"Both are famous for computer-like minds -- Metagross's four fused brains are said to out-think a supercomputer, and Porygon-Z is an AI construct glitched by rogue software."),
+], exclude=["Beldum","Metang","Bagon","Shelgon","Gible","Gabite","Larvitar","Pupitar",
+            "Dragonite","Hydreigon","Goodra","Kommo-o","Dragapult","Baxcalibur",
+            "Deino","Zweilous","Goomy","Sliggoo","Jangmo-o","Hakamo-o","Dreepy","Drakloak",
+            "Frigibax","Arctibax","Porygon","Porygon2"])
