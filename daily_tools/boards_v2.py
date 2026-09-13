@@ -2,22 +2,10 @@
 # Tier fixed by weekday: Mon Easy / Tue Medium / Wed Challenging / Thu Hard /
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
-
-# ===== 08-22 Sat : BRUTAL =====
-board("2026-08-22","gen1","Brutal",[
-  ("FIGHTING",1,"type:fighting",["Machop","Machoke","Poliwrath"]),
-  ("SUMO",3,"based:sumo",["Machop","Machoke"]),
-  ("FOX-SPIRIT",5,"myth:kitsune",["Vulpix","Ninetales"]),
-  ("OPERA",4,"lore:jynx",["Jynx"]),
-  ("LUCKY",4,"lore:lucky",["Chansey","Clefairy","Clefable"]),
-], exclude=["Ekans","Koffing","Weezing","Machamp","Primeape","Mankey","Arcanine","Growlithe","Blissey","Wigglytuff"])
-board("2026-08-22","mixed","Brutal",[
-  ("GRIM-REAPER",4,"based:reaper",["Duskull","Dusknoir"]),
-  ("STINGER",4,"arch:scorpion",["Skorupi","Drapion"]),
-  ("DOODLEBUG",4,"arch:antlion",["Trapinch","Flygon"]),
-  ("DESERT",3,"arch:desert",["Drapion","Flygon","Cranidos"]),
-  ("GILLS",2,"sprite:gills",["Tympole","Palpitoad"]),
-], exclude=["Spiritomb","Sableye","Vibrava","Krokorok","Sandile","Rampardos","Shieldon","Seismitoad"])
+#
+# (2026-08-22 gen1/mixed boards removed here: long since live in Supabase and
+# now outside the rolling anti-repetition window, so they were stale dead
+# code that the verifier mistook for new, unverified boards.)
 
 # ===== 08-23 Sun : EVIL =====
 board("2026-08-23","gen1","Evil",[
@@ -506,3 +494,23 @@ board("2026-10-03","mixed","Brutal",[
             "Dragonite","Hydreigon","Goodra","Kommo-o","Dragapult","Baxcalibur",
             "Deino","Zweilous","Goomy","Sliggoo","Jangmo-o","Hakamo-o","Dreepy","Drakloak",
             "Frigibax","Arctibax","Porygon","Porygon2"])
+
+# ===== 10-04 Sun : EVIL =====
+board("2026-10-04","gen1","Evil",[
+  ("ROCK-HEAD",5,"ability:rock-head",["Geodude","Onix","Marowak"],"All three share the Ability Rock Head, which stops them flinching from moves like Fake Out or Headbutt."),
+  ("HUMAN-LIKE",5,"egg:human-like",["Mr. Mime","Jynx"],"Mr. Mime and Jynx are both in the Human-Like Egg Group, the category for Pokemon built to stand and move like people."),
+  ("WATER-STONE",5,"connection:water-stone",["Starmie","Poliwrath"],"Both evolve on exposure to a Water Stone -- Staryu into Starmie, and Poliwhirl into Poliwrath."),
+  ("SIMIAN",4,"arch:primate",["Machop","Primeape"],"Machop and Primeape are both modelled on real-world primates -- Machop a bodybuilding ape, Primeape an ill-tempered macaque."),
+  ("PUGILIST",3,"based:pugilist",["Machop","Poliwrath"],"Machop is designed as a bodybuilder and Poliwrath's own Pokedex entries call it a boxer -- both built around real combat athletes."),
+], exclude=["Cubone","Graveler","Golem","Abra","Kadabra","Alakazam","Machoke","Machamp",
+            "Hitmonlee","Hitmonchan","Vaporeon","Cloyster","Mankey"])
+board("2026-10-04","mixed","Evil",[
+  ("OWN-TEMPO",5,"ability:own-tempo",["Slowpoke","Smeargle"],"Both have the Ability Own Tempo, which makes them immune to confusion."),
+  ("REGENERATOR",5,"ability:regenerator",["Slowpoke","Tangela","Audino"],"All three can have Regenerator, healing a chunk of HP whenever they switch out of battle."),
+  ("ARACHNID",4,"arch:arachnid",["Ariados","Galvantula"],"Both are explicitly spider Pokemon -- eight-legged arachnids with a web-spinning, venomous design."),
+  ("COMPOUND-EYES",5,"ability:compound-eyes",["Yanma","Galvantula"],"Both can have Compound Eyes, an Ability modelled on a real insect's compound eye that boosts the accuracy of their moves."),
+  ("AMPHIBIAN",3,"arch:frog",["Croagunk","Seismitoad"],"Both are built on real-world frogs and toads -- Croagunk a poison-secreting toad, Seismitoad a warty bullfrog."),
+], exclude=["Slowbro","Slowking","Lickitung","Lotad","Lombre","Ludicolo","Corsola","Ho-Oh","Tangrowth",
+            "Spinarak","Joltik","Araquanid","Dewpider","Spidops","Tarountula",
+            "Dustox","Nincada","Scatterbug","Vivillon","Blipbug",
+            "Toxicroak","Palpitoad","Tympole","Froakie","Frogadier","Greninja"])
