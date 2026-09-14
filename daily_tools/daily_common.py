@@ -89,7 +89,7 @@ def explain_for(word, cat, concept, members):
         art = "an" if tail[:1].lower() in "aeiou" else "a"
         return f"Every one of these is {art} {tail.capitalize()}-type Pokémon."
     if pre == "group":
-        return {"starter":"They're all first-partner (starter) Pokémon — the ones you choose at the start of a game.",
+        return {"starter":"They're all first-partner (starter) Pokémon – the ones you choose at the start of a game.",
                 "legendary":"They're all Legendary Pokémon.",
                 "pseudo":"They're all pseudo-legendary Pokémon (a 600-base-stat three-stage line)."}.get(tail, f"They're all {r}.")
     if pre == "family":
@@ -97,27 +97,27 @@ def explain_for(word, cat, concept, members):
     if pre == "arch":
         if tail in _FANCIFUL:
             return f"They're all based on {_FANCIFUL[tail]}."
-        return f"They're all based on the same real-world creature — the {r}."
+        return f"They're all based on the same real-world creature – the {r}."
     if pre == "stat":
-        return f"They share a standout base stat — {r}."
+        return f"They share a standout base stat – {r}."
     if pre == "based":
         return f"They're each based on {r}."
     if pre == "sprite":
-        return f"Look closely at the sprite and you'll spot it — {r}."
+        return f"Look closely at the sprite and you'll spot it – {r}."
     if pre == "lore":
-        return f"It comes from their Pokédex lore — {r}."
+        return f"It comes from their Pokédex lore – {r}."
     if pre == "myth":
-        return f"It's rooted in mythology and folklore — {r}."
+        return f"It's rooted in mythology and folklore – {r}."
     if pre == "name":
-        return f"It's a play on their names — {r}."
+        return f"It's a play on their names – {r}."
     if pre == "trainer":
         return f"They're all on {r}'s team."
     if pre == "colour":
         return f"They're all {r} in colour."
     if pre == "habitat":
-        return f"They all live in the same kind of place — {r}."
+        return f"They all live in the same kind of place – {r}."
     if pre == "egg":
-        return f"They're in the same Egg Group — {r} — so they can breed together."
+        return f"They're in the same Egg Group – {r} – so they can breed together."
     if pre == "ability":
         return f"They all share the same Ability: {tail.replace('-', ' ').title()}."
     if pre == "move":

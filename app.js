@@ -2064,22 +2064,22 @@ const TUTORIAL_STEPS = [
   { title: "Welcome! 👋",
     body: "This is a quick practice board. The goal: find all <strong>9 blue Pokémon</strong> hidden among the 25 tiles." },
   { title: "Read the clues",
-    body: "The clues up here point to your Pokémon. <strong>FOSSIL × 3</strong> means three of the tiles are Pokémon revived from fossils.",
+    body: "The clues up here point to your Pokémon. <strong>FOSSIL × 3</strong> means three of the tiles are related to fossils – perhaps they're Pokémon revived from fossils?",
     spot: "#daily-clues" },
   { title: "Your turn 🕹️",
-    body: "Tap one of the three <strong>FOSSIL</strong> Pokémon — Kabutops, Aerodactyl or Omastar — on the board to reveal it.",
-    spot: "#daily-board", interactive: true },
+    body: "Tap one of the three <strong>FOSSIL</strong> Pokémon – Kabutops, Aerodactyl or Omastar – on the board to reveal it.",
+    spot: "#daily-board", interactive: true, pos: "top" },
   { title: "Right and wrong",
-    body: "A correct guess turns <strong>blue</strong>. A wrong tap is a <strong>strike</strong> (turns yellow) — you get 4, and the 5th ends the game. So read the clues before you tap.",
+    body: "A correct guess turns <strong>blue</strong>. A wrong tap is a <strong>strike</strong> (turns yellow) – you get 4, and the 5th ends the game. So read the clues before you tap.",
     spot: "#daily-statbar" },
   { title: "Need a nudge?",
     body: "Stuck on a tile? Tap <strong>💡 Reveal an extra clue</strong> for a hint pointing at one Pokémon you still need.",
-    spot: "#daily-hint-row" },
+    spot: "#daily-hint-btn" },
   { title: "Handy tools",
-    body: "Tap a <strong>clue</strong> to grey it out once you've found its Pokémon. <strong>Press &amp; hold a tile</strong> to jot a colour note — handy on harder days when clues overlap.",
+    body: "Tap a <strong>clue</strong> to grey it out once you've found its Pokémon, or <strong>press &amp; hold a clue</strong> to adjust how many of its Pokémon you've still to find. <strong>Press &amp; hold a tile</strong> to jot a colour note – handy on harder days when clues overlap.",
     spot: "#daily-clues" },
   { title: "You're ready! 🎉",
-    body: "Two puzzles drop daily (Gen I and all-gens), getting tougher Mon → Sun. Finish this practice board whenever — or jump straight into today's puzzle.",
+    body: "Two puzzles drop daily (Gen I and all-gens), getting tougher Mon → Sun. Finish this practice board whenever – or jump straight into today's puzzle.",
     final: true },
 ];
 
@@ -2095,6 +2095,7 @@ function renderCoach() {
   if (!el) return;
   const s = TUTORIAL_STEPS[tutorial.step];
   _clearCoachSpot();
+  el.classList.toggle("coach-top", s.pos === "top"); // pin to top so it never sits under the board
   if (s.spot) { const t = $(s.spot); if (t) t.classList.add("coach-spotlight"); }
   $("#coach-progress").textContent = `Step ${tutorial.step + 1} of ${TUTORIAL_STEPS.length}`;
   $("#coach-title").innerHTML = s.title;
@@ -2139,7 +2140,7 @@ function tutorialOnReveal(colour) {
     tutorial.satisfied = true;
     $("#coach-nudge").classList.add("hidden");
     $("#coach-title").innerHTML = "Nice one! ✅";
-    $("#coach-body").innerHTML = "That's a correct guess — it turns <strong>blue</strong>. Keep going, or tap <strong>Next</strong>.";
+    $("#coach-body").innerHTML = "That's a correct guess – it turns <strong>blue</strong>. Keep going, or tap <strong>Next</strong>.";
     const nextBtn = $("#coach-next");
     nextBtn.textContent = "Next →";
     nextBtn.classList.remove("hidden");

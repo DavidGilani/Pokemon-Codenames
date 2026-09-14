@@ -234,7 +234,7 @@ board("2026-09-17","gen1","Hard",[
   ("TUSKS",2,"sprite:tusks",["Dewgong"]),
 ], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix","Rhyhorn","Rhydon","Nidoking"])
 # QA flourish (owner-approved): kept as Evil with 4 clues even though it misses
-# the 3-distinct-cats / sum>=11 gates — Arctozolt folded into REVENANT (it's a
+# the 3-distinct-cats / sum>=11 gates – Arctozolt folded into REVENANT (it's a
 # revived fossil) so FUSION is redundant. See FLOURISH in schedule_v2.py.
 board("2026-09-06","mixed","Evil",[
   ("REVENANT",5,"lore:fossil",["Tirtouga","Archen","Dracovish","Arctozolt"]),

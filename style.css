@@ -1006,6 +1006,9 @@ a { color: var(--accent); }
 .coach {
   position: fixed; left: 50%; transform: translateX(-50%); bottom: 14px;
   width: calc(100% - 28px); max-width: 520px; z-index: 65;
+}
+.coach.coach-top { bottom: auto; top: 12px; }
+.coach {
   background: var(--panel); border: 1px solid var(--accent);
   border-radius: 16px; padding: 16px 18px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
