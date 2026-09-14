@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 gen1/mixed boards removed here: long since live in Supabase and
-# now outside the rolling anti-repetition window, so they were stale dead
-# code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-23 Sun : EVIL =====
-board("2026-08-23","gen1","Evil",[
-  ("LEVIATHAN",4,"lore:sea-serpent",["Dratini","Dragonair","Dragonite"]),
-  ("GENIE",5,"lore:mythical",["Dragonair","Dragonite"]),
-  ("SHADOW",4,"lore:shadow",["Gastly","Haunter"]),
-  ("EXPERIMENT",5,"lore:clone",["Mewtwo","Mew"]),
-  ("FROGSPAWN",3,"arch:tadpole",["Poliwag","Poliwhirl"]),
-], exclude=["Gyarados","Gengar","Seadra","Horsea","Kingdra","Snorlax","Poliwrath","Politoed"])
-board("2026-08-23","mixed","Evil",[
-  ("WITCH",5,"lore:witch",["Mismagius","Gothitelle"]),
-  ("HEX",4,"lore:curse",["Mismagius","Spiritomb"]),
-  ("FAIRY-TALE",5,"lore:fairy-tale",["Hatterene","Grimmsnarl"]),
-  ("HAG",4,"lore:hag",["Grimmsnarl","Delphox"]),
-  ("BANDIT",3,"arch:raccoon",["Zigzagoon","Linoone","Nickit"]),
-], exclude=["Gothita","Gothorita","Gardevoir","Gallade","Impidimp","Morgrem","Thievul","Diggersby"])
+# (2026-08-22 and 2026-08-23 gen1/mixed boards removed here: long since live
+# in Supabase and now outside the rolling anti-repetition window, so they
+# were stale dead code that the verifier mistook for new, unverified boards.)
 
 # ===== 08-24 Mon : EASY =====
 board("2026-08-24","gen1","Easy",[
@@ -478,7 +462,7 @@ board("2026-10-09","mixed","Hard",[
 
 # ===== 10-03 Sat : BRUTAL (gap fill) =====
 board("2026-10-03","gen1","Brutal",[
-  ("KINDLY",3,"trait:gentle-giant",["Dragonite"],"Dragonite is famously gentle and kind despite its power -- Pokedex lore says it rescues drowning sailors and guides lost ships home."),
+  ("KIND",3,"trait:gentle-giant",["Dragonite"],"Dragonite is famously gentle and kind despite its power -- Pokedex lore says it rescues drowning sailors and guides lost ships home."),
   ("TRADE",5,"connection:trade-evolution",["Alakazam","Golem","Gengar"],"All three only reach their final form when traded to another trainer -- Kadabra becomes Alakazam, Graveler becomes Golem, and Haunter becomes Gengar."),
   ("FOLKLORE",5,"myth:folklore-being",["Golem","Gengar","Hypno"],"Each is built on a folkloric being that blurs the line between animate and inanimate -- Golem the clay creature of Jewish legend, Gengar your own shadow come to life, and Hypno the baku, a dream-eating spirit of Japanese myth."),
   ("PREHISTORIC",4,"lore:fossil-revival",["Kabutops","Omastar"],"Both are ancient sea creatures revived from fossils -- Kabutops from the Dome Fossil (a horseshoe crab) and Omastar from the Helix Fossil (a giant ammonite)."),
@@ -514,3 +498,19 @@ board("2026-10-04","mixed","Evil",[
             "Spinarak","Joltik","Araquanid","Dewpider","Spidops","Tarountula",
             "Dustox","Nincada","Scatterbug","Vivillon","Blipbug",
             "Toxicroak","Palpitoad","Tympole","Froakie","Frogadier","Greninja"])
+
+# ===== 10-05 Mon : EASY =====
+board("2026-10-05","gen1","Easy",[
+  ("ELECTRIC",1,"type:electric",["Pikachu","Jolteon"],"Pikachu and Jolteon are both Electric-type Pokemon."),
+  ("ICE",1,"type:ice",["Articuno","Dewgong"],"Articuno and Dewgong are both Ice-type Pokemon."),
+  ("GHOST",1,"type:ghost",["Haunter"],"Haunter is a Ghost-type Pokemon, a shadowy spirit said to slip through walls at night."),
+  ("BUG",1,"type:bug",["Pinsir","Scyther"],"Pinsir and Scyther are both Bug-type Pokemon."),
+  ("CLAWS",2,"sprite:claws",["Krabby","Kabuto"],"Look at the sprites -- Krabby's oversized pincers and Kabuto's crab-like foreclaws are both a pair of prominent claws."),
+], exclude=["Kingler","Kabutops","Sandshrew","Sandslash","Omastar","Machamp"])
+board("2026-10-05","mixed","Easy",[
+  ("GROUND",1,"type:ground",["Cubone","Donphan"],"Cubone and Donphan are both Ground-type Pokemon."),
+  ("DRAGON",1,"type:dragon",["Jangmo-o","Goomy"],"Jangmo-o and Goomy are both Dragon-type Pokemon."),
+  ("FAIRY",1,"type:fairy",["Sylveon","Comfey"],"Sylveon and Comfey are both Fairy-type Pokemon."),
+  ("FIGHTING",1,"type:fighting",["Throh","Pancham"],"Throh and Pancham are both Fighting-type Pokemon."),
+  ("GEARS",2,"sprite:gear-shape",["Klink"],"Klink's entire body is a pair of interlocking gears, spinning against each other."),
+], exclude=["Klang","Klinklang","Bronzor","Bronzong","Magnemite","Magneton","Beldum","Metang","Ferroseed","Ferrothorn","Sawk"])
