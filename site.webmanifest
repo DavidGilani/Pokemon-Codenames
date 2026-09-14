@@ -2,7 +2,6 @@
   "name": "Pokémon Codenames",
   "short_name": "Codenames",
   "description": "A Pokédex-flavoured spin on Codenames – give one-word clues to guide your team to their Pokémon and avoid the assassin.",
-  "start_url": "/",
   "display": "standalone",
   "background_color": "#0e1119",
   "theme_color": "#0e1119",
