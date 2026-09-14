@@ -3352,11 +3352,28 @@ async function boot() {
 
   _migrateOldSession(); // one-time migration from old single-session key
 
-  // QA / playtest deep-link (unlisted): ?qa=1 opens the QA overview grid of
+  // QA / playtest deep-link (unlisted): ?qa=<token> opens the QA overview grid of
   // upcoming boards; tapping a blue (untested) board starts a testing run.
-  const qaParam = new URLSearchParams(window.location.search).get("qa");
+  let qaParam = new URLSearchParams(window.location.search).get("qa");
+  // Home-screen (PWA) launches use the manifest's start_url ("/") and drop the
+  // ?qa token — so the icon would open the homepage. Restore the token from
+  // localStorage when the app is launched standalone (i.e. from the icon the
+  // owner saved from a ?qa URL). Normal Safari tabs never auto-enter QA.
+  if (!qaParam) {
+    try {
+      const stored = localStorage.getItem("pc_qa");
+      const standalone = window.navigator.standalone === true
+        || (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+      if (stored && standalone) qaParam = stored;
+    } catch {}
+  }
   if (qaParam) {
     qaSecret = qaParam; // remember the token so feedback submits are trusted
+    try { localStorage.setItem("pc_qa", qaParam); } catch {}
+    // iOS: drop the web-app manifest so "Add to Home Screen" from this ?qa URL
+    // captures THIS url as the launch URL (not the manifest's start_url "/"),
+    // so the saved icon opens the QA page directly.
+    try { const mf = document.querySelector('link[rel="manifest"]'); if (mf) mf.remove(); } catch {}
     await showQaOverview();
     return;
   }
