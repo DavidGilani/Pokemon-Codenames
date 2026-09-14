@@ -388,22 +388,7 @@
       </div>
 
       <div class="daily-tutorial-row" id="daily-tutorial-row">
-        <button class="btn btn-ghost btn-mini" id="daily-tutorial-btn">🎓 First time? Play a test game</button>
-      </div>
-
-      <div class="daily-tutorial-panel hidden" id="daily-tutorial-panel">
-        <div class="dtp-title">How to play</div>
-        <ol class="dtp-steps">
-          <li><strong>Goal:</strong> find all <strong>9 blue Pokémon</strong> hidden on the 5×5 board.</li>
-          <li>A handful of <strong>clues</strong> (up to 5) point to those blue tiles. The <strong>× number</strong> tells you how many tiles a clue covers – e.g. <em>FIRE × 2</em> means two of your Pokémon to find are Fire-types.</li>
-          <li>Clues can be about almost anything – Pokémon <strong>types, colours, the animals they're based on, places they're found, moves they use, trainers</strong> who've caught them. Sometimes you'll need to think outside the box.</li>
-          <li><strong>Tap a tile to guess it.</strong> Guess right and it turns blue. Guess wrong and it's a <strong>strike</strong> (turns yellow).</li>
-          <li>You can make up to <strong>4 mistakes</strong> – the <strong>5th strike ends the game</strong>.</li>
-          <li>Stuck? Tap <strong>💡 Reveal an extra clue</strong> for a nudge toward a tile you still need.</li>
-          <li><strong>Take notes:</strong> once you think you've found all the Pokémon linked to a clue, tap that clue to grey it out. You can also <strong>tap / click &amp; hold a tile</strong> to add colour notes – really handy on the harder days, where clues start to overlap.</li>
-          <li><strong>It ramps up:</strong> two new puzzles drop daily (one Gen I, one all-gens) and they get tougher through the week – <em>Mon easy → Tue → Wed → Thu → Fri → Sat → Sun evil</em>.</li>
-        </ol>
-        <div class="dtp-foot">This is just a practice board. Give it a go below, then take on today's daily puzzles! 👇</div>
+        <button class="btn btn-ghost btn-mini" id="daily-tutorial-btn">🎓 First time? Play the tutorial</button>
       </div>
 
       <div class="daily-statbar" id="daily-statbar"></div>
@@ -465,6 +450,39 @@
         <button class="btn btn-ghost" id="dshare-other">Play the other puzzle</button>
       </div>
       <button class="btn btn-ghost dshare-close" id="dshare-close">Close</button>
+    </div>
+  </div>
+
+  <!-- Daily welcome pop-up: shown when opening a fresh daily puzzle -->
+  <div class="dwelcome-overlay hidden" id="daily-welcome-modal">
+    <div class="dwelcome-card">
+      <div class="dwelcome-logo" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="52" height="52">
+          <circle cx="50" cy="50" r="46" fill="#f4f6fb" stroke="#12151f" stroke-width="6"/>
+          <path d="M4 50a46 46 0 0 1 92 0Z" fill="#ff5b52"/>
+          <rect x="4" y="45" width="92" height="10" fill="#12151f"/>
+          <circle cx="50" cy="50" r="15" fill="#f4f6fb" stroke="#12151f" stroke-width="6"/>
+        </svg>
+      </div>
+      <div class="dwelcome-title">Welcome to Pokémon Codenames!</div>
+      <div class="dwelcome-date" id="dwelcome-date"></div>
+      <div class="dwelcome-diff" id="dwelcome-diff"></div>
+      <p class="dwelcome-blurb">Crack the board from a handful of one-word clues — find all 9 hidden Pokémon before you run out of guesses.</p>
+      <button class="btn btn-primary dwelcome-start" id="dwelcome-start">Start puzzle</button>
+      <button class="btn btn-ghost dwelcome-tut" id="dwelcome-tutorial">New here? Play the tutorial</button>
+    </div>
+  </div>
+
+  <!-- Interactive tutorial coach: a floating step card over the practice board -->
+  <div class="coach hidden" id="daily-coach">
+    <div class="coach-progress" id="coach-progress"></div>
+    <div class="coach-title" id="coach-title"></div>
+    <div class="coach-body" id="coach-body"></div>
+    <div class="coach-nudge hidden" id="coach-nudge">👆 Give it a tap on the board</div>
+    <div class="coach-btns">
+      <button class="btn btn-ghost btn-mini" id="coach-back">Back</button>
+      <button class="btn btn-ghost btn-mini" id="coach-skip">Skip</button>
+      <button class="btn btn-primary btn-mini" id="coach-next">Next →</button>
     </div>
   </div>
 

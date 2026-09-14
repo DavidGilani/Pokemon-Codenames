@@ -1930,9 +1930,16 @@ function dailyResumeTimer() {
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); endCoach(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
-  $("#daily-tutorial-btn").addEventListener("click", startPractice);
+  $("#daily-tutorial-btn").addEventListener("click", () => startPractice(daily.pool));
+  // Daily welcome pop-up
+  $("#dwelcome-start").addEventListener("click", () => { closeDailyWelcome(); if (_dailyBegin) _dailyBegin(); });
+  $("#dwelcome-tutorial").addEventListener("click", () => { const p = daily.pool; closeDailyWelcome(); startPractice(p); });
+  // Interactive tutorial coach
+  $("#coach-next").addEventListener("click", coachNext);
+  $("#coach-back").addEventListener("click", coachBack);
+  $("#coach-skip").addEventListener("click", endCoach);
   const qaBack = $("#daily-qa-back");
   if (qaBack) qaBack.addEventListener("click", () => showQaOverview());
   const qaHome = $("#qa-home-btn2");
@@ -2002,8 +2009,9 @@ const PRACTICE_HINTS = [
   { word: "MUSCLE", number: 1, cat: 3, t: [5], explain: "Machamp's four bulging arms." },
 ];
 
-function startPractice() {
+function startPractice(fromPool) {
   _closeNotePalette();
+  closeDailyWelcome();
   dailyPauseTimer();
   _dailyReset();
   daily.practice = true;
@@ -2024,10 +2032,123 @@ function startPractice() {
   clearDailyUrl();
   showScreen("daily");
   renderDaily();
+  startCoach(fromPool === "mixed" ? "mixed" : "gen1"); // launch the step-by-step walkthrough
 }
 
-async function startDaily(pool) {
+// ---- Daily welcome pop-up -------------------------------------------------
+// Shown when opening a fresh daily (Gen I or all-gens). `begin` starts the real
+// attempt (deferred so the player can pick Start vs the tutorial first).
+let _dailyBegin = null;
+function showDailyWelcome(pool, begin) {
+  _dailyBegin = begin;
+  const modal = $("#daily-welcome-modal");
+  if (!modal) { begin(); return; } // safety: no modal → just start
+  const diff = dailyDifficulty(daily.clues);
+  const poolLabel = pool === "gen1" ? "Gen I" : "All-gens";
+  $("#dwelcome-date").textContent = `${poolLabel} daily · ${_dailyDateTitle()}`;
+  $("#dwelcome-diff").innerHTML = `Difficulty: <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+  modal.classList.remove("hidden");
+}
+function closeDailyWelcome() {
+  const modal = $("#daily-welcome-modal");
+  if (modal) modal.classList.add("hidden");
+}
+
+// ---- Interactive tutorial (coach) ----------------------------------------
+// A floating step card walks a first-timer through the practice board, one tip
+// at a time, with a couple of "your turn" moments where they actually tap a
+// tile. `pool` is the daily they came from, so the last step can drop them into
+// today's real puzzle.
+const tutorial = { active: false, step: 0, pool: "gen1", satisfied: false };
+const TUTORIAL_STEPS = [
+  { title: "Welcome! 👋",
+    body: "This is a quick practice board. The goal: find all <strong>9 blue Pokémon</strong> hidden among the 25 tiles." },
+  { title: "Read the clues",
+    body: "The clues up here point to your Pokémon. <strong>FOSSIL × 3</strong> means three of the tiles are Pokémon revived from fossils.",
+    spot: "#daily-clues" },
+  { title: "Your turn 🕹️",
+    body: "Tap one of the three <strong>FOSSIL</strong> Pokémon — Kabutops, Aerodactyl or Omastar — on the board to reveal it.",
+    spot: "#daily-board", interactive: true },
+  { title: "Right and wrong",
+    body: "A correct guess turns <strong>blue</strong>. A wrong tap is a <strong>strike</strong> (turns yellow) — you get 4, and the 5th ends the game. So read the clues before you tap.",
+    spot: "#daily-statbar" },
+  { title: "Need a nudge?",
+    body: "Stuck on a tile? Tap <strong>💡 Reveal an extra clue</strong> for a hint pointing at one Pokémon you still need.",
+    spot: "#daily-hint-row" },
+  { title: "Handy tools",
+    body: "Tap a <strong>clue</strong> to grey it out once you've found its Pokémon. <strong>Press &amp; hold a tile</strong> to jot a colour note — handy on harder days when clues overlap.",
+    spot: "#daily-clues" },
+  { title: "You're ready! 🎉",
+    body: "Two puzzles drop daily (Gen I and all-gens), getting tougher Mon → Sun. Finish this practice board whenever — or jump straight into today's puzzle.",
+    final: true },
+];
+
+function startCoach(pool) {
+  tutorial.active = true; tutorial.step = 0; tutorial.pool = pool; tutorial.satisfied = false;
+  renderCoach();
+}
+function _clearCoachSpot() {
+  $all(".coach-spotlight").forEach((el) => el.classList.remove("coach-spotlight"));
+}
+function renderCoach() {
+  const el = $("#daily-coach");
+  if (!el) return;
+  const s = TUTORIAL_STEPS[tutorial.step];
+  _clearCoachSpot();
+  if (s.spot) { const t = $(s.spot); if (t) t.classList.add("coach-spotlight"); }
+  $("#coach-progress").textContent = `Step ${tutorial.step + 1} of ${TUTORIAL_STEPS.length}`;
+  $("#coach-title").innerHTML = s.title;
+  $("#coach-body").innerHTML = s.body;
+  tutorial.satisfied = false;
+  const interactive = !!s.interactive;
+  $("#coach-nudge").classList.toggle("hidden", !interactive);
+  $("#coach-back").classList.toggle("hidden", tutorial.step === 0);
+  $("#coach-skip").classList.toggle("hidden", s.final);
+  const nextBtn = $("#coach-next");
+  if (s.final) {
+    nextBtn.textContent = `Play today's ${tutorial.pool === "gen1" ? "Gen I" : "All-gens"} puzzle`;
+    nextBtn.classList.remove("hidden");
+  } else if (interactive) {
+    nextBtn.classList.add("hidden"); // revealed by a correct tap
+  } else {
+    nextBtn.textContent = "Next →";
+    nextBtn.classList.remove("hidden");
+  }
+  el.classList.remove("hidden");
+}
+function coachNext() {
+  const s = TUTORIAL_STEPS[tutorial.step];
+  if (s.final) { endCoach(); startDaily(tutorial.pool, { skipWelcome: true }); return; }
+  if (tutorial.step < TUTORIAL_STEPS.length - 1) { tutorial.step += 1; renderCoach(); }
+}
+function coachBack() {
+  if (tutorial.step > 0) { tutorial.step -= 1; renderCoach(); }
+}
+function endCoach() {
+  tutorial.active = false;
+  _clearCoachSpot();
+  const el = $("#daily-coach");
+  if (el) el.classList.add("hidden");
+}
+// Called from dailyRevealTile: a correct tap satisfies the interactive step.
+function tutorialOnReveal(colour) {
+  if (!tutorial.active) return;
+  const s = TUTORIAL_STEPS[tutorial.step];
+  if (!s || !s.interactive || tutorial.satisfied) return;
+  if (colour === "blue") {
+    tutorial.satisfied = true;
+    $("#coach-nudge").classList.add("hidden");
+    $("#coach-title").innerHTML = "Nice one! ✅";
+    $("#coach-body").innerHTML = "That's a correct guess — it turns <strong>blue</strong>. Keep going, or tap <strong>Next</strong>.";
+    const nextBtn = $("#coach-next");
+    nextBtn.textContent = "Next →";
+    nextBtn.classList.remove("hidden");
+  }
+}
+
+async function startDaily(pool, opts = {}) {
   try {
+    closeDailyWelcome(); endCoach();
     try { await ensureAuth(); } catch (e) { console.error(e); } // may fail offline; carry on
     let date = null, tiles = null, sealed = null, cluesOnline = null;
     // Preferred path: get the whole puzzle "sealed" so it can be played offline.
@@ -2110,17 +2231,24 @@ async function startDaily(pool) {
       return;
     }
 
-    // Fresh start: timer begins now (as active time), then render + log.
-    daily.startedAt = Date.now();
-    daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
+    // Fresh start. Actually beginning the attempt (timer + logging) is deferred
+    // to begin() so we can first show the welcome pop-up (Start / tutorial).
+    const begin = async () => {
+      daily.startedAt = Date.now();
+      daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
+      showScreen("daily");
+      renderDaily();
+      try {
+        const { data: aid } = await sb.rpc("daily_start_attempt", { p_date: daily.date, p_pool: pool });
+        daily.attemptId = aid || null;
+      } catch (err) { console.error(err); }
+      _saveDailyProgress();
+    };
+    if (opts.skipWelcome) { await begin(); return; }
+    // Show the board (paused, dimmed) behind the welcome pop-up for context.
     showScreen("daily");
     renderDaily();
-    // Log the start of this attempt (best-effort).
-    try {
-      const { data: aid } = await sb.rpc("daily_start_attempt", { p_date: daily.date, p_pool: pool });
-      daily.attemptId = aid || null;
-    } catch (err) { console.error(err); }
-    _saveDailyProgress();
+    showDailyWelcome(pool, begin);
   } catch (err) {
     console.error(err);
     toast(err.message || "Couldn't load the daily puzzle.");
@@ -2364,12 +2492,10 @@ function renderDaily() {
       ? `A quick example to learn the ropes – nothing here is saved or shared.`
       : (daily.date ? `Find all 9 blue Pokémon. 5 strikes and you're out.` : "");
   }
-  // Tutorial affordances: the "test game" button shows on the real puzzle only;
-  // the how-to-play panel shows only while playing the test game. QA hides both.
+  // Tutorial affordance: the "play the tutorial" button shows on the real puzzle
+  // only (not during the tutorial itself, QA, or once finished).
   const tutRow = $("#daily-tutorial-row");
   if (tutRow) tutRow.classList.toggle("hidden", daily.practice || daily.qa || daily.finished);
-  const tutPanel = $("#daily-tutorial-panel");
-  if (tutPanel) tutPanel.classList.toggle("hidden", !daily.practice || daily.finished);
   const qaBack = $("#daily-qa-back");
   if (qaBack) qaBack.classList.toggle("hidden", !daily.qa); // "← QA overview" only in QA mode
 
@@ -2635,6 +2761,7 @@ async function dailyRevealTile(position) {
     daily.revealed[position] = colour;
     const tile = daily.tiles.find((t) => t.position === position);
     daily.taps.push({ position, name: tile ? tile.name : null, colour });
+    tutorialOnReveal(colour); // advance the interactive tutorial step on a correct tap
 
     if (colour === "assassin") {
       playSound("assassin");
@@ -2712,6 +2839,7 @@ async function dailyRequestHint() {
 }
 
 async function dailyFinish(outcome) {
+  endCoach(); // clear any tutorial overlay if the practice board is completed
   // Freeze the timer at the current active time before anything else reads it.
   const duration = dailyElapsedMs();
   daily.elapsedMs = duration; daily.runningSince = null; daily.timerOn = false;

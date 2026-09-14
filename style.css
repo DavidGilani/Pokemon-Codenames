@@ -982,6 +982,55 @@ a { color: var(--accent); }
 .dshare-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .dshare-close { display: block; width: 100%; margin-top: 12px; }
 
+/* ---- Daily welcome pop-up ---- */
+.dwelcome-overlay {
+  position: fixed; inset: 0; background: rgba(10, 12, 18, 0.86);
+  display: flex; align-items: center; justify-content: center; z-index: 70;
+  backdrop-filter: blur(3px); padding: 16px; overflow-y: auto;
+}
+.dwelcome-card {
+  background: var(--panel); border: 1px solid var(--panel-border);
+  border-radius: var(--radius); padding: 28px 26px 22px; text-align: center;
+  width: 100%; max-width: 380px; margin: auto;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.dwelcome-logo { display: flex; justify-content: center; margin-bottom: 12px; }
+.dwelcome-title { font-family: var(--font-display); font-size: 23px; font-weight: 700; line-height: 1.2; }
+.dwelcome-date { font-size: 14px; color: var(--text-dim); margin-top: 8px; }
+.dwelcome-diff { font-size: 15px; margin-top: 6px; }
+.dwelcome-blurb { font-size: 14px; color: var(--text-dim); line-height: 1.5; margin: 16px 0 20px; }
+.dwelcome-start { display: block; width: 100%; font-size: 16px; padding: 13px; }
+.dwelcome-tut { display: block; width: 100%; margin-top: 10px; }
+
+/* ---- Interactive tutorial coach ---- */
+.coach {
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: 14px;
+  width: calc(100% - 28px); max-width: 520px; z-index: 65;
+  background: var(--panel); border: 1px solid var(--accent);
+  border-radius: 16px; padding: 16px 18px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+.coach-progress {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-faint); margin-bottom: 6px;
+}
+.coach-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+.coach-body { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+.coach-body strong { color: var(--text); }
+.coach-nudge {
+  margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent);
+  animation: coachPulse 1.4s ease-in-out infinite;
+}
+@keyframes coachPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.coach-btns { display: flex; gap: 8px; margin-top: 14px; align-items: center; }
+.coach-btns #coach-next { margin-left: auto; }
+.coach-spotlight {
+  position: relative; z-index: 66;
+  outline: 3px solid var(--accent); outline-offset: 3px;
+  border-radius: 12px; box-shadow: 0 0 0 6px rgba(245, 165, 36, 0.18);
+  transition: outline-color 0.2s;
+}
+
 .waiting-inline {
   text-align: center; color: var(--text-faint); font-size: 13px;
   font-family: var(--font-mono); padding: 10px;
