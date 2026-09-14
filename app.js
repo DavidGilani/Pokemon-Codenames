@@ -2265,6 +2265,10 @@ async function startDaily(pool, opts = {}) {
 // and no player attempt is logged.
 // ============================================================================
 const QA_WINDOW_DAYS = 30; // how far ahead to pull upcoming boards for QA
+// The QA secret from the ?qa=<token> URL. Any value opens the QA page (viewing),
+// but feedback is only stamped `trusted` (and thus acted on by the nightly
+// generator) when this matches the server's stored secret. Captured at boot.
+let qaSecret = null;
 
 // The QA overview: a grid of the upcoming days (two boards each). Colours:
 // blue = created, not tested yet (tap to test); green = tested, nothing
@@ -2272,7 +2276,7 @@ const QA_WINDOW_DAYS = 30; // how far ahead to pull upcoming boards for QA
 async function showQaOverview() {
   try { await ensureAuth(); } catch (e) { console.error(e); }
   daily.qa = false; // between boards
-  try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {}
+  try { history.replaceState(null, "", `${window.location.pathname}?qa=${encodeURIComponent(qaSecret || "1")}`); } catch {}
   let rows = [];
   try {
     const { data, error } = await sb.rpc("daily_qa_overview", { p_from: _todayStr(), p_to: _todayStr(QA_WINDOW_DAYS) });
@@ -2437,7 +2441,7 @@ async function viewQaBoard(date, pool) {
     daily.tiles.forEach((t) => { daily.revealed[t.position] = colourAt(t.position); });
     daily.bluesFound = 9;
     daily.finished = true; daily.outcome = "view"; daily.timerOn = false;
-    try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {}
+    try { history.replaceState(null, "", `${window.location.pathname}?qa=${encodeURIComponent(qaSecret || "1")}`); } catch {}
     showScreen("daily");
     renderDaily();
   } catch (err) {
@@ -2487,7 +2491,7 @@ async function startQaBoard(date, pool) {
     daily.tiles = tiles;
     daily.sig = _dailySig(daily.tiles, daily.clues);
     setRoomPill(null);
-    try { history.replaceState(null, "", `${window.location.pathname}?qa=1`); } catch {} // keep QA mode on refresh
+    try { history.replaceState(null, "", `${window.location.pathname}?qa=${encodeURIComponent(qaSecret || "1")}`); } catch {} // keep QA mode on refresh
     daily.startedAt = Date.now();
     daily.elapsedMs = 0; daily.runningSince = Date.now(); daily.timerOn = true;
     showScreen("daily");
@@ -2508,7 +2512,7 @@ async function qaSaveAndAdvance(outcome) {
       p_rating: rating, p_note: note,
       p_outcome: outcome || daily.outcome || null,
       p_mistakes: daily.mistakes, p_hints: daily.hintsUsed,
-      p_duration: dailyElapsedSecs(),
+      p_duration: dailyElapsedSecs(), p_secret: qaSecret,
     });
     toast("Feedback saved.");
   } catch (err) {
@@ -2527,7 +2531,7 @@ async function qaSaveAndBackToOverview() {
       p_date: daily.date, p_pool: daily.pool,
       p_rating: daily.rating || null, p_note: note,
       p_outcome: daily.outcome || null, p_mistakes: daily.mistakes,
-      p_hints: daily.hintsUsed, p_duration: dailyElapsedSecs(),
+      p_hints: daily.hintsUsed, p_duration: dailyElapsedSecs(), p_secret: qaSecret,
     });
     toast("Feedback saved.");
   } catch (err) { console.error(err); }
@@ -3350,7 +3354,9 @@ async function boot() {
 
   // QA / playtest deep-link (unlisted): ?qa=1 opens the QA overview grid of
   // upcoming boards; tapping a blue (untested) board starts a testing run.
-  if (new URLSearchParams(window.location.search).get("qa") === "1") {
+  const qaParam = new URLSearchParams(window.location.search).get("qa");
+  if (qaParam) {
+    qaSecret = qaParam; // remember the token so feedback submits are trusted
     await showQaOverview();
     return;
   }
