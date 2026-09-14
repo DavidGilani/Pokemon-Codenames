@@ -3120,17 +3120,45 @@ function renderDailyResult() {
     <div class="daily-result-line">🔵 ${daily.bluesFound}/9 · ✗ ${daily.mistakes} strikes · 💡 ${daily.hintsUsed} hints · ⏱ ${time}</div>
     ${streakHtml}
     ${answersHtml}
-    <div class="daily-rate-label">${daily.rating ? "Thanks for the feedback!" : "How was the difficulty?"}</div>
+    <div class="daily-rate-label">How was the difficulty?</div>
     <div class="daily-rate-row">${rateBtns}</div>
+    ${daily.rating ? _dailyRateFollow(daily.rating) : ""}
     <div class="daily-result-btns">
       <button class="btn btn-share" id="daily-share-btn">↗ Share result</button>
       <button class="btn btn-ghost" id="daily-other-btn">Play the ${daily.pool === "gen1" ? "All-gens" : "Gen I"} puzzle</button>
       <button class="btn btn-ghost" id="daily-home-btn">Home</button>
     </div>`;
+  // Nudge sharing when they found it hard (see _dailyRateFollow).
+  if (daily.rating === "way_too_hard" || daily.rating === "slightly_hard") {
+    const sh = $("#daily-share-btn"); if (sh) sh.classList.add("share-pulse");
+  }
   $("#daily-share-btn").addEventListener("click", dailyShare);
   $("#daily-other-btn").addEventListener("click", () => startDaily(daily.pool === "gen1" ? "mixed" : "gen1"));
   $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
   $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => dailyRate(b.dataset.rate)));
+}
+
+// A friendly line shown after the player rates the difficulty. Too-easy → come
+// back tomorrow when it's tougher (but Sunday is already the week's peak, so
+// don't promise "harder tomorrow" then). Too-hard → nudge them to share it with
+// a Poképal who might crack it.
+function _dailyRateFollow(rating) {
+  if (!rating) return "";
+  const dd = new Date(`${daily.date}T00:00:00`);
+  const isSunday = !isNaN(dd) && dd.getDay() === 0; // Sun = Evil, the week's hardest
+  const easy = rating === "way_too_easy" || rating === "slightly_easy";
+  const hard = rating === "way_too_hard" || rating === "slightly_hard";
+  let msg;
+  if (easy && isSunday) {
+    msg = "That was Sunday's <strong>Evil</strong> puzzle – the toughest of the week. Nicely done! 💪";
+  } else if (easy) {
+    msg = "Too easy? 📈 The dailies get tougher as the week goes on – come back tomorrow for a harder one.";
+  } else if (hard) {
+    msg = "Tough one! 😅 Know any Poképals who'd be up to the challenge? Share it and see if they can crack it 👇";
+  } else {
+    msg = "Thanks for the feedback! 🙌";
+  }
+  return `<div class="daily-rate-follow">${msg}</div>`;
 }
 
 async function dailyRate(rating) {
