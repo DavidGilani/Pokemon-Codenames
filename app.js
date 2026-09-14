@@ -2085,6 +2085,7 @@ const TUTORIAL_STEPS = [
 
 function startCoach(pool) {
   tutorial.active = true; tutorial.step = 0; tutorial.pool = pool; tutorial.satisfied = false;
+  logDailyEvent("tutorial_start");
   renderCoach();
 }
 function _clearCoachSpot() {
@@ -2119,7 +2120,7 @@ function renderCoach() {
 }
 function coachNext() {
   const s = TUTORIAL_STEPS[tutorial.step];
-  if (s.final) { endCoach(); startDaily(tutorial.pool, { skipWelcome: true }); return; }
+  if (s.final) { logDailyEvent("tutorial_complete"); endCoach(); startDaily(tutorial.pool, { skipWelcome: true }); return; }
   if (tutorial.step < TUTORIAL_STEPS.length - 1) { tutorial.step += 1; renderCoach(); }
 }
 function coachBack() {
@@ -2281,6 +2282,93 @@ async function showQaOverview() {
   daily.qaOverview = rows;
   showScreen("qa");
   renderQaOverview();
+  loadQaStats();
+}
+
+// Owner analytics panel at the bottom of the QA page (single RPC → jsonb blob).
+async function loadQaStats() {
+  const el = $("#qa-stats");
+  if (!el) return;
+  el.innerHTML = `<div class="qa-stats-title">Usage stats</div><div class="qa-stats-loading">Loading…</div>`;
+  try {
+    const { data, error } = await sb.rpc("daily_stats");
+    if (error) throw error;
+    renderQaStats(data || {});
+  } catch (err) {
+    console.error(err);
+    el.innerHTML = `<div class="qa-stats-title">Usage stats</div><div class="qa-stats-loading">Couldn't load stats.</div>`;
+  }
+}
+
+function _pct(n, d) { return d ? Math.round((100 * n) / d) : 0; }
+const _RATING_LABEL = {
+  way_too_easy: "😴 Way too easy", slightly_easy: "🙂 Slightly easy",
+  just_right: "😊 Just right", slightly_hard: "🥵 Slightly hard", way_too_hard: "💀 Way too hard",
+};
+const _RATING_ORDER = ["way_too_easy", "slightly_easy", "just_right", "slightly_hard", "way_too_hard"];
+
+function renderQaStats(s) {
+  const el = $("#qa-stats");
+  if (!el) return;
+  const esc = (x) => escapeHtml(String(x));
+  const months = s.months || [], ratings = s.ratings || [], pools = s.pools || [],
+        retention = s.retention || [], events = s.events || {};
+
+  // Monthly: users / completed / win% / share%
+  const monthRows = months.map((m) => `<tr>
+      <td>${esc(m.month)}</td><td>${m.users}</td><td>${m.completed}</td>
+      <td>${_pct(m.wins, m.completed)}%</td>
+      <td>${m.completers ? _pct(m.sharers, m.completers) + "%" : "–"}</td>
+    </tr>`).join("");
+
+  // Ratings: ordered easy→hard with a bar
+  const rmap = {}; ratings.forEach((r) => { rmap[r.rating] = r.n; });
+  const rtotal = ratings.reduce((a, r) => a + r.n, 0);
+  const ratingRows = _RATING_ORDER.filter((k) => rmap[k]).map((k) => {
+    const n = rmap[k], p = _pct(n, rtotal);
+    return `<div class="qa-rate-row"><span class="qa-rate-lbl">${_RATING_LABEL[k]}</span>
+      <span class="qa-rate-bar"><i style="width:${p}%"></i></span>
+      <span class="qa-rate-num">${p}% <em>(${n})</em></span></div>`;
+  }).join("");
+
+  const poolRows = pools.map((p) => `<tr>
+      <td>${p.pool === "gen1" ? "Gen I" : "All-gens"}</td><td>${p.users}</td>
+      <td>${p.completed}</td><td>${_pct(p.wins, p.completed)}%</td>
+    </tr>`).join("");
+
+  const retRows = retention.map((r) => `<tr><td>${esc(r.bucket)}</td><td>${r.users}</td></tr>`).join("");
+
+  const ev = (k) => (events[k] ? events[k].n : 0);
+  const evU = (k) => (events[k] ? events[k].users : 0);
+
+  el.innerHTML = `
+    <div class="qa-stats-title">Usage stats</div>
+    <div class="qa-stats-note">Anonymous per-device counts. This month is partial. Some activity is your own.</div>
+
+    <div class="qa-stats-sec">By month</div>
+    <table class="qa-stats-tbl"><thead><tr>
+      <th>Month</th><th>Users</th><th>Completed</th><th>Win%</th><th>Share%</th>
+    </tr></thead><tbody>${monthRows || `<tr><td colspan="5">–</td></tr>`}</tbody></table>
+
+    <div class="qa-stats-sec">Difficulty ratings ${rtotal ? `<span class="qa-stats-n">(${rtotal})</span>` : ""}</div>
+    ${ratingRows || `<div class="qa-stats-loading">No ratings yet.</div>`}
+
+    <div class="qa-stats-sec">By pool (all-time)</div>
+    <table class="qa-stats-tbl"><thead><tr>
+      <th>Pool</th><th>Users</th><th>Completed</th><th>Win%</th>
+    </tr></thead><tbody>${poolRows || `<tr><td colspan="4">–</td></tr>`}</tbody></table>
+
+    <div class="qa-stats-sec">Return players (distinct days completed)</div>
+    <table class="qa-stats-tbl"><thead><tr><th>Days</th><th>Users</th></tr></thead>
+      <tbody>${retRows || `<tr><td colspan="2">–</td></tr>`}</tbody></table>
+
+    <div class="qa-stats-sec">Actions</div>
+    <table class="qa-stats-tbl"><thead><tr><th>Event</th><th>Count</th><th>Users</th></tr></thead><tbody>
+      <tr><td>↗ Shared result</td><td>${ev("share")}</td><td>${evU("share")}</td></tr>
+      <tr><td>📋 Copied result</td><td>${ev("copy")}</td><td>${evU("copy")}</td></tr>
+      <tr><td>🎓 Tutorial started</td><td>${ev("tutorial_start")}</td><td>${evU("tutorial_start")}</td></tr>
+      <tr><td>🎓 Tutorial finished</td><td>${ev("tutorial_complete")}</td><td>${evU("tutorial_complete")}</td></tr>
+    </tbody></table>`;
 }
 
 function _qaDateLabel(d) {
@@ -3164,11 +3252,23 @@ function closeDailyShareModal() {
   if (modal) modal.classList.add("hidden");
 }
 
+// Best-effort analytics ping (share / copy / tutorial). Non-blocking; failures
+// (e.g. offline) are swallowed. Server whitelists the event vocabulary.
+function logDailyEvent(event) {
+  try {
+    const pool = (daily.pool === "gen1" || daily.pool === "mixed") ? daily.pool : null;
+    const date = (daily.date && daily.date !== "practice") ? daily.date : null;
+    sb.rpc("log_daily_event", { p_event: event, p_pool: pool, p_date: date }).then(() => {}, () => {});
+  } catch (_) { /* ignore */ }
+}
+
 function dailyShareText() {
+  logDailyEvent("share");
   nativeShare({ title: "Pokémon Codenames – Daily", text: _dailyShareText(true) });
 }
 
 async function dailyCopyText() {
+  logDailyEvent("copy");
   const text = _dailyShareText(true);
   try {
     await navigator.clipboard.writeText(text);
