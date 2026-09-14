@@ -23,6 +23,12 @@ alter table public.daily_feedback add column if not exists trusted boolean not n
 -- gate existed, so trust them all (so nothing already-flagged is lost).
 update public.daily_feedback set trusted = true where trusted = false;
 
+-- Adding p_secret changes the signature, so CREATE OR REPLACE makes a NEW
+-- overload rather than replacing the old 8-arg function. Two overloads make
+-- PostgREST unable to choose (PGRST203) and feedback submits fail, so drop the
+-- old one first. (No-op on a fresh DB that never had it.)
+drop function if exists public.submit_daily_feedback(date, text, text, text, text, integer, integer, integer);
+
 create or replace function public.submit_daily_feedback(
   p_date date, p_pool text, p_rating text, p_note text,
   p_outcome text default null, p_mistakes integer default null,
