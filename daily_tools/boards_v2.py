@@ -433,6 +433,16 @@ board("2026-10-06","mixed","Medium",[
 ], exclude=["Floatzel","Brionne","Primarina","Servine","Serperior","Bayleef","Meganium",
             "Boldore","Gigalith","Barbaracle","Abomasnow","Cubchoo","Meowstic"])
 
+# ===== 10-06 Tue (gen1) : MEDIUM -- gap-fill (nightly maintainer) =====
+board("2026-10-06","gen1","Medium",[
+  ("PSYCHIC",1,"type:psychic",["Drowzee","Kadabra"],"Every one of these is a Psychic-type Pokemon."),
+  ("FLYING",1,"type:flying",["Doduo","Golbat","Charizard"],"Every one of these is a Flying-type Pokemon."),
+  ("PACHYDERM",4,"arch:pachyderm",["Rhyhorn","Nidoqueen"],"Both are designed as thick-hided, armoured beasts in the rhinoceros mould -- Rhyhorn is literally the Spikes Pokemon, and Nidoqueen's whole line is built around armoured hide."),
+  ("POUCH",2,"sprite:pouch",["Kangaskhan"],"Look for the baby Cub peeking out of the pouch on Kangaskhan's belly."),
+  ("TONGUE",2,"sprite:tongue",["Lickitung"],"Look for the extraordinarily long tongue on Lickitung's sprite -- as long as its whole body."),
+], exclude=["Hypno","Abra","Alakazam","Dodrio","Zubat","Crobat","Charmander","Charmeleon",
+            "Rhydon","Rhyperior","Nidoran♂","Nidorino","Nidoking","Nidoran♀","Nidorina"])
+
 # ===== 10-09 Fri (mixed) : HARD -- owner-requested "FIRST" board linking three different
 # senses of first: Bulbasaur (#001 in the Pokedex), Rhydon (the first Pokemon ever designed),
 # and Arceus ("The Original One" that myth says created the universe). Placed here because
@@ -485,7 +495,7 @@ board("2026-10-04","gen1","Evil",[
   ("HUMAN-LIKE",5,"egg:human-like",["Mr. Mime","Jynx"],"Mr. Mime and Jynx are both in the Human-Like Egg Group, the category for Pokemon built to stand and move like people."),
   ("WATER-STONE",5,"connection:water-stone",["Starmie","Poliwrath"],"Both evolve on exposure to a Water Stone -- Staryu into Starmie, and Poliwhirl into Poliwrath."),
   ("SIMIAN",4,"arch:primate",["Machop","Primeape"],"Machop and Primeape are both modelled on real-world primates -- Machop a bodybuilding ape, Primeape an ill-tempered macaque."),
-  ("PUGILIST",3,"based:pugilist",["Machop","Poliwrath"],"Machop is designed as a bodybuilder and Poliwrath's own Pokedex entries call it a boxer -- both built around real combat athletes."),
+  ("CHUCK",3,"trainer:chuck",["Primeape","Poliwrath"],"Primeape and Poliwrath are both signature Pokemon of Johto Gym Leader Chuck at Cianwood Gym -- his ace team in Gold, Silver and Crystal."),
 ], exclude=["Cubone","Graveler","Golem","Abra","Kadabra","Alakazam","Machoke","Machamp",
             "Hitmonlee","Hitmonchan","Vaporeon","Cloyster","Mankey"])
 board("2026-10-04","mixed","Evil",[

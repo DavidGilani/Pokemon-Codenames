@@ -4,48 +4,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Nidorino"
-    ],
+    "word": "FANG",
     "n": 1,
     "cat": 2,
-    "word": "FANG"
+    "m": [
+     "Nidorino"
+    ]
    },
    {
+    "word": "GRASS",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Gloom",
      "Oddish"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GRASS"
+    ]
    },
    {
+    "word": "ROCK",
+    "n": 2,
+    "cat": 1,
     "m": [
-     "Golem",
-     "Geodude"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ROCK"
+     "Geodude",
+     "Golem"
+    ]
    },
    {
+    "word": "FIRE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Arcanine",
      "Growlithe"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FIRE"
+    ]
    },
    {
-    "m": [
-     "Dugtrio",
-     "Diglett"
-    ],
+    "word": "TUNNELER",
     "n": 2,
     "cat": 3,
-    "word": "TUNNELER"
+    "m": [
+     "Diglett",
+     "Dugtrio"
+    ]
    }
   ]
  },
@@ -54,48 +54,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Fennekin"
-    ],
+    "word": "FOX",
     "n": 1,
     "cat": 3,
-    "word": "FOX"
+    "m": [
+     "Fennekin"
+    ]
    },
    {
-    "m": [
-     "Yamper",
-     "Pichu"
-    ],
+    "word": "ELECTRIC",
     "n": 2,
     "cat": 1,
-    "word": "ELECTRIC"
+    "m": [
+     "Pichu",
+     "Yamper"
+    ]
    },
    {
+    "word": "BUG",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Grubbin",
      "Karrablast"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "BUG"
+    ]
    },
    {
-    "m": [
-     "Gible",
-     "Deino",
-     "Jangmo-o"
-    ],
+    "word": "PSEUDO-LEGENDARY",
     "n": 3,
     "cat": 1,
-    "word": "PSEUDO-LEGENDARY"
+    "m": [
+     "Deino",
+     "Gible",
+     "Jangmo-o"
+    ]
    },
    {
-    "m": [
-     "Drilbur"
-    ],
+    "word": "MOLE",
     "n": 1,
     "cat": 3,
-    "word": "MOLE"
+    "m": [
+     "Drilbur"
+    ]
    }
   ]
  },
@@ -104,48 +104,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "PSYCHIC",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Abra",
      "Slowpoke"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "PSYCHIC"
+    ]
    },
    {
-    "m": [
-     "Primeape",
-     "Hitmonlee"
-    ],
+    "word": "PUGILIST",
     "n": 2,
     "cat": 3,
-    "word": "PUGILIST"
+    "m": [
+     "Hitmonlee",
+     "Primeape"
+    ]
    },
    {
-    "m": [
-     "Paras"
-    ],
+    "word": "MUSHROOM",
     "n": 1,
     "cat": 2,
-    "word": "MUSHROOM"
+    "m": [
+     "Paras"
+    ]
    },
    {
+    "word": "ECHINODERM",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Starmie",
      "Staryu"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ECHINODERM"
+    ]
    },
    {
-    "m": [
-     "Grimer",
-     "Ekans"
-    ],
+    "word": "POISON",
     "n": 2,
     "cat": 1,
-    "word": "POISON"
+    "m": [
+     "Ekans",
+     "Grimer"
+    ]
    }
   ]
  },
@@ -154,48 +154,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Delibird"
-    ],
+    "word": "SANTA",
     "n": 1,
     "cat": 4,
-    "word": "SANTA"
+    "m": [
+     "Delibird"
+    ]
    },
    {
+    "word": "WATER",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Mudkip",
      "Wooper"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "WATER"
+    ]
    },
    {
-    "m": [
-     "Wooloo",
-     "Mareep"
-    ],
+    "word": "LAMB",
     "n": 2,
     "cat": 3,
-    "word": "LAMB"
+    "m": [
+     "Mareep",
+     "Wooloo"
+    ]
    },
    {
+    "word": "DRAGON",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Axew",
      "Goomy"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "DRAGON"
+    ]
    },
    {
+    "word": "POLLEN",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Cottonee",
      "Sunflora"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "POLLEN"
+    ]
    }
   ]
  },
@@ -204,48 +204,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Gengar"
-    ],
+    "word": "GHOST",
     "n": 1,
     "cat": 1,
-    "word": "GHOST"
+    "m": [
+     "Gengar"
+    ]
    },
    {
-    "m": [
-     "Wigglytuff",
-     "Porygon"
-    ],
+    "word": "PINK",
     "n": 2,
     "cat": 2,
-    "word": "PINK"
+    "m": [
+     "Porygon",
+     "Wigglytuff"
+    ]
    },
    {
-    "m": [
-     "Marowak",
-     "Eevee"
-    ],
+    "word": "MAMMAL",
     "n": 2,
     "cat": 3,
-    "word": "MAMMAL"
+    "m": [
+     "Eevee",
+     "Marowak"
+    ]
    },
    {
-    "m": [
-     "Seadra",
-     "Goldeen"
-    ],
+    "word": "FISH",
     "n": 2,
     "cat": 3,
-    "word": "FISH"
+    "m": [
+     "Goldeen",
+     "Seadra"
+    ]
    },
    {
+    "word": "YELLOW",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Electabuzz",
      "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "YELLOW"
+    ]
    }
   ]
  },
@@ -254,41 +254,41 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Dragapult",
-     "Celebi",
-     "Roaring Moon"
-    ],
+    "word": "GREEN",
     "n": 3,
     "cat": 2,
-    "word": "GREEN"
+    "m": [
+     "Celebi",
+     "Dragapult",
+     "Roaring Moon"
+    ]
    },
    {
-    "m": [
-     "Manectric",
-     "Houndour"
-    ],
+    "word": "CANINE",
     "n": 2,
     "cat": 3,
-    "word": "CANINE"
+    "m": [
+     "Houndour",
+     "Manectric"
+    ]
    },
    {
+    "word": "FAIRY",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Florges",
      "Tinkaton"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FAIRY"
+    ]
    },
    {
+    "word": "FISH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Finneon",
      "Overqwil"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "FISH"
+    ]
    }
   ]
  },
@@ -297,48 +297,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "MOLLUSC",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Omanyte",
      "Shellder"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "MOLLUSC"
+    ]
    },
    {
-    "m": [
-     "Arbok",
-     "Onix",
-     "Gyarados"
-    ],
+    "word": "COILS",
     "n": 3,
     "cat": 3,
-    "word": "COILS"
+    "m": [
+     "Arbok",
+     "Gyarados",
+     "Onix"
+    ]
    },
    {
+    "word": "MESMERIST",
+    "n": 1,
+    "cat": 4,
     "m": [
      "Hypno"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "MESMERIST"
+    ]
    },
    {
+    "word": "FLYTRAP",
+    "n": 1,
+    "cat": 4,
     "m": [
      "Victreebel"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "FLYTRAP"
+    ]
    },
    {
+    "word": "SICKLE",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Kabutops",
      "Scyther"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "SICKLE"
+    ]
    }
   ]
  },
@@ -347,48 +347,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Dwebble",
-     "Corphish"
-    ],
+    "word": "CRUSTACEAN",
     "n": 2,
     "cat": 3,
-    "word": "CRUSTACEAN"
+    "m": [
+     "Corphish",
+     "Dwebble"
+    ]
    },
    {
+    "word": "KRAKEN",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Malamar",
      "Octillery"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "KRAKEN"
+    ]
    },
    {
-    "m": [
-     "Pincurchin"
-    ],
+    "word": "SPARK",
     "n": 1,
     "cat": 2,
-    "word": "SPARK"
+    "m": [
+     "Pincurchin"
+    ]
    },
    {
-    "m": [
-     "Kartana",
-     "Doublade"
-    ],
+    "word": "SWORD",
     "n": 2,
     "cat": 4,
-    "word": "SWORD"
+    "m": [
+     "Doublade",
+     "Kartana"
+    ]
    },
    {
-    "m": [
-     "Kecleon",
-     "Heliolisk"
-    ],
+    "word": "LIZARD",
     "n": 2,
     "cat": 3,
-    "word": "LIZARD"
+    "m": [
+     "Heliolisk",
+     "Kecleon"
+    ]
    }
   ]
  },
@@ -397,48 +397,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Weepinbell"
-    ],
+    "word": "SUNDEW",
     "n": 1,
     "cat": 4,
-    "word": "SUNDEW"
+    "m": [
+     "Weepinbell"
+    ]
    },
    {
-    "m": [
-     "Porygon"
-    ],
+    "word": "DIGITAL",
     "n": 1,
     "cat": 5,
-    "word": "DIGITAL"
+    "m": [
+     "Porygon"
+    ]
    },
    {
+    "word": "CLAWS",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Krabby",
      "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "CLAWS"
+    ]
    },
    {
-    "m": [
-     "Horsea",
-     "Goldeen",
-     "Magikarp"
-    ],
+    "word": "FISH",
     "n": 3,
     "cat": 3,
-    "word": "FISH"
+    "m": [
+     "Goldeen",
+     "Horsea",
+     "Magikarp"
+    ]
    },
    {
-    "m": [
-     "Rhyhorn",
-     "Nidoking"
-    ],
+    "word": "PACHYDERM",
     "n": 2,
     "cat": 3,
-    "word": "PACHYDERM"
+    "m": [
+     "Nidoking",
+     "Rhyhorn"
+    ]
    }
   ]
  },
@@ -447,48 +447,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Galvantula",
-     "Araquanid"
-    ],
+    "word": "SPIDER",
     "n": 2,
     "cat": 3,
-    "word": "SPIDER"
+    "m": [
+     "Araquanid",
+     "Galvantula"
+    ]
    },
    {
-    "m": [
-     "Wailord",
-     "Cetitan"
-    ],
+    "word": "WHALE",
     "n": 2,
     "cat": 4,
-    "word": "WHALE"
+    "m": [
+     "Cetitan",
+     "Wailord"
+    ]
    },
    {
+    "word": "RAPTOR",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Braviary",
      "Skarmory"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "RAPTOR"
+    ]
    },
    {
-    "m": [
-     "Carbink"
-    ],
+    "word": "GEM",
     "n": 1,
     "cat": 2,
-    "word": "GEM"
+    "m": [
+     "Carbink"
+    ]
    },
    {
-    "m": [
-     "Shiinotic",
-     "Amoonguss"
-    ],
+    "word": "TOADSTOOL",
     "n": 2,
     "cat": 3,
-    "word": "TOADSTOOL"
+    "m": [
+     "Amoonguss",
+     "Shiinotic"
+    ]
    }
   ]
  },
@@ -497,51 +497,51 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Tauros",
-     "Ditto",
-     "Lickitung"
-    ],
+    "word": "NORMAL",
     "n": 3,
     "cat": 1,
-    "word": "NORMAL"
+    "m": [
+     "Ditto",
+     "Lickitung",
+     "Tauros"
+    ]
    },
    {
-    "m": [
-     "Kadabra",
-     "Drowzee"
-    ],
+    "word": "MENTALIST",
     "n": 2,
     "cat": 5,
-    "word": "MENTALIST"
+    "m": [
+     "Drowzee",
+     "Kadabra"
+    ]
    },
    {
-    "m": [
-     "Machoke",
-     "Poliwrath",
-     "Hitmonchan"
-    ],
+    "word": "MARTIAL",
     "n": 3,
     "cat": 4,
-    "word": "MARTIAL"
+    "m": [
+     "Hitmonchan",
+     "Machoke",
+     "Poliwrath"
+    ]
    },
    {
-    "m": [
-     "Sandslash",
-     "Poliwrath"
-    ],
+    "word": "WRESTLER",
     "n": 2,
     "cat": 4,
-    "word": "WRESTLER"
+    "m": [
+     "Poliwrath",
+     "Sandslash"
+    ]
    },
    {
-    "m": [
-     "Tauros",
-     "Machoke"
-    ],
+    "word": "MIGHT",
     "n": 2,
     "cat": 3,
-    "word": "MIGHT"
+    "m": [
+     "Machoke",
+     "Tauros"
+    ]
    }
   ]
  },
@@ -550,51 +550,51 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Samurott",
-     "Bisharp"
-    ],
+    "word": "SWORDS",
     "n": 2,
     "cat": 2,
-    "word": "SWORDS"
+    "m": [
+     "Bisharp",
+     "Samurott"
+    ]
    },
    {
-    "m": [
-     "Klink",
-     "Golurk",
-     "Varoom"
-    ],
+    "word": "ROBOT",
     "n": 3,
     "cat": 5,
-    "word": "ROBOT"
+    "m": [
+     "Golurk",
+     "Klink",
+     "Varoom"
+    ]
    },
    {
+    "word": "KNIGHT",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Bisharp",
      "Escavalier"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "KNIGHT"
+    ]
    },
    {
-    "m": [
-     "Klink",
-     "Bronzong"
-    ],
+    "word": "GEARS",
     "n": 2,
     "cat": 3,
-    "word": "GEARS"
+    "m": [
+     "Bronzong",
+     "Klink"
+    ]
    },
    {
-    "m": [
-     "Samurott",
-     "Ceruledge",
-     "Kubfu"
-    ],
+    "word": "WARRIOR",
     "n": 3,
     "cat": 4,
-    "word": "WARRIOR"
+    "m": [
+     "Ceruledge",
+     "Kubfu",
+     "Samurott"
+    ]
    }
   ]
  },
@@ -603,51 +603,51 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Magmar",
-     "Flareon"
-    ],
+    "word": "MOLTEN",
     "n": 2,
     "cat": 3,
-    "word": "MOLTEN"
+    "m": [
+     "Flareon",
+     "Magmar"
+    ]
    },
    {
+    "word": "HEAVYWEIGHT",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Golem",
      "Snorlax"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "HEAVYWEIGHT"
+    ]
    },
    {
-    "m": [
-     "Omastar",
-     "Golem",
-     "Kabuto"
-    ],
+    "word": "BEDROCK",
     "n": 3,
     "cat": 4,
-    "word": "BEDROCK"
+    "m": [
+     "Golem",
+     "Kabuto",
+     "Omastar"
+    ]
    },
    {
+    "word": "FOSSIL",
+    "n": 3,
+    "cat": 5,
     "m": [
      "Aerodactyl",
-     "Omastar",
-     "Kabuto"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "FOSSIL"
+     "Kabuto",
+     "Omastar"
+    ]
    },
    {
-    "m": [
-     "Weezing",
-     "Muk"
-    ],
+    "word": "SLUDGE",
     "n": 2,
     "cat": 4,
-    "word": "SLUDGE"
+    "m": [
+     "Muk",
+     "Weezing"
+    ]
    }
   ]
  },
@@ -656,50 +656,50 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "CURSED-DOLL",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Banette",
      "Mimikyu"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "CURSED-DOLL"
+    ]
    },
    {
+    "word": "ALIEN",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Beheeyem",
      "Necrozma"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ALIEN"
+    ]
    },
    {
-    "m": [
-     "Rampardos",
-     "Dracozolt"
-    ],
+    "word": "ANCIENT",
     "n": 2,
     "cat": 3,
-    "word": "ANCIENT"
+    "m": [
+     "Dracozolt",
+     "Rampardos"
+    ]
    },
    {
-    "m": [
-     "Rampardos",
-     "Bastiodon",
-     "Archeops"
-    ],
+    "word": "FOSSIL",
     "n": 3,
     "cat": 5,
-    "word": "FOSSIL"
+    "m": [
+     "Archeops",
+     "Bastiodon",
+     "Rampardos"
+    ]
    },
    {
+    "word": "CHIMERA",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Arctovish",
      "Dracozolt"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "CHIMERA"
+    ]
    }
   ]
  },
@@ -708,41 +708,41 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "AVIAN",
+    "n": 3,
+    "cat": 1,
     "m": [
      "Dodrio",
      "Pidgey",
      "Spearow"
-    ],
-    "n": 3,
-    "cat": 1,
-    "word": "AVIAN"
+    ]
    },
    {
-    "m": [
-     "Jynx",
-     "Dewgong"
-    ],
+    "word": "ICE",
     "n": 2,
     "cat": 1,
-    "word": "ICE"
+    "m": [
+     "Dewgong",
+     "Jynx"
+    ]
    },
    {
-    "m": [
-     "Nidorino",
-     "Koffing"
-    ],
+    "word": "PURPLE",
     "n": 2,
     "cat": 1,
-    "word": "PURPLE"
+    "m": [
+     "Koffing",
+     "Nidorino"
+    ]
    },
    {
+    "word": "COCOON",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Kakuna",
      "Metapod"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "COCOON"
+    ]
    }
   ]
  },
@@ -751,49 +751,49 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Hippopotas",
-     "Swinub",
-     "Phanpy"
-    ],
+    "word": "GROUND",
     "n": 3,
     "cat": 1,
-    "word": "GROUND"
+    "m": [
+     "Hippopotas",
+     "Phanpy",
+     "Swinub"
+    ]
    },
    {
-    "m": [
-     "Qwilfish",
-     "Ferroseed"
-    ],
+    "word": "SPIKES",
     "n": 2,
     "cat": 2,
-    "word": "SPIKES"
+    "m": [
+     "Ferroseed",
+     "Qwilfish"
+    ]
    },
    {
+    "word": "GHOST",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Drifloon",
      "Yamask"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GHOST"
+    ]
    },
    {
-    "m": [
-     "Sentret"
-    ],
+    "word": "TAIL",
     "n": 1,
     "cat": 2,
-    "word": "TAIL"
+    "m": [
+     "Sentret"
+    ]
    },
    {
+    "word": "ICE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Cubchoo",
      "Swinub"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ICE"
+    ]
    }
   ]
  },
@@ -802,48 +802,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Vileplume",
-     "Exeggcute",
-     "Ivysaur"
-    ],
+    "word": "PLANT",
     "n": 3,
     "cat": 3,
-    "word": "PLANT"
+    "m": [
+     "Exeggcute",
+     "Ivysaur",
+     "Vileplume"
+    ]
    },
    {
-    "m": [
-     "Diglett",
-     "Cubone"
-    ],
+    "word": "BROWN",
     "n": 2,
     "cat": 1,
-    "word": "BROWN"
+    "m": [
+     "Cubone",
+     "Diglett"
+    ]
    },
    {
+    "word": "YELLOW",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Electabuzz",
      "Jolteon"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "YELLOW"
+    ]
    },
    {
-    "m": [
-     "Wigglytuff"
-    ],
+    "word": "BALLOON",
     "n": 1,
     "cat": 2,
-    "word": "BALLOON"
+    "m": [
+     "Wigglytuff"
+    ]
    },
    {
-    "m": [
-     "Seadra"
-    ],
+    "word": "HIPPOCAMPUS",
     "n": 1,
     "cat": 3,
-    "word": "HIPPOCAMPUS"
+    "m": [
+     "Seadra"
+    ]
    }
   ]
  },
@@ -852,48 +852,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Timburr",
-     "Makuhita"
-    ],
+    "word": "FIGHTING",
     "n": 2,
     "cat": 1,
-    "word": "FIGHTING"
+    "m": [
+     "Makuhita",
+     "Timburr"
+    ]
    },
    {
-    "m": [
-     "Cherubi"
-    ],
+    "word": "FRUIT",
     "n": 1,
     "cat": 2,
-    "word": "FRUIT"
+    "m": [
+     "Cherubi"
+    ]
    },
    {
+    "word": "BUG",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Ledyba",
      "Wurmple"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "BUG"
+    ]
    },
    {
-    "m": [
-     "Sandile",
-     "Fuecoco"
-    ],
+    "word": "GATOR",
     "n": 2,
     "cat": 3,
-    "word": "GATOR"
+    "m": [
+     "Fuecoco",
+     "Sandile"
+    ]
    },
    {
+    "word": "DEER",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Sawsbuck",
      "Stantler"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "DEER"
+    ]
    }
   ]
  },
@@ -902,48 +902,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Grimer",
-     "Zubat",
-     "Nidorina"
-    ],
+    "word": "POISON",
     "n": 3,
     "cat": 1,
-    "word": "POISON"
+    "m": [
+     "Grimer",
+     "Nidorina",
+     "Zubat"
+    ]
    },
    {
+    "word": "MINDBENDER",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Alakazam"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "MINDBENDER"
+    ]
    },
    {
-    "m": [
-     "Rattata",
-     "Meowth"
-    ],
+    "word": "WHISKERS",
     "n": 2,
     "cat": 2,
-    "word": "WHISKERS"
+    "m": [
+     "Meowth",
+     "Rattata"
+    ]
    },
    {
-    "m": [
-     "Staryu"
-    ],
+    "word": "TWINKLE",
     "n": 1,
     "cat": 3,
-    "word": "TWINKLE"
+    "m": [
+     "Staryu"
+    ]
    },
    {
+    "word": "SHELL",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Cloyster",
      "Wartortle"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "SHELL"
+    ]
    }
   ]
  },
@@ -952,48 +952,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Zangoose",
-     "Furret"
-    ],
+    "word": "WEASEL",
     "n": 2,
     "cat": 3,
-    "word": "WEASEL"
+    "m": [
+     "Furret",
+     "Zangoose"
+    ]
    },
    {
-    "m": [
-     "Chandelure"
-    ],
+    "word": "WISP",
     "n": 1,
     "cat": 4,
-    "word": "WISP"
+    "m": [
+     "Chandelure"
+    ]
    },
    {
-    "m": [
-     "Skiddo",
-     "Bouffalant"
-    ],
+    "word": "HORNS",
     "n": 2,
     "cat": 2,
-    "word": "HORNS"
+    "m": [
+     "Bouffalant",
+     "Skiddo"
+    ]
    },
    {
-    "m": [
-     "Froakie",
-     "Croagunk"
-    ],
+    "word": "AMPHIBIAN",
     "n": 2,
     "cat": 3,
-    "word": "AMPHIBIAN"
+    "m": [
+     "Croagunk",
+     "Froakie"
+    ]
    },
    {
+    "word": "DARK",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Poochyena",
      "Purrloin"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "DARK"
+    ]
    }
   ]
  },
@@ -1002,49 +1002,49 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Parasect",
-     "Kingler"
-    ],
+    "word": "CRAB",
     "n": 2,
     "cat": 3,
-    "word": "CRAB"
+    "m": [
+     "Kingler",
+     "Parasect"
+    ]
    },
    {
+    "word": "FANGS",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Arbok",
      "Nidoking"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "FANGS"
+    ]
    },
    {
-    "m": [
-     "Nidoqueen",
-     "Nidoking"
-    ],
+    "word": "ROYALTY",
     "n": 2,
     "cat": 4,
-    "word": "ROYALTY"
+    "m": [
+     "Nidoking",
+     "Nidoqueen"
+    ]
    },
    {
-    "m": [
-     "Dragonite",
-     "Charizard"
-    ],
+    "word": "WYVERN",
     "n": 2,
     "cat": 4,
-    "word": "WYVERN"
+    "m": [
+     "Charizard",
+     "Dragonite"
+    ]
    },
    {
+    "word": "BEETLE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Pinsir",
      "Scyther"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BEETLE"
+    ]
    }
   ]
  },
@@ -1053,48 +1053,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "GORGON",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Jellicent",
      "Nihilego"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "GORGON"
+    ]
    },
    {
-    "m": [
-     "Sharpedo",
-     "Mawile"
-    ],
+    "word": "JAWS",
     "n": 2,
     "cat": 2,
-    "word": "JAWS"
+    "m": [
+     "Mawile",
+     "Sharpedo"
+    ]
    },
    {
+    "word": "MOTH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Dustox",
      "Volcarona"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "MOTH"
+    ]
    },
    {
-    "m": [
-     "Grapploct"
-    ],
+    "word": "SQUID",
     "n": 1,
     "cat": 4,
-    "word": "SQUID"
+    "m": [
+     "Grapploct"
+    ]
    },
    {
-    "m": [
-     "Torkoal",
-     "Drednaw"
-    ],
+    "word": "TURTLE",
     "n": 2,
     "cat": 3,
-    "word": "TURTLE"
+    "m": [
+     "Drednaw",
+     "Torkoal"
+    ]
    }
   ]
  },
@@ -1103,48 +1103,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Rapidash",
-     "Ninetales"
-    ],
+    "word": "MANE",
     "n": 2,
     "cat": 2,
-    "word": "MANE"
+    "m": [
+     "Ninetales",
+     "Rapidash"
+    ]
    },
    {
-    "m": [
-     "Fearow",
-     "Pidgeot",
-     "Doduo"
-    ],
+    "word": "BIRD",
     "n": 3,
     "cat": 3,
-    "word": "BIRD"
+    "m": [
+     "Doduo",
+     "Fearow",
+     "Pidgeot"
+    ]
    },
    {
+    "word": "MANEATER",
+    "n": 1,
+    "cat": 4,
     "m": [
      "Victreebel"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "MANEATER"
+    ]
    },
    {
+    "word": "VAMPIRE",
+    "n": 1,
+    "cat": 4,
     "m": [
      "Golbat"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "VAMPIRE"
+    ]
    },
    {
+    "word": "SERPENT",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Ekans",
      "Gyarados"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "SERPENT"
+    ]
    }
   ]
  },
@@ -1153,48 +1153,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Gible",
-     "Frigibax"
-    ],
+    "word": "SHARK",
     "n": 2,
     "cat": 3,
-    "word": "SHARK"
+    "m": [
+     "Frigibax",
+     "Gible"
+    ]
    },
    {
-    "m": [
-     "Klefki"
-    ],
+    "word": "KEYS",
     "n": 1,
     "cat": 2,
-    "word": "KEYS"
+    "m": [
+     "Klefki"
+    ]
    },
    {
+    "word": "WOLF",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Lycanroc",
      "Zacian"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "WOLF"
+    ]
    },
    {
-    "m": [
-     "Magearna",
-     "Golett"
-    ],
+    "word": "AUTOMATON",
     "n": 2,
     "cat": 4,
-    "word": "AUTOMATON"
+    "m": [
+     "Golett",
+     "Magearna"
+    ]
    },
    {
+    "word": "CETACEAN",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Kyogre",
      "Wailmer"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "CETACEAN"
+    ]
    }
   ]
  },
@@ -1203,50 +1203,50 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "CURSE",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Gengar",
      "Marowak"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "CURSE"
+    ]
    },
    {
+    "word": "TELEPATH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Slowbro",
      "Starmie"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TELEPATH"
+    ]
    },
    {
+    "word": "OOZE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Muk",
      "Weezing"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "OOZE"
+    ]
    },
    {
+    "word": "BRAWLER",
+    "n": 3,
+    "cat": 4,
     "m": [
      "Hitmonlee",
      "Machamp",
      "Primeape"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "BRAWLER"
+    ]
    },
    {
+    "word": "VENOM",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Gengar",
      "Weezing"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "VENOM"
+    ]
    }
   ]
  },
@@ -1255,50 +1255,50 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Jirachi",
-     "Celebi"
-    ],
+    "word": "MYTHIC",
     "n": 2,
     "cat": 3,
-    "word": "MYTHIC"
+    "m": [
+     "Celebi",
+     "Jirachi"
+    ]
    },
    {
-    "m": [
-     "Tapu Koko",
-     "Tapu Bulu"
-    ],
+    "word": "DEITY",
     "n": 2,
     "cat": 5,
-    "word": "DEITY"
+    "m": [
+     "Tapu Bulu",
+     "Tapu Koko"
+    ]
    },
    {
-    "m": [
-     "Jirachi",
-     "Elgyem"
-    ],
+    "word": "COSMIC",
     "n": 2,
     "cat": 3,
-    "word": "COSMIC"
+    "m": [
+     "Elgyem",
+     "Jirachi"
+    ]
    },
    {
-    "m": [
-     "Guzzlord",
-     "Elgyem"
-    ],
+    "word": "UFO",
     "n": 2,
     "cat": 4,
-    "word": "UFO"
+    "m": [
+     "Elgyem",
+     "Guzzlord"
+    ]
    },
    {
-    "m": [
-     "Thundurus",
-     "Landorus",
-     "Tornadus"
-    ],
+    "word": "GENIE",
     "n": 3,
     "cat": 5,
-    "word": "GENIE"
+    "m": [
+     "Landorus",
+     "Thundurus",
+     "Tornadus"
+    ]
    }
   ]
  },
@@ -1307,50 +1307,50 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Mewtwo",
-     "Magneton",
-     "Porygon"
-    ],
+    "word": "ARTIFICIAL",
     "n": 3,
     "cat": 5,
-    "word": "ARTIFICIAL"
+    "m": [
+     "Magneton",
+     "Mewtwo",
+     "Porygon"
+    ]
    },
    {
-    "m": [
-     "Mewtwo",
-     "Mew"
-    ],
+    "word": "CLONE",
     "n": 2,
     "cat": 5,
-    "word": "CLONE"
+    "m": [
+     "Mew",
+     "Mewtwo"
+    ]
    },
    {
+    "word": "MOLLUSC",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Omanyte",
      "Shellder"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "MOLLUSC"
+    ]
    },
    {
-    "m": [
-     "Vulpix",
-     "Growlithe"
-    ],
+    "word": "CANINE",
     "n": 2,
     "cat": 3,
-    "word": "CANINE"
+    "m": [
+     "Growlithe",
+     "Vulpix"
+    ]
    },
    {
+    "word": "TRANSFORM",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Ditto",
      "Mew"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "TRANSFORM"
+    ]
    }
   ]
  },
@@ -1359,42 +1359,42 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Eiscue",
-     "Arctozolt"
-    ],
+    "word": "FROZEN",
     "n": 2,
     "cat": 4,
-    "word": "FROZEN"
+    "m": [
+     "Arctozolt",
+     "Eiscue"
+    ]
    },
    {
+    "word": "POSSESSED",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Polteageist",
      "Sinistcha"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "POSSESSED"
+    ]
    },
    {
-    "m": [
-     "Tirtouga",
-     "Dracovish",
-     "Archen",
-     "Arctozolt"
-    ],
+    "word": "REVENANT",
     "n": 4,
     "cat": 5,
-    "word": "REVENANT"
+    "m": [
+     "Archen",
+     "Arctozolt",
+     "Dracovish",
+     "Tirtouga"
+    ]
    },
    {
-    "m": [
-     "Zoroark",
-     "Thievul"
-    ],
+    "word": "ROBIN-HOOD",
     "n": 2,
     "cat": 4,
-    "word": "ROBIN-HOOD"
+    "m": [
+     "Thievul",
+     "Zoroark"
+    ]
    }
   ]
  },
@@ -1403,48 +1403,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "VINES",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Bulbasaur",
      "Tangela"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "VINES"
+    ]
    },
    {
-    "m": [
-     "Lickitung"
-    ],
+    "word": "TONGUE",
     "n": 1,
     "cat": 2,
-    "word": "TONGUE"
+    "m": [
+     "Lickitung"
+    ]
    },
    {
+    "word": "ELECTRIC",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Pikachu",
      "Voltorb"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ELECTRIC"
+    ]
    },
    {
+    "word": "ROCK",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Geodude",
      "Onix"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ROCK"
+    ]
    },
    {
-    "m": [
-     "Psyduck",
-     "Poliwag"
-    ],
+    "word": "WATER",
     "n": 2,
     "cat": 1,
-    "word": "WATER"
+    "m": [
+     "Poliwag",
+     "Psyduck"
+    ]
    }
   ]
  },
@@ -1453,48 +1453,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Totodile",
-     "Popplio"
-    ],
+    "word": "WATER",
     "n": 2,
     "cat": 1,
-    "word": "WATER"
+    "m": [
+     "Popplio",
+     "Totodile"
+    ]
    },
    {
-    "m": [
-     "Goomy",
-     "Deino"
-    ],
+    "word": "DRAGON",
     "n": 2,
     "cat": 1,
-    "word": "DRAGON"
+    "m": [
+     "Deino",
+     "Goomy"
+    ]
    },
    {
+    "word": "ELECTRIC",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Blitzle",
      "Shinx"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ELECTRIC"
+    ]
    },
    {
+    "word": "GRASS",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Snivy",
      "Treecko"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GRASS"
+    ]
    },
    {
-    "m": [
-     "Skwovet"
-    ],
+    "word": "CHEEKS",
     "n": 1,
     "cat": 2,
-    "word": "CHEEKS"
+    "m": [
+     "Skwovet"
+    ]
    }
   ]
  },
@@ -1503,41 +1503,41 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Abra",
-     "Jynx",
-     "Drowzee"
-    ],
+    "word": "PSYCHIC",
     "n": 3,
     "cat": 1,
-    "word": "PSYCHIC"
+    "m": [
+     "Abra",
+     "Drowzee",
+     "Jynx"
+    ]
    },
    {
+    "word": "GROUND",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Cubone",
      "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GROUND"
+    ]
    },
    {
-    "m": [
-     "Poliwrath",
-     "Poliwhirl"
-    ],
+    "word": "FROG",
     "n": 2,
     "cat": 3,
-    "word": "FROG"
+    "m": [
+     "Poliwhirl",
+     "Poliwrath"
+    ]
    },
    {
+    "word": "PUPA",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Kakuna",
      "Metapod"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "PUPA"
+    ]
    }
   ]
  },
@@ -1546,48 +1546,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "HALLOWEEN",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Cacturne",
      "Gourgeist"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "HALLOWEEN"
+    ]
    },
    {
-    "m": [
-     "Tepig"
-    ],
+    "word": "FIRE",
     "n": 1,
     "cat": 1,
-    "word": "FIRE"
+    "m": [
+     "Tepig"
+    ]
    },
    {
+    "word": "PINCERS",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Crawdaunt",
      "Klawf"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "PINCERS"
+    ]
    },
    {
-    "m": [
-     "Lechonk"
-    ],
+    "word": "NORMAL",
     "n": 1,
     "cat": 1,
-    "word": "NORMAL"
+    "m": [
+     "Lechonk"
+    ]
    },
    {
-    "m": [
-     "Panpour",
-     "Pansage",
-     "Grookey"
-    ],
+    "word": "PRIMATE",
     "n": 3,
     "cat": 3,
-    "word": "PRIMATE"
+    "m": [
+     "Grookey",
+     "Panpour",
+     "Pansage"
+    ]
    }
   ]
  },
@@ -1596,48 +1596,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Koffing",
-     "Grimer"
-    ],
+    "word": "POLLUTION",
     "n": 2,
     "cat": 4,
-    "word": "POLLUTION"
+    "m": [
+     "Grimer",
+     "Koffing"
+    ]
    },
    {
+    "word": "FISH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Goldeen",
      "Magikarp"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "FISH"
+    ]
    },
    {
-    "m": [
-     "Haunter",
-     "Gastly"
-    ],
+    "word": "GHOST",
     "n": 2,
     "cat": 1,
-    "word": "GHOST"
+    "m": [
+     "Gastly",
+     "Haunter"
+    ]
    },
    {
-    "m": [
-     "Farfetch'd"
-    ],
+    "word": "LEEK",
     "n": 1,
     "cat": 2,
-    "word": "LEEK"
+    "m": [
+     "Farfetch'd"
+    ]
    },
    {
-    "m": [
-     "Mankey",
-     "Machop"
-    ],
+    "word": "APE",
     "n": 2,
     "cat": 3,
-    "word": "APE"
+    "m": [
+     "Machop",
+     "Mankey"
+    ]
    }
   ]
  },
@@ -1646,48 +1646,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "BADGER",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Linoone",
      "Typhlosion"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BADGER"
+    ]
    },
    {
-    "m": [
-     "Piplup",
-     "Delibird"
-    ],
+    "word": "PENGUIN",
     "n": 2,
     "cat": 3,
-    "word": "PENGUIN"
+    "m": [
+     "Delibird",
+     "Piplup"
+    ]
    },
    {
-    "m": [
-     "Pawmi",
-     "Morpeko"
-    ],
+    "word": "HAMSTER",
     "n": 2,
     "cat": 3,
-    "word": "HAMSTER"
+    "m": [
+     "Morpeko",
+     "Pawmi"
+    ]
    },
    {
-    "m": [
-     "Spritzee",
-     "Milcery"
-    ],
+    "word": "FAIRY",
     "n": 2,
     "cat": 1,
-    "word": "FAIRY"
+    "m": [
+     "Milcery",
+     "Spritzee"
+    ]
    },
    {
-    "m": [
-     "Cinccino"
-    ],
+    "word": "SCARF",
     "n": 1,
     "cat": 2,
-    "word": "SCARF"
+    "m": [
+     "Cinccino"
+    ]
    }
   ]
  },
@@ -1696,48 +1696,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "SPIKES",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Nidoqueen",
      "Sandslash"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "SPIKES"
+    ]
    },
    {
-    "m": [
-     "Aerodactyl"
-    ],
+    "word": "AMBER",
     "n": 1,
     "cat": 4,
-    "word": "AMBER"
+    "m": [
+     "Aerodactyl"
+    ]
    },
    {
+    "word": "FELINE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Meowth",
      "Persian"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "FELINE"
+    ]
    },
    {
+    "word": "INSECT",
+    "n": 3,
+    "cat": 3,
     "m": [
      "Caterpie",
      "Paras",
      "Venonat"
-    ],
-    "n": 3,
-    "cat": 3,
-    "word": "INSECT"
+    ]
    },
    {
-    "m": [
-     "Mr. Mime"
-    ],
+    "word": "BARRIER",
     "n": 1,
     "cat": 4,
-    "word": "BARRIER"
+    "m": [
+     "Mr. Mime"
+    ]
    }
   ]
  },
@@ -1746,48 +1746,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Hoothoot",
-     "Dartrix"
-    ],
+    "word": "OWL",
     "n": 2,
     "cat": 3,
-    "word": "OWL"
+    "m": [
+     "Dartrix",
+     "Hoothoot"
+    ]
    },
    {
+    "word": "CEPHALOPOD",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Clobbopus",
      "Octillery"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "CEPHALOPOD"
+    ]
    },
    {
+    "word": "DRAGONFLY",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Vibrava",
      "Yanma"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "DRAGONFLY"
+    ]
    },
    {
-    "m": [
-     "Morelull"
-    ],
+    "word": "MUSHROOM",
     "n": 1,
     "cat": 2,
-    "word": "MUSHROOM"
+    "m": [
+     "Morelull"
+    ]
    },
    {
-    "m": [
-     "Dugtrio",
-     "Drilbur"
-    ],
+    "word": "MOLE",
     "n": 2,
     "cat": 3,
-    "word": "MOLE"
+    "m": [
+     "Drilbur",
+     "Dugtrio"
+    ]
    }
   ]
  },
@@ -1796,48 +1796,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "HUMANOID",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Electabuzz",
      "Magmar"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "HUMANOID"
+    ]
    },
    {
-    "m": [
-     "Hypno"
-    ],
+    "word": "PENDULUM",
     "n": 1,
     "cat": 4,
-    "word": "PENDULUM"
+    "m": [
+     "Hypno"
+    ]
    },
    {
+    "word": "RABBIT",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Nidorina",
      "Nidorino"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "RABBIT"
+    ]
    },
    {
-    "m": [
-     "Clefairy",
-     "Chansey"
-    ],
+    "word": "LUCKY",
     "n": 2,
     "cat": 4,
-    "word": "LUCKY"
+    "m": [
+     "Chansey",
+     "Clefairy"
+    ]
    },
    {
-    "m": [
-     "Spearow",
-     "Pidgey"
-    ],
+    "word": "BEAK",
     "n": 2,
     "cat": 2,
-    "word": "BEAK"
+    "m": [
+     "Pidgey",
+     "Spearow"
+    ]
    }
   ]
  },
@@ -1846,48 +1846,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "NEWT",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Mudkip",
      "Wooper"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "NEWT"
+    ]
    },
    {
-    "m": [
-     "Crabominable",
-     "Abomasnow"
-    ],
+    "word": "YETI",
     "n": 2,
     "cat": 4,
-    "word": "YETI"
+    "m": [
+     "Abomasnow",
+     "Crabominable"
+    ]
    },
    {
-    "m": [
-     "Sandygast"
-    ],
+    "word": "SHOVEL",
     "n": 1,
     "cat": 2,
-    "word": "SHOVEL"
+    "m": [
+     "Sandygast"
+    ]
    },
    {
-    "m": [
-     "Salandit",
-     "Drizzile"
-    ],
+    "word": "GECKO",
     "n": 2,
     "cat": 3,
-    "word": "GECKO"
+    "m": [
+     "Drizzile",
+     "Salandit"
+    ]
    },
    {
+    "word": "BOAR",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Oinkologne",
      "Piloswine"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BOAR"
+    ]
    }
   ]
  },
@@ -1896,43 +1896,43 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Machamp",
-     "Alakazam",
-     "Gengar"
-    ],
+    "word": "TRADE",
     "n": 3,
     "cat": 5,
-    "word": "TRADE"
+    "m": [
+     "Alakazam",
+     "Gengar",
+     "Machamp"
+    ]
    },
    {
-    "m": [
-     "Dodrio",
-     "Magneton",
-     "Exeggutor"
-    ],
+    "word": "THREE",
     "n": 3,
     "cat": 4,
-    "word": "THREE"
+    "m": [
+     "Dodrio",
+     "Exeggutor",
+     "Magneton"
+    ]
    },
    {
+    "word": "MUSCLE",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Machamp",
      "Rhydon"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "MUSCLE"
+    ]
    },
    {
-    "m": [
-     "Blastoise",
-     "Rhydon",
-     "Charizard"
-    ],
+    "word": "KAIJU",
     "n": 3,
     "cat": 3,
-    "word": "KAIJU"
+    "m": [
+     "Blastoise",
+     "Charizard",
+     "Rhydon"
+    ]
    }
   ]
  },
@@ -1941,50 +1941,50 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "ROBOT",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Genesect",
      "Golurk"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "ROBOT"
+    ]
    },
    {
+    "word": "WEASEL",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Floatzel",
      "Samurott"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "WEASEL"
+    ]
    },
    {
-    "m": [
-     "Virizion",
-     "Terrakion",
-     "Cobalion"
-    ],
+    "word": "MUSKETEER",
     "n": 3,
     "cat": 5,
-    "word": "MUSKETEER"
+    "m": [
+     "Cobalion",
+     "Terrakion",
+     "Virizion"
+    ]
    },
    {
-    "m": [
-     "Samurott",
-     "Kartana"
-    ],
+    "word": "SHOGUN",
     "n": 2,
     "cat": 4,
-    "word": "SHOGUN"
+    "m": [
+     "Kartana",
+     "Samurott"
+    ]
    },
    {
+    "word": "SWORDS",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Doublade",
      "Kartana"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "SWORDS"
+    ]
    }
   ]
  },
@@ -1993,52 +1993,52 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Porygon",
-     "Mewtwo"
-    ],
+    "word": "SYNTHETIC",
     "n": 2,
     "cat": 4,
-    "word": "SYNTHETIC"
-   },
-   {
-    "m": [
-     "Exeggcute",
-     "Oddish",
-     "Bellsprout"
-    ],
-    "n": 3,
-    "cat": 3,
-    "word": "PLANT"
-   },
-   {
     "m": [
      "Mewtwo",
-     "Mew"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "REPLICA"
+     "Porygon"
+    ]
    },
    {
+    "word": "PLANT",
+    "n": 3,
+    "cat": 3,
+    "m": [
+     "Bellsprout",
+     "Exeggcute",
+     "Oddish"
+    ]
+   },
+   {
+    "word": "REPLICA",
+    "n": 2,
+    "cat": 5,
+    "m": [
+     "Mew",
+     "Mewtwo"
+    ]
+   },
+   {
+    "word": "MIMIC",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Ditto",
      "Mew"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "MIMIC"
+    ]
    },
    {
-    "m": [
-     "Magneton",
-     "Exeggcute",
-     "Doduo",
-     "Mewtwo"
-    ],
+    "word": "MULTIPLE",
     "n": 4,
     "cat": 5,
-    "word": "MULTIPLE"
+    "m": [
+     "Doduo",
+     "Exeggcute",
+     "Magneton",
+     "Mewtwo"
+    ]
    }
   ]
  },
@@ -2047,50 +2047,50 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Crabrawler",
-     "Clauncher",
-     "Dwebble"
-    ],
+    "word": "CRUSTACEAN",
     "n": 3,
     "cat": 4,
-    "word": "CRUSTACEAN"
+    "m": [
+     "Clauncher",
+     "Crabrawler",
+     "Dwebble"
+    ]
    },
    {
-    "m": [
-     "Solrock",
-     "Espeon"
-    ],
+    "word": "SUN",
     "n": 2,
     "cat": 5,
-    "word": "SUN"
+    "m": [
+     "Espeon",
+     "Solrock"
+    ]
    },
    {
-    "m": [
-     "Solrock",
-     "Minior"
-    ],
+    "word": "METEOR",
     "n": 2,
     "cat": 5,
-    "word": "METEOR"
+    "m": [
+     "Minior",
+     "Solrock"
+    ]
    },
    {
-    "m": [
-     "Nickit",
-     "Espeon"
-    ],
+    "word": "FOX",
     "n": 2,
     "cat": 3,
-    "word": "FOX"
+    "m": [
+     "Espeon",
+     "Nickit"
+    ]
    },
    {
+    "word": "STINGER",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Gliscor",
      "Skorupi"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "STINGER"
+    ]
    }
   ]
  },
@@ -2099,48 +2099,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Zubat",
-     "Ekans"
-    ],
+    "word": "POISON",
     "n": 2,
     "cat": 1,
-    "word": "POISON"
+    "m": [
+     "Ekans",
+     "Zubat"
+    ]
    },
    {
+    "word": "BROWN",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Diglett",
      "Eevee"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "BROWN"
+    ]
    },
    {
-    "m": [
-     "Electrode"
-    ],
+    "word": "ORB",
     "n": 1,
     "cat": 2,
-    "word": "ORB"
+    "m": [
+     "Electrode"
+    ]
    },
    {
-    "m": [
-     "Scyther",
-     "Butterfree"
-    ],
+    "word": "BUG",
     "n": 2,
     "cat": 1,
-    "word": "BUG"
+    "m": [
+     "Butterfree",
+     "Scyther"
+    ]
    },
    {
-    "m": [
-     "Slowpoke",
-     "Jigglypuff"
-    ],
+    "word": "ROSY",
     "n": 2,
     "cat": 1,
-    "word": "ROSY"
+    "m": [
+     "Jigglypuff",
+     "Slowpoke"
+    ]
    }
   ]
  },
@@ -2149,41 +2149,41 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Swinub",
-     "Snover"
-    ],
+    "word": "ICE",
     "n": 2,
     "cat": 1,
-    "word": "ICE"
+    "m": [
+     "Snover",
+     "Swinub"
+    ]
    },
    {
-    "m": [
-     "Sprigatito",
-     "Cyndaquil",
-     "Quaxly"
-    ],
+    "word": "FIRST-PARTNER",
     "n": 3,
     "cat": 1,
-    "word": "FIRST-PARTNER"
+    "m": [
+     "Cyndaquil",
+     "Quaxly",
+     "Sprigatito"
+    ]
    },
    {
+    "word": "TABBY",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Glameow",
      "Skitty"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TABBY"
+    ]
    },
    {
-    "m": [
-     "Zorua",
-     "Absol"
-    ],
+    "word": "DARK",
     "n": 2,
     "cat": 1,
-    "word": "DARK"
+    "m": [
+     "Absol",
+     "Zorua"
+    ]
    }
   ]
  },
@@ -2192,48 +2192,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Kangaskhan"
-    ],
+    "word": "POUCH",
     "n": 1,
     "cat": 2,
-    "word": "POUCH"
+    "m": [
+     "Kangaskhan"
+    ]
    },
    {
-    "m": [
-     "Golduck"
-    ],
+    "word": "PLATYPUS",
     "n": 1,
     "cat": 3,
-    "word": "PLATYPUS"
+    "m": [
+     "Golduck"
+    ]
    },
    {
-    "m": [
-     "Raichu",
-     "Magnemite"
-    ],
+    "word": "ELECTRIC",
     "n": 2,
     "cat": 1,
-    "word": "ELECTRIC"
+    "m": [
+     "Magnemite",
+     "Raichu"
+    ]
    },
    {
-    "m": [
-     "Omanyte",
-     "Kabuto",
-     "Rhyhorn"
-    ],
+    "word": "ROCK",
     "n": 3,
     "cat": 1,
-    "word": "ROCK"
+    "m": [
+     "Kabuto",
+     "Omanyte",
+     "Rhyhorn"
+    ]
    },
    {
+    "word": "JELLYFISH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Tentacool",
      "Tentacruel"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "JELLYFISH"
+    ]
    }
   ]
  },
@@ -2242,48 +2242,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "BEETLE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Heracross",
      "Pinsir"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BEETLE"
+    ]
    },
    {
+    "word": "GATOR",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Fuecoco",
      "Sandile"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "GATOR"
+    ]
    },
    {
-    "m": [
-     "Sableye"
-    ],
+    "word": "GEM",
     "n": 1,
     "cat": 2,
-    "word": "GEM"
+    "m": [
+     "Sableye"
+    ]
    },
    {
+    "word": "WATER",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Buizel",
      "Corphish"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "WATER"
+    ]
    },
    {
+    "word": "DRAGON",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Axew",
      "Jangmo-o"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "DRAGON"
+    ]
    }
   ]
  },
@@ -2292,48 +2292,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Nidoking"
-    ],
+    "word": "SCALES",
     "n": 1,
     "cat": 2,
-    "word": "SCALES"
+    "m": [
+     "Nidoking"
+    ]
    },
    {
+    "word": "COILS",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Arbok",
      "Onix"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "COILS"
+    ]
    },
    {
-    "m": [
-     "Hitmonlee",
-     "Hitmonchan"
-    ],
+    "word": "KUNG-FU",
     "n": 2,
     "cat": 4,
-    "word": "KUNG-FU"
+    "m": [
+     "Hitmonchan",
+     "Hitmonlee"
+    ]
    },
    {
+    "word": "BIRD",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Fearow",
      "Pidgeotto"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BIRD"
+    ]
    },
    {
+    "word": "GRASS",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Ivysaur",
      "Weepinbell"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GRASS"
+    ]
    }
   ]
  },
@@ -2342,48 +2342,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "BLUBBER",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Seel",
      "Walrein"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BLUBBER"
+    ]
    },
    {
+    "word": "PSYCHIC",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Munna",
      "Woobat"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "PSYCHIC"
+    ]
    },
    {
+    "word": "HEDGEHOG",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Chespin",
      "Togedemaru"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "HEDGEHOG"
+    ]
    },
    {
-    "m": [
-     "Foongus"
-    ],
+    "word": "POKEBALL",
     "n": 1,
     "cat": 2,
-    "word": "POKEBALL"
+    "m": [
+     "Foongus"
+    ]
    },
    {
+    "word": "HARE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Bunnelby",
      "Lopunny"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "HARE"
+    ]
    }
   ]
  },
@@ -2392,50 +2392,50 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "LEGEND",
+    "n": 3,
+    "cat": 3,
     "m": [
      "Articuno",
      "Moltres",
      "Zapdos"
-    ],
-    "n": 3,
-    "cat": 3,
-    "word": "LEGEND"
+    ]
    },
    {
-    "m": [
-     "Dewgong"
-    ],
+    "word": "TUSKS",
     "n": 1,
     "cat": 2,
-    "word": "TUSKS"
+    "m": [
+     "Dewgong"
+    ]
    },
    {
-    "m": [
-     "Kabutops",
-     "Omastar",
-     "Aerodactyl"
-    ],
+    "word": "RELIC",
     "n": 3,
     "cat": 4,
-    "word": "RELIC"
+    "m": [
+     "Aerodactyl",
+     "Kabutops",
+     "Omastar"
+    ]
    },
    {
-    "m": [
-     "Moltres",
-     "Magmar"
-    ],
+    "word": "VOLCANO",
     "n": 2,
     "cat": 3,
-    "word": "VOLCANO"
+    "m": [
+     "Magmar",
+     "Moltres"
+    ]
    },
    {
+    "word": "FROST",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Articuno",
      "Lapras"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "FROST"
+    ]
    }
   ]
  },
@@ -2444,44 +2444,44 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Arctovish",
-     "Dracovish",
-     "Arctozolt",
-     "Dracozolt"
-    ],
+    "word": "CHIMERA",
     "n": 4,
     "cat": 4,
-    "word": "CHIMERA"
+    "m": [
+     "Arctovish",
+     "Arctozolt",
+     "Dracovish",
+     "Dracozolt"
+    ]
    },
    {
-    "m": [
-     "Manectric",
-     "Zoroark",
-     "Boltund"
-    ],
+    "word": "CANINE",
     "n": 3,
     "cat": 3,
-    "word": "CANINE"
+    "m": [
+     "Boltund",
+     "Manectric",
+     "Zoroark"
+    ]
    },
    {
+    "word": "TALONED",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Archeops",
      "Staraptor"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "TALONED"
+    ]
    },
    {
+    "word": "TRESSES",
+    "n": 3,
+    "cat": 2,
     "m": [
      "Manectric",
      "Staraptor",
      "Zoroark"
-    ],
-    "n": 3,
-    "cat": 2,
-    "word": "TRESSES"
+    ]
    }
   ]
  },
@@ -2490,48 +2490,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Kingler"
-    ],
+    "word": "CRAB",
     "n": 1,
     "cat": 2,
-    "word": "CRAB"
+    "m": [
+     "Kingler"
+    ]
    },
    {
+    "word": "ANTENNAE",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Venomoth"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "ANTENNAE"
+    ]
    },
    {
+    "word": "MOLLUSC",
+    "n": 1,
+    "cat": 4,
     "m": [
      "Shellder"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "MOLLUSC"
+    ]
    },
    {
+    "word": "BIPEDAL",
+    "n": 3,
+    "cat": 4,
     "m": [
      "Electabuzz",
-     "Mr. Mime",
-     "Jynx"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "BIPEDAL"
+     "Jynx",
+     "Mr. Mime"
+    ]
    },
    {
-    "m": [
-     "Pidgey",
-     "Farfetch'd",
-     "Spearow"
-    ],
+    "word": "AVIAN",
     "n": 3,
     "cat": 3,
-    "word": "AVIAN"
+    "m": [
+     "Farfetch'd",
+     "Pidgey",
+     "Spearow"
+    ]
    }
   ]
  },
@@ -2540,48 +2540,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Gligar",
-     "Drapion"
-    ],
+    "word": "STINGTAIL",
     "n": 2,
     "cat": 3,
-    "word": "STINGTAIL"
+    "m": [
+     "Drapion",
+     "Gligar"
+    ]
    },
    {
+    "word": "KNIGHT",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Aegislash",
      "Escavalier"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "KNIGHT"
+    ]
    },
    {
-    "m": [
-     "Elgyem"
-    ],
+    "word": "UFO",
     "n": 1,
     "cat": 2,
-    "word": "UFO"
+    "m": [
+     "Elgyem"
+    ]
    },
    {
-    "m": [
-     "Malamar"
-    ],
+    "word": "SQUID",
     "n": 1,
     "cat": 3,
-    "word": "SQUID"
+    "m": [
+     "Malamar"
+    ]
    },
    {
-    "m": [
-     "Trevenant",
-     "Chandelure",
-     "Banette"
-    ],
+    "word": "HAUNTED-OBJECT",
     "n": 3,
     "cat": 4,
-    "word": "HAUNTED-OBJECT"
+    "m": [
+     "Banette",
+     "Chandelure",
+     "Trevenant"
+    ]
    }
   ]
  },
@@ -2590,51 +2590,51 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Poliwrath",
-     "Primeape",
-     "Machamp"
-    ],
+    "word": "FIGHTING",
     "n": 3,
     "cat": 1,
-    "word": "FIGHTING"
+    "m": [
+     "Machamp",
+     "Poliwrath",
+     "Primeape"
+    ]
    },
    {
-    "m": [
-     "Snorlax",
-     "Golem"
-    ],
+    "word": "HEAVYWEIGHT",
     "n": 2,
     "cat": 5,
-    "word": "HEAVYWEIGHT"
+    "m": [
+     "Golem",
+     "Snorlax"
+    ]
    },
    {
-    "m": [
-     "Kadabra",
-     "Starmie",
-     "Slowbro"
-    ],
+    "word": "MENTALIST",
     "n": 3,
     "cat": 5,
-    "word": "MENTALIST"
+    "m": [
+     "Kadabra",
+     "Slowbro",
+     "Starmie"
+    ]
    },
    {
-    "m": [
-     "Snorlax",
-     "Machamp"
-    ],
+    "word": "STRONGMAN",
     "n": 2,
     "cat": 5,
-    "word": "STRONGMAN"
+    "m": [
+     "Machamp",
+     "Snorlax"
+    ]
    },
    {
+    "word": "WHISKERS",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Kadabra",
      "Raticate"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "WHISKERS"
+    ]
    }
   ]
  },
@@ -2643,50 +2643,50 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Celesteela",
-     "Buzzwole",
-     "Guzzlord"
-    ],
+    "word": "ULTRA-BEAST",
     "n": 3,
     "cat": 5,
-    "word": "ULTRA-BEAST"
+    "m": [
+     "Buzzwole",
+     "Celesteela",
+     "Guzzlord"
+    ]
    },
    {
-    "m": [
-     "Mareanie"
-    ],
+    "word": "PRICKLY",
     "n": 1,
     "cat": 3,
-    "word": "PRICKLY"
+    "m": [
+     "Mareanie"
+    ]
    },
    {
-    "m": [
-     "Passimian",
-     "Oranguru"
-    ],
+    "word": "PRIMATE",
     "n": 2,
     "cat": 4,
-    "word": "PRIMATE"
+    "m": [
+     "Oranguru",
+     "Passimian"
+    ]
    },
    {
-    "m": [
-     "Passimian",
-     "Buzzwole"
-    ],
+    "word": "BRAWLER",
     "n": 2,
     "cat": 1,
-    "word": "BRAWLER"
+    "m": [
+     "Buzzwole",
+     "Passimian"
+    ]
    },
    {
-    "m": [
-     "Victini",
-     "Jirachi",
-     "Magearna"
-    ],
+    "word": "MYTHICAL",
     "n": 3,
     "cat": 5,
-    "word": "MYTHICAL"
+    "m": [
+     "Jirachi",
+     "Magearna",
+     "Victini"
+    ]
    }
   ]
  },
@@ -2695,52 +2695,52 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "ARTIFICIAL",
+    "n": 3,
+    "cat": 4,
     "m": [
      "Ditto",
      "Mewtwo",
      "Porygon"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "ARTIFICIAL"
+    ]
    },
    {
+    "word": "TRAGIC",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Marowak",
      "Mewtwo"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TRAGIC"
+    ]
    },
    {
+    "word": "LIGHTNING-ROD",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Marowak",
      "Rhydon"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "LIGHTNING-ROD"
+    ]
    },
    {
+    "word": "MANDIBLES",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Beedrill",
      "Scyther"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "MANDIBLES"
+    ]
    },
    {
-    "m": [
-     "Scyther",
-     "Mewtwo",
-     "Tauros",
-     "Alakazam"
-    ],
+    "word": "SWIFT",
     "n": 4,
     "cat": 5,
-    "word": "SWIFT"
+    "m": [
+     "Alakazam",
+     "Mewtwo",
+     "Scyther",
+     "Tauros"
+    ]
    }
   ]
  },
@@ -2749,50 +2749,50 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Umbreon"
-    ],
+    "word": "LUNAR",
     "n": 1,
     "cat": 3,
-    "word": "LUNAR"
+    "m": [
+     "Umbreon"
+    ]
    },
    {
-    "m": [
-     "Houndoom",
-     "Tyranitar",
-     "Corviknight"
-    ],
+    "word": "UNNERVE",
     "n": 3,
     "cat": 5,
-    "word": "UNNERVE"
+    "m": [
+     "Corviknight",
+     "Houndoom",
+     "Tyranitar"
+    ]
    },
    {
+    "word": "PLATED",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Corviknight",
      "Skarmory"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "PLATED"
+    ]
    },
    {
+    "word": "GOLEM",
+    "n": 3,
+    "cat": 5,
     "m": [
      "Regice",
      "Regirock",
      "Registeel"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "GOLEM"
+    ]
    },
    {
+    "word": "BUOYANT",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Metagross",
      "Registeel"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "BUOYANT"
+    ]
    }
   ]
  },
@@ -2801,48 +2801,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Kakuna"
-    ],
+    "word": "PUPA",
     "n": 1,
     "cat": 2,
-    "word": "PUPA"
+    "m": [
+     "Kakuna"
+    ]
    },
    {
+    "word": "TUNNELER",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Diglett",
      "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "TUNNELER"
+    ]
    },
    {
-    "m": [
-     "Growlithe",
-     "Charmander"
-    ],
+    "word": "FIRE",
     "n": 2,
     "cat": 1,
-    "word": "FIRE"
+    "m": [
+     "Charmander",
+     "Growlithe"
+    ]
    },
    {
-    "m": [
-     "Voltorb"
-    ],
+    "word": "BALL-SHAPE",
     "n": 1,
     "cat": 2,
-    "word": "BALL-SHAPE"
+    "m": [
+     "Voltorb"
+    ]
    },
    {
-    "m": [
-     "Meowth",
-     "Eevee",
-     "Chansey"
-    ],
+    "word": "MUNDANE",
     "n": 3,
     "cat": 1,
-    "word": "MUNDANE"
+    "m": [
+     "Chansey",
+     "Eevee",
+     "Meowth"
+    ]
    }
   ]
  },
@@ -2851,49 +2851,49 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Cleffa",
-     "Pichu",
-     "Igglybuff"
-    ],
+    "word": "BABY",
     "n": 3,
     "cat": 1,
-    "word": "BABY"
+    "m": [
+     "Cleffa",
+     "Igglybuff",
+     "Pichu"
+    ]
    },
    {
+    "word": "FIRE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Litten",
      "Slugma"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FIRE"
+    ]
    },
    {
+    "word": "GROUND",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Mudbray",
      "Trapinch"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GROUND"
+    ]
    },
    {
-    "m": [
-     "Grubbin"
-    ],
+    "word": "MANDIBLE",
     "n": 1,
     "cat": 2,
-    "word": "MANDIBLE"
+    "m": [
+     "Grubbin"
+    ]
    },
    {
+    "word": "VOLTAGE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Pichu",
      "Yamper"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "VOLTAGE"
+    ]
    }
   ]
  },
@@ -2902,48 +2902,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Paras"
-    ],
+    "word": "MUSHROOM",
     "n": 1,
     "cat": 2,
-    "word": "MUSHROOM"
+    "m": [
+     "Paras"
+    ]
    },
    {
+    "word": "LULLABY",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Clefairy",
      "Jigglypuff"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "LULLABY"
+    ]
    },
    {
-    "m": [
-     "Grimer",
-     "Ekans"
-    ],
+    "word": "POISON",
     "n": 2,
     "cat": 1,
-    "word": "POISON"
+    "m": [
+     "Ekans",
+     "Grimer"
+    ]
    },
    {
-    "m": [
-     "Horsea",
-     "Psyduck",
-     "Poliwag"
-    ],
+    "word": "SPLASH",
     "n": 3,
     "cat": 1,
-    "word": "SPLASH"
+    "m": [
+     "Horsea",
+     "Poliwag",
+     "Psyduck"
+    ]
    },
    {
-    "m": [
-     "Pinsir"
-    ],
+    "word": "STAG-BEETLE",
     "n": 1,
     "cat": 3,
-    "word": "STAG-BEETLE"
+    "m": [
+     "Pinsir"
+    ]
    }
   ]
  },
@@ -2952,41 +2952,41 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Deerling",
-     "Tsareena",
-     "Skiddo"
-    ],
+    "word": "PLANT",
     "n": 3,
     "cat": 1,
-    "word": "PLANT"
+    "m": [
+     "Deerling",
+     "Skiddo",
+     "Tsareena"
+    ]
    },
    {
-    "m": [
-     "Rolycoly"
-    ],
+    "word": "COAL",
     "n": 1,
     "cat": 3,
-    "word": "COAL"
+    "m": [
+     "Rolycoly"
+    ]
    },
    {
+    "word": "FLUFFY",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Swirlix",
      "Wooloo"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "FLUFFY"
+    ]
    },
    {
-    "m": [
-     "Cutiefly",
-     "Joltik",
-     "Combee"
-    ],
+    "word": "BUG",
     "n": 3,
     "cat": 1,
-    "word": "BUG"
+    "m": [
+     "Combee",
+     "Cutiefly",
+     "Joltik"
+    ]
    }
   ]
  },
@@ -2995,48 +2995,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Gastly"
-    ],
+    "word": "GHOST",
     "n": 1,
     "cat": 1,
-    "word": "GHOST"
+    "m": [
+     "Gastly"
+    ]
    },
    {
-    "m": [
-     "Rattata"
-    ],
+    "word": "BUCK-TEETH",
     "n": 1,
     "cat": 2,
-    "word": "BUCK-TEETH"
+    "m": [
+     "Rattata"
+    ]
    },
    {
+    "word": "MARSUPIAL",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Kangaskhan"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "MARSUPIAL"
+    ]
    },
    {
-    "m": [
-     "Staryu",
-     "Tentacool",
-     "Seaking",
-     "Magikarp",
-     "Krabby"
-    ],
+    "word": "FISH-MARKET",
     "n": 5,
     "cat": 3,
-    "word": "FISH-MARKET"
+    "m": [
+     "Krabby",
+     "Magikarp",
+     "Seaking",
+     "Staryu",
+     "Tentacool"
+    ]
    },
    {
-    "m": [
-     "Cubone"
-    ],
+    "word": "SKULL",
     "n": 1,
     "cat": 4,
-    "word": "SKULL"
+    "m": [
+     "Cubone"
+    ]
    }
   ]
  },
@@ -3045,48 +3045,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "SCAMP",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Impidimp",
      "Maschiff"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "SCAMP"
+    ]
    },
    {
+    "word": "KID",
+    "n": 2,
+    "cat": 3,
     "m": [
-     "Snorunt",
-     "Cubchoo"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "KID"
+     "Cubchoo",
+     "Snorunt"
+    ]
    },
    {
+    "word": "ARACHNID",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Ariados",
      "Tarountula"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ARACHNID"
+    ]
    },
    {
+    "word": "STEEL",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Cufant",
      "Orthworm"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "STEEL"
+    ]
    },
    {
-    "m": [
-     "Fidough"
-    ],
+    "word": "BREAD",
     "n": 1,
     "cat": 2,
-    "word": "BREAD"
+    "m": [
+     "Fidough"
+    ]
    }
   ]
  },
@@ -3095,48 +3095,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Venomoth",
-     "Butterfree"
-    ],
+    "word": "POWDER",
     "n": 2,
     "cat": 2,
-    "word": "POWDER"
+    "m": [
+     "Butterfree",
+     "Venomoth"
+    ]
    },
    {
+    "word": "FOSSIL",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Aerodactyl",
      "Omanyte"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "FOSSIL"
+    ]
    },
    {
+    "word": "CAT",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Persian"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "CAT"
+    ]
    },
    {
+    "word": "SHELLFISH",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Kingler"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "SHELLFISH"
+    ]
    },
    {
-    "m": [
-     "Dratini",
-     "Dragonair",
-     "Dragonite"
-    ],
+    "word": "SERPENT",
     "n": 3,
     "cat": 4,
-    "word": "SERPENT"
+    "m": [
+     "Dragonair",
+     "Dragonite",
+     "Dratini"
+    ]
    }
   ]
  },
@@ -3145,48 +3145,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Rampardos",
-     "Cradily"
-    ],
+    "word": "FOSSIL",
     "n": 2,
     "cat": 4,
-    "word": "FOSSIL"
+    "m": [
+     "Cradily",
+     "Rampardos"
+    ]
    },
    {
+    "word": "EEL",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Milotic"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "EEL"
+    ]
    },
    {
-    "m": [
-     "Quagsire",
-     "Politoed"
-    ],
+    "word": "FROGKIND",
     "n": 2,
     "cat": 3,
-    "word": "FROGKIND"
+    "m": [
+     "Politoed",
+     "Quagsire"
+    ]
    },
    {
-    "m": [
-     "Gible",
-     "Bagon",
-     "Deino"
-    ],
+    "word": "HATCHLING",
     "n": 3,
     "cat": 5,
-    "word": "HATCHLING"
+    "m": [
+     "Bagon",
+     "Deino",
+     "Gible"
+    ]
    },
    {
-    "m": [
-     "Shinx"
-    ],
+    "word": "VOLT-TAIL",
     "n": 1,
     "cat": 2,
-    "word": "VOLT-TAIL"
+    "m": [
+     "Shinx"
+    ]
    }
   ]
  },
@@ -3195,48 +3195,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "MOTH",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Venonat"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "MOTH"
+    ]
    },
    {
-    "m": [
-     "Magmar",
-     "Machop",
-     "Electabuzz"
-    ],
+    "word": "PUNCHER",
     "n": 3,
     "cat": 4,
-    "word": "PUNCHER"
+    "m": [
+     "Electabuzz",
+     "Machop",
+     "Magmar"
+    ]
    },
    {
-    "m": [
-     "Weepinbell"
-    ],
+    "word": "PITCHER",
     "n": 1,
     "cat": 3,
-    "word": "PITCHER"
+    "m": [
+     "Weepinbell"
+    ]
    },
    {
+    "word": "TRADE",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Golem",
      "Kadabra"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "TRADE"
+    ]
    },
    {
-    "m": [
-     "Seel",
-     "Dewgong"
-    ],
+    "word": "FLIPPERS",
     "n": 2,
     "cat": 3,
-    "word": "FLIPPERS"
+    "m": [
+     "Dewgong",
+     "Seel"
+    ]
    }
   ]
  },
@@ -3245,48 +3245,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Numel",
-     "Torkoal",
-     "Camerupt"
-    ],
+    "word": "MAGMA",
     "n": 3,
     "cat": 4,
-    "word": "MAGMA"
+    "m": [
+     "Camerupt",
+     "Numel",
+     "Torkoal"
+    ]
    },
    {
-    "m": [
-     "Drifblim"
-    ],
+    "word": "WANDERER",
     "n": 1,
     "cat": 5,
-    "word": "WANDERER"
+    "m": [
+     "Drifblim"
+    ]
    },
    {
+    "word": "TWO-FACED",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Girafarig",
      "Mawile"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "TWO-FACED"
+    ]
    },
    {
-    "m": [
-     "Volbeat",
-     "Illumise"
-    ],
+    "word": "FIREFLY",
     "n": 2,
     "cat": 3,
-    "word": "FIREFLY"
+    "m": [
+     "Illumise",
+     "Volbeat"
+    ]
    },
    {
-    "m": [
-     "Absol"
-    ],
+    "word": "DISASTER",
     "n": 1,
     "cat": 3,
-    "word": "DISASTER"
+    "m": [
+     "Absol"
+    ]
    }
   ]
  },
@@ -3295,50 +3295,50 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Ninetales",
-     "Charizard"
-    ],
+    "word": "TAILED",
     "n": 2,
     "cat": 2,
-    "word": "TAILED"
+    "m": [
+     "Charizard",
+     "Ninetales"
+    ]
    },
    {
+    "word": "MINDBENDER",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Alakazam",
      "Hypno"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "MINDBENDER"
+    ]
    },
    {
-    "m": [
-     "Raichu",
-     "Magneton"
-    ],
+    "word": "ELECTRIC",
     "n": 2,
     "cat": 1,
-    "word": "ELECTRIC"
+    "m": [
+     "Magneton",
+     "Raichu"
+    ]
    },
    {
-    "m": [
-     "Alakazam",
-     "Magneton",
-     "Exeggutor"
-    ],
+    "word": "SPECIAL",
     "n": 3,
     "cat": 5,
-    "word": "SPECIAL"
+    "m": [
+     "Alakazam",
+     "Exeggutor",
+     "Magneton"
+    ]
    },
    {
-    "m": [
-     "Mankey",
-     "Machoke"
-    ],
+    "word": "SIMIAN",
     "n": 2,
     "cat": 4,
-    "word": "SIMIAN"
+    "m": [
+     "Machoke",
+     "Mankey"
+    ]
    }
   ]
  },
@@ -3347,48 +3347,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Sobble",
-     "Kecleon"
-    ],
+    "word": "CAMO",
     "n": 2,
     "cat": 4,
-    "word": "CAMO"
+    "m": [
+     "Kecleon",
+     "Sobble"
+    ]
    },
    {
-    "m": [
-     "Drampa"
-    ],
+    "word": "MUSTACHE",
     "n": 1,
     "cat": 2,
-    "word": "MUSTACHE"
+    "m": [
+     "Drampa"
+    ]
    },
    {
-    "m": [
-     "Rabsca",
-     "Cofagrigus"
-    ],
+    "word": "PHARAOH",
     "n": 2,
     "cat": 4,
-    "word": "PHARAOH"
+    "m": [
+     "Cofagrigus",
+     "Rabsca"
+    ]
    },
    {
-    "m": [
-     "Empoleon",
-     "Eiscue"
-    ],
+    "word": "PENGUIN",
     "n": 2,
     "cat": 3,
-    "word": "PENGUIN"
+    "m": [
+     "Eiscue",
+     "Empoleon"
+    ]
    },
    {
-    "m": [
-     "Toxapex",
-     "Glimmora"
-    ],
+    "word": "STARFISH",
     "n": 2,
     "cat": 3,
-    "word": "STARFISH"
+    "m": [
+     "Glimmora",
+     "Toxapex"
+    ]
    }
   ]
  },
@@ -3397,50 +3397,50 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Mewtwo",
-     "Mew"
-    ],
+    "word": "DUPLICATE",
     "n": 2,
     "cat": 5,
-    "word": "DUPLICATE"
+    "m": [
+     "Mew",
+     "Mewtwo"
+    ]
    },
    {
-    "m": [
-     "Nidoqueen",
-     "Nidoking"
-    ],
+    "word": "ROYALTY",
     "n": 2,
     "cat": 4,
-    "word": "ROYALTY"
+    "m": [
+     "Nidoking",
+     "Nidoqueen"
+    ]
    },
    {
-    "m": [
-     "Rhydon",
-     "Nidoking"
-    ],
+    "word": "RHINO",
     "n": 2,
     "cat": 3,
-    "word": "RHINO"
+    "m": [
+     "Nidoking",
+     "Rhydon"
+    ]
    },
    {
-    "m": [
-     "Venusaur",
-     "Mewtwo"
-    ],
+    "word": "MEGA",
     "n": 2,
     "cat": 5,
-    "word": "MEGA"
+    "m": [
+     "Mewtwo",
+     "Venusaur"
+    ]
    },
    {
-    "m": [
-     "Jynx",
-     "Marowak",
-     "Haunter"
-    ],
+    "word": "CURSED",
     "n": 3,
     "cat": 4,
-    "word": "CURSED"
+    "m": [
+     "Haunter",
+     "Jynx",
+     "Marowak"
+    ]
    }
   ]
  },
@@ -3449,53 +3449,53 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Virizion",
-     "Wo-Chien",
-     "Chien-Pao",
-     "Ting-Lu"
-    ],
+    "word": "RUINOUS",
     "n": 4,
     "cat": 5,
-    "word": "RUINOUS"
+    "m": [
+     "Chien-Pao",
+     "Ting-Lu",
+     "Virizion",
+     "Wo-Chien"
+    ]
    },
    {
-    "m": [
-     "Virizion",
-     "Cobalion",
-     "Terrakion"
-    ],
+    "word": "MUSKETEERS",
     "n": 3,
     "cat": 4,
-    "word": "MUSKETEERS"
+    "m": [
+     "Cobalion",
+     "Terrakion",
+     "Virizion"
+    ]
    },
    {
+    "word": "HEAVYWEIGHT",
+    "n": 3,
+    "cat": 5,
     "m": [
      "Cobalion",
      "Terrakion",
      "Ting-Lu"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "HEAVYWEIGHT"
+    ]
    },
    {
-    "m": [
-     "Virizion",
-     "Chi-Yu"
-    ],
+    "word": "SPEED-STAT",
     "n": 2,
     "cat": 5,
-    "word": "SPEED-STAT"
+    "m": [
+     "Chi-Yu",
+     "Virizion"
+    ]
    },
    {
+    "word": "TWILIGHT",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Noctowl",
      "Rowlet"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TWILIGHT"
+    ]
    }
   ]
  },
@@ -3504,41 +3504,41 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Drowzee",
-     "Abra"
-    ],
+    "word": "PSYCHIC",
     "n": 2,
     "cat": 1,
-    "word": "PSYCHIC"
+    "m": [
+     "Abra",
+     "Drowzee"
+    ]
    },
    {
+    "word": "ROCK",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Geodude",
      "Onix"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ROCK"
+    ]
    },
    {
-    "m": [
-     "Poliwag",
-     "Horsea",
-     "Squirtle"
-    ],
+    "word": "WATER",
     "n": 3,
     "cat": 1,
-    "word": "WATER"
+    "m": [
+     "Horsea",
+     "Poliwag",
+     "Squirtle"
+    ]
    },
    {
-    "m": [
-     "Bulbasaur",
-     "Bellsprout"
-    ],
+    "word": "GRASS",
     "n": 2,
     "cat": 1,
-    "word": "GRASS"
+    "m": [
+     "Bellsprout",
+     "Bulbasaur"
+    ]
    }
   ]
  },
@@ -3547,48 +3547,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "GRASS",
+    "n": 3,
+    "cat": 1,
     "m": [
      "Bounsweet",
      "Cottonee",
      "Turtwig"
-    ],
-    "n": 3,
-    "cat": 1,
-    "word": "GRASS"
+    ]
    },
    {
+    "word": "ROCK",
+    "n": 1,
+    "cat": 1,
     "m": [
      "Shieldon"
-    ],
-    "n": 1,
-    "cat": 1,
-    "word": "ROCK"
+    ]
    },
    {
-    "m": [
-     "Ralts",
-     "Munna"
-    ],
+    "word": "PSYCHIC",
     "n": 2,
     "cat": 1,
-    "word": "PSYCHIC"
+    "m": [
+     "Munna",
+     "Ralts"
+    ]
    },
    {
-    "m": [
-     "Piplup",
-     "Mudkip"
-    ],
+    "word": "WATER",
     "n": 2,
     "cat": 1,
-    "word": "WATER"
+    "m": [
+     "Mudkip",
+     "Piplup"
+    ]
    },
    {
-    "m": [
-     "Rookidee"
-    ],
+    "word": "TOPKNOT",
     "n": 1,
     "cat": 2,
-    "word": "TOPKNOT"
+    "m": [
+     "Rookidee"
+    ]
    }
   ]
  },
@@ -3597,48 +3597,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Chansey",
-     "Tauros",
-     "Kangaskhan"
-    ],
+    "word": "NORMAL",
     "n": 3,
     "cat": 1,
-    "word": "NORMAL"
+    "m": [
+     "Chansey",
+     "Kangaskhan",
+     "Tauros"
+    ]
    },
    {
-    "m": [
-     "Krabby"
-    ],
+    "word": "NIPPERS",
     "n": 1,
     "cat": 3,
-    "word": "NIPPERS"
+    "m": [
+     "Krabby"
+    ]
    },
    {
-    "m": [
-     "Golbat"
-    ],
+    "word": "AERIAL",
     "n": 1,
     "cat": 1,
-    "word": "AERIAL"
+    "m": [
+     "Golbat"
+    ]
    },
    {
+    "word": "CARAPACE",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Kabuto",
      "Shellder"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "CARAPACE"
+    ]
    },
    {
+    "word": "FISH",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Goldeen",
      "Magikarp"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "FISH"
+    ]
    }
   ]
  },
@@ -3647,48 +3647,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "MARKED",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Basculin",
      "Zebstrika"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "MARKED"
+    ]
    },
    {
-    "m": [
-     "Purrloin"
-    ],
+    "word": "DARK",
     "n": 1,
     "cat": 1,
-    "word": "DARK"
+    "m": [
+     "Purrloin"
+    ]
    },
    {
-    "m": [
-     "Sandygast"
-    ],
+    "word": "SPIRIT",
     "n": 1,
     "cat": 4,
-    "word": "SPIRIT"
+    "m": [
+     "Sandygast"
+    ]
    },
    {
-    "m": [
-     "Clauncher",
-     "Crabrawler",
-     "Corphish"
-    ],
+    "word": "CRUSTACEAN",
     "n": 3,
     "cat": 3,
-    "word": "CRUSTACEAN"
+    "m": [
+     "Clauncher",
+     "Corphish",
+     "Crabrawler"
+    ]
    },
    {
+    "word": "NORMAL",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Furfrou",
      "Miltank"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "NORMAL"
+    ]
    }
   ]
  },
@@ -3697,48 +3697,48 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "MOLE",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Diglett",
      "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "MOLE"
+    ]
    },
    {
+    "word": "FIRE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Growlithe",
      "Vulpix"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FIRE"
+    ]
    },
    {
-    "m": [
-     "Voltorb"
-    ],
+    "word": "POKEBALL",
     "n": 1,
     "cat": 4,
-    "word": "POKEBALL"
+    "m": [
+     "Voltorb"
+    ]
    },
    {
-    "m": [
-     "Fearow",
-     "Doduo",
-     "Pidgeotto"
-    ],
+    "word": "FLOCK",
     "n": 3,
     "cat": 3,
-    "word": "FLOCK"
+    "m": [
+     "Doduo",
+     "Fearow",
+     "Pidgeotto"
+    ]
    },
    {
-    "m": [
-     "Ekans"
-    ],
+    "word": "RATTLE",
     "n": 1,
     "cat": 2,
-    "word": "RATTLE"
+    "m": [
+     "Ekans"
+    ]
    }
   ]
  },
@@ -3747,48 +3747,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Falinks"
-    ],
+    "word": "SIX",
     "n": 1,
     "cat": 2,
-    "word": "SIX"
+    "m": [
+     "Falinks"
+    ]
    },
    {
-    "m": [
-     "Klefki"
-    ],
+    "word": "KEYRING",
     "n": 1,
     "cat": 4,
-    "word": "KEYRING"
+    "m": [
+     "Klefki"
+    ]
    },
    {
+    "word": "EAGLE",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Braviary"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "EAGLE"
+    ]
    },
    {
-    "m": [
-     "Feraligatr",
-     "Infernape",
-     "Delphox",
-     "Sceptile",
-     "Chesnaught"
-    ],
+    "word": "STARTER",
     "n": 5,
     "cat": 1,
-    "word": "STARTER"
+    "m": [
+     "Chesnaught",
+     "Delphox",
+     "Feraligatr",
+     "Infernape",
+     "Sceptile"
+    ]
    },
    {
-    "m": [
-     "Pangoro"
-    ],
+    "word": "YAKUZA",
     "n": 1,
     "cat": 3,
-    "word": "YAKUZA"
+    "m": [
+     "Pangoro"
+    ]
    }
   ]
  },
@@ -3797,41 +3797,41 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Gyarados",
-     "Arbok"
-    ],
+    "word": "INTIMIDATE",
     "n": 2,
     "cat": 5,
-    "word": "INTIMIDATE"
+    "m": [
+     "Arbok",
+     "Gyarados"
+    ]
    },
    {
+    "word": "MALLARD",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Farfetch'd",
      "Psyduck"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "MALLARD"
+    ]
    },
    {
+    "word": "GLOOPY",
+    "n": 3,
+    "cat": 4,
     "m": [
      "Ditto",
      "Koffing",
      "Muk"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "GLOOPY"
+    ]
    },
    {
+    "word": "GRUB",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Caterpie",
      "Weedle"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "GRUB"
+    ]
    }
   ]
  },
@@ -3840,48 +3840,48 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "DJINN",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Enamorus",
      "Landorus"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "DJINN"
+    ]
    },
    {
+    "word": "PINCER",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Drapion",
      "Gligar"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PINCER"
+    ]
    },
    {
+    "word": "INKWELL",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Malamar",
      "Octillery"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "INKWELL"
+    ]
    },
    {
-    "m": [
-     "Mimikyu"
-    ],
+    "word": "COSTUME",
     "n": 1,
     "cat": 2,
-    "word": "COSTUME"
+    "m": [
+     "Mimikyu"
+    ]
    },
    {
-    "m": [
-     "Honchkrow",
-     "Corviknight"
-    ],
+    "word": "RAVEN",
     "n": 2,
     "cat": 3,
-    "word": "RAVEN"
+    "m": [
+     "Corviknight",
+     "Honchkrow"
+    ]
    }
   ]
  },
@@ -3890,48 +3890,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Sandslash",
-     "Dugtrio"
-    ],
+    "word": "DIGGER",
     "n": 2,
     "cat": 3,
-    "word": "DIGGER"
+    "m": [
+     "Dugtrio",
+     "Sandslash"
+    ]
    },
    {
+    "word": "ORB",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Electrode",
      "Magnemite"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ORB"
+    ]
    },
    {
-    "m": [
-     "Machamp",
-     "Hitmonlee",
-     "Hitmonchan"
-    ],
+    "word": "MARTIAL-ARTIST",
     "n": 3,
     "cat": 5,
-    "word": "MARTIAL-ARTIST"
+    "m": [
+     "Hitmonchan",
+     "Hitmonlee",
+     "Machamp"
+    ]
    },
    {
-    "m": [
-     "Raticate"
-    ],
+    "word": "SUPER-FANG",
     "n": 1,
     "cat": 4,
-    "word": "SUPER-FANG"
+    "m": [
+     "Raticate"
+    ]
    },
    {
-    "m": [
-     "Golduck"
-    ],
+    "word": "KAPPA",
     "n": 1,
     "cat": 3,
-    "word": "KAPPA"
+    "m": [
+     "Golduck"
+    ]
    }
   ]
  },
@@ -3940,48 +3940,48 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Shuckle",
-     "Aggron",
-     "Steelix"
-    ],
+    "word": "TANK",
     "n": 3,
     "cat": 5,
-    "word": "TANK"
+    "m": [
+     "Aggron",
+     "Shuckle",
+     "Steelix"
+    ]
    },
    {
+    "word": "AXOLOTL",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Wooper"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "AXOLOTL"
+    ]
    },
    {
+    "word": "MIMIC",
+    "n": 1,
+    "cat": 3,
     "m": [
      "Chatot"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "MIMIC"
+    ]
    },
    {
-    "m": [
-     "Wingull",
-     "Pelipper"
-    ],
+    "word": "SEABIRD",
     "n": 2,
     "cat": 3,
-    "word": "SEABIRD"
+    "m": [
+     "Pelipper",
+     "Wingull"
+    ]
    },
    {
-    "m": [
-     "Rotom",
-     "Bronzong"
-    ],
+    "word": "LEVITATE",
     "n": 2,
     "cat": 5,
-    "word": "LEVITATE"
+    "m": [
+     "Bronzong",
+     "Rotom"
+    ]
    }
   ]
  },
@@ -3990,50 +3990,50 @@
   "pool": "gen1",
   "clues": [
    {
+    "word": "TRADE",
+    "n": 3,
+    "cat": 5,
     "m": [
      "Alakazam",
-     "Golem",
-     "Gengar"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "TRADE"
+     "Gengar",
+     "Golem"
+    ]
    },
    {
-    "m": [
-     "Omastar",
-     "Kabutops"
-    ],
+    "word": "PREHISTORIC",
     "n": 2,
     "cat": 4,
-    "word": "PREHISTORIC"
+    "m": [
+     "Kabutops",
+     "Omastar"
+    ]
    },
    {
-    "m": [
-     "Hypno",
-     "Golem",
-     "Gengar"
-    ],
+    "word": "FOLKLORE",
     "n": 3,
     "cat": 5,
-    "word": "FOLKLORE"
+    "m": [
+     "Gengar",
+     "Golem",
+     "Hypno"
+    ]
    },
    {
+    "word": "CONJOINED",
+    "n": 2,
+    "cat": 2,
     "m": [
      "Magneton",
      "Weezing"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "CONJOINED"
+    ]
    },
    {
-    "m": [
-     "Dragonite"
-    ],
+    "word": "KIND",
     "n": 1,
     "cat": 3,
-    "word": "KIND"
+    "m": [
+     "Dragonite"
+    ]
    }
   ]
  },
@@ -4042,44 +4042,44 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Porygon-Z",
-     "Metagross"
-    ],
+    "word": "DATA-BRAIN",
     "n": 2,
     "cat": 4,
-    "word": "DATA-BRAIN"
+    "m": [
+     "Metagross",
+     "Porygon-Z"
+    ]
    },
    {
-    "m": [
-     "Salamence",
-     "Garchomp",
-     "Tyranitar",
-     "Metagross"
-    ],
+    "word": "SIX-HUNDRED",
     "n": 4,
     "cat": 5,
-    "word": "SIX-HUNDRED"
+    "m": [
+     "Garchomp",
+     "Metagross",
+     "Salamence",
+     "Tyranitar"
+    ]
    },
    {
-    "m": [
-     "Magnezone",
-     "Lucario",
-     "Metagross",
-     "Probopass"
-    ],
+    "word": "STEEL",
     "n": 4,
     "cat": 1,
-    "word": "STEEL"
+    "m": [
+     "Lucario",
+     "Magnezone",
+     "Metagross",
+     "Probopass"
+    ]
    },
    {
-    "m": [
-     "Riolu",
-     "Lucario"
-    ],
+    "word": "ANUBIS",
     "n": 2,
     "cat": 5,
-    "word": "ANUBIS"
+    "m": [
+     "Lucario",
+     "Riolu"
+    ]
    }
   ]
  },
@@ -4088,50 +4088,50 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Primeape",
-     "Machop"
-    ],
+    "word": "SIMIAN",
     "n": 2,
     "cat": 4,
-    "word": "SIMIAN"
-   },
-   {
     "m": [
      "Machop",
-     "Poliwrath"
-    ],
+     "Primeape"
+    ]
+   },
+   {
+    "word": "CHUCK",
     "n": 2,
     "cat": 3,
-    "word": "PUGILIST"
+    "m": [
+     "Poliwrath",
+     "Primeape"
+    ]
    },
    {
-    "m": [
-     "Geodude",
-     "Onix",
-     "Marowak"
-    ],
+    "word": "ROCK-HEAD",
     "n": 3,
     "cat": 5,
-    "word": "ROCK-HEAD"
+    "m": [
+     "Geodude",
+     "Marowak",
+     "Onix"
+    ]
    },
    {
+    "word": "HUMAN-LIKE",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Jynx",
      "Mr. Mime"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "HUMAN-LIKE"
+    ]
    },
    {
-    "m": [
-     "Starmie",
-     "Poliwrath"
-    ],
+    "word": "WATER-STONE",
     "n": 2,
     "cat": 5,
-    "word": "WATER-STONE"
+    "m": [
+     "Poliwrath",
+     "Starmie"
+    ]
    }
   ]
  },
@@ -4140,50 +4140,50 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "COMPOUND-EYES",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Galvantula",
      "Yanma"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "COMPOUND-EYES"
+    ]
    },
    {
-    "m": [
-     "Seismitoad",
-     "Croagunk"
-    ],
+    "word": "AMPHIBIAN",
     "n": 2,
     "cat": 3,
-    "word": "AMPHIBIAN"
+    "m": [
+     "Croagunk",
+     "Seismitoad"
+    ]
    },
    {
+    "word": "OWN-TEMPO",
+    "n": 2,
+    "cat": 5,
     "m": [
      "Slowpoke",
      "Smeargle"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "OWN-TEMPO"
+    ]
    },
    {
-    "m": [
-     "Galvantula",
-     "Ariados"
-    ],
+    "word": "ARACHNID",
     "n": 2,
     "cat": 4,
-    "word": "ARACHNID"
+    "m": [
+     "Ariados",
+     "Galvantula"
+    ]
    },
    {
-    "m": [
-     "Slowpoke",
-     "Tangela",
-     "Audino"
-    ],
+    "word": "REGENERATOR",
     "n": 3,
     "cat": 5,
-    "word": "REGENERATOR"
+    "m": [
+     "Audino",
+     "Slowpoke",
+     "Tangela"
+    ]
    }
   ]
  },
@@ -4192,48 +4192,48 @@
   "pool": "gen1",
   "clues": [
    {
-    "m": [
-     "Pikachu",
-     "Jolteon"
-    ],
+    "word": "ELECTRIC",
     "n": 2,
     "cat": 1,
-    "word": "ELECTRIC"
+    "m": [
+     "Jolteon",
+     "Pikachu"
+    ]
    },
    {
-    "m": [
-     "Haunter"
-    ],
+    "word": "GHOST",
     "n": 1,
     "cat": 1,
-    "word": "GHOST"
+    "m": [
+     "Haunter"
+    ]
    },
    {
+    "word": "BUG",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Pinsir",
      "Scyther"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "BUG"
+    ]
    },
    {
-    "m": [
-     "Krabby",
-     "Kabuto"
-    ],
+    "word": "CLAWS",
     "n": 2,
     "cat": 2,
-    "word": "CLAWS"
+    "m": [
+     "Kabuto",
+     "Krabby"
+    ]
    },
    {
+    "word": "ICE",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Articuno",
      "Dewgong"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ICE"
+    ]
    }
   ]
  },
@@ -4242,48 +4242,98 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "GROUND",
+    "n": 2,
+    "cat": 1,
     "m": [
      "Cubone",
      "Donphan"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GROUND"
+    ]
    },
    {
-    "m": [
-     "Sylveon",
-     "Comfey"
-    ],
+    "word": "FAIRY",
     "n": 2,
     "cat": 1,
-    "word": "FAIRY"
+    "m": [
+     "Comfey",
+     "Sylveon"
+    ]
    },
    {
-    "m": [
-     "Klink"
-    ],
+    "word": "GEARS",
     "n": 1,
     "cat": 2,
-    "word": "GEARS"
+    "m": [
+     "Klink"
+    ]
    },
    {
-    "m": [
-     "Throh",
-     "Pancham"
-    ],
+    "word": "FIGHTING",
     "n": 2,
     "cat": 1,
-    "word": "FIGHTING"
+    "m": [
+     "Pancham",
+     "Throh"
+    ]
    },
    {
-    "m": [
-     "Jangmo-o",
-     "Goomy"
-    ],
+    "word": "DRAGON",
     "n": 2,
     "cat": 1,
-    "word": "DRAGON"
+    "m": [
+     "Goomy",
+     "Jangmo-o"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-10-06",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "POUCH",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Kangaskhan"
+    ]
+   },
+   {
+    "word": "PACHYDERM",
+    "n": 2,
+    "cat": 4,
+    "m": [
+     "Nidoqueen",
+     "Rhyhorn"
+    ]
+   },
+   {
+    "word": "FLYING",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Charizard",
+     "Doduo",
+     "Golbat"
+    ]
+   },
+   {
+    "word": "TONGUE",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Lickitung"
+    ]
+   },
+   {
+    "word": "PSYCHIC",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Drowzee",
+     "Kadabra"
+    ]
    }
   ]
  },
@@ -4292,41 +4342,41 @@
   "pool": "mixed",
   "clues": [
    {
-    "m": [
-     "Espurr"
-    ],
+    "word": "GLARE",
     "n": 1,
     "cat": 2,
-    "word": "GLARE"
+    "m": [
+     "Espurr"
+    ]
    },
    {
-    "m": [
-     "Roggenrola",
-     "Bergmite"
-    ],
+    "word": "MINERAL",
     "n": 2,
     "cat": 4,
-    "word": "MINERAL"
+    "m": [
+     "Bergmite",
+     "Roggenrola"
+    ]
    },
    {
-    "m": [
-     "Buizel",
-     "Binacle",
-     "Popplio"
-    ],
+    "word": "WATER",
     "n": 3,
     "cat": 1,
-    "word": "WATER"
+    "m": [
+     "Binacle",
+     "Buizel",
+     "Popplio"
+    ]
    },
    {
+    "word": "GRASS",
+    "n": 3,
+    "cat": 1,
     "m": [
      "Chikorita",
      "Snivy",
      "Snover"
-    ],
-    "n": 3,
-    "cat": 1,
-    "word": "GRASS"
+    ]
    }
   ]
  },
@@ -4335,41 +4385,41 @@
   "pool": "mixed",
   "clues": [
    {
+    "word": "PENGUIN",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Eiscue",
      "Piplup"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PENGUIN"
+    ]
    },
    {
-    "m": [
-     "Rhydon",
-     "Arceus",
-     "Bulbasaur"
-    ],
+    "word": "FIRST",
     "n": 3,
     "cat": 5,
-    "word": "FIRST"
+    "m": [
+     "Arceus",
+     "Bulbasaur",
+     "Rhydon"
+    ]
    },
    {
+    "word": "FOSSIL",
+    "n": 2,
+    "cat": 4,
     "m": [
      "Archen",
      "Tyrunt"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "FOSSIL"
+    ]
    },
    {
+    "word": "SERPENT",
+    "n": 2,
+    "cat": 3,
     "m": [
      "Sandaconda",
      "Seviper"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "SERPENT"
+    ]
    }
   ]
  }
