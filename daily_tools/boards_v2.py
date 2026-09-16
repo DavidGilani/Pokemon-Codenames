@@ -3,41 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 and 2026-08-23 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-25 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-24 Mon : EASY =====
-board("2026-08-24","gen1","Easy",[
-  ("FIRE",1,"type:fire",["Growlithe","Arcanine"]),
-  ("GRASS",1,"type:grass",["Oddish","Gloom"]),
-  ("ROCK",1,"type:rock",["Geodude","Golem"]),
-  ("TUNNELER",3,"arch:mole",["Diglett","Dugtrio"]),
-  ("FANG",2,"sprite:fangs",["Nidorino"]),
-], exclude=["Vileplume","Bellossom","Graveler","Onix","Ekans","Vulpix","Ninetales","Nidorina"])
-board("2026-08-24","mixed","Easy",[
-  ("ELECTRIC",1,"type:electric",["Yamper","Pichu"]),
-  ("BUG",1,"type:bug",["Grubbin","Karrablast"]),
-  ("PSEUDO-LEGENDARY",1,"group:pseudo",["Gible","Deino","Jangmo-o"]),
-  ("FOX",3,"arch:fox",["Fennekin"]),
-  ("MOLE",3,"arch:mole",["Drilbur"]),
-], exclude=["Boltund","Charjabug","Gabite","Zweilous","Hakamo-o","Braixen","Excadrill","Nickit"])
-
-# ===== 08-25 Tue : MEDIUM =====
-board("2026-08-25","gen1","Medium",[
-  ("POISON",1,"type:poison",["Ekans","Grimer"]),
-  ("PSYCHIC",1,"type:psychic",["Abra","Slowpoke"]),
-  ("ECHINODERM",4,"arch:starfish",["Staryu","Starmie"]),
-  ("PUGILIST",3,"based:boxer",["Hitmonlee","Primeape"]),
-  ("MUSHROOM",2,"sprite:mushroom",["Paras"]),
-], exclude=["Muk","Arbok","Slowbro","Kadabra","Alakazam","Hitmonchan","Mankey","Machop","Parasect"])
-board("2026-08-25","mixed","Medium",[
-  ("WATER",1,"type:water",["Wooper","Mudkip"]),
-  ("DRAGON",1,"type:dragon",["Axew","Goomy"]),
-  ("SANTA",4,"based:santa",["Delibird"]),
-  ("LAMB",3,"arch:sheep",["Mareep","Wooloo"]),
-  ("POLLEN",3,"arch:flower",["Sunflora","Cottonee"]),
-], exclude=["Quagsire","Marshtomp","Fraxure","Sliggoo","Dragonair","Flaaffy","Dubwool","Sunkern","Whimsicott"])
 
 # ===== 08-26 Wed : CHALLENGING =====
 board("2026-08-26","gen1","Challenging",[
@@ -524,3 +492,21 @@ board("2026-10-05","mixed","Easy",[
   ("FIGHTING",1,"type:fighting",["Throh","Pancham"],"Throh and Pancham are both Fighting-type Pokemon."),
   ("GEARS",2,"sprite:gear-shape",["Klink"],"Klink's entire body is a pair of interlocking gears, spinning against each other."),
 ], exclude=["Klang","Klinklang","Bronzor","Bronzong","Magnemite","Magneton","Beldum","Metang","Ferroseed","Ferrothorn","Sawk"])
+
+# ===== 10-07 Wed : CHALLENGING (gap fill) =====
+board("2026-10-07","gen1","Challenging",[
+  ("ROCK",1,"type:rock",["Graveler","Aerodactyl","Omanyte"],"Graveler, Aerodactyl and Omanyte are all Rock-type -- a walking boulder, a revived pterosaur, and a spiral ammonite shell."),
+  ("LEEK",2,"lore:leek",["Farfetch'd"],"Farfetch'd always carries a stalk of leek -- a pun on the Japanese saying 'a duck that comes carrying its own leek', meaning a stroke of good luck."),
+  ("STINGER",2,"sprite:tail-stinger",["Nidorina"],"Look at the sprite -- Nidorina carries a sharp poison barb on the tip of her tail, the feature her whole family is named for."),
+  ("CLAM",3,"arch:clam",["Shellder"],"Shellder is modelled on a bivalve clam, its two-part shell snapping shut on its huge tongue."),
+  ("BIPEDAL",3,"arch:humanoid",["Electabuzz","Magmar","Machoke"],"All three are built as upright, muscular humanoid figures -- Electabuzz and Magmar both drawing on Japanese oni demons, Machoke modelled on a professional wrestler."),
+], exclude=["Nidoking","Nidoqueen","Nidoran♀","Nidoran♂","Nidorino","Cloyster",
+            "Mr. Mime","Jynx","Hitmonlee","Hitmonchan","Primeape","Machamp","Machop",
+            "Alakazam","Kadabra","Abra","Mewtwo","Elekid","Magby"])
+board("2026-10-07","mixed","Challenging",[
+  ("DARK",1,"type:dark",["Sneasel","Absol"],"Sneasel and Absol are both pure Dark-type Pokemon -- sharp-clawed hunters that prowl at night."),
+  ("CATFISH",3,"arch:catfish",["Whiscash"],"Whiscash is based on a catfish -- specifically Japan's mythical namazu, said to thrash beneath the earth and cause earthquakes."),
+  ("EEL",3,"arch:eel",["Gorebyss","Wugtrio"],"Gorebyss and Wugtrio are both based on eels -- Gorebyss a slender deep-sea snipe eel, Wugtrio three garden eels poking from the sand, echoing its Kanto look-alike Dugtrio."),
+  ("BEETLE",3,"arch:beetle",["Heracross","Vikavolt"],"Heracross and Vikavolt are both modelled on real beetles -- Heracross a Hercules beetle, Vikavolt a stag beetle fused with a fighter jet."),
+  ("BLADE",2,"sprite:blade-body",["Aegislash","Kartana"],"Look at the sprites -- Aegislash is a living sword and shield, and Kartana is a razor-edged sheet of steel-hard paper."),
+], exclude=["Milotic","Eelektrik","Eelektross","Ledyba","Ledian","Pinsir","Scyther","Orbeetle","Honedge","Doublade","Bisharp","Kingambit","Drampa"])

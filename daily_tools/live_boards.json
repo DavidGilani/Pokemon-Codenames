@@ -1,205 +1,5 @@
 [
  {
-  "date": "2026-08-24",
-  "pool": "gen1",
-  "clues": [
-   {
-    "word": "FANG",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Nidorino"
-    ]
-   },
-   {
-    "word": "GRASS",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Gloom",
-     "Oddish"
-    ]
-   },
-   {
-    "word": "ROCK",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Geodude",
-     "Golem"
-    ]
-   },
-   {
-    "word": "FIRE",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Arcanine",
-     "Growlithe"
-    ]
-   },
-   {
-    "word": "TUNNELER",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Diglett",
-     "Dugtrio"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-24",
-  "pool": "mixed",
-  "clues": [
-   {
-    "word": "FOX",
-    "n": 1,
-    "cat": 3,
-    "m": [
-     "Fennekin"
-    ]
-   },
-   {
-    "word": "ELECTRIC",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Pichu",
-     "Yamper"
-    ]
-   },
-   {
-    "word": "BUG",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Grubbin",
-     "Karrablast"
-    ]
-   },
-   {
-    "word": "PSEUDO-LEGENDARY",
-    "n": 3,
-    "cat": 1,
-    "m": [
-     "Deino",
-     "Gible",
-     "Jangmo-o"
-    ]
-   },
-   {
-    "word": "MOLE",
-    "n": 1,
-    "cat": 3,
-    "m": [
-     "Drilbur"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-25",
-  "pool": "gen1",
-  "clues": [
-   {
-    "word": "PSYCHIC",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Abra",
-     "Slowpoke"
-    ]
-   },
-   {
-    "word": "PUGILIST",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Hitmonlee",
-     "Primeape"
-    ]
-   },
-   {
-    "word": "MUSHROOM",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Paras"
-    ]
-   },
-   {
-    "word": "ECHINODERM",
-    "n": 2,
-    "cat": 4,
-    "m": [
-     "Starmie",
-     "Staryu"
-    ]
-   },
-   {
-    "word": "POISON",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Ekans",
-     "Grimer"
-    ]
-   }
-  ]
- },
- {
-  "date": "2026-08-25",
-  "pool": "mixed",
-  "clues": [
-   {
-    "word": "SANTA",
-    "n": 1,
-    "cat": 4,
-    "m": [
-     "Delibird"
-    ]
-   },
-   {
-    "word": "WATER",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Mudkip",
-     "Wooper"
-    ]
-   },
-   {
-    "word": "LAMB",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Mareep",
-     "Wooloo"
-    ]
-   },
-   {
-    "word": "DRAGON",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Axew",
-     "Goomy"
-    ]
-   },
-   {
-    "word": "POLLEN",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Cottonee",
-     "Sunflora"
-    ]
-   }
-  ]
- },
- {
   "date": "2026-08-26",
   "pool": "gen1",
   "clues": [
@@ -4300,9 +4100,9 @@
     ]
    },
    {
-    "word": "PACHYDERM",
+    "word": "RHINO",
     "n": 2,
-    "cat": 4,
+    "cat": 3,
     "m": [
      "Nidoqueen",
      "Rhyhorn"
@@ -4376,6 +4176,106 @@
      "Chikorita",
      "Snivy",
      "Snover"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-10-07",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "ROCK",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Aerodactyl",
+     "Graveler",
+     "Omanyte"
+    ]
+   },
+   {
+    "word": "BIPEDAL",
+    "n": 3,
+    "cat": 3,
+    "m": [
+     "Electabuzz",
+     "Machoke",
+     "Magmar"
+    ]
+   },
+   {
+    "word": "STINGER",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Nidorina"
+    ]
+   },
+   {
+    "word": "LEEK",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Farfetch'd"
+    ]
+   },
+   {
+    "word": "CLAM",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Shellder"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-10-07",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "DARK",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Absol",
+     "Sneasel"
+    ]
+   },
+   {
+    "word": "BLADE",
+    "n": 2,
+    "cat": 2,
+    "m": [
+     "Aegislash",
+     "Kartana"
+    ]
+   },
+   {
+    "word": "EEL",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Gorebyss",
+     "Wugtrio"
+    ]
+   },
+   {
+    "word": "BEETLE",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Heracross",
+     "Vikavolt"
+    ]
+   },
+   {
+    "word": "CATFISH",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Whiscash"
     ]
    }
   ]
