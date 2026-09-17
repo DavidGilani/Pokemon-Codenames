@@ -180,9 +180,8 @@ board("2026-09-06","gen1","Evil",[
 board("2026-09-17","gen1","Hard",[
   ("RELIC",4,"lore:fossil",["Aerodactyl","Omastar","Kabutops"]),
   ("LEGEND",3,"lore:legendary",["Articuno","Zapdos","Moltres"]),
-  ("FROST",4,"lore:ice-storm",["Articuno","Lapras"]),
+  ("FROST",4,"lore:ice-storm",["Articuno","Lapras","Dewgong"]),
   ("VOLCANO",3,"lore:volcano",["Moltres","Magmar"]),
-  ("TUSKS",2,"sprite:tusks",["Dewgong"]),
 ], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix","Rhyhorn","Rhydon","Nidoking"])
 # QA flourish (owner-approved): kept as Evil with 4 clues even though it misses
 # the 3-distinct-cats / sum>=11 gates – Arctozolt folded into REVENANT (it's a
