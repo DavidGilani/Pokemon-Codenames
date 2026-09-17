@@ -3,26 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-25 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-26 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-26 Wed : CHALLENGING =====
-board("2026-08-26","gen1","Challenging",[
-  ("FIRST-PARTNER",1,"group:starter",["Bulbasaur","Charmander","Squirtle"]),
-  ("CAT",3,"arch:feline",["Meowth","Persian"]),
-  ("SKULL",3,"based:bone",["Cubone","Marowak"]),
-  ("DUMBBELL",2,"sprite:muscle",["Machamp"]),
-  ("JOEY",3,"arch:kangaroo",["Kangaskhan"]),
-], exclude=["Ivysaur","Venusaur","Charmeleon","Wartortle","Blastoise","Persian-Alola","Machoke","Cubone-Alola"])
-board("2026-08-26","mixed","Challenging",[
-  ("FAIRY",1,"type:fairy",["Togepi","Togetic"]),
-  ("RAVEN",3,"arch:crow",["Murkrow","Honchkrow"]),
-  ("OTTER",3,"arch:otter",["Buizel","Floatzel"]),
-  ("CANDLE",4,"based:candle",["Litwick","Lampent"]),
-  ("STAR",2,"sprite:star",["Minior"]),
-], exclude=["Togekiss","Corviknight","Rookidee","Chandelure","Cottonee","Whimsicott","Floette"])
-
 
 # ===== 08-27 Thu : HARD (re-authored under evolution-family cap) =====
 board("2026-08-27","gen1","Hard",[
@@ -510,3 +493,19 @@ board("2026-10-07","mixed","Challenging",[
   ("BEETLE",3,"arch:beetle",["Heracross","Vikavolt"],"Heracross and Vikavolt are both modelled on real beetles -- Heracross a Hercules beetle, Vikavolt a stag beetle fused with a fighter jet."),
   ("BLADE",2,"sprite:blade-body",["Aegislash","Kartana"],"Look at the sprites -- Aegislash is a living sword and shield, and Kartana is a razor-edged sheet of steel-hard paper."),
 ], exclude=["Milotic","Eelektrik","Eelektross","Ledyba","Ledian","Pinsir","Scyther","Orbeetle","Honedge","Doublade","Bisharp","Kingambit","Drampa"])
+
+# ===== 10-08 Thu : HARD =====
+board("2026-10-08","gen1","Hard",[
+  ("ANALYTIC",5,"ability:analytic",["Magnemite","Porygon","Staryu"],"Magnemite, Porygon and Staryu can all be born with the Ability Analytic, which boosts their move's power whenever they act after their opponent that turn."),
+  ("SHELL-ARMOR",5,"ability:shell-armor",["Cloyster","Kingler","Lapras"],"Cloyster, Kingler and Lapras can all have the Ability Shell Armor, which flatly blocks any incoming attack from landing a critical hit."),
+  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is a mole through and through, spending its whole life burrowing just under the surface."),
+  ("TRIPLE",2,"sprite:three-heads",["Dodrio"],"Dodrio's sprite gives it three separate heads growing from one long-legged body, an unmistakable silhouette."),
+  ("FOX",3,"arch:fox",["Ninetales"],"Ninetales is a fox through and through, its nine flowing tails drawn straight from Japanese kitsune folklore."),
+], exclude=["Magneton","Starmie","Shellder","Krabby","Omanyte","Omastar","Vulpix","Eevee","Doduo","Dugtrio"])
+board("2026-10-08","mixed","Hard",[
+  ("WEAK-ARMOR",5,"ability:weak-armor",["Garbodor","Cursola"],"Garbodor and Cursola can both have the Ability Weak Armor, which lowers their Defense but sharply raises their Speed every time they're struck by a move."),
+  ("STURDY",5,"ability:sturdy",["Nosepass","Relicanth","Carbink","Togedemaru"],"Nosepass, Relicanth, Carbink and Togedemaru can all have the Ability Sturdy, guaranteeing they survive any hit that would otherwise knock them out from full HP."),
+  ("BEAK",2,"sprite:cannon-beak",["Toucannon"],"Toucannon's whole design is built around one oversized, cannon-like beak, impossible to miss on its sprite."),
+  ("TURTLE",3,"arch:turtle",["Torkoal"],"Torkoal is a tortoise fused with a coal-burning stove, complete with a smokestack shell that puffs out sooty smoke."),
+  ("CRAB",3,"arch:crab",["Klawf"],"Klawf is a real crab through and through, ambushing prey sideways just like the rock crab that inspired it."),
+], exclude=["Slugma","Magcargo","Skarmory","Boldore","Dwebble","Crustle","Vanillite","Vanillish","Vanilluxe","Vullaby","Mandibuzz","Sinistea","Polteageist","Armarouge","Ceruledge","Sudowoodo","Pineco","Forretress","Aron","Lairon","Regirock","Bastiodon","Bonsly","Sawk","Tirtouga","Carracosta","Avalugg","Cosmoem","Nacli","Naclstack","Garganacl","Archaludon","Probopass","Magnemite","Magnezone","Squirtle","Wartortle","Blastoise","Turtwig","Grotle","Torterra","Turtonator","Chewtle","Drednaw","Terapagos","Paras","Parasect","Krabby","Kingler","Corphish","Crawdaunt","Binacle","Barbaracle","Clauncher","Clawitzer","Crabrawler","Crabominable","Wimpod","Golisopod","Pidgey","Spearow","Fearow","Farfetch'd","Omastar","Wingull","Pikipek","Trumbeak","Donphan"])
