@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-26 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-27 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-27 Thu : HARD (re-authored under evolution-family cap) =====
-board("2026-08-27","gen1","Hard",[
-  ("COILS",3,"arch:serpent",["Onix","Arbok","Gyarados"]),
-  ("MESMERIST",4,"lore:hypnosis",["Hypno"]),
-  ("FLYTRAP",4,"based:flytrap",["Victreebel"]),
-  ("SICKLE",2,"sprite:scythe-arms",["Scyther","Kabutops"]),
-  ("MOLLUSC",3,"arch:mollusc",["Shellder","Omanyte"]),
-], exclude=["Ekans","Dratini","Dragonair","Dragonite","Weepinbell","Bellsprout","Cloyster","Omastar","Kabuto","Pinsir"])
-board("2026-08-27","mixed","Hard",[
-  ("KRAKEN",4,"arch:cephalopod",["Octillery","Malamar"]),
-  ("SWORD",4,"based:sword",["Kartana","Doublade"]),
-  ("LIZARD",3,"arch:reptile",["Kecleon","Heliolisk"]),
-  ("CRUSTACEAN",3,"arch:crustacean",["Corphish","Dwebble"]),
-  ("SPARK",2,"sprite:spark",["Pincurchin"]),
-], exclude=["Inkay","Grapploct","Clobbopus","Aegislash","Honedge","Crawdaunt","Crustle","Kingler","Krabby"])
 
 # ===== 08-28 Fri : HARD =====
 board("2026-08-28","gen1","Hard",[
@@ -508,3 +492,12 @@ board("2026-10-08","mixed","Hard",[
   ("TURTLE",3,"arch:turtle",["Torkoal"],"Torkoal is a tortoise fused with a coal-burning stove, complete with a smokestack shell that puffs out sooty smoke."),
   ("CRAB",3,"arch:crab",["Klawf"],"Klawf is a real crab through and through, ambushing prey sideways just like the rock crab that inspired it."),
 ], exclude=["Slugma","Magcargo","Skarmory","Boldore","Dwebble","Crustle","Vanillite","Vanillish","Vanilluxe","Vullaby","Mandibuzz","Sinistea","Polteageist","Armarouge","Ceruledge","Sudowoodo","Pineco","Forretress","Aron","Lairon","Regirock","Bastiodon","Bonsly","Sawk","Tirtouga","Carracosta","Avalugg","Cosmoem","Nacli","Naclstack","Garganacl","Archaludon","Probopass","Magnemite","Magnezone","Squirtle","Wartortle","Blastoise","Turtwig","Grotle","Torterra","Turtonator","Chewtle","Drednaw","Terapagos","Paras","Parasect","Krabby","Kingler","Corphish","Crawdaunt","Binacle","Barbaracle","Clauncher","Clawitzer","Crabrawler","Crabominable","Wimpod","Golisopod","Pidgey","Spearow","Fearow","Farfetch'd","Omastar","Wingull","Pikipek","Trumbeak","Donphan"])
+
+# ===== 10-09 Fri : HARD =====
+board("2026-10-09","gen1","Hard",[
+  ("SERPENT",3,"arch:serpent",["Ekans","Gyarados","Dratini"],"All three are built on real snakes and Chinese dragon-serpent myth -- Ekans is a plain garden snake, Gyarados the carp-turned-dragon of the Dragon Gate legend, and Dratini a mystical river serpent said to shed its skin and ascend to the heavens."),
+  ("CAT",3,"arch:feline",["Mew","Meowth","Vaporeon"],"Each blends in a real cat -- Mew's design mixes a housecat with a human fetus as the ancestor of all Pokemon, Meowth is explicitly a coin-clutching maneki-neko lucky cat, and Vaporeon's Pokedex flavour describes it as part mermaid, part cat that melted into water."),
+  ("HOOK",2,"sprite:hook",["Weepinbell"],"Look at Weepinbell's sprite -- its pitcher-shaped body ends in a hooked lip, the same curled shape a real pitcher plant uses to trap insects."),
+  ("SYNTHETIC",4,"based:genetic-engineering",["Mewtwo"],"Mewtwo isn't a natural species -- it was created through genetic engineering, spliced together from Mew's DNA in a lab on Cinnabar Island."),
+  ("DOPPELGANGER",5,"myth:doppelganger",["Gengar"],"Gengar's Japanese name plays on 'doppelganger', and its Pokedex lore casts it as your own shadow, hiding in darkness to steal warmth from anyone it catches."),
+], exclude=["Arbok","Onix","Dragonair","Dragonite","Seadra","Persian","Bellsprout","Victreebel","Porygon","Haunter","Gastly","Ditto"])
