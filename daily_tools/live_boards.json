@@ -1,105 +1,5 @@
 [
 {
-"date": "2026-08-28",
-"pool": "gen1",
-"clues": [
-{
-"m": [
-"Weepinbell"
-],
-"n": 1,
-"cat": 4,
-"word": "SUNDEW"
-},
-{
-"m": [
-"Porygon"
-],
-"n": 1,
-"cat": 5,
-"word": "DIGITAL"
-},
-{
-"m": [
-"Krabby",
-"Sandshrew"
-],
-"n": 2,
-"cat": 2,
-"word": "CLAWS"
-},
-{
-"m": [
-"Horsea",
-"Goldeen",
-"Magikarp"
-],
-"n": 3,
-"cat": 3,
-"word": "FISH"
-},
-{
-"m": [
-"Rhyhorn",
-"Nidoking"
-],
-"n": 2,
-"cat": 3,
-"word": "PACHYDERM"
-}
-]
-},
-{
-"date": "2026-08-28",
-"pool": "mixed",
-"clues": [
-{
-"m": [
-"Galvantula",
-"Araquanid"
-],
-"n": 2,
-"cat": 3,
-"word": "SPIDER"
-},
-{
-"m": [
-"Wailord",
-"Cetitan"
-],
-"n": 2,
-"cat": 4,
-"word": "WHALE"
-},
-{
-"m": [
-"Braviary",
-"Skarmory"
-],
-"n": 2,
-"cat": 4,
-"word": "RAPTOR"
-},
-{
-"m": [
-"Carbink"
-],
-"n": 1,
-"cat": 2,
-"word": "GEM"
-},
-{
-"m": [
-"Shiinotic",
-"Amoonguss"
-],
-"n": 2,
-"cat": 3,
-"word": "TOADSTOOL"
-}
-]
-},
-{
 "date": "2026-08-29",
 "pool": "gen1",
 "clues": [
@@ -4185,48 +4085,48 @@
 "pool": "gen1",
 "clues": [
 {
-"word": "DOPPELGANGER",
-"n": 1,
-"cat": 5,
 "m": [
 "Gengar"
-]
+],
+"n": 1,
+"cat": 5,
+"word": "DOPPELGANGER"
 },
 {
-"word": "HOOK",
-"n": 1,
-"cat": 2,
 "m": [
 "Weepinbell"
-]
+],
+"n": 1,
+"cat": 2,
+"word": "HOOK"
 },
 {
-"word": "CAT",
-"n": 3,
-"cat": 3,
 "m": [
 "Mew",
 "Vaporeon",
 "Meowth"
-]
-},
-{
-"word": "SERPENT",
+],
 "n": 3,
 "cat": 3,
+"word": "CAT"
+},
+{
 "m": [
 "Ekans",
 "Gyarados",
 "Dratini"
-]
+],
+"n": 3,
+"cat": 3,
+"word": "SERPENT"
 },
 {
-"word": "SYNTHETIC",
-"n": 1,
-"cat": 4,
 "m": [
 "Mewtwo"
-]
+],
+"n": 1,
+"cat": 4,
+"word": "SYNTHETIC"
 }
 ]
 },
@@ -4270,6 +4170,98 @@
 "n": 2,
 "cat": 3,
 "word": "SERPENT"
+}
+]
+},
+{
+"date": "2026-10-10",
+"pool": "gen1",
+"clues": [
+{
+"m": [
+"Moltres",
+"Alakazam",
+"Exeggutor"
+],
+"n": 3,
+"cat": 5,
+"word": "GENIUS"
+},
+{
+"m": [
+"Golem"
+],
+"n": 1,
+"cat": 4,
+"word": "MEGATON"
+},
+{
+"m": [
+"Tauros",
+"Dugtrio",
+"Electrode",
+"Fearow"
+],
+"n": 4,
+"cat": 5,
+"word": "FLEET"
+},
+{
+"m": [
+"Tauros",
+"Chansey",
+"Fearow"
+],
+"n": 3,
+"cat": 1,
+"word": "NORMAL"
+}
+]
+},
+{
+"date": "2026-10-10",
+"pool": "mixed",
+"clues": [
+{
+"m": [
+"Luxray",
+"Dusknoir"
+],
+"n": 2,
+"cat": 3,
+"word": "SINNOH"
+},
+{
+"m": [
+"Cofagrigus",
+"Dusknoir"
+],
+"n": 2,
+"cat": 4,
+"word": "UNDERWORLD"
+},
+{
+"m": [
+"Umbreon",
+"Kingambit",
+"Suicune",
+"Barbaracle",
+"Cofagrigus"
+],
+"n": 5,
+"cat": 5,
+"word": "BULWARK"
+},
+{
+"m": [
+"Sharpedo",
+"Passimian",
+"Kingambit",
+"Luxray"
+],
+"n": 4,
+"cat": 5,
+"word": "SLUGGER"
 }
 ]
 }

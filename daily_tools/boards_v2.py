@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-27 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-28 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-28 Fri : HARD =====
-board("2026-08-28","gen1","Hard",[
-  ("FISH",3,"arch:fish",["Horsea","Goldeen","Magikarp"]),
-  ("PACHYDERM",3,"arch:pachyderm",["Rhyhorn","Nidoking"]),
-  ("DIGITAL",5,"lore:polygon",["Porygon"]),
-  ("SUNDEW",4,"based:pitcher",["Weepinbell"]),
-  ("CLAWS",2,"sprite:claws",["Sandshrew","Krabby"]),
-], exclude=["Seadra","Seaking","Gyarados","Rhydon","Nidoqueen","Nidorino","Bellsprout","Victreebel","Sandslash","Kingler"])
-board("2026-08-28","mixed","Hard",[
-  ("WHALE",4,"arch:cetacean",["Wailord","Cetitan"]),
-  ("RAPTOR",4,"arch:raptor",["Skarmory","Braviary"]),
-  ("TOADSTOOL",3,"arch:fungus",["Amoonguss","Shiinotic"]),
-  ("SPIDER",3,"arch:spider",["Galvantula","Araquanid"]),
-  ("GEM",2,"sprite:gem",["Carbink"]),
-], exclude=["Wailmer","Kyogre","Rufflet","Talonflame","Morelull","Spinarak","Joltik","Dewpider","Sableye"])
 
 # ===== 08-29 Sat : BRUTAL =====
 board("2026-08-29","gen1","Brutal",[
@@ -501,3 +485,46 @@ board("2026-10-09","gen1","Hard",[
   ("SYNTHETIC",4,"based:genetic-engineering",["Mewtwo"],"Mewtwo isn't a natural species -- it was created through genetic engineering, spliced together from Mew's DNA in a lab on Cinnabar Island."),
   ("DOPPELGANGER",5,"myth:doppelganger",["Gengar"],"Gengar's Japanese name plays on 'doppelganger', and its Pokedex lore casts it as your own shadow, hiding in darkness to steal warmth from anyone it catches."),
 ], exclude=["Arbok","Onix","Dragonair","Dragonite","Seadra","Persian","Bellsprout","Victreebel","Porygon","Haunter","Gastly","Ditto"])
+
+# ===== 10-10 Sat : BRUTAL (gap fill) =====
+board("2026-10-10","gen1","Brutal",[
+  ("NORMAL",1,"type:normal",["Tauros","Fearow","Chansey"],"Tauros, Fearow, and Chansey are all Normal-type Pokémon."),
+  ("FLEET",5,"stat:speed",["Tauros","Dugtrio","Electrode","Fearow"],"Tauros, Dugtrio, Electrode, and Fearow are four of Kanto's fastest Pokémon, each built around a blistering base Speed stat."),
+  ("GENIUS",5,"stat:special-attack",["Alakazam","Exeggutor","Moltres"],"Alakazam, Exeggutor, and Moltres are battle geniuses -- each carries one of the highest Special Attack stats among the original 151 Pokémon."),
+  ("MEGATON",4,"lore:genus",["Golem"],"Golem's own Pokédex category is literally the 'Megaton Pokémon' -- official recognition of just how explosive and heavy its boulder body is."),
+], exclude=["Abra","Aerodactyl","Charizard","Diglett","Dodrio","Electabuzz","Exeggcute","Gengar","Geodude",
+            "Graveler","Jolteon","Kadabra","Magneton","Mew","Mewtwo","Ninetales","Persian","Pidgeot",
+            "Raichu","Rapidash","Scyther","Spearow","Starmie","Tentacruel","Voltorb","Zapdos"])
+board("2026-10-10","mixed","Brutal",[
+  ("UNDERWORLD",4,"lore:underworld-guide",["Cofagrigus","Dusknoir"],"Both are guides to the realm of the dead -- Cofagrigus traps the greedy forever inside its gilded coffin body, while Dusknoir is modelled on a Shinigami said to drag lost souls into the afterlife."),
+  ("BULWARK",5,"stat:defense",["Barbaracle","Suicune","Umbreon","Cofagrigus","Kingambit"],"Barbaracle, Suicune, Umbreon, Cofagrigus, and Kingambit are all built as defensive walls, each carrying one of the toughest bulk stats of its generation."),
+  ("SLUGGER",5,"stat:attack",["Luxray","Passimian","Kingambit","Sharpedo"],"Luxray, Passimian, Kingambit, and Sharpedo are all hard hitters, each boasting one of the highest Attack stats of its generation."),
+  ("SINNOH",3,"region:sinnoh",["Dusknoir","Luxray"],"Dusknoir and Luxray are both native to the Sinnoh region, first appearing in Pokémon Diamond and Pearl."),
+], exclude=["Abomasnow","Ambipom","Archaludon","Archeops","Armaldo","Avalugg","Azelf","Barraskewda","Bastiodon",
+            "Baxcalibur","Beartic","Bewear","Bibarel","Bidoof","Bisharp","Blacephalon","Blaziken","Bonsly",
+            "Breloom","Bronzor","Brute Bonnet","Budew","Buneary","Burmy","Buzzwole","Carnivine","Carracosta",
+            "Carvanha","Celebi","Ceruledge","Cherrim","Cherubi","Chien-Pao","Chimchar","Chingling","Coalossal",
+            "Cobalion","Combee","Conkeldurr","Copperajah","Cosmoem","Crabominable","Cranidos","Crawdaunt",
+            "Cresselia","Crustle","Dachsbun","Darkrai","Darmanitan","Deoxys","Dhelmise","Dialga","Diancie",
+            "Dipplin","Dondozo","Doublade","Dragapult","Drifblim","Drifloon","Druddigon","Duraludon","Durant",
+            "Dusclops","Duskull","Eevee","Electivire","Emboar","Empoleon","Escavalier","Espeon","Eternatus",
+            "Excadrill","Ferrothorn","Finneon","Flareon","Floatzel","Forretress","Froslass","Gabite","Gallade",
+            "Garganacl","Gastrodon","Genesect","Gible","Gigalith","Giratina","Glaceon","Glameow","Glastrier",
+            "Gliscor","Golisopod","Golurk","Gouging Fire","Gourgeist","Granbull","Great Tusk","Grimmsnarl",
+            "Grotle","Groudon","Happiny","Hariyama","Haxorus","Heatran","Hippopotas","Hippowdon","Ho-Oh",
+            "Hydrapple","Iron Boulder","Iron Bundle","Iron Hands","Iron Leaves","Iron Thorns","Iron Treads",
+            "Iron Valiant","Jirachi","Kleavor","Klinklang","Kommo-o","Koraidon","Kricketot","Kricketune",
+            "Kyogre","Kyurem","Lairon","Leafeon","Lickilicky","Lopunny","Lugia","Lumineon","Lunala","Luxio",
+            "Mabosstiff","Magcargo","Magearna","Magmortar","Mamoswine","Manaphy","Mandibuzz","Mantyke",
+            "Marshadow","Melmetal","Meloetta","Mesprit","Mienshao","Mime Jr.","Miraidon","Mismagius",
+            "Monferno","Mothim","Mudsdale","Munchlax","Musharna","Ogerpon","Okidogi","Orbeetle","Orthworm",
+            "Pachirisu","Palkia","Palossand","Pawniard","Pecharunt","Pheromosa","Phione","Prinplup","Purugly",
+            "Pyukumuku","Quaquaval","Raging Bolt","Rampardos","Rayquaza","Regigigas","Regirock","Registeel",
+            "Reshiram","Rhyperior","Rillaboom","Roaring Moon","Roserade","Runerigus","Sawk","Scizor","Scrafty",
+            "Scream Tail","Shaymin","Shellos","Shieldon","Shinx","Sirfetch'd","Skarmory","Skorupi","Skuntank",
+            "Slaking","Slither Wing","Slowbro","Sneasler","Solgaleo","Spiritomb","Stakataka","Staraptor",
+            "Staravia","Starly","Stonjourner","Stunfisk","Stunky","Sudowoodo","Swampert","Tangrowth",
+            "Tapu Bulu","Tapu Fini","Terrakion","Ting-Lu","Togekiss","Torterra","Toxapex","Toxicroak",
+            "Tsareena","Turtonator","Turtwig","Tyrantrum","Ursaluna","Ursaring","Urshifu","Uxie","Vespiquen",
+            "Victini","Volcanion","Walrein","Weavile","Wormadam","Xerneas","Yamask","Yanmega","Yveltal",
+            "Zacian","Zamazenta","Zarude","Zekrom","Zygarde"])
