@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-28 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-29 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-29 Sat : BRUTAL =====
-board("2026-08-29","gen1","Brutal",[
-  ("NORMAL",1,"type:normal",["Tauros","Ditto","Lickitung"]),
-  ("WRESTLER",4,"based:sumo",["Poliwrath","Sandslash"]),
-  ("MARTIAL",4,"lore:martial-arts",["Hitmonchan","Machoke","Poliwrath"]),
-  ("MENTALIST",5,"lore:mind",["Kadabra","Drowzee"]),
-  ("MIGHT",3,"lore:strength",["Machoke","Tauros"]),
-], exclude=["Kangaskhan","Snorlax","Chansey","Eevee","Porygon","Machop","Machamp","Hitmonlee","Alakazam","Hypno"])
-board("2026-08-29","mixed","Brutal",[
-  ("WARRIOR",4,"based:samurai",["Kubfu","Ceruledge","Samurott"]),
-  ("KNIGHT",4,"based:knight",["Escavalier","Bisharp"]),
-  ("ROBOT",5,"arch:automaton",["Klink","Varoom","Golurk"]),
-  ("GEARS",3,"lore:gears",["Klink","Bronzong"]),
-  ("SWORDS",2,"sprite:blades",["Samurott","Bisharp"]),
-], exclude=["Urshifu","Oshawott","Pawniard","Kingambit","Karrablast","Klang","Klinklang","Bronzor","Golett","Aegislash"])
 
 # ===== 08-30 Sun : EVIL =====
 board("2026-08-30","gen1","Evil",[
@@ -528,3 +512,87 @@ board("2026-10-10","mixed","Brutal",[
             "Tsareena","Turtonator","Turtwig","Tyrantrum","Ursaluna","Ursaring","Urshifu","Uxie","Vespiquen",
             "Victini","Volcanion","Walrein","Weavile","Wormadam","Xerneas","Yamask","Yanmega","Yveltal",
             "Zacian","Zamazenta","Zarude","Zekrom","Zygarde"])
+
+# ===== 10-13 Tue : MEDIUM (gap fill, +28d window) =====
+board("2026-10-13","mixed","Medium",[
+  ("STEEL",1,"type:steel",["Corviknight","Klefki","Mawile","Empoleon"],"Corviknight, Klefki, Mawile and Empoleon are all Steel-type Pokemon, each pairing it with a second type of Flying, Fairy, Fairy and Water."),
+  ("GHOST",1,"type:ghost",["Mismagius","Hoopa","Chandelure"],"Mismagius, Hoopa and Chandelure are all Ghost-type Pokemon."),
+  ("MOHAWK",2,"sprite:mohawk",["Toxtricity"],"Toxtricity's punk-rocker design is topped with a spiky mohawk crest, unmistakable on its sprite."),
+  ("SHEER-FORCE",5,"ability:sheer-force",["Braviary","Mawile"],"Braviary and Mawile can both have the Ability Sheer Force, which strips a move of any secondary effect in exchange for a flat power boost."),
+], exclude=["Bagon","Cetitan","Cetoddle","Conkeldurr","Copperajah","Cranidos","Croconaw","Cufant","Darmanitan","Druddigon","Feraligatr","Gurdurr","Hariyama","Kingler","Kleavor","Krabby","Landorus","Makuhita","Nidoking","Nidoqueen","Rampardos","Rufflet","Steelix","Tauros","Timburr","Totodile","Toucannon","Trapinch"])
+
+# ===== 10-14 Wed : CHALLENGING (gap fill) =====
+board("2026-10-14","gen1","Challenging",[
+  ("WATER",1,"type:water",["Golduck","Seaking"],"Golduck and Seaking are both Water-type Pokemon."),
+  ("PUPA",2,"sprite:cocoon",["Kakuna","Metapod"],"Kakuna and Metapod are both stationary cocoon-stage Pokemon from two different bug lines, each just a shell waiting to hatch."),
+  ("HUMANOID",3,"arch:humanoid",["Hitmonchan","Jynx"],"Hitmonchan and Jynx are both built as upright, human-shaped fighters -- Hitmonchan a boxer forever throwing punches, Jynx a lipsticked figure said to mimic human dance."),
+  ("ROCK-HEAD",5,"ability:rock-head",["Graveler","Marowak","Aerodactyl"],"Graveler, Marowak and Aerodactyl can all have the Ability Rock Head, which stops them taking any recoil damage from moves like Double-Edge or Head Smash."),
+], exclude=["Cubone","Golem","Onix","Rhydon","Rhyhorn","Electabuzz","Hitmonlee","Machamp","Machoke","Machop","Magmar","Mewtwo","Mr. Mime"])
+board("2026-10-14","mixed","Challenging",[
+  ("GROUND",1,"type:ground",["Runerigus","Palossand","Golurk"],"Runerigus, Palossand and Golurk are all Ground-type Pokemon -- a cursed stone imprint, a vengeful sand spirit, and an ancient clay automaton animated by a ghost."),
+  ("DEER",3,"arch:deer",["Stantler","Xerneas"],"Stantler and Xerneas are both deer through and through -- Stantler a stag whose antlers can conjure illusions, Xerneas a mythical deer said to grant eternal life."),
+  ("SCYTHE",3,"arch:mantis",["Kleavor","Leavanny"],"Kleavor and Leavanny both carry scythe-like blade arms -- Kleavor's are living rock axes, Leavanny's are a pair of broad, curved leaves."),
+  ("MULTISCALE",5,"ability:multiscale",["Dragonite","Lugia"],"Dragonite and Lugia are the only two Pokemon that can have the Ability Multiscale, which halves the damage they take from a hit while they're still at full HP."),
+], exclude=["Deerling","Sawsbuck","Wyrdeer","Fomantis","Lurantis","Scizor","Scyther","Golett"])
+
+# ===== 10-15 Thu : HARD (gap fill) =====
+board("2026-10-15","gen1","Hard",[
+  ("NIPPERS",3,"arch:crab",["Paras","Kingler"],"Paras and Kingler are both modelled on real crabs -- Paras a crab-like body sprouting parasitic mushrooms, Kingler a fiddler crab with one oversized, powerful nipper claw."),
+  ("MOXIE",5,"ability:moxie",["Gyarados","Pinsir"],"Gyarados and Pinsir are the only two original Pokemon that can have the Ability Moxie, which raises their Attack every time they knock out an opposing Pokemon."),
+  ("SIMIAN",4,"arch:primate",["Machamp","Primeape"],"Machamp and Primeape are both built as powerful primates -- Machamp a four-armed wrestler, Primeape a furious, ever-angry monkey."),
+  ("SLURP",2,"sprite:tongue",["Lickitung"],"Lickitung's entire gimmick is its absurdly long, prehensile tongue, which it uses to lick and taste everything it touches."),
+  ("FISH",3,"arch:fish",["Goldeen","Magikarp"],"Goldeen and Magikarp are both ordinary fish at heart -- a fantail goldfish and a nearly-useless carp, each destined to be outclassed by its own evolution."),
+], exclude=["Krabby","Parasect","Machoke","Machop","Mankey","Horsea","Seadra","Seaking"])
+board("2026-10-15","mixed","Hard",[
+  ("HOOT",3,"arch:owl",["Noctowl","Rowlet"],"Noctowl and Rowlet are both owls through and through -- Noctowl a big-eyed nocturnal hunter, Rowlet a silent-winged archer owl most active after dark."),
+  ("SOLID-ROCK",5,"ability:solid-rock",["Camerupt","Rhyperior"],"Camerupt and Rhyperior can both have the Ability Solid Rock, which shrinks the damage they take from any supereffective hit."),
+  ("CEPHALOPOD",4,"arch:cephalopod",["Octillery","Inkay"],"Octillery and Inkay are both cephalopods -- Octillery a barrel-bodied octopus, Inkay a small squid that swims upside down and flashes bioluminescent light."),
+  ("PIG",3,"arch:pig",["Emboar","Lechonk"],"Emboar and Lechonk are both modelled on real pigs -- Emboar a blazing fire-boar martial artist, Lechonk a stout, ever-hungry wild boar."),
+  ("COINS",2,"sprite:coins",["Gholdengo"],"Gholdengo's entire body is formed from a thousand ancient coins fused together, according to its own Pokedex lore -- a callback to its coin-collecting pre-evolution, Gimmighoul."),
+], exclude=["Dartrix","Decidueye","Hoothoot","Carracosta","Tirtouga","Clobbopus","Grapploct","Malamar","Oinkologne","Pignite","Tepig"])
+
+# ===== 10-16 Fri : HARD (gap fill) =====
+board("2026-10-16","gen1","Hard",[
+  ("SNAKE",3,"arch:serpent",["Arbok","Dragonair"],"Arbok and Dragonair are both built on real-world and mythical serpents -- Arbok a hooded cobra, Dragonair a serene river dragon-snake said to control the weather."),
+  ("STURDY",5,"ability:sturdy",["Golem","Magnemite"],"Golem and Magnemite can both have the Ability Sturdy, guaranteeing they survive any hit that would otherwise knock them out from full HP."),
+  ("RAPTOR",4,"arch:raptor",["Fearow","Pidgeot"],"Fearow and Pidgeot are both modelled on real birds of prey -- Fearow a huge-beaked raptor, Pidgeot a hawk-like flier famed for its speed."),
+  ("SHELL",2,"sprite:spiked-shell",["Cloyster"],"Cloyster's entire body is a pair of massive, spiked shells clamped shut around a soft core -- one of the hardest shells of any Pokemon."),
+  ("RODENT",3,"arch:rodent",["Rattata","Nidorina"],"Rattata and Nidorina are both built like real rodents -- Rattata a common brown rat, Nidorina a spine-covered, cavy-sized creature."),
+], exclude=["Dratini","Ekans","Gyarados","Onix","Geodude","Magneton","Aerodactyl","Pidgeotto","Shellder","Nidorino","Pikachu","Raichu"])
+board("2026-10-16","mixed","Hard",[
+  ("TUSKS",3,"arch:elephant",["Copperajah","Donphan"],"Copperajah and Donphan are both built on real elephants, complete with a pair of curved tusks -- Copperajah a rampaging bull elephant in copper armour, Donphan a rolling, armoured pachyderm."),
+  ("HUGE-POWER",5,"ability:huge-power",["Azumarill","Bunnelby"],"Azumarill and Bunnelby can both have the Ability Huge Power, which doubles their Attack stat outright."),
+  ("ARACHNID",4,"arch:scorpion",["Drapion","Gligar"],"Drapion and Gligar are both modelled on real scorpions -- Drapion a heavily armoured ogre scorpion, Gligar a flying scorpion-bat hybrid that glides on membrane wings."),
+  ("SPOTS",2,"sprite:spots",["Ledian"],"Ledian is covered in small red spots across its wings and back, a nod to real ladybugs -- an easy tell on its sprite."),
+  ("BOVINE",3,"arch:bovine",["Bouffalant","Miltank"],"Bouffalant and Miltank are both modelled on real cattle -- Bouffalant an American bison with an afro-like mane, Miltank a placid dairy cow."),
+], exclude=["Cufant","Phanpy","Azurill","Diggersby","Marill","Skorupi","Gliscor","Tauros"])
+
+# ===== 10-17 Sat : BRUTAL (gap fill) =====
+board("2026-10-17","gen1","Brutal",[
+  ("SPRINTER",5,"stat:speed",["Electrode","Jolteon","Dugtrio","Alakazam"],"Electrode, Jolteon, Dugtrio and Alakazam are among the fastest Pokemon from the original 151, each built around a blistering base Speed stat."),
+  ("MASTERMIND",5,"stat:special-attack",["Alakazam","Gengar","Exeggutor","Jolteon"],"Alakazam, Gengar, Exeggutor and Jolteon all carry a formidable Special Attack stat, among the sharpest minds of the original 151."),
+  ("FLASH-FIRE",4,"ability:flash-fire",["Growlithe","Ninetales","Ponyta"],"Growlithe, Ninetales and Ponyta can all have the Ability Flash Fire, which lets them shrug off a Fire-type hit completely and turn it into a power boost instead."),
+  ("AMBER",1,"colour:yellow",["Ponyta","Exeggutor","Jolteon","Ninetales"],"Ponyta, Exeggutor, Jolteon and Ninetales are all predominantly yellow-coloured Pokemon."),
+], exclude=["Flareon","Rapidash","Arcanine","Vulpix"])
+board("2026-10-17","mixed","Brutal",[
+  ("BLISTERING",5,"stat:speed",["Regieleki","Ninjask","Accelgor","Zeraora"],"Regieleki, Ninjask, Accelgor and Zeraora are among the fastest Pokemon ever recorded, each carrying an extraordinary base Speed stat."),
+  ("OVERDRIVE",5,"stat:special-attack",["Xurkitree","Blacephalon","Zeraora"],"Xurkitree, Blacephalon and Zeraora all hit exceptionally hard on the special side, each carrying one of the highest Special Attack stats of its generation."),
+  ("TOUGH-CLAWS",4,"ability:tough-claws",["Binacle","Perrserker"],"Binacle and Perrserker can both have the Ability Tough Claws, which boosts the power of any move that makes physical contact."),
+  ("GOLDEN",1,"colour:yellow",["Regieleki","Ninjask","Zeraora","Raichu"],"Regieleki, Ninjask, Zeraora and Raichu are all predominantly yellow-coloured Pokemon."),
+], exclude=["Barbaracle"])
+
+# ===== 10-18 Sun : EVIL (gap fill) =====
+board("2026-10-18","gen1","Evil",[
+  ("VELOCITY",5,"stat:speed",["Mewtwo","Persian","Dodrio","Tauros"],"Mewtwo, Persian, Dodrio and Tauros are all built for speed, each carrying one of the sharpest base Speed stats among the original 151."),
+  ("PRODIGY",5,"stat:special-attack",["Mewtwo","Zapdos","Moltres"],"Mewtwo, Zapdos and Moltres are three of the sharpest special attackers among the original 151, each carrying an exceptional Special Attack stat."),
+  ("BASTION",4,"ability:sturdy",["Onix"],"Onix can have the Ability Sturdy, guaranteeing it survives any hit that would otherwise knock it out from full HP -- backed up by the single highest Defense stat of the original 151."),
+  ("WATER-ABSORB",5,"ability:water-absorb",["Lapras","Vaporeon"],"Lapras and Vaporeon can both have the Ability Water Absorb, which heals them whenever they're struck by a Water-type move instead of taking damage."),
+  ("FEATHERED",3,"arch:bird",["Dodrio","Zapdos","Moltres"],"Dodrio, Zapdos and Moltres are all birds at heart -- Dodrio a flightless three-headed ratite, Zapdos and Moltres legendary birds of thunder and flame."),
+], exclude=["Geodude","Golem","Graveler","Magnemite","Magneton","Poliwag","Poliwhirl","Poliwrath","Articuno","Doduo","Farfetch'd","Fearow","Pidgeot","Pidgeotto","Pidgey","Spearow"])
+board("2026-10-18","mixed","Evil",[
+  ("SHADOW-TAG",5,"ability:shadow-tag",["Gothorita","Wobbuffet"],"Gothorita and Wobbuffet can both have the Ability Shadow Tag, which stops the opposing Pokemon from switching out or fleeing battle."),
+  ("TRACE",5,"ability:trace",["Kirlia","Porygon2"],"Kirlia and Porygon2 can both have the Ability Trace, which lets them copy the Ability of the Pokemon they're facing."),
+  ("GOOEY",4,"ability:gooey",["Wiglett","Wugtrio"],"Wiglett and Wugtrio can both have the Ability Gooey, which lowers the Speed of any attacker that makes physical contact with them."),
+  ("GENIE",5,"myth:genie",["Landorus","Thundurus","Tornadus"],"Landorus, Thundurus and Tornadus are all genies from Unovan myth -- elemental spirits of the harvest, thunderstorms and violent winds respectively."),
+  ("FIGURE",3,"arch:humanoid",["Gothorita","Kirlia"],"Gothorita and Kirlia are both built as upright, human-shaped figures -- Gothorita modelled on a gothic-lolita doll, Kirlia on a graceful ballet dancer."),
+], exclude=["Gothita","Gothitelle","Wynaut","Gardevoir","Ralts","Goodra","Goomy","Sliggoo","Enamorus"])
