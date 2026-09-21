@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-29 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-30 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-30 Sun : EVIL =====
-board("2026-08-30","gen1","Evil",[
-  ("MOLTEN",3,"lore:lava",["Magmar","Flareon"]),
-  ("FOSSIL",5,"lore:fossil",["Omastar","Kabuto","Aerodactyl"]),
-  ("HEAVYWEIGHT",5,"stat:heavy",["Snorlax","Golem"]),
-  ("SLUDGE",4,"lore:poison-gas",["Weezing","Muk"]),
-  ("BEDROCK",4,"stat:defense",["Golem","Kabuto","Omastar"]),
-], exclude=["Magby","Omanyte","Kabutops","Graveler","Geodude","Koffing","Grimer","Rhydon","Ponyta","Charmander"])
-board("2026-08-30","mixed","Evil",[
-  ("FOSSIL",5,"lore:fossil",["Rampardos","Archeops","Bastiodon"]),
-  ("CHIMERA",4,"arch:chimera",["Dracozolt","Arctovish"]),
-  ("CURSED-DOLL",5,"based:doll",["Mimikyu","Banette"]),
-  ("ALIEN",4,"arch:alien",["Beheeyem","Necrozma"]),
-  ("ANCIENT",3,"lore:ancient",["Rampardos","Dracozolt"]),
-], exclude=["Cranidos","Tyrunt","Tyrantrum","Dracovish","Arctozolt","Shuppet","Elgyem","Shieldon","Aerodactyl","Golett"])
 
 # ===== 08-31 Mon : EASY =====
 board("2026-08-31","gen1","Easy",[
@@ -596,3 +580,19 @@ board("2026-10-18","mixed","Evil",[
   ("GENIE",5,"myth:genie",["Landorus","Thundurus","Tornadus"],"Landorus, Thundurus and Tornadus are all genies from Unovan myth -- elemental spirits of the harvest, thunderstorms and violent winds respectively."),
   ("FIGURE",3,"arch:humanoid",["Gothorita","Kirlia"],"Gothorita and Kirlia are both built as upright, human-shaped figures -- Gothorita modelled on a gothic-lolita doll, Kirlia on a graceful ballet dancer."),
 ], exclude=["Gothita","Gothitelle","Wynaut","Gardevoir","Ralts","Goodra","Goomy","Sliggoo","Enamorus"])
+
+# ===== 10-19 Mon : EASY (+28d window) =====
+board("2026-10-19","gen1","Easy",[
+  ("ELECTRIC",1,"type:electric",["Pikachu","Voltorb"],"Pikachu and Voltorb are both Electric-type Pokemon."),
+  ("PSYCHIC",1,"type:psychic",["Drowzee","Mr. Mime"],"Drowzee and Mr. Mime are both Psychic-type Pokemon."),
+  ("POISON",1,"type:poison",["Zubat","Ekans"],"Zubat and Ekans are both Poison-type Pokemon."),
+  ("NORMAL",1,"type:normal",["Ditto","Kangaskhan"],"Ditto and Kangaskhan are both Normal-type Pokemon."),
+  ("NOSE",2,"sprite:nose",["Diglett"],"Diglett's sprite is built entirely around its oversized, twitching pink nose poking up out of the ground."),
+], exclude=["Pichu","Raichu","Electrode","Hypno","Golbat","Arbok","Dugtrio"])
+board("2026-10-19","mixed","Easy",[
+  ("GRASS",1,"type:grass",["Chikorita","Treecko"],"Chikorita and Treecko are both Grass-type Pokemon -- the grass starters of Johto and Hoenn."),
+  ("FIGHTING",1,"type:fighting",["Machop","Riolu"],"Machop and Riolu are both Fighting-type Pokemon."),
+  ("ICE",1,"type:ice",["Snorunt","Swinub"],"Snorunt and Swinub are both Ice-type Pokemon."),
+  ("DARK",1,"type:dark",["Poochyena","Murkrow"],"Poochyena and Murkrow are both Dark-type Pokemon."),
+  ("WEB",2,"sprite:web",["Spinarak"],"Spinarak's sprite carries a distinctive web-shaped pattern across its back and belly, matching its spider design."),
+], exclude=["Bayleef","Meganium","Grovyle","Sceptile","Machoke","Machamp","Lucario","Glalie","Froslass","Piloswine","Mamoswine","Mightyena","Honchkrow","Ariados","Galvantula","Joltik"])
