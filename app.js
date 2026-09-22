@@ -2502,39 +2502,53 @@ async function startQaBoard(date, pool) {
   }
 }
 
-async function qaSaveAndAdvance(outcome) {
-  const item = daily.qaQueue[daily.qaIndex] || {};
+// Re-entrancy guard: the save buttons fire an async RPC. Without this, a slow
+// save + an impatient second tap would run save-and-advance twice, skipping a
+// board (it never gets its feedback) and jumping two ahead. We also NEVER
+// advance when the save failed, so feedback is never silently dropped.
+let _qaSaving = false;
+function _qaSetSaving(on) {
+  const n = $("#qa-next-btn"), h = $("#qa-home-btn");
+  [n, h].forEach((b) => { if (b) b.disabled = on; });
+  if (n) {
+    if (on) { n.dataset.label = n.innerHTML; n.textContent = "Saving…"; }
+    else if (n.dataset.label) { n.innerHTML = n.dataset.label; }
+  }
+}
+// Submit the CURRENT board's feedback. Captures date/pool up front so it always
+// targets the board on screen. Returns true on success.
+async function _qaSubmitCurrent() {
   const note = ($("#qa-note") ? $("#qa-note").value : "").trim();
-  const rating = daily.rating || null;
+  const date = daily.date, pool = daily.pool;
   try {
     await sb.rpc("submit_daily_feedback", {
-      p_date: daily.date, p_pool: daily.pool,
-      p_rating: rating, p_note: note,
-      p_outcome: outcome || daily.outcome || null,
-      p_mistakes: daily.mistakes, p_hints: daily.hintsUsed,
-      p_duration: dailyElapsedSecs(), p_secret: qaSecret,
+      p_date: date, p_pool: pool, p_rating: daily.rating || null, p_note: note,
+      p_outcome: daily.outcome || null, p_mistakes: daily.mistakes,
+      p_hints: daily.hintsUsed, p_duration: dailyElapsedSecs(), p_secret: qaSecret,
     });
-    toast("Feedback saved.");
-  } catch (err) {
-    console.error(err);
-    toast("Couldn't save feedback (see console) – moving on.");
-  }
+    return true;
+  } catch (err) { console.error(err); return false; }
+}
+
+async function qaSaveAndAdvance() {
+  if (_qaSaving) return;                 // ignore double-taps while a save is in flight
+  _qaSaving = true; _qaSetSaving(true);
+  const ok = await _qaSubmitCurrent();
+  _qaSaving = false; _qaSetSaving(false);
+  if (!ok) { toast("Couldn't save – check your connection and try again."); return; }
+  toast("Feedback saved.");
   daily.qaIndex++;
   await qaLoadCurrent();
 }
 
-// Save the current board's feedback (best-effort), then return to the overview.
+// Save the current board's feedback, then return to the overview (only if saved).
 async function qaSaveAndBackToOverview() {
-  const note = ($("#qa-note") ? $("#qa-note").value : "").trim();
-  try {
-    await sb.rpc("submit_daily_feedback", {
-      p_date: daily.date, p_pool: daily.pool,
-      p_rating: daily.rating || null, p_note: note,
-      p_outcome: daily.outcome || null, p_mistakes: daily.mistakes,
-      p_hints: daily.hintsUsed, p_duration: dailyElapsedSecs(), p_secret: qaSecret,
-    });
-    toast("Feedback saved.");
-  } catch (err) { console.error(err); }
+  if (_qaSaving) return;
+  _qaSaving = true; _qaSetSaving(true);
+  const ok = await _qaSubmitCurrent();
+  _qaSaving = false; _qaSetSaving(false);
+  if (!ok) { toast("Couldn't save – check your connection and try again."); return; }
+  toast("Feedback saved.");
   await showQaOverview();
 }
 
