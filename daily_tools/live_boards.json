@@ -1,99 +1,5 @@
 [
   {
-    "date": "2026-08-31",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Dodrio",
-          "Pidgey",
-          "Spearow"
-        ],
-        "n": 3,
-        "cat": 1,
-        "word": "AVIAN"
-      },
-      {
-        "m": [
-          "Jynx",
-          "Dewgong"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "ICE"
-      },
-      {
-        "m": [
-          "Nidorino",
-          "Koffing"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "PURPLE"
-      },
-      {
-        "m": [
-          "Kakuna",
-          "Metapod"
-        ],
-        "n": 2,
-        "cat": 2,
-        "word": "COCOON"
-      }
-    ]
-  },
-  {
-    "date": "2026-08-31",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Hippopotas",
-          "Swinub",
-          "Phanpy"
-        ],
-        "n": 3,
-        "cat": 1,
-        "word": "GROUND"
-      },
-      {
-        "m": [
-          "Qwilfish",
-          "Ferroseed"
-        ],
-        "n": 2,
-        "cat": 2,
-        "word": "SPIKES"
-      },
-      {
-        "m": [
-          "Drifloon",
-          "Yamask"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "GHOST"
-      },
-      {
-        "m": [
-          "Sentret"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "TAIL"
-      },
-      {
-        "m": [
-          "Cubchoo",
-          "Swinub"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "ICE"
-      }
-    ]
-  },
-  {
     "date": "2026-09-01",
     "pool": "gen1",
     "clues": [
@@ -4931,6 +4837,99 @@
         "n": 2,
         "cat": 1,
         "word": "ICE"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-20",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Charmeleon",
+          "Magmar",
+          "Flareon"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "FIRE"
+      },
+      {
+        "m": [
+          "Nidoran\u2642",
+          "Nidoran\u2640"
+        ],
+        "n": 2,
+        "cat": 2,
+        "word": "HORNS"
+      },
+      {
+        "m": [
+          "Spearow",
+          "Farfetch'd"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "BIRD"
+      },
+      {
+        "m": [
+          "Caterpie",
+          "Weedle"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "BUG"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-20",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Sprigatito"
+        ],
+        "n": 1,
+        "cat": 2,
+        "word": "RUFF"
+      },
+      {
+        "m": [
+          "Noibat",
+          "Rookidee"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "FLYING"
+      },
+      {
+        "m": [
+          "Nickit",
+          "Zorua"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "FOX"
+      },
+      {
+        "m": [
+          "Pawmi",
+          "Morpeko"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "HAMSTER"
+      },
+      {
+        "m": [
+          "Roggenrola",
+          "Larvitar"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "ROCK"
       }
     ]
   }

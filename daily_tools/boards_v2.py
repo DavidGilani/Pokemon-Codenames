@@ -3,24 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-30 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-08-31 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 08-31 Mon : EASY =====
-board("2026-08-31","gen1","Easy",[
-  ("AVIAN",1,"type:flying",["Pidgey","Spearow","Dodrio"]),
-  ("ICE",1,"type:ice",["Jynx","Dewgong"]),
-  ("PURPLE",1,"colour:purple",["Koffing","Nidorino"]),
-  ("COCOON",2,"sprite:hard-shell",["Kakuna","Metapod"]),
-], exclude=["Pidgeot","Fearow","Articuno","Zapdos","Moltres","Weezing","Nidoking","Beedrill","Butterfree","Seel"])
-board("2026-08-31","mixed","Easy",[
-  ("GROUND",1,"type:ground",["Phanpy","Hippopotas","Swinub"]),
-  ("ICE",1,"type:ice",["Swinub","Cubchoo"]),
-  ("GHOST",1,"type:ghost",["Drifloon","Yamask"]),
-  ("SPIKES",2,"sprite:spikes",["Ferroseed","Qwilfish"]),
-  ("TAIL",2,"sprite:tail",["Sentret"]),
-], exclude=["Donphan","Hippowdon","Piloswine","Beartic","Drifblim","Cofagrigus","Ferrothorn","Overqwil","Furret","Dedenne"])
 
 # ===== 09-01 Tue : MEDIUM =====
 board("2026-09-01","gen1","Medium",[
@@ -596,3 +581,18 @@ board("2026-10-19","mixed","Easy",[
   ("DARK",1,"type:dark",["Poochyena","Murkrow"],"Poochyena and Murkrow are both Dark-type Pokemon."),
   ("WEB",2,"sprite:web",["Spinarak"],"Spinarak's sprite carries a distinctive web-shaped pattern across its back and belly, matching its spider design."),
 ], exclude=["Bayleef","Meganium","Grovyle","Sceptile","Machoke","Machamp","Lucario","Glalie","Froslass","Piloswine","Mamoswine","Mightyena","Honchkrow","Ariados","Galvantula","Joltik"])
+
+# ===== 10-20 Tue : MEDIUM (+28d window) =====
+board("2026-10-20","gen1","Medium",[
+  ("FIRE",1,"type:fire",["Magmar","Flareon","Charmeleon"],"Magmar, Flareon and Charmeleon are all Fire-type Pokémon."),
+  ("BUG",1,"type:bug",["Caterpie","Weedle"],"Caterpie and Weedle are both Bug-type Pokémon."),
+  ("BIRD",3,"arch:bird",["Farfetch'd","Spearow"],"Farfetch'd and Spearow are both birds at heart -- Farfetch'd a wild duck that carries a leek stalk everywhere it goes, Spearow a small, short-tempered bird of prey."),
+  ("HORNS",2,"sprite:horn",["Nidoran♀","Nidoran♂"],"Nidoran♀ and Nidoran♂ both sport a small horn on their forehead in their sprite -- the poison barb that gives the entire Nidoran line its name."),
+], exclude=["Doduo","Dodrio","Pidgey","Pidgeotto","Pidgeot","Fearow","Zapdos","Moltres","Articuno","Nidorina","Nidorino","Nidoking","Nidoqueen","Charmander","Charizard","Eevee","Vaporeon","Jolteon"])
+board("2026-10-20","mixed","Medium",[
+  ("ROCK",1,"type:rock",["Larvitar","Roggenrola"],"Larvitar and Roggenrola are both Rock-type Pokémon."),
+  ("FLYING",1,"type:flying",["Rookidee","Noibat"],"Rookidee and Noibat are both Flying-type Pokémon."),
+  ("FOX",3,"arch:fox",["Zorua","Nickit"],"Zorua and Nickit are both fox-based Pokémon -- Zorua a mischievous illusion-fox out of Unova, Nickit a sly, thieving fox styled after Galar's real red foxes."),
+  ("HAMSTER",3,"arch:hamster",["Pawmi","Morpeko"],"Pawmi and Morpeko are both modelled on real hamsters -- small, round-cheeked rodents built for quick bursts of energy."),
+  ("RUFF",2,"sprite:leaf-ruff",["Sprigatito"],"Sprigatito's sprite has a distinctive leafy ruff around its neck, one of its most recognisable details."),
+], exclude=["Pupitar","Tyranitar","Roggenrola","Boldore","Gigalith","Bergmite","Corvisquire","Corviknight","Vullaby","Mandibuzz","Starly","Staravia","Staraptor","Zoroark","Thievul","Vulpix","Ninetales","Dedenne","Skwovet","Greedent","Bidoof","Bibarel","Floragato","Meowscarada"])
