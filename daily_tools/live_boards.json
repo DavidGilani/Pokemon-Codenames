@@ -1,105 +1,5 @@
 [
   {
-    "date": "2026-09-01",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Vileplume",
-          "Exeggcute",
-          "Ivysaur"
-        ],
-        "n": 3,
-        "cat": 3,
-        "word": "PLANT"
-      },
-      {
-        "m": [
-          "Diglett",
-          "Cubone"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "BROWN"
-      },
-      {
-        "m": [
-          "Electabuzz",
-          "Jolteon"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "YELLOW"
-      },
-      {
-        "m": [
-          "Wigglytuff"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "BALLOON"
-      },
-      {
-        "m": [
-          "Seadra"
-        ],
-        "n": 1,
-        "cat": 3,
-        "word": "HIPPOCAMPUS"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-01",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Timburr",
-          "Makuhita"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "FIGHTING"
-      },
-      {
-        "m": [
-          "Cherubi"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "FRUIT"
-      },
-      {
-        "m": [
-          "Ledyba",
-          "Wurmple"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "BUG"
-      },
-      {
-        "m": [
-          "Sandile",
-          "Fuecoco"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "GATOR"
-      },
-      {
-        "m": [
-          "Sawsbuck",
-          "Stantler"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "DEER"
-      }
-    ]
-  },
-  {
     "date": "2026-09-02",
     "pool": "gen1",
     "clues": [
@@ -4071,19 +3971,21 @@
     "clues": [
       {
         "m": [
+          "Sandshrew",
           "Hypno",
           "Beedrill"
         ],
-        "n": 2,
+        "n": 3,
         "cat": 1,
         "word": "YELLOW"
       },
       {
         "m": [
           "Charizard",
-          "Zubat"
+          "Zubat",
+          "Beedrill"
         ],
-        "n": 2,
+        "n": 3,
         "cat": 2,
         "word": "WINGS"
       },
@@ -4930,6 +4832,108 @@
         "n": 2,
         "cat": 1,
         "word": "ROCK"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Tangela",
+          "Weepinbell"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "PLANT"
+      },
+      {
+        "m": [
+          "Jynx",
+          "Electabuzz",
+          "Hitmonlee"
+        ],
+        "n": 3,
+        "cat": 3,
+        "word": "BIPEDAL"
+      },
+      {
+        "m": [
+          "Cubone"
+        ],
+        "n": 1,
+        "cat": 2,
+        "word": "SKULL"
+      },
+      {
+        "m": [
+          "Venomoth",
+          "Charizard"
+        ],
+        "n": 2,
+        "cat": 2,
+        "word": "WINGS"
+      },
+      {
+        "m": [
+          "Jynx",
+          "Charizard",
+          "Magikarp"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "RED"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-21",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Emolga",
+          "Pachirisu"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "SQUIRREL"
+      },
+      {
+        "m": [
+          "Corsola"
+        ],
+        "n": 1,
+        "cat": 2,
+        "word": "BRANCHES"
+      },
+      {
+        "m": [
+          "Carnivine"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "FLYTRAP"
+      },
+      {
+        "m": [
+          "Weavile",
+          "Sneasel"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "MUSTELID"
+      },
+      {
+        "m": [
+          "Duskull",
+          "Spiritomb",
+          "Drifloon"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "GHOST"
       }
     ]
   }

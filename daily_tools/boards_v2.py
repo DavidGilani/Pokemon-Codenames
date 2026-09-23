@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-08-31 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-09-01 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 09-01 Tue : MEDIUM =====
-board("2026-09-01","gen1","Medium",[
-  ("BROWN",1,"colour:brown",["Cubone","Diglett"]),
-  ("YELLOW",1,"colour:yellow",["Electabuzz","Jolteon"]),
-  ("PLANT",3,"arch:plant",["Vileplume","Exeggcute","Ivysaur"]),
-  ("HIPPOCAMPUS",3,"arch:seahorse",["Seadra"]),
-  ("BALLOON",2,"sprite:big-eyes",["Wigglytuff"]),
-], exclude=["Marowak","Dugtrio","Electivire","Flareon","Gloom","Exeggutor","Venusaur","Horsea","Jigglypuff","Raichu"])
-board("2026-09-01","mixed","Medium",[
-  ("BUG",1,"type:bug",["Ledyba","Wurmple"]),
-  ("FIGHTING",1,"type:fighting",["Makuhita","Timburr"]),
-  ("DEER",3,"arch:deer",["Stantler","Sawsbuck"]),
-  ("GATOR",3,"arch:crocodile",["Sandile","Fuecoco"]),
-  ("FRUIT",2,"sprite:cherries",["Cherubi"]),
-], exclude=["Glalie","Avalugg","Hariyama","Conkeldurr","Wyrdeer","Deerling","Krokorok","Crocalor","Skeledirge","Forretress"])
 
 # ===== 09-02 Wed : CHALLENGING =====
 board("2026-09-02","gen1","Challenging",[
@@ -596,3 +580,19 @@ board("2026-10-20","mixed","Medium",[
   ("HAMSTER",3,"arch:hamster",["Pawmi","Morpeko"],"Pawmi and Morpeko are both modelled on real hamsters -- small, round-cheeked rodents built for quick bursts of energy."),
   ("RUFF",2,"sprite:leaf-ruff",["Sprigatito"],"Sprigatito's sprite has a distinctive leafy ruff around its neck, one of its most recognisable details."),
 ], exclude=["Pupitar","Tyranitar","Roggenrola","Boldore","Gigalith","Bergmite","Corvisquire","Corviknight","Vullaby","Mandibuzz","Starly","Staravia","Staraptor","Zoroark","Thievul","Vulpix","Ninetales","Dedenne","Skwovet","Greedent","Bidoof","Bibarel","Floragato","Meowscarada"])
+
+# ===== 10-21 Wed : CHALLENGING (+28d window) =====
+board("2026-10-21","gen1","Challenging",[
+  ("RED",1,"colour:red",["Charizard","Jynx","Magikarp"],"Charizard, Jynx and Magikarp are all predominantly red Pokémon."),
+  ("WINGS",2,"sprite:wings",["Charizard","Venomoth"],"Look closely at the sprite and you'll spot it -- wings, on both Charizard and Venomoth."),
+  ("BIPEDAL",3,"arch:humanoid",["Electabuzz","Hitmonlee","Jynx"],"Electabuzz, Hitmonlee and Jynx all stand and fight on two legs like a person, rather than moving like a typical animal."),
+  ("SKULL",2,"sprite:skull-helmet",["Cubone"],"Cubone's entire design is built around the skull it wears as a helmet, mourning its lost parent."),
+  ("PLANT",3,"arch:plant",["Tangela","Weepinbell"],"Tangela and Weepinbell are both modelled on plants -- Tangela a tangled mass of blue vines, Weepinbell a carnivorous pitcher plant."),
+], exclude=["Seaking","Magmar","Gloom","Pidgeot","Machop","Vileplume","Oddish","Bellsprout","Exeggcute","Zubat","Golbat","Aerodactyl","Marowak","Scyther","Butterfree","Beedrill","Pidgeotto","Charmeleon","Ninetales","Golem","Zapdos","Moltres"])
+board("2026-10-21","mixed","Challenging",[
+  ("GHOST",1,"type:ghost",["Duskull","Drifloon","Spiritomb"],"Duskull, Drifloon and Spiritomb are all Ghost-type Pokémon."),
+  ("BRANCHES",2,"sprite:coral-branches",["Corsola"],"Look closely at the sprite and you'll spot it -- Corsola's whole body is made of branching pink coral."),
+  ("MUSTELID",4,"arch:mustelid",["Sneasel","Weavile"],"Sneasel and Weavile are both modelled on real mustelids -- sharp-clawed, weasel-like predators."),
+  ("SQUIRREL",3,"arch:squirrel",["Pachirisu","Emolga"],"Pachirisu and Emolga are both modelled on real squirrels -- Pachirisu a chubby ground squirrel, Emolga a gliding flying squirrel."),
+  ("FLYTRAP",3,"arch:flytrap",["Carnivine"],"Carnivine is modelled directly on a Venus flytrap, snapping its jaw-like leaves shut on prey."),
+], exclude=["Chimecho","Yanmega","Misdreavus","Mismagius","Gastly","Haunter","Gengar","Rotom","Froslass","Sableye","Banette"])
