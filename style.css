@@ -1079,3 +1079,38 @@ a { color: var(--accent); }
 }
 
 .disclaimer-footer a { color: var(--text-faint); text-decoration: underline; }
+
+/* ---- Daily comments (finish screen) ---- */
+.daily-comments { margin-top: 22px; text-align: left; border-top: 1px solid var(--panel-border); padding-top: 16px; }
+.dc-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.dc-n { color: var(--text-faint); font-weight: 500; font-size: 14px; }
+.dc-form { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.dc-form input, .dc-form textarea {
+  width: 100%; box-sizing: border-box; background: var(--bg, #0e1119); color: var(--text);
+  border: 1px solid var(--panel-border); border-radius: 10px; padding: 9px 11px;
+  font: inherit; font-size: 14px; resize: vertical;
+}
+.dc-form-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.dc-count { font-size: 12px; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.dc-err { font-size: 13px; color: var(--red); }
+.dc-note { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+.dc-list { display: flex; flex-direction: column; gap: 8px; }
+.dc-item { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 10px; padding: 9px 12px; }
+.dc-item.dc-mine { border-color: var(--accent); }
+.dc-meta { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-faint); margin-bottom: 4px; }
+.dc-meta strong { color: var(--text); font-size: 13px; }
+.dc-you { margin-left: auto; font-size: 11px; color: var(--accent); }
+.dc-report { margin-left: auto; background: none; border: none; color: var(--text-faint); font-size: 11px; cursor: pointer; text-decoration: underline; padding: 0; }
+.dc-body { font-size: 14px; color: var(--text); line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.dc-empty { font-size: 13px; color: var(--text-dim); }
+
+/* ---- QA comment moderation ---- */
+.qa-comments { margin-top: 28px; border-top: 1px solid var(--panel-border); padding-top: 18px; }
+.qa-cmt { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 10px; padding: 9px 12px; margin-top: 8px; }
+.qa-cmt-hidden { border-color: var(--red); }
+.qa-cmt-meta { font-size: 12px; color: var(--text-faint); }
+.qa-cmt-meta strong { color: var(--text); }
+.qa-cmt-flag { color: var(--red); font-weight: 600; margin-left: 4px; }
+.qa-cmt-body { font-size: 14px; margin: 5px 0 7px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.qa-cmt-actions { display: flex; gap: 6px; }
+.dc-form-row .btn { flex: none; width: auto; }

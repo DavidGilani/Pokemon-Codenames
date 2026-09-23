@@ -2286,7 +2286,50 @@ async function showQaOverview() {
   daily.qaOverview = rows;
   showScreen("qa");
   renderQaOverview();
+  loadQaComments();
   loadQaStats();
+}
+
+// Owner comment moderation on the QA page (needs the secret QA link).
+async function loadQaComments() {
+  const el = $("#qa-comments");
+  if (!el) return;
+  el.innerHTML = `<div class="qa-stats-title">Comments</div><div class="qa-stats-loading">Loading…</div>`;
+  let rows = [];
+  try {
+    const { data, error } = await sb.rpc("list_daily_comments_admin", { p_secret: qaSecret, p_limit: 100 });
+    if (error) throw error;
+    rows = data || [];
+  } catch (err) {
+    console.error(err);
+    el.innerHTML = `<div class="qa-stats-title">Comments</div><div class="qa-stats-loading">Moderation needs your private QA link.</div>`;
+    return;
+  }
+  const hidden = rows.filter((r) => r.status === "hidden").length;
+  const items = rows.map((r) => `<div class="qa-cmt ${r.status === "hidden" ? "qa-cmt-hidden" : ""}">
+      <div class="qa-cmt-meta">${escapeHtml(r.puzzle_date)} · ${r.pool === "gen1" ? "Gen I" : "All-gens"} ·
+        <strong>${escapeHtml(r.username)}</strong> · ${_cmtAgo(r.created_at)}
+        ${r.status === "hidden" ? `<span class="qa-cmt-flag">Hidden${r.report_count ? ` · ${r.report_count} report${r.report_count === 1 ? "" : "s"}` : ""}</span>` : ""}
+      </div>
+      <div class="qa-cmt-body">${escapeHtml(r.body)}</div>
+      <div class="qa-cmt-actions">
+        ${r.status === "hidden"
+          ? `<button class="btn btn-ghost btn-mini" data-act="restore" data-id="${r.id}">Restore</button>`
+          : `<button class="btn btn-ghost btn-mini" data-act="hide" data-id="${r.id}">Hide</button>`}
+        <button class="btn btn-ghost btn-mini" data-act="remove" data-id="${r.id}">Delete</button>
+      </div>
+    </div>`).join("");
+  el.innerHTML = `<div class="qa-stats-title">Comments</div>
+    <div class="qa-stats-note">${rows.length} comment${rows.length === 1 ? "" : "s"}${hidden ? ` · <strong>${hidden} hidden awaiting review</strong>` : ""}. Reported comments are hidden automatically until you restore them.</div>
+    ${items || `<div class="qa-stats-loading">No comments yet.</div>`}`;
+  $all("[data-act]", el).forEach((b) => b.addEventListener("click", async () => {
+    if (b.dataset.act === "remove" && !confirm("Delete this comment permanently?")) return;
+    try {
+      const { error } = await sb.rpc("moderate_daily_comment", { p_id: b.dataset.id, p_action: b.dataset.act, p_secret: qaSecret });
+      if (error) throw error;
+      loadQaComments();
+    } catch (err) { console.error(err); toast("Couldn't update that comment."); }
+  }));
 }
 
 // Owner analytics panel at the bottom of the QA page (single RPC → jsonb blob).
@@ -3141,7 +3184,9 @@ function renderDailyResult() {
       <button class="btn btn-share" id="daily-share-btn">↗ Share result</button>
       <button class="btn btn-ghost" id="daily-other-btn">Play the ${daily.pool === "gen1" ? "All-gens" : "Gen I"} puzzle</button>
       <button class="btn btn-ghost" id="daily-home-btn">Home</button>
-    </div>`;
+    </div>
+    <div class="daily-comments" id="daily-comments"></div>`;
+  renderDailyComments();
   // Nudge sharing when they found it hard (see _dailyRateFollow).
   if (daily.rating === "way_too_hard" || daily.rating === "slightly_hard") {
     const sh = $("#daily-share-btn"); if (sh) sh.classList.add("share-pulse");
@@ -3150,6 +3195,104 @@ function renderDailyResult() {
   $("#daily-other-btn").addEventListener("click", () => startDaily(daily.pool === "gen1" ? "mixed" : "gen1"));
   $("#daily-home-btn").addEventListener("click", () => { clearDailyUrl(); showScreen("landing"); });
   $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => dailyRate(b.dataset.rate)));
+}
+
+// ---- Daily comments (finish screen only) ---------------------------------
+// Players who've finished a puzzle can leave one short comment on it and read
+// everyone else's. Only shown after finishing, so no spoiler risk. All the real
+// checks (finished? swear/slur filter, one per puzzle, no links) run server-side
+// in post_daily_comment; a report hides a comment straight away pending review.
+const _cmt = { key: null, list: null, loading: false, posting: false };
+function _cmtKey() { return `${daily.date}:${daily.pool}`; }
+function _cmtAgo(ts) {
+  const s = Math.max(0, (Date.now() - new Date(ts).getTime()) / 1000);
+  if (s < 60) return "just now";
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+  return `${Math.floor(s / 86400)}d ago`;
+}
+async function _cmtLoad(force) {
+  const key = _cmtKey();
+  if (!force && _cmt.key === key && _cmt.list) return;
+  _cmt.key = key; _cmt.loading = true;
+  try {
+    const { data, error } = await sb.rpc("get_daily_comments", { p_date: daily.date, p_pool: daily.pool });
+    if (error) throw error;
+    if (_cmt.key === key) _cmt.list = data || [];
+  } catch (err) { console.error(err); if (_cmt.key === key) _cmt.list = []; }
+  _cmt.loading = false;
+}
+async function renderDailyComments() {
+  const el = $("#daily-comments");
+  if (!el || daily.practice || daily.qa || daily.qaView || !daily.date || !daily.finished) return;
+  const key = _cmtKey();
+  if (_cmt.key !== key || !_cmt.list) {
+    el.innerHTML = `<div class="dc-title">💬 Comments</div><div class="dc-empty">Loading…</div>`;
+    await _cmtLoad();
+    if (_cmtKey() !== key || !$("#daily-comments")) return; // moved on meanwhile
+  }
+  const list = _cmt.list || [];
+  const mine = list.find((c) => c.is_mine);
+  let savedName = "";
+  try { savedName = localStorage.getItem("pc_comment_name") || ""; } catch {}
+  const form = mine
+    ? `<div class="dc-note">Thanks for sharing your thoughts! ✨</div>`
+    : `<div class="dc-form">
+        <input type="text" id="dc-name" maxlength="20" placeholder="Name (optional – blank = anonymous)" value="${escapeHtml(savedName)}" />
+        <textarea id="dc-body" maxlength="280" rows="3" placeholder="How did you find today's board? Be kind – only finishers can see these."></textarea>
+        <div class="dc-form-row">
+          <span class="dc-count" id="dc-count">0/280</span>
+          <button class="btn btn-primary btn-mini" id="dc-post">Post comment</button>
+        </div>
+        <div class="dc-err hidden" id="dc-err"></div>
+      </div>`;
+  const items = list.length
+    ? list.map((c) => `<div class="dc-item${c.is_mine ? " dc-mine" : ""}">
+        <div class="dc-meta"><strong>${escapeHtml(c.username || "Anonymous trainer")}</strong>
+          <span>· ${_cmtAgo(c.created_at)}</span>
+          ${c.is_mine ? `<span class="dc-you">you</span>` : `<button class="dc-report" data-id="${c.id}" title="Report this comment">Report</button>`}
+        </div>
+        <div class="dc-body">${escapeHtml(c.body)}</div>
+      </div>`).join("")
+    : `<div class="dc-empty">No comments yet – be the first!</div>`;
+  el.innerHTML = `<div class="dc-title">💬 Comments <span class="dc-n">${list.length || ""}</span></div>${form}<div class="dc-list">${items}</div>`;
+
+  const body = $("#dc-body");
+  if (body) body.addEventListener("input", () => { $("#dc-count").textContent = `${body.value.length}/280`; });
+  const post = $("#dc-post");
+  if (post) post.addEventListener("click", dailyPostComment);
+  $all(".dc-report", el).forEach((b) => b.addEventListener("click", () => dailyReportComment(b.dataset.id)));
+}
+async function dailyPostComment() {
+  if (_cmt.posting) return;
+  const bodyEl = $("#dc-body"), nameEl = $("#dc-name"), errEl = $("#dc-err"), btn = $("#dc-post");
+  const text = (bodyEl ? bodyEl.value : "").trim();
+  const name = (nameEl ? nameEl.value : "").trim();
+  if (text.length < 3) { errEl.textContent = "Your comment is a bit short!"; errEl.classList.remove("hidden"); return; }
+  _cmt.posting = true; btn.disabled = true; btn.textContent = "Posting…"; errEl.classList.add("hidden");
+  try {
+    try { await ensureAuth(); } catch {}
+    const { error } = await sb.rpc("post_daily_comment", { p_date: daily.date, p_pool: daily.pool, p_username: name, p_body: text });
+    if (error) throw error;
+    try { localStorage.setItem("pc_comment_name", name); } catch {}
+    await _cmtLoad(true);
+    toast("Comment posted!");
+    renderDailyComments();
+  } catch (err) {
+    console.error(err);
+    errEl.textContent = (err && err.message) || "Couldn't post – please try again.";
+    errEl.classList.remove("hidden");
+    btn.disabled = false; btn.textContent = "Post comment";
+  } finally { _cmt.posting = false; }
+}
+async function dailyReportComment(id) {
+  if (!confirm("Report this comment? It'll be hidden while we take a look.")) return;
+  try {
+    await sb.rpc("report_daily_comment", { p_id: id });
+    if (_cmt.list) _cmt.list = _cmt.list.filter((c) => c.id !== id);
+    toast("Thanks – that comment is hidden while we review it.");
+    renderDailyComments();
+  } catch (err) { console.error(err); toast("Couldn't report – please try again."); }
 }
 
 // A friendly line shown after the player rates the difficulty. Too-easy → come

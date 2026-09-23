@@ -53,6 +53,13 @@ anti-rep corpus in `daily_tools/live_boards.json`, and emits new-board upserts t
 no CSVs, and computes its date window from `today` — so it runs in any fresh
 checkout. The rest of this doc explains the reasoning.
 
+## Holiday & special-day boards
+
+Before authoring, check **`holiday_boards.md`**. If a date you're filling is
+listed there, build that day's boards (both pools) around the listed theme,
+following every normal rule and the date's weekday tier. Holiday boards may be
+authored up to **5 weeks** ahead (not just 3) so the owner has time to QA them.
+
 ## Recurring QA themes to PRE-EMPT (distilled from weeks of owner feedback)
 
 These are the things the owner flags again and again in QA. The verifier catches
