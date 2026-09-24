@@ -64,6 +64,19 @@ export default async function handler(req) {
   } catch (_) { /* fall through to a clue-less card */ }
 
   const diff = difficulty(clues);
+  // Holiday theme for this date (e.g. "Halloween") – shown as a text line.
+  let themeName = "";
+  if (date) {
+    try {
+      const tr = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_daily_theme`, {
+        method: "POST",
+        headers: { apikey: ANON_KEY, authorization: `Bearer ${ANON_KEY}`, "content-type": "application/json" },
+        body: JSON.stringify({ p_date: date, p_pool: pool }),
+      });
+      const t = await tr.json();
+      if (t && t.name) themeName = t.name;
+    } catch (_) { /* no theme */ }
+  }
   const [bold, regular] = await Promise.all([
     fetch(new URL("/ogassets/Outfit-Bold.ttf", url.origin)).then((r) => r.arrayBuffer()),
     fetch(new URL("/ogassets/Outfit-Regular.ttf", url.origin)).then((r) => r.arrayBuffer()),
@@ -109,7 +122,7 @@ export default async function handler(req) {
       h("div", { display: "flex", flexDirection: "column" }, [
         h("div", { fontSize: 52, fontWeight: 700, lineHeight: 1.05 }, "Pokémon Codenames"),
         h("div", { fontSize: 30, color: "#9aa4bd", marginTop: 6 },
-          `Daily · ${poolLabel} · ${diff}${date ? " · " + dateLabel(date) : ""}`),
+          `${themeName ? themeName + " special · " : "Daily · "}${poolLabel} · ${diff}${date ? " · " + dateLabel(date) : ""}`),
       ]),
     ]),
     // clues – centred and filling the space

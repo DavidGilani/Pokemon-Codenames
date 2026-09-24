@@ -1134,3 +1134,38 @@ a { color: var(--accent); }
 .qa-sec-title, #qa-comments, #qa-stats { scroll-margin-top: 96px; }
 .qa-sec-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
 .qa-sec-sub { margin-bottom: 10px; }
+
+/* ---- Holiday themes ---- */
+.theme-banner, .dwelcome-theme {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: linear-gradient(90deg, rgba(245,165,36,0.16), rgba(193,80,200,0.16));
+  border: 1px solid rgba(245,165,36,0.35); border-radius: 12px;
+  padding: 9px 14px; font-size: 14px; font-weight: 600; color: var(--text);
+  text-align: center; line-height: 1.35;
+}
+.theme-banner { margin-bottom: 14px; }
+.dwelcome-theme { margin: 0 0 12px; font-size: 13.5px; }
+.tb-emoji { font-size: 20px; line-height: 1; flex: none; }
+
+/* Snow (Christmas Day) */
+#snowfall { position: fixed; inset: 0; pointer-events: none; z-index: 40; overflow: hidden; }
+#snowfall i {
+  position: absolute; top: -12px; border-radius: 50%; background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 4px rgba(255,255,255,0.6);
+  animation-name: snowfall; animation-timing-function: linear; animation-iteration-count: infinite;
+}
+@keyframes snowfall {
+  0%   { transform: translate(0, -12px); opacity: 0; }
+  10%  { opacity: 1; }
+  100% { transform: translate(var(--drift, 0px), 105vh); opacity: 0.9; }
+}
+
+/* April Fools "Ditto Day": Pokémon that are really Ditto in disguise */
+.tile-ditto .tile-img-wrap { position: relative; }
+.tile-ditto .tile-img-wrap img {
+  filter: grayscale(1) sepia(1) saturate(3.2) hue-rotate(220deg) brightness(1.08);
+}
+.tile-ditto .ditto-face {
+  position: absolute; left: 50%; top: 42%; width: 38%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}

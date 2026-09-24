@@ -69,6 +69,7 @@ function showScreen(name) {
   $all(".screen").forEach((el) => el.classList.remove("active"));
   $(`#screen-${name}`).classList.add("active");
   if (name === "landing") renderLandingStreaks();
+  _applySeasonalEffect();
 }
 
 // A win streak still counts as "live" only if the last solve was today or
@@ -1966,6 +1967,7 @@ function initDaily() {
 }
 
 function _dailyReset() {
+  daily.theme = null; daily._themeKey = null;
   daily.tiles = []; daily.clues = []; daily.revealedHints = [];
   daily.revealed = {}; daily.bluesFound = 0; daily.mistakes = 0; daily.hintsUsed = 0;
   daily.shownHintIdx = []; daily.noMoreHints = false;
@@ -2052,6 +2054,7 @@ function showDailyWelcome(pool, begin) {
   const poolLabel = pool === "gen1" ? "Gen I" : "All-gens";
   $("#dwelcome-date").textContent = `${poolLabel} daily · ${_dailyDateTitle()}`;
   $("#dwelcome-diff").innerHTML = `Difficulty: <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
+  _renderWelcomeTheme();
   modal.classList.remove("hidden");
 }
 function closeDailyWelcome() {
@@ -2633,6 +2636,9 @@ function _clueChip(c, idx, kind) {
 }
 
 function renderDaily() {
+  _ensureDailyTheme();
+  _renderDailyThemeBanner();
+  _applySeasonalEffect();
   const poolLabel = daily.pool === "gen1" ? "Gen I" : "All generations";
   const diff = dailyDifficulty(daily.clues);
   // Un-hide the play elements in case a prior view hid them.
@@ -2757,6 +2763,12 @@ function dailyMakeTile(tile) {
   el.innerHTML = `
     <div class="tile-img-wrap"><img src="${art}" alt="${escapeHtml(tile.name)}" decoding="async" ${fallback ? `onerror="this.onerror=null;this.src='${fallback}'"` : ""} /></div>
     <div class="tile-name">${escapeHtml(tile.name)}</div>`;
+  // April Fools "Ditto Day": these tiles are Ditto in disguise.
+  if (daily.theme && Array.isArray(daily.theme.ditto) && daily.theme.ditto.includes(tile.position)) {
+    el.classList.add("tile-ditto");
+    const w = el.querySelector(".tile-img-wrap");
+    if (w) w.insertAdjacentHTML("beforeend", DITTO_FACE_SVG);
+  }
 
   // Colour pencil-marks (the player's own scratch notes) – only while the tile
   // is still in play; once revealed/finished the real colour takes over.
@@ -3212,6 +3224,86 @@ function renderDailyResult() {
   $all(".daily-rate", el).forEach((b) => b.addEventListener("click", () => dailyRate(b.dataset.rate)));
 }
 
+// ---- Holiday / special-day themes --------------------------------------
+// daily_themes (DB) holds a name, emoji, banner line and optional effect for
+// special dates, applied to BOTH pools. get_daily_theme(date, pool) also returns
+// `ditto` – tile positions drawn as "Ditto versions" (April Fools).
+const _theme = { landing: null };
+const DITTO_FACE_SVG = `<svg class="ditto-face" viewBox="0 0 40 24" aria-hidden="true">`
+  + `<circle cx="12" cy="8" r="2.6" fill="#1b1030"/><circle cx="28" cy="8" r="2.6" fill="#1b1030"/>`
+  + `<path d="M11 15 Q20 21 29 15" stroke="#1b1030" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>`;
+function _fetchTheme(date, pool) {
+  let req;
+  try {
+    req = sb.rpc("get_daily_theme", { p_date: date || null, p_pool: pool || null })
+      .then(({ data, error }) => (error ? null : (data || null)), () => null);
+  } catch (_) { return Promise.resolve(null); }
+  const timeout = new Promise((res) => setTimeout(() => res(null), 3000));
+  return Promise.race([req, timeout]);
+}
+function _themeBannerHtml(t) {
+  return `<span class="tb-emoji">${escapeHtml(t.emoji || "")}</span><span>${escapeHtml(t.banner || t.name || "")}</span>`;
+}
+// Fetch this board's theme once per (date, pool); re-render when it arrives.
+function _ensureDailyTheme() {
+  if (daily.practice || !daily.date || daily.date === "practice" || !daily.pool) {
+    daily.theme = null; daily._themeKey = null; return;
+  }
+  const key = `${daily.date}:${daily.pool}`;
+  if (daily._themeKey === key) return;
+  daily._themeKey = key; daily.theme = null;
+  _fetchTheme(daily.date, daily.pool).then((t) => {
+    if (daily._themeKey !== key || !t) return;
+    daily.theme = t;
+    if ($("#screen-daily").classList.contains("active")) renderDaily();
+    _renderWelcomeTheme();
+  });
+}
+function _renderWelcomeTheme() {
+  const el = $("#dwelcome-theme"); if (!el) return;
+  el.classList.toggle("hidden", !daily.theme);
+  if (daily.theme) el.innerHTML = _themeBannerHtml(daily.theme);
+}
+function _renderDailyThemeBanner() {
+  const el = $("#daily-theme-banner"); if (!el) return;
+  el.classList.toggle("hidden", !daily.theme);
+  if (daily.theme) el.innerHTML = _themeBannerHtml(daily.theme);
+}
+// Today's theme on the homepage (banner + effect).
+async function loadLandingTheme() {
+  _theme.landing = await _fetchTheme(null, null);
+  const el = $("#landing-theme-banner");
+  if (el) {
+    el.classList.toggle("hidden", !_theme.landing);
+    if (_theme.landing) el.innerHTML = _themeBannerHtml(_theme.landing);
+  }
+  _applySeasonalEffect();
+}
+// Seasonal effect (currently just snow) for whichever screen is showing.
+function _applySeasonalEffect() {
+  const active = document.querySelector(".screen.active");
+  const id = active ? active.id : "";
+  const t = id === "screen-landing" ? _theme.landing : id === "screen-daily" ? daily.theme : null;
+  _setSnow(!!(t && t.effect === "snow"));
+}
+function _setSnow(on) {
+  let box = document.getElementById("snowfall");
+  if (!on) { if (box) box.remove(); return; }
+  if (box) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  box = document.createElement("div");
+  box.id = "snowfall"; box.setAttribute("aria-hidden", "true");
+  let html = "";
+  for (let i = 0; i < 40; i++) {
+    const size = 4 + Math.random() * 6;
+    html += `<i style="left:${(Math.random() * 100).toFixed(1)}%;width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;`
+      + `animation-duration:${(7 + Math.random() * 8).toFixed(1)}s;animation-delay:${(-Math.random() * 15).toFixed(1)}s;`
+      + `--drift:${(Math.random() * 40 - 20).toFixed(0)}px"></i>`;
+  }
+  box.innerHTML = html;
+  document.body.appendChild(box);
+}
+
 // ---- Daily comments (finish screen only) ---------------------------------
 // Players who've finished a puzzle can leave one short comment on it and read
 // everyone else's. Only shown after finishing, so no spoiler risk. All the real
@@ -3387,7 +3479,7 @@ function _dailyShareText(includeUrl) {
     ? `💡 ${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}`
     : `🚫 no hints`;
   const lines = [
-    `Pokémon Codenames – Daily 🧩`,
+    daily.theme ? `${daily.theme.emoji} Pokémon Codenames – ${daily.theme.name} Daily 🧩` : `Pokémon Codenames – Daily 🧩`,
     `${poolLabel} · ${diff.label}${dateLabel ? ` · ${dateLabel}` : ""}`,
     ...(trail ? [trail + (hitAssassin ? "💀" : "")] : []),
     outcome,
@@ -3413,7 +3505,7 @@ function openDailyShareModal() {
   if (!modal) return;
   const time = fmtClock(dailyElapsedSecs());
   const diff = dailyDifficulty(daily.clues);
-  $("#dshare-title").textContent = `${_dailyDateTitle()} (${diff.label})`;
+  $("#dshare-title").textContent = `${daily.theme ? daily.theme.emoji + " " : ""}${_dailyDateTitle()} (${diff.label})`;
   _renderTrailDom($("#dshare-visual"));
 
   const poolName = daily.pool === "gen1" ? "Gen I" : "All-gens";
@@ -3511,6 +3603,7 @@ async function boot() {
   initGameScreen();
   initSoundToggle();
   initDaily();
+  loadLandingTheme(); // today's holiday banner / effect on the homepage (best-effort)
 
   // Tapping the brand (logo + name) always returns to the homepage, from any
   // screen. Keeps the stored session so the game can be rejoined via its link.

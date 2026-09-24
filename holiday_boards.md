@@ -4,6 +4,16 @@ Themed daily boards for holidays and fun dates. **The nightly generator reads th
 file**: when a date below falls inside its authoring window, it builds that day's
 boards around the listed theme instead of a random set.
 
+**Owner decisions (Sep 2026):**
+- **Theme BOTH pools** on every date. All-gens has more options so can be fully
+  themed; Gen I just needs a few on-theme clues.
+- **Built:** the festive banner (welcome pop-up, puzzle page, homepage on the
+  day), the holiday emoji + name in the share message and link preview, and
+  **snow on Christmas Day** (a trial of seasonal effects). Banner text, emoji and
+  effects for every date live in the `daily_themes` table – edit them there.
+- **Not wanted:** holiday colour schemes for the whole site.
+- **April Fools is a special one-off (already built, see below).**
+
 Ground rules for themed boards:
 - **Every normal rule still applies** — the weekday tier (the Tier column below),
   Rule 0 correctness, no clue fitting a neutral, anti-repetition, letter rule,
@@ -110,12 +120,12 @@ Audino, Happiny, Combee→Vespiquen (queen mother), Pokémon that care for young
 `BUNNY` (Buneary, Scorbunny, Azumarill), `CHICK` (Torchic, Pikipek), `BASKET`,
 `CHOCOLATE`, spring flowers (Flabébé line).
 
-**🃏 April Fools – "Ditto Day" (Thu, Hard)** — the showpiece. **Every tile image is
-Ditto** (names still shown so it's playable); the real sprites flip in when the
-board is revealed at the end. Clues about deception: `IMPOSTER` (Ditto's ability),
-`TRANSFORM` (Ditto, Mew), `DISGUISE` (Mimikyu), `ILLUSION` (Zorua, Zoroark),
-`MIMIC` (Mr. Mime), `FAKE` (Sudowoodo – a fake tree; Voltorb/Electrode pretending
-to be Poké Balls), `PRANK` (Prankster ability). Needs the theme feature below.
+**🃏 April Fools – "Ditto Day" (Thu, Hard) — ALREADY BUILT, don't re-author.**
+Owner-approved special exception to the normal rules. Both boards (Gen I and
+All-gens) already exist in the database (`42_updates.sql`): the only clue is
+**`DITTO × 9`**, and the 9 blue tiles are drawn as **Ditto versions** of other
+Pokémon (purple tint + Ditto's dot eyes and smile). Each blue has an `IMPOSTER`
+hint. The disguised tile positions are stored in `daily_themes.extra.ditto`.
 
 **🌍 Earth Day (Thu, Hard)** — `RECYCLE` (Trubbish, Garbodor), `POLLUTION`
 (sparingly – watchlist), `WEATHER-TRIO` (Groudon land, Kyogre sea, Rayquaza sky),
@@ -140,13 +150,13 @@ ratings/comments data), `CAKE` (Alcremie, Slurpuff), `CANDLE`, `PARTY`.
 `GENIUS` (Alakazam, IQ 5000), `ART` (Smeargle), `MUSIC` (Chatot, Kricketune),
 `PROFESSOR` (starters from the professors), `EXAM`/`STUDY`.
 
-## Site features to make these days special (not built yet)
+## Site features (built)
 
-1. **Theme field on the puzzle** – an optional `theme` on `daily_puzzles`
-   (`{name, emoji, banner, sprite_override}`) set by the generator for these dates.
-2. **Themed banner + emoji** – a small "Happy Halloween! 🎃" strip on the welcome
-   pop-up and puzzle header, and the emoji in the share text and link-preview card.
-3. **Sprite override** – for April Fools, draw every tile as Ditto until the board
-   is revealed, then flip the real sprites in.
-4. **Light seasonal touches** (optional) – e.g. falling snow on Christmas Day,
-   confetti on the site's birthday.
+- `daily_themes` table – one row per date: name, emoji, banner line, optional
+  `effect` (`'snow'`), and `extra` (e.g. Ditto tile positions). Read by
+  `get_daily_theme(date, pool)`.
+- Banner on the welcome pop-up, puzzle page and (on the day) the homepage.
+- Emoji + name in the share message, share pop-up and link preview.
+- Snow effect – currently only Christmas Day. To add it to another date, set
+  `effect = 'snow'` on that row. Other effects (confetti, fireworks) could be
+  added later the same way.

@@ -4,7 +4,23 @@
 // bounced straight into the SPA at /?daily=… so play is unaffected.
 export const config = { runtime: "edge" };
 
-export default function handler(req) {
+const SUPABASE_URL = "https://fjhijkszcugwxtmlbudz.supabase.co";
+const ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqaGlqa3N6Y3Vnd3h0bWxidWR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMTExODcsImV4cCI6MjA5ODU4NzE4N30.MY29L3dGhgCAyrKS0bx0E30DbwiYHrb75dIzmjKBRZI";
+
+// Today's holiday theme, if any (best-effort, never blocks the page).
+async function todaysTheme(pool) {
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_daily_theme`, {
+      method: "POST",
+      headers: { apikey: ANON_KEY, authorization: `Bearer ${ANON_KEY}`, "content-type": "application/json" },
+      body: JSON.stringify({ p_pool: pool }),
+    });
+    const t = await r.json();
+    return t && t.name ? t : null;
+  } catch (_) { return null; }
+}
+
+export default async function handler(req) {
   const url = new URL(req.url);
   const p = url.searchParams.get("daily") === "all" ? "all" : "1";
   const pool = p === "all" ? "mixed" : "gen1";
@@ -18,7 +34,10 @@ export default function handler(req) {
   const img = `${origin}/api/og?daily=${p}&d=${day}`;
   const target = `${origin}/?daily=${p}`;
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
-  const title = `Pokémon Codenames – Daily (${poolLabel})`;
+  const theme = await todaysTheme(pool);
+  const title = theme
+    ? `${theme.emoji} Pokémon Codenames – ${theme.name} Daily (${poolLabel})`
+    : `Pokémon Codenames – Daily (${poolLabel})`;
   const desc = "Crack today's board from a handful of one-word clues – can you find all 9 hidden Pokémon?";
   const html = `<!doctype html><html lang="en"><head>
 <meta charset="utf-8">
