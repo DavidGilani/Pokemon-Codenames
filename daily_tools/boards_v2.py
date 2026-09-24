@@ -450,6 +450,15 @@ board("2026-10-10","mixed","Brutal",[
             "Victini","Volcanion","Walrein","Weavile","Wormadam","Xerneas","Yamask","Yanmega","Yveltal",
             "Zacian","Zamazenta","Zarude","Zekrom","Zygarde"])
 
+# ===== 10-12 Mon : EASY (rebuilt from QA -- old purple/pink colour board had
+# clashing, ambiguous colour clues; replaced with a clean colour+type+sprite set) =====
+board("2026-10-12","mixed","Easy",[
+  ("GREEN",1,"colour:green",["Cacnea","Axew","Cradily"],"Cacnea, Axew and Cradily are all predominantly green -- a spiny green cactus, a green tusked dragon, and a green sea-lily fossil."),
+  ("GRAY",1,"colour:gray",["Excadrill","Glalie"],"Excadrill and Glalie are both mainly grey -- Excadrill a steel-clawed mole, Glalie a floating grey ice-mask with a gaping jaw."),
+  ("FIRE",1,"type:fire",["Delphox","Darumaka"],"Delphox and Darumaka are both Fire-types -- Delphox a fox mage wreathed in flame, Darumaka a fiery daruma doll."),
+  ("PINCERS",2,"sprite:pincers",["Crawdaunt","Clauncher"],"Look closely at the sprites for the big pincer claws -- Crawdaunt's heavy crayfish claws and Clauncher's single oversized pistol-shrimp claw."),
+], exclude=["Kingler","Krabby","Corphish","Clawitzer","Crabrawler","Crabominable","Klawf","Pinsir","Heracross","Crustle","Dwebble","Durant","Escavalier","Scyther","Scizor","Kabutops","Kabuto","Anorith","Armaldo","Gligar","Gliscor","Drapion","Skorupi","Mawile","Barbaracle","Binacle","Golisopod","Wimpod","Parasect","Paras","Fraxure","Haxorus","Cacturne","Lileep","Drilbur","Snorunt","Froslass","Fennekin","Braixen","Darmanitan","Corphish"])
+
 # ===== 10-13 Tue : MEDIUM (gap fill, +28d window) =====
 board("2026-10-13","mixed","Medium",[
   ("STEEL",1,"type:steel",["Corviknight","Klefki","Mawile","Empoleon"],"Corviknight, Klefki, Mawile and Empoleon are all Steel-type Pokemon, each pairing it with a second type of Flying, Fairy, Fairy and Water."),
@@ -474,7 +483,7 @@ board("2026-10-14","mixed","Challenging",[
 
 # ===== 10-15 Thu : HARD (gap fill) =====
 board("2026-10-15","gen1","Hard",[
-  ("NIPPERS",3,"arch:crab",["Paras","Kingler"],"Paras and Kingler are both modelled on real crabs -- Paras a crab-like body sprouting parasitic mushrooms, Kingler a fiddler crab with one oversized, powerful nipper claw."),
+  ("NIPPERS",3,"trait:pincers",["Paras","Kingler","Pinsir"],"Paras, Kingler and Pinsir all wield big pincer claws -- Paras a crab's little nippers, Kingler one oversized fiddler-crab claw, and Pinsir a pair of gripping horn-pincers."),
   ("MOXIE",5,"ability:moxie",["Gyarados","Pinsir"],"Gyarados and Pinsir are the only two original Pokemon that can have the Ability Moxie, which raises their Attack every time they knock out an opposing Pokemon."),
   ("SIMIAN",4,"arch:primate",["Machamp","Primeape"],"Machamp and Primeape are both built as powerful primates -- Machamp a four-armed wrestler, Primeape a furious, ever-angry monkey."),
   ("SLURP",2,"sprite:tongue",["Lickitung"],"Lickitung's entire gimmick is its absurdly long, prehensile tongue, which it uses to lick and taste everything it touches."),
@@ -509,7 +518,7 @@ board("2026-10-17","gen1","Brutal",[
   ("SPRINTER",5,"stat:speed",["Electrode","Jolteon","Dugtrio","Alakazam"],"Electrode, Jolteon, Dugtrio and Alakazam are among the fastest Pokemon from the original 151, each built around a blistering base Speed stat."),
   ("MASTERMIND",5,"stat:special-attack",["Alakazam","Gengar","Exeggutor","Jolteon"],"Alakazam, Gengar, Exeggutor and Jolteon all carry a formidable Special Attack stat, among the sharpest minds of the original 151."),
   ("FLASH-FIRE",4,"ability:flash-fire",["Growlithe","Ninetales","Ponyta"],"Growlithe, Ninetales and Ponyta can all have the Ability Flash Fire, which lets them shrug off a Fire-type hit completely and turn it into a power boost instead."),
-  ("AMBER",1,"colour:yellow",["Ponyta","Exeggutor","Jolteon","Ninetales"],"Ponyta, Exeggutor, Jolteon and Ninetales are all predominantly yellow-coloured Pokemon."),
+  ("YELLOW",1,"colour:yellow",["Ponyta","Exeggutor","Jolteon","Ninetales"],"Ponyta, Exeggutor, Jolteon and Ninetales are all predominantly yellow-coloured Pokemon."),
 ], exclude=["Flareon","Rapidash","Arcanine","Vulpix"])
 board("2026-10-17","mixed","Brutal",[
   ("BLISTERING",5,"stat:speed",["Regieleki","Ninjask","Accelgor","Zeraora"],"Regieleki, Ninjask, Accelgor and Zeraora are among the fastest Pokemon ever recorded, each carrying an extraordinary base Speed stat."),
@@ -521,8 +530,8 @@ board("2026-10-17","mixed","Brutal",[
 # ===== 10-18 Sun : EVIL (gap fill) =====
 board("2026-10-18","gen1","Evil",[
   ("VELOCITY",5,"stat:speed",["Mewtwo","Persian","Dodrio","Tauros"],"Mewtwo, Persian, Dodrio and Tauros are all built for speed, each carrying one of the sharpest base Speed stats among the original 151."),
-  ("PRODIGY",5,"stat:special-attack",["Mewtwo","Zapdos","Moltres"],"Mewtwo, Zapdos and Moltres are three of the sharpest special attackers among the original 151, each carrying an exceptional Special Attack stat."),
-  ("BASTION",4,"ability:sturdy",["Onix"],"Onix can have the Ability Sturdy, guaranteeing it survives any hit that would otherwise knock it out from full HP -- backed up by the single highest Defense stat of the original 151."),
+  ("MASTER-BALL",4,"lore:master-ball",["Mewtwo","Zapdos","Moltres"],"Mewtwo, Zapdos and Moltres are the prize legendaries of Kanto -- the Pokemon you'd save your single, never-fail Master Ball for."),
+  ("STURDY",4,"ability:sturdy",["Onix"],"Onix can have the Ability Sturdy, guaranteeing it survives any hit that would otherwise knock it out from full HP -- backed up by the single highest Defense stat of the original 151."),
   ("WATER-ABSORB",5,"ability:water-absorb",["Lapras","Vaporeon"],"Lapras and Vaporeon can both have the Ability Water Absorb, which heals them whenever they're struck by a Water-type move instead of taking damage."),
   ("FEATHERED",3,"arch:bird",["Dodrio","Zapdos","Moltres"],"Dodrio, Zapdos and Moltres are all birds at heart -- Dodrio a flightless three-headed ratite, Zapdos and Moltres legendary birds of thunder and flame."),
 ], exclude=["Geodude","Golem","Graveler","Magnemite","Magneton","Poliwag","Poliwhirl","Poliwrath","Articuno","Doduo","Farfetch'd","Fearow","Pidgeot","Pidgeotto","Pidgey","Spearow"])

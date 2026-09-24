@@ -3923,40 +3923,40 @@
     "clues": [
       {
         "m": [
-          "Toxel",
-          "Espeon"
+          "Glalie",
+          "Excadrill"
         ],
         "n": 2,
         "cat": 1,
-        "word": "PURPLE"
+        "word": "GRAY"
       },
       {
         "m": [
-          "Maschiff",
-          "Delcatty"
+          "Clauncher",
+          "Crawdaunt"
         ],
         "n": 2,
         "cat": 2,
-        "word": "COLLAR-FUR"
+        "word": "PINCERS"
       },
       {
         "m": [
-          "Aromatisse",
-          "Orthworm",
-          "Milotic"
-        ],
-        "n": 3,
-        "cat": 1,
-        "word": "PINK"
-      },
-      {
-        "m": [
-          "Chi-Yu",
-          "Pyroar"
+          "Darumaka",
+          "Delphox"
         ],
         "n": 2,
         "cat": 1,
         "word": "FIRE"
+      },
+      {
+        "m": [
+          "Cacnea",
+          "Axew",
+          "Cradily"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "GREEN"
       }
     ]
   },
@@ -4147,9 +4147,10 @@
       {
         "m": [
           "Paras",
-          "Kingler"
+          "Kingler",
+          "Pinsir"
         ],
-        "n": 2,
+        "n": 3,
         "cat": 3,
         "word": "NIPPERS"
       },
@@ -4385,7 +4386,7 @@
         ],
         "n": 4,
         "cat": 1,
-        "word": "AMBER"
+        "word": "YELLOW"
       }
     ]
   },
@@ -4468,8 +4469,8 @@
           "Zapdos"
         ],
         "n": 3,
-        "cat": 5,
-        "word": "PRODIGY"
+        "cat": 4,
+        "word": "MASTER-BALL"
       },
       {
         "m": [
@@ -4486,7 +4487,7 @@
         ],
         "n": 1,
         "cat": 4,
-        "word": "BASTION"
+        "word": "STURDY"
       }
     ]
   },
