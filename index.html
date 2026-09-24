@@ -409,11 +409,20 @@
     <div class="qa-wrap">
       <div class="qa-header">
         <div>
-          <div class="qa-title">QA overview</div>
-          <div class="qa-sub">Upcoming daily boards. Tap a blue box to start testing.</div>
+          <div class="qa-title">QA dashboard</div>
+          <div class="qa-sub">Test boards, moderate comments and check how the site's doing.</div>
         </div>
         <button class="btn btn-ghost btn-mini" id="qa-home-btn2">Home</button>
       </div>
+
+      <nav class="qa-nav" aria-label="QA sections">
+        <button class="qa-nav-btn" data-target="qa-sec-boards">🧪 Test upcoming boards <span class="qa-nav-badge hidden" id="qa-badge-boards"></span></button>
+        <button class="qa-nav-btn" data-target="qa-comments">💬 Check comments <span class="qa-nav-badge hidden" id="qa-badge-comments"></span></button>
+        <button class="qa-nav-btn" data-target="qa-stats">📊 Usage stats</button>
+      </nav>
+
+      <div class="qa-sec-title" id="qa-sec-boards">Upcoming boards</div>
+      <div class="qa-sub qa-sec-sub">Tap a blue box to start testing.</div>
       <div class="qa-legend">
         <span><i class="qa-key qa-blue"></i> To test</span>
         <span><i class="qa-key qa-green"></i> Tested – OK</span>

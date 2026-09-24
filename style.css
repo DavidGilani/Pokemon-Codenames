@@ -1114,3 +1114,23 @@ a { color: var(--accent); }
 .qa-cmt-body { font-size: 14px; margin: 5px 0 7px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .qa-cmt-actions { display: flex; gap: 6px; }
 .dc-form-row .btn { flex: none; width: auto; }
+
+/* ---- QA dashboard navigation ---- */
+.qa-nav {
+  position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin: 14px 0 22px; padding: 10px 0; background: rgba(18, 21, 31, 0.88); backdrop-filter: blur(6px);
+}
+.qa-nav-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  background: var(--panel); border: 1px solid var(--panel-border); border-radius: 12px;
+  color: var(--text); font: inherit; font-size: 13px; font-weight: 600; line-height: 1.25;
+  padding: 12px 8px; cursor: pointer; text-align: center;
+}
+.qa-nav-btn:hover { border-color: var(--accent); }
+.qa-nav-badge {
+  font-size: 11px; font-weight: 600; color: #12151f; background: var(--accent);
+  border-radius: 999px; padding: 1px 8px;
+}
+.qa-sec-title, #qa-comments, #qa-stats { scroll-margin-top: 96px; }
+.qa-sec-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+.qa-sec-sub { margin-bottom: 10px; }

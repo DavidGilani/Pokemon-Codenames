@@ -1942,6 +1942,11 @@ function initDaily() {
   $("#coach-skip").addEventListener("click", endCoach);
   const qaBack = $("#daily-qa-back");
   if (qaBack) qaBack.addEventListener("click", () => showQaOverview());
+  // QA dashboard nav: jump to each section.
+  $all(".qa-nav-btn").forEach((b) => b.addEventListener("click", () => {
+    const t = document.getElementById(b.dataset.target);
+    if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+  }));
   const qaHome = $("#qa-home-btn2");
   if (qaHome) qaHome.addEventListener("click", () => {
     daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0;
@@ -2290,6 +2295,14 @@ async function showQaOverview() {
   loadQaStats();
 }
 
+// Small count badge on a QA nav button (hidden when zero).
+function _qaBadge(id, n, suffix) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = suffix ? `${n} ${suffix}` : String(n);
+  el.classList.toggle("hidden", !n);
+}
+
 // Owner comment moderation on the QA page (needs the secret QA link).
 async function loadQaComments() {
   const el = $("#qa-comments");
@@ -2306,6 +2319,7 @@ async function loadQaComments() {
     return;
   }
   const hidden = rows.filter((r) => r.status === "hidden").length;
+  _qaBadge("qa-badge-comments", hidden, "to review");
   const items = rows.map((r) => `<div class="qa-cmt ${r.status === "hidden" ? "qa-cmt-hidden" : ""}">
       <div class="qa-cmt-meta">${escapeHtml(r.puzzle_date)} · ${r.pool === "gen1" ? "Gen I" : "All-gens"} ·
         <strong>${escapeHtml(r.username)}</strong> · ${_cmtAgo(r.created_at)}
@@ -2443,7 +2457,8 @@ function renderQaOverview() {
   };
   const dates = [...byDate.keys()].sort();
   const blues = rows.filter((r) => r.status === "blue").length;
-  const sub = $(".qa-sub");
+  _qaBadge("qa-badge-boards", blues);
+  const sub = $(".qa-sec-sub");
   if (sub) sub.textContent = blues
     ? `${blues} board${blues === 1 ? "" : "s"} to test – tap a blue box to start (or a green/red box to view it).`
     : "All tested. Tap any green/red box to view that board.";
