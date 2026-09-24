@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-09-01 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-09-02 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 09-02 Wed : CHALLENGING =====
-board("2026-09-02","gen1","Challenging",[
-  ("POISON",1,"type:poison",["Zubat","Nidorina","Grimer"]),
-  ("WHISKERS",2,"sprite:whiskers",["Rattata","Meowth"]),
-  ("TWINKLE",3,"lore:star",["Staryu"]),
-  ("SHELL",2,"sprite:shell",["Cloyster","Wartortle"]),
-  ("MINDBENDER",3,"lore:teleport",["Alakazam"]),
-], exclude=["Golbat","Nidoqueen","Muk","Raticate","Persian","Starmie","Shellder","Blastoise","Kadabra","Ekans"])
-board("2026-09-02","mixed","Challenging",[
-  ("DARK",1,"type:dark",["Poochyena","Purrloin"]),
-  ("WEASEL",3,"arch:mustelid",["Furret","Zangoose"]),
-  ("AMPHIBIAN",3,"arch:frog",["Croagunk","Froakie"]),
-  ("WISP",4,"lore:willowisp",["Chandelure"]),
-  ("HORNS",2,"sprite:horns",["Skiddo","Bouffalant"]),
-], exclude=["Mightyena","Liepard","Sneasel","Weavile","Toxicroak","Greninja","Litwick","Lampent","Gogoat","Tauros"])
 
 # ===== 09-03 Thu : HARD =====
 board("2026-09-03","gen1","Hard",[
@@ -529,7 +513,7 @@ board("2026-10-17","gen1","Brutal",[
 ], exclude=["Flareon","Rapidash","Arcanine","Vulpix"])
 board("2026-10-17","mixed","Brutal",[
   ("BLISTERING",5,"stat:speed",["Regieleki","Ninjask","Accelgor","Zeraora"],"Regieleki, Ninjask, Accelgor and Zeraora are among the fastest Pokemon ever recorded, each carrying an extraordinary base Speed stat."),
-  ("OVERDRIVE",5,"stat:special-attack",["Xurkitree","Blacephalon","Zeraora"],"Xurkitree, Blacephalon and Zeraora all hit exceptionally hard on the special side, each carrying one of the highest Special Attack stats of its generation."),
+  ("SPECIAL",5,"stat:special-attack",["Xurkitree","Blacephalon","Zeraora"],"Xurkitree, Blacephalon and Zeraora all carry one of the highest Special Attack stats of their respective generations."),
   ("TOUGH-CLAWS",4,"ability:tough-claws",["Binacle","Perrserker"],"Binacle and Perrserker can both have the Ability Tough Claws, which boosts the power of any move that makes physical contact."),
   ("GOLDEN",1,"colour:yellow",["Regieleki","Ninjask","Zeraora","Raichu"],"Regieleki, Ninjask, Zeraora and Raichu are all predominantly yellow-coloured Pokemon."),
 ], exclude=["Barbaracle"])
