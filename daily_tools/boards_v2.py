@@ -3,41 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-09-02 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-09-04 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 09-03 Thu : HARD =====
-board("2026-09-03","gen1","Hard",[
-  ("WYVERN",4,"arch:dragon",["Dragonite","Charizard"]),
-  ("BEETLE",3,"arch:beetle",["Pinsir","Scyther"]),
-  ("FANGS",2,"sprite:fangs",["Arbok","Nidoking"]),
-  ("ROYALTY",4,"lore:royalty",["Nidoking","Nidoqueen"]),
-  ("CRAB",3,"arch:crab",["Kingler","Parasect"]),
-], exclude=["Dratini","Dragonair","Charmeleon","Heracross","Ekans","Nidorino","Nidorina","Krabby","Paras","Gyarados"])
-board("2026-09-03","mixed","Hard",[
-  ("GORGON",4,"myth:jellyfish",["Jellicent","Nihilego"]),
-  ("TURTLE",3,"arch:turtle",["Torkoal","Drednaw"]),
-  ("MOTH",3,"arch:moth",["Dustox","Volcarona"]),
-  ("SQUID",4,"arch:cephalopod",["Grapploct"]),
-  ("JAWS",2,"sprite:jaws",["Sharpedo","Mawile"]),
-], exclude=["Frillish","Tentacruel","Chewtle","Turtwig","Beautifly","Mothim","Malamar","Inkay","Carvanha","Mightyena","Guzzlord","Golbat","Carnivine","Crabrawler","Trevenant"])
-
-# ===== 09-04 Fri : HARD =====
-board("2026-09-04","gen1","Hard",[
-  ("SERPENT",3,"arch:serpent",["Ekans","Gyarados"]),
-  ("BIRD",3,"arch:bird",["Fearow","Doduo","Pidgeot"]),
-  ("VAMPIRE",4,"lore:vampire",["Golbat"]),
-  ("MANEATER",4,"based:flytrap",["Victreebel"]),
-  ("MANE",2,"sprite:mane",["Ninetales","Rapidash"]),
-], exclude=["Arbok","Onix","Dratini","Spearow","Pidgeotto","Zubat","Weepinbell","Bellsprout","Arcanine","Ponyta","Pidgey","Porygon","Farfetch'd","Dodrio"])
-board("2026-09-04","mixed","Hard",[
-  ("AUTOMATON",4,"arch:automaton",["Golett","Magearna"]),
-  ("CETACEAN",4,"arch:cetacean",["Wailmer","Kyogre"]),
-  ("SHARK",3,"arch:shark",["Gible","Frigibax"]),
-  ("WOLF",3,"arch:wolf",["Lycanroc","Zacian"]),
-  ("KEYS",2,"sprite:keys",["Klefki"]),
-], exclude=["Golurk","Klink","Klang","Klinklang","Bronzong","Beldum","Metang","Metagross","Wailord","Gabite","Garchomp","Arctibax","Baxcalibur","Rockruff","Zamazenta","Registeel"])
 
 # ===== 09-05 Sat : BRUTAL =====
 board("2026-09-05","gen1","Brutal",[
@@ -589,3 +557,17 @@ board("2026-10-21","mixed","Challenging",[
   ("SQUIRREL",3,"arch:squirrel",["Pachirisu","Emolga"],"Pachirisu and Emolga are both modelled on real squirrels -- Pachirisu a chubby ground squirrel, Emolga a gliding flying squirrel."),
   ("FLYTRAP",3,"arch:flytrap",["Carnivine"],"Carnivine is modelled directly on a Venus flytrap, snapping its jaw-like leaves shut on prey."),
 ], exclude=["Chimecho","Yanmega","Misdreavus","Mismagius","Gastly","Haunter","Gengar","Rotom","Froslass","Sableye","Banette"])
+
+# ===== 10-31 Sat : BRUTAL (Halloween holiday board, holiday_boards.md) =====
+board("2026-10-31","gen1","Brutal",[
+  ("POISON",1,"type:poison",["Gengar","Zubat","Weezing","Arbok"],"Gengar, Zubat, Weezing and Arbok are every Poison-type Pokemon on this board -- a fittingly toxic, unsettling crew for Halloween night."),
+  ("MYTH",5,"myth:legend",["Gengar","Drowzee","Jynx","Cubone","Marowak"],"Each carries a specific folklore or legend: Gengar's own name means 'doppelganger', a shadow-double said to bring death; Drowzee is based on the baku, a Japanese dream-eating spirit; Jynx blends an opera diva with the Yuki-onna snow spirit; and Cubone and Marowak both trace back to Lavender Town's grieving ghost-mother legend from the original games."),
+  ("DECEPTION",4,"lore:mimicry",["Mr. Mime","Arbok"],"Both survive by faking something they're not -- Mr. Mime (the Barrier Pokemon) mimes invisible walls into being, while Arbok's hood bears a menacing false-face pattern that bluffs predators into backing off."),
+  ("HUMAN-LIKE",5,"egg:humanlike",["Drowzee","Jynx","Mr. Mime"],"Drowzee, Jynx and Mr. Mime all belong to the Human-Like Egg Group -- the games' own classification for Pokemon built on a human or human-like silhouette."),
+], exclude=["Haunter","Gastly","Golbat","Koffing","Ekans","Hypno","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Hitmonlee","Hitmonchan","Electabuzz","Magmar","Ditto","Voltorb","Electrode","Arcanine","Clefable","Clefairy","Dragonair","Golduck","Golem","Grimer","Gyarados","Lapras","Magikarp","Meowth","Moltres","Ninetales","Paras","Parasect","Vulpix","Zapdos"])
+board("2026-10-31","mixed","Brutal",[
+  ("GHOST",1,"type:ghost",["Cofagrigus","Banette","Froslass","Rotom","Mimikyu","Trevenant"],"Every one of these is officially a Ghost-type Pokemon -- the classic Halloween type, drawn here from six different generations of spooky designs."),
+  ("OMEN",4,"lore:omen",["Absol","Murkrow"],"Both are explicitly tied to bad luck in their Pokedex lore: Absol is the 'Disaster Pokemon', wrongly blamed for the earthquakes and storms it merely senses coming, while Murkrow's crow-like look and cunning nature have long made trainers see it as a bird of ill omen."),
+  ("INSOMNIA",5,"ability:insomnia",["Banette","Murkrow","Ariados"],"Banette, Murkrow and Ariados all share the Ability Insomnia, which stops them from ever falling asleep -- fitting, since Banette is too busy plotting revenge, Murkrow too mischievous, and Ariados too busy guarding its web."),
+  ("MEGA",5,"group:mega",["Absol","Banette"],"Absol and Banette are two of the relatively small club of Pokemon with a Mega Evolution -- Mega Absol grows a huge curved horn and flowing white mane, while Mega Banette's zipper mouth splits into a jagged, screaming grin."),
+], exclude=["Yamask","Runerigus","Shuppet","Snorunt","Glalie","Phantump","Spinarak","Honchkrow","Capsakid","Delibird","Drowzee","Gourgeist","Hoothoot","Hypno","Noctowl","Pumpkaboo","Scovillain","Spidops","Tarountula","Terapagos","Venusaur","Charizard","Blastoise","Beedrill","Pidgeot","Alakazam","Slowbro","Gengar","Kangaskhan","Pinsir","Gyarados","Aerodactyl","Mewtwo","Ampharos","Steelix","Scizor","Heracross","Houndoom","Tyranitar","Sceptile","Blaziken","Swampert","Gardevoir","Sableye","Mawile","Aggron","Medicham","Manectric","Sharpedo","Camerupt","Altaria","Salamence","Metagross","Latias","Latios","Rayquaza","Lopunny","Gallade","Audino","Diancie","Garchomp","Lucario","Abomasnow"])
