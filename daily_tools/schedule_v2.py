@@ -102,7 +102,7 @@ def hint_for(nm, names, used):
     for a in r["arch"]:
         cands.append((a.upper(),3, f"{nm} is based on {art(sub(a))} {sub(a)}."))
     for b in r["based_on"]:
-        for part in re.split(r"[\(/,]",b):
+        for part in re.split(r"[\(\)/,]",b):
             w=part.strip().upper().replace(" ","-")
             if w: cands.append((w,3, f"{nm} is based on the {sub(w)}."))
     if r.get("genus"):

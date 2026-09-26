@@ -4592,28 +4592,88 @@
     "pool": "mixed",
     "clues": [
       {
-        "word": "SQUIRREL",
+        "word": "HORSE",
         "n": 2,
         "cat": 3,
         "m": [
-          "Emolga",
-          "Pachirisu"
+          "Mudsdale",
+          "Rapidash"
         ]
       },
       {
-        "word": "BRANCHES",
+        "word": "RABBIT",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Buneary",
+          "Lopunny"
+        ]
+      },
+      {
+        "word": "COGS",
         "n": 1,
         "cat": 2,
         "m": [
-          "Corsola"
+          "Klink"
         ]
       },
       {
-        "word": "FLYTRAP",
-        "n": 1,
+        "word": "TURTLE",
+        "n": 2,
         "cat": 3,
         "m": [
-          "Carnivine"
+          "Tirtouga",
+          "Torkoal"
+        ]
+      },
+      {
+        "word": "FAIRY",
+        "n": 2,
+        "cat": 1,
+        "m": [
+          "Spritzee",
+          "Swirlix"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-22",
+    "pool": "mixed",
+    "clues": [
+      {
+        "word": "GATOR",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Fuecoco",
+          "Sandile"
+        ]
+      },
+      {
+        "word": "BEETLE",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Vikavolt",
+          "Heracross"
+        ]
+      },
+      {
+        "word": "BLADE",
+        "n": 1,
+        "cat": 2,
+        "m": [
+          "Aegislash"
+        ]
+      },
+      {
+        "word": "CRUSTACEAN",
+        "n": 2,
+        "cat": 4,
+        "m": [
+          "Clawitzer",
+          "Klawf"
         ]
       },
       {
@@ -4623,16 +4683,6 @@
         "m": [
           "Weavile",
           "Sneasel"
-        ]
-      },
-      {
-        "word": "GHOST",
-        "n": 3,
-        "cat": 1,
-        "m": [
-          "Duskull",
-          "Spiritomb",
-          "Drifloon"
         ]
       }
     ]

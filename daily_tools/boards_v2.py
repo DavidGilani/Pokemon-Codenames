@@ -551,12 +551,21 @@ board("2026-10-21","gen1","Challenging",[
   ("PLANT",3,"arch:plant",["Tangela","Weepinbell"],"Tangela and Weepinbell are both modelled on plants -- Tangela a tangled mass of blue vines, Weepinbell a carnivorous pitcher plant."),
 ], exclude=["Seaking","Magmar","Gloom","Pidgeot","Machop","Vileplume","Oddish","Bellsprout","Exeggcute","Zubat","Golbat","Aerodactyl","Marowak","Scyther","Butterfree","Beedrill","Pidgeotto","Charmeleon","Ninetales","Golem","Zapdos","Moltres"])
 board("2026-10-21","mixed","Challenging",[
-  ("GHOST",1,"type:ghost",["Duskull","Drifloon","Spiritomb"],"Duskull, Drifloon and Spiritomb are all Ghost-type Pokémon."),
-  ("BRANCHES",2,"sprite:coral-branches",["Corsola"],"Look closely at the sprite and you'll spot it -- Corsola's whole body is made of branching pink coral."),
-  ("MUSTELID",4,"arch:mustelid",["Sneasel","Weavile"],"Sneasel and Weavile are both modelled on real mustelids -- sharp-clawed, weasel-like predators."),
-  ("SQUIRREL",3,"arch:squirrel",["Pachirisu","Emolga"],"Pachirisu and Emolga are both modelled on real squirrels -- Pachirisu a chubby ground squirrel, Emolga a gliding flying squirrel."),
-  ("FLYTRAP",3,"arch:flytrap",["Carnivine"],"Carnivine is modelled directly on a Venus flytrap, snapping its jaw-like leaves shut on prey."),
-], exclude=["Chimecho","Yanmega","Misdreavus","Mismagius","Gastly","Haunter","Gengar","Rotom","Froslass","Sableye","Banette"])
+  ("FAIRY",1,"type:fairy",["Spritzee","Swirlix"],"Spritzee and Swirlix are the board's only Fairy-types -- a sweet-scented perfume bird and a cotton-candy pup."),
+  ("RABBIT",3,"arch:rabbit",["Buneary","Lopunny"],"Buneary and its evolution Lopunny are rabbits -- Buneary with its tightly rolled ears, Lopunny with the long elegant ones it unrolls to fight."),
+  ("TURTLE",3,"arch:turtle",["Torkoal","Tirtouga"],"Torkoal and Tirtouga are both turtles -- Torkoal a coal-burning tortoise, Tirtouga a prehistoric sea turtle revived from a fossil."),
+  ("HORSE",3,"arch:horse",["Rapidash","Mudsdale"],"Rapidash and Mudsdale are both horses -- Rapidash a blazing unicorn-steed, Mudsdale a powerful heavy draft horse."),
+  ("COGS",2,"sprite:gears",["Klink"],"Look closely at the sprite -- Klink is a pair of interlocking cogs that spin against each other to generate energy."),
+], exclude=["Cutiefly","Ribombee","Comfey","Flabébé","Floette","Florges","Bunnelby","Diggersby","Azumarill","Audino","Nidoran♀","Nidoran♂","Nidorina","Nidorino","Raboot","Scorbunny","Cinderace","Wigglytuff","Whismur","Squirtle","Wartortle","Blastoise","Turtwig","Grotle","Torterra","Chewtle","Drednaw","Carracosta","Turtonator","Shuckle","Ponyta","Blitzle","Zebstrika","Mudbray","Keldeo","Glastrier","Spectrier","Klang","Klinklang"])
+
+# ===== 10-22 Thu : HARD (mustelid board moved here from 10-21 per QA feedback) =====
+board("2026-10-22","mixed","Hard",[
+  ("MUSTELID",4,"arch:mustelid",["Sneasel","Weavile"],"Sneasel and its evolution Weavile are the board's two mustelids -- sleek, sharp-clawed members of the weasel family (Weavile even hunts in coordinated packs)."),
+  ("CRUSTACEAN",4,"arch:crustacean",["Klawf","Clawitzer"],"Klawf and Clawitzer are crustaceans from different branches -- Klawf an ambush crab, Clawitzer a pistol shrimp whose oversized claw fires a blast of water."),
+  ("BEETLE",3,"arch:beetle",["Heracross","Vikavolt"],"Heracross and Vikavolt are both beetles -- Heracross a horned Hercules beetle, Vikavolt a stag beetle whose jaws fire an electric railgun."),
+  ("GATOR",3,"arch:crocodile",["Sandile","Fuecoco"],"Sandile and Fuecoco are both crocodiles -- Sandile a desert croc that ambushes from under the sand, Fuecoco a laid-back fire croc."),
+  ("BLADE",2,"sprite:blade",["Aegislash"],"Look closely at the sprite -- Aegislash is a living sword, its body the blade and one arm a shield."),
+], exclude=["Buizel","Dewott","Floatzel","Furret","Mienfoo","Mienshao","Oshawott","Samurott","Sentret","Sneasler","Zangoose","Barbaracle","Binacle","Clauncher","Corphish","Crabominable","Crabrawler","Crawdaunt","Crustle","Dwebble","Golisopod","Kabuto","Kabutops","Kingler","Krabby","Paras","Parasect","Remoraid","Shuckle","Wimpod","Grubbin","Karrablast","Ledian","Ledyba","Orbeetle","Pinsir","Rabsca","Rellor","Crocalor","Croconaw","Feraligatr","Krokorok","Krookodile","Skeledirge","Totodile","Baxcalibur","Bisharp","Ceruledge","Chien-Pao","Dartrix","Doublade","Gallade","Grovyle","Honedge","Kartana","Kingambit","Lurantis","Pawniard","Sceptile","Seviper","Skarmory","Virizion","Zacian"])
 
 # ===== 10-31 Sat : BRUTAL (Halloween holiday board, holiday_boards.md) =====
 board("2026-10-31","gen1","Brutal",[
