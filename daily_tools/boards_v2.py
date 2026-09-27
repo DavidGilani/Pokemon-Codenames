@@ -3,25 +3,9 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# (2026-08-22 .. 2026-09-04 gen1/mixed boards removed here: long since live
+# (2026-08-22 .. 2026-09-05 gen1/mixed boards removed here: long since live
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
-
-# ===== 09-05 Sat : BRUTAL =====
-board("2026-09-05","gen1","Brutal",[
-  ("BRAWLER",4,"lore:brawl",["Machamp","Hitmonlee","Primeape"]),
-  ("OOZE",3,"arch:amorphous",["Weezing","Muk"]),
-  ("CURSE",5,"lore:curse",["Gengar","Marowak"]),
-  ("VENOM",4,"lore:poison-gas",["Weezing","Gengar"]),
-  ("TELEPATH",3,"lore:mind",["Slowbro","Starmie"]),
-], exclude=["Machoke","Machop","Hitmonchan","Mankey","Grimer","Koffing","Haunter","Gastly","Cubone","Slowpoke"])
-board("2026-09-05","mixed","Brutal",[
-  ("GENIE",5,"arch:genie",["Tornadus","Thundurus","Landorus"]),
-  ("DEITY",5,"arch:deity",["Tapu Koko","Tapu Bulu"]),
-  ("UFO",4,"arch:alien",["Elgyem","Guzzlord"]),
-  ("MYTHIC",3,"lore:mythical",["Celebi","Jirachi"]),
-  ("COSMIC",3,"lore:cosmic",["Elgyem","Jirachi"]),
-], exclude=["Enamorus","Tapu Lele","Tapu Fini","Beheeyem","Necrozma","Mew","Uxie","Mesprit","Azelf","Deoxys"])
 
 # ===== 09-06 Sun : EVIL =====
 # New Evil gen1 (the too-easy fossil/legendary board moved to 09-17, below).
