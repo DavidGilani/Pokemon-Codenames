@@ -1,101 +1,5 @@
 [
   {
-    "date": "2026-09-06",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Mewtwo",
-          "Magneton",
-          "Porygon"
-        ],
-        "n": 3,
-        "cat": 5,
-        "word": "ARTIFICIAL"
-      },
-      {
-        "m": [
-          "Mewtwo",
-          "Mew"
-        ],
-        "n": 2,
-        "cat": 5,
-        "word": "CLONE"
-      },
-      {
-        "m": [
-          "Omanyte",
-          "Shellder"
-        ],
-        "n": 2,
-        "cat": 4,
-        "word": "MOLLUSC"
-      },
-      {
-        "m": [
-          "Vulpix",
-          "Growlithe"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "CANINE"
-      },
-      {
-        "m": [
-          "Ditto",
-          "Mew"
-        ],
-        "n": 2,
-        "cat": 5,
-        "word": "TRANSFORM"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-06",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Eiscue",
-          "Arctozolt"
-        ],
-        "n": 2,
-        "cat": 4,
-        "word": "FROZEN"
-      },
-      {
-        "m": [
-          "Polteageist",
-          "Sinistcha"
-        ],
-        "n": 2,
-        "cat": 5,
-        "word": "POSSESSED"
-      },
-      {
-        "m": [
-          "Tirtouga",
-          "Dracovish",
-          "Archen",
-          "Arctozolt"
-        ],
-        "n": 4,
-        "cat": 5,
-        "word": "REVENANT"
-      },
-      {
-        "m": [
-          "Zoroark",
-          "Thievul"
-        ],
-        "n": 2,
-        "cat": 4,
-        "word": "ROBIN-HOOD"
-      }
-    ]
-  },
-  {
     "date": "2026-09-07",
     "pool": "gen1",
     "clues": [
@@ -4354,8 +4258,8 @@
       },
       {
         "m": [
-          "Nidoran\u2642",
-          "Nidoran\u2640"
+          "Nidoran♂",
+          "Nidoran♀"
         ],
         "n": 2,
         "cat": 2,
