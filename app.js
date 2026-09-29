@@ -2355,9 +2355,12 @@ async function loadQaStats() {
   if (!el) return;
   el.innerHTML = `<div class="qa-stats-title">Usage stats</div><div class="qa-stats-loading">Loading…</div>`;
   try {
-    const { data, error } = await sb.rpc("daily_stats");
+    const [{ data, error }, comp] = await Promise.all([
+      sb.rpc("daily_stats"),
+      Promise.resolve(sb.rpc("daily_completion_stats")).catch(() => ({})),
+    ]);
     if (error) throw error;
-    renderQaStats(data || {});
+    renderQaStats(data || {}, (comp && comp.data) || null);
   } catch (err) {
     console.error(err);
     el.innerHTML = `<div class="qa-stats-title">Usage stats</div><div class="qa-stats-loading">Couldn't load stats.</div>`;
@@ -2371,7 +2374,20 @@ const _RATING_LABEL = {
 };
 const _RATING_ORDER = ["way_too_easy", "slightly_easy", "just_right", "slightly_hard", "way_too_hard"];
 
-function renderQaStats(s) {
+// "Completions" table: people who finished each pool's daily.
+function _qaCompletionsHtml(c) {
+  if (!c) return "";
+  const row = (label, r) => r ? `<tr><td>${label}</td><td>${r.gen1}</td><td>${r.mixed}</td><td><strong>${r.total}</strong></td></tr>` : "";
+  const fmt = (d) => d ? new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" }) : "–";
+  return `
+    <div class="qa-stats-sec">Completions</div>
+    <table class="qa-stats-tbl"><thead><tr><th></th><th>Gen I</th><th>All-gens</th><th>Total</th></tr></thead><tbody>
+      ${row("Today", c.today)}${row("Yesterday", c.yesterday)}${row("Daily average", c.average)}${row("Best day", c.best)}
+    </tbody></table>
+    <div class="qa-stats-note">Best day was ${fmt(c.best && c.best.date)}. Average covers full days since ${fmt(c.since)}. Total counts each person once, even if they finished both boards.</div>`;
+}
+
+function renderQaStats(s, comp) {
   const el = $("#qa-stats");
   if (!el) return;
   const esc = (x) => escapeHtml(String(x));
@@ -2408,6 +2424,7 @@ function renderQaStats(s) {
   el.innerHTML = `
     <div class="qa-stats-title">Usage stats</div>
     <div class="qa-stats-note">Anonymous per-device counts. This month is partial. Some activity is your own.</div>
+    ${_qaCompletionsHtml(comp)}
 
     <div class="qa-stats-sec">By month</div>
     <table class="qa-stats-tbl"><thead><tr>
