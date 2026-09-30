@@ -15,17 +15,6 @@ board("2026-09-17","gen1","Hard",[
   ("VOLCANO",3,"lore:volcano",["Moltres","Magmar"]),
 ], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix","Rhyhorn","Rhydon","Nidoking"])
 
-# ===== 09-08 Tue : MEDIUM =====
-# The "way too easy" Sep-04 board, re-tiered to a legit Medium (two type
-# anchors: FIRE=Tepig, NORMAL=Lechonk) so the difficulty badge reads Medium.
-board("2026-09-08","mixed","Medium",[
-  ("HALLOWEEN",4,"based:pumpkin",["Cacturne","Gourgeist"]),
-  ("PRIMATE",3,"arch:monkey",["Grookey","Pansage","Panpour"]),
-  ("PINCERS",2,"sprite:claws",["Crawdaunt","Klawf"]),
-  ("FIRE",1,"type:fire",["Tepig"]),
-  ("NORMAL",1,"type:normal",["Lechonk"]),
-], exclude=["Simisage","Simipour","Chimchar","Monferno","Infernape","Aipom","Ambipom","Oranguru","Passimian","Mankey","Primeape","Thwackey","Rillaboom","Pumpkaboo","Cacnea","Sandygast","Palossand","Krabby","Kingler","Corphish","Crabrawler","Crabominable","Clauncher","Pignite","Emboar","Oinkologne","Trevenant","Phantump","Gliscor","Gligar","Skorupi","Drapion","Weavile","Sneasel","Drifloon","Drifblim","Greavard","Houndstone","Mimikyu","Banette","Misdreavus","Mismagius","Sableye","Chandelure","Kleavor"])
-
 # ===== FEEDBACK FIX 2026-09-18 gen1 : removed 3-dragon WYVERN clue (too many
 # dragons in one day) and the BIPEDAL/humanoid clue's neutral conflict
 # (Magmar is also arch:humanoid, Charmeleon flagged by QA too). =====
@@ -545,3 +534,129 @@ board("2026-10-31","mixed","Brutal",[
   ("INSOMNIA",5,"ability:insomnia",["Banette","Murkrow","Ariados"],"Banette, Murkrow and Ariados all share the Ability Insomnia, which stops them from ever falling asleep -- fitting, since Banette is too busy plotting revenge, Murkrow too mischievous, and Ariados too busy guarding its web."),
   ("MEGA",5,"group:mega",["Absol","Banette"],"Absol and Banette are two of the relatively small club of Pokemon with a Mega Evolution -- Mega Absol grows a huge curved horn and flowing white mane, while Mega Banette's zipper mouth splits into a jagged, screaming grin."),
 ], exclude=["Yamask","Runerigus","Shuppet","Snorunt","Glalie","Phantump","Spinarak","Honchkrow","Capsakid","Delibird","Drowzee","Gourgeist","Hoothoot","Hypno","Noctowl","Pumpkaboo","Scovillain","Spidops","Tarountula","Terapagos","Venusaur","Charizard","Blastoise","Beedrill","Pidgeot","Alakazam","Slowbro","Gengar","Kangaskhan","Pinsir","Gyarados","Aerodactyl","Mewtwo","Ampharos","Steelix","Scizor","Heracross","Houndoom","Tyranitar","Sceptile","Blaziken","Swampert","Gardevoir","Sableye","Mawile","Aggron","Medicham","Manectric","Sharpedo","Camerupt","Altaria","Salamence","Metagross","Latias","Latios","Rayquaza","Lopunny","Gallade","Audino","Diancie","Garchomp","Lucario","Abomasnow"])
+
+# ===== 4-week gap fill (nightly 2026-09-30): 10-22 .. 10-28 =====
+def ex(*tags, extra=()):
+    """Neutral-exclusion list: every species whose fact-bank record matches any tag (kind:value)."""
+    out = set(extra)
+    for nm, r in FACTS.items():
+        for t in tags:
+            k, _, v = t.partition(":")
+            if (k == "arch" and v in r["arch"]) or (k == "sprite" and v in r["sprite"]) or \
+               (k == "ability" and v in r["abilities"]) or (k == "role" and v in r.get("role", [])) or \
+               (k == "type" and v in r["types"]) or (k == "trainer" and any(x.startswith(v) for x in r["trainer"])):
+                out.add(nm)
+    return sorted(out)
+
+# ===== 10-22 Thu : HARD (gen1; mixed board already live) =====
+board("2026-10-22","gen1","Hard",[
+  ("SWIFT-SWIM",5,"ability:Swift Swim",["Omanyte","Goldeen","Psyduck","Poliwag"],"Omanyte, Goldeen, Psyduck and Poliwag all have the Ability Swift Swim, which doubles their Speed when it's raining."),
+  ("INTIMIDATE",5,"ability:Intimidate",["Arcanine","Gyarados","Arbok"],"Arcanine, Gyarados and Arbok all have the Ability Intimidate, which lowers the Attack of every opposing Pokémon the moment they enter battle."),
+  ("CLAM",3,"arch:clam",["Shellder"],"Shellder is a clam -- a bivalve whose two shells snap shut around a soft, tongue-like body."),
+  ("PENDULUM",2,"sprite:pendulum",["Hypno"],"Hypno swings a pendulum in one hand to hypnotise foes -- look for it in the sprite."),
+], exclude=ex("ability:Swift Swim","ability:Intimidate","arch:clam","arch:bivalve","arch:mollusc","arch:tapir","sprite:pendulum"))
+
+# ===== 10-23 Fri : HARD =====
+board("2026-10-23","gen1","Hard",[
+  ("BRUNO",3,"trainer:Bruno",["Machamp","Hitmonchan"],"Machamp and Hitmonchan are on Elite Four member Bruno's fighting team (alongside Onix and Hitmonlee)."),
+  ("MEGA",5,"role:mega",["Beedrill","Pinsir","Blastoise","Alakazam"],"Beedrill, Pinsir, Blastoise and Alakazam all have a Mega Evolution -- Mega Beedrill gains huge stingers, Mega Pinsir wings, Mega Blastoise a double cannon and Mega Alakazam a third spoon."),
+  ("ERIKA",3,"trainer:Erika",["Victreebel","Vileplume"],"Victreebel and Vileplume are on Celadon Gym leader Erika's grass team (with Tangela, Gloom and Weepinbell)."),
+  ("CNIDARIAN",4,"arch:cnidarian",["Tentacool"],"Tentacool is a cnidarian -- the group that includes jellyfish, sea anemones and corals -- with a glassy bell and stinging tentacles."),
+], exclude=ex("trainer:Bruno","role:mega","trainer:Erika","arch:cnidarian","arch:jellyfish"))
+
+# ===== 10-24 Sat : BRUTAL =====
+board("2026-10-24","gen1","Brutal",[
+  ("OBLIVIOUS",5,"ability:Oblivious",["Slowbro","Lickitung"],"Slowbro and Lickitung both have the Ability Oblivious -- they're so dopey and distracted that they're immune to Attract and Taunt."),
+  ("LORELEI",3,"trainer:Lorelei",["Slowbro","Cloyster","Lapras"],"Lorelei, the Kanto Elite Four's ice specialist, sends out Slowbro, Cloyster and Lapras (plus Dewgong and Jynx)."),
+  ("SHELL-ARMOR",5,"ability:Shell Armor",["Cloyster","Lapras","Omastar","Krabby"],"Cloyster, Lapras, Omastar and Krabby all have the Ability Shell Armor, whose hard shell makes them immune to critical hits."),
+  ("RAPTOR",4,"arch:raptor",["Pidgeotto","Fearow"],"Pidgeotto and Fearow are raptors -- birds of prey built on the hawk and eagle, with sharp talons and a hunter's eye."),
+  ("DOG",3,"arch:dog",["Growlithe"],"Growlithe is a loyal puppy, based on a real dog (with a hint of the Chinese guardian lion)."),
+], exclude=ex("ability:Oblivious","trainer:Lorelei","ability:Shell Armor","arch:raptor","arch:dog","arch:canine","arch:fox",extra=["Slowpoke","Kingler","Shellder"]))
+
+# ===== 10-25 Sun : EVIL =====
+board("2026-10-25","gen1","Evil",[
+  ("UNNERVE",5,"ability:Unnerve",["Aerodactyl","Mewtwo","Meowth"],"Aerodactyl, Mewtwo and Meowth all have the Ability Unnerve, which spooks the opposing side so much they can't eat their held Berries."),
+  ("PRESSURE",5,"ability:Pressure",["Aerodactyl","Mewtwo","Articuno"],"Aerodactyl, Mewtwo and Articuno all have the Ability Pressure, which makes foes burn extra PP every time they attack."),
+  ("INNER-FOCUS",5,"ability:Inner Focus",["Dragonite","Abra"],"Dragonite and Abra both have the Ability Inner Focus, which stops them from flinching, however hard they're hit."),
+  ("ROYALTY",4,"lore:royalty",["Nidoking","Nidoqueen"],"Their names are royal titles -- Nidoking and Nidoqueen are the king and queen forms of the male and female Nidoran lines."),
+  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is a mole -- it lives underground and only ever pokes its head out of the soil."),
+], exclude=ex("ability:Unnerve","ability:Pressure","ability:Inner Focus","arch:mole"))
+
+# ===== 10-26 Mon : EASY =====
+board("2026-10-26","gen1","Easy",[
+  ("WATER",1,"type:water",["Squirtle","Seaking","Kingler","Vaporeon"],"Squirtle, Seaking, Kingler and Vaporeon are all Water-type Pokémon."),
+  ("GROUND",1,"type:ground",["Sandshrew","Rhydon"],"Sandshrew and Rhydon are both Ground-type Pokémon."),
+  ("STEEL",1,"type:steel",["Magnemite"],"Magnemite is a Steel-type Pokémon (Electric/Steel)."),
+  ("MOUSE",3,"arch:mouse",["Raichu"],"Raichu is an electric mouse -- the evolved form of Pikachu."),
+  ("MANTIS",3,"arch:mantis",["Scyther"],"Scyther is a praying mantis, with a pair of razor-sharp scythes for arms."),
+], exclude=ex("arch:mouse","arch:mantis","arch:rat","arch:rodent"))
+
+# ===== 10-27 Tue : MEDIUM =====
+board("2026-10-27","gen1","Medium",[
+  ("FIGHTING",1,"type:fighting",["Mankey","Machoke","Hitmonlee"],"Mankey, Machoke and Hitmonlee are all Fighting-type Pokémon."),
+  ("PSYCHIC",1,"type:psychic",["Kadabra","Slowpoke","Starmie"],"Kadabra, Slowpoke and Starmie are all Psychic-type Pokémon (Slowpoke and Starmie pair it with Water)."),
+  ("BULL",3,"arch:bull",["Tauros"],"Tauros is a bull -- it lowers its horned head and charges, lashing itself with its three tails."),
+  ("PLATYPUS",4,"arch:platypus",["Golduck"],"Golduck is partly modelled on the platypus (with a dash of the Japanese water-spirit kappa) -- webbed limbs and a duck-bill face."),
+  ("CAT",3,"arch:cat",["Persian"],"Persian is a cat -- a sleek, Siamese-style feline with a jewel on its forehead."),
+], exclude=ex("arch:bull","arch:bovine","arch:platypus","arch:cat","arch:feline",extra=["Psyduck","Kingler","Miltank","Meowth"]))
+
+# ===== 10-28 Wed : CHALLENGING =====
+board("2026-10-28","gen1","Challenging",[
+  ("FIRE",1,"type:fire",["Vulpix","Ponyta","Moltres"],"Vulpix, Ponyta and Moltres are all Fire-type Pokémon."),
+  ("HEADS",2,"sprite:many-heads",["Dugtrio","Dodrio","Exeggutor"],"Dugtrio, Dodrio and Exeggutor are each a cluster of several heads -- count them on the sprites."),
+  ("ARMADILLO",4,"arch:armadillo",["Sandslash"],"Sandslash is armadillo- and pangolin-like -- it rolls into a spiny ball of armour when threatened."),
+  ("SNAKE",3,"arch:snake",["Ekans"],"Ekans is a snake -- its name is 'snake' spelled backwards."),
+  ("FROG",3,"arch:frog",["Poliwhirl"],"Poliwhirl is a tadpole-turned-frog -- the swirl on its belly is its coiled intestines showing through its skin."),
+], exclude=ex("sprite:three-heads","sprite:two-heads","arch:armadillo","arch:pangolin","arch:snake","arch:serpent","arch:tadpole","arch:frog",extra=["Doduo","Magneton","Weezing","Diglett","Sandshrew"]))
+
+# ===== MIXED (all-gens) boards 10-23 .. 10-28 =====
+# ===== 10-23 Fri : HARD =====
+board("2026-10-23","mixed","Hard",[
+  ("SHARK",3,"arch:shark",["Garchomp","Baxcalibur"],"Garchomp and Baxcalibur are sharks on land and ice -- Garchomp a 'land shark' with a dorsal fin it uses to fly at jet speed, Baxcalibur a frozen shark-dragon whose fin doubles as a blade."),
+  ("CEPHALOPOD",4,"arch:cephalopod",["Malamar","Grapploct"],"Malamar and Grapploct are cephalopods -- the squid-and-octopus family. Malamar is an inverted-squid hypnotist, Grapploct an eight-armed octopus wrestler."),
+  ("UNAWARE",5,"ability:Unaware",["Bidoof","Woobat","Pyukumuku"],"Bidoof, Woobat and Pyukumuku all have the Ability Unaware, which makes them ignore the opponent's stat boosts and drops when attacking or defending."),
+  ("LION",3,"arch:lion",["Litleo","Solgaleo"],"Litleo and Solgaleo are lions -- Litleo a lion cub with a flame-red mane, Solgaleo a radiant, sun-powered lion of legend."),
+], exclude=ex("arch:shark","arch:cephalopod","ability:Unaware","arch:lion",extra=["Inkay","Clobbopus","Octillery","Pyroar"]))
+
+# ===== 10-24 Sat : BRUTAL =====
+board("2026-10-24","mixed","Brutal",[
+  ("HEALER",5,"ability:Healer",["Hatenna","Audino","Bellossom"],"Hatenna, Audino and Bellossom all have the Ability Healer, which gives them a chance to cure an ally's status condition every turn."),
+  ("MAGIC-BOUNCE",5,"ability:Magic Bounce",["Hatenna","Natu","Espeon"],"Hatenna, Natu and Espeon all have the Ability Magic Bounce, which reflects most status moves straight back at whoever used them."),
+  ("FELINE",3,"arch:feline",["Espeon","Shinx"],"Espeon and Shinx are both cats -- Espeon a sleek, sun-worshipping cat, Shinx a lion-cub-like kitten crackling with static."),
+  ("MOLLUSC",4,"arch:mollusc",["Clamperl","Shellos","Shelmet"],"Clamperl, Shellos and Shelmet are all molluscs -- Clamperl a pearl-making clam, Shellos a sea slug, Shelmet a snail wearing a helmet-like shell."),
+], exclude=ex("ability:Healer","ability:Magic Bounce","arch:feline","arch:cat","arch:mollusc",extra=["Slowking","Slowpoke","Slowbro","Shuckle","Gastrodon","Umbreon","Luxio","Luxray","Alomomola","Chansey","Blissey","Aromatisse","Hattrem","Hatterene","Xatu"]))
+
+# ===== 10-25 Sun : EVIL =====
+board("2026-10-25","mixed","Evil",[
+  ("MUSKETEERS",4,"lore:musketeers",["Cobalion","Terrakion","Virizion"],"Cobalion, Terrakion and Virizion are three of the four Swords of Justice, the legendary musketeers of Unova (Keldeo is the fourth)."),
+  ("JUSTIFIED",5,"ability:Justified",["Cobalion","Lucario","Gallade"],"Cobalion, Lucario and Gallade all have the Ability Justified, which raises their Attack whenever they're hit by a Dark-type move."),
+  ("STEADFAST",5,"ability:Steadfast",["Lucario","Gallade","Rockruff"],"Lucario, Gallade and Rockruff all have the Ability Steadfast, which boosts their Speed every time they flinch."),
+  ("WOLF",3,"arch:wolf",["Zacian","Zamazenta"],"Zacian and Zamazenta are the legendary wolves of Galar -- one wields a sword, the other a shield."),
+  ("CETACEAN",4,"arch:cetacean",["Wailord"],"Wailord is a cetacean -- the whale family -- and the largest Pokémon ever found."),
+], exclude=ex("lore:musketeers","ability:Justified","ability:Steadfast","arch:wolf","arch:cetacean",extra=["Keldeo","Lycanroc","Wailmer","Kyogre","Arcanine","Tyrogue","Hitmontop","Dubwool","Sirfetch'd","Finizen","Palafin"]))
+
+# ===== 10-26 Mon : EASY =====
+board("2026-10-26","mixed","Easy",[
+  ("WATER",1,"type:water",["Froakie","Buizel","Popplio"],"Froakie, Buizel and Popplio are all Water-type Pokémon."),
+  ("GROUND",1,"type:ground",["Trapinch","Drilbur"],"Trapinch and Drilbur are both Ground-type Pokémon."),
+  ("STEEL",1,"type:steel",["Bronzor"],"Bronzor is a Steel-type Pokémon (Steel/Psychic)."),
+  ("BEAR",3,"arch:bear",["Cubchoo","Teddiursa"],"Cubchoo and Teddiursa are both bear cubs -- Cubchoo a snotty polar-bear cub, Teddiursa a honey-loving teddy bear."),
+  ("SHEEP",3,"arch:sheep",["Wooloo"],"Wooloo is a sheep -- a round bundle of wool that bounces about the Galar fields."),
+], exclude=ex("arch:bear","arch:sheep",extra=["Ursaring","Beartic","Stufful","Bewear","Snorlax","Munchlax","Kubfu","Mareep","Flaaffy","Ampharos","Dubwool","Gogoat"]))
+
+# ===== 10-27 Tue : MEDIUM =====
+board("2026-10-27","mixed","Medium",[
+  ("FIGHTING",1,"type:fighting",["Timburr","Pancham"],"Timburr and Pancham are both Fighting-type Pokémon."),
+  ("PSYCHIC",1,"type:psychic",["Munna","Elgyem","Solosis"],"Munna, Elgyem and Solosis are all Psychic-type Pokémon."),
+  ("MONKEY",3,"arch:monkey",["Aipom","Pansage"],"Aipom and Pansage are both monkeys -- Aipom a long-tailed monkey that grabs things with its hand-shaped tail, Pansage a leafy-crowned grass monkey."),
+  ("ARACHNID",4,"arch:arachnid",["Joltik","Dewpider"],"Joltik and Dewpider are both arachnids -- eight-legged spider relatives (Joltik a tiny electric tick-spider, Dewpider a water spider in an air bubble)."),
+], exclude=ex("arch:monkey","arch:primate","arch:arachnid","arch:spider"))
+
+# ===== 10-28 Wed : CHALLENGING =====
+board("2026-10-28","mixed","Challenging",[
+  ("FIRE",1,"type:fire",["Litwick","Scorbunny"],"Litwick and Scorbunny are both Fire-type Pokémon."),
+  ("UDDER",2,"sprite:udder",["Miltank"],"Look closely at the sprite -- Miltank, the Milk Cow Pokémon, has a pink udder."),
+  ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler and Sawsbuck are both deer -- Stantler a stag whose twisting antlers warp the space around it, Sawsbuck a seasonal deer with a tree growing from its antlers."),
+  ("OWL",3,"arch:owl",["Hoothoot","Dartrix"],"Hoothoot and Dartrix are both owls -- Hoothoot a wide-eyed owl that keeps time, Dartrix a dapper archer-owl."),
+  ("CHIROPTERAN",4,"arch:chiropteran",["Noivern","Crobat"],"Noivern and Crobat are chiropterans -- bats, the only mammals capable of true flight (Noivern a dragon-bat, Crobat a four-winged one)."),
+], exclude=ex("arch:deer","arch:owl","arch:chiropteran","arch:bat","sprite:udder",extra=["Tauros","Bouffalant","Wooloo","Noibat","Zubat","Golbat","Woobat","Swoobat","Deerling","Wyrdeer","Xerneas"]))

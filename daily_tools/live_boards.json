@@ -1,198 +1,5 @@
 [
   {
-    "date": "2026-09-07",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Bulbasaur",
-          "Tangela"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "VINES"
-      },
-      {
-        "m": [
-          "Lickitung"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "TONGUE"
-      },
-      {
-        "m": [
-          "Pikachu",
-          "Voltorb"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "ELECTRIC"
-      },
-      {
-        "m": [
-          "Geodude",
-          "Onix"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "ROCK"
-      },
-      {
-        "m": [
-          "Psyduck",
-          "Poliwag"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "WATER"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-07",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Totodile",
-          "Popplio"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "WATER"
-      },
-      {
-        "m": [
-          "Goomy",
-          "Deino"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "DRAGON"
-      },
-      {
-        "m": [
-          "Blitzle",
-          "Shinx"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "ELECTRIC"
-      },
-      {
-        "m": [
-          "Snivy",
-          "Treecko"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "GRASS"
-      },
-      {
-        "m": [
-          "Skwovet"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "CHEEKS"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-08",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Abra",
-          "Jynx",
-          "Drowzee"
-        ],
-        "n": 3,
-        "cat": 1,
-        "word": "PSYCHIC"
-      },
-      {
-        "m": [
-          "Cubone",
-          "Sandshrew"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "GROUND"
-      },
-      {
-        "m": [
-          "Poliwrath",
-          "Poliwhirl"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "FROG"
-      },
-      {
-        "m": [
-          "Kakuna",
-          "Metapod"
-        ],
-        "n": 2,
-        "cat": 2,
-        "word": "PUPA"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-08",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Cacturne",
-          "Gourgeist"
-        ],
-        "n": 2,
-        "cat": 4,
-        "word": "HALLOWEEN"
-      },
-      {
-        "m": [
-          "Tepig"
-        ],
-        "n": 1,
-        "cat": 1,
-        "word": "FIRE"
-      },
-      {
-        "m": [
-          "Crawdaunt",
-          "Klawf"
-        ],
-        "n": 2,
-        "cat": 2,
-        "word": "PINCERS"
-      },
-      {
-        "m": [
-          "Lechonk"
-        ],
-        "n": 1,
-        "cat": 1,
-        "word": "NORMAL"
-      },
-      {
-        "m": [
-          "Panpour",
-          "Pansage",
-          "Grookey"
-        ],
-        "n": 3,
-        "cat": 3,
-        "word": "PRIMATE"
-      }
-    ]
-  },
-  {
     "date": "2026-09-09",
     "pool": "gen1",
     "clues": [
@@ -3365,9 +3172,9 @@
     "clues": [
       {
         "m": [
+          "Weezing",
           "Koffing",
-          "Gastly",
-          "Weezing"
+          "Gastly"
         ],
         "n": 3,
         "cat": 5,
@@ -4439,6 +4246,49 @@
   },
   {
     "date": "2026-10-22",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Arbok",
+          "Gyarados",
+          "Arcanine"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "INTIMIDATE"
+      },
+      {
+        "m": [
+          "Hypno"
+        ],
+        "n": 1,
+        "cat": 2,
+        "word": "PENDULUM"
+      },
+      {
+        "m": [
+          "Goldeen",
+          "Omanyte",
+          "Psyduck",
+          "Poliwag"
+        ],
+        "n": 4,
+        "cat": 5,
+        "word": "SWIFT-SWIM"
+      },
+      {
+        "m": [
+          "Shellder"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "CLAM"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-22",
     "pool": "mixed",
     "clues": [
       {
@@ -4484,6 +4334,588 @@
         "n": 2,
         "cat": 4,
         "word": "MUSTELID"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Vileplume",
+          "Victreebel"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "ERIKA"
+      },
+      {
+        "m": [
+          "Hitmonchan",
+          "Machamp"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "BRUNO"
+      },
+      {
+        "m": [
+          "Tentacool"
+        ],
+        "n": 1,
+        "cat": 4,
+        "word": "CNIDARIAN"
+      },
+      {
+        "m": [
+          "Alakazam",
+          "Pinsir",
+          "Blastoise",
+          "Beedrill"
+        ],
+        "n": 4,
+        "cat": 5,
+        "word": "MEGA"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Woobat",
+          "Bidoof",
+          "Pyukumuku"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "UNAWARE"
+      },
+      {
+        "m": [
+          "Solgaleo",
+          "Litleo"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "LION"
+      },
+      {
+        "m": [
+          "Baxcalibur",
+          "Garchomp"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "SHARK"
+      },
+      {
+        "m": [
+          "Malamar",
+          "Grapploct"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "CEPHALOPOD"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Krabby",
+          "Omastar",
+          "Lapras",
+          "Cloyster"
+        ],
+        "n": 4,
+        "cat": 5,
+        "word": "SHELL-ARMOR"
+      },
+      {
+        "m": [
+          "Lickitung",
+          "Slowbro"
+        ],
+        "n": 2,
+        "cat": 5,
+        "word": "OBLIVIOUS"
+      },
+      {
+        "m": [
+          "Growlithe"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "DOG"
+      },
+      {
+        "m": [
+          "Slowbro",
+          "Lapras",
+          "Cloyster"
+        ],
+        "n": 3,
+        "cat": 3,
+        "word": "LORELEI"
+      },
+      {
+        "m": [
+          "Pidgeotto",
+          "Fearow"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "RAPTOR"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-24",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Audino",
+          "Hatenna",
+          "Bellossom"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "HEALER"
+      },
+      {
+        "m": [
+          "Clamperl",
+          "Shellos",
+          "Shelmet"
+        ],
+        "n": 3,
+        "cat": 4,
+        "word": "MOLLUSC"
+      },
+      {
+        "m": [
+          "Hatenna",
+          "Espeon",
+          "Natu"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "MAGIC-BOUNCE"
+      },
+      {
+        "m": [
+          "Shinx",
+          "Espeon"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "FELINE"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Aerodactyl",
+          "Mewtwo",
+          "Articuno"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "PRESSURE"
+      },
+      {
+        "m": [
+          "Nidoqueen",
+          "Nidoking"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "ROYALTY"
+      },
+      {
+        "m": [
+          "Diglett"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "MOLE"
+      },
+      {
+        "m": [
+          "Aerodactyl",
+          "Mewtwo",
+          "Meowth"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "UNNERVE"
+      },
+      {
+        "m": [
+          "Dragonite",
+          "Abra"
+        ],
+        "n": 2,
+        "cat": 5,
+        "word": "INNER-FOCUS"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Rockruff",
+          "Gallade",
+          "Lucario"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "STEADFAST"
+      },
+      {
+        "m": [
+          "Wailord"
+        ],
+        "n": 1,
+        "cat": 4,
+        "word": "CETACEAN"
+      },
+      {
+        "m": [
+          "Virizion",
+          "Cobalion",
+          "Terrakion"
+        ],
+        "n": 3,
+        "cat": 4,
+        "word": "MUSKETEERS"
+      },
+      {
+        "m": [
+          "Gallade",
+          "Cobalion",
+          "Lucario"
+        ],
+        "n": 3,
+        "cat": 5,
+        "word": "JUSTIFIED"
+      },
+      {
+        "m": [
+          "Zacian",
+          "Zamazenta"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "WOLF"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Kingler",
+          "Seaking",
+          "Squirtle",
+          "Vaporeon"
+        ],
+        "n": 4,
+        "cat": 1,
+        "word": "WATER"
+      },
+      {
+        "m": [
+          "Scyther"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "MANTIS"
+      },
+      {
+        "m": [
+          "Magnemite"
+        ],
+        "n": 1,
+        "cat": 1,
+        "word": "STEEL"
+      },
+      {
+        "m": [
+          "Rhydon",
+          "Sandshrew"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "GROUND"
+      },
+      {
+        "m": [
+          "Raichu"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "MOUSE"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Cubchoo",
+          "Teddiursa"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "BEAR"
+      },
+      {
+        "m": [
+          "Bronzor"
+        ],
+        "n": 1,
+        "cat": 1,
+        "word": "STEEL"
+      },
+      {
+        "m": [
+          "Trapinch",
+          "Drilbur"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "GROUND"
+      },
+      {
+        "m": [
+          "Buizel",
+          "Popplio",
+          "Froakie"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "WATER"
+      },
+      {
+        "m": [
+          "Wooloo"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "SHEEP"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-27",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Golduck"
+        ],
+        "n": 1,
+        "cat": 4,
+        "word": "PLATYPUS"
+      },
+      {
+        "m": [
+          "Mankey",
+          "Machoke",
+          "Hitmonlee"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "FIGHTING"
+      },
+      {
+        "m": [
+          "Persian"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "CAT"
+      },
+      {
+        "m": [
+          "Starmie",
+          "Slowpoke",
+          "Kadabra"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "PSYCHIC"
+      },
+      {
+        "m": [
+          "Tauros"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "BULL"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-27",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Aipom",
+          "Pansage"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "MONKEY"
+      },
+      {
+        "m": [
+          "Elgyem",
+          "Solosis",
+          "Munna"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "PSYCHIC"
+      },
+      {
+        "m": [
+          "Joltik",
+          "Dewpider"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "ARACHNID"
+      },
+      {
+        "m": [
+          "Timburr",
+          "Pancham"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "FIGHTING"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-28",
+    "pool": "gen1",
+    "clues": [
+      {
+        "m": [
+          "Sandslash"
+        ],
+        "n": 1,
+        "cat": 4,
+        "word": "ARMADILLO"
+      },
+      {
+        "m": [
+          "Poliwhirl"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "FROG"
+      },
+      {
+        "m": [
+          "Moltres",
+          "Vulpix",
+          "Ponyta"
+        ],
+        "n": 3,
+        "cat": 1,
+        "word": "FIRE"
+      },
+      {
+        "m": [
+          "Ekans"
+        ],
+        "n": 1,
+        "cat": 3,
+        "word": "SNAKE"
+      },
+      {
+        "m": [
+          "Dugtrio",
+          "Dodrio",
+          "Exeggutor"
+        ],
+        "n": 3,
+        "cat": 2,
+        "word": "HEADS"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-28",
+    "pool": "mixed",
+    "clues": [
+      {
+        "m": [
+          "Noivern",
+          "Crobat"
+        ],
+        "n": 2,
+        "cat": 4,
+        "word": "CHIROPTERAN"
+      },
+      {
+        "m": [
+          "Miltank"
+        ],
+        "n": 1,
+        "cat": 2,
+        "word": "UDDER"
+      },
+      {
+        "m": [
+          "Hoothoot",
+          "Dartrix"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "OWL"
+      },
+      {
+        "m": [
+          "Stantler",
+          "Sawsbuck"
+        ],
+        "n": 2,
+        "cat": 3,
+        "word": "DEER"
+      },
+      {
+        "m": [
+          "Litwick",
+          "Scorbunny"
+        ],
+        "n": 2,
+        "cat": 1,
+        "word": "FIRE"
       }
     ]
   },
