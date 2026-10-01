@@ -1,105 +1,5 @@
 [
   {
-    "date": "2026-09-09",
-    "pool": "gen1",
-    "clues": [
-      {
-        "m": [
-          "Koffing",
-          "Grimer"
-        ],
-        "n": 2,
-        "cat": 4,
-        "word": "POLLUTION"
-      },
-      {
-        "m": [
-          "Goldeen",
-          "Magikarp"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "FISH"
-      },
-      {
-        "m": [
-          "Haunter",
-          "Gastly"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "GHOST"
-      },
-      {
-        "m": [
-          "Farfetch'd"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "LEEK"
-      },
-      {
-        "m": [
-          "Mankey",
-          "Machop"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "APE"
-      }
-    ]
-  },
-  {
-    "date": "2026-09-09",
-    "pool": "mixed",
-    "clues": [
-      {
-        "m": [
-          "Linoone",
-          "Typhlosion"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "BADGER"
-      },
-      {
-        "m": [
-          "Piplup",
-          "Delibird"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "PENGUIN"
-      },
-      {
-        "m": [
-          "Pawmi",
-          "Morpeko"
-        ],
-        "n": 2,
-        "cat": 3,
-        "word": "HAMSTER"
-      },
-      {
-        "m": [
-          "Spritzee",
-          "Milcery"
-        ],
-        "n": 2,
-        "cat": 1,
-        "word": "FAIRY"
-      },
-      {
-        "m": [
-          "Cinccino"
-        ],
-        "n": 1,
-        "cat": 2,
-        "word": "SCARF"
-      }
-    ]
-  },
-  {
     "date": "2026-09-10",
     "pool": "gen1",
     "clues": [
@@ -4920,6 +4820,92 @@
     ]
   },
   {
+    "date": "2026-10-29",
+    "pool": "gen1",
+    "clues": [
+      {
+        "word": "MOON",
+        "n": 1,
+        "cat": 4,
+        "m": [
+          "Clefairy"
+        ]
+      },
+      {
+        "word": "HORN",
+        "n": 3,
+        "cat": 2,
+        "m": [
+          "Rapidash",
+          "Dewgong",
+          "Nidorino"
+        ]
+      },
+      {
+        "word": "AVIAN",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Pidgey",
+          "Doduo"
+        ]
+      },
+      {
+        "word": "ARTHROPOD",
+        "n": 3,
+        "cat": 4,
+        "m": [
+          "Parasect",
+          "Kabuto",
+          "Venonat"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-10-29",
+    "pool": "mixed",
+    "clues": [
+      {
+        "word": "SUCTION-CUPS",
+        "n": 3,
+        "cat": 5,
+        "m": [
+          "Lileep",
+          "Cradily",
+          "Inkay"
+        ]
+      },
+      {
+        "word": "PENGUIN",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Eiscue",
+          "Piplup"
+        ]
+      },
+      {
+        "word": "ECHINODERM",
+        "n": 1,
+        "cat": 4,
+        "m": [
+          "Mareanie"
+        ]
+      },
+      {
+        "word": "MUSTACHE",
+        "n": 3,
+        "cat": 2,
+        "m": [
+          "Kricketune",
+          "Stoutland",
+          "Whiscash"
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-10-31",
     "pool": "gen1",
     "clues": [
@@ -5011,6 +4997,100 @@
         "n": 3,
         "cat": 5,
         "word": "INSOMNIA"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "pool": "gen1",
+    "clues": [
+      {
+        "word": "STRIPES",
+        "n": 2,
+        "cat": 2,
+        "m": [
+          "Arcanine",
+          "Electabuzz"
+        ]
+      },
+      {
+        "word": "CATTLE",
+        "n": 1,
+        "cat": 3,
+        "m": [
+          "Tauros"
+        ]
+      },
+      {
+        "word": "EXPLOSION",
+        "n": 2,
+        "cat": 4,
+        "m": [
+          "Electrode",
+          "Golem"
+        ]
+      },
+      {
+        "word": "BIRD",
+        "n": 3,
+        "cat": 3,
+        "m": [
+          "Articuno",
+          "Moltres",
+          "Zapdos"
+        ]
+      },
+      {
+        "word": "POKEBALL",
+        "n": 2,
+        "cat": 4,
+        "m": [
+          "Electrode",
+          "Voltorb"
+        ]
+      }
+    ]
+  },
+  {
+    "date": "2026-11-05",
+    "pool": "mixed",
+    "clues": [
+      {
+        "word": "WHITE-SMOKE",
+        "n": 3,
+        "cat": 5,
+        "m": [
+          "Centiskorch",
+          "Heatmor",
+          "Sizzlipede"
+        ]
+      },
+      {
+        "word": "SWINE",
+        "n": 2,
+        "cat": 3,
+        "m": [
+          "Tepig",
+          "Lechonk"
+        ]
+      },
+      {
+        "word": "TONGUE",
+        "n": 2,
+        "cat": 2,
+        "m": [
+          "Shellder",
+          "Haunter"
+        ]
+      },
+      {
+        "word": "FIREFLY",
+        "n": 2,
+        "cat": 4,
+        "m": [
+          "Illumise",
+          "Volbeat"
+        ]
       }
     ]
   }

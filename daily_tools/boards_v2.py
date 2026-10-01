@@ -660,3 +660,36 @@ board("2026-10-28","mixed","Challenging",[
   ("OWL",3,"arch:owl",["Hoothoot","Dartrix"],"Hoothoot and Dartrix are both owls -- Hoothoot a wide-eyed owl that keeps time, Dartrix a dapper archer-owl."),
   ("CHIROPTERAN",4,"arch:chiropteran",["Noivern","Crobat"],"Noivern and Crobat are chiropterans -- bats, the only mammals capable of true flight (Noivern a dragon-bat, Crobat a four-winged one)."),
 ], exclude=ex("arch:deer","arch:owl","arch:chiropteran","arch:bat","sprite:udder",extra=["Tauros","Bouffalant","Wooloo","Noibat","Zubat","Golbat","Woobat","Swoobat","Deerling","Wyrdeer","Xerneas"]))
+
+# ===== 4-week gap fill (nightly 2026-10-01): 10-29 Thu HARD + 11-05 Thu HARD (Bonfire Night) =====
+board("2026-10-29","gen1","Hard",[
+  ("ARTHROPOD",4,"arch:arthropod",["Kabuto","Parasect","Venonat"],"Kabuto, Parasect and Venonat are all arthropods -- Kabuto a horseshoe-crab/trilobite fossil, Parasect a crab-like bug carrying a fungus, Venonat a fuzzy moth-and-fly bug."),
+  ("MOON",4,"lore:moon",["Clefairy"],"Clefairy is the Moon Pokémon -- it evolves with a Moon Stone, is found on Mt. Moon, and its Pokédex entries say it dances in the light of a full moon."),
+  ("AVIAN",3,"arch:bird",["Pidgey","Doduo"],"Pidgey and Doduo are both birds -- Pidgey a plain pigeon-sparrow, Doduo a two-headed ostrich-like runner."),
+  ("HORN",2,"sprite:horn",["Nidorino","Dewgong","Rapidash"],"Nidorino has a sharp horn on its head, Dewgong a horn on its forehead, and Rapidash a single unicorn-like horn."),
+], exclude=ex("arch:arthropod","arch:insect","arch:crab","arch:bird","arch:ratite","arch:trilobite","arch:fairy","sprite:horn","sprite:head-horn","sprite:nose-horn","sprite:horns",
+              extra=["Clefable","Jigglypuff","Wigglytuff","Ponyta","Nidoking","Nidoqueen","Nidorina","Rhydon","Rhyhorn","Seaking","Goldeen","Pinsir","Tauros","Kangaskhan","Scyther","Butterfree",
+                     "Fearow","Spearow","Pidgeotto","Pidgeot","Dodrio","Farfetch'd","Articuno","Zapdos","Moltres","Golbat","Beedrill","Weedle","Kakuna","Venomoth","Paras","Kingler","Krabby","Seel","Onix","Charmeleon","Electabuzz","Aerodactyl"]))
+board("2026-10-29","mixed","Hard",[
+  ("ECHINODERM",4,"arch:echinoderm",["Mareanie"],"Mareanie is based on a brittle star -- an echinoderm, the spiny-skinned sea group that also includes starfish and sea urchins."),
+  ("SUCTION-CUPS",5,"ability:Suction Cups",["Inkay","Lileep","Cradily"],"Inkay, Lileep and Cradily all have the Ability Suction Cups, which stops them being forced out of battle by moves like Roar or Whirlwind."),
+  ("PENGUIN",3,"arch:penguin",["Piplup","Eiscue"],"Piplup and Eiscue are both penguins -- Piplup a proud little emperor-penguin chick, Eiscue a penguin wearing a block of ice on its head."),
+  ("MUSTACHE",2,"sprite:mustache",["Stoutland","Whiscash","Kricketune"],"Look at the sprites -- Kricketune has curling antennae like a handlebar moustache, Stoutland has a long, white, moustache-like fringe of fur, and Whiscash has long barbels that hang like a catfish's whiskers."),
+], exclude=ex("arch:echinoderm","arch:penguin","arch:cephalopod","arch:octopus","ability:Suction Cups","sprite:mustache","sprite:mustache-fur",
+              extra=["Pincurchin","Staryu","Starmie","Toxapex","Empoleon","Prinplup","Malamar","Octillery","Clobbopus","Grapploct","Barboach","Remoraid","Alakazam","Conkeldurr","Gurdurr","Kricketor","Gumshoos","Mabosstiff","Herdier","Lairon"]))
+
+board("2026-11-05","gen1","Hard",[
+  ("POKEBALL",4,"based:pokeball",["Voltorb","Electrode"],"Happy Bonfire Night! Voltorb and Electrode are both disguised as Poké Balls -- the classic trap on a Kanto power-plant floor, and ready to go off like fireworks."),
+  ("EXPLOSION",4,"move:explosion",["Electrode","Golem"],"Happy Bonfire Night! Electrode and Golem are famous for the move Explosion, a huge blast that makes the user faint."),
+  ("BIRD",3,"arch:bird",["Zapdos","Moltres","Articuno"],"The three legendary birds of Kanto -- Zapdos (lightning), Moltres (flame) and Articuno (frost) -- are all based on real-world birds."),
+  ("STRIPES",2,"sprite:stripes",["Electabuzz","Arcanine"],"Look at the sprites -- Electabuzz has black tiger stripes across its body and arms, and Arcanine has bold black stripes on its orange coat."),
+  ("CATTLE",3,"arch:bull",["Tauros"],"Tauros is a bull -- a charging wild bull that whips itself with its three tails."),
+], exclude=ex("arch:bird","sprite:stripes","arch:bovine","arch:bull","sprite:ball-shape","sprite:three-tails",
+              extra=["Cloyster","Weezing","Koffing","Exeggutor","Exeggcute","Geodude","Graveler","Magnemite","Magneton","Growlithe","Beedrill","Weedle","Pikachu","Raichu","Jolteon","Zubat","Persian","Meowth","Mankey","Primeape","Ponyta","Rapidash","Kangaskhan","Miltank","Charmander","Charmeleon","Charizard","Magmar","Flareon","Ninetales","Vulpix","Onix","Rhydon","Rhyhorn"]))
+board("2026-11-05","mixed","Hard",[
+  ("WHITE-SMOKE",5,"ability:White Smoke",["Centiskorch","Heatmor","Sizzlipede"],"Happy Bonfire Night! Centiskorch, Heatmor and Sizzlipede all have the Ability White Smoke, which stops other Pokémon lowering their stats -- named for the smoke that billows off a bonfire."),
+  ("FIREFLY",4,"arch:firefly",["Volbeat","Illumise"],"Happy Bonfire Night! Volbeat and Illumise are both based on fireflies -- they glow and trace shapes in the night sky like sparklers."),
+  ("SWINE",3,"arch:pig",["Tepig","Lechonk"],"Tepig and Lechonk are both pigs -- Tepig a fire-snorting piglet that sneezes embers, Lechonk a round, hungry hog."),
+  ("TONGUE",2,"sprite:tongue",["Haunter","Shellder"],"Look at the sprites -- Haunter lolls a long tongue out of its grinning mouth, and Shellder's big pink tongue pokes out between its shells."),
+], exclude=ex("ability:White Smoke","arch:firefly","arch:pig","arch:boar","sprite:tongue",
+              extra=["Pignite","Emboar","Oinkologne","Piloswine","Swinub","Mamoswine","Lickitung","Lickilicky","Gastly","Gengar","Chewtle","Drednaw","Cloyster","Croagunk","Toxicroak","Gulpin","Swalot","Frogadier","Carkol","Coalossal","Rolycoly","Torkoal","Litwick","Lampent","Chandelure","Lanturn","Chinchou","Sizzlipede","Magcargo","Slugma","Camerupt","Numel"]))

@@ -29,7 +29,7 @@ import os, json, re, random, datetime, hashlib
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-GAP_DAYS = 21                      # ensure both pools exist for [today, today+21]
+GAP_DAYS = 28                      # ensure both pools exist for [today, today+28]
 TODAY = datetime.date.today()
 
 FACTS = json.load(open(f"{ROOT}/pokemon_facts.json"))
