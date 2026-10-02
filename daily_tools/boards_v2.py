@@ -693,3 +693,22 @@ board("2026-11-05","mixed","Hard",[
   ("TONGUE",2,"sprite:tongue",["Haunter","Shellder"],"Look at the sprites -- Haunter lolls a long tongue out of its grinning mouth, and Shellder's big pink tongue pokes out between its shells."),
 ], exclude=ex("ability:White Smoke","arch:firefly","arch:pig","arch:boar","sprite:tongue",
               extra=["Pignite","Emboar","Oinkologne","Piloswine","Swinub","Mamoswine","Lickitung","Lickilicky","Gastly","Gengar","Chewtle","Drednaw","Cloyster","Croagunk","Toxicroak","Gulpin","Swalot","Frogadier","Carkol","Coalossal","Rolycoly","Torkoal","Litwick","Lampent","Chandelure","Lanturn","Chinchou","Sizzlipede","Magcargo","Slugma","Camerupt","Numel"]))
+
+# ===== 4-week gap fill (nightly 2026-10-02): 10-30 Fri HARD =====
+board("2026-10-30","gen1","Hard",[
+  ("JELLYFISH",4,"arch:jellyfish",["Tentacool"],"Tentacool is based on a jellyfish -- a drifting, translucent sea jelly with long stinging tentacles."),
+  ("AMMONITE",4,"arch:ammonite",["Omanyte"],"Omanyte is based on an ammonite -- an extinct spiral-shelled sea mollusc; it is revived from the Helix Fossil."),
+  ("DRAGON",3,"arch:dragon",["Charizard","Gyarados"],"Charizard and Gyarados are both dragon-like -- Charizard a fire-breathing winged dragon, Gyarados a rampaging sea dragon that evolves from a Magikarp."),
+  ("FISH",3,"arch:fish",["Magikarp","Goldeen","Horsea"],"Magikarp, Goldeen and Horsea are all based on real-world fish -- Magikarp a flopping carp, Goldeen a graceful goldfish, Horsea a seahorse (a fish despite its looks)."),
+  ("BEAK",2,"sprite:beak",["Spearow","Farfetch'd"],"Look at the sprites -- Spearow and Farfetch'd both have a prominent pointed beak."),
+], exclude=ex("arch:jellyfish","arch:ammonite","arch:dragon","arch:fish","sprite:beak",
+              extra=["Seadra","Seaking","Omastar","Kabuto","Kabutops","Dratini","Dragonair","Dragonite","Charmander","Charmeleon","Pidgeotto","Pidgeot","Fearow","Doduo","Dodrio","Lapras","Articuno","Zapdos","Moltres",
+                     "Aerodactyl","Cloyster","Shellder","Staryu","Starmie","Tentacruel","Pidgey","Seadra","Psyduck","Golduck","Poliwag","Squirtle","Blastoise","Wartortle","Vaporeon","Slowpoke","Slowbro","Seel","Dewgong"]))
+board("2026-10-30","mixed","Hard",[
+  ("SCORPION",4,"arch:scorpion",["Skorupi","Gligar"],"Skorupi and Gligar are both based on scorpions -- Skorupi a buried scorpion with a poisonous tail, Gligar a flying scorpion that glides silently down to sting."),
+  ("SAND-STREAM",5,"ability:Sand Stream",["Tyranitar","Hippowdon","Gigalith"],"Tyranitar, Hippowdon and Gigalith all have the Ability Sand Stream, which whips up a sandstorm the moment they enter battle."),
+  ("GOAT",3,"arch:goat",["Skiddo"],"Skiddo is a goat -- a mountain goat with a leafy back that lets it grow plants."),
+  ("ZEBRA",3,"arch:zebra",["Blitzle"],"Blitzle is a zebra -- a striped black-and-white zebra foal with a flickering electric mane."),
+  ("HEADBAND",2,"sprite:headband",["Cinderace","Kubfu"],"Look at the sprites -- Cinderace wears a white bandage-like band across its face and Kubfu a white headband, like martial artists."),
+], exclude=ex("arch:scorpion","ability:Sand Stream","arch:goat","arch:zebra","sprite:headband",
+              extra=["Scorbunny","Raboot","Urshifu","Drapion","Gliscor","Gogoat","Zebstrika","Hippopotas","Pupitar","Larvitar","Talonflame","Combusken","Torchic","Rufflet","Staraptor","Fletchinder","Sandile","Sandshrew","Sandslash","Krokorok","Krookodile","Sandaconda","Silicobra","Palossand","Sandygast","Excadrill","Garchomp","Mudbray","Mudsdale","Stantler","Pidove","Unfezant","Honchkrow"]))
