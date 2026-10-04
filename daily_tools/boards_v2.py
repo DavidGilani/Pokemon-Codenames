@@ -712,3 +712,38 @@ board("2026-10-30","mixed","Hard",[
   ("HEADBAND",2,"sprite:headband",["Cinderace","Kubfu"],"Look at the sprites -- Cinderace wears a white bandage-like band across its face and Kubfu a white headband, like martial artists."),
 ], exclude=ex("arch:scorpion","ability:Sand Stream","arch:goat","arch:zebra","sprite:headband",
               extra=["Scorbunny","Raboot","Urshifu","Drapion","Gliscor","Gogoat","Zebstrika","Hippopotas","Pupitar","Larvitar","Talonflame","Combusken","Torchic","Rufflet","Staraptor","Fletchinder","Sandile","Sandshrew","Sandslash","Krokorok","Krookodile","Sandaconda","Silicobra","Palossand","Sandygast","Excadrill","Garchomp","Mudbray","Mudsdale","Stantler","Pidove","Unfezant","Honchkrow"]))
+
+# ===== 4-week gap fill (nightly 2026-10-04): 11-01 Sun EVIL + 11-08 Sun EVIL (Diwali) =====
+board("2026-11-01","gen1","Evil",[
+  ("WEAK-ARMOR",5,"ability:Weak Armor",["Omastar","Kabutops","Onix"],"Omastar, Kabutops and Onix all have the Ability Weak Armor, which lowers their Defense but raises their Speed every time a physical move hits them."),
+  ("CHLOROPHYLL",5,"ability:Chlorophyll",["Vileplume","Tangela","Exeggcute"],"Vileplume, Tangela and Exeggcute all have the Ability Chlorophyll, which doubles their Speed in harsh sunlight."),
+  ("EFFECT-SPORE",5,"ability:Effect Spore",["Vileplume","Paras"],"Vileplume and Paras both have the Ability Effect Spore, which can poison, paralyse or put to sleep anything that makes contact with them."),
+  ("MOLLUSC",4,"arch:mollusc",["Omastar","Cloyster"],"Omastar and Cloyster are both molluscs -- Omastar an extinct spiral-shelled ammonite revived from a fossil, Cloyster a spiked bivalve like a clam or oyster."),
+  ("BEETLE",3,"arch:beetle",["Pinsir"],"Pinsir is a stag beetle -- its huge pincers are modelled on a stag beetle's jaws."),
+], exclude=ex("ability:Weak Armor","ability:Chlorophyll","ability:Effect Spore","arch:mollusc","arch:beetle",
+              extra=["Kabuto","Omanyte","Shellder","Parasect","Oddish","Gloom","Bellsprout","Weepinbell","Victreebel","Exeggutor","Venusaur","Bulbasaur","Ivysaur","Venonat","Scyther","Slowbro","Slowpoke","Krabby","Kingler","Aerodactyl","Geodude","Graveler","Golem","Rhyhorn","Rhydon"]))
+board("2026-11-01","mixed","Evil",[
+  ("FLOWER-VEIL",5,"ability:Flower Veil",["Flabébé","Comfey"],"Flabébé and Comfey both have the Ability Flower Veil, which protects Grass-type Pokémon on their side from having their stats lowered."),
+  ("POISON-POINT",5,"ability:Poison Point",["Scolipede","Roserade","Qwilfish"],"Scolipede, Roserade and Qwilfish all have the Ability Poison Point, which can poison any Pokémon that touches them."),
+  ("NATURAL-CURE",5,"ability:Natural Cure",["Roserade","Comfey","Pawmo"],"Roserade, Comfey and Pawmo all have the Ability Natural Cure, which heals any status condition the moment they switch out."),
+  ("SIMIAN",4,"arch:primate",["Primeape","Slaking"],"Primeape and Slaking are both simians (apes and monkeys) -- Primeape a furious pig-monkey, Slaking a lazy gorilla-sloth that does nothing every other turn."),
+  ("DUCK",3,"arch:duck",["Quaxly"],"Quaxly is a duck -- a cheerful duckling that practises its splashy dance moves."),
+], exclude=ex("ability:Flower Veil","ability:Poison Point","ability:Natural Cure","arch:primate","arch:monkey","arch:duck",
+              extra=["Floette","Florges","Quaxwell","Quaquaval","Venipede","Whirlipede","Budew","Roselia","Chansey","Blissey","Corsola","Mankey","Ambipom","Aipom","Simisage","Simisear","Simipour","Pansage","Pansear","Panpour","Oranguru","Passimian","Monferno","Infernape","Chimchar","Psyduck","Golduck","Ducklett","Swanna","Farfetch'd","Sirfetch'd","Slakoth","Vigoroth","Overqwil"]))
+
+board("2026-11-08","gen1","Evil",[
+  ("FLASH-FIRE",5,"ability:Flash Fire",["Ponyta","Growlithe","Vulpix"],"Happy Diwali! Ponyta, Growlithe and Vulpix all have the Ability Flash Fire, which absorbs Fire-type moves and powers up their own -- the festival of lights, in Pokémon form."),
+  ("SERPENT",4,"arch:serpent",["Gyarados","Dratini"],"Gyarados and Dratini are both serpents -- Gyarados a rampaging sea serpent, Dratini a slender dragon-snake that sheds its skin."),
+  ("MOXIE",5,"ability:Moxie",["Gyarados","Pinsir"],"Gyarados and Pinsir both have the Ability Moxie, which raises their Attack every time they knock out a foe."),
+  ("SWARM",5,"ability:Swarm",["Scyther","Beedrill"],"Scyther and Beedrill both have the Ability Swarm, which powers up their Bug-type moves when they're low on HP."),
+  ("FOX",3,"arch:fox",["Eevee","Vulpix"],"Eevee and Vulpix are both foxes -- Eevee a fluffy-tailed fox-like creature with unstable genes, Vulpix a six-tailed fox."),
+], exclude=ex("ability:Flash Fire","ability:Moxie","ability:Swarm","arch:serpent","arch:snake","arch:fox",
+              extra=["Ninetales","Arcanine","Rapidash","Flareon","Jolteon","Vaporeon","Ekans","Arbok","Dragonair","Dragonite","Onix","Weedle","Kakuna","Mankey","Primeape","Magmar","Charmander","Charmeleon","Charizard","Seadra","Horsea"]))
+board("2026-11-08","mixed","Evil",[
+  ("ILLUMINATE",5,"ability:Illuminate",["Chinchou","Watchog","Staryu"],"Happy Diwali, festival of lights! Chinchou, Watchog and Staryu all have the Ability Illuminate, which makes them glow and raises the chance of meeting wild Pokémon."),
+  ("KEEN-EYE",5,"ability:Keen Eye",["Sentret","Watchog"],"Sentret and Watchog both have the Ability Keen Eye, which stops their accuracy being lowered -- both are sharp-eyed lookouts."),
+  ("DAMP",5,"ability:Damp",["Quagsire","Kingdra","Tadbulb"],"Quagsire, Kingdra and Tadbulb all have the Ability Damp, which stops anyone nearby using explosive moves like Explosion."),
+  ("SEAHORSE",4,"arch:seahorse",["Kingdra","Skrelp"],"Kingdra and Skrelp are both seahorse-like -- Kingdra a dragon seahorse, Skrelp a camouflaged leafy sea dragon (a close seahorse relative)."),
+  ("SQUID",3,"arch:squid",["Malamar"],"Malamar is a squid -- it flips its body upside down and hypnotises foes with its glowing spots."),
+], exclude=ex("ability:Illuminate","ability:Keen Eye","ability:Damp","arch:seahorse","arch:squid","arch:octopus","arch:cephalopod",
+              extra=["Starmie","Lanturn","Volbeat","Morelull","Shiinotic","Furret","Horsea","Seadra","Inkay","Octillery","Clobbopus","Grapploct","Wooper","Dragalge","Skrelp","Psyduck","Golduck","Toxel","Pelipper","Wingull","Patrat","Meowstic","Rufflet","Hoothoot","Noctowl"]))
