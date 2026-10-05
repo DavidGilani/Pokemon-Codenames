@@ -20,7 +20,7 @@ board("2026-09-17","gen1","Hard",[
 # (Magmar is also arch:humanoid, Charmeleon flagged by QA too). =====
 board("2026-09-18","gen1","Hard",[
   ("CRAB",2,"sprite:pincers",["Kingler"]),
-  ("ANTENNAE",3,"sprite:antennae",["Venomoth"]),
+  ("ANTENNAE",3,"sprite:antennae",["Venomoth","Venonat","Pinsir"]),
   ("MOLLUSC",4,"arch:mollusc",["Shellder"]),
   ("BIPEDAL",4,"arch:humanoid",["Jynx","Mr. Mime","Electabuzz"]),
   ("AVIAN",3,"arch:bird",["Farfetch'd","Spearow","Pidgey"]),
@@ -499,7 +499,7 @@ board("2026-10-20","mixed","Medium",[
 # ===== 10-21 Wed : CHALLENGING (+28d window) =====
 board("2026-10-21","gen1","Challenging",[
   ("RED",1,"colour:red",["Charizard","Jynx","Magikarp"],"Charizard, Jynx and Magikarp are all predominantly red Pokémon."),
-  ("WINGS",2,"sprite:wings",["Charizard","Venomoth"],"Look closely at the sprite and you'll spot it -- wings, on both Charizard and Venomoth."),
+  ("WINGS",2,"sprite:wings",["Charizard","Venomoth","Venonat","Pinsir"],"Look closely at the sprite and you'll spot it -- wings, on both Charizard and Venomoth."),
   ("BIPEDAL",3,"arch:humanoid",["Electabuzz","Hitmonlee","Jynx"],"Electabuzz, Hitmonlee and Jynx all stand and fight on two legs like a person, rather than moving like a typical animal."),
   ("SKULL",2,"sprite:skull-helmet",["Cubone"],"Cubone's entire design is built around the skull it wears as a helmet, mourning its lost parent."),
   ("PLANT",3,"arch:plant",["Tangela","Weepinbell"],"Tangela and Weepinbell are both modelled on plants -- Tangela a tangled mass of blue vines, Weepinbell a carnivorous pitcher plant."),
@@ -747,3 +747,19 @@ board("2026-11-08","mixed","Evil",[
   ("SQUID",3,"arch:squid",["Malamar"],"Malamar is a squid -- it flips its body upside down and hypnotises foes with its glowing spots."),
 ], exclude=ex("ability:Illuminate","ability:Keen Eye","ability:Damp","arch:seahorse","arch:squid","arch:octopus","arch:cephalopod",
               extra=["Starmie","Lanturn","Volbeat","Morelull","Shiinotic","Furret","Horsea","Seadra","Inkay","Octillery","Clobbopus","Grapploct","Wooper","Dragalge","Skrelp","Psyduck","Golduck","Toxel","Pelipper","Wingull","Patrat","Meowstic","Rufflet","Hoothoot","Noctowl"]))
+
+# ===== 4-week gap fill (nightly 2026-10-05): 11-02 Mon EASY =====
+board("2026-11-02","gen1","Easy",[
+  ("NORMAL",1,"type:normal",["Rattata","Kangaskhan"],"Rattata and Kangaskhan are both pure Normal-types."),
+  ("BUG",1,"type:bug",["Butterfree","Scyther"],"Butterfree and Scyther are both Bug-types (and both Flying too) -- a butterfly and a green mantis with scythe arms."),
+  ("ELECTRIC",1,"type:electric",["Pikachu","Jolteon"],"Pikachu and Jolteon are both pure Electric-types."),
+  ("ROCK",1,"type:rock",["Geodude"],"Geodude is a Rock-type (and Ground too), a living boulder with arms."),
+  ("GRASS",1,"type:grass",["Oddish","Bellsprout"],"Oddish and Bellsprout are both Grass-types (and Poison-types too)."),
+], exclude=["Raticate","Meowth","Persian","Chansey","Tauros","Pidgey","Caterpie","Beedrill","Metapod","Weedle","Kakuna","Rhyhorn","Rhydon","Onix","Kabuto","Omanyte","Aerodactyl","Golem","Graveler","Raichu","Haunter","Gengar","Gloom","Vileplume","Weepinbell","Victreebel","Venusaur","Bulbasaur","Ivysaur","Exeggcute","Exeggutor","Tangela","Paras","Parasect","Scyther","Pinsir","Venomoth","Venonat","Pinsir"])
+board("2026-11-02","mixed","Easy",[
+  ("DARK",1,"type:dark",["Poochyena","Zorua"],"Poochyena and Zorua are both pure Dark-types."),
+  ("ROCK",1,"type:rock",["Roggenrola","Nosepass"],"Roggenrola and Nosepass are both pure Rock-types."),
+  ("ICE",1,"type:ice",["Vanillite","Bergmite"],"Vanillite and Bergmite are both pure Ice-types."),
+  ("NORMAL",1,"type:normal",["Lillipup","Skitty"],"Lillipup and Skitty are both pure Normal-types."),
+  ("FAIRY",1,"type:fairy",["Snubbull"],"Snubbull is a pure Fairy-type, a tiny bulldog with a fearsome-looking face."),
+], exclude=["Mightyena","Zoroark","Boldore","Gigalith","Probopass","Vanillish","Vanilluxe","Avalugg","Herdier","Stoutland","Delcatty","Granbull","Sneasel","Umbreon","Houndour","Absol"])
