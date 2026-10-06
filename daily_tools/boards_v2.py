@@ -763,3 +763,18 @@ board("2026-11-02","mixed","Easy",[
   ("NORMAL",1,"type:normal",["Lillipup","Skitty"],"Lillipup and Skitty are both pure Normal-types."),
   ("FAIRY",1,"type:fairy",["Snubbull"],"Snubbull is a pure Fairy-type, a tiny bulldog with a fearsome-looking face."),
 ], exclude=["Mightyena","Zoroark","Boldore","Gigalith","Probopass","Vanillish","Vanilluxe","Avalugg","Herdier","Stoutland","Delcatty","Granbull","Sneasel","Umbreon","Houndour","Absol"])
+
+# ===== 4-week gap fill (nightly 2026-10-06): 11-03 Tue MEDIUM =====
+board("2026-11-03","gen1","Medium",[
+  ("WATER",1,"type:water",["Seel","Krabby","Lapras"],"Seel, Krabby and Lapras are all Water-types (Lapras pairs it with Ice) -- a seal, a crab and a gentle sea-plesiosaur."),
+  ("PINK",1,"colour:pink",["Lickitung","Chansey","Ditto"],"Lickitung, Chansey and Ditto are all pink Pokémon -- a long-tongued lump, a nurse with an egg pouch and a blob that copies anything."),
+  ("WINGS",2,"sprite:wings",["Golbat","Aerodactyl"],"Look closely at the sprites -- Golbat has broad bat wings and Aerodactyl has leathery pterosaur wings."),
+  ("RHINO",3,"arch:rhino",["Rhyhorn"],"Rhyhorn is a rhinoceros -- a heavily armoured, horned charger that bulldozes through anything in its path."),
+], exclude=ex("sprite:wings","arch:rhino","arch:pachyderm",extra=["Zubat","Rhydon","Pidgey","Pidgeotto","Pidgeot","Spearow","Fearow","Zapdos","Moltres","Articuno","Dragonite","Charizard","Butterfree","Beedrill","Venomoth","Scyther","Clefairy","Clefable","Dragonair","Gyarados","Mew","Jigglypuff","Wigglytuff","Slowpoke","Slowbro","Porygon","Mr. Mime","Jynx"]))
+board("2026-11-03","mixed","Medium",[
+  ("STEEL",1,"type:steel",["Aron","Pawniard"],"Aron and Pawniard are both Steel-types (Aron pairs it with Rock, Pawniard with Dark)."),
+  ("STARTER",1,"group:starter",["Grookey","Fuecoco","Snivy"],"Grookey (Galar), Fuecoco (Paldea) and Snivy (Unova) are all starter Pokémon -- the first partners offered at the start of their games."),
+  ("BELL",2,"sprite:bell",["Chimecho"],"Look closely at the sprite -- Chimecho is a little wind-chime bell, ringing a soft, soothing tone as it drifts about."),
+  ("MAMMOTH",3,"arch:boar",["Piloswine"],"Piloswine is a woolly mammoth crossed with a boar -- a shaggy, tusked beast that hunts for food buried under the snow."),
+  ("RAPTOR",4,"arch:raptor",["Talonflame","Braviary"],"Talonflame and Braviary are both raptors -- birds of prey, Talonflame a swift falcon that dive-bombs, Braviary a bold eagle that fights fearlessly."),
+], exclude=ex("type:steel","role:starter","arch:raptor","arch:eagle","arch:falcon","arch:pig","arch:boar",extra=["Phanpy","Donphan","Cufant","Copperajah","Swinub","Lechonk","Oinkologne","Mamoswine","Rhydon","Rhyhorn","Rhyperior","Swablu","Altaria","Fletchling","Fletchinder","Staravia","Staraptor","Rufflet","Hawlucha","Pidgeot","Skarmory","Corviknight","Pelipper","Wingull","Hoothoot","Noctowl","Wooper","Xatu","Natu","Rotom","Jynx"]))
