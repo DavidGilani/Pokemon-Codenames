@@ -778,3 +778,19 @@ board("2026-11-03","mixed","Medium",[
   ("MAMMOTH",3,"arch:boar",["Piloswine"],"Piloswine is a woolly mammoth crossed with a boar -- a shaggy, tusked beast that hunts for food buried under the snow."),
   ("RAPTOR",4,"arch:raptor",["Talonflame","Braviary"],"Talonflame and Braviary are both raptors -- birds of prey, Talonflame a swift falcon that dive-bombs, Braviary a bold eagle that fights fearlessly."),
 ], exclude=ex("type:steel","role:starter","arch:raptor","arch:eagle","arch:falcon","arch:pig","arch:boar",extra=["Phanpy","Donphan","Cufant","Copperajah","Swinub","Lechonk","Oinkologne","Mamoswine","Rhydon","Rhyhorn","Rhyperior","Swablu","Altaria","Fletchling","Fletchinder","Staravia","Staraptor","Rufflet","Hawlucha","Pidgeot","Skarmory","Corviknight","Pelipper","Wingull","Hoothoot","Noctowl","Wooper","Xatu","Natu","Rotom","Jynx"]))
+
+# ===== 4-week gap fill (nightly 2026-10-07): 11-04 Wed CHALLENGING =====
+board("2026-11-04","gen1","Challenging",[
+  ("GROUND",1,"type:ground",["Dugtrio","Sandslash"],"Dugtrio and Sandslash are both pure Ground-types -- a trio of burrowing moles and a spiny, clawed pangolin-armadillo."),
+  ("WHISKERS",2,"sprite:whiskers",["Meowth","Nidoran♀","Raticate"],"Look closely at the sprites -- Meowth, Nidoran♀ and Raticate all sport prominent whiskers on their faces."),
+  ("LARVA",3,"arch:caterpillar",["Caterpie","Weedle"],"Caterpie and Weedle are both bug larvae -- a green caterpillar that will become a butterfly and a hairy, stinger-tailed grub."),
+  ("MERMAID",3,"arch:mermaid",["Vaporeon"],"Vaporeon is based on a mermaid -- its fin-tail, frilled collar and water-like body let it melt into the sea, as the Pokédex notes mermaid legends."),
+  ("TAPIR",3,"arch:tapir",["Hypno"],"Hypno is based on the baku, the dream-eating tapir of Japanese folklore -- hence its long, trunk-like snout and its hypnotist's pendulum."),
+], exclude=["Rattata","Persian","Nidorina","Nidorino","Nidoran♂","Magikarp","Kadabra","Alakazam","Raichu","Pikachu","Metapod","Butterfree","Kakuna","Beedrill","Weezing","Eevee","Jolteon","Flareon","Drowzee","Vaporeon","Seadra","Horsea","Lapras","Dewgong","Poliwhirl","Poliwrath","Sandshrew","Diglett","Rhydon","Rhyhorn","Geodude","Graveler","Golem","Onix","Cubone","Marowak","Nidoqueen","Nidoking","Slowpoke","Slowbro","Snorlax"])
+board("2026-11-04","mixed","Challenging",[
+  ("FIGHTING",1,"type:fighting",["Mienfoo","Sawk","Hitmontop","Makuhita"],"Mienfoo, Sawk, Hitmontop and Makuhita are all pure Fighting-types -- a martial-arts weasel, a karate-gi brawler, a spinning kicker and a sumo-style wrestler."),
+  ("SLUG",3,"arch:slug",["Sliggoo","Shellos"],"Sliggoo and Shellos are both based on sea slugs -- Sliggoo a slimy, shell-antennaed dragon, Shellos a frilly nudibranch."),
+  ("TIGER",3,"arch:tiger",["Incineroar"],"Incineroar is a tiger crossed with a heel pro-wrestler, with a flaming championship belt."),
+  ("CICADA",4,"arch:cicada",["Ninjask"],"Ninjask is modelled on an adult cicada (crossed with a ninja) -- a buzzing insect that clings to trees and moves with blinding speed."),
+  ("DONKEY",3,"arch:donkey",["Mudbray"],"Mudbray is a donkey -- a stubborn, hard-working beast that can haul loads many times its own weight."),
+], exclude=["Goomy","Goodra","Slugma","Magcargo","Gastrodon","Litten","Torracat","Nincada","Shedinja","Mudsdale","Blitzle","Zebstrika","Ponyta","Rapidash","Hitmonlee","Hitmonchan","Machop","Machoke","Machamp","Timburr","Gurdurr","Conkeldurr","Throh","Pangoro","Riolu","Lucario","Meditite","Medicham","Hawlucha","Hariyama","Pancham","Tyrogue","Cranidos","Combusken","Blaziken","Mankey","Primeape","Scrafty","Scraggy","Passimian","Falinks","Kubfu","Urshifu","Obstagoon","Luxray","Shinx","Luxio","Liepard","Purrloin","Pyroar","Sprigatito","Raikou","Entei"])
