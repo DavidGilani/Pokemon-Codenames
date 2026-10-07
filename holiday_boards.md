@@ -22,7 +22,7 @@ Ground rules for themed boards:
 - **Theme the blues AND the clues.** Aim for 3–5 on-theme clues; an off-theme
   filler clue is fine if the theme runs dry. Mention the occasion in the clue
   explanations ("Happy Halloween! Gengar is said to…").
-- **Author holiday boards early** — up to 5 weeks ahead rather than the usual 3 —
+- **Author holiday boards early** — up to 5 weeks ahead rather than the usual 4 —
   so the owner has time to QA them.
 - Ideas below are starting points, not fixed boards; the watchlist and recent
   blues still apply (e.g. go easy on Gourgeist/Muk/Koffing/Weezing).

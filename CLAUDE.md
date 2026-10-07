@@ -263,7 +263,7 @@ boards to QA. Workflow:
    anything — otherwise a new board could repeat a word/blue/group from a board
    that exists only in the DB, and gap-detection would be wrong.
 4. **Fill gaps.** Run `python3 daily_tools/schedule_v2.py` — it computes the
-   window from *today* and lists any day in `[today, today+21]` missing a
+   window from *today* and lists any day in `[today, today+28]` (4 weeks) missing a
    `gen1`/`mixed` board as a `GAP` line. Author the missing ones (soonest first)
    by adding a `board(...)` entry to `daily_tools/boards_v2.py` matching the
    date's **weekday tier** (Mon Easy · Tue Medium · Wed Challenging · Thu Hard ·
