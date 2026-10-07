@@ -2272,7 +2272,7 @@ async function startDaily(pool, opts = {}) {
 // table (read back here via Supabase to fix boards). Nothing is cached locally
 // and no player attempt is logged.
 // ============================================================================
-const QA_WINDOW_DAYS = 30; // how far ahead to pull upcoming boards for QA
+const QA_WINDOW_DAYS = 35; // how far ahead to pull upcoming boards for QA (5 weeks, for holiday boards)
 // The QA secret from the ?qa=<token> URL. Any value opens the QA page (viewing),
 // but feedback is only stamped `trusted` (and thus acted on by the nightly
 // generator) when this matches the server's stored secret. Captured at boot.
@@ -2475,7 +2475,7 @@ function renderQaOverview() {
     return `<div class="qa-cell qa-${r.status}"${click}>`
       + `<span class="qa-cell-pool">${poolLbl}</span><span class="qa-cell-diff">${escapeHtml(label)}</span></div>`;
   };
-  const dates = [...byDate.keys()].sort();
+  const dates = [...byDate.keys()].sort().reverse(); // furthest-ahead first
   const blues = rows.filter((r) => r.status === "blue").length;
   _qaBadge("qa-badge-boards", blues);
   const sub = $(".qa-sec-sub");
