@@ -1171,3 +1171,4 @@ a { color: var(--accent); }
   position: absolute; left: 50%; top: 42%; width: 38%; transform: translate(-50%, -50%);
   pointer-events: none;
 }
+.qa-cmt-older { margin-top: 10px; }

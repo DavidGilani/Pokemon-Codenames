@@ -1931,7 +1931,7 @@ function dailyResumeTimer() {
 function initDaily() {
   $("#daily-gen1-btn").addEventListener("click", () => startDaily("gen1"));
   $("#daily-mixed-btn").addEventListener("click", () => startDaily("mixed"));
-  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); endCoach(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
+  $("#daily-exit-btn").addEventListener("click", () => { _closeNotePalette(); if (tutorial.active) logDailyEvent("tutorial_exit"); endCoach(); dailyPauseTimer(); daily.qa = false; daily.qaQueue = []; daily.qaIndex = 0; clearDailyUrl(); showScreen("landing"); });
   $("#daily-hint-btn").addEventListener("click", dailyRequestHint);
   $("#daily-tutorial-btn").addEventListener("click", () => startPractice(daily.pool));
   // Daily welcome pop-up
@@ -1940,7 +1940,7 @@ function initDaily() {
   // Interactive tutorial coach
   $("#coach-next").addEventListener("click", coachNext);
   $("#coach-back").addEventListener("click", coachBack);
-  $("#coach-skip").addEventListener("click", endCoach);
+  $("#coach-skip").addEventListener("click", () => { if (tutorial.active) logDailyEvent("tutorial_skip"); endCoach(); });
   const qaBack = $("#daily-qa-back");
   if (qaBack) qaBack.addEventListener("click", () => showQaOverview());
   // QA dashboard nav: jump to each section.
@@ -2067,7 +2067,7 @@ function closeDailyWelcome() {
 // at a time, with a couple of "your turn" moments where they actually tap a
 // tile. `pool` is the daily they came from, so the last step can drop them into
 // today's real puzzle.
-const tutorial = { active: false, step: 0, pool: "gen1", satisfied: false };
+const tutorial = { active: false, step: 0, pool: "gen1", satisfied: false, maxLogged: 0 };
 const TUTORIAL_STEPS = [
   { title: "Welcome! 👋",
     body: "This is a quick practice board. The goal: find all <strong>9 blue Pokémon</strong> hidden among the 25 tiles." },
@@ -2093,6 +2093,7 @@ const TUTORIAL_STEPS = [
 
 function startCoach(pool) {
   tutorial.active = true; tutorial.step = 0; tutorial.pool = pool; tutorial.satisfied = false;
+  tutorial.maxLogged = 0;
   logDailyEvent("tutorial_start");
   renderCoach();
 }
@@ -2107,6 +2108,11 @@ function renderCoach() {
   el.classList.toggle("coach-top", s.pos === "top"); // pin to top so it never sits under the board
   if (s.spot) { const t = $(s.spot); if (t) t.classList.add("coach-spotlight"); }
   $("#coach-progress").textContent = `Step ${tutorial.step + 1} of ${TUTORIAL_STEPS.length}`;
+  // Funnel tracking: log each step the first time it's reached this run.
+  if (tutorial.step + 1 > tutorial.maxLogged) {
+    tutorial.maxLogged = tutorial.step + 1;
+    logDailyEvent(`tutorial_step_${tutorial.maxLogged}`);
+  }
   $("#coach-title").innerHTML = s.title;
   $("#coach-body").innerHTML = s.body;
   tutorial.satisfied = false;
@@ -2307,6 +2313,7 @@ function _qaBadge(id, n, suffix) {
 }
 
 // Owner comment moderation on the QA page (needs the secret QA link).
+let _qaShowOlderComments = false;
 async function loadQaComments() {
   const el = $("#qa-comments");
   if (!el) return;
@@ -2323,7 +2330,12 @@ async function loadQaComments() {
   }
   const hidden = rows.filter((r) => r.status === "hidden").length;
   _qaBadge("qa-badge-comments", hidden, "to review");
-  const items = rows.map((r) => `<div class="qa-cmt ${r.status === "hidden" ? "qa-cmt-hidden" : ""}">
+  // Show the last week (plus anything hidden awaiting review); older on request.
+  const weekAgo = Date.now() - 7 * 864e5;
+  const isRecent = (r) => r.status === "hidden" || new Date(r.created_at).getTime() >= weekAgo;
+  const olderCount = rows.filter((r) => !isRecent(r)).length;
+  const shown = _qaShowOlderComments ? rows : rows.filter(isRecent);
+  const items = shown.map((r) => `<div class="qa-cmt ${r.status === "hidden" ? "qa-cmt-hidden" : ""}">
       <div class="qa-cmt-meta">${escapeHtml(r.puzzle_date)} · ${r.pool === "gen1" ? "Gen I" : "All-gens"} ·
         <strong>${escapeHtml(r.username)}</strong> · ${_cmtAgo(r.created_at)}
         ${r.status === "hidden" ? `<span class="qa-cmt-flag">Hidden${r.report_count ? ` · ${r.report_count} report${r.report_count === 1 ? "" : "s"}` : ""}</span>` : ""}
@@ -2337,8 +2349,11 @@ async function loadQaComments() {
       </div>
     </div>`).join("");
   el.innerHTML = `<div class="qa-stats-title">Comments</div>
-    <div class="qa-stats-note">${rows.length} comment${rows.length === 1 ? "" : "s"}${hidden ? ` · <strong>${hidden} hidden awaiting review</strong>` : ""}. Reported comments are hidden automatically until you restore them.</div>
-    ${items || `<div class="qa-stats-loading">No comments yet.</div>`}`;
+    <div class="qa-stats-note">${rows.length} comment${rows.length === 1 ? "" : "s"}${hidden ? ` · <strong>${hidden} hidden awaiting review</strong>` : ""}. Showing the last 7 days (and anything hidden). Reported comments are hidden automatically until you restore them.</div>
+    ${items || `<div class="qa-stats-loading">${rows.length ? "No comments in the last week." : "No comments yet."}</div>`}
+    ${olderCount ? `<button class="btn btn-ghost btn-mini qa-cmt-older" id="qa-cmt-older">${_qaShowOlderComments ? "Hide older comments" : `Show ${olderCount} older comment${olderCount === 1 ? "" : "s"}`}</button>` : ""}`;
+  const olderBtn = $("#qa-cmt-older");
+  if (olderBtn) olderBtn.addEventListener("click", () => { _qaShowOlderComments = !_qaShowOlderComments; loadQaComments(); });
   $all("[data-act]", el).forEach((b) => b.addEventListener("click", async () => {
     if (b.dataset.act === "remove" && !confirm("Delete this comment permanently?")) return;
     try {
@@ -2449,7 +2464,25 @@ function renderQaStats(s, comp) {
       <tr><td>📋 Copied result</td><td>${ev("copy")}</td><td>${evU("copy")}</td></tr>
       <tr><td>🎓 Tutorial started</td><td>${ev("tutorial_start")}</td><td>${evU("tutorial_start")}</td></tr>
       <tr><td>🎓 Tutorial finished</td><td>${ev("tutorial_complete")}</td><td>${evU("tutorial_complete")}</td></tr>
-    </tbody></table>`;
+    </tbody></table>
+    ${_qaTutorialFunnel(evU)}`;
+}
+
+// Tutorial drop-off: people reaching each step, and how they left.
+function _qaTutorialFunnel(evU) {
+  const start = evU("tutorial_step_1");
+  if (!start) return `<div class="qa-stats-sec">Tutorial steps</div><div class="qa-stats-loading">Step tracking started 9 Oct 2026 – no data yet.</div>`;
+  const rows = TUTORIAL_STEPS.map((st, i) => {
+    const n = evU(`tutorial_step_${i + 1}`);
+    return `<tr><td>${i + 1}. ${st.title.replace(/<[^>]+>/g, "")}</td><td>${n}</td><td>${_pct(n, start)}%</td></tr>`;
+  }).join("");
+  const how = [["Tapped “Play today's puzzle” (end)", "tutorial_complete"], ["Tapped Skip", "tutorial_skip"],
+               ["Left via the back/exit button", "tutorial_exit"], ["Finished the practice board", "tutorial_board_done"]]
+    .map(([l, k]) => `<tr><td>${l}</td><td>${evU(k)}</td><td>${_pct(evU(k), start)}%</td></tr>`).join("");
+  return `<div class="qa-stats-sec">Tutorial steps</div>
+    <table class="qa-stats-tbl"><thead><tr><th>Step reached</th><th>Users</th><th>%</th></tr></thead><tbody>${rows}</tbody></table>
+    <table class="qa-stats-tbl"><thead><tr><th>How they left</th><th>Users</th><th>%</th></tr></thead><tbody>${how}</tbody></table>
+    <div class="qa-stats-note">Tracked since 9 Oct 2026. Anyone not in “How they left” closed the page.</div>`;
 }
 
 function _qaDateLabel(d) {
@@ -3033,6 +3066,7 @@ async function dailyRequestHint() {
 }
 
 async function dailyFinish(outcome) {
+  if (daily.practice) logDailyEvent("tutorial_board_done");
   endCoach(); // clear any tutorial overlay if the practice board is completed
   // Freeze the timer at the current active time before anything else reads it.
   const duration = dailyElapsedMs();
