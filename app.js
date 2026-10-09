@@ -3541,6 +3541,8 @@ function openDailyShareModal() {
       + ` · ${daily.hintsUsed ? `${daily.hintsUsed} hint${daily.hintsUsed === 1 ? "" : "s"}` : "no hints"}`;
   }
 
+  _fillDailyRank();
+
   const st = _getStreak(daily.pool);
   const streakEl = $("#dshare-streak");
   if (st.current >= 1) {
@@ -3558,6 +3560,28 @@ function openDailyShareModal() {
   const otherBtn = $("#dshare-other");
   if (otherBtn) otherBtn.textContent = `Play the ${other === "gen1" ? "Gen I" : "All-gens"} puzzle`;
   modal.classList.remove("hidden");
+}
+
+// Speed ranking line on the share card (wins only): fastest so far today, or
+// top 10% / 25% / half. Hidden for anyone outside the top half, or offline.
+async function _fillDailyRank() {
+  const el = $("#dshare-rank");
+  if (!el) return;
+  el.hidden = true;
+  if (daily.outcome !== "win" || !daily.attemptId) return;
+  try {
+    const { data, error } = await sb.rpc("daily_time_rank", { p_id: daily.attemptId });
+    if (error || !data || !data.total) return;
+    const frac = (data.faster + 1) / data.total;
+    let html = "";
+    if (data.faster === 0) html = "⚡ You've got the <strong>fastest time</strong> so far today!";
+    else if (frac <= 0.10) html = "🏆 Your time is in the <strong>top 10%</strong> today";
+    else if (frac <= 0.25) html = "🥈 Your time is in the <strong>top 25%</strong> today";
+    else if (frac <= 0.50) html = "👏 Your time is in the <strong>top half</strong> today";
+    if (!html) return;
+    el.innerHTML = html;
+    el.hidden = false;
+  } catch (_) { /* offline – just leave it out */ }
 }
 
 function closeDailyShareModal() {
