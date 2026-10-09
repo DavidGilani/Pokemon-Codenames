@@ -288,6 +288,12 @@ boards to QA. Workflow:
    execute convert_from(decode(...)) … $$;` pattern keeps the JSON exact), then
    **re-refresh `daily_tools/live_boards.json`** from the DB so it includes what
    you just upserted.
+   **Check every tile has a picture:** tiles are matched to the `pokemon` table
+   by name (spaces/hyphens ignored), so a spelling mismatch (e.g. `Flabébé` vs
+   `Flabebe`) shows a blank tile. Run
+   `select t->>'name' from daily_puzzles, jsonb_array_elements(tiles) t where not exists (select 1 from pokemon p where lower(replace(replace(p.name,' ',''),'-','')) = lower(replace(replace(t->>'name',' ',''),'-',''))) group by 1;`
+   — it must return nothing. If it doesn't, rename the `pokemon` row to the
+   board's official spelling (see `46_updates.sql`).
 6. Commit + push to `main` (**include `live_boards.json`**), and report what was
    fixed / created (and any feedback left un-addressed for the owner).
 
