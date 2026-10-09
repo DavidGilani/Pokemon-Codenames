@@ -794,3 +794,20 @@ board("2026-11-04","mixed","Challenging",[
   ("CICADA",4,"arch:cicada",["Ninjask"],"Ninjask is modelled on an adult cicada (crossed with a ninja) -- a buzzing insect that clings to trees and moves with blinding speed."),
   ("DONKEY",3,"arch:donkey",["Mudbray"],"Mudbray is a donkey -- a stubborn, hard-working beast that can haul loads many times its own weight."),
 ], exclude=["Goomy","Goodra","Slugma","Magcargo","Gastrodon","Litten","Torracat","Nincada","Shedinja","Mudsdale","Blitzle","Zebstrika","Ponyta","Rapidash","Hitmonlee","Hitmonchan","Machop","Machoke","Machamp","Timburr","Gurdurr","Conkeldurr","Throh","Pangoro","Riolu","Lucario","Meditite","Medicham","Hawlucha","Hariyama","Pancham","Tyrogue","Cranidos","Combusken","Blaziken","Mankey","Primeape","Scrafty","Scraggy","Passimian","Falinks","Kubfu","Urshifu","Obstagoon","Luxray","Shinx","Luxio","Liepard","Purrloin","Pyroar","Sprigatito","Raikou","Entei"])
+
+# ===== 4-week gap fill (nightly 2026-10-09): 11-06 Fri HARD =====
+board("2026-11-06","gen1","Hard",[
+  ("LIMBER",5,"ability:Limber",["Persian","Hitmonlee"],"Persian and Hitmonlee both have the Ability Limber, which makes them immune to paralysis -- fitting for a supple cat and a high-kicking fighter."),
+  ("TRILOBITE",4,"arch:trilobite",["Kabuto"],"Kabuto is based on a trilobite (with a touch of horseshoe crab) -- an extinct armoured sea arthropod, revived from the Dome Fossil."),
+  ("HORN",2,"sprite:horn",["Nidoking","Rhydon","Rapidash"],"Look at the sprites -- Nidoking has a sharp horn on its head, Rhydon a drill-like horn on its snout, and Rapidash a single unicorn-like horn."),
+  ("PLANT",3,"arch:plant",["Weepinbell","Exeggutor"],"Weepinbell and Exeggutor are both based on plants -- Weepinbell on a pitcher plant, Exeggutor on a tall palm tree."),
+  ("LIZARD",3,"arch:lizard",["Charmander"],"Charmander is a lizard -- the Lizard Pokémon, a salamander-like reptile whose tail flame shows its health."),
+], exclude=ex("arch:plant","arch:lizard","arch:trilobite","arch:arthropod","sprite:horn","sprite:head-horn","sprite:nose-horn","sprite:horns","ability:Limber","arch:cat","arch:feline",
+              extra=["Charmeleon","Charizard","Slowpoke","Slowbro","Gyarados","Dragonair","Machop","Machoke","Machamp","Primeape","Meowth","Kabutops","Omanyte","Omastar","Tauros","Pinsir","Nidorino","Nidorina","Nidoqueen","Rhyhorn","Seaking","Dewgong","Ponyta","Exeggcute","Tangela","Oddish","Bellsprout","Victreebel","Gloom","Vileplume","Bulbasaur","Ivysaur","Venusaur","Ditto","Hitmonchan","Scyther","Ninetales","Vulpix","Growlithe","Arcanine","Lickitung","Snorlax"]))
+board("2026-11-06","mixed","Hard",[
+  ("SOLID-ROCK",5,"ability:Solid Rock",["Camerupt","Rhyperior","Carracosta"],"Camerupt, Rhyperior and Carracosta all have the Ability Solid Rock, which cuts the damage they take from super-effective moves."),
+  ("PROBOSCIDEAN",4,"arch:elephant",["Donphan","Copperajah"],"Donphan and Copperajah are proboscideans -- the elephant order: Donphan an armoured Indian elephant that rolls like a tyre, Copperajah a big rusty working elephant."),
+  ("RAVEN",3,"arch:corvid",["Honchkrow","Corviknight"],"Honchkrow and Corviknight are corvids -- Honchkrow a boss-like crow/raven, Corviknight an armoured raven."),
+  ("SPIDER",3,"arch:spider",["Galvantula","Araquanid"],"Galvantula and Araquanid are spiders -- Galvantula an electrified spinner, Araquanid a water spider carrying an air bubble like a diving bell."),
+], exclude=ex("arch:corvid","arch:elephant","arch:spider","arch:arachnid","arch:crow","arch:mammoth","ability:Solid Rock",
+              extra=["Corvisquire","Rookidee","Murkrow","Phanpy","Cufant","Joltik","Ariados","Spinarak","Tarountula","Spidops","Dewpider","Tirtouga","Numel","Rhyhorn","Rhydon","Mamoswine","Piloswine","Swinub","Mudsdale","Hippowdon","Hippopotas","Skarmory","Talonflame","Braviary","Aegislash"]))
