@@ -528,11 +528,11 @@ board("2026-10-31","gen1","Brutal",[
   ("DECEPTION",4,"lore:mimicry",["Mr. Mime","Arbok"],"Both survive by faking something they're not -- Mr. Mime (the Barrier Pokemon) mimes invisible walls into being, while Arbok's hood bears a menacing false-face pattern that bluffs predators into backing off."),
   ("HUMAN-LIKE",5,"egg:humanlike",["Drowzee","Jynx","Mr. Mime"],"Drowzee, Jynx and Mr. Mime all belong to the Human-Like Egg Group -- the games' own classification for Pokemon built on a human or human-like silhouette."),
 ], exclude=["Haunter","Gastly","Golbat","Koffing","Ekans","Hypno","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp","Hitmonlee","Hitmonchan","Electabuzz","Magmar","Ditto","Voltorb","Electrode","Arcanine","Clefable","Clefairy","Dragonair","Golduck","Golem","Grimer","Gyarados","Lapras","Magikarp","Meowth","Moltres","Ninetales","Paras","Parasect","Vulpix","Zapdos"])
-board("2026-10-31","mixed","Brutal",[
-  ("GHOST",1,"type:ghost",["Cofagrigus","Banette","Froslass","Rotom","Mimikyu","Trevenant"],"Every one of these is officially a Ghost-type Pokemon -- the classic Halloween type, drawn here from six different generations of spooky designs."),
+board("2026-10-31","mixed","Brutal",[  # QA 2026-10-09: reworked around a DECORATION clue (Pumpkaboo, Zubat, Chandelure, Ariados)
+  ("GHOST",1,"type:ghost",["Banette","Pumpkaboo","Chandelure","Froslass","Mimikyu"],"Happy Halloween! Banette (a cursed doll), Pumpkaboo (a haunted pumpkin), Chandelure (a spirit-eating chandelier), Froslass (a snow-ghost) and Mimikyu (a lonely ghost in a Pikachu costume) are all Ghost-types."),
+  ("DECORATION",4,"lore:decoration",["Pumpkaboo","Zubat","Chandelure","Ariados"],"Happy Halloween! Classic party decorations: Pumpkaboo is a carved pumpkin, Zubat a hanging bat, Chandelure a spooky candelabra and Ariados a spider spinning cobwebs."),
   ("OMEN",4,"lore:omen",["Absol","Murkrow"],"Both are explicitly tied to bad luck in their Pokedex lore: Absol is the 'Disaster Pokemon', wrongly blamed for the earthquakes and storms it merely senses coming, while Murkrow's crow-like look and cunning nature have long made trainers see it as a bird of ill omen."),
   ("INSOMNIA",5,"ability:insomnia",["Banette","Murkrow","Ariados"],"Banette, Murkrow and Ariados all share the Ability Insomnia, which stops them from ever falling asleep -- fitting, since Banette is too busy plotting revenge, Murkrow too mischievous, and Ariados too busy guarding its web."),
-  ("MEGA",5,"group:mega",["Absol","Banette"],"Absol and Banette are two of the relatively small club of Pokemon with a Mega Evolution -- Mega Absol grows a huge curved horn and flowing white mane, while Mega Banette's zipper mouth splits into a jagged, screaming grin."),
 ], exclude=["Yamask","Runerigus","Shuppet","Snorunt","Glalie","Phantump","Spinarak","Honchkrow","Capsakid","Delibird","Drowzee","Gourgeist","Hoothoot","Hypno","Noctowl","Pumpkaboo","Scovillain","Spidops","Tarountula","Terapagos","Venusaur","Charizard","Blastoise","Beedrill","Pidgeot","Alakazam","Slowbro","Gengar","Kangaskhan","Pinsir","Gyarados","Aerodactyl","Mewtwo","Ampharos","Steelix","Scizor","Heracross","Houndoom","Tyranitar","Sceptile","Blaziken","Swampert","Gardevoir","Sableye","Mawile","Aggron","Medicham","Manectric","Sharpedo","Camerupt","Altaria","Salamence","Metagross","Latias","Latios","Rayquaza","Lopunny","Gallade","Audino","Diancie","Garchomp","Lucario","Abomasnow"])
 
 # ===== 4-week gap fill (nightly 2026-09-30): 10-22 .. 10-28 =====
@@ -679,8 +679,7 @@ board("2026-10-29","mixed","Hard",[
               extra=["Pincurchin","Staryu","Starmie","Toxapex","Empoleon","Prinplup","Malamar","Octillery","Clobbopus","Grapploct","Barboach","Remoraid","Alakazam","Conkeldurr","Gurdurr","Kricketor","Gumshoos","Mabosstiff","Herdier","Lairon"]))
 
 board("2026-11-05","gen1","Hard",[
-  ("POKEBALL",4,"based:pokeball",["Voltorb","Electrode"],"Happy Bonfire Night! Voltorb and Electrode are both disguised as Poké Balls -- the classic trap on a Kanto power-plant floor, and ready to go off like fireworks."),
-  ("EXPLOSION",4,"move:explosion",["Electrode","Golem"],"Happy Bonfire Night! Electrode and Golem are famous for the move Explosion, a huge blast that makes the user faint."),
+  ("EXPLOSION",4,"move:explosion",["Electrode","Golem","Voltorb"],"Happy Bonfire Night! Voltorb, Electrode and Golem all go out with a bang -- they can learn Self-Destruct and Explosion, the biggest blasts in the game."),  # QA 2026-10-09: POKEBALL clue dropped (too easy)
   ("BIRD",3,"arch:bird",["Zapdos","Moltres","Articuno"],"The three legendary birds of Kanto -- Zapdos (lightning), Moltres (flame) and Articuno (frost) -- are all based on real-world birds."),
   ("STRIPES",2,"sprite:stripes",["Electabuzz","Arcanine"],"Look at the sprites -- Electabuzz has black tiger stripes across its body and arms, and Arcanine has bold black stripes on its orange coat."),
   ("CATTLE",3,"arch:bull",["Tauros"],"Tauros is a bull -- a charging wild bull that whips itself with its three tails."),
@@ -690,7 +689,7 @@ board("2026-11-05","mixed","Hard",[
   ("WHITE-SMOKE",5,"ability:White Smoke",["Centiskorch","Heatmor","Sizzlipede"],"Happy Bonfire Night! Centiskorch, Heatmor and Sizzlipede all have the Ability White Smoke, which stops other Pokémon lowering their stats -- named for the smoke that billows off a bonfire."),
   ("FIREFLY",4,"arch:firefly",["Volbeat","Illumise"],"Happy Bonfire Night! Volbeat and Illumise are both based on fireflies -- they glow and trace shapes in the night sky like sparklers."),
   ("SWINE",3,"arch:pig",["Tepig","Lechonk"],"Tepig and Lechonk are both pigs -- Tepig a fire-snorting piglet that sneezes embers, Lechonk a round, hungry hog."),
-  ("TONGUE",2,"sprite:tongue",["Haunter","Shellder"],"Look at the sprites -- Haunter lolls a long tongue out of its grinning mouth, and Shellder's big pink tongue pokes out between its shells."),
+  ("TONGUE",2,"sprite:tongue",["Haunter","Shellder","Heatmor"],"Look at the sprites -- Haunter lolls a long tongue out of its grinning mouth, Shellder's big pink tongue pokes out between its shells, and Heatmor (an anteater) has a long tongue of flame."),  # QA 2026-10-09: Heatmor also ticks TONGUE
 ], exclude=ex("ability:White Smoke","arch:firefly","arch:pig","arch:boar","sprite:tongue",
               extra=["Pignite","Emboar","Oinkologne","Piloswine","Swinub","Mamoswine","Lickitung","Lickilicky","Gastly","Gengar","Chewtle","Drednaw","Cloyster","Croagunk","Toxicroak","Gulpin","Swalot","Frogadier","Carkol","Coalossal","Rolycoly","Torkoal","Litwick","Lampent","Chandelure","Lanturn","Chinchou","Sizzlipede","Magcargo","Slugma","Camerupt","Numel"]))
 
@@ -698,7 +697,7 @@ board("2026-11-05","mixed","Hard",[
 board("2026-10-30","gen1","Hard",[
   ("JELLYFISH",4,"arch:jellyfish",["Tentacool"],"Tentacool is based on a jellyfish -- a drifting, translucent sea jelly with long stinging tentacles."),
   ("AMMONITE",4,"arch:ammonite",["Omanyte"],"Omanyte is based on an ammonite -- an extinct spiral-shelled sea mollusc; it is revived from the Helix Fossil."),
-  ("DRAGON",3,"arch:dragon",["Charizard","Gyarados"],"Charizard and Gyarados are both dragon-like -- Charizard a fire-breathing winged dragon, Gyarados a rampaging sea dragon that evolves from a Magikarp."),
+  ("DRAGON-ISH",3,"arch:dragon",["Charizard","Gyarados"],"Charizard and Gyarados are both dragon-ish -- Charizard a fire-breathing winged dragon (but not a Dragon-type), Gyarados a rampaging sea dragon that evolves from a Magikarp."),  # QA 2026-10-09: owner asked DRAGON -> DRAGON-ISH
   ("FISH",3,"arch:fish",["Magikarp","Goldeen","Horsea"],"Magikarp, Goldeen and Horsea are all based on real-world fish -- Magikarp a flopping carp, Goldeen a graceful goldfish, Horsea a seahorse (a fish despite its looks)."),
   ("BEAK",2,"sprite:beak",["Spearow","Farfetch'd"],"Look at the sprites -- Spearow and Farfetch'd both have a prominent pointed beak."),
 ], exclude=ex("arch:jellyfish","arch:ammonite","arch:dragon","arch:fish","sprite:beak",
@@ -731,39 +730,7 @@ board("2026-11-01","mixed","Evil",[
 ], exclude=ex("ability:Flower Veil","ability:Poison Point","ability:Natural Cure","arch:primate","arch:monkey","arch:duck",
               extra=["Floette","Florges","Quaxwell","Quaquaval","Venipede","Whirlipede","Budew","Roselia","Chansey","Blissey","Corsola","Mankey","Ambipom","Aipom","Simisage","Simisear","Simipour","Pansage","Pansear","Panpour","Oranguru","Passimian","Monferno","Infernape","Chimchar","Psyduck","Golduck","Ducklett","Swanna","Farfetch'd","Sirfetch'd","Slakoth","Vigoroth","Overqwil"]))
 
-board("2026-11-08","gen1","Evil",[
-  ("FLASH-FIRE",5,"ability:Flash Fire",["Ponyta","Growlithe","Vulpix"],"Happy Diwali! Ponyta, Growlithe and Vulpix all have the Ability Flash Fire, which absorbs Fire-type moves and powers up their own -- the festival of lights, in Pokémon form."),
-  ("SERPENT",4,"arch:serpent",["Gyarados","Dratini"],"Gyarados and Dratini are both serpents -- Gyarados a rampaging sea serpent, Dratini a slender dragon-snake that sheds its skin."),
-  ("MOXIE",5,"ability:Moxie",["Gyarados","Pinsir"],"Gyarados and Pinsir both have the Ability Moxie, which raises their Attack every time they knock out a foe."),
-  ("SWARM",5,"ability:Swarm",["Scyther","Beedrill"],"Scyther and Beedrill both have the Ability Swarm, which powers up their Bug-type moves when they're low on HP."),
-  ("FOX",3,"arch:fox",["Eevee","Vulpix"],"Eevee and Vulpix are both foxes -- Eevee a fluffy-tailed fox-like creature with unstable genes, Vulpix a six-tailed fox."),
-], exclude=ex("ability:Flash Fire","ability:Moxie","ability:Swarm","arch:serpent","arch:snake","arch:fox",
-              extra=["Ninetales","Arcanine","Rapidash","Flareon","Jolteon","Vaporeon","Ekans","Arbok","Dragonair","Dragonite","Onix","Weedle","Kakuna","Mankey","Primeape","Magmar","Charmander","Charmeleon","Charizard","Seadra","Horsea"]))
-board("2026-11-08","mixed","Evil",[
-  ("ILLUMINATE",5,"ability:Illuminate",["Chinchou","Watchog","Staryu"],"Happy Diwali, festival of lights! Chinchou, Watchog and Staryu all have the Ability Illuminate, which makes them glow and raises the chance of meeting wild Pokémon."),
-  ("KEEN-EYE",5,"ability:Keen Eye",["Sentret","Watchog"],"Sentret and Watchog both have the Ability Keen Eye, which stops their accuracy being lowered -- both are sharp-eyed lookouts."),
-  ("DAMP",5,"ability:Damp",["Quagsire","Kingdra","Tadbulb"],"Quagsire, Kingdra and Tadbulb all have the Ability Damp, which stops anyone nearby using explosive moves like Explosion."),
-  ("SEAHORSE",4,"arch:seahorse",["Kingdra","Skrelp"],"Kingdra and Skrelp are both seahorse-like -- Kingdra a dragon seahorse, Skrelp a camouflaged leafy sea dragon (a close seahorse relative)."),
-  ("SQUID",3,"arch:squid",["Malamar"],"Malamar is a squid -- it flips its body upside down and hypnotises foes with its glowing spots."),
-], exclude=ex("ability:Illuminate","ability:Keen Eye","ability:Damp","arch:seahorse","arch:squid","arch:octopus","arch:cephalopod",
-              extra=["Starmie","Lanturn","Volbeat","Morelull","Shiinotic","Furret","Horsea","Seadra","Inkay","Octillery","Clobbopus","Grapploct","Wooper","Dragalge","Skrelp","Psyduck","Golduck","Toxel","Pelipper","Wingull","Patrat","Meowstic","Rufflet","Hoothoot","Noctowl"]))
-
 # ===== 4-week gap fill (nightly 2026-10-05): 11-02 Mon EASY =====
-board("2026-11-02","gen1","Easy",[
-  ("NORMAL",1,"type:normal",["Rattata","Kangaskhan"],"Rattata and Kangaskhan are both pure Normal-types."),
-  ("BUG",1,"type:bug",["Butterfree","Scyther"],"Butterfree and Scyther are both Bug-types (and both Flying too) -- a butterfly and a green mantis with scythe arms."),
-  ("ELECTRIC",1,"type:electric",["Pikachu","Jolteon"],"Pikachu and Jolteon are both pure Electric-types."),
-  ("ROCK",1,"type:rock",["Geodude"],"Geodude is a Rock-type (and Ground too), a living boulder with arms."),
-  ("GRASS",1,"type:grass",["Oddish","Bellsprout"],"Oddish and Bellsprout are both Grass-types (and Poison-types too)."),
-], exclude=["Raticate","Meowth","Persian","Chansey","Tauros","Pidgey","Caterpie","Beedrill","Metapod","Weedle","Kakuna","Rhyhorn","Rhydon","Onix","Kabuto","Omanyte","Aerodactyl","Golem","Graveler","Raichu","Haunter","Gengar","Gloom","Vileplume","Weepinbell","Victreebel","Venusaur","Bulbasaur","Ivysaur","Exeggcute","Exeggutor","Tangela","Paras","Parasect","Scyther","Pinsir","Venomoth","Venonat","Pinsir"])
-board("2026-11-02","mixed","Easy",[
-  ("DARK",1,"type:dark",["Poochyena","Zorua"],"Poochyena and Zorua are both pure Dark-types."),
-  ("ROCK",1,"type:rock",["Roggenrola","Nosepass"],"Roggenrola and Nosepass are both pure Rock-types."),
-  ("ICE",1,"type:ice",["Vanillite","Bergmite"],"Vanillite and Bergmite are both pure Ice-types."),
-  ("NORMAL",1,"type:normal",["Lillipup","Skitty"],"Lillipup and Skitty are both pure Normal-types."),
-  ("FAIRY",1,"type:fairy",["Snubbull"],"Snubbull is a pure Fairy-type, a tiny bulldog with a fearsome-looking face."),
-], exclude=["Mightyena","Zoroark","Boldore","Gigalith","Probopass","Vanillish","Vanilluxe","Avalugg","Herdier","Stoutland","Delcatty","Granbull","Sneasel","Umbreon","Houndour","Absol"])
-
 # ===== 4-week gap fill (nightly 2026-10-06): 11-03 Tue MEDIUM =====
 board("2026-11-03","gen1","Medium",[
   ("WATER",1,"type:water",["Seel","Krabby","Lapras"],"Seel, Krabby and Lapras are all Water-types (Lapras pairs it with Ice) -- a seal, a crab and a gentle sea-plesiosaur."),
@@ -797,7 +764,7 @@ board("2026-11-04","mixed","Challenging",[
 
 # ===== 4-week gap fill (nightly 2026-10-09): 11-06 Fri HARD =====
 board("2026-11-06","gen1","Hard",[
-  ("LIMBER",5,"ability:Limber",["Persian","Hitmonlee"],"Persian and Hitmonlee both have the Ability Limber, which makes them immune to paralysis -- fitting for a supple cat and a high-kicking fighter."),
+  ("GIOVANNI",3,"trainer:Giovanni",["Persian","Nidoking","Nidoqueen","Rhydon"],"Persian, Nidoking, Nidoqueen and Rhydon are all Pokémon used by Giovanni, the Team Rocket boss and Viridian City Gym leader."),  # QA 2026-10-09: LIMBER removed (no abilities in Gen I); Hitmonlee tile -> Nidoqueen
   ("TRILOBITE",4,"arch:trilobite",["Kabuto"],"Kabuto is based on a trilobite (with a touch of horseshoe crab) -- an extinct armoured sea arthropod, revived from the Dome Fossil."),
   ("HORN",2,"sprite:horn",["Nidoking","Rhydon","Rapidash"],"Look at the sprites -- Nidoking has a sharp horn on its head, Rhydon a drill-like horn on its snout, and Rapidash a single unicorn-like horn."),
   ("PLANT",3,"arch:plant",["Weepinbell","Exeggutor"],"Weepinbell and Exeggutor are both based on plants -- Weepinbell on a pitcher plant, Exeggutor on a tall palm tree."),
@@ -811,3 +778,76 @@ board("2026-11-06","mixed","Hard",[
   ("SPIDER",3,"arch:spider",["Galvantula","Araquanid"],"Galvantula and Araquanid are spiders -- Galvantula an electrified spinner, Araquanid a water spider carrying an air bubble like a diving bell."),
 ], exclude=ex("arch:corvid","arch:elephant","arch:spider","arch:arachnid","arch:crow","arch:mammoth","ability:Solid Rock",
               extra=["Corvisquire","Rookidee","Murkrow","Phanpy","Cufant","Joltik","Ariados","Spinarak","Tarountula","Spidops","Dewpider","Tirtouga","Numel","Rhyhorn","Rhydon","Mamoswine","Piloswine","Swinub","Mudsdale","Hippowdon","Hippopotas","Skarmory","Talonflame","Braviary","Aegislash"]))
+
+# ===== NIGHTLY 2026-10-11: QA rework (11-02 variety, 11-08 Diwali) + gap fill (11-07) + Friday-13th (11-13) =====
+LEG=[n for n,r in FACTS.items() if r.get("legendary") or r.get("mythical") or any("Paradox" in x or "Ultra Beast" in x or "Treasures" in x or "Tapu" in x or "guardian" in x or "beast trio" in x for x in (r.get("nickname") or [])+(r.get("mythology") or []))]
+
+# 11-02 Mon EASY -- QA: "needs more variety, can't be all types" -> types + a colour + real animals
+board("2026-11-02","gen1","Easy",[
+  ("ELECTRIC",1,"type:electric",["Magnemite","Jolteon"],"Magnemite and Jolteon are both Electric-types -- a floating magnet-ball and the sparkiest Eevee evolution."),
+  ("PURPLE",1,"colour:purple",["Rattata","Gastly"],"Rattata and Gastly are both purple Pokémon -- a pushy little rat and a floating cloud of gas."),
+  ("GRASS",1,"type:grass",["Oddish","Bellsprout","Ivysaur"],"Oddish, Bellsprout and Ivysaur are all Grass-types -- a weed, a sapling and a flower-budded dino-toad."),
+  ("MARSUPIAL",3,"arch:marsupial",["Kangaskhan"],"Kangaskhan is a marsupial (a kangaroo), carrying its baby in a belly pouch."),
+  ("WASP",3,"arch:wasp",["Beedrill"],"Beedrill is a wasp, with a stinger on each forearm and one on its tail."),
+], exclude=ex("type:electric","type:grass","arch:marsupial","arch:wasp",
+              extra=["Pikachu","Raichu","Eevee","Magneton","Voltorb","Electrode","Electabuzz","Zapdos","Vaporeon","Flareon","Gloom","Vileplume","Weepinbell","Victreebel","Tangela","Exeggcute","Exeggutor","Parasect","Ekans","Arbok","Haunter","Gengar","Koffing","Weezing","Grimer","Muk","Zubat","Golbat","Raticate","Nidoran♂","Nidorino","Nidoking","Tentacool","Tentacruel","Ditto","Venonat","Venomoth","Kakuna","Weedle","Metapod","Caterpie","Butterfree","Scyther","Pinsir"]))
+board("2026-11-02","mixed","Easy",[
+  ("PURPLE",1,"colour:purple",["Drapion","Mismagius","Toxtricity"],"Drapion, Mismagius and Toxtricity are all purple Pokémon -- a scorpion-ogre, a witchy ghost and a punk-rock lizard."),
+  ("LEGENDARY",1,"group:legendary",["Lugia","Groudon"],"Lugia and Groudon are both legendary Pokémon -- the guardian of the seas and the continent-shaping titan."),
+  ("ICE",1,"type:ice",["Vanillite","Bergmite"],"Vanillite and Bergmite are both pure Ice-types -- an ice-cream cone and a block of ice."),
+  ("MOTH",3,"arch:moth",["Volcarona","Dustox"],"Volcarona and Dustox are both moths -- a fiery sun-moth and a poisonous night-moth."),
+], exclude=ex("type:ice","arch:moth",
+              extra=LEG+["Vanilish","Vanilluxe","Cubchoo","Beartic","Cryogonal","Beautifly","Butterfree","Venomoth","Mothim","Wormadam","Frosmoth","Ninjask","Masquerain","Vivillon","Sylveon","Glaceon","Crobat","Aipom","Sableye","Gastrodon","Skuntank","Stunky","Spiritomb"]))
+
+# 11-07 Sat BRUTAL -- gap fill (Brutal: sum>=11, <=1 single, exactly 3 Cat4-5)
+board("2026-11-07","gen1","Brutal",[
+  ("SAFFRON",4,"trainer:Sabrina",["Kadabra","Mr. Mime","Venomoth"],"Kadabra, Mr. Mime and Venomoth are all on Saffron City Gym leader Sabrina's psychic team (Alakazam completes it, but isn't here)."),
+  ("PSYCHIC",1,"type:psychic",["Kadabra","Mr. Mime","Jynx"],"Kadabra, Mr. Mime and Jynx are all Psychic-types -- a spoon-bender, a pantomime and an ice-queen opera singer."),
+  ("DEFENSE",5,"stat:defense",["Cloyster","Onix","Omastar"],"Cloyster (180), Onix (160) and Omastar (125) have some of the highest base Defense stats in Gen I -- only Golem (130) joins them, and it isn't here."),
+  ("BLAINE",4,"trainer:Blaine",["Growlithe","Magmar"],"Growlithe and Magmar both fight for Cinnabar Island Gym leader Blaine's fire team (with Ponyta, Rapidash and Arcanine)."),
+], exclude=ex("trainer:Sabrina","trainer:Blaine","type:psychic",
+              extra=["Alakazam","Abra","Golem","Graveler","Geodude","Rhydon","Kingler","Marowak","Sandslash","Slowbro","Slowpoke","Weezing","Tangela","Kabutops","Kabuto","Omanyte","Shellder","Steelix","Ponyta","Rapidash","Arcanine","Vulpix","Ninetales","Flareon","Charmander","Charmeleon","Charizard","Moltres","Magikarp","Exeggcute","Exeggutor","Venonat","Mewtwo","Mew","Hypno","Drowzee"]))
+board("2026-11-07","mixed","Brutal",[
+  ("CYNTHIA",4,"trainer:Cynthia",["Spiritomb","Lucario","Milotic"],"Spiritomb, Lucario and Milotic are all on Sinnoh Champion Cynthia's team (with Garchomp, Roserade and Gastrodon)."),
+  ("DARK",1,"type:dark",["Spiritomb","Houndoom"],"Spiritomb (Ghost/Dark) and Houndoom (Dark/Fire) are both part Dark-type."),
+  ("FIRE",1,"type:fire",["Houndoom","Torkoal"],"Houndoom (Dark/Fire) and Torkoal (pure Fire) are both Fire-types -- a hellhound and a coal-burning tortoise."),
+  ("MOLD-BREAKER",5,"ability:Mold Breaker",["Excadrill","Fraxure"],"Excadrill and Fraxure both have the Ability Mold Breaker, which lets their moves ignore abilities like Levitate or Sturdy."),
+  ("CRUSTACEAN",4,"arch:crustacean",["Dwebble","Clauncher"],"Dwebble and Clauncher are both crustaceans -- a rock-lugging hermit-style crab and a snapping-shrimp."),
+], exclude=ex("trainer:Cynthia","type:dark","type:fire","ability:Mold Breaker","arch:crustacean","arch:crab","arch:lobster",
+              extra=["Garchomp","Roserade","Gastrodon","Riolu","Haxorus","Axew","Drilbur","Crustle","Clawitzer","Houndour","Milotic","Feebas","Tyranitar","Anorith","Armaldo","Kabuto","Kabutops","Omanyte","Omastar","Lileep","Cradily","Shuckle","Dwebble","Binacle","Barbaracle","Skrelp","Dragalge"]))
+
+# 11-08 Sun EVIL -- QA: Diwali theme (no Moxie/Swarm); wealth, cleanliness, lights, Ganesh
+board("2026-11-08","gen1","Evil",[
+  ("RAMAYANA",5,"myth:ramayana",["Mankey"],"Happy Diwali! Mankey is a monkey -- like Hanuman and his Vanara army in the Ramayana, who helped Rama rescue Sita, the epic Diwali celebrates (Rama's return home). Primeape, its evolution, isn't here."),
+  ("FLYING",1,"type:flying",["Pidgeot","Fearow","Gyarados","Charizard"],"Pidgeot, Fearow, Gyarados and Charizard are all part Flying-type -- two soaring birds, a sea serpent that takes to the air and a fire-breathing dragon."),
+  ("NAGA",5,"myth:naga",["Arbok","Dragonair","Gyarados"],"Arbok, Dragonair and Gyarados are all serpent beings in the vein of the Nagas of Hindu myth -- divine cobras and snake-spirits, like Shesha, the serpent Vishnu rests upon."),
+  ("FORTUNE",4,"lore:koi",["Magikarp","Goldeen"],"Happy Diwali! A carp and a goldfish -- koi-style fish are symbols of wealth, good fortune and perseverance, the blessings of Lakshmi that Diwali invites in."),
+  ("LANCE",4,"trainer:Lance",["Dragonair","Gyarados","Charizard"],"Dragonair, Gyarados and Charizard are all on Lance's team, the Dragon-master Elite Four member and Champion (Dragonite and Aerodactyl join them, but aren't here)."),
+], exclude=ex("type:flying","trainer:Lance","arch:monkey","arch:primate","arch:cobra","arch:fish","arch:carp","arch:serpent",
+              extra=["Primeape","Dragonite","Dratini","Seaking","Horsea","Seadra","Machop","Machoke","Machamp","Ekans","Onix","Zubat","Golbat","Doduo","Dodrio","Farfetch'd","Aerodactyl","Spearow","Pidgey","Pidgeotto","Scyther","Butterfree","Moltres","Zapdos","Articuno","Gengar","Hitmonlee","Hitmonchan","Poliwag","Poliwrath"]))
+board("2026-11-08","mixed","Evil",[
+  ("ILLUMINATE",5,"ability:Illuminate",["Staryu","Chinchou","Watchog"],"Happy Diwali, the festival of lights! Staryu, Chinchou and Watchog all have the Ability Illuminate, which makes them glow and raises the chance of meeting wild Pokémon."),
+  ("JEWELS",4,"arch:gem",["Staryu","Carbink","Sableye"],"Wealth and treasure are part of Diwali's Lakshmi blessings -- Staryu's glowing core-gem, Carbink's jewel body and Sableye's gem eyes (it feeds on gems) are all precious stones."),
+  ("LAUNDRY",4,"lore:appliance",["Rotom"],"Cleanliness is a Diwali tradition -- homes are spring-cleaned before the festival. Rotom possesses household appliances -- Wash Rotom takes over a washing machine."),
+  ("GANESH",5,"myth:ganesh",["Phanpy","Cufant"],"Ganesh, the elephant-headed god, is honoured alongside Lakshmi at Diwali. Phanpy and Cufant are both elephants."),
+  ("NORMAL",1,"type:normal",["Watchog","Cinccino"],"Watchog and Cinccino are both pure Normal-types -- a meerkat lookout and a chinchilla with a fur stole."),
+], exclude=ex("ability:Illuminate","arch:gem","type:normal","arch:pachyderm","arch:elephant",
+              extra=["Starmie","Lanturn","Volbeat","Illumise","Morelull","Shiinotic","Diancie","Minior","Terapagos","Nihilego","Gimmighoul","Gholdengo","Minccino","Donphan","Copperajah","Mamoswine","Swinub","Piloswine","Mimikyu","Jynx","Mr. Mime","Mr. Rime","Corsola","Shuckle","Dwebble","Crustle","Rolycoly","Carkol","Coalossal","Stonjourner","Probopass","Nosepass"]))
+
+# 11-13 Fri HARD -- Friday the 13th (superstition)
+board("2026-11-13","gen1","Hard",[
+  ("THIRTEEN",5,"stat:dex13",["Weedle","Chansey","Porygon","Lapras"],"Unlucky for some! Weedle (#013), Chansey (#113), Lapras (#131) and Porygon (#137) all have '13' in their Pokédex number -- happy Friday the 13th."),
+  ("SKULL",4,"lore:skull",["Cubone"],"Happy Friday the 13th! Cubone wears the skull of its late mother as a helmet -- a spooky one (Marowak, who carries a bone club, isn't here)."),
+  ("RABBIT",3,"arch:rabbit",["Nidoran♀","Nidorino"],"Nidoran♀ and Nidorino are rabbit-like -- long ears and a hop; a rabbit's foot is a classic lucky charm."),
+  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is a mole, popping up from underground."),
+  ("ARMADILLO",3,"arch:armadillo",["Sandshrew"],"Sandshrew is an armadillo (or pangolin), curling into a spiky ball."),
+], exclude=ex("arch:rabbit","arch:mole","arch:armadillo","arch:pangolin",
+              extra=["Gyarados","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Omanyte","Omastar","Marowak","Kakuna","Beedrill","Nidorina","Nidoran♂","Nidoqueen","Nidoking","Dugtrio","Sandslash","Haunter","Gengar","Gastly"]))
+board("2026-11-13","mixed","Hard",[
+  ("BLACK-CAT",3,"arch:cat",["Purrloin","Liepard"],"Happy Friday the 13th! Purrloin and Liepard are sleek, mischievous black-and-purple cats -- the classic unlucky omen when one crosses your path."),
+  ("SALT",5,"myth:salt",["Garganacl"],"Spilling salt is bad luck, so you throw a pinch over your shoulder. Garganacl is the Salt Pokémon, a rock-salt giant (Nacli and Naclstack, its pre-evolutions, aren't here)."),
+  ("MIRROR",4,"lore:mirror",["Bronzor","Wobbuffet"],"Breaking a mirror means seven years' bad luck. Bronzor is modelled on an ancient bronze mirror, and Wobbuffet's signature move is Mirror Coat, reflecting special attacks back."),
+  ("LUCKY",3,"group:lucky",["Togepi"],"Togepi is the Spike Ball Pokémon said to bring happiness and good luck to those who are kind to it -- the opposite of Friday the 13th."),
+  ("RABBIT",3,"arch:rabbit",["Scorbunny","Bunnelby","Lopunny"],"Scorbunny, Bunnelby and Lopunny are all rabbits -- and a rabbit's foot is a classic lucky charm."),
+], exclude=ex("arch:cat","arch:feline","arch:rabbit","arch:hare",
+              extra=["Meowth","Persian","Espurr","Meowstic","Skitty","Delcatty","Litten","Torracat","Incineroar","Nacli","Naclstack","Bronzong","Mime Jr.","Mr. Mime","Ledyba","Ledian","Buneary","Raboot","Cinderace","Diggersby","Umbreon","Absol","Murkrow","Honchkrow","Sneasel","Weavile","Shuppet","Banette","Yamask","Cofagrigus","Wynaut","Sudowoodo","Lunatone","Solrock","Chansey","Blissey","Togetic","Togekiss","Happiny","Cleffa","Pichu","Jirachi","Manaphy","Shaymin"]))
