@@ -7,29 +7,6 @@
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
 
-# ===== 09-17 Thu : HARD (the too-easy Evil gen1 board, re-tiered + relocated) =====
-board("2026-09-17","gen1","Hard",[
-  ("RELIC",4,"lore:fossil",["Aerodactyl","Omastar","Kabutops"]),
-  ("LEGEND",3,"lore:legendary",["Articuno","Zapdos","Moltres"]),
-  ("FROST",4,"lore:ice-storm",["Articuno","Lapras","Dewgong"]),
-  ("VOLCANO",3,"lore:volcano",["Moltres","Magmar"]),
-], exclude=["Omanyte","Kabuto","Mewtwo","Mew","Jynx","Cloyster","Seel","Magby","Ponyta","Vulpix","Rhyhorn","Rhydon","Nidoking"])
-
-# ===== FEEDBACK FIX 2026-09-18 gen1 : removed 3-dragon WYVERN clue (too many
-# dragons in one day) and the BIPEDAL/humanoid clue's neutral conflict
-# (Magmar is also arch:humanoid, Charmeleon flagged by QA too). =====
-board("2026-09-18","gen1","Hard",[
-  ("CRAB",2,"sprite:pincers",["Kingler"]),
-  ("ANTENNAE",3,"sprite:antennae",["Venomoth","Venonat","Pinsir"]),
-  ("MOLLUSC",4,"arch:mollusc",["Shellder"]),
-  ("BIPEDAL",4,"arch:humanoid",["Jynx","Mr. Mime","Electabuzz"]),
-  ("AVIAN",3,"arch:bird",["Farfetch'd","Spearow","Pidgey"]),
-], exclude=["Mewtwo","Machop","Hitmonlee","Hitmonchan","Magmar","Machoke","Machamp",
-            "Doduo","Articuno","Fearow","Zapdos","Pidgeotto","Moltres","Pidgeot","Dodrio",
-            "Omanyte","Cloyster","Omastar","Parasect","Krabby","Paras",
-            "Kakuna","Beedrill","Pinsir","Caterpie","Butterfree","Metapod","Scyther","Weedle","Venonat",
-            "Charmeleon"])
-
 # ===== 09-28 Mon : EASY (gap fill) =====
 board("2026-09-28","gen1","Easy",[
   ("WATER",1,"type:water",["Squirtle","Poliwag","Horsea"]),
@@ -835,12 +812,12 @@ board("2026-11-08","mixed","Evil",[
               extra=["Starmie","Lanturn","Volbeat","Illumise","Morelull","Shiinotic","Diancie","Minior","Terapagos","Nihilego","Gimmighoul","Gholdengo","Minccino","Donphan","Copperajah","Mamoswine","Swinub","Piloswine","Mimikyu","Jynx","Mr. Mime","Mr. Rime","Corsola","Shuckle","Dwebble","Crustle","Rolycoly","Carkol","Coalossal","Stonjourner","Probopass","Nosepass"]))
 
 # 11-13 Fri HARD -- Friday the 13th (superstition)
-board("2026-11-13","gen1","Hard",[
-  ("THIRTEEN",5,"stat:dex13",["Weedle","Chansey","Porygon","Lapras"],"Unlucky for some! Weedle (#013), Chansey (#113), Lapras (#131) and Porygon (#137) all have '13' in their Pokédex number -- happy Friday the 13th."),
-  ("SKULL",4,"lore:skull",["Cubone"],"Happy Friday the 13th! Cubone wears the skull of its late mother as a helmet -- a spooky one (Marowak, who carries a bone club, isn't here)."),
+board("2026-11-13","gen1","Hard",[  # QA 2026-10-11: THIRTEEN (dex numbers) too hard -> reworked
+  ("GROUND",1,"type:ground",["Diglett","Sandshrew","Cubone"],"Diglett, Sandshrew and Cubone are the only Ground-types on the board -- a mole, an armadillo and an orphan wearing its mother's skull, all at home in the dirt."),
   ("RABBIT",3,"arch:rabbit",["Nidoran♀","Nidorino"],"Nidoran♀ and Nidorino are rabbit-like -- long ears and a hop; a rabbit's foot is a classic lucky charm."),
-  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is a mole, popping up from underground."),
-  ("ARMADILLO",3,"arch:armadillo",["Sandshrew"],"Sandshrew is an armadillo (or pangolin), curling into a spiky ball."),
+  ("PINK",2,"colour:pink",["Chansey","Porygon"],"Look at the sprites -- Chansey is a round pink blob and Porygon is built from pink and blue polygons; nothing else on this board is pink."),
+  ("LARVA",4,"arch:caterpillar",["Weedle"],"Weedle is the Hairy Bug Pokémon -- a larva (a caterpillar) that spends its days munching leaves before spinning a cocoon as Kakuna."),
+  ("PLESIOSAUR",4,"arch:plesiosaur",["Lapras"],"Lapras's long neck, flippers and shell echo a plesiosaur -- the prehistoric sea reptile behind the Loch Ness Monster legend that inspired it."),
 ], exclude=ex("arch:rabbit","arch:mole","arch:armadillo","arch:pangolin",
               extra=["Gyarados","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Omanyte","Omastar","Marowak","Kakuna","Beedrill","Nidorina","Nidoran♂","Nidoqueen","Nidoking","Dugtrio","Sandslash","Haunter","Gengar","Gastly"]))
 board("2026-11-13","mixed","Hard",[
@@ -851,3 +828,21 @@ board("2026-11-13","mixed","Hard",[
   ("RABBIT",3,"arch:rabbit",["Scorbunny","Bunnelby","Lopunny"],"Scorbunny, Bunnelby and Lopunny are all rabbits -- and a rabbit's foot is a classic lucky charm."),
 ], exclude=ex("arch:cat","arch:feline","arch:rabbit","arch:hare",
               extra=["Meowth","Persian","Espurr","Meowstic","Skitty","Delcatty","Litten","Torracat","Incineroar","Nacli","Naclstack","Bronzong","Mime Jr.","Mr. Mime","Ledyba","Ledian","Buneary","Raboot","Cinderace","Diggersby","Umbreon","Absol","Murkrow","Honchkrow","Sneasel","Weavile","Shuppet","Banette","Yamask","Cofagrigus","Wynaut","Sudowoodo","Lunatone","Solrock","Chansey","Blissey","Togetic","Togekiss","Happiny","Cleffa","Pichu","Jirachi","Manaphy","Shaymin"]))
+
+# ===== 4-week gap fill (nightly 2026-10-12): 11-09 Mon EASY =====
+board("2026-11-09","gen1","Easy",[
+  ("BUG",1,"type:bug",["Butterfree","Scyther"],"Butterfree and Scyther are both Bug-types -- a big-winged butterfly and a razor-armed mantis."),
+  ("ROCK",1,"type:rock",["Geodude","Aerodactyl"],"Geodude and Aerodactyl are both Rock-types -- a floating boulder with arms and a fossil sky-hunter."),
+  ("POISON",1,"type:poison",["Ekans","Tentacool","Nidoran♂"],"Ekans, Tentacool and Nidoran♂ are every Poison-type on the board -- a venomous snake, a stinging jellyfish and a spiky little poison-barb."),
+  ("OSTRICH",3,"arch:ratite",["Doduo"],"Doduo is an ostrich (or emu) -- a two-headed flightless bird that sprints across the plains on powerful legs."),
+  ("SEAL",3,"arch:pinniped",["Seel"],"Seel is a seal -- a sleek, white-furred pinniped with a little horn that dives into icy seas."),
+], exclude=ex("type:bug","type:rock","type:poison","arch:ratite","arch:pinniped","arch:bird",
+              extra=["Dodrio","Dewgong","Seaking","Psyduck","Slowbro","Cloyster","Omanyte","Omastar","Kabuto","Kabutops","Caterpie","Metapod","Kakuna","Beedrill","Pinsir","Paras","Parasect","Venonat","Venomoth","Onix","Nidoking","Nidoqueen","Arbok","Tentacruel","Grimer","Muk","Koffing","Weezing","Zubat","Golbat"]))
+board("2026-11-09","mixed","Easy",[
+  ("DRAGON",1,"type:dragon",["Axew","Gible"],"Axew and Gible are both Dragon-types -- a tusk-sharpening hatchling and a land-shark that nests in caves."),
+  ("FAIRY",1,"type:fairy",["Mawile","Togekiss"],"Mawile and Togekiss are both Fairy-types -- a deceiver with a hidden jaw and the Jubilee Pokémon that brings peace."),
+  ("POISON",1,"type:poison",["Gulpin","Skrelp","Croagunk"],"Gulpin, Skrelp and Croagunk are every Poison-type on the board -- a stomach with legs, a sludgy seaweed seahorse and a croaking poison-frog."),
+  ("FOX",3,"arch:fox",["Fennekin"],"Fennekin is a fox -- a fire-fox starter with big ears that it uses to vent heat."),
+  ("LION",3,"arch:lion",["Litleo"],"Litleo is a lion cub -- a small fire-lion with a fluffy flaming mane that grows into Pyroar."),
+], exclude=ex("type:dragon","type:fairy","type:poison","arch:dragon","arch:fox","arch:lion","arch:canine",
+              extra=["Sylveon","Clefairy","Clefable","Togepi","Togetic","Mimikyu","Wooper","Quagsire","Carvanha","Sharpedo","Dratini","Dragonair","Dragonite","Fraxure","Haxorus","Garchomp","Gabite","Krookodile","Pyroar","Braixen","Delphox","Vulpix","Ninetales","Zorua","Zoroark","Shinx","Luxio","Luxray","Meowth","Persian","Skitty"]))
