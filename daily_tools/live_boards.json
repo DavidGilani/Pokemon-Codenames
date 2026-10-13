@@ -1,106 +1,5 @@
 [
  {
-  "date": "2026-09-21",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Kakuna"
-    ],
-    "n": 1,
-    "cat": 2,
-    "word": "PUPA"
-   },
-   {
-    "m": [
-     "Diglett",
-     "Sandshrew"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "TUNNELER"
-   },
-   {
-    "m": [
-     "Growlithe",
-     "Charmander"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FIRE"
-   },
-   {
-    "m": [
-     "Voltorb"
-    ],
-    "n": 1,
-    "cat": 2,
-    "word": "BALL-SHAPE"
-   },
-   {
-    "m": [
-     "Meowth",
-     "Eevee",
-     "Chansey"
-    ],
-    "n": 3,
-    "cat": 1,
-    "word": "MUNDANE"
-   }
-  ]
- },
- {
-  "date": "2026-09-21",
-  "pool": "mixed",
-  "clues": [
-   {
-    "m": [
-     "Cleffa",
-     "Pichu",
-     "Igglybuff"
-    ],
-    "n": 3,
-    "cat": 1,
-    "word": "BABY"
-   },
-   {
-    "m": [
-     "Litten",
-     "Slugma"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "FIRE"
-   },
-   {
-    "m": [
-     "Mudbray",
-     "Trapinch"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "GROUND"
-   },
-   {
-    "m": [
-     "Grubbin"
-    ],
-    "n": 1,
-    "cat": 2,
-    "word": "MANDIBLE"
-   },
-   {
-    "m": [
-     "Pichu",
-     "Yamper"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "VOLTAGE"
-   }
-  ]
- },
- {
   "date": "2026-09-22",
   "pool": "gen1",
   "clues": [
@@ -4874,6 +4773,106 @@
     "cat": 3,
     "m": [
      "Litleo"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-11-10",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "TURTLE",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Blastoise"
+    ]
+   },
+   {
+    "word": "COCOON",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Metapod"
+    ]
+   },
+   {
+    "word": "GRASS",
+    "n": 4,
+    "cat": 1,
+    "m": [
+     "Oddish",
+     "Bulbasaur",
+     "Exeggcute",
+     "Tangela"
+    ]
+   },
+   {
+    "word": "VAMPIRE",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Golbat"
+    ]
+   },
+   {
+    "word": "ELECTRIC",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Pikachu",
+     "Magnemite"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-11-10",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "SQUIRREL",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Pachirisu"
+    ]
+   },
+   {
+    "word": "GHOST",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Sinistea",
+     "Drifloon",
+     "Yamask"
+    ]
+   },
+   {
+    "word": "FLIPPERS",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Palafin"
+    ]
+   },
+   {
+    "word": "ICE",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Delibird",
+     "Cryogonal",
+     "Snorunt"
+    ]
+   },
+   {
+    "word": "BEAVER",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Bidoof"
     ]
    }
   ]

@@ -846,3 +846,21 @@ board("2026-11-09","mixed","Easy",[
   ("LION",3,"arch:lion",["Litleo"],"Litleo is a lion cub -- a small fire-lion with a fluffy flaming mane that grows into Pyroar."),
 ], exclude=ex("type:dragon","type:fairy","type:poison","arch:dragon","arch:fox","arch:lion","arch:canine",
               extra=["Sylveon","Clefairy","Clefable","Togepi","Togetic","Mimikyu","Wooper","Quagsire","Carvanha","Sharpedo","Dratini","Dragonair","Dragonite","Fraxure","Haxorus","Garchomp","Gabite","Krookodile","Pyroar","Braixen","Delphox","Vulpix","Ninetales","Zorua","Zoroark","Shinx","Luxio","Luxray","Meowth","Persian","Skitty"]))
+
+# ===== 4-week gap fill (nightly 2026-10-13): 11-10 Tue MEDIUM =====
+board("2026-11-10","gen1","Medium",[
+  ("ELECTRIC",1,"type:electric",["Pikachu","Magnemite"],"Pikachu and Magnemite are the only Electric-types among the blues -- the famous mouse and a floating magnet-ball."),
+  ("GRASS",1,"type:grass",["Bulbasaur","Tangela","Exeggcute","Oddish"],"Bulbasaur, Tangela, Exeggcute and Oddish are all Grass-types (some paired with Poison or Psychic) -- a seed-bulb starter, a tangle of blue vines, a clutch of six eggs and a weed-bulb."),
+  ("COCOON",2,"sprite:cocoon",["Metapod"],"Look at the sprite -- Metapod is a hard green cocoon, a caterpillar mid-way through turning into a butterfly."),
+  ("VAMPIRE",3,"lore:vampire",["Golbat"],"Golbat drinks the blood of sleeping people and animals, and is a bat -- just like the vampire of legend."),
+  ("TURTLE",3,"arch:turtle",["Blastoise"],"Blastoise is a giant turtle -- a heavy shell with water cannons poking out of it."),
+], exclude=ex("type:electric","type:grass","arch:dog","sprite:cocoon","arch:bat","arch:turtle",
+              extra=["Squirtle","Wartortle","Weepinbell","Exeggutor","Raichu","Magneton","Voltorb","Electrode","Electabuzz","Jolteon","Zapdos","Ivysaur","Venusaur","Gloom","Vileplume","Bellsprout","Victreebel","Exeggcute","Tangela","Paras","Parasect","Kakuna","Caterpie","Butterfree","Pinsir","Zubat","Arcanine","Vulpix","Ninetales","Eevee","Meowth","Persian","Pidgeot","Dragonite","Charizard","Aerodactyl","Venomoth","Weedle","Beedrill","Flareon","Vaporeon"]))
+board("2026-11-10","mixed","Medium",[
+  ("GHOST",1,"type:ghost",["Yamask","Drifloon","Sinistea"],"Yamask, Drifloon and Sinistea are all Ghost-types (Drifloon pairs it with Flying) -- a mask-clutching spirit, a balloon of souls and a haunted teacup."),
+  ("ICE",1,"type:ice",["Cryogonal","Snorunt","Delibird"],"Cryogonal, Snorunt and Delibird are all Ice-types -- a drifting snowflake crystal, a snow-cone-hatted spirit and a gift-carrying penguin-like bird."),
+  ("BEAVER",3,"arch:beaver",["Bidoof"],"Bidoof is a beaver -- a plump, buck-toothed gnawer that fells trees with its sturdy incisors."),
+  ("SQUIRREL",3,"arch:squirrel",["Pachirisu"],"Pachirisu is a squirrel -- a chubby, bushy-tailed Electric-type that stores berries in its fluffy tail."),
+  ("FLIPPERS",2,"sprite:flippers",["Palafin"],"Look at the sprite -- Palafin's Zero Form has two broad flippers on its sides, like a dolphin's."),
+], exclude=ex("type:ghost","type:ice","arch:beaver","arch:squirrel","arch:dolphin","sprite:flippers",
+              extra=["Piplup","Prinplup","Empoleon","Seel","Dewgong","Lapras","Spheal","Sealeo","Walrein","Popplio","Brionne","Primarina","Finneon","Lumineon","Wailord","Kingdra","Shuppet","Banette","Misdreavus","Mismagius","Phantump","Trevenant","Pumpkaboo","Gourgeist","Mimikyu","Litwick","Lampent","Chandelure","Froslass","Dusclops","Dusknoir","Duskull","Cofagrigus","Frillish","Drifblim","Spiritomb","Sandygast","Palossand","Polteageist","Greavard","Houndstone","Dreepy","Vanillite","Vanillish","Vanilluxe","Bergmite","Avalugg","Eiscue","Glalie","Cubchoo","Beartic","Swinub","Jynx","Regice","Abomasnow","Snover","Emolga","Dedenne","Bibarel","Buizel","Zigzagoon","Linoone","Furret","Sentret","Marill","Azumarill","Finizen","Wailmer","Lanturn","Mantyke","Mantine","Castform","Cetoddle","Cetitan","Skwovet","Greedent"]))
