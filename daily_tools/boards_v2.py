@@ -880,3 +880,20 @@ board("2026-11-11","mixed","Challenging",[
   ("DRIZZLE",5,"ability:Drizzle",["Politoed","Pelipper","Kyogre"],"Politoed, Pelipper and Kyogre all have the Ability Drizzle, which makes it rain the moment they enter battle."),
 ], exclude=ex("type:steel","arch:snake","arch:serpent","arch:cobra","sprite:wool","arch:sheep","ability:Drizzle","arch:raptor",
               extra=["Sandaconda","Ekans","Arbok","Dratini","Dragonair","Rayquaza","Onix","Steelix","Gyarados","Milotic","Zangoose","Flaaffy","Ampharos","Wooloo","Whimsicott","Cottonee","Eldegoss","Gossifleur","Gogoat","Skiddo","Bouffalant","Rampardos","Registeel","Jirachi","Aggron","Lairon","Aron","Poliwag","Poliwhirl","Poliwrath","Wingull","Groudon","Rayquaza","Salandit","Salazzle","Anorith","Armaldo","Tyrunt","Tyrantrum","Cranidos","Shieldon","Archen","Archeops","Rufflet","Braviary","Corviknight","Staraptor","Staravia","Talonflame","Kyurem","Palkia"]))
+
+# ===== 4-week gap fill (nightly 2026-10-15): 11-12 Thu HARD =====
+board("2026-11-12","gen1","Hard",[
+  ("RUN-AWAY",5,"ability:Run Away",["Venonat","Ponyta","Eevee"],"Venonat, Ponyta and Eevee all have the Ability Run Away, which lets them flee guaranteed from any wild Pokémon battle."),
+  ("ECHINODERM",4,"arch:echinoderm",["Starmie"],"Starmie is an echinoderm -- the spiny-skinned sea group of starfish, urchins and sea cucumbers -- its two-star body is a starfish with a glowing core."),
+  ("WATERFOWL",3,"arch:duck",["Psyduck","Farfetch'd"],"Psyduck is a clumsy duckling with a permanent headache, and Farfetch'd is a wild duck that carries a leek -- from the Japanese saying that a duck arrives carrying its own onions. Both are waterfowl."),
+  ("POUCH",2,"sprite:belly-pouch",["Kangaskhan"],"Look at the sprite -- Kangaskhan carries a baby joey in the pouch on its belly, just like a kangaroo."),
+  ("HUMANOID",3,"arch:humanoid",["Hitmonlee","Mewtwo"],"Hitmonlee is a kicking martial artist and Mewtwo a tall, cloned psychic -- both stand and move on two legs like a person."),
+], exclude=ex("ability:Run Away","arch:echinoderm","arch:starfish","arch:duck","arch:kangaroo","arch:marsupial","arch:humanoid","sprite:belly-egg-pouch",
+              extra=["Chansey","Kadabra","Alakazam","Abra","Drowzee","Hypno","Staryu","Golduck","Rapidash","Dodrio","Caterpie","Raticate","Machop","Machoke","Machamp","Mr. Mime","Jynx","Hitmonchan","Electabuzz","Mew","Doduo","Pidgey","Spearow","Fearow","Pidgeotto","Pidgeot","Jolteon","Flareon","Vaporeon","Venomoth","Parasect","Paras"]))
+board("2026-11-12","mixed","Hard",[
+  ("SKILL-LINK",5,"ability:Skill Link",["Aipom","Minccino","Toucannon"],"Aipom, Minccino and Toucannon all have the Ability Skill Link, which makes their multi-hit moves strike the maximum number of times."),
+  ("CHIROPTERAN",4,"arch:chiropteran",["Woobat","Noibat"],"Woobat and Noibat are chiropterans -- the order of bats -- a heart-nosed fruit-bat type and a big-eared bat that hunts with ultrasonic screams."),
+  ("MANTIS",3,"arch:mantis",["Scizor","Leavanny"],"Scizor is a steel-red praying mantis with a pincer pair for forelegs, and Leavanny is a leafy mantis that stitches clothes for its young."),
+  ("PENGUIN",3,"arch:penguin",["Empoleon","Eiscue"],"Empoleon is an emperor penguin with steel flippers and a trident crest, and Eiscue is an Antarctic penguin that wears a block of ice on its head like a hat."),
+], exclude=ex("ability:Skill Link","arch:chiropteran","arch:bat","arch:mantis","arch:penguin","arch:scorpion","arch:arachnid","arch:monkey","arch:primate","arch:rodent",
+              extra=["Zubat","Golbat","Crobat","Gliscor","Scyther","Kleavor","Fomantis","Lurantis","Cinccino","Pikipek","Trumbeak","Pichu","Piplup","Prinplup","Scyther","Heracross","Skorupi","Gligar"]))
