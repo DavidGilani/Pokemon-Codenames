@@ -897,3 +897,19 @@ board("2026-11-12","mixed","Hard",[
   ("PENGUIN",3,"arch:penguin",["Empoleon","Eiscue"],"Empoleon is an emperor penguin with steel flippers and a trident crest, and Eiscue is an Antarctic penguin that wears a block of ice on its head like a hat."),
 ], exclude=ex("ability:Skill Link","arch:chiropteran","arch:bat","arch:mantis","arch:penguin","arch:scorpion","arch:arachnid","arch:monkey","arch:primate","arch:rodent",
               extra=["Zubat","Golbat","Crobat","Gliscor","Scyther","Kleavor","Fomantis","Lurantis","Cinccino","Pikipek","Trumbeak","Pichu","Piplup","Prinplup","Scyther","Heracross","Skorupi","Gligar"]))
+
+# ===== 4-week gap fill (nightly 2026-10-17): 11-14 Sat BRUTAL =====
+board("2026-11-14","gen1","Brutal",[
+  ("AGATHA",4,"trainer:Agatha",["Gengar","Haunter","Arbok"],"Gengar, Haunter and Arbok are all on Kanto Elite Four member Agatha's team (with Golbat, which isn't here) -- the ghost-and-poison specialist."),
+  ("HEAVYWEIGHT",5,"stat:weight",["Snorlax","Golem","Onix","Gyarados"],"Snorlax (460 kg), Golem (300 kg), Gyarados (235 kg) and Onix (210 kg) all weigh over 200 kg -- only Lapras and Dragonite join them in Gen I, and neither is here."),
+  ("SERPENT",3,"arch:serpent",["Arbok","Onix","Gyarados"],"Arbok is a cobra, Gyarados a sea serpent, and Onix is literally the Rock Snake Pokémon -- a chain of boulders shaped like a giant snake."),
+  ("NIMBLE",5,"stat:speed",["Gengar","Dugtrio","Electrode"],"Gengar (110), Dugtrio (120) and Electrode (150) all have a base Speed of 110 or more -- among the fastest Pokémon in Gen I."),
+], exclude=ex("trainer:Agatha","arch:serpent","arch:cobra","arch:snake",
+              extra=["Golbat","Lapras","Dragonite","Ekans","Dragonair","Dratini","Seadra","Raichu","Persian","Alakazam","Dodrio","Starmie","Tauros","Jolteon","Aerodactyl","Mewtwo","Mew","Gastly","Marowak","Cubone","Rhydon","Kangaskhan","Charizard","Dewgong","Slowbro","Blastoise","Venusaur","Machamp"]))
+board("2026-11-14","mixed","Brutal",[
+  ("STEVEN",4,"trainer:Steven",["Claydol","Aggron","Cradily"],"Claydol, Aggron and Cradily are all on Hoenn Champion Steven Stone's team (with Skarmory, Armaldo and Metagross), a rock-and-steel collector."),
+  ("PRANKSTER",5,"ability:Prankster",["Klefki","Whimsicott","Tornadus"],"Klefki, Whimsicott and Tornadus all have the Ability Prankster, which gives their status moves priority so they strike first."),
+  ("GRAY",1,"colour:gray",["Klefki","Aggron"],"Look at the sprites -- Klefki's ring of keys and Aggron's iron armour are both gray, and nothing else on this board is."),
+  ("BAKU",5,"myth:baku",["Munna","Musharna","Drowzee"],"The baku is the Japanese tapir-spirit that devours bad dreams -- Munna, Musharna and Drowzee are all dream-eating tapirs (their Pokédex entries feed on dreams)."),
+], exclude=ex("trainer:Steven","ability:Prankster","arch:tapir",
+              extra=["Skarmory","Metagross","Lileep","Armaldo","Anorith","Beldum","Metang","Aron","Lairon","Hypno","Sableye","Murkrow","Volbeat","Illumise","Riolu","Purrloin","Liepard","Cottonee","Thundurus","Meowstic","Impidimp","Morgrem","Grimmsnarl","Shroodle","Grafaiai","Baltoy","Bronzong","Bronzor","Lucario","Garchomp"]))
