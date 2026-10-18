@@ -1,107 +1,5 @@
 [
  {
-  "date": "2026-09-26",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Ninetales",
-     "Charizard"
-    ],
-    "n": 2,
-    "cat": 2,
-    "word": "TAILED"
-   },
-   {
-    "m": [
-     "Alakazam",
-     "Hypno"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "MINDBENDER"
-   },
-   {
-    "m": [
-     "Raichu",
-     "Magneton"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "ELECTRIC"
-   },
-   {
-    "m": [
-     "Alakazam",
-     "Magneton",
-     "Exeggutor"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "SPECIAL"
-   },
-   {
-    "m": [
-     "Mankey",
-     "Machoke"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "SIMIAN"
-   }
-  ]
- },
- {
-  "date": "2026-09-26",
-  "pool": "mixed",
-  "clues": [
-   {
-    "m": [
-     "Sobble",
-     "Kecleon"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "CAMO"
-   },
-   {
-    "m": [
-     "Drampa"
-    ],
-    "n": 1,
-    "cat": 2,
-    "word": "MUSTACHE"
-   },
-   {
-    "m": [
-     "Rabsca",
-     "Cofagrigus"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "PHARAOH"
-   },
-   {
-    "m": [
-     "Empoleon",
-     "Eiscue"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PENGUIN"
-   },
-   {
-    "m": [
-     "Toxapex",
-     "Glimmora"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "STARFISH"
-   }
-  ]
- },
- {
   "date": "2026-09-27",
   "pool": "gen1",
   "clues": [
@@ -4852,6 +4750,113 @@
      "Aggron",
      "Cradily"
     ]
+   }
+  ]
+ },
+ {
+  "date": "2026-11-15",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Golduck"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "KAPPA"
+   },
+   {
+    "m": [
+     "Machamp",
+     "Pinsir",
+     "Kingler"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "BRAWN"
+   },
+   {
+    "m": [
+     "Wigglytuff",
+     "Clefable"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "MOON-STONE"
+   },
+   {
+    "m": [
+     "Lickitung",
+     "Jynx"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "OBLIVIOUS"
+   },
+   {
+    "m": [
+     "Pinsir",
+     "Kabutops",
+     "Kingler"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "ARTHROPOD"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-15",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Meowscarada",
+     "Kecleon",
+     "Greninja"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "PROTEAN"
+   },
+   {
+    "m": [
+     "Walrein",
+     "Miltank",
+     "Dewgong"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "THICK-FAT"
+   },
+   {
+    "m": [
+     "Walrein",
+     "Dewgong",
+     "Popplio"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "PINNIPED"
+   },
+   {
+    "m": [
+     "Tyrantrum",
+     "Archeops"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "FOSSIL"
+   },
+   {
+    "m": [
+     "Meowscarada",
+     "Greninja",
+     "Popplio"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "STARTER"
    }
   ]
  }

@@ -88,19 +88,6 @@ board("2026-10-01","mixed","Hard",[
   ("COSTUME",2,"sprite:pikachu-costume",["Mimikyu"]),
 ], exclude=["Inkay","Clobbopus","Grapploct","Murkrow","Corvisquire","Tornadus","Thundurus","Hoopa","Skorupi","Gliscor"])
 
-# ===== 09-25 Fri : HARD (fresh -- old board moved to 10-02, see below; QA asked to move it "to
-# the end of all available boards" + fix the Kappa explanation) =====
-board("2026-09-25","gen1","Hard",[
-  ("SEAL",3,"arch:pinniped",["Seel","Dewgong"],"Seel and its evolution Dewgong are both based on real-world seals."),
-  ("MOTH",3,"arch:moth",["Venonat"],"Venonat is based on a fuzzy moth, complete with big compound eyes."),
-  ("PITCHER",3,"based:pitcher-plant",["Weepinbell"],"Weepinbell's design is based on a carnivorous pitcher plant."),
-  ("HUMANOID",4,"arch:humanoid",["Machop","Magmar","Electabuzz"],"All three are upright, humanoid brawlers -- Magmar and Electabuzz are even based on fire and thunder oni (Japanese demons)."),
-  ("TRADE",5,"connection:evolve-by-trade",["Golem","Kadabra"],"Both only evolve when traded to another trainer -- Graveler becomes Golem, and Kadabra becomes Alakazam."),
-], exclude=["Slowbro","Slowpoke","Slowking","Dugtrio","Sandslash","Hitmonlee","Hitmonchan",
-            "Venomoth","Bellsprout","Victreebel","Oddish","Gloom","Vileplume","Tangela",
-            "Machoke","Machamp","Graveler","Haunter","Gengar","Alakazam","Abra",
-            "Wartortle","Blastoise","Dewgong"])
-
 # ===== 09-25 Fri : HARD (relocated from the original 09-25 gen1 board -- content unchanged
 # except the Kappa clue's explanation, which QA flagged as too thin) =====
 board("2026-10-02","gen1","Hard",[
@@ -111,29 +98,6 @@ board("2026-10-02","gen1","Hard",[
   ("ORB",4,"based:orb",["Electrode","Magnemite"]),
 ], exclude=["Poliwrath","Machop","Machoke","Golbat","Zubat","Primeape","Mankey","Persian","Meowth",
             "Raichu","Pikachu","Nidoking","Nidoqueen","Psyduck"])
-
-# ===== 09-25 Fri (mixed) : HARD -- QA fixes: magma-shell -> magma (no hyphen-smushing),
-# Omen -> Disaster (clearer, still Absol's real Pokedex genus), and Gourgeist swapped out
-# (used too recently with a similar clue) for Drifblim =====
-board("2026-09-25","mixed","Hard",[
-  ("MAGMA",4,"arch:volcanic",["Camerupt","Numel","Torkoal"],"All three are based on active volcanoes -- Camerupt even erupts from the humps on its back."),
-  ("WANDERER",5,"lore:drifting-spirit",["Drifblim"],"Drifblim is said to be the spirit of someone who wandered too far and died, now drifting wherever the wind takes it."),
-  ("DISASTER",3,"lore:disaster-pokemon",["Absol"],"Absol's official Pokedex category is literally the 'Disaster Pokemon' -- it appears before storms and earthquakes, though it's really just trying to warn people."),
-  ("TWO-FACED",2,"sprite:second-head",["Girafarig","Mawile"]),
-  ("FIREFLY",3,"arch:firefly",["Illumise","Volbeat"]),
-], exclude=["Gourgeist","Pumpkaboo","Slugma","Magcargo","Zweilous","Doduo","Dodrio",
-            "Drifloon","Duskull","Dusclops","Banette"])
-
-# ===== 09-26 Sat : BRUTAL (re-port of the live board -- QA fix: Tauros has a very prominent
-# tail and was appearing as a tempting neutral under the TAILED clue; excluded) =====
-board("2026-09-26","gen1","Brutal",[
-  ("MINDBENDER",5,"lore:hypnosis",["Alakazam","Hypno"]),
-  ("ELECTRIC",1,"type:electric",["Raichu","Magneton"]),
-  ("TAILED",2,"sprite:tail",["Ninetales","Charizard"]),
-  ("SIMIAN",4,"arch:primate",["Machoke","Mankey"]),
-  ("SPECIAL",5,"stat:special",["Alakazam","Exeggutor","Magneton"]),
-], exclude=["Tauros","Rapidash","Vaporeon","Persian","Primeape","Machop","Kadabra",
-            "Drowzee","Golduck"])
 
 # ===== 09-27 Sun (mixed) : EVIL (re-port of the live board -- QA fixes: quicksilver -> speed-stat,
 # screech -> nocturnal) =====
@@ -913,3 +877,24 @@ board("2026-11-14","mixed","Brutal",[
   ("BAKU",5,"myth:baku",["Munna","Musharna","Drowzee"],"The baku is the Japanese tapir-spirit that devours bad dreams -- Munna, Musharna and Drowzee are all dream-eating tapirs (their Pokédex entries feed on dreams)."),
 ], exclude=ex("trainer:Steven","ability:Prankster","arch:tapir",
               extra=["Skarmory","Metagross","Lileep","Armaldo","Anorith","Beldum","Metang","Aron","Lairon","Hypno","Sableye","Murkrow","Volbeat","Illumise","Riolu","Purrloin","Liepard","Cottonee","Thundurus","Meowstic","Impidimp","Morgrem","Grimmsnarl","Shroodle","Grafaiai","Baltoy","Bronzong","Bronzor","Lucario","Garchomp"]))
+
+# ===== 4-week gap fill (nightly 2026-10-18): 11-15 Sun EVIL =====
+def _gen1_where(pred): return [n for n,r in FACTS.items() if r["gen"]==1 and pred(r)]
+_atk120 = _gen1_where(lambda r: r["base"]["attack"]>=120)
+_arthro = _gen1_where(lambda r: "bug" in r["types"] or any(a in r["arch"] for a in ("insect","crustacean","crab","arthropod","trilobite","spider","arachnid")))
+board("2026-11-15","gen1","Evil",[
+  ("KAPPA",3,"myth:kappa",["Golduck"],"Golduck is the Duck Pokémon, but its webbed hands and feet, beak-like snout and the gem on its forehead come straight from the kappa -- a mischievous Japanese river spirit."),
+  ("ARTHROPOD",4,"arch:arthropod",["Kingler","Pinsir","Kabutops"],"Kingler (a crab), Pinsir (a stag beetle) and Kabutops (a fossil horseshoe crab/trilobite) are all arthropods -- the jointed-legged, hard-shelled animal group that includes crabs, insects and trilobites."),
+  ("BRAWN",5,"stat:attack",["Machamp","Kingler","Pinsir"],"Machamp (130), Kingler (130) and Pinsir (125) all have a base Attack stat of 120 or more -- among the hardest hitters in Gen I (Golem, Rhydon, Dragonite and a few others share it, but aren't on this board)."),
+  ("MOON-STONE",5,"evo:moon-stone",["Clefable","Wigglytuff"],"Clefable and Wigglytuff are both reached by evolving with a Moon Stone: Clefairy becomes Clefable and Jigglypuff becomes Wigglytuff."),
+  ("OBLIVIOUS",5,"ability:Oblivious",["Lickitung","Jynx"],"Lickitung and Jynx can both have the Ability Oblivious, which makes them immune to infatuation (and, in later games, to Taunt) -- too absent-minded to be charmed or goaded."),
+], exclude=ex("ability:Oblivious","myth:kappa","arch:platypus",
+              extra=_atk120+_arthro+["Kabuto","Krabby","Psyduck","Squirtle","Wartortle","Blastoise","Poliwhirl","Poliwag","Poliwrath","Farfetch'd","Slowpoke","Slowbro","Clefairy","Jigglypuff","Nidorina","Nidorino","Nidoqueen","Nidoking","Golem","Rhydon","Hitmonlee","Hitmonchan","Dragonite","Flareon","Gyarados","Machoke","Machop","Mr. Mime","Chansey","Snorlax","Kangaskhan"]))
+board("2026-11-15","mixed","Evil",[
+  ("STARTER",1,"group:starter",["Greninja","Meowscarada","Popplio"],"Greninja, Meowscarada and Popplio are all starter Pokémon -- the Water-type pick of Kalos, the Grass-type pick of Paldea and the Water-type pick of Alola."),
+  ("PROTEAN",5,"ability:Protean",["Greninja","Kecleon","Meowscarada"],"Greninja, Kecleon and Meowscarada can all have the Ability Protean, which changes their type to match the move they are about to use."),
+  ("THICK-FAT",5,"ability:Thick Fat",["Walrein","Dewgong","Miltank"],"Walrein, Dewgong and Miltank all have the Ability Thick Fat, which halves the damage they take from Fire- and Ice-type moves -- blubber and milk-cow bulk in action."),
+  ("PINNIPED",4,"arch:pinniped",["Walrein","Popplio","Dewgong"],"Walrein (a walrus), Popplio and Dewgong (both billed as the Sea Lion Pokémon) are pinnipeds -- the flippered marine mammals that include seals, sea lions and walruses."),
+  ("FOSSIL",4,"role:fossil",["Archeops","Tyrantrum"],"Archeops and Tyrantrum are both revived from fossils -- the Plume Fossil (Archen, the First Bird) and the Jaw Fossil (Tyrunt, the Despot Pokémon) -- so each is a prehistoric creature brought back by science."),
+], exclude=ex("role:starter","role:fossil","ability:Protean","ability:Thick Fat","arch:pinniped",
+              extra=["Libero","Cinderace","Rillaboom","Primarina","Brionne","Sealeo","Spheal","Seel","Aurorus","Amaura","Dracozolt","Arctozolt","Dracovish","Arctovish","Aerodactyl","Kabuto","Kabutops","Omanyte","Omastar","Lileep","Cradily","Anorith","Armaldo","Cranidos","Rampardos","Shieldon","Bastiodon","Tirtouga","Carracosta","Archen","Tyrunt","Wailord","Kangaskhan","Tauros","Bouffalant","Gogoat","Camerupt","Numel","Chameleon","Castform","Zoroark","Zorua","Staraptor","Rufflet","Braviary","Corviknight","Pidgeot","Fearow","Dodrio","Doduo"]))
