@@ -1,112 +1,5 @@
 [
  {
-  "date": "2026-09-27",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Mewtwo",
-     "Mew"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "DUPLICATE"
-   },
-   {
-    "m": [
-     "Nidoqueen",
-     "Nidoking"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "ROYALTY"
-   },
-   {
-    "m": [
-     "Rhydon",
-     "Nidoking"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "RHINO"
-   },
-   {
-    "m": [
-     "Venusaur",
-     "Mewtwo"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "MEGA"
-   },
-   {
-    "m": [
-     "Jynx",
-     "Marowak",
-     "Haunter"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "CURSED"
-   }
-  ]
- },
- {
-  "date": "2026-09-27",
-  "pool": "mixed",
-  "clues": [
-   {
-    "m": [
-     "Virizion",
-     "Wo-Chien",
-     "Chien-Pao",
-     "Ting-Lu"
-    ],
-    "n": 4,
-    "cat": 5,
-    "word": "RUINOUS"
-   },
-   {
-    "m": [
-     "Virizion",
-     "Cobalion",
-     "Terrakion"
-    ],
-    "n": 3,
-    "cat": 4,
-    "word": "MUSKETEERS"
-   },
-   {
-    "m": [
-     "Cobalion",
-     "Terrakion",
-     "Ting-Lu"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "HEAVYWEIGHT"
-   },
-   {
-    "m": [
-     "Virizion",
-     "Chi-Yu"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "SPEED-STAT"
-   },
-   {
-    "m": [
-     "Noctowl",
-     "Rowlet"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "TWILIGHT"
-   }
-  ]
- },
- {
   "date": "2026-09-28",
   "pool": "gen1",
   "clues": [
@@ -4388,21 +4281,20 @@
   "clues": [
    {
     "m": [
-     "Alakazam",
-     "Mew"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "SYNCHRONIZE"
-   },
-   {
-    "m": [
      "Raichu",
      "Rattata"
     ],
     "n": 2,
     "cat": 3,
     "word": "RODENT"
+   },
+   {
+    "m": [
+     "Venusaur"
+    ],
+    "n": 1,
+    "cat": 2,
+    "word": "FLOWER"
    },
    {
     "m": [
@@ -4416,12 +4308,20 @@
    },
    {
     "m": [
-     "Venusaur",
-     "Zubat"
+     "Alakazam",
+     "Mew"
     ],
     "n": 2,
+    "cat": 5,
+    "word": "SYNCHRONIZE"
+   },
+   {
+    "m": [
+     "Zubat"
+    ],
+    "n": 1,
     "cat": 2,
-    "word": "FANGS"
+    "word": "EYELESS"
    }
   ]
  },
@@ -4524,22 +4424,22 @@
   "clues": [
    {
     "m": [
+     "Scrafty",
+     "Mightyena",
+     "Staraptor"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "INTIMIDATE"
+   },
+   {
+    "m": [
      "Noibat",
      "Woobat"
     ],
     "n": 2,
     "cat": 4,
-    "word": "CHIROPTERAN"
-   },
-   {
-    "m": [
-     "Minccino",
-     "Aipom",
-     "Toucannon"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "SKILL-LINK"
+    "word": "ECHOLOCATION"
    },
    {
     "m": [
@@ -4666,45 +4566,45 @@
   "pool": "gen1",
   "clues": [
    {
-    "word": "HEAVYWEIGHT",
+    "m": [
+     "Golem",
+     "Snorlax",
+     "Gyarados",
+     "Onix"
+    ],
     "n": 4,
     "cat": 5,
-    "m": [
-     "Snorlax",
-     "Golem",
-     "Onix",
-     "Gyarados"
-    ]
+    "word": "HEAVYWEIGHT"
    },
    {
-    "word": "SERPENT",
-    "n": 3,
-    "cat": 3,
     "m": [
      "Arbok",
-     "Onix",
-     "Gyarados"
-    ]
+     "Gyarados",
+     "Onix"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "SERPENT"
    },
    {
-    "word": "AGATHA",
+    "m": [
+     "Gengar",
+     "Arbok",
+     "Haunter"
+    ],
     "n": 3,
     "cat": 4,
-    "m": [
-     "Gengar",
-     "Haunter",
-     "Arbok"
-    ]
+    "word": "AGATHA"
    },
    {
-    "word": "NIMBLE",
+    "m": [
+     "Electrode",
+     "Dugtrio",
+     "Gengar"
+    ],
     "n": 3,
     "cat": 5,
-    "m": [
-     "Gengar",
-     "Dugtrio",
-     "Electrode"
-    ]
+    "word": "NIMBLE"
    }
   ]
  },
@@ -4713,43 +4613,43 @@
   "pool": "mixed",
   "clues": [
    {
-    "word": "BAKU",
-    "n": 3,
-    "cat": 5,
     "m": [
-     "Drowzee",
-     "Musharna",
-     "Munna"
-    ]
+     "Malamar",
+     "Octillery"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "CEPHALOPOD"
    },
    {
-    "word": "GRAY",
-    "n": 2,
-    "cat": 1,
     "m": [
      "Klefki",
      "Aggron"
-    ]
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "GRAY"
    },
    {
-    "word": "PRANKSTER",
+    "m": [
+     "Whimsicott",
+     "Klefki",
+     "Tornadus"
+    ],
     "n": 3,
     "cat": 5,
-    "m": [
-     "Klefki",
-     "Whimsicott",
-     "Tornadus"
-    ]
+    "word": "PRANKSTER"
    },
    {
-    "word": "STEVEN",
-    "n": 3,
-    "cat": 4,
     "m": [
+     "Metagross",
      "Claydol",
      "Aggron",
      "Cradily"
-    ]
+    ],
+    "n": 4,
+    "cat": 4,
+    "word": "STEVEN"
    }
   ]
  },
@@ -4857,6 +4757,92 @@
     "n": 3,
     "cat": 1,
     "word": "STARTER"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-16",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Doduo",
+     "Spearow"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "BIRD"
+   },
+   {
+    "m": [
+     "Magmar",
+     "Flareon",
+     "Charmander"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "FIRE"
+   },
+   {
+    "m": [
+     "Abra",
+     "Hypno"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "PSYCHIC"
+   },
+   {
+    "m": [
+     "Mankey",
+     "Hitmonchan"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "FIGHTING"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-16",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Teddiursa",
+     "Cubchoo"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "BEAR"
+   },
+   {
+    "m": [
+     "Zorua",
+     "Poochyena"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "DARK"
+   },
+   {
+    "m": [
+     "Riolu",
+     "Timburr"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "FIGHTING"
+   },
+   {
+    "m": [
+     "Litten",
+     "Cyndaquil",
+     "Torchic"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "FIRE"
    }
   ]
  }

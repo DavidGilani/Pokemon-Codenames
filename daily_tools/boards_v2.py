@@ -99,18 +99,6 @@ board("2026-10-02","gen1","Hard",[
 ], exclude=["Poliwrath","Machop","Machoke","Golbat","Zubat","Primeape","Mankey","Persian","Meowth",
             "Raichu","Pikachu","Nidoking","Nidoqueen","Psyduck"])
 
-# ===== 09-27 Sun (mixed) : EVIL (re-port of the live board -- QA fixes: quicksilver -> speed-stat,
-# screech -> nocturnal) =====
-board("2026-09-27","mixed","Evil",[
-  ("MUSKETEERS",4,"lore:legendary-trio",["Terrakion","Cobalion","Virizion"]),
-  ("RUINOUS",5,"mythology:treasures-of-ruin",["Ting-Lu","Chien-Pao","Wo-Chien","Virizion"]),
-  ("HEAVYWEIGHT",5,"stat:weight",["Ting-Lu","Terrakion","Cobalion"]),
-  ("SPEED-STAT",5,"stat:speed",["Virizion","Chi-Yu"]),
-  ("TWILIGHT",3,"arch:owl",["Rowlet","Noctowl"]),
-], exclude=["Hoothoot","Zubat","Golbat","Crobat","Noibat","Turtonator","Metapod","Nidoking",
-            "Torkoal","Carracosta","Bruxish","Hoopa","Seadra","Drednaw","Piplup","Ducklett",
-            "Stoutland","Basculin","Solgaleo","Ferroseed","Vivillon"])
-
 # ===== 10-02 Fri (mixed) : HARD (gap fill) =====
 board("2026-10-02","mixed","Hard",[
   ("TANK",5,"stat:defense",["Shuckle","Aggron","Steelix"],"All three are famous defensive walls -- Shuckle in particular has the highest base Defense of any Pokemon."),
@@ -830,13 +818,14 @@ board("2026-11-10","mixed","Medium",[
               extra=["Piplup","Prinplup","Empoleon","Seel","Dewgong","Lapras","Spheal","Sealeo","Walrein","Popplio","Brionne","Primarina","Finneon","Lumineon","Wailord","Kingdra","Shuppet","Banette","Misdreavus","Mismagius","Phantump","Trevenant","Pumpkaboo","Gourgeist","Mimikyu","Litwick","Lampent","Chandelure","Froslass","Dusclops","Dusknoir","Duskull","Cofagrigus","Frillish","Drifblim","Spiritomb","Sandygast","Palossand","Polteageist","Greavard","Houndstone","Dreepy","Vanillite","Vanillish","Vanilluxe","Bergmite","Avalugg","Eiscue","Glalie","Cubchoo","Beartic","Swinub","Jynx","Regice","Abomasnow","Snover","Emolga","Dedenne","Bibarel","Buizel","Zigzagoon","Linoone","Furret","Sentret","Marill","Azumarill","Finizen","Wailmer","Lanturn","Mantyke","Mantine","Castform","Cetoddle","Cetitan","Skwovet","Greedent"]))
 
 # ===== 4-week gap fill (nightly 2026-10-14): 11-11 Wed CHALLENGING =====
-board("2026-11-11","gen1","Challenging",[
+board("2026-11-11","gen1","Challenging",[  # QA 2026-10-19: FANGS dropped (other blues show teeth too) -> split into two sprite clues
   ("WATER",1,"type:water",["Wartortle","Poliwrath","Seadra"],"Wartortle, Poliwrath and Seadra are the board's only Water-types -- a fluffy-eared turtle, a muscular frog (Water/Fighting) and a spiny seahorse."),
   ("SYNCHRONIZE",5,"ability:Synchronize",["Mew","Alakazam"],"Mew and Alakazam both have the Ability Synchronize, which passes a burn, poison or paralysis they catch straight back to the Pokémon that inflicted it."),
-  ("FANGS",2,"sprite:fangs",["Zubat","Venusaur"],"Look closely at the sprites -- Zubat gapes to show its sharp fangs (it drinks blood) and Venusaur's open mouth bares fangs too."),
+  ("EYELESS",2,"sprite:no-eyes",["Zubat"],"Look closely at Zubat's sprite -- it has no eyes at all. The Pokédex says it finds its way around pitch-dark caves by sending out ultrasonic waves from its mouth."),
+  ("FLOWER",2,"sprite:back-flower",["Venusaur"],"Look at Venusaur's sprite -- a huge flower blooms on its back. The Pokédex says the flower catches the sun's rays, and the sunlight is absorbed and turned into energy."),
   ("RODENT",3,"arch:rodent",["Rattata","Raichu"],"Rattata is a rat and Raichu is a mouse -- both members of the rodent family."),
-], exclude=ex("type:water","ability:Synchronize","sprite:fangs","arch:rodent","arch:rat","arch:mouse",
-              extra=["Kadabra","Abra","Mewtwo","Squirtle","Tentacruel","Horsea","Poliwhirl","Poliwag","Blastoise","Ivysaur","Bulbasaur","Golbat","Arbok","Ekans","Raticate","Pikachu","Nidorina","Nidorino","Nidoran♂","Nidoran♀","Nidoqueen","Nidoking","Gyarados","Dragonite","Dragonair","Dratini","Sandshrew","Sandslash","Meowth","Persian","Hypno","Drowzee","Mr. Mime","Jynx","Slowpoke","Slowbro","Starmie","Exeggutor","Exeggcute","Clefairy","Clefable","Jigglypuff","Wigglytuff","Eevee","Pinsir","Weedle","Beedrill"]))
+], exclude=ex("type:water","ability:Synchronize","sprite:no-eyes","sprite:back-flower","arch:rodent","arch:rat","arch:mouse","arch:plant",
+              extra=["Kadabra","Abra","Mewtwo","Squirtle","Tentacruel","Horsea","Poliwhirl","Poliwag","Blastoise","Ivysaur","Bulbasaur","Golbat","Crobat","Arbok","Ekans","Raticate","Pikachu","Nidorina","Nidorino","Nidoran♂","Nidoran♀","Nidoqueen","Nidoking","Gyarados","Dragonite","Dragonair","Dratini","Sandshrew","Sandslash","Meowth","Persian","Hypno","Drowzee","Mr. Mime","Jynx","Slowpoke","Slowbro","Starmie","Exeggutor","Exeggcute","Clefairy","Clefable","Jigglypuff","Wigglytuff","Eevee","Pinsir","Weedle","Beedrill","Oddish","Gloom","Vileplume","Bellsprout","Weepinbell","Victreebel","Tangela","Paras","Parasect","Cubone","Marowak","Hitmonlee","Hitmonchan"]))
 board("2026-11-11","mixed","Challenging",[
   ("STEEL",1,"type:steel",["Skarmory","Bastiodon"],"Skarmory and Bastiodon are the board's only Steel-types -- a steel-feathered armoured bird and a shield-faced, armour-plated dinosaur (Rock/Steel)."),
   ("SNAKE",3,"arch:snake",["Seviper","Silicobra"],"Seviper is a fanged viper locked in a feud with Zangoose, and Silicobra is a sand cobra that hoods and burrows -- both are real-world snakes."),
@@ -854,14 +843,13 @@ board("2026-11-12","gen1","Hard",[
   ("HUMANOID",3,"arch:humanoid",["Hitmonlee","Mewtwo"],"Hitmonlee is a kicking martial artist and Mewtwo a tall, cloned psychic -- both stand and move on two legs like a person."),
 ], exclude=ex("ability:Run Away","arch:echinoderm","arch:starfish","arch:duck","arch:kangaroo","arch:marsupial","arch:humanoid","sprite:belly-egg-pouch",
               extra=["Chansey","Kadabra","Alakazam","Abra","Drowzee","Hypno","Staryu","Golduck","Rapidash","Dodrio","Caterpie","Raticate","Machop","Machoke","Machamp","Mr. Mime","Jynx","Hitmonchan","Electabuzz","Mew","Doduo","Pidgey","Spearow","Fearow","Pidgeotto","Pidgeot","Jolteon","Flareon","Vaporeon","Venomoth","Parasect","Paras"]))
-board("2026-11-12","mixed","Hard",[
-  ("SKILL-LINK",5,"ability:Skill Link",["Aipom","Minccino","Toucannon"],"Aipom, Minccino and Toucannon all have the Ability Skill Link, which makes their multi-hit moves strike the maximum number of times."),
-  ("CHIROPTERAN",4,"arch:chiropteran",["Woobat","Noibat"],"Woobat and Noibat are chiropterans -- the order of bats -- a heart-nosed fruit-bat type and a big-eared bat that hunts with ultrasonic screams."),
+board("2026-11-12","mixed","Hard",[  # QA 2026-10-19: CHIROPTERAN -> ECHOLOCATION; SKILL-LINK (too obscure) -> INTIMIDATE (Mightyena/Staraptor/Scrafty)
+  ("ECHOLOCATION",4,"trait:echolocation",["Woobat","Noibat"],"Woobat and Noibat are bat Pokémon that find their way with sound -- like real bats' echolocation, they use ultrasonic waves to sense their surroundings in the dark."),
+  ("INTIMIDATE",5,"ability:Intimidate",["Mightyena","Staraptor","Scrafty"],"Mightyena, Staraptor and Scrafty all have the Ability Intimidate, which lowers the opposing Pokémon's Attack stat as soon as they enter battle."),
   ("MANTIS",3,"arch:mantis",["Scizor","Leavanny"],"Scizor is a steel-red praying mantis with a pincer pair for forelegs, and Leavanny is a leafy mantis that stitches clothes for its young."),
   ("PENGUIN",3,"arch:penguin",["Empoleon","Eiscue"],"Empoleon is an emperor penguin with steel flippers and a trident crest, and Eiscue is an Antarctic penguin that wears a block of ice on its head like a hat."),
-], exclude=ex("ability:Skill Link","arch:chiropteran","arch:bat","arch:mantis","arch:penguin","arch:scorpion","arch:arachnid","arch:monkey","arch:primate","arch:rodent",
-              extra=["Zubat","Golbat","Crobat","Gliscor","Scyther","Kleavor","Fomantis","Lurantis","Cinccino","Pikipek","Trumbeak","Pichu","Piplup","Prinplup","Scyther","Heracross","Skorupi","Gligar"]))
-
+], exclude=ex("ability:Intimidate","arch:chiropteran","arch:bat","arch:mantis","arch:penguin","arch:scorpion","arch:arachnid",
+              extra=["Zubat","Golbat","Crobat","Swoobat","Noivern","Gliscor","Scyther","Kleavor","Fomantis","Lurantis","Piplup","Prinplup","Heracross","Skorupi","Gligar","Wailmer","Wailord","Finizen","Palafin","Cetoddle","Cetitan","Lunala","Gyarados","Arcanine","Incineroar","Hitmontop","Landorus","Salamence","Sneasel","Weavile"]))
 # ===== 4-week gap fill (nightly 2026-10-17): 11-14 Sat BRUTAL =====
 board("2026-11-14","gen1","Brutal",[
   ("AGATHA",4,"trainer:Agatha",["Gengar","Haunter","Arbok"],"Gengar, Haunter and Arbok are all on Kanto Elite Four member Agatha's team (with Golbat, which isn't here) -- the ghost-and-poison specialist."),
@@ -870,14 +858,13 @@ board("2026-11-14","gen1","Brutal",[
   ("NIMBLE",5,"stat:speed",["Gengar","Dugtrio","Electrode"],"Gengar (110), Dugtrio (120) and Electrode (150) all have a base Speed of 110 or more -- among the fastest Pokémon in Gen I."),
 ], exclude=ex("trainer:Agatha","arch:serpent","arch:cobra","arch:snake",
               extra=["Golbat","Lapras","Dragonite","Ekans","Dragonair","Dratini","Seadra","Raichu","Persian","Alakazam","Dodrio","Starmie","Tauros","Jolteon","Aerodactyl","Mewtwo","Mew","Gastly","Marowak","Cubone","Rhydon","Kangaskhan","Charizard","Dewgong","Slowbro","Blastoise","Venusaur","Machamp"]))
-board("2026-11-14","mixed","Brutal",[
-  ("STEVEN",4,"trainer:Steven",["Claydol","Aggron","Cradily"],"Claydol, Aggron and Cradily are all on Hoenn Champion Steven Stone's team (with Skarmory, Armaldo and Metagross), a rock-and-steel collector."),
+board("2026-11-14","mixed","Brutal",[  # QA 2026-10-19: BAKU dropped; Metagross added to STEVEN (x4); new CEPHALOPOD clue
+  ("STEVEN",4,"trainer:Steven",["Claydol","Aggron","Cradily","Metagross"],"Claydol, Aggron, Cradily and Metagross are all on Hoenn Champion Steven Stone's team (with Skarmory and Armaldo) -- a rock-and-steel collector whose ace is Metagross."),
   ("PRANKSTER",5,"ability:Prankster",["Klefki","Whimsicott","Tornadus"],"Klefki, Whimsicott and Tornadus all have the Ability Prankster, which gives their status moves priority so they strike first."),
   ("GRAY",1,"colour:gray",["Klefki","Aggron"],"Look at the sprites -- Klefki's ring of keys and Aggron's iron armour are both gray, and nothing else on this board is."),
-  ("BAKU",5,"myth:baku",["Munna","Musharna","Drowzee"],"The baku is the Japanese tapir-spirit that devours bad dreams -- Munna, Musharna and Drowzee are all dream-eating tapirs (their Pokédex entries feed on dreams)."),
-], exclude=ex("trainer:Steven","ability:Prankster","arch:tapir",
-              extra=["Skarmory","Metagross","Lileep","Armaldo","Anorith","Beldum","Metang","Aron","Lairon","Hypno","Sableye","Murkrow","Volbeat","Illumise","Riolu","Purrloin","Liepard","Cottonee","Thundurus","Meowstic","Impidimp","Morgrem","Grimmsnarl","Shroodle","Grafaiai","Baltoy","Bronzong","Bronzor","Lucario","Garchomp"]))
-
+  ("CEPHALOPOD",4,"arch:cephalopod",["Octillery","Malamar"],"Octillery is an octopus and Malamar is a squid -- both are cephalopods, the tentacled mollusc class that also includes cuttlefish and nautiluses."),
+], exclude=ex("trainer:Steven","ability:Prankster","arch:cephalopod","arch:octopus","arch:squid",
+              extra=["Skarmory","Lileep","Armaldo","Anorith","Beldum","Metang","Aron","Lairon","Hypno","Sableye","Murkrow","Volbeat","Illumise","Riolu","Purrloin","Liepard","Cottonee","Thundurus","Meowstic","Impidimp","Morgrem","Grimmsnarl","Shroodle","Grafaiai","Baltoy","Bronzong","Bronzor","Lucario","Garchomp","Remoraid","Clobbopus","Grapploct","Dhelmise","Kraken"]))
 # ===== 4-week gap fill (nightly 2026-10-18): 11-15 Sun EVIL =====
 def _gen1_where(pred): return [n for n,r in FACTS.items() if r["gen"]==1 and pred(r)]
 _atk120 = _gen1_where(lambda r: r["base"]["attack"]>=120)
@@ -898,3 +885,20 @@ board("2026-11-15","mixed","Evil",[
   ("FOSSIL",4,"role:fossil",["Archeops","Tyrantrum"],"Archeops and Tyrantrum are both revived from fossils -- the Plume Fossil (Archen, the First Bird) and the Jaw Fossil (Tyrunt, the Despot Pokémon) -- so each is a prehistoric creature brought back by science."),
 ], exclude=ex("role:starter","role:fossil","ability:Protean","ability:Thick Fat","arch:pinniped",
               extra=["Libero","Cinderace","Rillaboom","Primarina","Brionne","Sealeo","Spheal","Seel","Aurorus","Amaura","Dracozolt","Arctozolt","Dracovish","Arctovish","Aerodactyl","Kabuto","Kabutops","Omanyte","Omastar","Lileep","Cradily","Anorith","Armaldo","Cranidos","Rampardos","Shieldon","Bastiodon","Tirtouga","Carracosta","Archen","Tyrunt","Wailord","Kangaskhan","Tauros","Bouffalant","Gogoat","Camerupt","Numel","Chameleon","Castform","Zoroark","Zorua","Staraptor","Rufflet","Braviary","Corviknight","Pidgeot","Fearow","Dodrio","Doduo"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-19): 11-16 Mon EASY =====
+board("2026-11-16","gen1","Easy",[
+  ("FIRE",1,"type:fire",["Charmander","Magmar","Flareon"],"Charmander, Magmar and Flareon are the board's only Fire-types -- a flame-tailed lizard, a living fireball and the Flame Pokémon."),
+  ("PSYCHIC",1,"type:psychic",["Abra","Hypno"],"Abra and Hypno are the board's only Psychic-types -- a sleepy teleporter and a pendulum-swinging hypnotist."),
+  ("FIGHTING",1,"type:fighting",["Mankey","Hitmonchan"],"Mankey and Hitmonchan are the board's only Fighting-types -- a hot-tempered pig-monkey and a punching boxer."),
+  ("BIRD",3,"arch:bird",["Spearow","Doduo"],"Spearow is a tiny, fierce sparrow-like bird and Doduo is a two-headed flightless bird -- both are birds, and neither is a Fire-, Psychic- or Fighting-type."),
+], exclude=ex("type:fire","type:psychic","type:fighting","arch:bird",
+              extra=["Farfetch'd","Aerodactyl","Articuno","Zapdos","Moltres","Pidgey","Pidgeotto","Pidgeot","Fearow","Dodrio","Kadabra","Alakazam","Mewtwo","Mew","Machop","Machoke","Machamp","Hitmonlee","Primeape","Drowzee","Jynx","Mr. Mime"]))
+board("2026-11-16","mixed","Easy",[
+  ("FIRE",1,"type:fire",["Cyndaquil","Torchic","Litten"],"Cyndaquil, Torchic and Litten are the board's only Fire-types -- three fire starters from Johto, Hoenn and Alola."),
+  ("FIGHTING",1,"type:fighting",["Riolu","Timburr"],"Riolu and Timburr are the board's only Fighting-types -- an aura-sensing jackal cub and a log-carrying muscle-builder."),
+  ("DARK",1,"type:dark",["Poochyena","Zorua"],"Poochyena and Zorua are the board's only Dark-types -- a snapping hyena pup and an illusion-casting fox cub."),
+  ("BEAR",3,"arch:bear",["Teddiursa","Cubchoo"],"Teddiursa is a honey-loving teddy bear cub and Cubchoo is a polar bear cub with a runny nose -- both are bears."),
+], exclude=ex("type:fire","type:fighting","type:dark","arch:bear",
+              extra=["Ursaring","Ursaluna","Beartic","Munchlax","Stufful","Bewear","Kubfu","Urshifu","Lucario","Gallade","Mienfoo","Mienshao","Conkeldurr","Gurdurr","Zoroark","Mightyena","Houndour","Houndoom","Sneasel","Weavile","Absol","Umbreon","Murkrow","Honchkrow"]))
