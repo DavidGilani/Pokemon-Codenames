@@ -891,9 +891,9 @@ board("2026-11-15","mixed","Evil",[
 board("2026-11-16","gen1","Easy",[
   ("FIRE",1,"type:fire",["Charmander","Magmar","Flareon"],"Charmander, Magmar and Flareon are the board's only Fire-types -- a flame-tailed lizard, a living fireball and the Flame Pokémon."),
   ("PSYCHIC",1,"type:psychic",["Abra","Hypno"],"Abra and Hypno are the board's only Psychic-types -- a sleepy teleporter and a pendulum-swinging hypnotist."),
-  ("FIGHTING",1,"type:fighting",["Mankey","Hitmonchan"],"Mankey and Hitmonchan are the board's only Fighting-types -- a hot-tempered pig-monkey and a punching boxer."),
+  ("FISTS",2,"sprite:fists",["Mankey","Hitmonchan"],"Look at the sprites -- Mankey shakes both fists in a permanent rage and Hitmonchan's are boxing gloves. They are the only two on this board throwing punches."),  # QA 2026-10-20: type clue swapped for FISTS; Electabuzz->Seel, Geodude->Diglett neutrals
   ("BIRD",3,"arch:bird",["Spearow","Doduo"],"Spearow is a tiny, fierce sparrow-like bird and Doduo is a two-headed flightless bird -- both are birds, and neither is a Fire-, Psychic- or Fighting-type."),
-], exclude=ex("type:fire","type:psychic","type:fighting","arch:bird",
+], exclude=ex("type:fire","type:psychic","sprite:fists","arch:bird",
               extra=["Farfetch'd","Aerodactyl","Articuno","Zapdos","Moltres","Pidgey","Pidgeotto","Pidgeot","Fearow","Dodrio","Kadabra","Alakazam","Mewtwo","Mew","Machop","Machoke","Machamp","Hitmonlee","Primeape","Drowzee","Jynx","Mr. Mime"]))
 board("2026-11-16","mixed","Easy",[
   ("FIRE",1,"type:fire",["Cyndaquil","Torchic","Litten"],"Cyndaquil, Torchic and Litten are the board's only Fire-types -- three fire starters from Johto, Hoenn and Alola."),
@@ -902,3 +902,22 @@ board("2026-11-16","mixed","Easy",[
   ("BEAR",3,"arch:bear",["Teddiursa","Cubchoo"],"Teddiursa is a honey-loving teddy bear cub and Cubchoo is a polar bear cub with a runny nose -- both are bears."),
 ], exclude=ex("type:fire","type:fighting","type:dark","arch:bear",
               extra=["Ursaring","Ursaluna","Beartic","Munchlax","Stufful","Bewear","Kubfu","Urshifu","Lucario","Gallade","Mienfoo","Mienshao","Conkeldurr","Gurdurr","Zoroark","Mightyena","Houndour","Houndoom","Sneasel","Weavile","Absol","Umbreon","Murkrow","Honchkrow"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-20): 11-17 Tue MEDIUM =====
+board("2026-11-17","gen1","Medium",[
+  ("ROCK",1,"type:rock",["Rhyhorn","Omanyte","Graveler"],"Rhyhorn (Ground/Rock), Omanyte (Rock/Water) and Graveler (Rock/Ground) are the board's only Rock-types -- an armoured rhino, a spiral-shelled fossil and a boulder with arms."),
+  ("FLYING",1,"type:flying",["Pidgeotto","Dodrio"],"Pidgeotto and Dodrio (both Normal/Flying) are the board's only Flying-types -- a crested hawk and a three-headed ostrich."),
+  ("CURL",2,"sprite:curl",["Clefairy","Jigglypuff"],"Look at the sprites -- Clefairy and Jigglypuff both have a single curl of hair on their foreheads, and nothing else on this board does."),
+  ("MUSHROOM",2,"sprite:mushrooms",["Paras"],"Look at Paras's back -- two big mushrooms grow out of it, feeding off the little bug that carries them."),
+  ("WASP",3,"arch:wasp",["Beedrill"],"Beedrill is a giant wasp-like bug with a stinger on each forearm and another on its tail -- built like a hornet, despite its 'Poison Bee' title."),
+], exclude=ex("type:rock","type:flying","arch:wasp","arch:bee",
+              extra=["Wigglytuff","Clefable","Mr. Mime","Poliwag","Poliwhirl","Poliwrath","Jynx","Magnemite","Pidgey","Pidgeot","Spearow","Fearow","Doduo","Farfetch'd","Aerodactyl","Zapdos","Articuno","Moltres","Parasect","Weedle","Kakuna","Tangela","Vileplume","Gloom","Oddish","Venonat","Venomoth","Scyther","Pinsir","Butterfree","Geodude","Golem","Onix","Kabuto","Kabutops","Omastar","Rhydon","Mew"]))
+board("2026-11-17","mixed","Medium",[
+  ("POISON",1,"type:poison",["Stunky","Salandit"],"Stunky (Poison/Dark) and Salandit (Poison/Fire) are the board's only Poison-types -- a spraying skunk and a toxic-gas lizard."),
+  ("DRAGON",1,"type:dragon",["Goomy","Deino"],"Goomy and Deino (Dark/Dragon) are the board's only Dragon-types -- a slimy soft-bodied dragon and a blind, biting hatchling."),
+  ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler is a stag with twisting, hypnotic antlers and Sawsbuck is a deer whose tree-like antlers change with the seasons -- both are deer."),
+  ("SHELL",2,"sprite:shell",["Shuckle","Crustle"],"Shuckle hides inside a holed shell where it ferments berry juice, and Crustle hauls a boulder-slab shell on its back -- the only shelled Pokémon here."),
+  ("TAPIR",3,"arch:tapir",["Munna"],"Munna is a tapir -- the stubby-snouted animal behind the Japanese 'baku' legend of a dream-eater, which fits Munna's dream-smoke."),
+], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
+              extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
