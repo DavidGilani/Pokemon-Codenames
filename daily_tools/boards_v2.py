@@ -586,7 +586,7 @@ board("2026-10-28","mixed","Challenging",[
   ("FIRE",1,"type:fire",["Litwick","Scorbunny"],"Litwick and Scorbunny are both Fire-type Pokémon."),
   ("UDDER",2,"sprite:udder",["Miltank"],"Look closely at the sprite -- Miltank, the Milk Cow Pokémon, has a pink udder."),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler and Sawsbuck are both deer -- Stantler a stag whose twisting antlers warp the space around it, Sawsbuck a seasonal deer with a tree growing from its antlers."),
-  ("OWL",3,"arch:owl",["Hoothoot","Dartrix"],"Hoothoot and Dartrix are both owls -- Hoothoot a wide-eyed owl that keeps time, Dartrix a dapper archer-owl."),
+  ("HOOT",3,"arch:owl",["Hoothoot","Dartrix"],"Hoothoot and Dartrix are both owls -- Hoothoot a wide-eyed owl that keeps time, Dartrix a dapper archer-owl."),
   ("CHIROPTERAN",4,"arch:chiropteran",["Noivern","Crobat"],"Noivern and Crobat are chiropterans -- bats, the only mammals capable of true flight (Noivern a dragon-bat, Crobat a four-winged one)."),
 ], exclude=ex("arch:deer","arch:owl","arch:chiropteran","arch:bat","sprite:udder",extra=["Tauros","Bouffalant","Wooloo","Noibat","Zubat","Golbat","Woobat","Swoobat","Deerling","Wyrdeer","Xerneas"]))
 
@@ -921,3 +921,21 @@ board("2026-11-17","mixed","Medium",[
   ("TAPIR",3,"arch:tapir",["Munna"],"Munna is a tapir -- the stubby-snouted animal behind the Japanese 'baku' legend of a dream-eater, which fits Munna's dream-smoke."),
 ], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
               extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-21): 11-18 Wed CHALLENGING =====
+board("2026-11-18","gen1","Challenging",[
+  ("GRASS",1,"type:grass",["Gloom","Victreebel","Tangela","Exeggutor"],"Gloom, Victreebel, Tangela and Exeggutor are the board's only Grass-types -- a drooling weed, a pitcher-plant trap, a mop of blue vines and a walking palm grove (Grass/Psychic)."),
+  ("HORSE",3,"arch:horse",["Ponyta","Rapidash"],"Ponyta is a fire-maned foal and Rapidash its full-grown, unicorn-horned racehorse -- both are horses."),
+  ("BICEPS",2,"sprite:muscles",["Machop"],"Look at the sprite -- Machop is a small but impossibly ripped fighter, flexing a body that's all muscle."),
+  ("KITSUNE",5,"myth:kitsune",["Ninetales"],"Ninetales is based on the kitsune, the Japanese fox spirit that gains an extra tail for every century it lives, up to nine -- the Pokédex says it can live 1,000 years."),
+  ("RUBIES",2,"sprite:red-jewels",["Tentacruel"],"Look at the sprite -- Tentacruel has two big red ruby-like jewels on its head, above its trailing tentacles; no other Pokémon on this board wears them."),
+], exclude=ex("type:grass","arch:horse","arch:equine","sprite:muscles","sprite:red-jewels","arch:jellyfish","arch:cnidarian","arch:fox","arch:primate",
+              extra=["Vulpix","Eevee","Machoke","Machamp","Hitmonlee","Hitmonchan","Primeape","Mankey","Tentacool","Seadra","Horsea","Dewgong","Cloyster","Doduo","Dodrio","Zebstrika","Parasect","Paras","Bulbasaur","Ivysaur","Venusaur","Oddish","Bellsprout","Weepinbell","Exeggcute","Vileplume","Charizard","Arcanine","Growlithe","Rhydon","Golem","Kangaskhan"]))
+board("2026-11-18","mixed","Challenging",[
+  ("ELECTRIC",1,"type:electric",["Emolga","Dedenne","Togedemaru"],"Emolga, Dedenne and Togedemaru are the board's only Electric-types -- three cheek-sparking, static-charged little rodents (Emolga is a flying squirrel)."),
+  ("BELT",2,"sprite:belt",["Hariyama","Throh"],"Look at the sprites -- Hariyama wears a heavy sumo mawashi belt and Throh a black judo belt tied round its waist, and no other Pokémon here wears one."),
+  ("HOOT",3,"arch:owl",["Noctowl","Decidueye"],"Noctowl is a tall, wise owl that sees in the dark and Decidueye is an archer owl with an arrow quill -- both are real-world owls."),
+  ("WHALE",3,"arch:whale",["Wailmer","Wailord"],"Wailmer is a round, ball-bouncing baby whale and Wailord its colossal full-grown form -- both are whales."),
+], exclude=ex("type:electric","sprite:belt","arch:owl","arch:whale","arch:cetacean","arch:rodent",
+              extra=["Rowlet","Dartrix","Hoothoot","Plusle","Minun","Emolga","Pikachu","Raichu","Pawmi","Pawmot","Pachirisu","Marill","Azumarill","Sandslash","Dewgong","Lanturn","Chinchou","Primarina","Wishiwashi","Dondozo","Tatsugiri","Wailord","Machamp","Conkeldurr","Gurdurr","Timburr","Sawk","Hitmontop","Makuhita","Spinda","Rufflet","Hawlucha","Falinks","Sumo","Hoothoot","Ursaring","Bewear","Zeraora","Rotom","Morpeko","Mimikyu","Luxray","Shinx","Luxio","Stoutland","Loudred"]))
