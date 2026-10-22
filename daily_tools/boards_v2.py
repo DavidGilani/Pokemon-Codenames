@@ -939,3 +939,22 @@ board("2026-11-18","mixed","Challenging",[
   ("WHALE",3,"arch:whale",["Wailmer","Wailord"],"Wailmer is a round, ball-bouncing baby whale and Wailord its colossal full-grown form -- both are whales."),
 ], exclude=ex("type:electric","sprite:belt","arch:owl","arch:whale","arch:cetacean","arch:rodent",
               extra=["Rowlet","Dartrix","Hoothoot","Plusle","Minun","Emolga","Pikachu","Raichu","Pawmi","Pawmot","Pachirisu","Marill","Azumarill","Sandslash","Dewgong","Lanturn","Chinchou","Primarina","Wishiwashi","Dondozo","Tatsugiri","Wailord","Machamp","Conkeldurr","Gurdurr","Timburr","Sawk","Hitmontop","Makuhita","Spinda","Rufflet","Hawlucha","Falinks","Sumo","Hoothoot","Ursaring","Bewear","Zeraora","Rotom","Morpeko","Mimikyu","Luxray","Shinx","Luxio","Stoutland","Loudred"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-22): 11-19 Fri HARD =====
+board("2026-11-19","gen1","Hard",[
+  ("SHELL-ARMOR",5,"ability:Shell Armor",["Cloyster","Omastar"],"Cloyster and Omastar can both have the Ability Shell Armor, which blocks critical hits against them -- their hard shells are why."),
+  ("SIMIAN",4,"arch:simian",["Primeape"],"Primeape is the Pig Monkey Pokémon -- a simian (monkey/ape), famously so furious it never stops being angry."),
+  ("SPOONS",2,"sprite:spoons",["Alakazam"],"Look at the sprite -- Alakazam holds a silver spoon in each hand, the tools it uses to focus its psychic power."),
+  ("FISH",3,"arch:fish",["Magikarp","Goldeen","Horsea"],"Magikarp, Goldeen and Horsea are all fish -- a flopping carp, a goldfish-like swimmer and a seahorse (which is a fish too)."),
+  ("SNAKE",3,"arch:snake",["Ekans","Dragonair"],"Ekans is a coiling venomous snake and Dragonair a long, serpentine dragon with no legs -- both are snake-bodied."),
+], exclude=ex("ability:Shell Armor","arch:simian","sprite:spoons","arch:fish","arch:snake",
+              extra=["Dewgong","Lapras","Articuno","Seel","Kadabra","Abra","Machop","Machoke","Machamp","Mankey","Gyarados","Seaking","Seadra","Staryu","Starmie","Shellder","Omanyte","Kabuto","Kabutops","Kingler","Krabby","Blastoise","Squirtle","Wartortle","Hitmonlee","Hitmonchan","Mew","Mewtwo","Poliwag","Poliwhirl","Poliwrath","Raticate","Pikachu","Nidoran♀","Nidoran♂","Nidorina","Nidorino","Arbok","Dratini","Dragonite","Gyarados","Onix","Persian","Meowth"]))
+board("2026-11-19","mixed","Hard",[
+  ("DRONE",3,"arch:bee",["Combee","Cutiefly"],"Combee is a tiny honeycomb-shaped bee (a drone is a male honeybee) and Cutiefly the Bee Fly Pokémon -- both are based on bees."),
+  ("MOLE",3,"arch:mole",["Drilbur"],"Drilbur is the Mole Pokémon -- a mole that tunnels with its steel claws, which is why it spins like a drill."),
+  ("TUSKS",2,"sprite:tusks",["Mamoswine","Haxorus"],"Look at the sprites -- Mamoswine's huge ivory tusks and Haxorus's axe-like tusks jut from their faces; nothing else on this board has them."),
+  ("LEPIDOPTERAN",4,"arch:butterfly",["Beautifly","Vivillon"],"Beautifly and Vivillon are butterflies -- lepidopterans, the scaly-winged insect order of moths and butterflies."),
+  ("SPEED-BOOST",5,"ability:Speed Boost",["Blaziken","Yanmega"],"Blaziken and Yanmega can both have the Ability Speed Boost, which raises their Speed at the end of every turn they stay in battle."),
+], exclude=ex("arch:bee","arch:mole","sprite:tusks","arch:butterfly","ability:Speed Boost",
+              extra=["Beedrill","Vespiquen","Ribombee","Excadrill","Diglett","Dugtrio","Sandshrew","Sandslash","Wiglett","Wugtrio","Cubone","Marowak","Teddiursa","Ursaring","Ursaluna","Piloswine","Swinub","Fraxure","Axew","Donphan","Phanpy","Copperajah","Cufant","Walrein","Butterfree","Dustox","Volcarona","Mothim","Wormadam","Ledian","Ledyba","Torchic","Combusken","Ninjask","Nincada","Shedinja","Yanma","Accelgor","Zeraora","Regieleki","Sceptile","Hawlucha","Heracross","Pinsir"]))
