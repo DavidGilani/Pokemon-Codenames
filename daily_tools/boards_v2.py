@@ -863,6 +863,7 @@ board("2026-11-14","mixed","Brutal",[  # QA 2026-10-19: BAKU dropped; Metagross 
   ("PRANKSTER",5,"ability:Prankster",["Klefki","Whimsicott","Tornadus"],"Klefki, Whimsicott and Tornadus all have the Ability Prankster, which gives their status moves priority so they strike first."),
   ("GRAY",1,"colour:gray",["Klefki","Aggron"],"Look at the sprites -- Klefki's ring of keys and Aggron's iron armour are both gray, and nothing else on this board is."),
   ("CEPHALOPOD",4,"arch:cephalopod",["Octillery","Malamar"],"Octillery is an octopus and Malamar is a squid -- both are cephalopods, the tentacled mollusc class that also includes cuttlefish and nautiluses."),
+  ("WIND",3,"lore:wind",["Tornadus"],"Tornadus is the Cyclone Pokémon -- a storm genie that whips up violent winds from its tail, and Wind is its signature theme."),
 ], exclude=ex("trainer:Steven","ability:Prankster","arch:cephalopod","arch:octopus","arch:squid",
               extra=["Skarmory","Lileep","Armaldo","Anorith","Beldum","Metang","Aron","Lairon","Hypno","Sableye","Murkrow","Volbeat","Illumise","Riolu","Purrloin","Liepard","Cottonee","Thundurus","Meowstic","Impidimp","Morgrem","Grimmsnarl","Shroodle","Grafaiai","Baltoy","Bronzong","Bronzor","Lucario","Garchomp","Remoraid","Clobbopus","Grapploct","Dhelmise","Kraken"]))
 # ===== 4-week gap fill (nightly 2026-10-18): 11-15 Sun EVIL =====
@@ -908,7 +909,7 @@ board("2026-11-16","mixed","Easy",[
 board("2026-11-17","gen1","Medium",[
   ("ROCK",1,"type:rock",["Rhyhorn","Omanyte","Graveler"],"Rhyhorn (Ground/Rock), Omanyte (Rock/Water) and Graveler (Rock/Ground) are the board's only Rock-types -- an armoured rhino, a spiral-shelled fossil and a boulder with arms."),
   ("FLYING",1,"type:flying",["Pidgeotto","Dodrio"],"Pidgeotto and Dodrio (both Normal/Flying) are the board's only Flying-types -- a crested hawk and a three-headed ostrich."),
-  ("CURL",2,"sprite:curl",["Clefairy","Jigglypuff"],"Look at the sprites -- Clefairy and Jigglypuff both have a single curl of hair on their foreheads, and nothing else on this board does."),
+  ("CURLY",2,"sprite:curl",["Clefairy","Jigglypuff"],"Look at the sprites -- Clefairy and Jigglypuff both have a single curly tuft of hair on their foreheads, and nothing else on this board does."),
   ("MUSHROOM",2,"sprite:mushrooms",["Paras"],"Look at Paras's back -- two big mushrooms grow out of it, feeding off the little bug that carries them."),
   ("WASP",3,"arch:wasp",["Beedrill"],"Beedrill is a giant wasp-like bug with a stinger on each forearm and another on its tail -- built like a hornet, despite its 'Poison Bee' title."),
 ], exclude=ex("type:rock","type:flying","arch:wasp","arch:bee",
@@ -918,7 +919,7 @@ board("2026-11-17","mixed","Medium",[
   ("DRAGON",1,"type:dragon",["Goomy","Deino"],"Goomy and Deino (Dark/Dragon) are the board's only Dragon-types -- a slimy soft-bodied dragon and a blind, biting hatchling."),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler is a stag with twisting, hypnotic antlers and Sawsbuck is a deer whose tree-like antlers change with the seasons -- both are deer."),
   ("SHELL",2,"sprite:shell",["Shuckle","Crustle"],"Shuckle hides inside a holed shell where it ferments berry juice, and Crustle hauls a boulder-slab shell on its back -- the only shelled Pokémon here."),
-  ("TAPIR",3,"arch:tapir",["Munna"],"Munna is a tapir -- the stubby-snouted animal behind the Japanese 'baku' legend of a dream-eater, which fits Munna's dream-smoke."),
+  ("DREAMS",3,"lore:dreams",["Munna"],"Munna feeds on the dreams of sleeping people and floats pink dream smoke -- its Pokédex entry is all about eating dreams (Dream Eater)."),
 ], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
               extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
 
@@ -936,7 +937,7 @@ board("2026-11-18","mixed","Challenging",[
   ("ELECTRIC",1,"type:electric",["Emolga","Dedenne","Togedemaru"],"Emolga, Dedenne and Togedemaru are the board's only Electric-types -- three cheek-sparking, static-charged little rodents (Emolga is a flying squirrel)."),
   ("BELT",2,"sprite:belt",["Hariyama","Throh"],"Look at the sprites -- Hariyama wears a heavy sumo mawashi belt and Throh a black judo belt tied round its waist, and no other Pokémon here wears one."),
   ("HOOT",3,"arch:owl",["Noctowl","Decidueye"],"Noctowl is a tall, wise owl that sees in the dark and Decidueye is an archer owl with an arrow quill -- both are real-world owls."),
-  ("WHALE",3,"arch:whale",["Wailmer","Wailord"],"Wailmer is a round, ball-bouncing baby whale and Wailord its colossal full-grown form -- both are whales."),
+  ("CETACEAN",4,"arch:cetacean",["Wailmer","Wailord"],"Wailmer and Wailord are both cetaceans -- the order of whales, dolphins and porpoises; Wailord is the largest Pokémon ever recorded by height."),
 ], exclude=ex("type:electric","sprite:belt","arch:owl","arch:whale","arch:cetacean","arch:rodent",
               extra=["Rowlet","Dartrix","Hoothoot","Plusle","Minun","Emolga","Pikachu","Raichu","Pawmi","Pawmot","Pachirisu","Marill","Azumarill","Sandslash","Dewgong","Lanturn","Chinchou","Primarina","Wishiwashi","Dondozo","Tatsugiri","Wailord","Machamp","Conkeldurr","Gurdurr","Timburr","Sawk","Hitmontop","Makuhita","Spinda","Rufflet","Hawlucha","Falinks","Sumo","Hoothoot","Ursaring","Bewear","Zeraora","Rotom","Morpeko","Mimikyu","Luxray","Shinx","Luxio","Stoutland","Loudred"]))
 
