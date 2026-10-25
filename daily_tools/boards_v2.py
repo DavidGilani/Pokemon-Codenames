@@ -919,7 +919,7 @@ board("2026-11-17","mixed","Medium",[
   ("DRAGON",1,"type:dragon",["Goomy","Deino"],"Goomy and Deino (Dark/Dragon) are the board's only Dragon-types -- a slimy soft-bodied dragon and a blind, biting hatchling."),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler is a stag with twisting, hypnotic antlers and Sawsbuck is a deer whose tree-like antlers change with the seasons -- both are deer."),
   ("SHELL",2,"sprite:shell",["Shuckle","Crustle"],"Shuckle hides inside a holed shell where it ferments berry juice, and Crustle hauls a boulder-slab shell on its back -- the only shelled Pokémon here."),
-  ("DREAMS",3,"lore:dreams",["Munna"],"Munna feeds on the dreams of sleeping people and floats pink dream smoke -- its Pokédex entry is all about eating dreams (Dream Eater)."),
+  ("TRUNK",2,"sprite:trunk",["Munna"],"Look at the sprite -- Munna has a short, elephant-like trunk for a snout (the tapir-style nose), and no other Pokémon on this board has one."),
 ], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
               extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
 
@@ -937,7 +937,7 @@ board("2026-11-18","mixed","Challenging",[
   ("ELECTRIC",1,"type:electric",["Emolga","Dedenne","Togedemaru"],"Emolga, Dedenne and Togedemaru are the board's only Electric-types -- three cheek-sparking, static-charged little rodents (Emolga is a flying squirrel)."),
   ("BELT",2,"sprite:belt",["Hariyama","Throh"],"Look at the sprites -- Hariyama wears a heavy sumo mawashi belt and Throh a black judo belt tied round its waist, and no other Pokémon here wears one."),
   ("HOOT",3,"arch:owl",["Noctowl","Decidueye"],"Noctowl is a tall, wise owl that sees in the dark and Decidueye is an archer owl with an arrow quill -- both are real-world owls."),
-  ("CETACEAN",4,"arch:cetacean",["Wailmer","Wailord"],"Wailmer and Wailord are both cetaceans -- the order of whales, dolphins and porpoises; Wailord is the largest Pokémon ever recorded by height."),
+  ("WATER-VEIL",5,"ability:Water Veil",["Wailmer","Wailord"],"Wailmer and Wailord can both have the Ability Water Veil, which makes them immune to burns -- a nod to their water-soaked whale bodies."),
 ], exclude=ex("type:electric","sprite:belt","arch:owl","arch:whale","arch:cetacean","arch:rodent",
               extra=["Rowlet","Dartrix","Hoothoot","Plusle","Minun","Emolga","Pikachu","Raichu","Pawmi","Pawmot","Pachirisu","Marill","Azumarill","Sandslash","Dewgong","Lanturn","Chinchou","Primarina","Wishiwashi","Dondozo","Tatsugiri","Wailord","Machamp","Conkeldurr","Gurdurr","Timburr","Sawk","Hitmontop","Makuhita","Spinda","Rufflet","Hawlucha","Falinks","Sumo","Hoothoot","Ursaring","Bewear","Zeraora","Rotom","Morpeko","Mimikyu","Luxray","Shinx","Luxio","Stoutland","Loudred"]))
 
@@ -959,3 +959,56 @@ board("2026-11-19","mixed","Hard",[
   ("SPEED-BOOST",5,"ability:Speed Boost",["Blaziken","Yanmega"],"Blaziken and Yanmega can both have the Ability Speed Boost, which raises their Speed at the end of every turn they stay in battle."),
 ], exclude=ex("arch:bee","arch:mole","sprite:tusks","arch:butterfly","ability:Speed Boost",
               extra=["Beedrill","Vespiquen","Ribombee","Excadrill","Diglett","Dugtrio","Sandshrew","Sandslash","Wiglett","Wugtrio","Cubone","Marowak","Teddiursa","Ursaring","Ursaluna","Piloswine","Swinub","Fraxure","Axew","Donphan","Phanpy","Copperajah","Cufant","Walrein","Butterfree","Dustox","Volcarona","Mothim","Wormadam","Ledian","Ledyba","Torchic","Combusken","Ninjask","Nincada","Shedinja","Yanma","Accelgor","Zeraora","Regieleki","Sceptile","Hawlucha","Heracross","Pinsir"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-25): 11-20 Fri HARD =====
+board("2026-11-20","gen1","Hard",[
+  ("SHED-SKIN",5,"ability:Shed Skin",["Metapod","Kakuna","Dratini"],"Metapod, Kakuna and Dratini can all have the Ability Shed Skin, which gives them a one-in-three chance each turn of shaking off any status condition -- just like a cocoon or a snake sloughing its old skin."),
+  ("SURGE",3,"trainer:Lt.",["Voltorb","Raichu"],"Voltorb and Raichu are on Vermilion Gym leader Lt. Surge's team in the Red and Blue games (alongside Pikachu) -- the American soldier whose Gym is wired with electric traps."),
+  ("RODENT",3,"arch:rodent",["Raichu","Raticate"],"Raichu is a giant electric mouse and Raticate a big-fanged rat -- both are rodents, with the gnawing front teeth to prove it."),
+  ("CHIROPTERAN",4,"arch:chiropteran",["Zubat"],"Zubat is a chiropteran -- the scientific order of bats -- a blind cave-dweller that finds its way by ultrasonic squeals."),
+  ("PLANT",3,"arch:plant",["Oddish","Bellsprout"],"Oddish is a walking weed with a tuft of leaves for hair and Bellsprout a slender flower-stalk on legs -- both are plant Pokémon."),
+], exclude=ex("ability:Shed Skin","trainer:Lt.","arch:rodent","arch:mouse","arch:rat","arch:chiropteran","arch:bat","arch:plant",
+              extra=["Bulbasaur","Ivysaur","Venusaur","Golbat","Pikachu","Magneton","Magnemite","Electabuzz","Jolteon","Ekans","Arbok","Dragonair","Rattata","Gloom","Vileplume","Weepinbell","Victreebel","Exeggcute","Exeggutor","Tangela","Cloyster","Omanyte","Omastar","Slowbro","Paras","Parasect","Nidoran♂","Nidoran♀","Nidorina","Nidorino","Eevee","Articuno","Zapdos"]))
+board("2026-11-20","mixed","Hard",[
+  ("HEAVY-METAL",5,"ability:Heavy Metal",["Aron","Duraludon","Bronzong","Cufant"],"Aron, Duraludon, Bronzong and Cufant can all have the Ability Heavy Metal, which doubles their weight -- fitting for a gang of iron-plated bruisers."),
+  ("FLANNERY",3,"trainer:Flannery",["Slugma","Camerupt"],"Slugma and Camerupt are on Lavaridge Gym leader Flannery's Fire-type team in Hoenn (alongside Numel and Torkoal)."),
+  ("CRUSTACEAN",4,"arch:isopod",["Wimpod"],"Wimpod is based on a sea slater, an isopod -- a crustacean, the same group as crabs, lobsters and shrimp."),
+  ("PANGOLIN",3,"arch:pangolin",["Sandslash"],"Sandslash is based on a pangolin -- the scaly, ant-eating mammal that rolls itself into an armoured ball."),
+  ("ANGLER",3,"arch:anglerfish",["Chinchou"],"Chinchou is an anglerfish -- the deep-sea fish that dangles a glowing lure from its head, just like Chinchou's two glowing antennae."),
+], exclude=ex("ability:Heavy Metal","trainer:Flannery","arch:crustacean","arch:crab","arch:pangolin","arch:armadillo","arch:anglerfish",
+              extra=["Lairon","Aggron","Copperajah","Numel","Torkoal","Magcargo","Golisopod","Lanturn","Sandshrew","Clauncher","Clawitzer","Corphish","Crawdaunt","Binacle","Barbaracle","Dwebble","Crustle","Krabby","Kingler"]))
+
+# ===== 11-21 Sat BRUTAL =====
+board("2026-11-21","gen1","Brutal",[
+  ("KEEN-EYE",5,"ability:Keen Eye",["Pidgeot","Fearow","Farfetch'd"],"Pidgeot, Fearow and Farfetch'd can all have the Ability Keen Eye, which stops other Pokémon lowering their accuracy -- sharp-eyed birds, one and all."),
+  ("INNER-FOCUS",5,"ability:Inner Focus",["Farfetch'd","Golbat","Kangaskhan"],"Farfetch'd, Golbat and Kangaskhan can all have the Ability Inner Focus, which stops them from flinching, however hard they are hit."),
+  ("RIVAL",3,"trainer:Blue",["Pidgeot","Rhydon","Arcanine","Gyarados"],"Pidgeot, Rhydon, Arcanine and Gyarados are all on the team of Blue, your rival and the Kanto Champion, in the Red/Blue/Yellow games (alongside Alakazam, Exeggutor and a starter)."),
+  ("ECHINODERM",4,"arch:echinoderm",["Staryu"],"Staryu is an echinoderm -- the spiny-skinned sea-animal group that includes starfish, sea urchins and sea cucumbers."),
+], exclude=ex("ability:Keen Eye","ability:Inner Focus","arch:echinoderm","trainer:Blue",
+              extra=["Starmie","Alakazam","Exeggutor","Blastoise","Charizard","Venusaur","Jolteon","Vaporeon","Flareon","Ninetales","Dragonite","Kadabra","Abra","Zubat","Spearow","Pidgey","Pidgeotto","Hitmonchan","Drowzee","Hypno","Dodrio","Doduo"]))
+board("2026-11-21","mixed","Brutal",[
+  ("ROUGH-SKIN",5,"ability:Rough Skin",["Sharpedo","Garchomp","Druddigon"],"Sharpedo, Garchomp and Druddigon can all have the Ability Rough Skin, which hurts any Pokémon that makes contact with them -- three sandpaper-tough hides."),
+  ("CYNTHIA",3,"trainer:Cynthia",["Garchomp","Gastrodon","Roserade"],"Garchomp, Gastrodon and Roserade are all on Sinnoh Champion Cynthia's team (alongside Spiritomb, Lucario and Milotic)."),
+  ("DRASNA",4,"trainer:Drasna",["Druddigon","Noivern","Altaria"],"Druddigon, Noivern and Altaria are on Kalos Elite Four member Drasna's dragon team (alongside Dragalge)."),
+  ("SUPER-LUCK",5,"ability:Super Luck",["Murkrow","Absol"],"Murkrow and Absol can both have the Ability Super Luck, which raises their critical-hit ratio -- two classic bad-luck omens that make their own luck."),
+], exclude=ex("ability:Rough Skin","trainer:Cynthia","trainer:Drasna","ability:Super Luck",
+              extra=["Dragalge","Honchkrow","Togetic","Togekiss","Pidove","Tranquill","Unfezant","Gabite","Gible","Carvanha","Swablu","Crobat","Zubat","Golbat","Noibat","Milotic","Lucario","Spiritomb","Glaceon","Eelektross","Roselia","Budew","Shellos"]))
+
+# ===== 11-22 Sun EVIL =====
+board("2026-11-22","gen1","Evil",[
+  ("SWIFT-SWIM",5,"ability:Swift Swim",["Psyduck","Kabuto","Poliwrath"],"Psyduck, Kabuto and Poliwrath can all have the Ability Swift Swim, which doubles their Speed when it is raining."),
+  ("WEAK-ARMOR",5,"ability:Weak Armor",["Kabuto","Onix"],"Kabuto and Onix can both have the Ability Weak Armor, which drops their Defense and raises their Speed when hit by a physical move -- hard shells that crack under the blow."),
+  ("STURDY",5,"ability:Sturdy",["Onix","Geodude","Magnemite"],"Onix, Geodude and Magnemite can all have the Ability Sturdy, which stops a full-health Pokémon being knocked out in one hit -- they always cling on with 1 HP."),
+  ("CNIDARIAN",4,"arch:cnidarian",["Tentacool"],"Tentacool is a cnidarian -- the group that includes jellyfish, sea anemones and corals -- with a glassy bell and stinging tentacles."),
+  ("CANINE",3,"arch:canine",["Growlithe","Vulpix"],"Growlithe is a loyal puppy and Vulpix a six-tailed fox -- both belong to the canine family of dogs, wolves and foxes."),
+], exclude=ex("ability:Swift Swim","ability:Weak Armor","ability:Sturdy","arch:cnidarian","arch:jellyfish","arch:canine","arch:dog","arch:fox",
+              extra=["Golduck","Poliwhirl","Kabutops","Omanyte","Omastar","Goldeen","Poliwag","Seaking","Tentacruel","Arcanine","Ninetales","Eevee","Golem","Graveler","Magneton","Cubone","Marowak"]))
+board("2026-11-22","mixed","Evil",[
+  ("POISON-TOUCH",5,"ability:Poison Touch",["Toxicroak","Grafaiai","Sneasler"],"Toxicroak, Grafaiai and Sneasler can all have the Ability Poison Touch, which gives their contact moves a 30% chance of poisoning the target."),
+  ("DRY-SKIN",5,"ability:Dry Skin",["Toxicroak","Helioptile"],"Toxicroak and Helioptile can both have the Ability Dry Skin, which heals them in rain and water moves but drains them in harsh sunlight (and makes Fire moves hurt more)."),
+  ("STORM-DRAIN",5,"ability:Storm Drain",["Shellos","Finneon","Maractus"],"Shellos, Finneon and Maractus can all have the Ability Storm Drain, which draws in every Water-type move aimed at the field and raises their Sp. Atk instead of hurting them."),
+  ("GASTROPOD",4,"arch:gastropod",["Shellos","Sliggoo"],"Shellos is a sea slug and Sliggoo a slimy land slug -- both are gastropods, the mollusc class of slugs and snails."),
+  ("FROG",3,"arch:frog",["Toxicroak","Politoed"],"Toxicroak is a poison-dart frog and Politoed a bullfrog-like frog with a curled tongue -- both are frogs."),
+], exclude=ex("ability:Poison Touch","ability:Dry Skin","ability:Storm Drain","arch:gastropod","arch:slug","arch:frog","arch:toad","arch:tadpole",
+              extra=["Croagunk","Seismitoad","Grimer","Muk","Heliolisk","Paras","Parasect","Jynx","Gastrodon","Lumineon","Lileep","Tatsugiri","Goodra","Slugma","Magcargo","Shelmet","Frogadier","Greninja","Froakie","Poliwag","Poliwhirl","Poliwrath","Palpitoad","Tympole","Smoochum","Dragalge","Karrablast"]))
