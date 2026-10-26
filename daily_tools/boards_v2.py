@@ -7,69 +7,6 @@
 # in Supabase and now outside the rolling anti-repetition window, so they
 # were stale dead code that the verifier mistook for new, unverified boards.)
 
-# ===== 09-28 Mon : EASY (gap fill) =====
-board("2026-09-28","gen1","Easy",[
-  ("WATER",1,"type:water",["Squirtle","Poliwag","Horsea"]),
-  ("GRASS",1,"type:grass",["Bulbasaur","Bellsprout"]),
-  ("ROCK",1,"type:rock",["Geodude","Onix"]),
-  ("PSYCHIC",1,"type:psychic",["Abra","Drowzee"]),
-], exclude=["Wartortle","Blastoise","Victreebel","Weepinbell","Oddish","Gloom","Vileplume",
-            "Graveler","Golem","Kadabra","Alakazam","Slowpoke","Slowbro","Exeggcute","Exeggutor",
-            "Tangela","Ivysaur","Venusaur","Rhyhorn","Rhydon","Seadra","Poliwhirl","Poliwrath"])
-board("2026-09-28","mixed","Easy",[
-  ("WATER",1,"type:water",["Piplup","Mudkip"],"Both are Water-types."),
-  ("GRASS",1,"type:grass",["Turtwig","Cottonee","Bounsweet"],"All three are Grass-types."),
-  ("PSYCHIC",1,"type:psychic",["Ralts","Munna"],"Both are Psychic-types."),
-  ("ROCK",1,"type:rock",["Shieldon"],"Shieldon is a Rock-type."),
-  ("TUFT",2,"sprite:head-tuft",["Rookidee"],"Look for the tuft of feathers on Rookidee's head."),
-], exclude=["Prinplup","Empoleon","Swampert","Marshtomp","Torterra","Grotle","Whimsicott",
-            "Tsareena","Kirlia","Gardevoir","Gallade","Musharna","Bastiodon","Fletchling",
-            "Fletchinder","Talonflame","Pikipek","Trumbeak","Toucannon","Corvisquire","Corviknight"])
-
-# ===== 09-29 Tue : MEDIUM (gap fill) =====
-board("2026-09-29","gen1","Medium",[
-  ("NORMAL",1,"type:normal",["Chansey","Tauros","Kangaskhan"]),
-  ("AERIAL",1,"type:flying",["Golbat"]),
-  ("CARAPACE",2,"sprite:shell",["Kabuto","Shellder"]),
-  ("NIPPERS",3,"arch:crab",["Krabby"]),
-  ("FISH",3,"arch:fish",["Magikarp","Goldeen"],"Magikarp and Goldeen are both based on plain real-world fish."),
-], exclude=["Blissey","Miltank","Zubat","Crobat","Kabutops","Cloyster","Kingler","Koffing","Muk",
-            "Nidoking","Nidoqueen","Rhydon","Rhyhorn","Persian","Raichu","Grimer","Weezing",
-            "Omanyte","Omastar","Seaking","Gyarados"])
-board("2026-09-29","mixed","Medium",[
-  ("NORMAL",1,"type:normal",["Furfrou","Miltank"]),
-  ("DARK",1,"type:dark",["Purrloin"]),
-  ("CRUSTACEAN",3,"arch:crustacean",["Clauncher","Crabrawler","Corphish"]),
-  ("SPIRIT",4,"based:a-haunted-sandcastle",["Sandygast"]),
-  ("MARKED",2,"sprite:stripes",["Zebstrika","Basculin"],"Zebstrika has zebra stripes, and Basculin has a bold racing stripe along its side."),
-], exclude=["Liepard","Clawitzer","Crabominable","Crawdaunt","Palossand","Blitzle","Basculegion",
-            "Chansey","Tauros","Kangaskhan","Girafarig","Furret","Greavard","Houndstone"])
-
-# ===== 09-30 Wed : CHALLENGING (gap fill) =====
-board("2026-09-30","gen1","Challenging",[
-  ("FIRE",1,"type:fire",["Vulpix","Growlithe"]),
-  ("POKEBALL",4,"based:pokeball",["Voltorb"]),
-  ("RATTLE",2,"sprite:rattle-tail",["Ekans"]),
-  ("MOLE",3,"arch:mole",["Diglett","Sandshrew"]),
-  ("FLOCK",3,"arch:bird",["Pidgeotto","Fearow","Doduo"]),
-], exclude=["Dugtrio","Sandslash","Electrode","Arcanine","Ninetales","Pidgeot","Pidgey","Spearow","Dodrio","Farfetch'd"])
-board("2026-09-30","mixed","Challenging",[
-  ("STARTER",1,"group:starter",["Sceptile","Infernape","Feraligatr","Chesnaught","Delphox"]),
-  ("YAKUZA",3,"based:panda-brawler",["Pangoro"],"Pangoro's Japanese name and design evoke a brawling yakuza enforcer -- a tough panda gangster with a leaf 'toothpick' for swagger."),
-  ("SIX",2,"sprite:formation",["Falinks"]),
-  ("EAGLE",3,"based:eagle",["Braviary"]),
-  ("KEYRING",4,"based:keyring",["Klefki"]),
-], exclude=["Pancham","Rufflet",
-            "Bulbasaur","Ivysaur","Venusaur","Charmander","Charizard","Squirtle","Blastoise",
-            "Chikorita","Meganium","Cyndaquil","Typhlosion","Totodile","Croconaw",
-            "Treecko","Grovyle","Torchic","Blaziken","Mudkip","Swampert",
-            "Turtwig","Torterra","Chimchar","Piplup","Empoleon",
-            "Snivy","Serperior","Tepig","Oshawott","Samurott",
-            "Chespin","Fennekin","Braixen","Froakie","Greninja",
-            "Rowlet","Decidueye","Litten","Incineroar","Popplio","Primarina",
-            "Grookey","Rillaboom","Scorbunny","Cinderace","Sobble","Inteleon",
-            "Sprigatito","Meowscarada","Fuecoco","Skeledirge","Quaxly","Quaquaval"])
-
 # ===== 10-01 Thu : HARD (gap fill) =====
 board("2026-10-01","gen1","Hard",[
   ("GLOOPY",4,"arch:amorphous",["Ditto","Koffing","Muk"]),
@@ -293,7 +230,7 @@ board("2026-10-10","mixed","Brutal",[
             "Pachirisu","Palkia","Palossand","Pawniard","Pecharunt","Pheromosa","Phione","Prinplup","Purugly",
             "Pyukumuku","Quaquaval","Raging Bolt","Rampardos","Rayquaza","Regigigas","Regirock","Registeel",
             "Reshiram","Rhyperior","Rillaboom","Roaring Moon","Roserade","Runerigus","Sawk","Scizor","Scrafty",
-            "Scream Tail","Shaymin","Shellos","Shieldon","Shinx","Sirfetch'd","Skarmory","Skorupi","Skuntank",
+            "Scream Tail","Shaymin","Shellos","Shieldon","Shinx","Sirfetch'd","Skarmory","Skorupi","Trumbeak","Toucannon","Skuntank",
             "Slaking","Slither Wing","Slowbro","Sneasler","Solgaleo","Spiritomb","Stakataka","Staraptor",
             "Staravia","Starly","Stonjourner","Stunfisk","Stunky","Sudowoodo","Swampert","Tangrowth",
             "Tapu Bulu","Tapu Fini","Terrakion","Ting-Lu","Togekiss","Torterra","Toxapex","Toxicroak",
@@ -726,7 +663,7 @@ board("2026-11-02","mixed","Easy",[
   ("ICE",1,"type:ice",["Vanillite","Bergmite"],"Vanillite and Bergmite are both pure Ice-types -- an ice-cream cone and a block of ice."),
   ("MOTH",3,"arch:moth",["Volcarona","Dustox"],"Volcarona and Dustox are both moths -- a fiery sun-moth and a poisonous night-moth."),
 ], exclude=ex("type:ice","arch:moth",
-              extra=LEG+["Vanilish","Vanilluxe","Cubchoo","Beartic","Cryogonal","Beautifly","Butterfree","Venomoth","Mothim","Wormadam","Frosmoth","Ninjask","Masquerain","Vivillon","Sylveon","Glaceon","Crobat","Aipom","Sableye","Gastrodon","Skuntank","Stunky","Spiritomb"]))
+              extra=LEG+["Vanilish","Vanilluxe","Cubchoo","Beartic","Cryogonal","Beautifly","Butterfree","Venomoth","Mothim","Wormadam","Frosmoth","Ninjask","Masquerain","Vivillon","Sylveon","Glaceon","Crobat","Aipom","Sableye","Gastrodon","Trumbeak","Toucannon","Skuntank","Stunky","Spiritomb"]))
 
 # 11-07 Sat BRUTAL -- gap fill (Brutal: sum>=11, <=1 single, exactly 3 Cat4-5)
 board("2026-11-07","gen1","Brutal",[
@@ -921,7 +858,7 @@ board("2026-11-17","mixed","Medium",[
   ("SHELL",2,"sprite:shell",["Shuckle","Crustle"],"Shuckle hides inside a holed shell where it ferments berry juice, and Crustle hauls a boulder-slab shell on its back -- the only shelled Pokémon here."),
   ("TRUNK",2,"sprite:trunk",["Munna"],"Look at the sprite -- Munna has a short, elephant-like trunk for a snout (the tapir-style nose), and no other Pokémon on this board has one."),
 ], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
-              extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
+              extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Trumbeak","Toucannon","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
 
 
 # ===== 4-week gap fill (nightly 2026-10-21): 11-18 Wed CHALLENGING =====
@@ -1012,3 +949,22 @@ board("2026-11-22","mixed","Evil",[
   ("FROG",3,"arch:frog",["Toxicroak","Politoed"],"Toxicroak is a poison-dart frog and Politoed a bullfrog-like frog with a curled tongue -- both are frogs."),
 ], exclude=ex("ability:Poison Touch","ability:Dry Skin","ability:Storm Drain","arch:gastropod","arch:slug","arch:frog","arch:toad","arch:tadpole",
               extra=["Croagunk","Seismitoad","Grimer","Muk","Heliolisk","Paras","Parasect","Jynx","Gastrodon","Lumineon","Lileep","Tatsugiri","Goodra","Slugma","Magcargo","Shelmet","Frogadier","Greninja","Froakie","Poliwag","Poliwhirl","Poliwrath","Palpitoad","Tympole","Smoochum","Dragalge","Karrablast"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-26): 11-23 Mon EASY =====
+board("2026-11-23","gen1","Easy",[
+  ("GHOST",1,"type:ghost",["Gastly","Haunter"],"Gastly and Haunter are both Ghost-types -- a floating cloud of gas and its grinning, disembodied-hands evolution."),
+  ("ICE",1,"type:ice",["Jynx","Articuno","Lapras"],"Jynx, Articuno and Lapras all have the Ice type -- an ice-queen, the legendary freezing bird and a gentle sea-ferry (Articuno and Lapras are dual-types)."),
+  ("NORMAL",1,"type:normal",["Ditto","Tauros"],"Ditto and Tauros are both pure Normal-types -- the shapeless copycat and a charging wild bull."),
+  ("FOSSIL",3,"lore:fossil",["Aerodactyl"],"Aerodactyl is a fossil Pokémon -- it is revived from ancient amber, and was a sky-hunter in prehistoric times."),
+  ("BEETLE",3,"arch:beetle",["Pinsir"],"Pinsir is the Stag Beetle Pokémon, with a pair of huge pincer-horns like a stag beetle's jaws."),
+], exclude=ex("type:ghost","type:ice","type:normal","lore:fossil","arch:beetle","arch:stag-beetle",
+              extra=["Gengar","Dewgong","Cloyster","Seel","Kabuto","Kabutops","Omanyte","Omastar","Scyther","Heracross","Paras","Parasect","Venonat","Venomoth","Eevee","Kangaskhan","Chansey","Porygon","Moltres","Zapdos","Dragonite","Dragonair","Pidgeot","Zubat","Golbat"]))
+board("2026-11-23","mixed","Easy",[
+  ("STEEL",1,"type:steel",["Klink","Beldum","Skarmory"],"Klink, Beldum and Skarmory are all Steel-types -- a clockwork gear, a floating iron ball and an armour-winged bird."),
+  ("GROUND",1,"type:ground",["Hippopotas","Phanpy"],"Hippopotas and Phanpy are both pure Ground-types -- a sand-spouting hippo and a little elephant."),
+  ("BUG",1,"type:bug",["Wurmple","Grubbin"],"Wurmple and Grubbin are both pure Bug-types -- a spiky red caterpillar and a mandibled grub."),
+  ("DOLPHIN",3,"arch:dolphin",["Finizen"],"Finizen is the Dolphin Pokémon -- it swims in playful circles and uses its tail like a propeller."),
+  ("WOODPECKER",3,"arch:woodpecker",["Pikipek"],"Pikipek is the Woodpecker Pokémon -- it drills into trees with its beak, up to sixteen pecks a second."),
+], exclude=ex("type:steel","type:ground","type:bug","arch:dolphin","arch:woodpecker","arch:cetacean",
+              extra=["Metang","Metagross","Klang","Klinklang","Lairon","Aron","Aggron","Bronzor","Bronzong","Corviknight","Donphan","Hippowdon","Vigoroth","Slaking","Silcoon","Cascoon","Beautifly","Dustox","Charjabug","Vikavolt","Cubone","Marowak","Trapinch","Skiploom","Aipom","Ambipom","Kricketot","Munchlax","Snorlax","Palafin","Wailmer","Wailord","Lanturn","Trumbeak","Toucannon","Skuntank","Zigzagoon","Linoone","Obstagoon","Starly","Pidove"]))
