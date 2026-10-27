@@ -968,3 +968,22 @@ board("2026-11-23","mixed","Easy",[
   ("WOODPECKER",3,"arch:woodpecker",["Pikipek"],"Pikipek is the Woodpecker Pokémon -- it drills into trees with its beak, up to sixteen pecks a second."),
 ], exclude=ex("type:steel","type:ground","type:bug","arch:dolphin","arch:woodpecker","arch:cetacean",
               extra=["Metang","Metagross","Klang","Klinklang","Lairon","Aron","Aggron","Bronzor","Bronzong","Corviknight","Donphan","Hippowdon","Vigoroth","Slaking","Silcoon","Cascoon","Beautifly","Dustox","Charjabug","Vikavolt","Cubone","Marowak","Trapinch","Skiploom","Aipom","Ambipom","Kricketot","Munchlax","Snorlax","Palafin","Wailmer","Wailord","Lanturn","Trumbeak","Toucannon","Skuntank","Zigzagoon","Linoone","Obstagoon","Starly","Pidove"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-27): 11-24 Tue MEDIUM =====
+board("2026-11-24","gen1","Medium",[
+  ("FIRE",1,"type:fire",["Charmeleon","Ponyta"],"Charmeleon and Ponyta are the board's only Fire-types -- a flame-tailed lizard and a fiery-maned pony."),
+  ("WATER",1,"type:water",["Seadra","Krabby","Shellder"],"Seadra, Krabby and Shellder are the board's only Water-types -- a spiny seahorse, a pincer-clacking crab and a tongue-lolling bivalve."),
+  ("EGG",2,"sprite:egg",["Chansey"],"Look at Chansey's sprite -- a big egg sits in the pouch on its belly, which it hands out to hurt or tired people and Pokémon."),
+  ("SPRINGS",2,"sprite:springs",["Hitmonlee"],"Hitmonlee's legs stretch and recoil like coiled springs -- the Pokédex says they extend to deliver kicks from long range."),
+  ("SABRINA",3,"trainer:sabrina",["Mr. Mime","Venomoth"],"Saffron City Gym Leader Sabrina trains Mr. Mime and Venomoth (alongside Kadabra and Alakazam) in the Kanto games -- a psychic team."),
+], exclude=ex("type:fire","type:water","trainer:sabrina",
+              extra=["Kadabra","Alakazam","Abra","Exeggcute","Exeggutor","Hitmonchan","Kangaskhan","Chansey","Cloyster","Vulpix","Ninetales","Growlithe","Arcanine","Magmar","Flareon","Charmander","Charizard","Rapidash","Moltres","Hypno","Drowzee","Mew","Mewtwo","Jynx","Slowbro","Slowpoke","Starmie","Staryu","Butterfree","Parasect","Venonat","Machamp","Machoke","Machop","Mankey","Primeape","Poliwrath"]))
+board("2026-11-24","mixed","Medium",[
+  ("FIRE",1,"type:fire",["Darumaka","Delphox"],"Darumaka and Delphox are the board's only Fire-types -- a round, snowman-like daruma doll and a fire-wielding fox mage (Delphox is Fire/Psychic)."),
+  ("FAIRY",1,"type:fairy",["Swirlix","Spritzee"],"Swirlix and Spritzee are the board's only Fairy-types -- a cotton-candy puff and a perfume-scented little songbird."),
+  ("CLOUD",2,"sprite:cloud",["Landorus","Thundurus"],"Look at the sprites -- Landorus and Thundurus both trail a billowing cloud in place of legs, like the other Forces of Nature."),
+  ("PEARL",2,"sprite:pearl",["Clamperl"],"Clamperl is a blue bivalve with a pearl inside its shell -- it's said to sometimes form a rare Pink or White pearl."),
+  ("CROC",3,"arch:crocodile",["Totodile","Sandile"],"Totodile is a big-jawed baby crocodile and Sandile a desert crocodile that hides under the sand with only its eyes showing -- both are crocodilians."),
+], exclude=ex("type:fire","type:fairy","arch:crocodile","arch:alligator","sprite:pearl",
+              extra=["Tornadus","Enamorus","Altaria","Swablu","Drifblim","Drifloon","Gorebyss","Huntail","Shellder","Cloyster","Krookodile","Krokorok","Feraligatr","Croconaw","Reuniclus","Vanilluxe","Vanillish","Cryogonal","Quilava","Typhlosion","Braixen","Fennekin","Emboar","Darmanitan","Torkoal","Cacturne","Hippowdon","Sandslash","Gastrodon","Mudkip","Sylveon","Kirlia","Togekiss","Togepi","Clefairy","Jigglypuff","Clefable","Wigglytuff","Gardevoir","Mimikyu","Whimsicott","Comfey","Cutiefly"]))
