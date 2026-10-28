@@ -987,3 +987,22 @@ board("2026-11-24","mixed","Medium",[
   ("CROC",3,"arch:crocodile",["Totodile","Sandile"],"Totodile is a big-jawed baby crocodile and Sandile a desert crocodile that hides under the sand with only its eyes showing -- both are crocodilians."),
 ], exclude=ex("type:fire","type:fairy","arch:crocodile","arch:alligator","sprite:pearl",
               extra=["Tornadus","Enamorus","Altaria","Swablu","Drifblim","Drifloon","Gorebyss","Huntail","Shellder","Cloyster","Krookodile","Krokorok","Feraligatr","Croconaw","Reuniclus","Vanilluxe","Vanillish","Cryogonal","Quilava","Typhlosion","Braixen","Fennekin","Emboar","Darmanitan","Torkoal","Cacturne","Hippowdon","Sandslash","Gastrodon","Mudkip","Sylveon","Kirlia","Togekiss","Togepi","Clefairy","Jigglypuff","Clefable","Wigglytuff","Gardevoir","Mimikyu","Whimsicott","Comfey","Cutiefly"]))
+
+
+# ===== 4-week gap fill (nightly 2026-10-28): 11-25 Wed CHALLENGING =====
+board("2026-11-25","gen1","Challenging",[
+  ("PSYCHIC",1,"type:psychic",["Hypno","Mewtwo","Abra"],"Hypno, Mewtwo and Abra are the board's only Psychic-types -- a pendulum-swinging hypnotist, a genetically engineered powerhouse and a sleepy teleporter."),
+  ("RHINO",3,"arch:rhino",["Rhyhorn"],"Rhyhorn is the Spikes Pokémon, based on a rhinoceros -- a heavily armoured charger with a drill-like horn on its nose."),
+  ("BIRD",3,"arch:bird",["Pidgey","Spearow"],"Pidgey is a small tan songbird and Spearow a fierce little sparrow-like bird -- both are ordinary real-world-style birds."),
+  ("SERPENT",3,"arch:serpent",["Ekans","Dragonair"],"Ekans is based on a cobra and Dragonair on a Chinese serpent-dragon -- both are long, scaled, limbless serpents."),
+  ("BLADES",2,"sprite:scythe-arms",["Scyther"],"Look at the sprite -- Scyther's forearms are a pair of long, curved scythe blades, which it swings with lightning speed."),
+], exclude=ex("type:psychic","arch:rhino","arch:serpent","arch:snake","arch:bird","sprite:scythe-arms",
+              extra=["Rhydon","Arbok","Gyarados","Onix","Dratini","Dragonite","Pinsir","Kabutops","Mew","Kangaskhan","Seel","Gastly","Haunter","Gengar","Kadabra","Alakazam","Drowzee","Starmie","Slowbro","Slowpoke","Exeggutor","Exeggcute","Magneton","Electrode","Golem","Graveler","Snorlax","Farfetch'd","Doduo","Dodrio","Zapdos","Moltres","Articuno","Pidgeotto","Pidgeot","Fearow","Aerodactyl","Charizard","Butterfree"]))
+board("2026-11-25","mixed","Challenging",[
+  ("FIGHTING",1,"type:fighting",["Falinks","Kubfu"],"Falinks and Kubfu are the board's only Fighting-types -- a six-trooper phalanx and a kung-fu bear cub training for its Urshifu evolution."),
+  ("SPIDER",3,"arch:spider",["Joltik","Tarountula","Araquanid"],"Joltik clings to bigger Pokémon to sap their static, Tarountula is a little yarn-ball tarantula and Araquanid a water-bubble-helmeted spider -- all three are spiders."),
+  ("SHARK",3,"arch:shark",["Gible","Frigibax"],"Gible is the Land Shark Pokémon and Frigibax the Ice Fin Pokémon -- both are small dragons with shark fins and jaws."),
+  ("LION",3,"arch:lion",["Pyroar"],"Pyroar is the Royal Pokémon, based on a lion -- the male's flaming mane is its pride."),
+  ("DRUM",2,"sprite:log-drum",["Rillaboom"],"Look at the sprite -- Rillaboom is a gorilla drummer, carrying a big log drum whose beats it uses to command its forest."),
+], exclude=ex("type:fighting","arch:spider","arch:arachnid","arch:shark","arch:lion","sprite:log-drum",
+              extra=["Ariados","Spinarak","Galvantula","Dewpider","Spidops","Sharpedo","Carvanha","Garchomp","Baxcalibur","Gabite","Grookey","Thwackey","Litleo","Solgaleo","Urshifu","Dracovish","Arctovish","Surskit","Masquerain"]))
