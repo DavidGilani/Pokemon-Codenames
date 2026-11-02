@@ -1,5 +1,13 @@
 {
   "rewrites": [
-    { "source": "/d/:pool", "destination": "/api/share?daily=:pool" }
-  ]
+    {
+      "source": "/d/:pool",
+      "destination": "/api/share?daily=:pool"
+    }
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "claude/*": false
+    }
+  }
 }

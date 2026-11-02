@@ -1,0 +1,10 @@
+# Files the live site never serves – kept out of Vercel deployments to save
+# Deployment Storage. (The site only needs index.html, style.css, app.js,
+# icons, site.webmanifest, ogassets/, api/, package.json and vercel.json.)
+*.sql
+*.md
+*.csv
+daily_tools/
+daily_puzzle_batch_v2.json
+pokemon_facts.json
+promo_halloween/
