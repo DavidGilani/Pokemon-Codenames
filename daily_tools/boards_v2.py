@@ -1006,3 +1006,22 @@ board("2026-11-25","mixed","Challenging",[
   ("DRUM",2,"sprite:log-drum",["Rillaboom"],"Look at the sprite -- Rillaboom is a gorilla drummer, carrying a big log drum whose beats it uses to command its forest."),
 ], exclude=ex("type:fighting","arch:spider","arch:arachnid","arch:shark","arch:lion","sprite:log-drum",
               extra=["Ariados","Spinarak","Galvantula","Dewpider","Spidops","Sharpedo","Carvanha","Garchomp","Baxcalibur","Gabite","Grookey","Thwackey","Litleo","Solgaleo","Urshifu","Dracovish","Arctovish","Surskit","Masquerain"]))
+
+
+# ===== catch-up gap fill (nightly 2026-11-06): 11-26 Thu HARD =====
+board("2026-11-26","gen1","Hard",[
+  ("DAMP",5,"ability:damp",["Golduck","Poliwag","Poliwhirl"],"All three have the Ability Damp, which stops anyone on the field from using self-destructing moves like Explosion."),
+  ("PACHYDERM",4,"arch:pachyderm",["Nidoking","Nidoqueen"],"Nidoking and Nidoqueen are the armoured, thick-skinned royals of the Nidoran line -- big, tough-hided beasts in the mould of the pachyderms (rhinos and elephants)."),
+  ("TAPIR",3,"arch:tapir",["Drowzee"],"Drowzee is based on a tapir, and on the baku, the Japanese dream-eating tapir spirit -- hence its trunk-like snout and its taste for dreams."),
+  ("CRAB",3,"arch:crab",["Kingler"],"Kingler is the Pincer Pokémon, a crab with one huge, crushing claw."),
+  ("FOX",3,"arch:fox",["Eevee","Kadabra"],"Eevee has a fox's bushy tail and fluffy ruff, and Kadabra a fox's pointed muzzle, whiskers and tail -- both are fox-based."),
+], exclude=ex("ability:damp","arch:pachyderm","arch:tapir","arch:crab","arch:fox",
+              extra=["Psyduck","Poliwrath","Parasect","Paras","Politoed","Raichu","Cubone","Rhyhorn","Rhydon","Goldeen","Nidoran♀","Nidorina","Nidoran♂","Nidorino","Hypno","Krabby","Abra","Alakazam","Vulpix","Ninetales","Jolteon","Flareon","Vaporeon","Growlithe","Arcanine","Pikachu","Electabuzz","Tauros","Mew","Mewtwo","Ponyta"]))
+board("2026-11-26","mixed","Hard",[
+  ("RAPTOR",4,"arch:raptor",["Staravia","Rufflet"],"Staravia (a starling-eagle hybrid) and Rufflet (the Eaglet Pokémon) are both birds of prey -- raptors."),
+  ("TRACE",5,"ability:trace",["Porygon2","Ralts","Gardevoir"],"All three have the Ability Trace, which copies the Ability of the opposing Pokémon the moment they enter battle."),
+  ("SCORPION",3,"arch:scorpion",["Gligar","Skorupi"],"Gligar is a flying scorpion with a stinging tail, and Skorupi the Scorpion Pokémon with its poison-tipped pincers -- both are scorpions."),
+  ("PENGUIN",3,"arch:penguin",["Piplup"],"Piplup is the Penguin Pokémon, a proud little emperor penguin."),
+  ("ZEBRA",3,"arch:zebra",["Blitzle"],"Blitzle is based on a zebra -- a black mane and a striped, lightning-charged coat."),
+], exclude=ex("ability:trace","arch:raptor","arch:scorpion","arch:penguin","arch:zebra","arch:bird",
+              extra=["Kirlia","Gallade","Porygon","Porygon-Z","Prinplup","Empoleon","Zebstrika","Staraptor","Starly","Braviary","Talonflame","Fletchinder","Fletchling","Skarmory","Gliscor","Drapion","Eiscue","Hawlucha","Pidgeot","Fearow","Honchkrow","Decidueye","Corviknight","Mandibuzz","Vullaby","Swellow","Unfezant","Xatu"]))
