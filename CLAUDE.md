@@ -303,6 +303,10 @@ computes its date window from `today`, so it runs correctly in any fresh
 checkout. `pending_upserts.sql` is a throwaway artifact (git-ignored) — the
 DB is applied via MCP; don't commit it.
 
+**Save as you go:** a run can be cut off at any moment (e.g. a usage limit),
+so apply + commit + push after each feedback fix and after every 2 dates of new
+boards, never only at the end. The next run carries on from whatever was saved.
+
 New boards land **untested** → they show **blue** in the QA overview (`?qa=1`)
 for the owner to playtest. The generator never rates its own boards; only a real
 fix (feedback addressed) turns a red board green. If it can't finish everything
