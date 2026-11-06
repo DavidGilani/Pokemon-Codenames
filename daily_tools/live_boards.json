@@ -5549,5 +5549,105 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-11-27",
+  "pool": "gen1",
+  "clues": [
+   {
+    "word": "GRUB",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Caterpie",
+     "Weedle"
+    ]
+   },
+   {
+    "word": "OWN-TEMPO",
+    "n": 2,
+    "cat": 5,
+    "m": [
+     "Slowpoke",
+     "Lickitung"
+    ]
+   },
+   {
+    "word": "ARMADILLO",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Sandshrew"
+    ]
+   },
+   {
+    "word": "FELINE",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Meowth",
+     "Mew"
+    ]
+   },
+   {
+    "word": "SIMIAN",
+    "n": 2,
+    "cat": 4,
+    "m": [
+     "Mankey",
+     "Machop"
+    ]
+   }
+  ]
+ },
+ {
+  "date": "2026-11-27",
+  "pool": "mixed",
+  "clues": [
+   {
+    "word": "WOODLOUSE",
+    "n": 1,
+    "cat": 4,
+    "m": [
+     "Golisopod"
+    ]
+   },
+   {
+    "word": "TANGLED-FEET",
+    "n": 3,
+    "cat": 5,
+    "m": [
+     "Spinda",
+     "Chatot",
+     "Flamigo"
+    ]
+   },
+   {
+    "word": "DROMEDARY",
+    "n": 1,
+    "cat": 3,
+    "m": [
+     "Numel"
+    ]
+   },
+   {
+    "word": "BOAR",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Swinub",
+     "Oinkologne"
+    ]
+   },
+   {
+    "word": "PARLIAMENT",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Hoothoot",
+     "Rowlet"
+    ]
+   }
+  ]
  }
 ]

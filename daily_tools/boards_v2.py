@@ -1025,3 +1025,21 @@ board("2026-11-26","mixed","Hard",[
   ("ZEBRA",3,"arch:zebra",["Blitzle"],"Blitzle is based on a zebra -- a black mane and a striped, lightning-charged coat."),
 ], exclude=ex("ability:trace","arch:raptor","arch:scorpion","arch:penguin","arch:zebra","arch:bird",
               extra=["Kirlia","Gallade","Porygon","Porygon-Z","Prinplup","Empoleon","Zebstrika","Staraptor","Starly","Braviary","Talonflame","Fletchinder","Fletchling","Skarmory","Gliscor","Drapion","Eiscue","Hawlucha","Pidgeot","Fearow","Honchkrow","Decidueye","Corviknight","Mandibuzz","Vullaby","Swellow","Unfezant","Xatu"]))
+
+# ===== catch-up gap fill (nightly 2026-11-06): 11-27 Fri HARD =====
+board("2026-11-27","gen1","Hard",[
+  ("OWN-TEMPO",5,"ability:own-tempo",["Slowpoke","Lickitung"],"Both have the Ability Own Tempo, which makes them immune to confusion."),
+  ("SIMIAN",4,"arch:primate",["Mankey","Machop"],"Simians are monkeys and apes -- Mankey is a pig-nosed monkey and Machop a strong, ape-like fighter."),
+  ("GRUB",3,"arch:caterpillar",["Caterpie","Weedle"],"Caterpie and Weedle are the two bug-larva Pokémon of Kanto -- a green caterpillar and a hairy stinging one, both grubs."),
+  ("FELINE",3,"arch:feline",["Meowth","Mew"],"Meowth is a house cat with a lucky-charm coin on its forehead, and Mew a playful, floating kitten -- both are cat-like."),
+  ("ARMADILLO",3,"arch:armadillo",["Sandshrew"],"Sandshrew is based on a pangolin or armadillo, curling into a hard-shelled ball when threatened."),
+], exclude=ex("ability:own-tempo","arch:primate","arch:caterpillar","arch:feline","arch:armadillo","arch:pangolin",
+              extra=["Slowbro","Slowking","Primeape","Machoke","Machamp","Metapod","Kakuna","Butterfree","Beedrill","Persian","Sandslash","Mewtwo","Eevee","Jolteon","Flareon","Vaporeon","Cubone","Marowak","Golduck","Psyduck","Snorlax","Kangaskhan","Clefairy","Hitmonchan","Hitmonlee","Venonat","Paras","Parasect","Tauros","Vulpix","Ninetales","Growlithe","Arcanine"]))
+board("2026-11-27","mixed","Hard",[
+  ("TANGLED-FEET",5,"ability:tangled-feet",["Spinda","Chatot","Flamigo"],"All three have the Ability Tangled Feet, which raises their evasion while they are confused."),
+  ("WOODLOUSE",4,"arch:isopod",["Golisopod"],"Golisopod is based on an isopod (a giant pill-bug/sea slater) -- the crustacean cousin of the woodlouse."),
+  ("PARLIAMENT",3,"arch:owl",["Hoothoot","Rowlet"],"A group of owls is called a parliament -- Hoothoot is a classic owl standing on one foot, and Rowlet a round little owl chick."),
+  ("BOAR",3,"arch:boar",["Swinub","Oinkologne"],"Swinub is a tiny wild-boar piglet and Oinkologne a bigger, scent-spraying pig -- both are swine/boar-based."),
+  ("DROMEDARY",3,"arch:camelid",["Numel"],"Numel is based on a camel, and its hump holds volcanic magma instead of water."),
+], exclude=ex("ability:tangled-feet","arch:isopod","arch:owl","arch:boar","arch:camelid","arch:pig",
+              extra=["Mr. Rime","Mr. Mime","Noctowl","Dartrix","Decidueye","Mamoswine","Piloswine","Camerupt","Wimpod","Pignite","Emboar","Tepig","Bouffalant","Miltank","Tauros","Wooloo","Lechonk","Mudsdale","Stantler","Wyrdeer","Girafarig","Hoppip","Natu","Xatu","Delibird","Farigiraf","Dodrio","Swanna","Ducklett","Kricketune","Slither Wing"]))
