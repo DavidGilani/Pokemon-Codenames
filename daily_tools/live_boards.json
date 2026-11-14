@@ -4213,5 +4213,213 @@
     "word": "REGENERATOR"
    }
   ]
+ },
+ {
+  "date": "2026-12-06",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Ditto",
+     "Mew"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "TRANSFORM"
+   },
+   {
+    "m": [
+     "Mewtwo",
+     "Gengar"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "SPECIAL"
+   },
+   {
+    "m": [
+     "Onix",
+     "Golem"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "DEFENSE"
+   },
+   {
+    "m": [
+     "Nidorina",
+     "Nidorino",
+     "Clefairy"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "MOON-STONE"
+   },
+   {
+    "m": [
+     "Mew",
+     "Mewtwo"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "PSYCHIC"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-06",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Rockruff",
+     "Yamper",
+     "Fidough"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "PUPPY"
+   },
+   {
+    "m": [
+     "Espeon",
+     "Volcarona"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "SUN"
+   },
+   {
+    "m": [
+     "Volcarona",
+     "Coalossal"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "FLAME-BODY"
+   },
+   {
+    "m": [
+     "Xatu",
+     "Espeon",
+     "Delphox"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "FUTURE"
+   },
+   {
+    "m": [
+     "Yamper",
+     "Coalossal",
+     "Cramorant"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "GALAR"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-07",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Charmander",
+     "Vulpix",
+     "Growlithe"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "FIRE"
+   },
+   {
+    "m": [
+     "Ekans",
+     "Zubat",
+     "Bulbasaur"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "POISON"
+   },
+   {
+    "m": [
+     "Jigglypuff",
+     "Lickitung"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "PINK"
+   },
+   {
+    "m": [
+     "Charmander",
+     "Bulbasaur"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "STARTER"
+   },
+   {
+    "m": [
+     "Magnemite"
+    ],
+    "n": 1,
+    "cat": 2,
+    "word": "HORSESHOE"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-07",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Teddiursa",
+     "Skwovet",
+     "Zigzagoon"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "NORMAL"
+   },
+   {
+    "m": [
+     "Crabrawler",
+     "Hawlucha"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "FIGHTING"
+   },
+   {
+    "m": [
+     "Lugia",
+     "Ho-Oh"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "LEGENDARY"
+   },
+   {
+    "m": [
+     "Wooper"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "AXOLOTL"
+   },
+   {
+    "m": [
+     "Tatsugiri"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "SUSHI"
+   }
+  ]
  }
 ]

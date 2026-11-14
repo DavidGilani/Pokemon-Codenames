@@ -940,3 +940,76 @@ board("2026-12-05","mixed","Brutal",[
          "Houndoom":("HORNS",2,"Houndoom has curved horns -- the bigger and backward-sweeping they are, the higher it ranks in its pack."),
          "Toxapex":("DOME",2,"Toxapex hides inside a dome made of its own poisonous, spiky legs."),
          "Tangrowth":("VINES",2,"Tangrowth is a huge tangle of vines that grow back as fast as they're torn off.")})
+
+# ===== 12-06 Sun : EVIL =====
+board("2026-12-06","gen1","Evil",[
+  ("TRANSFORM",4,"move:transform",["Ditto","Mew"],"Both can use Transform to become an exact copy of their opponent -- it's the only move Ditto knows, and Mew learns it from the very start."),
+  ("SPECIAL",5,"stat:special",["Mewtwo","Gengar"],"These two have the highest Special stat on the board (Mewtwo 154, Gengar 130) -- the Gen I stat that powered both special attack and special defence."),
+  ("DEFENSE",5,"stat:defense",["Onix","Golem"],"Onix (160) and Golem (130) have the highest base Defense on the board -- living fortresses of solid rock."),
+  ("MOON-STONE",5,"evo:moon-stone",["Nidorina","Nidorino","Clefairy"],"All three evolve when exposed to a Moon Stone: Nidorina into Nidoqueen, Nidorino into Nidoking, and Clefairy into Clefable."),
+  ("PSYCHIC",1,"type:psychic",["Mew","Mewtwo"],"Mew and Mewtwo are the board's only Psychic-types."),
+], exclude=["Alakazam","Exeggutor","Zapdos","Moltres","Articuno","Cloyster","Omastar","Graveler","Rhydon","Slowbro","Sandslash","Kabutops","Geodude",
+            "Jigglypuff","Wigglytuff","Nidoqueen","Nidoking","Clefable","Nidoran♀","Nidoran♂"],
+  hints={"Ditto":("BLOB",2,"Ditto is a pink blob that can rearrange its cells to copy anything it sees."),
+         "Mew":("ANCESTOR",3,"Mew is said to carry the DNA of every Pokémon -- the ancestor of them all."),
+         "Mewtwo":("CLONE",3,"Mewtwo was created by scientists from Mew's DNA."),
+         "Gengar":("SHADOW",3,"Gengar lurks in the shadows and steals the warmth from anyone nearby."),
+         "Onix":("SNAKE",3,"Onix is a giant snake of boulders that tunnels underground at high speed."),
+         "Golem":("BOULDER",2,"Golem is a huge living boulder that sheds its shell once a year."),
+         "Nidorina":("SPINES",2,"Nidorina folds down its poison spines when it relaxes with its friends."),
+         "Nidorino":("HORN",2,"Nidorino's horn is harder than diamond and full of venom."),
+         "Clefairy":("METRONOME",3,"Clefairy wags its finger to use Metronome -- a move that could be anything.")})
+board("2026-12-06","mixed","Evil",[
+  ("PUPPY",4,"genus:puppy",["Rockruff","Yamper","Fidough"],"All three are listed in the Pokédex as the Puppy Pokémon."),
+  ("SUN",4,"genus:sun",["Espeon","Volcarona"],"Espeon and Volcarona are both the Sun Pokémon in the Pokédex -- Espeon draws power from sunlight, and Volcarona was worshipped as a stand-in for the sun when volcanic ash blotted it out."),
+  ("FLAME-BODY",5,"ability:flame-body",["Volcarona","Coalossal"],"Volcarona and Coalossal can have the Ability Flame Body, which may burn any Pokémon that touches them."),
+  ("FUTURE",4,"lore:future",["Xatu","Espeon","Delphox"],"All three can see what's coming: Xatu is said to watch the past with one eye and the future with the other, Espeon predicts its foe's moves from shifts in the air, and Delphox gazes into the flame on its stick to see the future."),
+  ("GALAR",3,"region:galar",["Yamper","Coalossal","Cramorant"],"Yamper, Coalossal and Cramorant all debuted in the Galar region, in Pokémon Sword and Shield."),
+], exclude=sorted(set(["Growlithe","Lillipup","Maschiff","Snubbull","Houndour","Poochyena","Electrike","Sunflora","Sunkern","Solrock","Solgaleo","Helioptile","Heliolisk","Castform",
+            "Natu","Absol","Braixen","Fennekin","Gardevoir","Kirlia","Ralts","Celebi","Dialga","Jirachi","Arrokuda","Barraskewda",
+            "Meowth","Ponyta","Rapidash","Slowpoke","Slowbro","Farfetch'd","Weezing","Mr. Mime","Corsola","Zigzagoon","Darumaka","Yamask","Stunfisk","Articuno","Zapdos","Moltres"]
+            +[n for n,r in FACTS.items() if "Flame Body" in r["abilities"] or r["gen"]==8])-{"Volcarona","Coalossal","Yamper","Cramorant"}),
+  hints={"Rockruff":("COLLAR",2,"Rockruff has a collar of rocks round its neck, which it rubs against others to show affection."),
+         "Yamper":("CORGI",3,"Yamper is a corgi-like puppy that makes electricity in its tail when it runs."),
+         "Fidough":("YEAST",3,"Fidough's body is made of dough, and the yeast in its breath helps make bread."),
+         "Espeon":("GEM",2,"Espeon has a red gem on its forehead that glows when it uses its psychic power."),
+         "Volcarona":("MOTH",3,"Volcarona is a great fiery moth whose wings scatter burning scales."),
+         "Coalossal":("FURNACE",3,"Coalossal's body is a furnace of burning coal, hot enough to melt rock."),
+         "Xatu":("TOTEM",3,"Xatu stands as still as a totem pole all day, gazing at the sun."),
+         "Delphox":("WAND",2,"Delphox carries a burning twig like a wizard's wand."),
+         "Cramorant":("GULP",3,"Cramorant gulps down whole fish -- and sometimes a surprised Pikachu -- without noticing.")})
+
+# ===== 12-07 Mon : EASY =====
+board("2026-12-07","gen1","Easy",[
+  ("FIRE",1,"type:fire",["Charmander","Vulpix","Growlithe"],"Charmander, Vulpix and Growlithe are the board's only Fire-types."),
+  ("POISON",1,"type:poison",["Ekans","Zubat","Bulbasaur"],"Ekans, Zubat (Poison/Flying) and Bulbasaur (Grass/Poison) are the board's only Poison-types."),
+  ("PINK",1,"colour:pink",["Jigglypuff","Lickitung"],"Jigglypuff and Lickitung are the board's pink Pokémon -- a balloon-like singer and a long-tongued licker."),
+  ("STARTER",1,"role:starter",["Charmander","Bulbasaur"],"Charmander and Bulbasaur are both Kanto starters, chosen in Professor Oak's lab at the start of Pokémon Red and Blue."),
+  ("HORSESHOE",2,"sprite:horseshoe",["Magnemite"],"Magnemite floats along with a horseshoe magnet on each side of its round metal body."),
+], exclude=["Squirtle","Wartortle","Blastoise","Ivysaur","Venusaur","Charmeleon","Charizard","Slowpoke","Slowbro","Chansey","Lickitung","Porygon","Exeggcute","Mew","Ditto",
+            "Wigglytuff","Clefable","Clefairy","Mr. Mime","Jynx","Butterfree","Magneton","Pikachu","Eevee"],
+  hints={"Charmander":("FLAME",2,"Charmander's tail flame shows how it's feeling -- it blazes when it's angry."),
+         "Vulpix":("TAILS",2,"Vulpix is born with one white tail that splits into six curly red tails as it grows."),
+         "Growlithe":("PUPPY",3,"Growlithe is the Puppy Pokémon -- loyal and brave, it barks to protect its territory."),
+         "Ekans":("BACKWARDS",4,"Ekans is 'snake' spelt backwards."),
+         "Zubat":("EYELESS",2,"Zubat has no eyes -- it finds its way using ultrasonic waves."),
+         "Bulbasaur":("SEED",2,"Bulbasaur carries a plant seed on its back from the day it's born."),
+         "Lickitung":("TONGUE",2,"Lickitung's tongue is twice as long as its body."),
+         "Jigglypuff":("LULLABY",3,"Jigglypuff sings a soothing lullaby that sends anyone who hears it to sleep."),
+         "Magnemite":("SCREWS",2,"Magnemite has a screw on each side of its body and floats using electromagnetism.")})
+board("2026-12-07","mixed","Easy",[
+  ("NORMAL",1,"type:normal",["Teddiursa","Skwovet","Zigzagoon"],"Teddiursa, Skwovet and Zigzagoon are the board's only Normal-types."),
+  ("FIGHTING",1,"type:fighting",["Crabrawler","Hawlucha"],"Crabrawler and Hawlucha (Fighting/Flying) are the board's only Fighting-types."),
+  ("LEGENDARY",1,"role:legendary",["Lugia","Ho-Oh"],"Lugia and Ho-Oh are legendary Pokémon -- the guardians of the sea and the sky, and the cover stars of Pokémon Silver and Gold."),
+  ("AXOLOTL",3,"arch:axolotl",["Wooper"],"Wooper is based on an axolotl -- a pink Mexican salamander with feathery gills on its head."),
+  ("SUSHI",3,"food:sushi",["Tatsugiri"],"Tatsugiri looks just like a piece of sushi -- its three forms mimic different toppings."),
+], exclude=sorted(set(["Mudkip","Quagsire","Clodsire","Dondozo"]+[n for n,r in FACTS.items() if r["legendary"] or r["mythical"]])-{"Lugia","Ho-Oh"}),
+  hints={"Teddiursa":("HONEY",3,"Teddiursa licks the honey that soaks into its paws -- the crescent on its forehead glows like the moon."),
+         "Skwovet":("CHEEKS",2,"Skwovet stuffs berries into its huge cheeks so it always has a snack."),
+         "Zigzagoon":("STRIPES",2,"Zigzagoon has zigzag stripes on its fur -- and walks in zigzags too."),
+         "Crabrawler":("BOXER",3,"Crabrawler is a crab that punches like a boxer, aiming for the top of the tree it climbs."),
+         "Hawlucha":("MASK",2,"Hawlucha wears a wrestler's mask and loves to show off its high-flying moves."),
+         "Lugia":("SEA",3,"Lugia sleeps in a deep-sea trench -- a flap of its wings could cause a 40-day storm."),
+         "Ho-Oh":("RAINBOW",3,"Ho-Oh's feathers shine in seven colours, leaving a rainbow wherever it flies."),
+         "Wooper":("GILLS",2,"Wooper has feathery gills on its head."),
+         "Tatsugiri":("SMALL",2,"Tatsugiri is a small, clever dragon that rides in Dondozo's mouth.")})
