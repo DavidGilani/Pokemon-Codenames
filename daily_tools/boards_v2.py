@@ -619,9 +619,9 @@ board("2026-11-26","gen1","Hard",[
   ("PACHYDERM",4,"arch:pachyderm",["Nidoking","Nidoqueen"],"Nidoking and Nidoqueen are the armoured, thick-skinned royals of the Nidoran line -- big, tough-hided beasts in the mould of the pachyderms (rhinos and elephants)."),
   ("TAPIR",3,"arch:tapir",["Drowzee"],"Drowzee is based on a tapir, and on the baku, the Japanese dream-eating tapir spirit -- hence its trunk-like snout and its taste for dreams."),
   ("CRAB",3,"arch:crab",["Kingler"],"Kingler is the Pincer Pokémon, a crab with one huge, crushing claw."),
-  ("FOX",3,"arch:fox",["Eevee","Kadabra"],"Eevee has a fox's bushy tail and fluffy ruff, and Kadabra a fox's pointed muzzle, whiskers and tail -- both are fox-based."),
+  ("FOX",3,"arch:fox",["Eevee","Ninetales"],"Eevee has a fox's big ears, bushy tail and fluffy ruff, and Ninetales is the legendary nine-tailed fox -- inspired by the kitsune of Japanese folklore. Both are fox-based."),  # QA 2026-11-14: Kadabra-as-fox too much of a stretch -> Ninetales
 ], exclude=ex("ability:damp","arch:pachyderm","arch:tapir","arch:crab","arch:fox",
-              extra=["Psyduck","Poliwrath","Parasect","Paras","Politoed","Raichu","Cubone","Rhyhorn","Rhydon","Goldeen","Nidoran♀","Nidorina","Nidoran♂","Nidorino","Hypno","Krabby","Abra","Alakazam","Vulpix","Ninetales","Jolteon","Flareon","Vaporeon","Growlithe","Arcanine","Pikachu","Electabuzz","Tauros","Mew","Mewtwo","Ponyta"]))
+              extra=["Psyduck","Poliwrath","Parasect","Paras","Politoed","Raichu","Cubone","Rhyhorn","Rhydon","Goldeen","Nidoran♀","Nidorina","Nidoran♂","Nidorino","Hypno","Krabby","Abra","Kadabra","Alakazam","Vulpix","Jolteon","Flareon","Vaporeon","Growlithe","Arcanine","Pikachu","Electabuzz","Tauros","Mew","Mewtwo","Ponyta"]))
 board("2026-11-26","mixed","Hard",[
   ("RAPTOR",4,"arch:raptor",["Staravia","Rufflet"],"Staravia (a starling-eagle hybrid) and Rufflet (the Eaglet Pokémon) are both birds of prey -- raptors."),
   ("TRACE",5,"ability:trace",["Porygon2","Ralts","Gardevoir"],"All three have the Ability Trace, which copies the Ability of the opposing Pokémon the moment they enter battle."),
