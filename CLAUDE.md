@@ -250,8 +250,9 @@ boards to QA. Workflow:
      is deleted and becomes a gap, and a trusted, addressed feedback row is
      added for the new date so it shows green.
    - **Open question** ("could you find another word for this?"): make your
-     best rule-following change and apply it. Then **delete that board's
-     `daily_feedback` rows** → **blue**, so the owner re-tests it. If no change
+     best rule-following change and apply it. Then set that board's
+     `daily_feedback` rows to **`superseded = true`** (never DELETE – the Supabase
+     connector blocks unattended deletes; see `47_updates.sql`) → **blue**, so the owner re-tests it. If no change
      is needed, mark it addressed and explain why in the report.
    - **Not about board content** (a site bug etc.): leave it and report it.
    Don't use `FLOURISH` for boards you author yourself.
