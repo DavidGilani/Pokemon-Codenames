@@ -3823,5 +3823,199 @@
     "word": "POKEBALL"
    }
   ]
+ },
+ {
+  "date": "2026-12-02",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Clefable",
+     "Mr. Mime"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "FAIRY"
+   },
+   {
+    "m": [
+     "Cloyster",
+     "Blastoise",
+     "Omastar",
+     "Kabuto"
+    ],
+    "n": 4,
+    "cat": 2,
+    "word": "SHELL"
+   },
+   {
+    "m": [
+     "Jynx",
+     "Electabuzz",
+     "Magmar"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "PUNCH"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-02",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Mimikyu",
+     "Phantump",
+     "Dhelmise"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "GHOST"
+   },
+   {
+    "m": [
+     "Phantump",
+     "Sudowoodo"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "TREE"
+   },
+   {
+    "m": [
+     "Applin",
+     "Smoliv"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "FRUIT"
+   },
+   {
+    "m": [
+     "Pelipper",
+     "Delibird"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "COURIER"
+   },
+   {
+    "m": [
+     "Dachsbun"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "BREAD"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-03",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Kangaskhan",
+     "Dugtrio"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "GIOVANNI"
+   },
+   {
+    "m": [
+     "Kangaskhan",
+     "Marowak"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "MOTHER"
+   },
+   {
+    "m": [
+     "Dugtrio",
+     "Exeggutor",
+     "Magneton"
+    ],
+    "n": 3,
+    "cat": 2,
+    "word": "THREE"
+   },
+   {
+    "m": [
+     "Dugtrio",
+     "Exeggutor",
+     "Marowak"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "ALOLA"
+   },
+   {
+    "m": [
+     "Pidgeotto",
+     "Fearow",
+     "Zapdos",
+     "Moltres"
+    ],
+    "n": 4,
+    "cat": 3,
+    "word": "BIRD"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-03",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Beheeyem",
+     "Minior",
+     "Solrock"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "SPACE"
+   },
+   {
+    "m": [
+     "Mismagius",
+     "Hatterene"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "WITCH"
+   },
+   {
+    "m": [
+     "Mismagius",
+     "Solrock"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "LEVITATE"
+   },
+   {
+    "m": [
+     "Alcremie",
+     "Slurpuff"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "CAKE"
+   },
+   {
+    "m": [
+     "Slowking",
+     "Kingambit"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "CROWN"
+   }
+  ]
  }
 ]
