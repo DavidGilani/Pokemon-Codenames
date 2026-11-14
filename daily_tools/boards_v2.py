@@ -867,3 +867,76 @@ board("2026-12-03","mixed","Hard",[
          "Slurpuff":("SNIFF",3,"Slurpuff's sense of smell is millions of times better than a human's -- pastry chefs use it to sniff out flavours."),
          "Slowking":("THINKER",3,"Ever since a Shellder bit its head, Slowking has become a genius thinker."),
          "Kingambit":("COMMANDER",3,"Kingambit is the general of a Bisharp army -- it only joins the fight when its troops are in trouble.")})
+
+# ===== 12-04 Fri : HARD =====
+board("2026-12-04","gen1","Hard",[
+  ("AGATHA",4,"trainer:agatha",["Arbok","Haunter","Golbat"],"Agatha, the ghost-loving veteran of the Kanto Elite Four (and Professor Oak's old rival), battles with Arbok, Haunter and Golbat -- plus two Gengar."),
+  ("SPEED",5,"stat:speed",["Electrode","Aerodactyl","Alakazam"],"These are the board's speed demons -- the only ones with base Speed of 120 or more: Electrode (150), Aerodactyl (130) and Alakazam (120)."),
+  ("SPOON",2,"sprite:spoon",["Kadabra","Alakazam"],"Look at the sprites: Kadabra holds a silver spoon, and Alakazam one in each hand -- the spoons amplify their psychic power."),
+  ("DELICACY",3,"food:delicacy",["Slowpoke","Farfetch'd"],"Both are said to be tasty: Slowpoke tails are sold as a delicacy (they grow back), and Farfetch'd was hunted close to extinction -- its Japanese name comes from a saying about a duck arriving with its own leek."),
+], exclude=["Ekans","Meowth","Koffing","Weezing","Victreebel","Gastly","Gengar","Zubat","Snorlax","Jynx","Slowbro","Abra",
+            "Mewtwo","Jolteon","Dugtrio","Starmie","Persian","Tauros","Raichu","Dodrio","Scyther","Rapidash","Electabuzz","Pidgeot","Zapdos","Voltorb","Tentacruel","Ninetales","Mew","Fearow","Charizard"],
+  hints={"Arbok":("HOOD",2,"Arbok spreads a hood marked with a scary face pattern to frighten off foes."),
+         "Golbat":("FANGS",2,"Golbat's huge mouth is lined with sharp fangs, and it can drain a lot of blood in one go."),
+         "Haunter":("HANDS",2,"Haunter's floating, disembodied hands can pass through walls."),
+         "Electrode":("BALL",2,"Electrode looks like a giant Poké Ball, and explodes at the slightest shock."),
+         "Aerodactyl":("AMBER",3,"Aerodactyl was revived from ancient DNA preserved in a piece of old amber."),
+         "Alakazam":("GENIUS",3,"Alakazam's huge brain gives it an IQ of around 5,000 -- it never forgets anything."),
+         "Kadabra":("STAR",2,"Kadabra has a red star on its forehead and wavy lines across its belly."),
+         "Slowpoke":("DOZY",3,"Slowpoke is so dozy it takes five seconds to notice it's been hurt."),
+         "Farfetch'd":("LEEK",2,"Farfetch'd always carries a stalk of leek, which it uses as a sword.")})
+board("2026-12-04","mixed","Hard",[
+  ("YOKAI",5,"myth:yokai",["Froslass","Shiftry","Lombre"],"Each is based on a yōkai, a spirit of Japanese folklore: Froslass on the yuki-onna snow woman who freezes travellers, Shiftry on the long-nosed, fan-wielding tengu, and Lombre on the river-dwelling kappa."),
+  ("CHLOROPHYLL",5,"ability:chlorophyll",["Shiftry","Whimsicott","Deerling"],"Shiftry, Whimsicott and Deerling can have the Ability Chlorophyll, which doubles their Speed in harsh sunlight."),
+  ("SWORDSMAN",3,"job:swordsman",["Samurott","Ceruledge"],"Both are sword-fighters: Samurott draws the seamitar blades from its shell armour in a flash, and Ceruledge burns with the grudge of a fallen sword-wielder, its arms ending in blades of ghostly fire."),
+  ("BELL",2,"object:bell",["Chimecho","Bronzong"],"Look at them: Chimecho is a wind chime, and Bronzong a great bronze temple bell."),
+], exclude=sorted(set(["Ninetales","Vulpix","Golduck","Psyduck","Lotad","Ludicolo","Musharna","Munna","Drowzee","Hypno","Nuzleaf","Seedot","Zorua","Zoroark","Snorunt","Glalie",
+            "Ogerpon","Spiritomb","Gallade","Aegislash","Doublade","Honedge","Kartana","Kingambit","Bisharp","Pawniard","Dewott","Oshawott","Escavalier","Sirfetch'd","Zacian",
+            "Cobalion","Terrakion","Virizion","Keldeo","Farfetch'd","Scyther","Kleavor","Armarouge","Chingling","Bronzor","Weepinbell"]+[n for n,r in FACTS.items() if "Chlorophyll" in r["abilities"]])-{"Shiftry","Whimsicott","Deerling"}),
+  hints={"Froslass":("KIMONO",2,"Froslass looks like a snow-white woman in a kimono, with an icy hair ornament."),
+         "Shiftry":("FANS",2,"Shiftry's hands are big leaf fans that whip up gale-force winds."),
+         "Lombre":("LILY",2,"Lombre wears a lily pad on its head like a hat."),
+         "Whimsicott":("FLUFF",2,"Whimsicott's body is a big puff of fluff, which it uses to slip through gaps like the wind."),
+         "Deerling":("SEASONS",3,"Deerling's coat changes colour and scent with the seasons."),
+         "Samurott":("ARMOUR",2,"Samurott wears shell armour and draws its seamitar blades from it to fight."),
+         "Ceruledge":("BLADES",2,"Ceruledge's arms end in blades of blue spirit-fire."),
+         "Chimecho":("WIND",3,"Chimecho rides the wind like a wind chime, ringing out with cries."),
+         "Bronzong":("RAIN",3,"Bronzong was once worshipped as a bringer of rain, and dug up from ancient tombs.")})
+
+# ===== 12-05 Sat : BRUTAL =====
+board("2026-12-05","gen1","Brutal",[
+  ("ATTACK",5,"stat:attack",["Kingler","Machamp","Pinsir","Dragonite"],"These four hit hardest: Dragonite (134), Kingler and Machamp (130 each) and Pinsir (125) have the highest base Attack on the board."),
+  ("LIFEGUARD",3,"job:lifeguard",["Dragonite","Lapras"],"Both rescue people at sea: Dragonite is said to guide shipwrecked sailors safely to land, and Lapras happily ferries people across the water on its back."),
+  ("BAKU",5,"myth:baku",["Drowzee","Hypno"],"Drowzee and Hypno are based on the baku, a dream-eating spirit of Japanese folklore with a tapir's snout -- both feed on the dreams of sleeping people."),
+  ("FRIENDSHIP",5,"evo:friendship",["Chansey","Eevee"],"Both evolve through friendship: a Chansey with a strong bond to its trainer becomes Blissey, and a devoted Eevee becomes Espeon by day or Umbreon by night."),
+  ("WATER",1,"type:water",["Kingler","Lapras"],"Kingler and Lapras (Water/Ice) are the board's only Water-types."),
+], exclude=["Rhydon","Flareon","Gyarados","Hitmonlee","Golem","Kabutops","Snorlax","Scyther","Mewtwo","Dodrio","Arcanine","Victreebel","Primeape","Muk","Krabby","Hitmonchan",
+            "Golbat","Zubat","Pikachu","Raichu","Clefairy","Clefable","Jigglypuff","Wigglytuff","Machop","Machoke","Dratini","Dragonair","Tentacruel"],
+  hints={"Kingler":("CLAW",2,"Kingler's one giant claw has 10,000 horsepower of crushing force."),
+         "Machamp":("FOUR",2,"Machamp's four muscular arms can throw 500 punches a second."),
+         "Pinsir":("HORNS",2,"Pinsir grips its foes between the two huge spiked horns on its head."),
+         "Dragonite":("GENTLE",3,"Dragonite is a gentle, kind-hearted dragon that can circle the globe in just 16 hours."),
+         "Lapras":("FERRY",3,"Lapras loves to ferry people across the sea on its back."),
+         "Drowzee":("DREAMS",3,"Drowzee eats the dreams of sleeping people -- it especially likes fun ones."),
+         "Hypno":("PENDULUM",2,"Hypno swings a pendulum to lull its targets into a hypnotic sleep."),
+         "Chansey":("EGG",2,"Chansey carries a nutritious egg in its belly pouch, which it shares with the injured."),
+         "Eevee":("EIGHT",3,"Eevee can evolve into eight different Pokémon -- more than any other.")})
+board("2026-12-05","mixed","Brutal",[
+  ("FEMALE",5,"gender:female",["Salazzle","Tsareena","Vespiquen","Mandibuzz"],"Every Salazzle, Tsareena, Vespiquen and Mandibuzz is female -- these species have no males at all."),
+  ("KICK",3,"trait:kick",["Tsareena","Mienshao","Hitmontop"],"All three are famous kickers: Tsareena's signature move is Trop Kick, Mienshao lashes out with lightning-fast martial-arts kicks, and Hitmontop spins on its head like a top, kicking as it whirls."),
+  ("BONES",2,"sprite:bones",["Mandibuzz","Houndoom"],"Look at the sprites: Mandibuzz wraps itself in bones like a harness, and Houndoom wears bone-like bands across its back and legs."),
+  ("UNNERVE",5,"ability:unnerve",["Vespiquen","Houndoom"],"Vespiquen and Houndoom can have the Ability Unnerve, which makes the opposing Pokémon too nervous to eat their held Berries."),
+  ("REGENERATOR",5,"ability:regenerator",["Mienshao","Toxapex","Tangrowth"],"Mienshao, Toxapex and Tangrowth can have the Ability Regenerator, which restores a third of their HP whenever they switch out."),
+], exclude=sorted(set(["Hitmonlee","Hitmonchan","Tyrogue","Lopunny","Lokix","Nymble","Pheromosa","Blaziken","Combusken","Cinderace","Raboot","Scorbunny","Sawk","Mienfoo","Buneary","Hawlucha","Quaquaval","Medicham","Kubfu",
+            "Cubone","Marowak","Houndour","Vullaby","Lucario"]
+            +[n for n,r in FACTS.items() if r["gender"]=="female-only" or "Unnerve" in r["abilities"] or "Regenerator" in r["abilities"]])
+            -{"Salazzle","Tsareena","Vespiquen","Mandibuzz","Mienshao","Toxapex","Tangrowth","Houndoom"}),
+  hints={"Salazzle":("LIZARD",3,"Salazzle is a slinky poison lizard that lures foes with a sweet-smelling toxic gas."),
+         "Tsareena":("LEGS",2,"Tsareena's long, elegant legs deliver its famous Trop Kick."),
+         "Vespiquen":("HIVE",2,"Vespiquen's abdomen is a honeycomb hive where its grubs live."),
+         "Mandibuzz":("VULTURE",3,"Mandibuzz is a vulture that dresses itself in bones it has collected."),
+         "Mienshao":("WHIPS",2,"Mienshao's long arm fur works like whips in battle."),
+         "Hitmontop":("WHIRL",3,"Hitmontop spins on the horn on its head like a top, lashing out with kicks as it whirls."),
+         "Houndoom":("HORNS",2,"Houndoom has curved horns -- the bigger and backward-sweeping they are, the higher it ranks in its pack."),
+         "Toxapex":("DOME",2,"Toxapex hides inside a dome made of its own poisonous, spiky legs."),
+         "Tangrowth":("VINES",2,"Tangrowth is a huge tangle of vines that grow back as fast as they're torn off.")})

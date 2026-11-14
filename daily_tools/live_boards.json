@@ -4017,5 +4017,201 @@
     "word": "CROWN"
    }
   ]
+ },
+ {
+  "date": "2026-12-04",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Arbok",
+     "Haunter",
+     "Golbat"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "AGATHA"
+   },
+   {
+    "m": [
+     "Electrode",
+     "Aerodactyl",
+     "Alakazam"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "SPEED"
+   },
+   {
+    "m": [
+     "Kadabra",
+     "Alakazam"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "SPOON"
+   },
+   {
+    "m": [
+     "Slowpoke",
+     "Farfetch'd"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "DELICACY"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-04",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Froslass",
+     "Shiftry",
+     "Lombre"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "YOKAI"
+   },
+   {
+    "m": [
+     "Shiftry",
+     "Whimsicott",
+     "Deerling"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "CHLOROPHYLL"
+   },
+   {
+    "m": [
+     "Samurott",
+     "Ceruledge"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "SWORDSMAN"
+   },
+   {
+    "m": [
+     "Chimecho",
+     "Bronzong"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "BELL"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-05",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Kingler",
+     "Machamp",
+     "Pinsir",
+     "Dragonite"
+    ],
+    "n": 4,
+    "cat": 5,
+    "word": "ATTACK"
+   },
+   {
+    "m": [
+     "Dragonite",
+     "Lapras"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "LIFEGUARD"
+   },
+   {
+    "m": [
+     "Drowzee",
+     "Hypno"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "BAKU"
+   },
+   {
+    "m": [
+     "Chansey",
+     "Eevee"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "FRIENDSHIP"
+   },
+   {
+    "m": [
+     "Kingler",
+     "Lapras"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "WATER"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-05",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Salazzle",
+     "Tsareena",
+     "Vespiquen",
+     "Mandibuzz"
+    ],
+    "n": 4,
+    "cat": 5,
+    "word": "FEMALE"
+   },
+   {
+    "m": [
+     "Tsareena",
+     "Mienshao",
+     "Hitmontop"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "KICK"
+   },
+   {
+    "m": [
+     "Mandibuzz",
+     "Houndoom"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "BONES"
+   },
+   {
+    "m": [
+     "Vespiquen",
+     "Houndoom"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "UNNERVE"
+   },
+   {
+    "m": [
+     "Mienshao",
+     "Toxapex",
+     "Tangrowth"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "REGENERATOR"
+   }
+  ]
  }
 ]
