@@ -703,7 +703,7 @@ board("2026-11-29","gen1","Evil",[
          "Snorlax":("SLEEPY",3,"Snorlax spends its days eating and sleeping, often blocking roads while it naps."),
          "Wigglytuff":("BALLOON",2,"Wigglytuff's body is so soft and stretchy that it can inflate like a balloon."),
          "Vaporeon":("FINS",2,"Vaporeon has a mermaid-like tail fin and frilled fins around its head."),
-         "Hitmonchan":("BOXER",3,"Hitmonchan is a boxer, throwing punches faster than the eye can see."),
+         "Rapidash":("MANE",2,"Rapidash gallops at 150 mph with its fiery mane streaming behind it."),
          "Machamp":("FOUR",2,"Machamp's four muscular arms can throw 500 punches a second.")})
 board("2026-11-29","mixed","Evil",[
   ("MOMOTARO",4,"lore:momotaro",["Okidogi","Munkidori","Fezandipiti"],"In the Japanese folk tale of Momotarō, the peach boy is joined by a dog, a monkey and a pheasant -- the Loyal Three Okidogi, Munkidori and Fezandipiti are those companions, recast in Kitakami's legend as Ogerpon's foes."),
@@ -1082,3 +1082,74 @@ board("2026-12-09","mixed","Challenging",[
          "Indeedee":("HORNS",2,"Indeedee senses people's emotions through the horns on its head."),
          "Zangoose":("CLAWS",2,"Zangoose's razor-sharp claws are its main weapon against Seviper."),
          "Seviper":("BLADE",2,"Seviper's tail ends in a poisonous blade, which it sharpens on rocks.")})
+
+# ===== 12-10 Thu : HARD =====
+board("2026-12-10","gen1","Hard",[
+  ("SABRINA",3,"trainer:sabrina",["Mr. Mime","Alakazam"],"Sabrina, Saffron City's psychic Gym Leader, battles with Mr. Mime and Alakazam (plus Kadabra and Venomoth)."),
+  ("SELF-DESTRUCT",4,"move:self-destruct",["Electrode","Graveler"],"Both learn Self-Destruct as they level up -- Electrode and Graveler will blow themselves up to take a foe down with them."),
+  ("KITSUNE",5,"myth:kitsune",["Ninetales"],"Ninetales is based on the kitsune, the many-tailed fox spirit of Japanese folklore said to live for a thousand years."),
+  ("BRUNO",3,"trainer:bruno",["Hitmonlee"],"Bruno, the martial-arts master of the Kanto Elite Four, battles with Hitmonlee (plus Hitmonchan, two Onix and Machamp)."),
+  ("HORN",2,"sprite:horn",["Seaking","Nidoking","Rapidash"],"Look at the sprites: Seaking has a long, sharp horn on its forehead, Nidoking a big, poisonous horn, and Rapidash a single unicorn-like horn."),
+], exclude=["Kadabra","Venomoth","Abra","Geodude","Golem","Voltorb","Koffing","Weezing","Machamp","Onix","Vulpix","Hitmonchan","Ponyta",
+            "Nidorino","Nidoran♂","Rhyhorn","Rhydon","Goldeen","Dewgong","Seel","Weedle","Tauros","Pinsir","Horsea"],
+  hints={"Mr. Mime":("WALLS",3,"Mr. Mime mimes invisible walls so convincingly that they become real barriers."),
+         "Alakazam":("SPOONS",2,"Alakazam holds a silver spoon in each hand to focus its psychic power."),
+         "Electrode":("BALL",2,"Electrode looks like a giant Poké Ball, and explodes at the slightest shock."),
+         "Graveler":("BOULDER",2,"Graveler is a living boulder with four stubby arms that rolls down mountain paths."),
+         "Ninetales":("CURSE",4,"Grab one of Ninetales' nine tails and, legend says, you'll be cursed for a thousand years."),
+         "Hitmonlee":("LEGS",2,"Hitmonlee's legs stretch out like springs to deliver kicks from a distance."),
+         "Rapidash":("MANE",2,"Rapidash gallops at 150 mph with its fiery mane streaming behind it."),
+         "Seaking":("GOLDFISH",3,"Seaking is the Goldfish Pokémon -- in autumn the males' bodies turn a deeper red."),
+         "Nidoking":("TAIL",2,"Nidoking's thick, powerful tail can snap a telephone pole in two.")})
+board("2026-12-10","mixed","Hard",[
+  ("EGYPT",4,"myth:egypt",["Cofagrigus","Sigilyph"],"Both draw on ancient Egypt: Cofagrigus is a golden sarcophagus like a pharaoh's coffin, and Sigilyph is modelled on the bird-shaped guardian symbols of an ancient civilisation."),
+  ("VOLCANO",4,"place:volcano",["Heatran","Magcargo","Camerupt"],"All three are tied to volcanoes: Heatran lives in volcanic caves and has magma for blood, Magcargo is a snail of cooling magma, and Camerupt has volcanoes on its back that erupt when it's angry."),
+  ("CANNON",2,"object:cannon",["Clawitzer","Octillery"],"Look at them: Clawitzer's huge claw is a cannon that fires blasts of water, and Octillery's snout is a cannon that shoots ink and Octazooka blasts."),
+  ("SLEUTH",3,"job:detective",["Gumshoos"],"Gumshoos is modelled on a sleuth -- 'gumshoe' is slang for one -- and it patiently stakes out its prey's trail until it slips up."),
+  ("PEPPER",3,"food:pepper",["Scovillain"],"Scovillain is a living chilli pepper -- its name comes from the Scoville scale that measures how spicy peppers are."),
+], exclude=["Yamask","Runerigus","Lucario","Riolu","Unown","Baltoy","Claydol","Volcanion","Volcarona","Larvesta","Slugma","Numel","Groudon","Torkoal","Coalossal","Carkol","Rolycoly",
+            "Entei","Moltres","Magmar","Magby","Magmortar","Turtonator","Salandit","Salazzle","Charcadet","Clauncher","Remoraid","Blastoise","Pikachu","Yungoos","Capsakid"],
+  hints={"Cofagrigus":("GOLD",2,"Cofagrigus is a golden coffin that swallows grave-robbers whole."),
+         "Sigilyph":("GUARDIAN",3,"Sigilyph is said to have guarded an ancient city, and it never strays from its patrol route."),
+         "Heatran":("LAVA",3,"Heatran lives in volcanic caves, and its blood boils like lava."),
+         "Magcargo":("SNAIL",3,"Magcargo is a snail of molten magma -- its brittle shell is cooled lava."),
+         "Camerupt":("HUMPS",2,"Camerupt's two humps are little volcanoes that erupt every ten years or so."),
+         "Clawitzer":("PINCER",2,"Clawitzer fires blasts of water from its oversized pincer."),
+         "Octillery":("INK",3,"Octillery squirts ink into its foe's face and then escapes."),
+         "Gumshoos":("PATIENT",3,"Gumshoos waits patiently on a stakeout until its prey finally slips up."),
+         "Scovillain":("SPICY",3,"Scovillain's two heads are a spicy red pepper and a mild green one.")})
+
+# ===== 12-11 Fri : HARD =====
+board("2026-12-11","gen1","Hard",[
+  ("SURGE",3,"trainer:surge",["Voltorb","Pikachu","Electabuzz"],"Lt. Surge, Vermilion City's 'Lightning American' Gym Leader, battles with Voltorb and Pikachu in Red and Blue, and with Electabuzz in Gold and Silver."),
+  ("THUNDERBIRD",5,"myth:thunderbird",["Zapdos"],"Zapdos is inspired by the Thunderbird, a giant bird of Native American legend whose wingbeats make thunder."),
+  ("DRAGON-RAGE",4,"move:dragon-rage",["Gyarados"],"Gyarados learns Dragon Rage as it levels up -- fitting its fierce, dragon-like look, even though it's a Water/Flying-type."),
+  ("FOSSIL",3,"lore:fossil",["Kabutops","Omastar","Aerodactyl"],"All three are fossil Pokémon, revived on Cinnabar Island: Kabutops from the Dome Fossil, Omastar from the Helix Fossil, and Aerodactyl from Old Amber."),
+  ("BLADES",2,"sprite:scythes",["Kabutops","Scyther"],"Look at the sprites: Kabutops and Scyther both have long, curved scythe blades for arms."),
+], exclude=["Raichu","Electrode","Magneton","Magnemite","Dratini","Dragonair","Dragonite","Charmander","Charmeleon","Charizard","Horsea","Seadra","Magikarp","Kabuto","Omanyte","Pinsir"],
+  hints={"Voltorb":("POKEBALL",2,"Voltorb looks just like a Poké Ball -- it was first seen at a Poké Ball factory."),
+         "Pikachu":("CHEEKS",2,"Pikachu stores electricity in the red pouches on its cheeks."),
+         "Electabuzz":("STRIPES",2,"Electabuzz has tiger-like black stripes on its yellow body."),
+         "Zapdos":("LIGHTNING",3,"Zapdos lives in thunderclouds and grows stronger when struck by lightning."),
+         "Gyarados":("RAMPAGE",3,"Once Gyarados starts a rampage, it won't stop until everything around it is destroyed."),
+         "Kabutops":("SWIMMER",3,"Kabutops was a sleek ancient swimmer that hunted in the sea before it took to land."),
+         "Scyther":("NINJA",3,"Scyther moves with ninja-like speed -- so fast it seems to blur."),
+         "Omastar":("SPIRAL",2,"Omastar's heavy spiral shell is what eventually made it go extinct."),
+         "Aerodactyl":("AMBER",3,"Aerodactyl was revived from ancient DNA preserved in a piece of old amber.")})
+board("2026-12-11","mixed","Hard",[
+  ("SOUNDPROOF",5,"ability:soundproof",["Bouffalant","Exploud","Bastiodon","Kommo-o","Abomasnow"],"Bouffalant, Exploud, Bastiodon, Kommo-o and Abomasnow can have the Ability Soundproof, which makes them immune to sound-based moves like Hyper Voice and Perish Song."),
+  ("GENIE",5,"myth:genie",["Hoopa"],"Hoopa is based on the genie (djinn) of Arabian legend -- like a genie from a lamp it grants wishes, and its golden rings open portals that can summon anything."),
+  ("TRASH",3,"object:trash",["Trubbish"],"Trubbish is a bag of rubbish brought to life -- it was born when a bin bag full of chemical waste reacted."),
+  ("DAIRY",3,"food:dairy",["Miltank"],"Miltank is the Milk Cow Pokémon -- its nutritious Moomoo Milk is famous for healing."),
+  ("SPEAKERS",2,"sprite:speakers",["Exploud","Noivern"],"Look at the sprites: Exploud's body is studded with loudspeaker-like pipes, and Noivern's huge ears are speakers that blast ultrasonic waves."),
+], exclude=sorted(set(["Tornadus","Thundurus","Landorus","Enamorus","Grimer","Muk","Garbodor","Alcremie","Milcery","Loudred","Whismur","Noibat"]
+            +[n for n,r in FACTS.items() if "Soundproof" in r["abilities"]])-{"Bouffalant","Exploud","Bastiodon","Kommo-o","Abomasnow"}),
+  hints={"Bouffalant":("AFRO",2,"Bouffalant's huge afro of fur cushions the blow when it headbutts."),
+         "Exploud":("SHOUT",3,"Exploud's roar can be heard more than six miles away."),
+         "Bastiodon":("SHIELD",2,"Bastiodon's face is a big, flat shield that no frontal attack can break."),
+         "Kommo-o":("SCALES",2,"Kommo-o clashes the scales on its tail and arms to intimidate its foes."),
+         "Hoopa":("RINGS",2,"Hoopa's golden rings open portals that can pull in things from far away."),
+         "Trubbish":("BAG",2,"Trubbish is a living rubbish bag, born from chemical waste."),
+         "Abomasnow":("YETI",3,"Abomasnow is a yeti-like 'Frost Tree' Pokémon that hides in the swirling blizzards of snowy mountains."),
+         "Miltank":("UDDER",2,"Miltank has a big pink udder -- it gives milk packed with nutrients."),
+         "Noivern":("EARS",2,"Noivern's huge ears can emit ultrasonic waves strong enough to crush a boulder.")})

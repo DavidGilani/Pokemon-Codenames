@@ -4621,5 +4621,207 @@
     "word": "RIVALS"
    }
   ]
+ },
+ {
+  "date": "2026-12-10",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Mr. Mime",
+     "Alakazam"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "SABRINA"
+   },
+   {
+    "m": [
+     "Electrode",
+     "Graveler"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "SELF-DESTRUCT"
+   },
+   {
+    "m": [
+     "Ninetales"
+    ],
+    "n": 1,
+    "cat": 5,
+    "word": "KITSUNE"
+   },
+   {
+    "m": [
+     "Hitmonlee"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "BRUNO"
+   },
+   {
+    "m": [
+     "Seaking",
+     "Nidoking",
+     "Rapidash"
+    ],
+    "n": 3,
+    "cat": 2,
+    "word": "HORN"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-10",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Cofagrigus",
+     "Sigilyph"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "EGYPT"
+   },
+   {
+    "m": [
+     "Heatran",
+     "Magcargo",
+     "Camerupt"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "VOLCANO"
+   },
+   {
+    "m": [
+     "Clawitzer",
+     "Octillery"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "CANNON"
+   },
+   {
+    "m": [
+     "Gumshoos"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "SLEUTH"
+   },
+   {
+    "m": [
+     "Scovillain"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "PEPPER"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-11",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Voltorb",
+     "Pikachu",
+     "Electabuzz"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "SURGE"
+   },
+   {
+    "m": [
+     "Zapdos"
+    ],
+    "n": 1,
+    "cat": 5,
+    "word": "THUNDERBIRD"
+   },
+   {
+    "m": [
+     "Gyarados"
+    ],
+    "n": 1,
+    "cat": 4,
+    "word": "DRAGON-RAGE"
+   },
+   {
+    "m": [
+     "Kabutops",
+     "Omastar",
+     "Aerodactyl"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "FOSSIL"
+   },
+   {
+    "m": [
+     "Kabutops",
+     "Scyther"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "BLADES"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-11",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Bouffalant",
+     "Exploud",
+     "Bastiodon",
+     "Kommo-o",
+     "Abomasnow"
+    ],
+    "n": 5,
+    "cat": 5,
+    "word": "SOUNDPROOF"
+   },
+   {
+    "m": [
+     "Hoopa"
+    ],
+    "n": 1,
+    "cat": 5,
+    "word": "GENIE"
+   },
+   {
+    "m": [
+     "Trubbish"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "TRASH"
+   },
+   {
+    "m": [
+     "Miltank"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "DAIRY"
+   },
+   {
+    "m": [
+     "Exploud",
+     "Noivern"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "SPEAKERS"
+   }
+  ]
  }
 ]
