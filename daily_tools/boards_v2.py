@@ -1013,3 +1013,72 @@ board("2026-12-07","mixed","Easy",[
          "Ho-Oh":("RAINBOW",3,"Ho-Oh's feathers shine in seven colours, leaving a rainbow wherever it flies."),
          "Wooper":("GILLS",2,"Wooper has feathery gills on its head."),
          "Tatsugiri":("SMALL",2,"Tatsugiri is a small, clever dragon that rides in Dondozo's mouth.")})
+
+# ===== 12-08 Tue : MEDIUM =====
+board("2026-12-08","gen1","Medium",[
+  ("ELECTRIC",1,"type:electric",["Raichu","Jolteon"],"Raichu and Jolteon are the board's only Electric-types."),
+  ("ROCK",1,"type:rock",["Rhyhorn","Geodude"],"Rhyhorn and Geodude (both Rock/Ground) are the board's only Rock-types."),
+  ("LORELEI",3,"trainer:lorelei",["Dewgong","Cloyster","Slowbro"],"Lorelei, the Kanto Elite Four's Ice expert, battles with Dewgong, Cloyster and Slowbro (alongside Jynx and Lapras)."),
+  ("BALLOON",4,"genus:balloon",["Wigglytuff"],"Wigglytuff is the Balloon Pokémon -- it can puff its soft, stretchy body up to a huge size."),
+  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is based on a mole -- it lives underground and only ever pokes its head out of the soil."),
+], exclude=["Jynx","Lapras","Dugtrio","Jigglypuff","Koffing","Weezing","Shellder","Slowpoke"],
+  hints={"Raichu":("TAIL",2,"Raichu's long, thin tail ends in a lightning-bolt tip and grounds its electricity."),
+         "Jolteon":("NEEDLES",2,"Jolteon's fur bristles into sharp, needle-like spikes when it's charged up."),
+         "Rhyhorn":("CHARGE",3,"Rhyhorn charges in a straight line, smashing through anything in its way."),
+         "Geodude":("ARMS",2,"Geodude is a round rock with two strong arms -- and no legs."),
+         "Dewgong":("BLUBBER",3,"Dewgong's thick blubber keeps it warm in freezing seas."),
+         "Cloyster":("SPIKES",2,"Cloyster's shell is covered in spikes and is said to be harder than diamond."),
+         "Slowbro":("SHELLDER",2,"Slowbro has a Shellder clamped onto its tail -- if it ever lets go, Slowbro turns back into Slowpoke."),
+         "Wigglytuff":("PLUSH",2,"Wigglytuff's fur is so soft and fine that it feels like plush velvet."),
+         "Diglett":("SOIL",3,"Diglett lives underground and only ever pokes its head up out of the soil.")})
+board("2026-12-08","mixed","Medium",[
+  ("DARK",1,"type:dark",["Zorua","Impidimp","Sableye"],"Zorua, Impidimp (Dark/Fairy) and Sableye (Dark/Ghost) are the board's only Dark-types."),
+  ("DRAGON",1,"type:dragon",["Gible","Turtonator"],"Gible (Dragon/Ground) and Turtonator (Fire/Dragon) are the board's only Dragon-types."),
+  ("PAINTER",3,"job:painter",["Smeargle"],"Smeargle is the Painter Pokémon -- it marks its territory by painting with the fluid from the brush-tip of its tail."),
+  ("TAILOR",3,"job:tailor",["Leavanny"],"Leavanny is a tailor: it sews leaves together with sticky silk to make clothes for little Sewaddle."),
+  ("MOUSTACHE",2,"sprite:moustache",["Whiscash","Stoutland"],"Look at the sprites: Whiscash has long catfish whiskers like a drooping moustache, and Stoutland a big, shaggy moustache of fur."),
+], exclude=["Kricketune","Mr. Rime","Alakazam","Kadabra","Barboach","Mienshao","Mienfoo","Herdier","Lillipup","Emboar","Gumshoos","Grafaiai","Sewaddle","Swadloon"],
+  hints={"Zorua":("ILLUSION",3,"Zorua tricks people by taking on the form of others with its illusions."),
+         "Impidimp":("PRANK",3,"Impidimp loves mischief -- it sneaks into homes to steal people's energy."),
+         "Sableye":("GEMS",2,"Sableye's eyes are sparkling gemstones -- it eats gems it digs up in caves."),
+         "Gible":("JAWS",2,"Gible's huge jaws make up most of its body -- it ambushes prey from its cave."),
+         "Turtonator":("SPIKES",2,"Turtonator's shell is covered in spikes that explode when touched."),
+         "Smeargle":("BRUSH",2,"Smeargle's tail ends in a brush dripping with paint."),
+         "Leavanny":("SEWING",3,"Leavanny is a master of sewing -- it stitches leaves together using the sharp cutters on its arms."),
+         "Whiscash":("QUAKE",3,"Whiscash can sense earthquakes coming -- and is said to cause them when it thrashes."),
+         "Stoutland":("CAPE",2,"Stoutland's thick fur drapes over its back like a warm cape.")})
+
+# ===== 12-09 Wed : CHALLENGING =====
+board("2026-12-09","gen1","Challenging",[
+  ("GRASS",1,"type:grass",["Tangela","Exeggcute","Ivysaur"],"Tangela, Exeggcute (Grass/Psychic) and Ivysaur (Grass/Poison) are the board's only Grass-types."),
+  ("KOGA",3,"trainer:koga",["Venomoth","Muk"],"Koga, the ninja master of Fuchsia City's Gym (and later the Elite Four), battles with poisonous Venomoth and Muk."),
+  ("JELLYFISH",3,"arch:jellyfish",["Tentacool","Tentacruel"],"Tentacool and Tentacruel are the Jellyfish Pokémon -- they drift through the sea and sting with venomous tentacles."),
+  ("ROADBLOCK",4,"lore:roadblock",["Snorlax"],"Snorlax famously blocks the road in Kanto -- you need the Poké Flute to wake it before you can get past on Routes 12 and 16."),
+  ("SKULL",2,"sprite:skull",["Cubone"],"Look at the sprite: Cubone wears a skull as a helmet -- said to be the skull of its late mother."),
+], exclude=["Koffing","Weezing","Venonat","Golbat","Zubat","Grimer","Marowak","Parasect"],
+  hints={"Exeggcute":("SIX",2,"Exeggcute is a cluster of six egg-like seeds that talk to each other by telepathy."),
+         "Ivysaur":("BUD",2,"Ivysaur has a big pink flower bud on its back that's about to bloom."),
+         "Tangela":("VINES",2,"Tangela's whole body is hidden under a tangle of blue vines."),
+         "Venomoth":("POWDER",3,"Venomoth's wings shed a powder that can paralyse or poison anyone it touches."),
+         "Muk":("SLUDGE",2,"Muk is a heap of toxic sludge -- even its footprints are poisonous."),
+         "Tentacool":("ORBS",2,"Tentacool's clear body has two red, crystal-like orbs that absorb sunlight."),
+         "Tentacruel":("EIGHTY",3,"Tentacruel has 80 tentacles that it can stretch and shrink at will."),
+         "Snorlax":("SLEEPY",3,"Snorlax spends its days eating and sleeping."),
+         "Cubone":("CLUB",2,"Cubone wields a bone like a club.")})
+board("2026-12-09","mixed","Challenging",[
+  ("FLYING",1,"type:flying",["Wattrel","Starly","Rookidee"],"Wattrel (Electric/Flying), Starly (Normal/Flying) and Rookidee are the board's only Flying-types."),
+  ("SHOVEL",2,"object:shovel",["Sandygast","Palossand"],"Look at the sprites: both have a toy shovel stuck in them -- Sandygast and Palossand are haunted sandcastles that drain the life from anyone who touches them."),
+  ("SWEETS",3,"food:candy",["Swirlix"],"Swirlix is a ball of cotton candy -- it eats nothing but sweets, so its fur is sugary and sticky."),
+  ("BUTLER",3,"job:butler",["Indeedee"],"Indeedee is the Emotion Pokémon and serves its trainer like a butler, sensing their feelings and seeing to their every need."),
+  ("RIVALS",4,"lore:rivals",["Zangoose","Seviper"],"Zangoose and Seviper are famous rivals -- the Pokédex says they have been bitter enemies since ancient times and fight on sight."),
+], exclude=["Slurpuff","Alcremie","Milcery","Vanillite","Vanillish","Vanilluxe","Mr. Mime","Mime Jr.","Mr. Rime",
+            "Heatmor","Durant","Electabuzz","Magmar","Electivire","Magmortar","Throh","Sawk","Tornadus","Thundurus","Groudon","Kyogre","Dialga","Palkia","Xerneas","Yveltal","Scyther","Pinsir"],
+  hints={"Wattrel":("SEABIRD",3,"Wattrel is a seabird that stores electricity in its wings and rides storm winds."),
+         "Starly":("FLOCK",3,"Starly gather in huge flocks -- alone they're weak, but together their wingbeats are fierce."),
+         "Rookidee":("BOLD",3,"Rookidee is a tiny bird that bravely picks fights with much bigger foes."),
+         "Sandygast":("MOUND",2,"Sandygast is a little mound of haunted sand that grows by draining the life of anyone who touches it."),
+         "Palossand":("TOWER",2,"Palossand is a towering sand castle that pulls in people who play nearby."),
+         "Swirlix":("SUGAR",3,"Swirlix eats so many sweets that its fur is like sticky spun sugar."),
+         "Indeedee":("HORNS",2,"Indeedee senses people's emotions through the horns on its head."),
+         "Zangoose":("CLAWS",2,"Zangoose's razor-sharp claws are its main weapon against Seviper."),
+         "Seviper":("BLADE",2,"Seviper's tail ends in a poisonous blade, which it sharpens on rocks.")})

@@ -4421,5 +4421,205 @@
     "word": "SUSHI"
    }
   ]
+ },
+ {
+  "date": "2026-12-08",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Raichu",
+     "Jolteon"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ELECTRIC"
+   },
+   {
+    "m": [
+     "Rhyhorn",
+     "Geodude"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ROCK"
+   },
+   {
+    "m": [
+     "Dewgong",
+     "Cloyster",
+     "Slowbro"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "LORELEI"
+   },
+   {
+    "m": [
+     "Wigglytuff"
+    ],
+    "n": 1,
+    "cat": 4,
+    "word": "BALLOON"
+   },
+   {
+    "m": [
+     "Diglett"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "MOLE"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-08",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Zorua",
+     "Impidimp",
+     "Sableye"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "DARK"
+   },
+   {
+    "m": [
+     "Gible",
+     "Turtonator"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "DRAGON"
+   },
+   {
+    "m": [
+     "Smeargle"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "PAINTER"
+   },
+   {
+    "m": [
+     "Leavanny"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "TAILOR"
+   },
+   {
+    "m": [
+     "Whiscash",
+     "Stoutland"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "MOUSTACHE"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-09",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Tangela",
+     "Exeggcute",
+     "Ivysaur"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "GRASS"
+   },
+   {
+    "m": [
+     "Venomoth",
+     "Muk"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "KOGA"
+   },
+   {
+    "m": [
+     "Tentacool",
+     "Tentacruel"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "JELLYFISH"
+   },
+   {
+    "m": [
+     "Snorlax"
+    ],
+    "n": 1,
+    "cat": 4,
+    "word": "ROADBLOCK"
+   },
+   {
+    "m": [
+     "Cubone"
+    ],
+    "n": 1,
+    "cat": 2,
+    "word": "SKULL"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-09",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Wattrel",
+     "Starly",
+     "Rookidee"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "FLYING"
+   },
+   {
+    "m": [
+     "Sandygast",
+     "Palossand"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "SHOVEL"
+   },
+   {
+    "m": [
+     "Swirlix"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "SWEETS"
+   },
+   {
+    "m": [
+     "Indeedee"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "BUTLER"
+   },
+   {
+    "m": [
+     "Zangoose",
+     "Seviper"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "RIVALS"
+   }
+  ]
  }
 ]
