@@ -244,7 +244,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
         for nm in names:
             f=shares3(w,nm)
             if f: errors.append(f"{where}: LETTER clue {w}~{nm}({f})")
-    hints={}; used=set()
+    hints={}; used=set(cluewords)  # a hint must never repeat a base-clue word
     for nm in blues:
         hw,hc,he=hint_for(nm,names,used)
         if not hw: errors.append(f"{where}: no hint for {nm}"); continue

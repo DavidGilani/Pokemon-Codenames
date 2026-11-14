@@ -5255,25 +5255,6 @@
   "pool": "gen1",
   "clues": [
    {
-    "word": "FIRE",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Charmeleon",
-     "Ponyta"
-    ]
-   },
-   {
-    "word": "WATER",
-    "n": 3,
-    "cat": 1,
-    "m": [
-     "Seadra",
-     "Krabby",
-     "Shellder"
-    ]
-   },
-   {
     "word": "EGG",
     "n": 1,
     "cat": 2,
@@ -5294,8 +5275,27 @@
     "n": 2,
     "cat": 3,
     "m": [
-     "Mr. Mime",
-     "Venomoth"
+     "Venomoth",
+     "Mr. Mime"
+    ]
+   },
+   {
+    "word": "FIRE",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Charmeleon",
+     "Ponyta"
+    ]
+   },
+   {
+    "word": "WATER",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Shellder",
+     "Krabby",
+     "Seadra"
     ]
    }
   ]
@@ -5304,6 +5304,23 @@
   "date": "2026-11-24",
   "pool": "mixed",
   "clues": [
+   {
+    "word": "PEARL",
+    "n": 1,
+    "cat": 2,
+    "m": [
+     "Clamperl"
+    ]
+   },
+   {
+    "word": "FAIRY",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Spritzee",
+     "Swirlix"
+    ]
+   },
    {
     "word": "FIRE",
     "n": 2,
@@ -5314,12 +5331,12 @@
     ]
    },
    {
-    "word": "FAIRY",
+    "word": "CROC",
     "n": 2,
-    "cat": 1,
+    "cat": 3,
     "m": [
-     "Swirlix",
-     "Spritzee"
+     "Totodile",
+     "Sandile"
     ]
    },
    {
@@ -5330,23 +5347,6 @@
      "Landorus",
      "Thundurus"
     ]
-   },
-   {
-    "word": "PEARL",
-    "n": 1,
-    "cat": 2,
-    "m": [
-     "Clamperl"
-    ]
-   },
-   {
-    "word": "CROC",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Totodile",
-     "Sandile"
-    ]
    }
   ]
  },
@@ -5354,16 +5354,6 @@
   "date": "2026-11-25",
   "pool": "gen1",
   "clues": [
-   {
-    "word": "PSYCHIC",
-    "n": 3,
-    "cat": 1,
-    "m": [
-     "Hypno",
-     "Mewtwo",
-     "Abra"
-    ]
-   },
    {
     "word": "RHINO",
     "n": 1,
@@ -5373,21 +5363,12 @@
     ]
    },
    {
-    "word": "BIRD",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Pidgey",
-     "Spearow"
-    ]
-   },
-   {
     "word": "SERPENT",
     "n": 2,
     "cat": 3,
     "m": [
-     "Ekans",
-     "Dragonair"
+     "Dragonair",
+     "Ekans"
     ]
    },
    {
@@ -5397,6 +5378,25 @@
     "m": [
      "Scyther"
     ]
+   },
+   {
+    "word": "PSYCHIC",
+    "n": 3,
+    "cat": 1,
+    "m": [
+     "Abra",
+     "Mewtwo",
+     "Hypno"
+    ]
+   },
+   {
+    "word": "BIRD",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Spearow",
+     "Pidgey"
+    ]
    }
   ]
  },
@@ -5404,34 +5404,6 @@
   "date": "2026-11-25",
   "pool": "mixed",
   "clues": [
-   {
-    "word": "FIGHTING",
-    "n": 2,
-    "cat": 1,
-    "m": [
-     "Falinks",
-     "Kubfu"
-    ]
-   },
-   {
-    "word": "SPIDER",
-    "n": 3,
-    "cat": 3,
-    "m": [
-     "Joltik",
-     "Tarountula",
-     "Araquanid"
-    ]
-   },
-   {
-    "word": "SHARK",
-    "n": 2,
-    "cat": 3,
-    "m": [
-     "Gible",
-     "Frigibax"
-    ]
-   },
    {
     "word": "LION",
     "n": 1,
@@ -5441,11 +5413,39 @@
     ]
    },
    {
+    "word": "SHARK",
+    "n": 2,
+    "cat": 3,
+    "m": [
+     "Frigibax",
+     "Gible"
+    ]
+   },
+   {
+    "word": "SPIDER",
+    "n": 3,
+    "cat": 3,
+    "m": [
+     "Joltik",
+     "Araquanid",
+     "Tarountula"
+    ]
+   },
+   {
     "word": "DRUM",
     "n": 1,
     "cat": 2,
     "m": [
      "Rillaboom"
+    ]
+   },
+   {
+    "word": "FIGHTING",
+    "n": 2,
+    "cat": 1,
+    "m": [
+     "Kubfu",
+     "Falinks"
     ]
    }
   ]

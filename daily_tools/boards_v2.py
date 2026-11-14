@@ -856,9 +856,10 @@ board("2026-11-17","mixed","Medium",[
   ("DRAGON",1,"type:dragon",["Goomy","Deino"],"Goomy and Deino (Dark/Dragon) are the board's only Dragon-types -- a slimy soft-bodied dragon and a blind, biting hatchling."),
   ("DEER",3,"arch:deer",["Stantler","Sawsbuck"],"Stantler is a stag with twisting, hypnotic antlers and Sawsbuck is a deer whose tree-like antlers change with the seasons -- both are deer."),
   ("SHELL",2,"sprite:shell",["Shuckle","Crustle"],"Shuckle hides inside a holed shell where it ferments berry juice, and Crustle hauls a boulder-slab shell on its back -- the only shelled Pokémon here."),
-  ("TRUNK",2,"sprite:trunk",["Munna"],"Look at the sprite -- Munna has a short, elephant-like trunk for a snout (the tapir-style nose), and no other Pokémon on this board has one."),
+  # QA 2026-11-14: TRUNK (Munna's trunk too small to see) -> DREAMS.
+  ("DREAMS",4,"genus:dream-eater",["Munna"],"Munna is the Dream Eater Pokémon: the Pokédex says it eats the dreams of people and Pokémon, and the mist it gives off shows what it has eaten. It is based on the baku, a dream-eating spirit from Japanese folklore."),
 ], exclude=ex("type:poison","type:dragon","sprite:shell","arch:tapir","arch:deer",
-              extra=["Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Trumbeak","Toucannon","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
+              extra=["Darkrai","Cresselia","Komala","Snorlax","Munchlax","Jigglypuff","Igglybuff","Wigglytuff","Slakoth","Slaking","Swablu","Wyrdeer","Deerling","Skiddo","Gogoat","Hypno","Drowzee","Musharna","Trumbeak","Toucannon","Skuntank","Toxel","Dwebble","Torkoal","Turtwig","Grotle","Torterra","Tirtouga","Carracosta","Chewtle","Drednaw","Shelmet","Cloyster","Shellder","Wartortle","Blastoise","Squirtle","Wimpod","Golisopod","Binacle","Barbaracle","Mudsdale","Kecleon","Gastrodon","Shellos","Zweilous","Hydreigon","Sliggoo","Goodra","Dratini","Dragonite","Salamence","Garchomp"]))
 
 
 # ===== 4-week gap fill (nightly 2026-10-21): 11-18 Wed CHALLENGING =====
@@ -941,14 +942,15 @@ board("2026-11-22","gen1","Evil",[
   ("CANINE",3,"arch:canine",["Growlithe","Vulpix"],"Growlithe is a loyal puppy and Vulpix a six-tailed fox -- both belong to the canine family of dogs, wolves and foxes."),
 ], exclude=ex("ability:Swift Swim","ability:Weak Armor","ability:Sturdy","arch:cnidarian","arch:jellyfish","arch:canine","arch:dog","arch:fox",
               extra=["Golduck","Poliwhirl","Kabutops","Omanyte","Omastar","Goldeen","Poliwag","Seaking","Tentacruel","Arcanine","Ninetales","Eevee","Golem","Graveler","Magneton","Cubone","Marowak"]))
+# QA 2026-11-14: "too ability heavy" -> rebuilt with one Ability clue (was POISON-TOUCH/DRY-SKIN/STORM-DRAIN/GASTROPOD/FROG).
 board("2026-11-22","mixed","Evil",[
-  ("POISON-TOUCH",5,"ability:Poison Touch",["Toxicroak","Grafaiai","Sneasler"],"Toxicroak, Grafaiai and Sneasler can all have the Ability Poison Touch, which gives their contact moves a 30% chance of poisoning the target."),
-  ("DRY-SKIN",5,"ability:Dry Skin",["Toxicroak","Helioptile"],"Toxicroak and Helioptile can both have the Ability Dry Skin, which heals them in rain and water moves but drains them in harsh sunlight (and makes Fire moves hurt more)."),
-  ("STORM-DRAIN",5,"ability:Storm Drain",["Shellos","Finneon","Maractus"],"Shellos, Finneon and Maractus can all have the Ability Storm Drain, which draws in every Water-type move aimed at the field and raises their Sp. Atk instead of hurting them."),
-  ("GASTROPOD",4,"arch:gastropod",["Shellos","Sliggoo"],"Shellos is a sea slug and Sliggoo a slimy land slug -- both are gastropods, the mollusc class of slugs and snails."),
-  ("FROG",3,"arch:frog",["Toxicroak","Politoed"],"Toxicroak is a poison-dart frog and Politoed a bullfrog-like frog with a curled tongue -- both are frogs."),
-], exclude=ex("ability:Poison Touch","ability:Dry Skin","ability:Storm Drain","arch:gastropod","arch:slug","arch:frog","arch:toad","arch:tadpole",
-              extra=["Croagunk","Seismitoad","Grimer","Muk","Heliolisk","Paras","Parasect","Jynx","Gastrodon","Lumineon","Lileep","Tatsugiri","Goodra","Slugma","Magcargo","Shelmet","Frogadier","Greninja","Froakie","Poliwag","Poliwhirl","Poliwrath","Palpitoad","Tympole","Smoochum","Dragalge","Karrablast"]))
+  ("POISON-TOUCH",5,"ability:Poison Touch",["Toxicroak","Grafaiai","Sneasler"],"Toxicroak, Grafaiai and Sneasler can all have the Ability Poison Touch, which gives their contact moves a 30% chance of poisoning the target: venom-filled knuckles, toxic paint-fingers and poison claws."),
+  ("GASTROPOD",4,"arch:gastropod",["Shellos","Sliggoo"],"Shellos is a sea slug and Sliggoo a slimy, snail-like slug. Both are gastropods, the mollusc class of slugs and snails."),
+  ("DANCER",4,"job:dancer",["Oricorio","Bellossom","Maractus"],"Oricorio is the Dancing Pokémon and changes style with the nectar it drinks. The Pokédex says Bellossom gather to dance in a ritual to summon the sun, and Maractus does an up-tempo song and dance to scare off birds."),
+  ("SUN-STONE",5,"evo:sun-stone",["Bellossom","Heliolisk"],"Both are made with a Sun Stone: Gloom becomes Bellossom and Helioptile becomes Heliolisk when exposed to one."),
+  ("DESERT",3,"place:desert",["Maractus","Heliolisk"],"The Pokédex puts both in dry country: Maractus lives in arid regions, and Heliolisk thrives in dry, sandy areas where it soaks up sunlight to make electricity."),
+], exclude=ex("ability:Poison Touch","arch:gastropod","arch:slug","arch:snail","arch:mollusc","type:poison",
+              extra=["Croagunk","Sneasel","Weavile","Shroodle","Grimer","Muk","Gastrodon","Goomy","Goodra","Slugma","Magcargo","Shelmet","Accelgor","Ludicolo","Lombre","Lilligant","Petilil","Hitmontop","Spinda","Flamigo","Kricketune","Jigglypuff","Sunflora","Sunkern","Whimsicott","Cottonee","Helioptile","Oddish","Gloom","Vileplume","Cacnea","Cacturne","Sandile","Krokorok","Krookodile","Trapinch","Vibrava","Flygon","Hippopotas","Hippowdon","Sandshrew","Sandslash","Silicobra","Sandaconda","Sigilyph","Yamask","Cofagrigus","Baltoy","Claydol","Numel","Camerupt","Maractus","Gible","Gabite","Garchomp","Orthworm","Larvesta","Volcarona","Scovillain","Sizzlipede","Rapidash","Ponyta"]))
 
 
 # ===== 4-week gap fill (nightly 2026-10-26): 11-23 Mon EASY =====
