@@ -3419,5 +3419,221 @@
     ]
    }
   ]
+ },
+ {
+  "date": "2026-11-28",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Kadabra",
+     "Machoke",
+     "Graveler"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "TRADE"
+   },
+   {
+    "m": [
+     "Vileplume",
+     "Weepinbell",
+     "Tangela"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "ERIKA"
+   },
+   {
+    "m": [
+     "Vileplume",
+     "Weepinbell",
+     "Gengar"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "POISON"
+   },
+   {
+    "m": [
+     "Gengar",
+     "Poliwrath"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "HYPNOSIS"
+   },
+   {
+    "m": [
+     "Vileplume",
+     "Poliwrath",
+     "Arcanine"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "STONE"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-28",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Greninja",
+     "Ninjask",
+     "Accelgor"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "SHINOBI"
+   },
+   {
+    "m": [
+     "Escavalier",
+     "Sirfetch'd",
+     "Gallade"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "KNIGHT"
+   },
+   {
+    "m": [
+     "Accelgor",
+     "Escavalier"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "SWAP"
+   },
+   {
+    "m": [
+     "Gallade",
+     "Veluza",
+     "Kleavor"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "SHARPNESS"
+   },
+   {
+    "m": [
+     "Greninja",
+     "Heatmor"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "TONGUE"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-29",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Bulbasaur",
+     "Rhydon",
+     "Porygon"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "FIRST"
+   },
+   {
+    "m": [
+     "Dodrio",
+     "Porygon"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "TRI-ATTACK"
+   },
+   {
+    "m": [
+     "Snorlax",
+     "Wigglytuff",
+     "Vaporeon"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "HP"
+   },
+   {
+    "m": [
+     "Hitmonchan",
+     "Machamp"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "BRUNO"
+   },
+   {
+    "m": [
+     "Bulbasaur",
+     "Snorlax"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "ASH"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-29",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Okidogi",
+     "Munkidori",
+     "Fezandipiti"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "MOMOTARO"
+   },
+   {
+    "m": [
+     "Munkidori",
+     "Furret"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "FRISK"
+   },
+   {
+    "m": [
+     "Fezandipiti",
+     "Cinccino",
+     "Kricketune"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "TECHNICIAN"
+   },
+   {
+    "m": [
+     "Kricketune",
+     "Meloetta",
+     "Primarina"
+    ],
+    "n": 3,
+    "cat": 3,
+    "word": "MUSICIAN"
+   },
+   {
+    "m": [
+     "Meloetta",
+     "Golett"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "GENDERLESS"
+   }
+  ]
  }
 ]

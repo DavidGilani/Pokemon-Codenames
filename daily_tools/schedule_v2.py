@@ -89,7 +89,10 @@ for row in LIVE:
 
 # ---- hand-authored boards ----
 B = []
-def board(date,pool,tier,clues,exclude=()): B.append(dict(date=date,pool=pool,tier=tier,clues=clues,exclude=list(exclude)))
+def board(date,pool,tier,clues,exclude=(),hints=None):
+    # hints: optional {blue name: (WORD, cat, explain)} hand-written hint overrides
+    # (preferred over the auto-generated fallback, whose wording is generic).
+    B.append(dict(date=date,pool=pool,tier=tier,clues=clues,exclude=list(exclude),hints_ovr=dict(hints or {})))
 exec(open(f"{ROOT}/daily_tools/daily_common.py").read())  # explain_for
 exec(open(f"{ROOT}/daily_tools/boards_v2.py").read())
 
@@ -234,7 +237,8 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
         return True
     cand=[nm for nm in poolset if nm not in blues and nm not in set(b["exclude"])
           and nm.isascii() and FACTS[nm].get("wk",0)==1 and ok_sem(nm)
-          and not any(shares3(w,nm) for w in cluewords)]
+          and not any(shares3(w,nm) for w in cluewords)
+          and not any(shares3(h[0],nm) for h in b["hints_ovr"].values())]
     cand=sorted(cand)
     rng=random.Random(_sd((d,pool))); rng.shuffle(cand)
     neutrals=cand[:16]
@@ -246,10 +250,20 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
             if f: errors.append(f"{where}: LETTER clue {w}~{nm}({f})")
     hints={}; used=set(cluewords)  # a hint must never repeat a base-clue word
     for nm in blues:
-        hw,hc,he=hint_for(nm,names,used)
+        if nm in b["hints_ovr"]:
+            hw,hc,he=b["hints_ovr"][nm]
+            if hw in used: errors.append(f"{where}: hint {hw} for {nm} repeats a clue/hint word")
+            for x in names:
+                f=shares3(hw,x)
+                if f: errors.append(f"{where}: LETTER hint {hw}~{x}({f})")
+        else:
+            hw,hc,he=hint_for(nm,names,used)
         if not hw: errors.append(f"{where}: no hint for {nm}"); continue
         hints[nm]=(hw,hc,he); used.add(hw)
     b.update(blues=blues,neutrals=neutrals,hints=hints); assembled.append(b)
+    if os.environ.get("SHOW"):
+        print(f"--- {where} neutrals: {', '.join(sorted(neutrals))}")
+        for nm in blues: print(f"      hint {nm}: {hints.get(nm)}")
 
 # Gap check: every day in [today, today+GAP_DAYS] needs BOTH pools, covered
 # either by the live corpus or by a newly-authored board this run.
