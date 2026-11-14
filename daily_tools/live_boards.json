@@ -4823,5 +4823,111 @@
     "word": "SPEAKERS"
    }
   ]
+ },
+ {
+  "date": "2026-12-12",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Chansey",
+     "Lapras",
+     "Vaporeon"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "HP"
+   },
+   {
+    "m": [
+     "Gastly",
+     "Marowak"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "LAVENDER"
+   },
+   {
+    "m": [
+     "Chansey",
+     "Lapras",
+     "Clefairy"
+    ],
+    "n": 3,
+    "cat": 4,
+    "word": "SING"
+   },
+   {
+    "m": [
+     "Ponyta",
+     "Magmar"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "BLAINE"
+   },
+   {
+    "m": [
+     "Doduo"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "OSTRICH"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-12",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Fennekin",
+     "Thievul"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "FOX"
+   },
+   {
+    "m": [
+     "Kirlia",
+     "Mesprit"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "EMOTION"
+   },
+   {
+    "m": [
+     "Mesprit",
+     "Flygon",
+     "Tynamo"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "LEVITATE"
+   },
+   {
+    "m": [
+     "Fennekin",
+     "Goodra",
+     "Aurorus",
+     "Tyrantrum"
+    ],
+    "n": 4,
+    "cat": 3,
+    "word": "KALOS"
+   },
+   {
+    "m": [
+     "Flygon",
+     "Kirlia"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "GREEN"
+   }
+  ]
  }
 ]

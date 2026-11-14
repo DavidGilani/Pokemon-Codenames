@@ -1153,3 +1153,41 @@ board("2026-12-11","mixed","Hard",[
          "Abomasnow":("YETI",3,"Abomasnow is a yeti-like 'Frost Tree' Pokémon that hides in the swirling blizzards of snowy mountains."),
          "Miltank":("UDDER",2,"Miltank has a big pink udder -- it gives milk packed with nutrients."),
          "Noivern":("EARS",2,"Noivern's huge ears can emit ultrasonic waves strong enough to crush a boulder.")})
+
+# ===== 12-12 Sat : BRUTAL =====
+board("2026-12-12","gen1","Brutal",[
+  ("HP",5,"stat:hp",["Chansey","Lapras","Vaporeon"],"These three have the highest base HP on the board: Chansey (a whopping 250), Lapras and Vaporeon (130 each)."),
+  ("LAVENDER",4,"place:lavender",["Gastly","Marowak"],"Both haunt Lavender Town's Pokémon Tower in Red and Blue: wild Gastly drift through its floors, and the restless ghost blocking the top is a Marowak -- Cubone's mother."),
+  ("SING",4,"move:sing",["Chansey","Lapras","Clefairy"],"All three learn the move Sing as they level up, lulling their foes to sleep with a song."),
+  ("BLAINE",3,"trainer:blaine",["Ponyta","Magmar"],"Blaine, the quiz-loving Fire Gym Leader of Cinnabar Island, battles with Ponyta in Red and Blue and with Magmar in Gold and Silver."),
+  ("OSTRICH",3,"arch:ostrich",["Doduo"],"Doduo is based on an ostrich -- a flightless two-headed bird that sprints at up to 60 mph."),
+], exclude=["Snorlax","Wigglytuff","Jigglypuff","Clefable","Cubone","Haunter","Gengar","Growlithe","Arcanine","Rapidash","Ninetales","Vulpix","Dodrio","Mewtwo"],
+  hints={"Chansey":("EGG",2,"Chansey carries a nutritious egg in its belly pouch, which it shares with the injured."),
+         "Lapras":("FERRY",3,"Lapras loves to ferry people across the sea on its back."),
+         "Vaporeon":("FINS",2,"Vaporeon has a mermaid-like tail fin and frilled fins around its head."),
+         "Gastly":("CLOUD",2,"Gastly's body is a thin cloud of poison gas that can envelop a foe."),
+         "Marowak":("CLUB",2,"Marowak wields a thick bone like a club."),
+         "Clefairy":("MOON",3,"Clefairy is said to dance in the moonlight on quiet mountain tops."),
+         "Ponyta":("MANE",2,"Ponyta's mane and tail are made of flickering flames."),
+         "Magmar":("FIREBALL",2,"Magmar's body is wreathed in flames, like a walking fireball."),
+         "Doduo":("HEADS",2,"Doduo has two heads -- one sleeps while the other keeps watch.")})
+board("2026-12-12","mixed","Brutal",[
+  ("FOX",4,"genus:fox",["Fennekin","Thievul"],"Fennekin and Thievul are both listed in the Pokédex as the Fox Pokémon."),
+  ("EMOTION",4,"genus:emotion",["Kirlia","Mesprit"],"Kirlia and Mesprit are both the Emotion Pokémon in the Pokédex -- Kirlia senses its trainer's feelings, and Mesprit is the lake guardian said to have taught people joy and sorrow."),
+  ("LEVITATE",5,"ability:levitate",["Mesprit","Flygon","Tynamo"],"Mesprit, Flygon and Tynamo have the Ability Levitate, which lets them float above the ground and makes them immune to Ground-type moves."),
+  ("KALOS",3,"region:kalos",["Fennekin","Goodra","Aurorus","Tyrantrum"],"Fennekin, Goodra, Aurorus and Tyrantrum all debuted in the Kalos region, in Pokémon X and Y."),
+  ("GREEN",1,"colour:green",["Flygon","Kirlia"],"Flygon and Kirlia are the board's green Pokémon -- a desert dragon with a green body and wings, and a graceful dancer with a bob of green hair."),
+], exclude=sorted(set(["Vulpix","Ninetales","Braixen","Delphox","Nickit","Zorua","Zoroark","Eevee","Indeedee","Ralts","Gardevoir","Gallade","Uxie","Azelf",
+            "Roselia","Treecko","Grovyle","Sceptile","Rayquaza","Scyther","Caterpie","Bulbasaur","Ivysaur","Venusaur","Chikorita","Bayleef","Meganium","Turtwig","Grotle","Torterra",
+            "Snivy","Servine","Serperior","Rowlet","Grookey","Thwackey","Rillaboom","Sprigatito","Floragato","Breloom","Cacnea","Leafeon","Tropius","Celebi","Shaymin","Virizion","Zygarde",
+            "Tangrowth","Vibrava","Trapinch","Larvitar","Politoed","Kecleon","Petilil","Lilligant","Oddish","Gloom","Bellsprout","Weepinbell","Victreebel"]
+            +[n for n,r in FACTS.items() if "Levitate" in r["abilities"] or r["gen"]==6])-{"Fennekin","Goodra","Aurorus","Tyrantrum","Mesprit","Flygon","Tynamo"}),
+  hints={"Fennekin":("EARS",2,"Fennekin vents heat from its big, fluffy ears."),
+         "Thievul":("SNEAK",3,"Thievul sneaks into other Pokémon's nests to steal their food."),
+         "Kirlia":("DANCE",3,"Kirlia dances gracefully when its trainer is happy."),
+         "Mesprit":("GEM",2,"Mesprit has a red gem on its forehead and two long tails."),
+         "Flygon":("DESERT",3,"Flygon hides inside the sandstorms it whips up in the desert."),
+         "Tynamo":("EEL",3,"Tynamo is a tiny electric eel -- alone it's weak, but in a school its shocks are fearsome."),
+         "Goodra":("SLIME",2,"Goodra's body is coated in a thick slime that softens blows."),
+         "Aurorus":("SAILS",2,"Aurorus's diamond-shaped crystal sails glitter like an aurora."),
+         "Tyrantrum":("JAWS",2,"Tyrantrum's huge jaws could crunch through a car.")})
