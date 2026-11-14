@@ -726,3 +726,70 @@ board("2026-11-29","mixed","Evil",[
          "Meloetta":("SONG",3,"Meloetta is the Melody Pokémon -- its singing can move hearts and even change its own form."),
          "Primarina":("SIREN",3,"Primarina is a sea-lion siren -- its singing controls the water balloons it uses in battle."),
          "Golett":("CLAY",2,"Golett is made of clay, an ancient automaton said to be built to protect people and Pokémon.")})
+
+# ===== 11-30 Mon : EASY =====
+board("2026-11-30","gen1","Easy",[
+  ("GRASS",1,"type:grass",["Ivysaur","Bellsprout","Exeggcute"],"Ivysaur, Bellsprout and Exeggcute are the board's only Grass-types -- a budding seed-dinosaur, a bell-headed flycatcher plant and a clutch of six seeds."),
+  ("ELECTRIC",1,"type:electric",["Pikachu","Jolteon"],"Pikachu and Jolteon are the board's only Electric-types -- the electric mouse mascot and Eevee's spiky, crackling Thunder Stone evolution."),
+  ("ROCK",1,"type:rock",["Omanyte","Geodude"],"Omanyte (Rock/Water) and Geodude (Rock/Ground) are the board's only Rock-types -- a fossil ammonite and a living boulder."),
+  ("GEM",2,"sprite:gem",["Starmie","Persian"],"Look at the sprites: Starmie has a glittering red jewel at its core, and Persian a red gem set in its forehead."),
+], exclude=["Staryu","Meowth"],
+  hints={"Ivysaur":("BUD",2,"Ivysaur has a big pink flower bud on its back that's about to bloom."),
+         "Bellsprout":("THIN",2,"Bellsprout has a skinny, stalk-thin body topped by a bell-shaped head."),
+         "Exeggcute":("SIX",2,"Exeggcute is a cluster of six egg-like seeds that talk to each other by telepathy."),
+         "Pikachu":("CHEEKS",2,"Pikachu stores electricity in the red pouches on its cheeks."),
+         "Jolteon":("NEEDLES",2,"Jolteon's fur bristles into sharp, needle-like spikes when it's charged up."),
+         "Omanyte":("SPIRAL",2,"Omanyte hides its soft body in a spiral shell -- it's revived from a fossil."),
+         "Geodude":("BOULDER",2,"Geodude is a round boulder with two strong arms and no legs."),
+         "Starmie":("SPIN",3,"Starmie spins its star-shaped body like a propeller to swim through the sea."),
+         "Persian":("ELEGANT",3,"Persian is a sleek, elegant cat -- proud, fussy and famously hard to tame.")})
+board("2026-11-30","mixed","Easy",[
+  ("DARK",1,"type:dark",["Sneasel","Nickit","Umbreon"],"Sneasel (Dark/Ice), Nickit and Umbreon are the board's only Dark-types -- a sly claw-thief, a sneaky fox cub and the moonlight eeveelution."),
+  ("FLYING",1,"type:flying",["Hoppip","Swablu"],"Hoppip (Grass/Flying) and Swablu (Normal/Flying) are the board's only Flying-types -- a dandelion puff that drifts on the breeze and a little bird with cotton-cloud wings."),
+  ("DRAGON",1,"type:dragon",["Axew","Dreepy"],"Axew and Dreepy (Dragon/Ghost) are the board's only Dragon-types -- a tusked little dragon and the ghost of an ancient one."),
+  ("CANDLE",2,"object:candle",["Litwick"],"Litwick is a living candle -- its flame glows by burning the life energy of anyone it lures close."),
+  ("ICE-CREAM",2,"food:ice-cream",["Vanillite"],"Vanillite is a scoop of soft-serve ice cream on an icicle cone, said to have formed from snow."),
+], exclude=["Lampent","Chandelure","Vanillish","Vanilluxe","Alcremie","Milcery","Swirlix","Slurpuff","Sinistea","Polteageist"],
+  hints={"Sneasel":("CLAWS",2,"Sneasel has long, hooked claws for climbing trees and snatching eggs from nests."),
+         "Nickit":("TAIL",2,"Nickit sweeps away its own footprints with its big, bushy tail."),
+         "Umbreon":("RINGS",2,"Umbreon's black fur is marked with yellow rings that glow in the dark."),
+         "Hoppip":("LEAVES",2,"Hoppip floats on the wind using the three round leaves on its head."),
+         "Swablu":("COTTON",2,"Swablu's wings are like fluffy tufts of cotton -- it loves to perch on people's heads."),
+         "Axew":("TUSKS",2,"Axew's tusks grow back sharper and stronger every time they break."),
+         "Dreepy":("SPIRIT",3,"Dreepy is the restless spirit of a dragon that lived in the sea long ago."),
+         "Litwick":("FLAME",2,"Litwick's head flame burns brighter when it absorbs life energy."),
+         "Vanillite":("SCOOP",2,"Vanillite looks like a little scoop of soft-serve on an icicle base.")})
+
+# ===== 12-01 Tue : MEDIUM =====
+board("2026-12-01","gen1","Medium",[
+  ("GROUND",1,"type:ground",["Cubone","Diglett"],"Cubone and Diglett are the board's only Ground-types -- a lonely bone-wielder and a little mole that never leaves the soil."),
+  ("ICE",1,"type:ice",["Dewgong","Articuno"],"Dewgong (Water/Ice) and Articuno (Ice/Flying) are the board's only Ice-types."),
+  ("MISTY",3,"trainer:misty",["Psyduck","Goldeen","Horsea","Staryu"],"Misty, Cerulean City's Water-type Gym Leader, travelled with Psyduck, Goldeen, Horsea and Staryu in the anime -- and battles with Staryu in the games."),
+  ("SINGER",3,"job:singer",["Jigglypuff"],"Jigglypuff is the board's singer -- its lullaby sends everyone to sleep, and in the anime it gets furious when its audience dozes off."),
+  ("UNICORN",2,"sprite:single-horn",["Dewgong","Goldeen"],"Look at the sprites: like a unicorn, each has a single horn -- a small white one on Dewgong's forehead, and a long, sharp one on Goldeen's head."),
+], exclude=["Starmie","Poliwag","Poliwhirl","Poliwrath","Gyarados","Seaking","Wigglytuff","Lapras","Clefairy","Clefable","Chansey","Jynx",
+            "Rhyhorn","Rhydon","Nidoking","Nidorino","Nidoran♂","Rapidash","Ponyta","Tauros","Weedle","Marowak","Dugtrio","Seel"],
+  hints={"Cubone":("SKULL",2,"Cubone wears the skull of its late mother as a helmet."),
+         "Diglett":("SOIL",3,"Diglett lives underground and only ever pokes its head up out of the soil."),
+         "Dewgong":("BLUBBER",3,"Dewgong's thick blubber keeps it warm in freezing seas."),
+         "Articuno":("BIRD",3,"Articuno is a legendary bird of ice whose wing-beats chill the air and make it snow."),
+         "Psyduck":("HEADACHE",3,"Psyduck always has a headache -- when it gets bad enough, it unleashes psychic powers."),
+         "Goldeen":("FINS",2,"Goldeen's flowing fins look like a ball gown -- it's called the Water Queen."),
+         "Horsea":("INK",3,"Horsea squirts ink from its snout to escape predators."),
+         "Staryu":("CORE",2,"Staryu's red core glows -- it can regrow any lost limb as long as the core survives."),
+         "Jigglypuff":("LULLABY",3,"Jigglypuff sings a soothing lullaby that sends anyone who hears it to sleep.")})
+board("2026-12-01","mixed","Medium",[
+  ("STEEL",1,"type:steel",["Tinkatink","Varoom","Klefki"],"Tinkatink (Fairy/Steel), Varoom (Steel/Poison) and Klefki (Steel/Fairy) are the board's only Steel-types."),
+  ("BUG",1,"type:bug",["Nymble","Dewpider"],"Nymble and Dewpider (Water/Bug) are the board's only Bug-types -- a hopping grasshopper and a little diving spider."),
+  ("NURSE",3,"job:nurse",["Audino","Blissey"],"Both are Pokémon Center nurses: Audino assists Nurse Joy in Unova, and Blissey (Chansey's evolution) works alongside her in Johto and beyond."),
+  ("POKEBALL",2,"object:pokeball",["Foongus","Amoonguss"],"Look at their caps: Foongus and Amoonguss are mushrooms patterned like Poké Balls -- a disguise they use to lure Pokémon and trainers close."),
+], exclude=["Voltorb","Electrode","Chansey","Happiny","Comfey","Alomomola","Indeedee","Tinkatuff","Tinkaton","Revavroom"],
+  hints={"Tinkatink":("HAMMER",2,"Tinkatink swings a little hammer it forged itself from scrap metal."),
+         "Varoom":("ENGINE",2,"Varoom is a living car engine -- it revs its exhaust pipes to scare off foes."),
+         "Klefki":("KEYS",2,"Klefki is a little key ring that collects keys and never lets go of one it likes."),
+         "Nymble":("HOPPER",3,"Nymble is a little grasshopper that springs on its prey with its powerful hind legs."),
+         "Dewpider":("HELMET",2,"Dewpider wears a helmet-like bubble of water on its head so it can breathe when it comes up on land."),
+         "Audino":("EARS",2,"Audino's curly ear-feelers can listen to a heartbeat to check how someone is feeling."),
+         "Blissey":("EGG",2,"Blissey carries a precious egg in its belly pouch, which it shares with the sick."),
+         "Foongus":("DECOY",3,"Foongus's Poké Ball-patterned cap is a decoy -- anyone who reaches for it gets a puff of poison spores."),
+         "Amoonguss":("SPORES",3,"Amoonguss waves its Poké Ball-patterned arm-caps to lure prey, then blasts them with spores.")})

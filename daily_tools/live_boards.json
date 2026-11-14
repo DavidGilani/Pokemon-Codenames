@@ -3635,5 +3635,193 @@
     "word": "GENDERLESS"
    }
   ]
+ },
+ {
+  "date": "2026-11-30",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Ivysaur",
+     "Bellsprout",
+     "Exeggcute"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "GRASS"
+   },
+   {
+    "m": [
+     "Pikachu",
+     "Jolteon"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ELECTRIC"
+   },
+   {
+    "m": [
+     "Omanyte",
+     "Geodude"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ROCK"
+   },
+   {
+    "m": [
+     "Starmie",
+     "Persian"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "GEM"
+   }
+  ]
+ },
+ {
+  "date": "2026-11-30",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Sneasel",
+     "Nickit",
+     "Umbreon"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "DARK"
+   },
+   {
+    "m": [
+     "Hoppip",
+     "Swablu"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "FLYING"
+   },
+   {
+    "m": [
+     "Axew",
+     "Dreepy"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "DRAGON"
+   },
+   {
+    "m": [
+     "Litwick"
+    ],
+    "n": 1,
+    "cat": 2,
+    "word": "CANDLE"
+   },
+   {
+    "m": [
+     "Vanillite"
+    ],
+    "n": 1,
+    "cat": 2,
+    "word": "ICE-CREAM"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-01",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Cubone",
+     "Diglett"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "GROUND"
+   },
+   {
+    "m": [
+     "Dewgong",
+     "Articuno"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ICE"
+   },
+   {
+    "m": [
+     "Psyduck",
+     "Goldeen",
+     "Horsea",
+     "Staryu"
+    ],
+    "n": 4,
+    "cat": 3,
+    "word": "MISTY"
+   },
+   {
+    "m": [
+     "Jigglypuff"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "SINGER"
+   },
+   {
+    "m": [
+     "Dewgong",
+     "Goldeen"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "UNICORN"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-01",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Tinkatink",
+     "Varoom",
+     "Klefki"
+    ],
+    "n": 3,
+    "cat": 1,
+    "word": "STEEL"
+   },
+   {
+    "m": [
+     "Nymble",
+     "Dewpider"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "BUG"
+   },
+   {
+    "m": [
+     "Audino",
+     "Blissey"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "NURSE"
+   },
+   {
+    "m": [
+     "Foongus",
+     "Amoonguss"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "POKEBALL"
+   }
+  ]
  }
 ]
