@@ -173,6 +173,17 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     if b["tier"]=="Evil" and cat2>0: errors.append(f"{where}: Evil has cat2={cat2}")
     if len(set(cats))<3 and b["tier"]!="Easy" and (d,pool) not in FLOURISH: errors.append(f"{where}: <3 distinct cats")
     if not (1<=len(clues)<=5): errors.append(f"{where}: {len(clues)} clues (must be 1-5)")
+    # Clue-family variety (owner QA, Nov 2026): no board may lean on one kind of
+    # clue. Family = the concept tag's prefix (arch:, ability:, sprite:, type:...).
+    # Max 2 clues per family (Easy may use up to 3 type anchors); Gen I boards use
+    # at most 1 Ability clue (Abilities didn't exist in Gen I - prefer 0).
+    fams=defaultdict(int)
+    for w,c,cc,m,*_x in clues: fams[cc.split(":")[0]]+=1
+    for f,nf in fams.items():
+        capf=3 if (f=="type" and b["tier"]=="Easy") else 2
+        if nf>capf: errors.append(f"{where}: {nf} '{f}' clues (max {capf}) - vary the clue families")
+    if pool=="gen1" and fams.get("ability",0)>1: errors.append(f"{where}: {fams['ability']} Ability clues on a Gen I board (max 1, prefer 0)")
+    if len(fams)<4 and b["tier"] in("Hard","Brutal","Evil"): errors.append(f"{where}: only {len(fams)} clue families (Hard+ needs >=4)")
     for w,c,cc,m,*_x in clues:
         if cc.startswith("type:"):
             ty=cc.split(":",1)[1]
@@ -205,6 +216,7 @@ for b in sorted(B,key=lambda x:(x["date"],x["pool"])):
     for w,c,cc,m,*_x in clues:
         grp=frozenset(m)
         for od,om in USES.get(w,[])+nw[w]:
+            if od==d: errors.append(f"{where}: WORD '{w}' also used by the other pool on the same day")
             if 0<abs(days(d,od))<=7: errors.append(f"{where}: WORD '{w}' within 7d of {od}")
             if 0<abs(days(d,od))<=14 and om==grp: errors.append(f"{where}: GROUP '{w}' within 14d of {od}")
         nw[w].append((d,grp))

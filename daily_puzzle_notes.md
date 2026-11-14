@@ -27,7 +27,10 @@ To author one board:
 4. **No redundant/overlapping-to-death clues.** No clue's tile-set may be
    **wholly contained in another clue's** (splitting {A,B,C} into a separate
    {A,B} is a dull split; identical sets are likewise out).
-5. **Variety.** Use **≥3 different clue families** across the board (type,
+5. **Variety.** Use **≥3 different clue families** across the board (**≥4 on
+   Hard/Brutal/Evil**), and **never more than 2 clues from one family** (Easy may
+   use up to 3 type anchors). Gen I boards: **≤1 Ability clue, ideally 0**. See
+   "Clue variety" below for the family list and fresh ideas (type,
    colour, sprite, real-world animal, lore/pun, trainer, move, stat…). **No
    disguised-type clues** (don't dress a shared type up as `WYRM`/`BLAZE` — use
    the honest type word, at most 1–2 type/colour anchors per board).
@@ -133,6 +136,89 @@ before shipping.**
    works but is a name fragment / weak; the owner preferred `BLUBBER`.) When a
    clue only *technically* passes, it usually reads as a stretch — find the
    clean one.
+
+8. **Plain words beat clever synonyms.** Stat clues use the stat's own name
+   (`SPEED`, not `FLEET`/`QUICKSILVER`/`SPRINTER`; Gen I `SPECIAL`, not
+   `GENIUS`/`OVERDRIVE`). Lower tiers need everyday words (`PACHYDERM`, `TUFT`,
+   `JUVENILE` were too hard for Easy/Medium); save rare vocabulary for Hard+,
+   and even then the explanation must teach it. UK spelling (`GREY`, `COLOUR`).
+
+9. **Sprite and "based on" claims must be obvious at tile size.** Rejected:
+   Munna's "trunk" (too small to see), Morpeko's and Wingull's "pouch", Paras's
+   "nippers", Machop as an "ape", Piloswine as a "boar". If you have to squint,
+   don't use it.
+
+10. **Check visible features across ALL 25 tiles.** `CLAWS` failed because
+   Kingler and Spearow have claws too; `WINGS` because Articuno/Beedrill have
+   wings; `YELLOW` because Sandshrew is yellow; `HUMANOID`/`BIPEDAL` are too broad
+   (Hypno etc.). Colour clues: drop neutrals that are even *partly* that colour.
+   Seasonal/theme clues: drop neutrals that fit the theme loosely (Ekans read as
+   a Halloween "decoration" snake).
+
+11. **No clue that sounds like a tile's name** (`SEAL` with Seel on the board),
+   and a hint must never repeat a base-clue word (Haunter's `TONGUE` hint when
+   `TONGUE` was already a clue).
+
+12. **Gen I boards: avoid Abilities** (they didn't exist in Gen I). Reach for Gen
+   I-native ideas instead: gym leaders / Elite Four / rival (`GIOVANNI`,
+   `SABRINA`, `LORELEI`), the Gen I `SPECIAL` stat, Kanto places, Red/Blue
+   version exclusives, evolution stones, the anime.
+
+## Clue variety (Nov 2026 review – read before every board)
+
+A review of ~110 boards (mid-Oct → late Nov) found the generator leaning on the
+same three handles: **real-world animal ("arch") ~40% of all clues**, **type**
+~18%, **Ability** ~15%. Many Hard boards had 3–4 animal clues; many Brutal/Evil
+boards had 3 Abilities (the owner: "too ability heavy – ideally one clue of each
+kind, two at most"). Both pools on the same day also often mirrored each other
+(both Easy boards `WATER GROUND STEEL`). The verifier now enforces: **≤2 clues
+per family** (≤3 type on Easy), **≥4 families on Hard+**, **≤1 Ability on Gen
+I**, and **no clue word shared by the two pools on the same day**.
+
+**Aim for a different *mix* each day.** Before writing clues, pick the families
+first (e.g. today: trainer + object + stat + type + animal), then find blues and
+neutrals that fit. Rotate which families appear across the week. The animal
+family is the default crutch – use **at most one animal clue** on most boards.
+
+**Families to rotate through** (category in brackets; examples are starting
+points – every one still needs Rule 0, the letter rule and anti-repetition):
+
+- **Type / colour anchor** (1) – `FIRE`, `GREY`. One per board on Medium+.
+- **Sprite feature** (2) – `HORN`, `STRIPES`, `HEADBAND`. Must be obvious.
+- **Everyday object it resembles** (2–3) – `CANDLE` (Litwick), `TEAPOT`
+  (Sinistea/Polteageist), `KEYS` (Klefki), `ICE-CREAM` (Vanillite line),
+  `MAGNET` (Magnemite), `POKEBALL` (Voltorb/Electrode, Foongus), `CHANDELIER`
+  (Chandelure). Fresh and very fair.
+- **Food & drink** (3) – `CAKE` (Alcremie, Slurpuff), `APPLE` (Applin line),
+  `BREAD` (Dachsbun), `TEA` (Sinistea), `HONEY` (Combee/Teddiursa lore).
+- **Music & instruments** (3–4) – `DRUM` (Rillaboom), `GUITAR` (Toxtricity),
+  `VIOLIN` (Kricketune), `SPEAKERS` (Noivern/Exploud), `SINGER` (Jigglypuff,
+  Primarina).
+- **Jobs & roles** (3–4) – `NURSE`/`DOCTOR` (Chansey, Audino), `NINJA`
+  (Greninja, Ninjask, Accelgor), `KNIGHT` (Sirfetch'd, Escavalier), `WIZARD`
+  (Alakazam, Delphox, Mismagius), `BUILDER` (Timburr line), `DANCER`
+  (Hitmontop, Oricorio, Lilligant), `CLOWN` (Mr. Mime).
+- **Real animal** (3, technical name 4) – `FOX`, `CEPHALOPOD`. ≤1 per board now.
+- **Pokédex category ("the ___ Pokémon")** (4) – from the fact bank's `genus`,
+  e.g. `MOUSE` (Pikachu, Rattata, Sandshrew are all "Mouse Pokémon"),
+  `BALLOON`, `HYPNOSIS`. Genuinely new and very Pokédex-flavoured.
+- **Trainer / anime** (3) – gym leaders, Elite Four, champions, `TEAM-ROCKET`
+  (Ekans/Arbok, Koffing/Weezing, Meowth, Wobbuffet), `ASH`, `BROCK`, `MISTY`.
+- **Place / habitat** (3–4) – `VOLCANO`, `CAVE`, `DESERT`, `POWER-PLANT`
+  (Kanto), `SAFARI`, a route or town (Lavender Town ghosts).
+- **Famous move** (4) – `EXPLOSION`, `SPLASH`, `TRANSFORM`, a signature move.
+- **Evolution method** (5) – `TRADE`, `FRIENDSHIP`, a stone, `NIGHT`.
+- **Size / weight / stat** (4–5) – `TINY`, `GIANT`, `HEAVYWEIGHT`, `SPEED`,
+  `DEFENSE`, `SPECIAL` (Gen I). Use the stat's real name.
+- **Gender & breeding** (5) – `HER` (all-female), all-male species,
+  `GENDERLESS`, an egg group.
+- **Myth & folklore** (5) – `KITSUNE`, `KAPPA`, `GOLEM`, `GENIE`, `NAGA`.
+- **Ability** (5) – the real Ability name. ≤1 per board (≤2 on mixed Evil),
+  ideally 0 on Gen I.
+- **Box art / mascots & firsts** (3–4) – version mascots (`COVER`), Pokédex
+  `#001`-style trivia, the first Pokémon of a generation.
+- **Anti-clue** (5) – `× 0`: a word that fits several neutrals but none of
+  your Pokémon. Rarely used; good spice for Brutal/Evil.
 
 ## Clue explanations (the post-game "what each clue meant" — make them richer)
 
