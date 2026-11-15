@@ -623,7 +623,8 @@ board("2026-11-27","gen1","Hard",[
   ("ARMADILLO",3,"arch:armadillo",["Sandshrew"],"Sandshrew is based on a pangolin or armadillo, curling into a hard-shelled ball when threatened."),
 ], exclude=ex("ability:own-tempo","arch:primate","arch:caterpillar","arch:feline","arch:armadillo","arch:pangolin",
               extra=["Slowbro","Slowking","Primeape","Machoke","Machamp","Metapod","Kakuna","Butterfree","Beedrill","Persian","Sandslash","Mewtwo","Eevee","Jolteon","Flareon","Vaporeon","Cubone","Marowak","Golduck","Psyduck","Snorlax","Kangaskhan","Clefairy","Hitmonchan","Hitmonlee","Venonat","Paras","Parasect","Tauros","Vulpix","Ninetales","Growlithe","Arcanine"]))
-board("2026-11-27","mixed","Hard",[
+# moved 2026-11-27 -> 2026-12-19 (owner QA 2026-11-14: "needs to move to brutal")
+board("2026-12-19","mixed","Brutal",[
   ("TANGLED-FEET",5,"ability:tangled-feet",["Spinda","Chatot","Flamigo"],"All three have the Ability Tangled Feet, which raises their evasion while they are confused."),
   ("WOODLOUSE",4,"arch:isopod",["Golisopod"],"Golisopod is based on an isopod (a giant pill-bug/sea slater) -- the crustacean cousin of the woodlouse."),
   ("PARLIAMENT",3,"arch:owl",["Hoothoot","Rowlet"],"A group of owls is called a parliament -- Hoothoot is a classic owl standing on one foot, and Rowlet a round little owl chick."),
@@ -745,7 +746,8 @@ board("2026-11-30","mixed","Easy",[
          "Vanillite":("SCOOP",2,"Vanillite looks like a little scoop of soft-serve on an icicle base.")})
 
 # ===== 12-01 Tue : MEDIUM =====
-board("2026-12-01","gen1","Medium",[
+# moved 2026-12-01 -> 2026-12-16 (owner QA 2026-11-14: "move to a next challenging day")
+board("2026-12-16","gen1","Challenging",[
   ("GROUND",1,"type:ground",["Cubone","Diglett"],"Cubone and Diglett are the board's only Ground-types -- a lonely bone-wielder and a little mole that never leaves the soil."),
   ("ICE",1,"type:ice",["Dewgong","Articuno"],"Dewgong (Water/Ice) and Articuno (Ice/Flying) are the board's only Ice-types."),
   ("MISTY",3,"trainer:misty",["Psyduck","Goldeen","Horsea","Staryu"],"Misty, Cerulean City's Water-type Gym Leader, travelled with Psyduck, Goldeen, Horsea and Staryu in the anime -- and battles with Staryu in the games."),
@@ -926,7 +928,8 @@ board("2026-12-05","mixed","Brutal",[
          "Tangrowth":("VINES",2,"Tangrowth is a huge tangle of vines that grow back as fast as they're torn off.")})
 
 # ===== 12-06 Sun : EVIL =====
-board("2026-12-06","gen1","Evil",[
+# moved 2026-12-06 -> 2026-12-23 (owner QA 2026-11-14: MOON-STONE -> MOON + "move to a next available challenging day")
+board("2026-12-23","gen1","Challenging",[
   ("TRANSFORM",4,"move:transform",["Ditto","Mew"],"Both can use Transform to become an exact copy of their opponent -- it's the only move Ditto knows, and Mew learns it from the very start."),
   ("SPECIAL",5,"stat:special",["Mewtwo","Gengar"],"These two have the highest Special stat on the board (Mewtwo 154, Gengar 130) -- the Gen I stat that powered both special attack and special defence."),
   ("DEFENSE",5,"stat:defense",["Onix","Golem"],"Onix (160) and Golem (130) have the highest base Defense on the board -- living fortresses of solid rock."),
@@ -1070,7 +1073,8 @@ board("2026-12-09","mixed","Challenging",[
          "Seviper":("BLADE",2,"Seviper's tail ends in a poisonous blade, which it sharpens on rocks.")})
 
 # ===== 12-10 Thu : HARD =====
-board("2026-12-10","gen1","Hard",[
+# moved 2026-12-10 -> 2026-12-01 (owner QA 2026-11-14: "next available medium or challenging, including open spots")
+board("2026-12-01","gen1","Medium",[
   ("SABRINA",3,"trainer:sabrina",["Mr. Mime","Alakazam"],"Sabrina, Saffron City's psychic Gym Leader, battles with Mr. Mime and Alakazam (plus Kadabra and Venomoth)."),
   ("SELF-DESTRUCT",4,"move:self-destruct",["Electrode","Graveler"],"Both learn Self-Destruct as they level up -- Electrode and Graveler will blow themselves up to take a foe down with them."),
   ("KITSUNE",5,"myth:kitsune",["Ninetales"],"Ninetales is based on the kitsune, the many-tailed fox spirit of Japanese folklore said to live for a thousand years."),

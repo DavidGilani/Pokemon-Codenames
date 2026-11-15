@@ -3273,56 +3273,6 @@
   ]
  },
  {
-  "date": "2026-11-27",
-  "pool": "mixed",
-  "clues": [
-   {
-    "m": [
-     "Golisopod"
-    ],
-    "n": 1,
-    "cat": 4,
-    "word": "WOODLOUSE"
-   },
-   {
-    "m": [
-     "Chatot",
-     "Flamigo",
-     "Spinda"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "TANGLED-FEET"
-   },
-   {
-    "m": [
-     "Numel"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "DROMEDARY"
-   },
-   {
-    "m": [
-     "Swinub",
-     "Oinkologne"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "BOAR"
-   },
-   {
-    "m": [
-     "Hoothoot",
-     "Rowlet"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "PARLIAMENT"
-   }
-  ]
- },
- {
   "date": "2026-11-28",
   "pool": "gen1",
   "clues": [
@@ -3628,49 +3578,47 @@
   "clues": [
    {
     "m": [
-     "Jigglypuff"
+     "Hitmonlee"
     ],
     "n": 1,
     "cat": 3,
-    "word": "SINGER"
+    "word": "BRUNO"
    },
    {
     "m": [
-     "Psyduck",
-     "Horsea",
-     "Staryu",
-     "Goldeen"
+     "Seaking",
+     "Rapidash",
+     "Nidoking"
     ],
-    "n": 4,
-    "cat": 3,
-    "word": "MISTY"
-   },
-   {
-    "m": [
-     "Dewgong",
-     "Goldeen"
-    ],
-    "n": 2,
+    "n": 3,
     "cat": 2,
-    "word": "UNICORN"
+    "word": "HORN"
    },
    {
     "m": [
-     "Dewgong",
-     "Articuno"
+     "Electrode",
+     "Graveler"
     ],
     "n": 2,
-    "cat": 1,
-    "word": "ICE"
+    "cat": 4,
+    "word": "SELF-DESTRUCT"
    },
    {
     "m": [
-     "Diglett",
-     "Cubone"
+     "Mr. Mime",
+     "Alakazam"
     ],
     "n": 2,
-    "cat": 1,
-    "word": "GROUND"
+    "cat": 3,
+    "word": "SABRINA"
+   },
+   {
+    "m": [
+     "Ninetales"
+    ],
+    "n": 1,
+    "cat": 5,
+    "word": "KITSUNE"
    }
   ]
  },
@@ -4102,58 +4050,6 @@
  },
  {
   "date": "2026-12-06",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Nidorina",
-     "Nidorino",
-     "Clefairy"
-    ],
-    "n": 3,
-    "cat": 5,
-    "word": "MOON-STONE"
-   },
-   {
-    "m": [
-     "Mewtwo",
-     "Mew"
-    ],
-    "n": 2,
-    "cat": 1,
-    "word": "PSYCHIC"
-   },
-   {
-    "m": [
-     "Gengar",
-     "Mewtwo"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "SPECIAL"
-   },
-   {
-    "m": [
-     "Onix",
-     "Golem"
-    ],
-    "n": 2,
-    "cat": 5,
-    "word": "DEFENSE"
-   },
-   {
-    "m": [
-     "Ditto",
-     "Mew"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "TRANSFORM"
-   }
-  ]
- },
- {
-  "date": "2026-12-06",
   "pool": "mixed",
   "clues": [
    {
@@ -4510,56 +4406,6 @@
  },
  {
   "date": "2026-12-10",
-  "pool": "gen1",
-  "clues": [
-   {
-    "m": [
-     "Hitmonlee"
-    ],
-    "n": 1,
-    "cat": 3,
-    "word": "BRUNO"
-   },
-   {
-    "m": [
-     "Seaking",
-     "Rapidash",
-     "Nidoking"
-    ],
-    "n": 3,
-    "cat": 2,
-    "word": "HORN"
-   },
-   {
-    "m": [
-     "Electrode",
-     "Graveler"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "SELF-DESTRUCT"
-   },
-   {
-    "m": [
-     "Mr. Mime",
-     "Alakazam"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "SABRINA"
-   },
-   {
-    "m": [
-     "Ninetales"
-    ],
-    "n": 1,
-    "cat": 5,
-    "word": "KITSUNE"
-   }
-  ]
- },
- {
-  "date": "2026-12-10",
   "pool": "mixed",
   "clues": [
    {
@@ -4813,6 +4659,160 @@
     "n": 2,
     "cat": 4,
     "word": "FOX"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-16",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Jigglypuff"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "SINGER"
+   },
+   {
+    "m": [
+     "Psyduck",
+     "Horsea",
+     "Staryu",
+     "Goldeen"
+    ],
+    "n": 4,
+    "cat": 3,
+    "word": "MISTY"
+   },
+   {
+    "m": [
+     "Dewgong",
+     "Goldeen"
+    ],
+    "n": 2,
+    "cat": 2,
+    "word": "UNICORN"
+   },
+   {
+    "m": [
+     "Dewgong",
+     "Articuno"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "ICE"
+   },
+   {
+    "m": [
+     "Diglett",
+     "Cubone"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "GROUND"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-19",
+  "pool": "mixed",
+  "clues": [
+   {
+    "m": [
+     "Golisopod"
+    ],
+    "n": 1,
+    "cat": 4,
+    "word": "WOODLOUSE"
+   },
+   {
+    "m": [
+     "Chatot",
+     "Flamigo",
+     "Spinda"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "TANGLED-FEET"
+   },
+   {
+    "m": [
+     "Numel"
+    ],
+    "n": 1,
+    "cat": 3,
+    "word": "DROMEDARY"
+   },
+   {
+    "m": [
+     "Swinub",
+     "Oinkologne"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "BOAR"
+   },
+   {
+    "m": [
+     "Hoothoot",
+     "Rowlet"
+    ],
+    "n": 2,
+    "cat": 3,
+    "word": "PARLIAMENT"
+   }
+  ]
+ },
+ {
+  "date": "2026-12-23",
+  "pool": "gen1",
+  "clues": [
+   {
+    "m": [
+     "Nidorina",
+     "Nidorino",
+     "Clefairy"
+    ],
+    "n": 3,
+    "cat": 5,
+    "word": "MOON"
+   },
+   {
+    "m": [
+     "Mewtwo",
+     "Mew"
+    ],
+    "n": 2,
+    "cat": 1,
+    "word": "PSYCHIC"
+   },
+   {
+    "m": [
+     "Gengar",
+     "Mewtwo"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "SPECIAL"
+   },
+   {
+    "m": [
+     "Onix",
+     "Golem"
+    ],
+    "n": 2,
+    "cat": 5,
+    "word": "DEFENSE"
+   },
+   {
+    "m": [
+     "Ditto",
+     "Mew"
+    ],
+    "n": 2,
+    "cat": 4,
+    "word": "TRANSFORM"
    }
   ]
  }
