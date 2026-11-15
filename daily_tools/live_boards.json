@@ -3759,11 +3759,13 @@
   "clues": [
    {
     "m": [
+     "Applin",
+     "Smoliv",
      "Dachsbun"
     ],
-    "n": 1,
+    "n": 3,
     "cat": 3,
-    "word": "BREAD"
+    "word": "FOOD"
    },
    {
     "m": [
@@ -3792,15 +3794,6 @@
     "n": 2,
     "cat": 3,
     "word": "COURIER"
-   },
-   {
-    "m": [
-     "Applin",
-     "Smoliv"
-    ],
-    "n": 2,
-    "cat": 3,
-    "word": "FRUIT"
    }
   ]
  },
@@ -4475,7 +4468,7 @@
     ],
     "n": 1,
     "cat": 3,
-    "word": "BUTLER"
+    "word": "SERVANT"
    },
    {
     "m": [
