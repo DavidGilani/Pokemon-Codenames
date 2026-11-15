@@ -637,10 +637,11 @@ board("2026-11-27","mixed","Hard",[
 board("2026-11-28","gen1","Brutal",[
   ("TRADE",5,"evo:trade",["Kadabra","Machoke","Graveler"],"Kadabra, Machoke and Graveler only evolve when they're traded to another player -- into Alakazam, Machamp and Golem."),
   ("ERIKA",3,"trainer:erika",["Vileplume","Weepinbell","Tangela"],"Celadon City Gym Leader Erika, the nature-loving Grass specialist, uses Vileplume and Tangela in Red and Blue, and Weepinbell in Pokémon Yellow."),
-  ("POISON",1,"type:poison",["Vileplume","Weepinbell","Gengar"],"Vileplume and Weepinbell are Grass/Poison and Gengar is Ghost/Poison -- the board's only Poison-types."),
-  ("HYPNOSIS",4,"move:hypnosis",["Gengar","Poliwrath"],"Both learn the move Hypnosis as they level up: Gengar's family uses it to put prey to sleep before feeding on their dreams, and Poliwrath's swirl-bellied line is famous for it."),
+  ("POISON",1,"type:poison",["Vileplume","Weepinbell","Venonat"],"Weepinbell and Vileplume are Grass/Poison and Venonat is Bug/Poison -- the board's only Poison-types."),
+  # QA 2026-11-14 (owner): Gengar removed -- it evolves from a trade, so it muddied the TRADE clue.
+  # Replaced with Venonat (another Poison); HYPNOSIS dropped (Poliwrath stays covered by STONE).
   ("STONE",5,"evo:stone",["Vileplume","Poliwrath","Arcanine"],"Each was evolved with an evolution stone: Vileplume from Gloom with a Leaf Stone, Poliwrath from Poliwhirl with a Water Stone, and Arcanine from Growlithe with a Fire Stone."),
-], exclude=["Gastly","Haunter","Drowzee","Hypno","Poliwag","Poliwhirl","Exeggcute","Exeggutor","Victreebel","Gloom","Golem","Alakazam","Machamp",
+], exclude=["Gengar","Gastly","Haunter","Drowzee","Hypno","Poliwag","Poliwhirl","Exeggcute","Exeggutor","Victreebel","Gloom","Golem","Alakazam","Machamp",
             "Ninetales","Clefable","Wigglytuff","Nidoqueen","Nidoking","Starmie","Cloyster","Raichu","Vaporeon","Jolteon","Flareon","Geodude","Onix","Growlithe","Seaking"],
   hints={"Kadabra":("SPOON",2,"Kadabra always grips a silver spoon, which amplifies the psychic alpha waves it gives off."),
          "Machoke":("MOVERS",3,"Machoke loves heavy work -- the Pokédex says it is often hired to help people move house."),
@@ -648,7 +649,7 @@ board("2026-11-28","gen1","Brutal",[
          "Vileplume":("PETALS",2,"Vileplume carries some of the largest petals in the world, which scatter clouds of toxic pollen."),
          "Weepinbell":("HOOK",2,"Weepinbell hangs from branches by the hook on its head, with a wide mouth for swallowing bugs."),
          "Tangela":("BOOTS",2,"Tangela's body is hidden under a mass of blue vines -- only its eyes and little red boots poke out."),
-         "Gengar":("GRIN",2,"Gengar's sprite is all wide, toothy grin and glowing red eyes."),
+         "Venonat":("RADAR",2,"Venonat's two big red eyes are actually clusters of countless tiny eyes that act like radar, letting it spot prey in total darkness."),
          "Poliwrath":("SWIRL",2,"Poliwrath has its family's tell-tale swirl on its belly -- now on a muscular, swimming-champion body."),
          "Arcanine":("MANE",2,"Arcanine's thick, flowing mane and tiger stripes make it look like a regal Chinese guardian lion.")})
 board("2026-11-28","mixed","Brutal",[
@@ -796,9 +797,9 @@ board("2026-12-02","gen1","Challenging",[
 board("2026-12-02","mixed","Challenging",[
   ("GHOST",1,"type:ghost",["Mimikyu","Phantump","Dhelmise"],"Mimikyu (Ghost/Fairy), Phantump (Ghost/Grass) and Dhelmise (Ghost/Grass) are the board's only Ghost-types."),
   ("TREE",2,"object:tree",["Phantump","Sudowoodo"],"Both look like trees: Phantump is a spirit living in an old tree stump, and Sudowoodo disguises itself as a tree to avoid being attacked."),
-  ("FRUIT",3,"food:fruit",["Applin","Smoliv"],"Both are fruit: Applin is a tiny dragon living inside an apple, and Smoliv is an olive -- it even squirts bitter oil from its head."),
+  # QA 2026-11-14 (owner): merged BREAD x1 + FRUIT x2 into FOOD x3.
+  ("FOOD",3,"food:food",["Applin","Smoliv","Dachsbun"],"A snack plate: Applin is a tiny dragon living inside a real apple, Smoliv grows a fresh olive on its head, and Dachsbun is a dog baked like bread, with fur like a golden crust."),
   ("COURIER",3,"job:delivery",["Pelipper","Delibird"],"Both make deliveries: Pelipper carries mail and small Pokémon in its huge bill (it runs the post in Pokémon Mystery Dungeon), and Delibird carries food in its tail to share, attacking with Present."),
-  ("BREAD",3,"food:bread",["Dachsbun"],"Dachsbun's body smells of freshly baked bread -- its name blends dachshund and bun, and its fur is like a golden crust."),
 ], exclude=["Trevenant","Exeggutor","Tropius","Bonsly","Torterra","Grotle","Abomasnow","Snover","Brambleghast","Bramblin","Arboliva","Dolliv","Smoliv","Seedot","Nuzleaf","Shiftry",
             "Flapple","Appletun","Dipplin","Hydrapple","Cherubi","Cherrim","Bounsweet","Steenee","Tsareena","Exeggcute","Wingull","Corviknight","Corvisquire","Rookidee","Fidough","Sinistea","Polteageist","Gourgeist","Pumpkaboo"],
   hints={"Mimikyu":("SHEET",2,"Mimikyu hides under a homemade Pikachu-costume sheet -- no one has seen what's underneath."),
@@ -929,7 +930,8 @@ board("2026-12-06","gen1","Evil",[
   ("TRANSFORM",4,"move:transform",["Ditto","Mew"],"Both can use Transform to become an exact copy of their opponent -- it's the only move Ditto knows, and Mew learns it from the very start."),
   ("SPECIAL",5,"stat:special",["Mewtwo","Gengar"],"These two have the highest Special stat on the board (Mewtwo 154, Gengar 130) -- the Gen I stat that powered both special attack and special defence."),
   ("DEFENSE",5,"stat:defense",["Onix","Golem"],"Onix (160) and Golem (130) have the highest base Defense on the board -- living fortresses of solid rock."),
-  ("MOON-STONE",5,"evo:moon-stone",["Nidorina","Nidorino","Clefairy"],"All three evolve when exposed to a Moon Stone: Nidorina into Nidoqueen, Nidorino into Nidoking, and Clefairy into Clefable."),
+  # QA 2026-11-14 (owner): clue word simplified from MOON-STONE to MOON.
+  ("MOON",5,"evo:moon-stone",["Nidorina","Nidorino","Clefairy"],"All three evolve when exposed to a Moon Stone: Nidorina into Nidoqueen, Nidorino into Nidoking, and Clefairy into Clefable."),
   ("PSYCHIC",1,"type:psychic",["Mew","Mewtwo"],"Mew and Mewtwo are the board's only Psychic-types."),
 ], exclude=["Alakazam","Exeggutor","Zapdos","Moltres","Articuno","Cloyster","Omastar","Graveler","Rhydon","Slowbro","Sandslash","Kabutops","Geodude",
             "Jigglypuff","Wigglytuff","Nidoqueen","Nidoking","Clefable","Nidoran♀","Nidoran♂"],
@@ -1052,7 +1054,8 @@ board("2026-12-09","mixed","Challenging",[
   ("FLYING",1,"type:flying",["Wattrel","Starly","Rookidee"],"Wattrel (Electric/Flying), Starly (Normal/Flying) and Rookidee are the board's only Flying-types."),
   ("SHOVEL",2,"object:shovel",["Sandygast","Palossand"],"Look at the sprites: both have a toy shovel stuck in them -- Sandygast and Palossand are haunted sandcastles that drain the life from anyone who touches them."),
   ("SWEETS",3,"food:candy",["Swirlix"],"Swirlix is a ball of cotton candy -- it eats nothing but sweets, so its fur is sugary and sticky."),
-  ("BUTLER",3,"job:butler",["Indeedee"],"Indeedee is the Emotion Pokémon and serves its trainer like a butler, sensing their feelings and seeing to their every need."),
+  # QA 2026-11-14 (owner unsure about BUTLER): renamed to SERVANT -- broader and true of both forms.
+  ("SERVANT",3,"job:servant",["Indeedee"],"Indeedee, the Emotion Pokémon, is a born servant: it reads feelings through the horns on its head and waits on people hand and foot -- the female is even famed as a caretaker, minding children and Pokémon Eggs."),
   ("RIVALS",4,"lore:rivals",["Zangoose","Seviper"],"Zangoose and Seviper are famous rivals -- the Pokédex says they have been bitter enemies since ancient times and fight on sight."),
 ], exclude=["Slurpuff","Alcremie","Milcery","Vanillite","Vanillish","Vanilluxe","Mr. Mime","Mime Jr.","Mr. Rime",
             "Heatmor","Durant","Electabuzz","Magmar","Electivire","Magmortar","Throh","Sawk","Tornadus","Thundurus","Groudon","Kyogre","Dialga","Palkia","Xerneas","Yveltal","Scyther","Pinsir"],

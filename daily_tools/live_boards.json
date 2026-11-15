@@ -3340,7 +3340,7 @@
     "m": [
      "Weepinbell",
      "Vileplume",
-     "Gengar"
+     "Venonat"
     ],
     "n": 3,
     "cat": 1,
@@ -3365,15 +3365,6 @@
     "n": 3,
     "cat": 3,
     "word": "ERIKA"
-   },
-   {
-    "m": [
-     "Poliwrath",
-     "Gengar"
-    ],
-    "n": 2,
-    "cat": 4,
-    "word": "HYPNOSIS"
    }
   ]
  },
