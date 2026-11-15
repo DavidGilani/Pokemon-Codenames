@@ -3,7 +3,7 @@
 # Fri Hard / Sat Brutal / Sun Evil. Brutal/Evil pass the overlap gate
 # (clue numbers sum >= 11, <= 1 single-tile clue).
 #
-# Boards dated before 2026-10-24 were removed (nightly 2026-11-14): long since
+# Boards dated before 2026-10-25 were removed (nightly 2026-11-14/15): long since
 # live in Supabase and outside the rolling anti-repetition window, so they were
 # stale dead code the verifier mistook for new boards once live_boards.json
 # was trimmed to [today-21, today+40].
@@ -38,15 +38,6 @@ def ex(*tags, extra=()):
 # ===== 10-22 Thu : HARD (gen1; mixed board already live) =====
 
 # ===== 10-23 Fri : HARD =====
-
-# ===== 10-24 Sat : BRUTAL =====
-board("2026-10-24","gen1","Brutal",[
-  ("OBLIVIOUS",5,"ability:Oblivious",["Slowbro","Lickitung"],"Slowbro and Lickitung both have the Ability Oblivious -- they're so dopey and distracted that they're immune to Attract and Taunt."),
-  ("LORELEI",3,"trainer:Lorelei",["Slowbro","Cloyster","Lapras"],"Lorelei, the Kanto Elite Four's ice specialist, sends out Slowbro, Cloyster and Lapras (plus Dewgong and Jynx)."),
-  ("SHELL-ARMOR",5,"ability:Shell Armor",["Cloyster","Lapras","Omastar","Krabby"],"Cloyster, Lapras, Omastar and Krabby all have the Ability Shell Armor, whose hard shell makes them immune to critical hits."),
-  ("RAPTOR",4,"arch:raptor",["Pidgeotto","Fearow"],"Pidgeotto and Fearow are raptors -- birds of prey built on the hawk and eagle, with sharp talons and a hunter's eye."),
-  ("DOG",3,"arch:dog",["Growlithe"],"Growlithe is a loyal puppy, based on a real dog (with a hint of the Chinese guardian lion)."),
-], exclude=ex("ability:Oblivious","trainer:Lorelei","ability:Shell Armor","arch:raptor","arch:dog","arch:canine","arch:fox",extra=["Slowpoke","Kingler","Shellder"]))
 
 # ===== 10-25 Sun : EVIL =====
 board("2026-10-25","gen1","Evil",[
@@ -86,14 +77,6 @@ board("2026-10-28","gen1","Challenging",[
 
 # ===== MIXED (all-gens) boards 10-23 .. 10-28 =====
 # ===== 10-23 Fri : HARD =====
-
-# ===== 10-24 Sat : BRUTAL =====
-board("2026-10-24","mixed","Brutal",[
-  ("HEALER",5,"ability:Healer",["Hatenna","Audino","Bellossom"],"Hatenna, Audino and Bellossom all have the Ability Healer, which gives them a chance to cure an ally's status condition every turn."),
-  ("MAGIC-BOUNCE",5,"ability:Magic Bounce",["Hatenna","Natu","Espeon"],"Hatenna, Natu and Espeon all have the Ability Magic Bounce, which reflects most status moves straight back at whoever used them."),
-  ("FELINE",3,"arch:feline",["Espeon","Shinx"],"Espeon and Shinx are both cats -- Espeon a sleek, sun-worshipping cat, Shinx a lion-cub-like kitten crackling with static."),
-  ("MOLLUSC",4,"arch:mollusc",["Clamperl","Shellos","Shelmet"],"Clamperl, Shellos and Shelmet are all molluscs -- Clamperl a pearl-making clam, Shellos a sea slug, Shelmet a snail wearing a helmet-like shell."),
-], exclude=ex("ability:Healer","ability:Magic Bounce","arch:feline","arch:cat","arch:mollusc",extra=["Slowking","Slowpoke","Slowbro","Shuckle","Gastrodon","Umbreon","Luxio","Luxray","Alomomola","Chansey","Blissey","Aromatisse","Hattrem","Hatterene","Xatu"]))
 
 # ===== 10-25 Sun : EVIL =====
 board("2026-10-25","mixed","Evil",[
