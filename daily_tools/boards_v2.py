@@ -39,15 +39,6 @@ def ex(*tags, extra=()):
 
 # ===== 10-23 Fri : HARD =====
 
-# ===== 10-25 Sun : EVIL =====
-board("2026-10-25","gen1","Evil",[
-  ("UNNERVE",5,"ability:Unnerve",["Aerodactyl","Mewtwo","Meowth"],"Aerodactyl, Mewtwo and Meowth all have the Ability Unnerve, which spooks the opposing side so much they can't eat their held Berries."),
-  ("PRESSURE",5,"ability:Pressure",["Aerodactyl","Mewtwo","Articuno"],"Aerodactyl, Mewtwo and Articuno all have the Ability Pressure, which makes foes burn extra PP every time they attack."),
-  ("INNER-FOCUS",5,"ability:Inner Focus",["Dragonite","Abra"],"Dragonite and Abra both have the Ability Inner Focus, which stops them from flinching, however hard they're hit."),
-  ("ROYALTY",4,"lore:royalty",["Nidoking","Nidoqueen"],"Their names are royal titles -- Nidoking and Nidoqueen are the king and queen forms of the male and female Nidoran lines."),
-  ("MOLE",3,"arch:mole",["Diglett"],"Diglett is a mole -- it lives underground and only ever pokes its head out of the soil."),
-], exclude=ex("ability:Unnerve","ability:Pressure","ability:Inner Focus","arch:mole"))
-
 # ===== 10-26 Mon : EASY =====
 board("2026-10-26","gen1","Easy",[
   ("WATER",1,"type:water",["Squirtle","Seaking","Kingler","Vaporeon"],"Squirtle, Seaking, Kingler and Vaporeon are all Water-type Pokémon."),
@@ -77,15 +68,6 @@ board("2026-10-28","gen1","Challenging",[
 
 # ===== MIXED (all-gens) boards 10-23 .. 10-28 =====
 # ===== 10-23 Fri : HARD =====
-
-# ===== 10-25 Sun : EVIL =====
-board("2026-10-25","mixed","Evil",[
-  ("MUSKETEERS",4,"lore:musketeers",["Cobalion","Terrakion","Virizion"],"Cobalion, Terrakion and Virizion are three of the four Swords of Justice, the legendary musketeers of Unova (Keldeo is the fourth)."),
-  ("JUSTIFIED",5,"ability:Justified",["Cobalion","Lucario","Gallade"],"Cobalion, Lucario and Gallade all have the Ability Justified, which raises their Attack whenever they're hit by a Dark-type move."),
-  ("STEADFAST",5,"ability:Steadfast",["Lucario","Gallade","Rockruff"],"Lucario, Gallade and Rockruff all have the Ability Steadfast, which boosts their Speed every time they flinch."),
-  ("WOLF",3,"arch:wolf",["Zacian","Zamazenta"],"Zacian and Zamazenta are the legendary wolves of Galar -- one wields a sword, the other a shield."),
-  ("CETACEAN",4,"arch:cetacean",["Wailord"],"Wailord is a cetacean -- the whale family -- and the largest Pokémon ever found."),
-], exclude=ex("lore:musketeers","ability:Justified","ability:Steadfast","arch:wolf","arch:cetacean",extra=["Keldeo","Lycanroc","Wailmer","Kyogre","Arcanine","Tyrogue","Hitmontop","Dubwool","Sirfetch'd","Finizen","Palafin"]))
 
 # ===== 10-26 Mon : EASY =====
 board("2026-10-26","mixed","Easy",[
@@ -1181,3 +1163,51 @@ board("2026-12-12","mixed","Brutal",[
          "Goodra":("SLIME",2,"Goodra's body is coated in a thick slime that softens blows."),
          "Aurorus":("SAILS",2,"Aurorus's diamond-shaped crystal sails glitter like an aurora."),
          "Tyrantrum":("JAWS",2,"Tyrantrum's huge jaws could crunch through a car.")})
+
+# ===== 4-week gap fill (nightly 2026-11-16): 11-27 mixed HARD + 12-06 gen1 EVIL =====
+board("2026-11-27","mixed","Hard",[
+  ("IRON-FIST",5,"ability:Iron Fist",["Golurk","Conkeldurr","Infernape"],"Golurk, Conkeldurr and Infernape all share the Ability Iron Fist, which powers up punching moves such as Mach Punch and Hammer Arm by 20%."),
+  ("DOLL",3,"based:doll",["Banette","Baltoy"],"Both are living dolls -- Banette is the Marionette Pokémon, an abandoned plush doll reanimated by a grudge, and Baltoy is the Clay Doll Pokémon, modelled on ancient dogū clay figurines."),
+  ("WEASEL",3,"arch:weasel",["Buizel"],"Buizel is the Sea Weasel Pokémon -- a sleek swimming weasel that inflates the flotation sac around its neck like a life ring."),
+  ("CAVE",4,"habitat:cave",["Noibat","Carbink","Sableye"],"All three are cave dwellers -- Noibat roosts in pitch-black caverns and hunts with ultrasonic waves, Carbink is born from intense heat and pressure deep underground, and Sableye lurks in dark caves gnawing on gems with its sharp teeth."),
+], exclude=ex("ability:Iron Fist","arch:weasel","arch:mustelid","arch:bat","arch:chiropteran",
+  extra=["Shuppet","Mimikyu","Jynx","Smoochum","Golett","Claydol","Mr. Mime","Mime Jr.","Yamask","Cofagrigus","Runerigus",
+         "Furret","Sentret","Linoone","Zigzagoon","Obstagoon","Mienfoo","Mienshao","Sneasler","Weavile","Sneasel",
+         "Onix","Steelix","Geodude","Graveler","Golem","Diglett","Dugtrio","Mawile","Roggenrola","Boldore","Gigalith",
+         "Druddigon","Deino","Zweilous","Hydreigon","Gible","Gabite","Garchomp","Axew","Fraxure","Haxorus","Dwebble","Crustle","Floatzel",
+         "Lunatone","Solrock","Cubone","Marowak","Paras","Parasect","Durant","Heatmor","Diancie","Carkol","Rolycoly","Coalossal",
+         "Hitmontop","Hawlucha","Spinda","Spinarak","Ariados","Wobbuffet","Drifblim","Drifloon","Qwilfish",
+         "Machop","Machoke","Machamp","Tyrogue","Hitmonlee","Haunter","Gastly","Gengar","Throh","Sawk",
+         "Hakamo-o","Jangmo-o","Kommo-o","Gothita","Gothorita","Gothitelle","Glimmet","Glimmora","Milcery","Fennekin","Minccino","Cinccino","Popplio","Zeraora","Latios","Latias","Regice","Regirock","Registeel","Regidrago","Regieleki","Regigigas","Vigoroth","Slaking","Slakoth",
+         "Clobbopus","Grapploct","Patrat","Watchog","Furfrou","Revavroom","Miraidon","Koraidon","Chi-Yu","Chien-Pao","Ting-Lu","Wo-Chien","Type: Null","Silvally","Golisopod","Crabominable","Fidough","Dachsbun","Reshiram","Zekrom","Dedenne","Pichu","Emolga","Togedemaru","Pawmi","Pawmo","Pawmot","Espurr","Meowstic","Drilbur","Excadrill","Dragapult","Dreepy","Drakloak"]),
+  hints={"Golurk":("ROCKET",3,"Golurk tucks in its limbs and fires rocket jets from its arms to fly."),
+         "Conkeldurr":("PILLARS",2,"Conkeldurr carries two concrete pillars and swings them as weapons."),
+         "Infernape":("GYMNAST",3,"Infernape fights like a gymnast, tumbling and striking with all four limbs."),
+         "Banette":("GRUDGE",3,"Banette was a discarded doll that came back to life, driven by a grudge against the child who threw it away."),
+         "Baltoy":("SPIN",2,"Baltoy balances and spins on its single foot like a top -- it even sleeps spinning."),
+         "Buizel":("COLLAR",2,"Buizel inflates the collar-like flotation sac around its neck to bob on the water."),
+         "Sableye":("GEMSTONES",2,"Sableye's eyes are glittering gemstones -- it gnaws on rocks and gems deep underground."),
+         "Noibat":("EARS",2,"Noibat's huge ears blast out ultrasonic waves strong enough to make a grown adult dizzy."),
+         "Carbink":("JEWEL",2,"Carbink is the Jewel Pokémon -- glittering gems sprout from its grey body.")})
+
+board("2026-12-06","gen1","Evil",[
+  ("MOUSE",4,"genus:mouse",["Rattata","Sandshrew"],"A Pokédex trick: Rattata and Sandshrew are both officially classified as the 'Mouse Pokémon' -- Sandshrew included, despite its armoured hide."),
+  ("SPECIAL",5,"stat:special",["Mewtwo","Gengar","Articuno"],"In the original Red & Blue there was a single 'Special' stat -- Mewtwo (154), Gengar (130) and Articuno (125) have three of the highest Special stats in all of Gen I."),
+  ("DOPPELGANGER",5,"myth:doppelganger",["Gengar","Ditto","Mewtwo"],"Each is a double: Gengar's name derives from 'doppelgänger' and it loves to pose as its victim's shadow, Ditto transforms into a perfect copy of any opponent, and Mewtwo is Mew's laboratory-made duplicate."),
+  ("MINERAL",5,"egg:mineral",["Onix","Porygon","Golem"],"A breeding secret: Onix, Porygon and Golem all belong to the Mineral Egg Group."),
+  ("DIGGER",3,"lore:burrower",["Onix","Sandshrew"],"Both are burrowers -- Onix tunnels through the ground at 50 mph, and Sandshrew digs deep burrows in dry terrain to live in."),
+], exclude=ex("genus:mouse",
+  extra=["Pikachu","Raichu","Sandslash","Raticate","Alakazam","Exeggutor","Slowbro","Zapdos","Moltres","Chansey","Jynx","Hypno","Starmie","Lapras","Vaporeon","Mew",
+         "Geodude","Graveler","Magnemite","Magneton","Voltorb","Electrode","Diglett","Dugtrio","Cubone","Marowak","Kabuto","Kabutops","Omanyte","Omastar",
+         "Haunter","Gastly","Abra","Kadabra","Rhyhorn","Rhydon","Nidoran♀","Nidoran♂",
+         "Jolteon","Flareon","Tentacruel","Victreebel","Vileplume","Venusaur","Magmar","Gyarados","Dragonite","Mr. Mime","Dewgong","Seel","Cloyster",
+         "Krabby","Kingler","Aerodactyl","Golbat","Zubat","Arbok","Ekans","Parasect","Paras"]),
+  hints={"Rattata":("FANGS",2,"Rattata's big front fangs never stop growing -- it gnaws on anything to wear them down."),
+         "Golem":("BOULDER",2,"Golem's body is a ball of rock -- it rolls down mountainsides like a living boulder."),
+         "Sandshrew":("CURL",2,"Sandshrew curls into a tight ball to protect itself from attackers."),
+         "Mewtwo":("CLONE",4,"Mewtwo was cloned from Mew's DNA by scientists -- and engineered to be the strongest Pokémon."),
+         "Gengar":("SHADOW",3,"Gengar hides in darkness and loves to pretend to be your own shadow."),
+         "Articuno":("FROST",2,"Articuno is the legendary bird of ice -- freezing air trails from its wings."),
+         "Ditto":("COPY",3,"Ditto rearranges its cells to copy anything it sees."),
+         "Onix":("TUNNEL",3,"Onix burrows through the earth at 50 mph, leaving tunnels behind it."),
+         "Porygon":("DIGITAL",3,"Porygon is made of computer code -- the first artificial Pokémon, able to live in cyberspace.")})
