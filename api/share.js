@@ -32,7 +32,9 @@ export default async function handler(req) {
   // URL so the preview actually updates daily. og.js ignores this param.
   const day = new Date().toISOString().slice(0, 10);
   const img = `${origin}/api/og?daily=${p}&d=${day}`;
-  const target = `${origin}/?daily=${p}`;
+  // Keep the sharer's referral code (?r=) so their friend's finish earns them gems.
+  const ref = (url.searchParams.get("r") || "").replace(/[^a-z0-9]/gi, "").slice(0, 16);
+  const target = `${origin}/?daily=${p}${ref ? `&r=${ref}` : ""}`;
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
   const theme = await todaysTheme(pool);
   const title = theme

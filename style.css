@@ -1199,3 +1199,14 @@ a { color: var(--accent); }
 .dshare-catch { margin-top: 8px; font-weight: 600; color: #7fd3ff; }
 .pokedex-cta { margin-top: 14px; }
 .pokedex-cta-count { font-size: 14px; }
+
+/* ---- Gems ---- */
+.gem-panel { background: rgba(255,255,255,.04); border-radius: 12px; padding: 12px 14px; margin: 12px 0; }
+.gem-bal { font-size: 18px; margin-bottom: 4px; }
+.gem-bal strong { color: #7fd3ff; }
+.gem-actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.gem-sub { margin-top: 10px; font-size: 14px; }
+.pdx-badge em { font-style: normal; opacity: .6; margin-left: 2px; }
+.dshare-save { margin-top: 10px; }
+.dshare-save-note { font-size: 13px; opacity: .8; }
+.gem-confirm { z-index: 1000; }

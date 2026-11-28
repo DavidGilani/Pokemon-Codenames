@@ -1870,8 +1870,11 @@ function _updateDailyStreak() {
     if (s.lastWon && s.lastDate && _daysApart(s.lastDate, daily.date) === 1) s.current = (s.current || 0) + 1;
     else s.current = 1;
     s.best = Math.max(s.best || 0, s.current);
+    delete s.brokenFrom; delete s.brokenOn;
   } else {
-    s.current = 0; // a loss breaks the win streak
+    // A loss breaks the win streak – remember what it was so gems can save it.
+    if ((s.current || 0) >= 1) { s.brokenFrom = s.current; s.brokenOn = daily.date; }
+    s.current = 0;
   }
   s.lastDate = daily.date;
   s.lastWon = won;
@@ -2251,6 +2254,9 @@ async function startDaily(pool, opts = {}) {
       renderDaily();
       return;
     }
+
+    // Missed yesterday (or lost it) with a streak worth saving? Offer gems first.
+    if (!opts.skipStreakOffer) await _maybeOfferStreakSave(pool);
 
     // Fresh start. Actually beginning the attempt (timer + logging) is deferred
     // to begin() so we can first show the welcome pop-up (Start / tutorial).
@@ -3114,6 +3120,7 @@ async function dailyFinish(outcome) {
         _pokedexCache = null;
       } catch (err) { console.error(err); }
     }
+    if (!daily.practice && !daily.qa) _creditReferrer();
   }
   _updateDailyStreak();  // bump this pool's day streak (once per date)
   _saveDailyProgress();  // remember completion on this device
@@ -3553,7 +3560,7 @@ function _dailyShareText(includeUrl) {
     ...(st.current >= 1 ? [`🔥 ${st.current}-day win streak`] : []),
     `Can you beat it? 👇`,
   ];
-  if (includeUrl) lines.push(dailyUrl(daily.pool));
+  if (includeUrl) lines.push(_withRef(dailyUrl(daily.pool)));
   return lines.join("\n");
 }
 
@@ -3590,6 +3597,7 @@ function openDailyShareModal() {
   }
 
   _fillDailyRank();
+  _renderShareSaveBtn();
   const catchEl = $("#dshare-catch");
   if (catchEl) {
     const nc = daily.newCatches || [];
@@ -3678,7 +3686,9 @@ async function _refreshPokedexCount() {
     const d = await _loadPokedex();
     const mine = d.mine || [];
     const g1 = mine.filter((p) => p.id <= 151).length;
-    el.textContent = mine.length ? `${g1}/151 Gen I · ${mine.length} Pokémon caught in total` : "";
+    const st = await _loadGemStatus();
+    const gems = st && st.balance ? ` · 💎 ${st.balance}` : "";
+    el.textContent = mine.length || gems ? `${g1}/151 Gen I · ${mine.length} caught${gems}` : "";
   } catch (_) { el.textContent = ""; }
 }
 
@@ -3697,6 +3707,7 @@ async function openPokedex(view) {
   window.scrollTo(0, 0);
   $("#pokedex-grid").innerHTML = "";
   $("#pokedex-summary").innerHTML = `<div class="qa-stats-loading">Loading your Pokédex…</div>`;
+  renderGemPanel();
   try { renderPokedex(await _loadPokedex()); }
   catch (err) { console.error(err); $("#pokedex-summary").innerHTML = `<div class="qa-stats-loading">Couldn't load your Pokédex – check your connection.</div>`; }
 }
@@ -3756,6 +3767,184 @@ function renderPokedex(d) {
   grid.innerHTML = cells.join("");
 }
 
+// ---- Gems, share links & friend badges -------------------------------------
+// Earn: +5 per share (3/day), +10 per friend who finishes from your link that
+// day (+20 if they're new), max 3 friends/day. Spend (always asked): 25 to save a
+// broken streak, 75 to roll a random uncaught Pokémon. All server-side.
+const STREAK_SAVE_COST = 25, ROLL_COST = 75;
+let _gemStatus = null;
+let _myRefCode = null;
+
+async function _loadGemStatus(force) {
+  if (_gemStatus && !force) return _gemStatus;
+  try {
+    const { data } = await sb.rpc("my_gem_status");
+    _gemStatus = data || { balance: 0, friends: 0, friend_finishes: 0, shares_today: 0 };
+  } catch (_) { _gemStatus = _gemStatus || null; }
+  return _gemStatus;
+}
+
+async function _loadMyRefCode() {
+  try { _myRefCode = localStorage.getItem("pc_refcode"); } catch (_) {}
+  if (_myRefCode) return;
+  try {
+    const { data } = await sb.rpc("my_ref_code");
+    if (data) { _myRefCode = data; try { localStorage.setItem("pc_refcode", data); } catch (_) {} }
+  } catch (_) {}
+}
+function _withRef(url) { return _myRefCode ? `${url}?r=${encodeURIComponent(_myRefCode)}` : url; }
+
+// Remember a friend's share code for the day we arrived (credited on finish).
+function _captureRefParam() {
+  const r = new URLSearchParams(window.location.search).get("r");
+  if (!r || !/^[a-z0-9]{4,16}$/i.test(r)) return;
+  try {
+    if (r === localStorage.getItem("pc_refcode")) return; // own link
+    localStorage.setItem("pc_ref", JSON.stringify({ code: r, date: _todayStr() }));
+  } catch (_) {}
+}
+async function _creditReferrer() {
+  let ref = null;
+  try { ref = JSON.parse(localStorage.getItem("pc_ref") || "null"); } catch (_) {}
+  if (!ref || !ref.code || !daily.attemptId) return;
+  if (ref.date !== daily.date && ref.date !== _todayStr()) { try { localStorage.removeItem("pc_ref"); } catch (_) {} return; }
+  try { await sb.rpc("record_referral", { p_code: ref.code, p_attempt: daily.attemptId }); } catch (_) {}
+}
+
+async function _claimShareGems() {
+  if (!daily.finished || daily.practice || daily.qa || daily.qaView) return;
+  try {
+    const { data } = await sb.rpc("claim_share_gems");
+    if (data && data.awarded) {
+      toast(`+${data.awarded} 💎 for sharing! (${data.balance} gems)`);
+      if (_gemStatus) _gemStatus.balance = data.balance;
+    }
+  } catch (_) {}
+}
+
+// Is there a broken streak on this pool that gems could save?
+function _streakSaveOffer(pool) {
+  const s = _getStreak(pool), today = _todayStr();
+  if (s.brokenFrom >= 1 && s.brokenOn && _daysApart(s.brokenOn, today) <= 1 && s.saveDeclined !== s.brokenOn)
+    return { kind: "lost", n: s.brokenFrom, key: s.brokenOn };
+  if (s.lastWon && (s.current || 0) >= 1 && s.lastDate && _daysApart(s.lastDate, today) === 2 && s.saveDeclined !== s.lastDate)
+    return { kind: "missed", n: s.current, key: s.lastDate };
+  return null;
+}
+function _applyStreakSave(pool, offer) {
+  const s = _getStreak(pool);
+  const raw = (() => { try { return JSON.parse(localStorage.getItem(_streakKey(pool))) || {}; } catch (_) { return {}; } })();
+  if (offer.kind === "lost") { raw.current = raw.brokenFrom; raw.lastWon = true; delete raw.brokenFrom; delete raw.brokenOn; }
+  else { raw.lastDate = _todayStr(-1); raw.lastWon = true; }
+  raw.best = Math.max(raw.best || 0, raw.current || 0, s.best || 0);
+  try { localStorage.setItem(_streakKey(pool), JSON.stringify(raw)); } catch (_) {}
+}
+function _declineStreakSave(pool, offer) {
+  try {
+    const raw = JSON.parse(localStorage.getItem(_streakKey(pool))) || {};
+    raw.saveDeclined = offer.key;
+    localStorage.setItem(_streakKey(pool), JSON.stringify(raw));
+  } catch (_) {}
+}
+
+// Ask (never automatic) whether to spend gems to save the streak.
+async function _promptStreakSave(pool, offer) {
+  const st = await _loadGemStatus(true);
+  const bal = st ? st.balance : 0;
+  if (bal < STREAK_SAVE_COST) return false;
+  const poolName = pool === "gen1" ? "Gen I" : "All-gens";
+  const why = offer.kind === "lost" ? "Today's puzzle got away" : "You missed yesterday's puzzle";
+  const yes = await _gemConfirm(`🛡️ Save your ${offer.n}-day streak?`,
+    `${why}, which breaks your ${poolName} win streak. Spend ${STREAK_SAVE_COST} 💎 to keep it going? (You have ${bal}.)`,
+    `Save it – ${STREAK_SAVE_COST} 💎`, "Let it go");
+  if (!yes) { _declineStreakSave(pool, offer); return false; }
+  try {
+    const { data } = await sb.rpc("spend_gems", { p_amount: STREAK_SAVE_COST, p_reason: "streak_save", p_ref: `${pool}:${offer.key}` });
+    if (!data || !data.ok) { toast("Not enough gems."); return false; }
+    _applyStreakSave(pool, offer);
+    if (_gemStatus) _gemStatus.balance = data.balance;
+    toast(`🛡️ Streak saved! ${data.balance} 💎 left`);
+    return true;
+  } catch (_) { toast("Couldn't save your streak – check your connection."); return false; }
+}
+async function _maybeOfferStreakSave(pool) {
+  if (daily.practice || daily.qa) return;
+  const offer = _streakSaveOffer(pool);
+  if (offer && offer.kind === "missed") await _promptStreakSave(pool, offer);
+}
+async function _renderShareSaveBtn() {
+  const el = $("#dshare-save");
+  if (!el) return;
+  el.hidden = true;
+  if (daily.outcome === "win" || daily.practice || daily.qa) return;
+  const offer = _streakSaveOffer(daily.pool);
+  if (!offer || offer.kind !== "lost") return;
+  const st = await _loadGemStatus(true);
+  const bal = st ? st.balance : 0;
+  el.innerHTML = bal >= STREAK_SAVE_COST
+    ? `<button class="btn btn-ghost" id="dshare-save-btn">🛡️ Save your ${offer.n}-day streak – ${STREAK_SAVE_COST} 💎</button>`
+    : `<div class="dshare-save-note">🛡️ ${STREAK_SAVE_COST} 💎 would save your ${offer.n}-day streak – you have ${bal}. Share to earn gems!</div>`;
+  el.hidden = false;
+  const b = $("#dshare-save-btn");
+  if (b) b.addEventListener("click", async () => {
+    if (await _promptStreakSave(daily.pool, offer)) { el.hidden = true; openDailyShareModal(); }
+  });
+}
+
+// Small promise-based yes/no dialog in the site's style.
+function _gemConfirm(title, body, yesLabel, noLabel) {
+  return new Promise((resolve) => {
+    const wrap = document.createElement("div");
+    wrap.className = "dshare-overlay gem-confirm";
+    wrap.innerHTML = `<div class="dshare-card"><div class="dshare-title">${escapeHtml(title)}</div>
+      <div class="dshare-sub" style="margin:10px 0 16px">${escapeHtml(body)}</div>
+      <div class="dshare-btns"><button class="btn btn-primary" data-a="y">${escapeHtml(yesLabel)}</button>
+      <button class="btn btn-ghost" data-a="n">${escapeHtml(noLabel)}</button></div></div>`;
+    const done = (v) => { wrap.remove(); resolve(v); };
+    wrap.querySelector('[data-a="y"]').addEventListener("click", () => done(true));
+    wrap.querySelector('[data-a="n"]').addEventListener("click", () => done(false));
+    document.body.appendChild(wrap);
+  });
+}
+
+// Friend badges: Poké → Great → Ultra → Master Ball at 1 / 5 / 10 / 25.
+const _BALLS = [[1, "Poké Ball"], [5, "Great Ball"], [10, "Ultra Ball"], [25, "Master Ball"]];
+function _ballBadges(n, what) {
+  return _BALLS.map(([m, name]) =>
+    `<span class="pdx-badge ${n >= m ? "won" : ""}" title="${m} ${what}">◓ ${name} <em>${m}</em></span>`).join("");
+}
+async function renderGemPanel() {
+  const el = $("#pokedex-gems");
+  if (!el) return;
+  const st = await _loadGemStatus(true);
+  if (!st) { el.innerHTML = ""; return; }
+  const can = st.balance >= ROLL_COST;
+  el.innerHTML = `
+    <div class="gem-bal">💎 <strong>${st.balance}</strong> gems</div>
+    <div class="qa-stats-note">Earn gems: +5 each time you share a finished puzzle (3 a day), +10 when a friend finishes today's puzzle from your link, +20 if they're new to the site.</div>
+    <div class="gem-actions">
+      <button class="btn btn-ghost btn-mini" data-roll="gen1" ${can ? "" : "disabled"}>🎲 Roll a Gen I Pokémon – ${ROLL_COST} 💎</button>
+      <button class="btn btn-ghost btn-mini" data-roll="all" ${can ? "" : "disabled"}>🎲 Roll any Pokémon – ${ROLL_COST} 💎</button>
+    </div>
+    <div class="gem-sub">Friends who've finished from your links: <strong>${st.friends}</strong></div>
+    <div class="pdx-badges">${_ballBadges(st.friends, "different friends")}</div>
+    <div class="gem-sub">Puzzles finished from your links: <strong>${st.friend_finishes}</strong></div>
+    <div class="pdx-badges">${_ballBadges(st.friend_finishes, "friend finishes")}</div>`;
+  $all("[data-roll]", el).forEach((b) => b.addEventListener("click", async () => {
+    const scope = b.dataset.roll;
+    const ok = await _gemConfirm("🎲 Roll a random Pokémon?",
+      `Spend ${ROLL_COST} 💎 for a random ${scope === "gen1" ? "Gen I " : ""}Pokémon you haven't caught yet. It'll be marked 💎 in your Pokédex.`,
+      `Roll – ${ROLL_COST} 💎`, "Not now");
+    if (!ok) return;
+    try {
+      const { data } = await sb.rpc("pokedex_roll", { p_scope: scope });
+      if (data && data.ok) { toast(`🎲 You got ${data.name}!`); _pokedexCache = null; openPokedex(scope === "gen1" ? "gen1" : "all"); }
+      else if (data && data.complete) toast("You've already got them all!");
+      else toast("Not enough gems.");
+    } catch (_) { toast("Couldn't roll – check your connection."); }
+  }));
+}
+
 function closeDailyShareModal() {
   const modal = $("#daily-share-modal");
   if (modal) modal.classList.add("hidden");
@@ -3773,11 +3962,13 @@ function logDailyEvent(event) {
 
 function dailyShareText() {
   logDailyEvent("share");
+  _claimShareGems();
   nativeShare({ title: "Pokémon Codenames – Daily", text: _dailyShareText(true) });
 }
 
 async function dailyCopyText() {
   logDailyEvent("copy");
+  _claimShareGems();
   const text = _dailyShareText(true);
   try {
     await navigator.clipboard.writeText(text);
@@ -3838,6 +4029,8 @@ async function boot() {
   await syncServerClock();
   sb.auth.onAuthStateChange(() => syncRealtimeAuth());
   _seedStreaksFromServer(); // one-time backfill of earned win streaks from the server
+  _captureRefParam();       // arrived via a friend's share link? remember it for today
+  _loadMyRefCode();         // this player's own code, added to their share links
 
   // Self-healing: on focus/visibility, on a steady background interval, and a
   // once-a-second tick just to keep the timer display moving.
