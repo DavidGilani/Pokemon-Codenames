@@ -68,7 +68,7 @@ const $all = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 function showScreen(name) {
   $all(".screen").forEach((el) => el.classList.remove("active"));
   $(`#screen-${name}`).classList.add("active");
-  if (name === "landing") renderLandingStreaks();
+  if (name === "landing") { renderLandingStreaks(); _refreshPokedexCount(); }
   _applySeasonalEffect();
 }
 
@@ -342,6 +342,10 @@ function initLandingScreen() {
   // Daily is the homepage; "play with friends" (create/join a room) is a subpage.
   const goFriends = $("#go-friends-btn");
   if (goFriends) goFriends.addEventListener("click", () => showScreen("friends"));
+  const goPokedex = $("#go-pokedex-btn");
+  if (goPokedex) goPokedex.addEventListener("click", () => openPokedex());
+  const pokedexBack = $("#pokedex-back-btn");
+  if (pokedexBack) pokedexBack.addEventListener("click", () => showScreen("landing"));
   const friendsBack = $("#friends-back-btn");
   if (friendsBack) friendsBack.addEventListener("click", () => showScreen("landing"));
 
@@ -1961,6 +1965,7 @@ function initDaily() {
     startDaily(daily.pool === "gen1" ? "mixed" : "gen1");
   });
   $("#dshare-close").addEventListener("click", closeDailyShareModal);
+  $("#dshare-pokedex").addEventListener("click", () => { closeDailyShareModal(); openPokedex(daily.pool === "gen1" ? "gen1" : "all"); });
   $("#daily-share-modal").addEventListener("click", (e) => {
     if (e.target === $("#daily-share-modal")) closeDailyShareModal(); // tap backdrop
   });
@@ -1968,7 +1973,7 @@ function initDaily() {
 
 function _dailyReset() {
   daily.theme = null; daily._themeKey = null;
-  daily.tiles = []; daily.clues = []; daily.revealedHints = [];
+  daily.tiles = []; daily.clues = []; daily.revealedHints = []; daily.newCatches = null;
   daily.revealed = {}; daily.bluesFound = 0; daily.mistakes = 0; daily.hintsUsed = 0;
   daily.shownHintIdx = []; daily.noMoreHints = false;
   daily.startedAt = null; daily.finished = false; daily.outcome = null;
@@ -2696,6 +2701,8 @@ function renderDaily() {
     const n = $(sel); if (n) n.classList.remove("hidden");
   });
   const hRow = document.querySelector(".daily-hint-row"); if (hRow) hRow.classList.remove("hidden");
+  const catchNote = $("#daily-catch-note");
+  if (catchNote) catchNote.classList.toggle("hidden", !!(daily.practice || daily.qa || daily.qaView || daily.finished));
   if (daily.qaView) {
     $("#daily-play-title").innerHTML =
       `Viewing · ${poolLabel} <span class="daily-diff diff-${diff.cls}">${diff.label}</span>`;
@@ -3100,6 +3107,13 @@ async function dailyFinish(outcome) {
         p_taps: daily.taps,
       });
     } catch (err) { console.error(err); }
+    if (outcome === "win" && !daily.practice && !daily.qa) {
+      try {
+        const { data } = await sb.rpc("daily_record_catches", { p_id: daily.attemptId, p_hinted: _dailyHintedNames() });
+        daily.newCatches = Array.isArray(data) ? data : [];
+        _pokedexCache = null;
+      } catch (err) { console.error(err); }
+    }
   }
   _updateDailyStreak();  // bump this pool's day streak (once per date)
   _saveDailyProgress();  // remember completion on this device
@@ -3576,6 +3590,17 @@ function openDailyShareModal() {
   }
 
   _fillDailyRank();
+  const catchEl = $("#dshare-catch");
+  if (catchEl) {
+    const nc = daily.newCatches || [];
+    if (daily.outcome === "win" && nc.length) {
+      catchEl.textContent = `📕 +${nc.length} new Pokémon caught: ${nc.slice(0, 4).map((p) => p.name).join(", ")}${nc.length > 4 ? "…" : ""}`;
+      catchEl.hidden = false;
+    } else if (daily.outcome !== "win") {
+      catchEl.textContent = "📕 Today's Pokémon got away – win tomorrow to catch them!";
+      catchEl.hidden = false;
+    } else catchEl.hidden = true;
+  }
 
   const st = _getStreak(daily.pool);
   const streakEl = $("#dshare-streak");
@@ -3616,6 +3641,119 @@ async function _fillDailyRank() {
     el.innerHTML = html;
     el.hidden = false;
   } catch (_) { /* offline – just leave it out */ }
+}
+
+// ---- Pokédex ---------------------------------------------------------------
+// Catches are stored server-side per (anonymous) user. A win catches the day's
+// answers except any an extra clue pointed to (those "get away").
+let _pokedexCache = null;
+let _pokedexView = "gen1";
+
+// Names of the Pokémon the player's revealed extra clues pointed to.
+function _dailyHintedNames() {
+  const nameAt = {};
+  (daily.tiles || []).forEach((t) => (nameAt[t.position] = t.name));
+  const keyHints = (daily.key && daily.key.h) || [];
+  const hints = (daily.shownHintIdx && daily.shownHintIdx.length)
+    ? daily.shownHintIdx.map((i) => keyHints[i]).filter(Boolean)
+    : (daily.revealedHints || []);
+  const out = new Set();
+  hints.forEach((h) => (h.t || []).forEach((pos) => { if (nameAt[pos]) out.add(nameAt[pos]); }));
+  return [...out];
+}
+
+async function _loadPokedex() {
+  if (_pokedexCache) return _pokedexCache;
+  try { await ensureAuth(); } catch (_) {}
+  const { data, error } = await sb.rpc("get_pokedex");
+  if (error) throw error;
+  _pokedexCache = data || { mine: [], per_gen: {} };
+  return _pokedexCache;
+}
+
+async function _refreshPokedexCount() {
+  const el = $("#pokedex-cta-count");
+  if (!el) return;
+  try {
+    const d = await _loadPokedex();
+    const mine = d.mine || [];
+    const g1 = mine.filter((p) => p.id <= 151).length;
+    el.textContent = mine.length ? `${g1}/151 Gen I · ${mine.length} Pokémon caught in total` : "";
+  } catch (_) { el.textContent = ""; }
+}
+
+// Gen → [firstId, lastId] (ids are National Dex numbers, in gen order).
+function _genRanges(perGen) {
+  const out = {}; let start = 1;
+  Object.keys(perGen || {}).map(Number).sort((a, b) => a - b).forEach((g) => {
+    out[g] = [start, start + perGen[g] - 1]; start += perGen[g];
+  });
+  return out;
+}
+
+async function openPokedex(view) {
+  if (view) _pokedexView = view;
+  showScreen("pokedex");
+  window.scrollTo(0, 0);
+  $("#pokedex-grid").innerHTML = "";
+  $("#pokedex-summary").innerHTML = `<div class="qa-stats-loading">Loading your Pokédex…</div>`;
+  try { renderPokedex(await _loadPokedex()); }
+  catch (err) { console.error(err); $("#pokedex-summary").innerHTML = `<div class="qa-stats-loading">Couldn't load your Pokédex – check your connection.</div>`; }
+}
+
+function renderPokedex(d) {
+  const mine = {}; (d.mine || []).forEach((p) => (mine[p.id] = p));
+  const total = Object.keys(mine).length;
+  const ranges = _genRanges(d.per_gen);
+  const allCount = Object.values(d.per_gen || {}).reduce((a, n) => a + n, 0);
+  const count = (lo, hi) => { let n = 0; for (let i = lo; i <= hi; i++) if (mine[i]) n++; return n; };
+  const pct = (n, of) => (of ? Math.round((100 * n) / of) : 0);
+
+  const tab = (v, label) => `<button class="btn btn-ghost btn-mini ${_pokedexView === v ? "chosen" : ""}" data-pdx="${v}">${label}</button>`;
+  $("#pokedex-tabs").innerHTML = tab("gen1", "Gen I Pokédex") + tab("all", "All generations");
+  $all("[data-pdx]", $("#pokedex-tabs")).forEach((b) => b.addEventListener("click", () => { _pokedexView = b.dataset.pdx; renderPokedex(d); }));
+
+  let lo, hi, summary;
+  if (_pokedexView === "gen1") {
+    [lo, hi] = [1, 151];
+    const n = count(1, 151);
+    summary = `<div class="pdx-total">${n} / 151 caught${n === 151 ? " – Gen I complete! 🏆" : ""}</div>
+      <div class="pdx-bar"><i style="width:${pct(n, 151)}%"></i></div>`;
+  } else {
+    const g = Number(_pokedexView.replace("gen", "")) || 0;
+    const genRows = Object.keys(ranges).map((k) => {
+      const [a, b] = ranges[k]; const n = count(a, b);
+      return `<div class="pdx-gen ${g === Number(k) ? "chosen" : ""}" data-gen="${k}"><span>Gen ${k}</span>
+        <span class="pdx-bar"><i style="width:${pct(n, b - a + 1)}%"></i></span><span>${n}/${b - a + 1}</span></div>`;
+    }).join("");
+    const badges = [100, 250, 500, 750, allCount].map((m) =>
+      `<span class="pdx-badge ${total >= m ? "won" : ""}">${m === allCount ? "🏆 All " + m : "⭐ " + m}</span>`).join("");
+    summary = `<div class="pdx-total">${total} / ${allCount} caught across all generations</div>
+      <div class="pdx-badges">${badges}</div>${genRows}
+      <div class="qa-stats-note">Tap a generation to see its Pokémon.</div>`;
+    if (g && ranges[g]) [lo, hi] = ranges[g];
+  }
+  $("#pokedex-summary").innerHTML = summary;
+  $all(".pdx-gen", $("#pokedex-summary")).forEach((r) => r.addEventListener("click", () => { _pokedexView = "gen" + r.dataset.gen; renderPokedex(d); }));
+  // When viewing All generations, the generation picked becomes "gen<N>" – keep
+  // the All tab highlighted for it.
+  if (_pokedexView.startsWith("gen") && _pokedexView !== "gen1") {
+    const allBtn = $('[data-pdx="all"]', $("#pokedex-tabs")); if (allBtn) allBtn.classList.add("chosen");
+  }
+
+  const grid = $("#pokedex-grid");
+  if (!lo) { grid.innerHTML = ""; return; }
+  const cells = [];
+  for (let i = lo; i <= hi; i++) {
+    const p = mine[i];
+    const mark = p ? (p.caught_on && p.rolled_on ? "✓💎" : p.rolled_on ? "💎" : "✓") : "";
+    const title = p ? `${p.name}${p.caught_on ? " – caught " + p.caught_on : ""}${p.rolled_on ? " – rolled " + p.rolled_on : ""}` : `#${i} – not caught yet`;
+    cells.push(`<div class="pdx-cell ${p ? "" : "missing"}" title="${escapeHtml(title)}">
+      <span class="pdx-mark">${mark}</span>
+      <img src="${SPRITE_BASE}/${i}.png" alt="${p ? escapeHtml(p.name) : "?"}" loading="lazy" decoding="async">
+      <div class="pdx-num">#${i}</div></div>`);
+  }
+  grid.innerHTML = cells.join("");
 }
 
 function closeDailyShareModal() {

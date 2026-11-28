@@ -118,6 +118,33 @@
       </div>
       <button class="btn btn-ghost" id="go-friends-btn">Play with friends →</button>
     </div>
+
+    <div class="friends-cta pokedex-cta">
+      <div class="friends-cta-text">
+        <h2>📕 Your Pokédex</h2>
+        <div class="sub">Win a daily to catch its Pokémon. Can you complete Gen I?</div>
+        <div class="pokedex-cta-count" id="pokedex-cta-count"></div>
+      </div>
+      <button class="btn btn-ghost" id="go-pokedex-btn">Open Pokédex →</button>
+    </div>
+  </section>
+
+  <!-- ==================================================================
+       POKÉDEX SCREEN
+       ================================================================== -->
+  <section class="screen" id="screen-pokedex">
+    <div class="pokedex-wrap">
+      <div class="daily-play-header">
+        <div>
+          <div class="daily-play-title">📕 Your Pokédex</div>
+          <div class="daily-play-sub">Win a daily to catch its Pokémon – any an extra clue points to gets away.</div>
+        </div>
+        <div class="daily-header-btns"><button class="btn btn-ghost btn-mini" id="pokedex-back-btn">← Back</button></div>
+      </div>
+      <div class="pokedex-tabs" id="pokedex-tabs"></div>
+      <div class="pokedex-summary" id="pokedex-summary"></div>
+      <div class="pokedex-grid" id="pokedex-grid"></div>
+    </div>
   </section>
 
   <!-- ==================================================================
@@ -401,6 +428,7 @@
       <div class="daily-hint-row">
         <button class="btn btn-ghost" id="daily-hint-btn">💡 Reveal an extra clue</button>
       </div>
+      <div class="daily-catch-note hidden" id="daily-catch-note">📕 Win to catch today's Pokémon for your Pokédex – any an extra clue points to will get away!</div>
 
       <div class="board" id="daily-board"></div>
 
@@ -461,10 +489,12 @@
       <div class="dshare-sub" id="dshare-sub"></div>
       <div class="dshare-rank" id="dshare-rank" hidden></div>
       <div class="dshare-streak" id="dshare-streak"></div>
+      <div class="dshare-catch" id="dshare-catch" hidden></div>
       <div class="dshare-btns">
         <button class="btn btn-share" id="dshare-text">Share result</button>
         <button class="btn btn-ghost dshare-copy" id="dshare-copy">Copy result</button>
         <button class="btn btn-ghost" id="dshare-other">Play the other puzzle</button>
+        <button class="btn btn-ghost" id="dshare-pokedex">📕 Open Pokédex</button>
       </div>
       <button class="btn btn-ghost dshare-close" id="dshare-close">Close</button>
     </div>

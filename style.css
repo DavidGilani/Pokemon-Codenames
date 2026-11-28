@@ -1172,3 +1172,30 @@ a { color: var(--accent); }
   pointer-events: none;
 }
 .qa-cmt-older { margin-top: 10px; }
+
+/* ---- Pokédex ---- */
+.pokedex-cta-count { margin-top: 6px; font-weight: 600; color: #ffd34d; }
+.pokedex-wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 40px; }
+.pokedex-tabs { display: flex; gap: 8px; margin: 14px 0; flex-wrap: wrap; }
+.pokedex-tabs .btn.chosen { background: var(--accent, #ffd34d); color: #111; }
+.pokedex-summary { margin-bottom: 12px; }
+.pdx-total { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.pdx-bar { height: 10px; border-radius: 6px; background: rgba(255,255,255,.08); overflow: hidden; }
+.pdx-bar i { display: block; height: 100%; background: #ffd34d; }
+.pdx-gen { display: grid; grid-template-columns: 70px 1fr 70px; gap: 8px; align-items: center;
+  padding: 6px 4px; cursor: pointer; border-radius: 8px; }
+.pdx-gen:hover, .pdx-gen.chosen { background: rgba(255,255,255,.06); }
+.pdx-gen span:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.pdx-badges { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.pdx-badge { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,.15); opacity: .45; }
+.pdx-badge.won { opacity: 1; border-color: #ffd34d; color: #ffd34d; }
+.pokedex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
+.pdx-cell { position: relative; background: rgba(255,255,255,.04); border-radius: 8px; padding: 4px 2px 3px; text-align: center; }
+.pdx-cell img { width: 56px; height: 56px; image-rendering: pixelated; }
+.pdx-cell.missing img { filter: brightness(0); opacity: .35; }
+.pdx-cell .pdx-num { font-size: 10px; opacity: .55; }
+.pdx-cell .pdx-mark { position: absolute; top: 2px; right: 4px; font-size: 11px; }
+.daily-catch-note { text-align: center; font-size: 13px; opacity: .75; margin: -4px 0 10px; }
+.dshare-catch { margin-top: 8px; font-weight: 600; color: #7fd3ff; }
+.pokedex-cta { margin-top: 14px; }
+.pokedex-cta-count { font-size: 14px; }
